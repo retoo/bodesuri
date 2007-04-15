@@ -1,0 +1,60 @@
+Arbeitspakte
+
+Protoyp
+-> Erste Erfahrungen mit Regelsatz und Kommunikation gewinnen
+ 1 Einfacher Regelsatz
+ 1 Einfache Kommunikation
+ 1 GUI (Text)
+
+Regelsystem
+-> Zuglogik unabhängig von Client/Server und GUI
+ 2 Jokerkarte kann in beliebige Karte umgewandelt werden
+ Zugtypen 
+ -> Anmerkung: Benutzer wird bei einigen Karten unterschiedliche Regeln anwenden können
+  1 Simpler Zug (Alle Karten ausser Bube)
+   Ass kann entweder eins oder elf Punkt ziehen
+  1 Rückwärts Zug (4)
+  1 Startzug (Ass, König) 
+  2 Aufteilbarer Zug (7)
+  2 Tausch (Bauer)
+ Feldtypen
+  1 Normal
+  1 Start
+  2 Himmel
+  2 Bänkli
+
+
+Spielzustand 
+-> Logik des Spielablaufs im Speziellen auch im Bezug auf Client/Server Synchronisation)
+ 1 Einfacher Prototyp
+ 1 Zugsystem
+ 1 Rundensystem
+ 2 Steuerung der Figuren des Partners im Endspiel
+ 
+ 
+Kommunikation (in Zusammenarbeit mit Spielzustand)
+ 2 Austausch von Karten
+ 1 Austausch von Zügen
+ 
+GUI
+ 1 Karten
+ 1 Spielbrett
+ 1 Zugvisualisierung
+ 1 Zugerfassung
+ 2 Einstellungen
+ 2 Einstiegsview (quasi Lobby)
+
+
+Client
+ 2 Joker
+ 1 Zusammenführen Client
+ 3 Starten des Servers aus Client
+ 
+Server
+ 1 Simpler Kartenstapel (Karten werden Zufällig ausgewählt)
+ 2 Realistischer Kartenstaple (Kartenstapel wird simuliert)
+ 3 Realtisches Mischeln des Kartenstapels
+ 1 Zusammenführen Server
+ 3 Protokollierung des Spiels
+ 3 Zusätzliche Regelvalidation als Cheaterschutz
+ 3 Mitverfolgen der an den Clients verteilten Karten (Cheatschutz)

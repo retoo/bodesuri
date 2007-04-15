@@ -1,0 +1,230 @@
+\documentclass[a4paper,12pt,halfparskip,DIV14]{scrreprt}
+
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[pdftex, colorlinks, linkcolor=blue]{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\usepackage[automark,headsepline]{scrpage2}
+
+\pagestyle{scrheadings}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+
+\clearscrheadfoot
+\chead{\normalfont\sffamily \headmark}
+\cfoot{\pagemark}
+
+\usepackage{enumitem}
+\setlist{itemsep=-2pt}
+
+
+\begin{document}
+
+\title{Bodesuri\\Infrastruktur}
+\subject{Infastruktur-Dokuemntation}
+\author{Phillipe~Eberli, Pascal~Hobus, \\ Danilo~Couto, Reto~Schüttel, Robin~Stocker}
+\maketitle
+
+\pagenumbering{roman}
+
+\tableofcontents
+\thispagestyle{plain}
+\newpage
+
+\pagenumbering{arabic}
+
+\chapter{Build-Server} % (fold)
+\label{cha:build_server}
+
+Bei dem Build-Server handelt es sich um ein virtueller Server welcher freundlicherweise für die Dauer des Projektes gesponsert durch Speed PC gesponsert wurde. Ein virtuelles System bietet dem Projekt beinahe alle Vorzüge eines richtigen dedizierten physikalischen Systems, erspart uns aber die sonst üblichen Aufwendungen wie Platzierung, Wartung etc. die durch den Dienstleister (in diesem Fall Speed PC) übernommen werden. Im Unterschied zu einer Shared-Hosting Lösung (Subversion Server HSR oder Variante Philipp Mächler) muss bei ein dem virtuellen Server keine Rücksicht auf andere Parteien genommen werden und das System lässt sich ganz den Bedürfnissen anpassen.
+
+\section{Netzwerk} % (fold)
+\label{sec:netzwerk}
+
+Das System ist über den Hostnamen \textbf{bodesuri.speedpc.ch} erreichbar. 
+
+\begin{description}
+  \item[Hostname] bodesuri.speedpc.ch
+  \item[IP Adresse] 195.49.105.242
+\end{description}
+
+Das Hostsystem steht in einem Rechenzentrum der Via.Networks in Zürich.
+
+% section netzwerk (end)
+
+\section{Soft- und Hardware} % (fold)
+\label{sec:soft_und_hardware}
+
+Der virtuelle Server besitzt 512 MB Memory und es steht ihm 2 GB Diskspace zur Verüfgung. Das Hostsystem läuft auf einem 2x Intel Xeon 3.2 GHZ System mit 2 GB Memory. Der virtuelle Server steht dediziert für das Projekt zur Verfügung.
+
+Die Randdaten des virtuellen Servers (Disk \& Memory) können bei Bedarf sofort erhöht werden, solange die Ressourcen des Hostsystems nicht erschöpft sind geht das ohne Probleme und ohne physikalischen Eingriff. Genügt hingegen die Prozessorleistung nicht muss eine Umstieg auf einen physikalisch dediziertes System in Erwägung gezogen werden.
+
+Auf dem Virtuellen Server läuft ein frisch installiertes Debian 4.0 (Etch) mit allen Sicherheitsupdates installiert.
+
+% section soft_und_hardware (end)
+
+\section{System} % (fold)
+\label{sec:system}
+
+% section system (end)
+
+\section{Benutzeraccounts} % (fold)
+\label{sec:benutzeraccounts}
+
+Es wurden für alle Teammitglieder ein Benutzeraccount erstellt. Das Passwort wurde per E-Mail mitgeteilt und muss beim ersten Login geändert werden.
+
+\begin{itemize}
+  \item phobus
+  \item peberli
+  \item ecouto
+  \item rstocker
+  \item rschuett
+\end{itemize}
+
+Die Benutzeraccounts wurden folgendermassen erstellt. 
+
+\begin{verbatim}
+# adduser <username>
+# passwd -e <username>
+\end{verbatim}
+
+% section benutzeraccounts (end)
+
+\section{Verwaltung} % (fold)
+\label{sec:verwaltung}
+
+Alle Teammitglieder sind der Gruppe wheel zugeordnet, welche ihnen erlaubt per \textbf{sudo} administrative Arbeiten durchzuführen. Es wird davon abgeraten direkt mit dem Benutzer root zu arbeiten.
+
+\begin{verbatim}
+# cat /etc/sudoers 
+
+# use visudo to edit this file!
+
+root    ALL=(ALL) ALL
+%wheel  ALL=(ALL) ALL
+
+# addgroup --system wheel
+Adding group `wheel' (GID 101) ...
+Done.
+
+# adduser <username> wheel
+\end{verbatim}
+
+
+% section verwaltung (end)
+
+% chapter build_server (end)
+
+\chapter{Tools} % (fold)
+\label{cha:tools}
+
+\section{Subversion} % (fold)
+\label{sec:subversion}
+
+\subsection{Installation} % (fold)
+\label{sub:installation}
+
+Benötigte Software installieren.
+
+\begin{verbatim}
+# aptitude install apache2 libapache2-svn subversion subversion-tools
+\end{verbatim}
+
+Initiales Repository einrichten .
+
+\begin{verbatim}
+cd /home
+mkdir svn
+chown www-data svn
+sudo -u www-data svnadmin create svn/src
+\end{verbatim}
+
+Konfiguration Apache in \textbf{/etc/apache2/conf.d/subversion}
+
+\begin{verbatim}
+<Location /svn/src>
+        DAV svn
+        SVNPath /home/svn/src
+        AuthType Basic
+        AuthName "Bodesuri Subversion Repository"
+        AuthUserFile /home/svn/.dav_svn.passwd
+        Require valid-user
+</Location>
+\end{verbatim}
+
+Einrichten der Subversion User
+
+\begin{verbatim}
+# sudo -u www-data
+$ htpasswd -bcm /home/svn/.dav_svn.passwd rschuett bodesuri321
+$ htpasswd -bm  /home/svn/.dav_svn.passwd rstocker bodesuri321
+$ htpasswd -bm  /home/svn/.dav_svn.passwd ecouto   bodesuri321
+$ htpasswd -bm  /home/svn/.dav_svn.passwd phobus   bodesuri321
+$ htpasswd -bm  /home/svn/.dav_svn.passwd peberli  bodesuri321
+\end{verbatim}
+
+Apache neu starten
+
+\begin{verbatim}
+# /etc/init.d/apache2 restart
+\end{verbatim}
+
+Zum testen kann das Repository im Browser geöffnet werden: \textbf{http://bodesuri.schuettel.ch/svn/src/} 
+
+% subsection installation (end)
+
+% section subversion (end)
+
+\section{Java SDK 1.5} % (fold)
+\label{sec:java_sdk_1_5}
+
+\begin{verbatim}
+# aptitude install sun-java5-jdk
+\end{verbatim}
+
+% section java_sdk_1_5 (end)
+
+\section{Java SDK 1.6} % (fold)
+\label{sec:java_sdk}
+
+Für Debian Etch ist kein Java 1.6 erhältlich (nur 1.5) - aus diesem Grund muss Java semi-manuell installiert werden. Anstatt Java direkt \emph{von hand} zu installieren kann das Tool \textbf{java-package} zu Hilfe genommen werden. Es wandelt die Java Pakete von Sun in richtige Debian Pakete um. 
+
+Installation java-package
+
+\begin{verbatim}
+# aptitude install java-package  
+\end{verbatim}
+
+\begin{verbatim}
+$ cd /tmp
+$ mkdir java-package
+$ cd java-package
+$ apt-get source java-package
+$ cd java-package-0.28/
+$
+\end{verbatim}
+
+Anschliessend muss das neuste Java 6 SDK (Version: \textbf{Linux self-extracting file}) von \textbf{http://java.sun.com/javase/downloads/index.jsp} heruntergeladen werden.
+
+
+Mittels dem Befehl \textbf{make-jpkg} wird das Paket nun umgewandelt. Es ist wichtig, dass dieser Schritt mit einem normalen Benutzer durchgeführt wird (nicht mit root).
+
+\begin{verbatim}
+$ fakeroot make-jpkg jdk-6u1-linux-i586.bin 
+\end{verbatim}
+
+% section java_sdk (end)
+
+% chapter tools (end)
+
+\chapter{Backup} % (fold)
+\label{cha:backup}
+
+% chapter backup (end)
+
+\end{document}

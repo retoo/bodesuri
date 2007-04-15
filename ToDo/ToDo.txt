@@ -1,0 +1,14 @@
+TODO
+====
+
+
+Todo liste temporär eingestellt... wird durch ein tool ggf. ersetzt.
+-- Reto Schüttel 10.4
+
+Verantwortlicher			Tätigkeit			
+--------------------------------------------------------------------------
+ros							LaTeX Layout Vorlage erstellen
+pho							Abklärung Buildserver von Philipp Mächler
+?							Abklärung Bugtracking
+
+			

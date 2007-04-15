@@ -1,0 +1,354 @@
+\documentclass[a4paper,12pt,halfparskip,DIV14]{scrreprt}
+
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[pdftex]{hyperref}
+\usepackage[pdftex]{graphicx}
+\usepackage{booktabs}
+\usepackage{color}
+\usepackage[automark,headsepline]{scrpage2}
+\usepackage{enumitem}
+
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
+
+\pagestyle{scrheadings}
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\clearscrheadfoot
+\chead{\normalfont\sffamily \headmark}
+\cfoot{\pagemark}
+
+\setlist{itemsep=-2pt}
+
+
+\begin{document}
+
+\title{Bodesuri \\ (Dog-Spiel)}
+\subject{SE2-Projekt}
+\author{Danilo~Couto, Philippe~Eberli, \\ Pascal~Hobus, Reto~Schüttel, Robin~Stocker}
+\maketitle
+
+\pagenumbering{roman}
+
+\tableofcontents
+\thispagestyle{plain}
+\newpage
+
+\pagenumbering{arabic}
+
+
+\chapter{Projektplan}
+
+
+\section{Einführung}
+
+\subsection{Zweck}
+
+Der Projektplan bildet die Grundlage für Bodesuri. Es beinhaltet die vollständige Planung. Weitere Bestandteile dieses Dokumentes sind die Zeitplanung und die grobe Arbeitsaufteilung auf die einzelnen Projektmitarbeiter.
+
+\subsection{Gültigkeitsbereich}
+
+Dieses Dokument ist die Grundlage für das ganze Projekt und hat deshalb Gültigkeit für die gesamte Projektdauer. Änderungen werden laufend ergänzt und sind in der Änderungshistorie ersichtlich.
+
+\subsection{Definitionen und Abkürzungen}
+
+\begin{description}
+	\item[Dog] Auf den ersten Blick erinnert Dog an das "<Eile mit Weile">-Spiel. Vier eigene Spielfiguren sollen so schnell wie möglich über einen Rundkurs ins Ziel gebracht werden. Die Figuren werden jedoch nicht durch eine Würfelzahl, sondern aufgrund der Werte von Bridge-Karten möglichst vorteilhaft bewegt. Dog ist ein Partnerspiel.
+\end{description}
+
+\subsection{Referenzen}
+
+\begin{tabular}{@{}ll@{}}
+\url{http://www.netzone.ch/dog-spiel/} & Beschreibung von Dog, Spielregeln
+\end{tabular}
+
+\subsection{Übersicht}
+
+Der folgende Abschnitt verschafft eine Übersicht des Projektes. Im Abschnitt 3 werden die Projektmitglieder vorgestellt. Als weiteres wird das Zeitmanagement erläutert und die Meilensteine festgelegt. Abschnitt 5 behandelt die möglichen Risiken und ihre Auswirkungen auf das Projekt. Darauf folgt eine Auflistung der einzelnen Arbeitspakete, die auf das Projekt präzise zusammengestellt wurden, sowie die verwendete Infrastruktur. Zum Schluss werden die Qualitätsmassnahmen gesucht und festgehalten.
+
+
+\section{Projektübersicht}
+
+Wir wollen das beliebte Brettspiel Dog als PC-Spiel realisieren, damit Dog-Fans auf der ganzen Welt gegeneinander spielen können. Die Spieler sind untereinander per Netzwerk verbunden. Pro Spieler wird je ein Client gestartet, welcher den Spielablauf visualisiert. Zusätzlich kümmert sich ein Server um die Synchronisation des Spielablaufs.
+
+\subsection{Zweck und Ziel}
+
+Wir möchten mit diesem Projekt unser Wissen aus den Modulen Software Engineering und Parallel- und Netzwerkprogrammierung anwenden. Ausserdem möchten wir Erfahrungen sammeln, wie ein Projekt durchgeführt wird und wie man Spiele entwickelt.
+
+\subsection{Annahmen und Einschränkungen}
+
+Jedem einzelnen Projektmitglied wird eine Zeitspanne von 100 Stunden zur Verfügung gestellt, um entsprechende Arbeitspakete auszuführen. Wenn am Ende noch genug Zeit vorhanden ist, werden dem Spiel weitere Features, wie zum Beispiel dem Chat, hinzugefügt. Anderenfalls werden Arbeitspakete mit der Priorität 3 nicht implementiert, um den Abgabetermin einhalten zu können.
+
+
+\section{Projektorganisation}
+
+Unser Team besteht aus fünf Mitgliedern. Alle sind gleichberechtigt.
+
+\subsection{Organisationsstruktur}
+
+\begin{tabular}{@{}ll@{}}
+\toprule
+Name                & Zuständigkeit \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Teammitglieder}} \\
+Edgar Danilo Couto  & Projektausführend, Grafik \\
+Philippe Eberli     & Projektausführend, Dokumentation \\
+Pascal Hobus        & Projektausführend, Modellierung \\
+Reto Schüttel       & Projektausführend, Engine \\
+Robin Stocker       & Projektausführend, Infrastruktur (SVN, Projektmanagement-Tools) \\
+\midrule
+\multicolumn{2}{@{}l}{\textbf{Externe Schnittstellen}} \\
+Daniel Keller       & Betreuender Dozent \\
+\bottomrule
+\end{tabular}
+
+
+\section{Management-Abläufe}
+
+\subsection{Projekt-Kostenvoranschlag}
+
+Das Projekt startet am 3. April 2007 und dauert bis spätestens am 6. Juli 2007. Für die Bearbeitung soll ein Richtwert von 100 Stunden pro Teammitglied angestrebt werden. Dies ergibt eine durchschnittliche Arbeitszeit von 7 bis 8 Stunden pro Woche.
+
+Für die Einhaltung des Richtwertes kann die Stundenzahl leicht angepasst werden und/oder Features hinzugefügt oder entfernt werden.
+
+\subsection{Projektplan}
+
+\subsubsection{Zeitplan}
+
+Siehe separates Dokument \texttt{Projektplan.xls}.
+
+\subsubsection{Iterationsplanung und Meilensteine}
+
+\begin{tabular}{@{} r r l l r @{ } l @{}}
+\toprule
+Start      & Ende       & Wochen & Inhalt         & \multicolumn{2}{l}{Meilenstein} \\
+\midrule
+3.4.2007   & 8.4.2007   & 1      & Projektantrag  & 6.4.   & Projektantrag \\
+9.4.2007   & 15.4.2007  & 1      & Inception      & 17.4.  & Projektplan \\
+16.4.2007  & 29.4.2007  & 2      & Elaboration 1  & 24.4.  & Requirements \\
+30.4.2007  & 13.5.2007  & 2      & Elaboration 2  & 15.5.  & Prototyp \\
+14.5.2007  & 27.5.2007  & 2      & Construction 1 & 29.5.  & Design und Design-Dokumentation \\
+28.5.2007  & 10.6.2007  & 2      & Construction 2 \\
+11.6.2007  & 24.6.2007  & 2      & Construction 3 \\
+25.6.2007  & 6.7.2007   & 2      & Transition     & 6.7.   & Präsentation \\
+\bottomrule
+\end{tabular}
+
+\subsubsection{Besprechungen}
+
+Alle Beteiligten treffen sich jeweils Dienstag Nachmittags zur Teambesprechung.
+
+\subsubsection{Releases}
+
+\begin{tabular}{@{}lll@{}}
+\toprule
+Release   & Datum       & Beschreibung \\
+\midrule
+Prototyp  & 15.5.2007   & "<Proof of concept"> (nicht spielbar) \\
+Alpha     & 29.5.2007   & Rudimentär spielbare Version \\
+Beta      & 12.6.2007   & Mindestens Features der Priorität 1 \\
+Final     & 26.6.2007   & Finale Version \\
+\bottomrule
+\end{tabular}
+
+\section{Risiko-Management}
+
+\begin{tabular}{@{} p{2.7cm} p{3.6cm} p{4cm} l l @{}}
+\toprule
+\textbf{Risiko} &
+\textbf{Auswirkung} &
+\textbf{Massnahmen} &
+\textbf{Schaden\footnotemark (h)} &
+\textbf{Priorität} \\
+\midrule
+Ausfall eines Teammitglieds & Verzögerungen & Zeitreserven einplanen  & $50 * 0.1 = 5$ & Mittel \\
+\midrule
+Datenverlust & Verlust von Teilen der Arbeit & Backup auf SVN & $100 * 0.05 = 5$ & Niedrig \\
+\midrule
+Fehlerhafte Zeitplanung & Nichteinhalten der Zeitvorgaben & Reserven einplanen & $20 * 0.4 = 8$ & Mittel \\
+\midrule
+Probleme mit Technologien (z. B. Java 2D \&  Netzwerk) & Verzögerungen durch Einarbeitungsaufwand oder Technologiewechsel & Prototyp erstellen & $40 * 0.2 = 8$ & Mittel \\
+\bottomrule
+\end{tabular}
+\footnotetext{Berechnung des Schadens: Maximaler Schaden * Eintrittswahrscheinlichkeit = Gewichteter Schaden}
+
+
+\section{Arbeitspakete}
+
+\subsection{Anfangsphase}
+
+\begin{tabular}{@{} l l @{}}
+\toprule
+Arbeitspaket & Verantwortlich \\
+\midrule
+\textbf{Projekt-Managment} & \\
+Projektantrag & Team \\
+Projektplan inkl. Zeitplan erstellen & Team \\
+Review / Korrektur Projektplan & Robin \\
+Arbeitspakete definieren / planen & Team \\
+Glossar & Team \\
+Coding Standards & Reto \\
+\midrule
+\textbf{Requirements} &  \\
+Use-Case Diagramm & Pascal \\
+Personas, Benutzergruppen, Aktoren identifizieren & Philippe \\
+Use-Cases in Brief-Format beschreiben & Philippe, Danilo \\
+Wichtigste Use-Cases fully-dressed & Reto, Robin \\
+Funktionale Anforderungen & Pascal \\
+Q-Merkmalse sicherstellen & Pascal \\
+Restliche Use-Cases fully-dressed & Philippe \\
+\midrule
+\textbf{Analyse} &  \\
+Domain Model & Team \\
+SSD für die wichtigsten UCs & Pascal \\
+Review / Korrektur Anforderungen & Danilo, Robin \\
+\bottomrule
+\end{tabular}
+
+\subsection{Iterativ bearbeitete Arbeitspakete}
+
+\begin{tabular}{@{} l l l @{}}
+\toprule
+(Prio) Arbeitspaket & Verantw. & Beschreibung \\
+\midrule
+\textbf{Prototyp} &  & \\
+(1) Programmgerüst & Pascal & Klassen- und Pakethierarchie erstellen \\
+(1) Einfaches Regelsystem & Robin & 1 Spielkarte mit Regeln implementieren \\
+(1) Einfache Kommunikation & Reto & Nachrichtenaustausch Client und Server \\
+(1) CLI (Textausgabe auf Konsole) & Danilo & Textausgabe der Züge \\
+\midrule
+\textbf{Regelsystem} & Robin & \\
+(1) Karten &  & Abbildung der Spielkarten \\
+(2) Umwandlung Joker in Karte &  & Spezialfall Joker implementieren \\
+(1) Zugtyp Simpler Zug &  & Spielfigur vorwärts bewegen \\
+(1) Zugtyp Rückwärtszug (4) &  & Spielfigur rückwärts bewegen \\
+(1) Zugtyp Startzug (Ass, König) &  & Spielfigur von Lager auf Bänkli stellen \\
+(2) Zugtyp Aufteilbarer Zug (7) &  & Zug auf mehrere Figuren aufgeteilt \\
+(2) Zugtyp Tausch (Bauer) &  & Tausch zweier Figuren \\
+(1) Feldtyp Normal &  & \\
+(1) Feldtyp Lager &  & Heimatfelder der Figuren \\
+(2) Feldtyp Himmel &  & Endfelder der Figuren \\
+(2) Feldtyp Bänkli &  & Startfeld jedes Spielers \\
+\midrule
+\textbf{Spielzustand} & Philippe & \\
+(1) Zugsystem &  & 1 Zug eines Spielers (Karte \& Ziehen) \\
+(1) Rundensystem &  & Runde von Zügen \\
+(2) Figursteuerung des Partners &  & Figursteuerung in Endphase $\rightarrow$ Anleitung \\
+\midrule
+\textbf{Kommunikation (Spielzustand)} & Reto & \\
+(1) Spielzustands-Synchronisation &  & Synchronisierung der Phasen und Züge \\
+(2) Austausch von Karten &  & Kartentausch zwischen zwei Spielern \\
+(3) Störungsbehandlung &  & Netzwerkprobleme (vor allem Timeouts) \\
+\midrule
+\textbf{GUI} & Danilo & \\
+(1) Externes Design erstellen/umsetzen &  & \\
+(1) Karten &  & Darstellung und Auswahl der Karten \\
+(1) Spielbrett Design &  & Bild des Spielbretts \\
+(1) Spielbrett einbinden (Koordinaten) &  & Spielbrett mit Feld-Koordinaten \\
+(1) Zugvisualisierung &  & Verschiebung der Figur \\
+(1) Zugerfassung (Normaler Zug) &  & Auswählen der Figur und des Zielfelds \\
+(1) Zugerfassung (Tausch) &  & Auswählen der zu tauschenden Figuren \\
+(1) Zugerfassung (Mehrfachzug) &  & Über mehrere Figuren verteilbarer Zug \\
+(2) Einstiegsview (Lobby) &  & Server-Verbindung und Spielstart \\
+(2) Joker verwenden &  & Joker als bestimmten Kartentyp spielen \\
+(3) Einstellungen &  & Parametrisieren des Clients \\
+(3) Sound / Vertonung &  & Geräuschliche Untermalung der Züge \\
+\bottomrule
+\end{tabular}
+
+\begin{tabular}{@{} l l l @{}}
+\toprule
+(Prio) Arbeitspaket & Verantw. & Beschreibung \\
+\midrule
+\textbf{Client} & Pascal & \\
+(1) Zusammenführen Client &  & Vereinigen der einzelnen Teile \\
+(1) Zusammenführen Regeln/GUI &  & Zusammenspiel zw. Regelsystem \& GUI \\
+(3) Starten des Servers aus Client &  & UI zum Starten des Servers \\
+(3) Chatclient &  & Chatfenster für GUI \\
+\midrule
+\textbf{Server} & Reto & \\
+(1) Kartenstapel &  & Realistische Verteilung des Kartenstapels \\
+(1) Zusammenführen Server &  & Vereinigen der einzelnen Teile \\
+(3) Protokollieren des Spiels &  & Log der Spielzüge \\
+(3) Zusätzliche Regelvalidation &  & Mogeln unterbinden durch Regelwerk \\
+(3) Verfolgung verteilter Karten &  & Mogeln unterbinden durch Kartenlog \\
+(3) Chatserver &  & \\
+\midrule
+\textbf{Test} & & \\
+Unit Tests - Regelsystem & Robin & \\
+Unit Tests - Spielablauf & & \\
+Benutzerfreundlichkeit testen & Team & Spielen mit Drittpersonen \\
+\midrule
+\textbf{Dokumentation} & Philippe & \\
+Entwicklerdokumentation & Team & Architektur und Designentscheidungen \\
+Spielanleitung/Benutzerhandbuch & Philippe & Bebilderte Anleitung erstellen \\
+Layout & Robin, Danilo & Logo etc. \\
+Webseite erstellen & & \\
+Präsentation & Team & \\
+\bottomrule
+\end{tabular}
+
+\subsection{Wiederkehrende Aufgaben}
+
+\begin{tabular}{@{} l l l @{}}
+\toprule
+Arbeitspaket & Verantwortlich \\
+\midrule
+\textbf{Studium Technologien} &  & \\
+Java 2D & Danilo & \\
+Netzwerkprogrammierung (Client / Server) & Reto & \\
+Regelsysteme (Spielregeln) & Robin & \\
+\midrule
+\textbf{Sitzungen} &  & \\
+Beratungen mit Betreuer & Team & \\
+Teamsitzungen & Team & \\
+\midrule
+\textbf{Qualitätssicherung} &  & \\
+Code Reviews & Team & \\
+Continuous Integration & Reto & \\
+Subversion (SVN) / Bug Tracking & Reto & \\
+\bottomrule
+\end{tabular}
+
+
+\section{Infrastruktur}
+
+\paragraph{Räume}
+\begin{itemize}
+	\item Räume an der HSR
+	\item Private Räume
+\end{itemize}
+
+\paragraph{Hardware}
+\begin{itemize}
+	\item SVN-Server
+	\item Private Computer
+\end{itemize}
+
+\paragraph{Software}
+\begin{itemize}
+	\item Eclipse
+	\item Java SDK 1.6
+	\item Java 2D
+	\item \LaTeX{}, Microsoft Excel
+	\item Apache Ant
+\end{itemize}
+
+
+\section{Qualitätsmassnahmen}
+
+Um die Qualität der Applikation zu gewährleisten werden folgende Massnahmen ergriffen:
+\begin{itemize}
+	\item \textbf{Unit-Tests}: Fortlaufende Tests der Funktionalität mittels Unit-Tests (JUnit)
+	\item \textbf{Interne Tests}: Regelmässige manuelle Tests mittels Testprotokollen
+	\item \textbf{Externe Tests}: User Acceptance Tests über externe Tester (potenzielle Benutzer)
+	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
+	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet
+	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle
+\end{itemize}
+
+
+\end{document}
