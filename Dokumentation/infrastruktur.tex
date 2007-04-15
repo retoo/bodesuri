@@ -141,18 +141,18 @@ Initiales Repository einrichten .
 cd /home
 mkdir svn
 chown www-data svn
-sudo -u www-data svnadmin create svn/src
+sudo -u www-data svnadmin create svn
 \end{verbatim}
 
 Konfiguration Apache in \textbf{/etc/apache2/conf.d/subversion}
 
 \begin{verbatim}
-<Location /svn/src>
+<Location /svn>
         DAV svn
-        SVNPath /home/svn/src
+        SVNPath /home/svn
         AuthType Basic
         AuthName "Bodesuri Subversion Repository"
-        AuthUserFile /home/svn/.dav_svn.passwd
+        AuthUserFile /etc/apache2/dav_svn.passwd
         Require valid-user
 </Location>
 \end{verbatim}
@@ -160,12 +160,11 @@ Konfiguration Apache in \textbf{/etc/apache2/conf.d/subversion}
 Einrichten der Subversion User
 
 \begin{verbatim}
-# sudo -u www-data
-$ htpasswd -bcm /home/svn/.dav_svn.passwd rschuett bodesuri321
-$ htpasswd -bm  /home/svn/.dav_svn.passwd rstocker bodesuri321
-$ htpasswd -bm  /home/svn/.dav_svn.passwd ecouto   bodesuri321
-$ htpasswd -bm  /home/svn/.dav_svn.passwd phobus   bodesuri321
-$ htpasswd -bm  /home/svn/.dav_svn.passwd peberli  bodesuri321
+# htpasswd -bcm /etc/apache2/dav_svn.passwd rschuett bodesuri321
+# htpasswd -bm  /etc/apache2/dav_svn.passwd rstocker bodesuri321
+# htpasswd -bm  /etc/apache2/dav_svn.passwd ecouto   bodesuri321
+# htpasswd -bm  /etc/apache2/dav_svn.passwd phobus   bodesuri321
+# htpasswd -bm  /etc/apache2/dav_svn.passwd peberli  bodesuri321
 \end{verbatim}
 
 Apache neu starten
@@ -174,7 +173,7 @@ Apache neu starten
 # /etc/init.d/apache2 restart
 \end{verbatim}
 
-Zum testen kann das Repository im Browser geöffnet werden: \textbf{http://bodesuri.schuettel.ch/svn/src/} 
+Zum testen kann das Repository im Browser geöffnet werden: \textbf{http://bodesuri.speedpc.ch/svn/} 
 
 % subsection installation (end)
 
