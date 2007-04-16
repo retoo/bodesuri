@@ -61,6 +61,7 @@
       <fileset dir="${tst-dir}" includes="**/*.class"/>
     </delete>
   </target>
-  <target name="all" depends="compile,test"/>
+  <target name="build-everything" depends="compile,test"/>
+  <target name="all" depends="build-everything"/>
   <target name="clean" depends="clean-compile-test,clean-init"/>
 </project>
