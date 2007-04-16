@@ -219,6 +219,37 @@ $ fakeroot make-jpkg jdk-6u1-linux-i586.bin
 
 % section java_sdk (end)
 
+\section{CruiseControl} % (fold)
+\label{sec:cruisecontrol}
+
+Dependencies installieren.
+
+\begin{verbatim}
+# aptitude install ant junit junit-doc
+\end{verbatim}
+
+Download von CruiseControl.
+
+\begin{verbatim}
+# cd /tmp
+# wget 'http://heanet.dl.sourceforge.net/sourceforge/cruisecontrol/cruisecontrol-src-2.6.1.zip'
+\end{verbatim}
+
+Kompilierung.
+
+\begin{verbatim}
+# cd cruisecontrol-2.6.1/
+# cd main
+# ant
+# cd ../reporting/jsp/
+# ant
+\end{verbatim}
+
+Jeweils nach den Aufrufen von \textbf{ant} sollte anhand des Outputes geprüft werden ob der Build erfolgreich war.
+
+
+% section cruisecontrol (end)
+
 % chapter tools (end)
 
 \chapter{Backup} % (fold)
