@@ -24,10 +24,10 @@
 
 
 \begin{document}
-
+% FIXME: header passt mir noch nicht
 \title{Bodesuri\\Infrastruktur}
-\subject{Infastruktur-Dokuemntation}
-\author{Phillipe~Eberli, Pascal~Hobus, \\ Danilo~Couto, Reto~Schüttel, Robin~Stocker}
+\subject{Infastruktur-Dokumentation}
+\author{Philipe~Eberli, Pascal~Hobus, \\ Danilo~Couto, Reto~Schüttel, Robin~Stocker}
 \maketitle
 
 \pagenumbering{roman}
@@ -127,12 +127,26 @@ Done.
 \label{sec:subversion}
 
 \subsection{Installation} % (fold)
-\label{sub:installation}
+\label{sub:installation-subversion}
 
 Benötigte Software installieren.
 
 \begin{verbatim}
 # aptitude install apache2 libapache2-svn subversion subversion-tools
+\end{verbatim}
+
+Für CruiseControl muss \textbf{ant} auf Subverison-Repositories zugreiffen können. Hierfür wird die Erweiterung SvnAnt benötigt. http://subclipse.tigris.org/svnant.html
+
+\begin{verbatim}
+# aptitude install libsvn-java
+# cd /tmp
+# wget http://subclipse.tigris.org/files/documents/906/32898/svnant-1.0.0.zip
+# unzip svnant-1.0.0.zip
+# cd svnant-1.0.0
+# ant
+# cd ..
+# mv svnant-1.0.0 /opt/
+# ln -s svnant svnant-1.0.0
 \end{verbatim}
 
 Initiales Repository einrichten .
@@ -219,8 +233,24 @@ $ fakeroot make-jpkg jdk-6u1-linux-i586.bin
 
 % section java_sdk (end)
 
+\section{Tomcat 5} % (fold)
+\label{sec:tomcat_5}
+
+Für das Reporting durch CruiseControl wird Apache2/Tomcat benötigt. Installation über die Pakete von Debian
+
+\begin{verbatim}
+# aptitude install tomcat5 libapache2-mod-jk
+\end{verbatim}
+
+% section tomcat_5 (end)
+
 \section{CruiseControl} % (fold)
 \label{sec:cruisecontrol}
+
+\subsection{Installation} % (fold)
+\label{sub:installation-cruisecontrol}
+
+
 
 Dependencies installieren.
 
@@ -247,8 +277,63 @@ Kompilierung.
 
 Jeweils nach den Aufrufen von \textbf{ant} sollte anhand des Outputes geprüft werden ob der Build erfolgreich war.
 
+Abschliessend muss cruisecontrol nach an seine finale Position verschoben werden.
+
+\begin{verbatim}
+# mv /tmp/cruisecontrol-2.6.1/ /opt/
+# cd /opt
+# ln -s cruisecontrol cruisecontrol-2.6.1
+\end{verbatim}
+
+
+% subsection installation (end)
+
+\subsection{Konfiguration Builddaemon} % (fold)
+\label{sub:konfiguration_builddaemon}
+
+Erstellen des Cruisecontrol Users und dessen Workdir
+
+\begin{verbatim}
+# adduser --system --disabled-password --disabled-login cruisecontrol
+# cd /home/cruisecontrol/
+# sudo -u cruisecontrol mkdir -p logs/bodesuri checkout/bodesuri artifacts
+\end{verbatim}
+
+Checkout des Repositories für den Builddaemon. 
+
+\begin{verbatim}
+# htpasswd -bm  /etc/apache2/dav_svn.passwd cruisecontrol bodesuri321
+# sudo -u cruisecontrol svn checkout --username cruisecontrol --password bodesuri321 http://bodesuri.speedpc.ch/svn bodesuri/
+\end{verbatim}
+
+
+% subsection konfiguration_builddaemon (end)
+
+\subsection{Konfiguration Reporting} % (fold)
+\label{sub:konfiguration_reporting}
+
+Stoppen der Tomcat Engine.
+
+\begin{verbatim}
+# /etc/init.d/tomcat5 stop
+\end{verbatim}
+
+Reporting in den Tomcat Applikationsfolder kopieren.
+
+\begin{verbatim}
+# cp /opt/cruisecontrol/reporting/jsp/dist/cruisecontrol.war /var/lib/tomcat5/webapps/
+\end{verbatim}
+
+Tomcat wieder starten, es sollte nun das .war File entapcken.
+
+\begin{verbatim}
+# /etc/init.d/tomcat5 stat
+\end{verbatim}
+
+% subsection konfiguration_reporting (end)
 
 % section cruisecontrol (end)
+
 
 % chapter tools (end)
 
