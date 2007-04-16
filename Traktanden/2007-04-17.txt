@@ -20,4 +20,6 @@ Coding Standards
 Traktanden
  - Würde ein Traktanden-Folder (Analog zu Protokolle) erwünscht sein?
 
+Java Version
+ - Java 1.6 vs Java 1.5
 
