@@ -1,0 +1,23 @@
+
+Reto:
+Coding Standards
+ - Einrücken
+   - Tabs oder Whitespaces
+   - Um wieviele Zeichen
+ - SVN Commit Messages
+   - Bullet-List mit wichtigkeit, z.B.
+       * Wichtiger Change
+       - Kleiner Chang
+   - Commit Mails, ja/nein?
+ - Repository Layout 
+   - Wie bisher oder mit trunk/ branches/ ? 
+ - Branching System?
+   - Never Branch
+   - (Always Branch)
+   - Branch if necessarry
+ - Projekt-Struktur
+
+Traktanden
+ - Würde ein Traktanden-Folder (Analog zu Protokolle) erwünscht sein?
+
+
