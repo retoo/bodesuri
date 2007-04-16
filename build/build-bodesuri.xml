@@ -1,0 +1,11 @@
+<!-- Delegating build script, used by cruisecontrol to build MY_PROJECT_1.
+     Note that the basedir is set to the checked out project -->
+<project name="build-bodesuri"
+        default="build"
+        basedir="checkout/bodesuri">
+    <target name="build">
+        <!-- Get the latest from CVS -->
+        <!-- Call the target that does everything -->
+        <ant antfile="build.xml" target="build-everything"/>
+    </target>
+</project>

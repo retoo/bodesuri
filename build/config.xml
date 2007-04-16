@@ -1,0 +1,37 @@
+<cruisecontrol>
+  <project name="bodesuri" buildafterfailed="false">
+    <listeners>
+      <currentbuildstatuslistener
+          file="logs/bodesuri/status.txt"/>
+    </listeners>
+
+    <!-- Bootstrappers are run every time the build runs,
+        *before* the modification checks -->
+    <bootstrappers>
+    </bootstrappers>
+
+    <!-- Defines where cruise looks for changes, to decide
+         whether to run the build -->
+    <modificationset quietperiod="10">
+      <filesystem folder="checkout/bodesuri/" />
+      <!-- <cvs localworkingcopy="checkout/bodesuri"/> -->
+    </modificationset>
+
+    <!-- Configures the actual build loop, how often and which
+         build file/target -->
+    <schedule interval="60">
+      <ant anthome="/usr"
+           buildfile="build-bodesuri.xml"
+           target="build"
+           uselogger="true"
+           usedebug="false"/>
+    </schedule>
+
+    <!-- directory to write build logs to -->
+    <log logdir="logs/bodesuri/"/>
+
+    <!-- Publishers are run *after* a build completes -->
+    <publishers>
+    </publishers>
+  </project>
+</cruisecontrol>
