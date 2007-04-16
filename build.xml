@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<project default="all">
+<!-- Variables -->
+  <property name="obj-dir" location="obj"/>
+  <property name="lib-dir" location="lib"/>
+  <property name="tst-dir" location="test"/>
+  <property name="src-dir" location="src"/>
+  <path id="classpath.base">
+      <pathelement location="${lib-dir}/hello.jar"/>
+  </path>
+  <path id="classpath.run">
+    <path refid="classpath.base"/>
+  </path>
+  <path id="classpath.test">
+    <pathelement location="${tst-dir}"/>
+    <pathelement location="/Applications/Eclipse/plugins/org.junit4_4.1.0.1/junit-4.1.jar"/>
+    <path refid="classpath.base"/>
+  </path>
+<!-- initialization -->
+  <target name="init">
+    <mkdir dir="${obj-dir}"/>
+    <mkdir dir="${lib-dir}"/>
+  </target>
+<!-- build -->
+  <target name="compile" depends="init">
+    <javac srcdir="${src-dir}" destdir="${obj-dir}"/>
+  </target>
+  <target name="compile-test" depends="jar">
+    <javac srcdir="${tst-dir}" verbose="${TALK}">
+      <classpath refid="classpath.test"/>
+      <classpath refid="classpath.run"/>
+    </javac>
+  </target>
+<!-- conserve -->
+  <target name="jar" depends="compile">
+    <jar destfile="${lib-dir}/hello.jar" basedir="${obj-dir}"/>
+  </target>
+<!-- tests -->
+  <target name="test" depends="compile-test">
+    <junit>
+      <classpath refid="classpath.test"/>
+      <formatter type="brief" usefile="false"/>
+      <test name="TestExample"/>
+    </junit>
+  </target>
+<!-- cleanup -->
+  <target name="clean-init">
+    <delete dir="${obj-dir}"/>
+    <delete dir="${lib-dir}"/>
+  </target>
+  <target name="clean-compile">
+    <delete>
+      <fileset dir="${obj-dir}" includes="**/*.class"/>
+    </delete>
+  </target>
+  <target name="clean-jar">
+    <delete file="${lib-dir}/hello.jar"/>
+  </target>
+  <target name="clean-compile-test">
+    <delete verbose="${TALK}">
+      <fileset dir="${tst-dir}" includes="**/*.class"/>
+    </delete>
+  </target>
+  <target name="all" depends="compile,test"/>
+  <target name="clean" depends="clean-compile-test,clean-init"/>
+</project>
