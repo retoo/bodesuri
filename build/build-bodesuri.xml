@@ -3,8 +3,17 @@
 <project name="build-bodesuri"
         default="build"
         basedir="checkout/bodesuri">
+    <path id="classpath.svn">
+        <pathelement location="/opt/svnant/lib/svnant.jar"/>
+        <pathelement location="/opt/svnant/lib/svnClientAdapter.jar"/>
+        <pathelement location="/opt/svnant/lib/svnjavahl.jar"/>
+    </path>
+    <taskdef resource="svntask.properties" classpathref="classpath.svn"/>
     <target name="build">
-        <!-- Get the latest from CVS -->
+        <!-- Get the latest from SVN -->
+	<svn username="cruisecontrol" password="bodesuri321" javahl="true">
+		<update dir="." />
+	</svn>
         <!-- Call the target that does everything -->
         <ant antfile="build.xml" target="build-everything"/>
     </target>
