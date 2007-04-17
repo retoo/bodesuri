@@ -43,6 +43,17 @@
 
 Bei dem Build-Server handelt es sich um ein virtueller Server welcher freundlicherweise für die Dauer des Projektes gesponsert durch Speed PC gesponsert wurde. Ein virtuelles System bietet dem Projekt beinahe alle Vorzüge eines richtigen dedizierten physikalischen Systems, erspart uns aber die sonst üblichen Aufwendungen wie Platzierung, Wartung etc. die durch den Dienstleister (in diesem Fall Speed PC) übernommen werden. Im Unterschied zu einer Shared-Hosting Lösung (Subversion Server HSR oder Variante Philipp Mächler) muss bei ein dem virtuellen Server keine Rücksicht auf andere Parteien genommen werden und das System lässt sich ganz den Bedürfnissen anpassen.
 
+
+\section{Wichtige Passwörter} % (fold)
+\label{sec:wichtige_passwörter}
+
+\begin{description}
+  \item[mysql] User: root Passwort: bodesuri
+%FIXME: cruisecontrol
+\end{description}
+
+% section wichtige_passwörter (end)
+
 \section{Netzwerk} % (fold)
 \label{sec:netzwerk}
 
@@ -251,7 +262,6 @@ Für das Reporting durch CruiseControl wird Apache2/Tomcat benötigt. Installati
 \label{sub:installation-cruisecontrol}
 
 
-
 Dependencies installieren.
 
 \begin{verbatim}
@@ -330,10 +340,53 @@ Tomcat wieder starten, es sollte nun das .war File entapcken.
 # /etc/init.d/tomcat5 stat
 \end{verbatim}
 
+Anschliessend müssen folgende Felder in der Datei \textbf{/var/lib/tomcat5/webapps/cruisecontrol/WEB-INF/web.xml} angepasst werden:
+
+\begin{description}
+  \item[logDir] /home/cruisecontrol/logs/
+  \item[rootDir] /home/cruisecontrol/artifacts/
+  \item[currentBuildStatusFile] buildstatus.txt
+\end{description}
+
+Zusätzlich benötigt das Reporting Modul Zugriffsrechte auf den Ordner \textbf{\_cache} im Log-Ordner.
+
+\begin{verbatim}
+# mkdir logs/bodesuri/_cache/
+# chown tomcat5 logs/bodesuri/_cache/
+\end{verbatim}
+
 % subsection konfiguration_reporting (end)
 
 % section cruisecontrol (end)
 
+\section{MySQL} % (fold)
+\label{sec:mysql}
+
+Für Trac und Dot-Project wird MySQL Benötigt. Installation von MySQL über Debian-Pakete.
+
+\begin{verbatim}
+# aptitude install mysql-server
+\end{verbatim}
+
+Einrichtung von MySQL.
+
+\begin{verbatim}
+# mysql -u root
+> use mysql;
+> update user set password = password("bodesuri") where user = "root";
+> flush privileges;
+\end{verbatim}
+
+% section mysql (end)
+
+\section{Dot-Project} % (fold)
+\label{sec:dot_project}
+
+Dot-Project kann von \url{http://www.dotproject.net/} heruntergeladen werden.
+
+Einrichten 
+
+% section dot_project (end)
 
 % chapter tools (end)
 
