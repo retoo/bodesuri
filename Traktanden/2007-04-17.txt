@@ -1,25 +1,40 @@
-
 Reto:
 Coding Standards
- - Einrücken
-   - Tabs oder Whitespaces
-   - Um wieviele Zeichen
  - SVN Commit Messages
    - Bullet-List mit wichtigkeit, z.B.
        * Wichtiger Change
        - Kleiner Chang
    - Commit Mails, ja/nein?
+   --> wie abgemacht
  - Repository Layout 
    - Wie bisher oder mit trunk/ branches/ ? 
+   --> RETO: verschieben von allem nach trunk 
  - Branching System?
    - Never Branch
    - (Always Branch)
    - Branch if necessarry
  - Projekt-Struktur
 
-Traktanden
+OK Traktanden
  - Würde ein Traktanden-Folder (Analog zu Protokolle) erwünscht sein?
 
 Java Version
  - Java 1.6 vs Java 1.5
 
+OK Domain Model:
+ - Vorstellen Domain Model 
+ - Diskussionen
+ - Use Case Diagramm
+ 
+OK Fragen zur Zeiterfassung RetoO
+
+OK Vorstellung Netzwerkprogrammierung
+
+OK Vorstellung Dot-Project
+
+OK Diskussion ob Wiki notwendig
+OK Diskuzssion ob Forum/IM/Chat notwenidg
+OK Diskussion ob Mailingliste
+
+OK Generell, was muss wann abgegeben werden
+OK Synchronisation zwischen Todo / Projektplanung
