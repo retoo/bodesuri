@@ -13,8 +13,9 @@
     <!-- Defines where cruise looks for changes, to decide
          whether to run the build -->
     <modificationset quietperiod="10">
-      <filesystem folder="checkout/bodesuri/" />
-      <!-- <cvs localworkingcopy="checkout/bodesuri"/> -->
+      <svn localworkingcopy="checkout/bodesuri"
+      		username="cruisecontrol"
+		password="bodesuri321"/>
     </modificationset>
 
     <!-- Configures the actual build loop, how often and which
@@ -27,11 +28,15 @@
            usedebug="false"/>
     </schedule>
 
+
     <!-- directory to write build logs to -->
-    <log logdir="logs/bodesuri/"/>
+    <log logdir="logs/bodesuri/">
+    	<merge file="checkout/bodesuri/TEST-TestExample.xml"/>
+    </log>
 
     <!-- Publishers are run *after* a build completes -->
     <publishers>
+    	<currentbuildstatuspublisher file="logs/bodesuri/buildstatus.txt"/>
     </publishers>
   </project>
 </cruisecontrol>
