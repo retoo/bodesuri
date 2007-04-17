@@ -39,7 +39,7 @@
   <target name="test" depends="compile-test">
     <junit>
       <classpath refid="classpath.test"/>
-      <formatter type="brief" usefile="false"/>
+      <formatter type="xml"/>
       <test name="TestExample"/>
     </junit>
   </target>
