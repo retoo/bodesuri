@@ -1,3 +1,6 @@
+Projekt Bodesurri
+Protkoll der Sitzung vom 12. April 2007
+
 Projektplan:
  - Wir haben eine erste Fassung unserer Paketeinteilung durchgeführt
    ALLE: Bitte anschauen und feedback geben (13.4)
