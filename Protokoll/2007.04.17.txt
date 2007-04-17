@@ -1,0 +1,98 @@
+Projekt Bodesurri
+Protkoll der Sitzung vom 17. April 2007
+
+Pascal zeigt UML Domain Model
+ - Wurde grösstenteils vom ersten Entwurf her entommen
+   ALLE: UML, Diagramme und ähnliches immer zusätzlich als Bild/PDF o.ä. abspeichern
+   PHILIPPE: Anleitung Instalation Magic Draw
+ 
+Pascal zeigt Use-Case Model
+ - RETO & ROBIN: Spielzug ausführen -> Karte Vier -> Fully dressed
+
+Philipp Netzwerk
+ - Variante 1: Direkt über Socket diskutieren
+     - Simpel
+     - Viel Eigenaufwand
+ - Variatne 2: RMI -> Remote Methode Invocation
+     - Ist Stateless
+     - Wir haben nix mit der Kommunikation direkt zu tun
+     - PHILIPPE: Versand RMI Einführung
+ --> Entscheidung, wir verwendn RMI
+ Einfluss auf Zustandsynchronisation
+
+Danilo stellt Dot-Project vor
+ - Umfang: 
+    Firmas, Projekt, Tasks verwalten
+    - Zeiterfassung 
+    Forum
+ - Übersicht zu den eigenen Tasks und den Tasks anderer
+ - Installation 
+   - Bodesuri
+   - RETO DANILO: Abklärung Installation
+ - Möglichkeit Zeiterfassung das Excel zu ersetzen
+ - Struktur: 
+   z.B. ein Projekt pro über-Paket
+   z.B. ein Projekt pro Phase
+  --> Aktuar erfasst die TODOS im Dot-Project
+  Temporärer Betrieb in den nächsten Wochen
+    -> Todos werden erfasst
+    -> Alle Pakete die in diesem Zeitbereich gemacht wrden müssen werden auch erfasst.
+  Abgabe:
+   - ist nix erwähnt Abgabe auf nächsten Termin
+
+Trac:
+ Bugtracking wird nicht aktiv benötig
+ Wiki
+  - Schnelle referenzen
+  - Protokolle / Traktanden
+  - Kleinere Notizen
+ ROBIN: Installation Trac
+
+Kommunikation:
+ IRC für spontanes kleines
+ Mail für Ankündigungen
+ Wiki für kleinere Anleitungen (evtl. verbunden mit eine Mail)
+ Wichtigere Diskussionen an den Meetings
+--> irc.lugs.ch #bodesuri
+ RETO: Kleine Anleitung
+ PHILIPPE: Maillingliste
+ Folgende Mailinglisten wurden eingerichtet:
+   Adresse: se2projekt@pfadi-st-anton.ch
+   Adresse: se2p-commit@pfadi-st-anton.ch
+ 
+
+Traktanden:
+ - Im Wiki einen Bereich erstellen
+   ROBIN: Initiale Erfassung
+   PHILIPP: Termin umzügeln nach Dot-Project
+
+Server:
+ - Hat Server vorgestellt
+ RETO: Abschluss der Arbeiten (Firewall, Backup, Tomcat)
+
+Struktur:
+ - trunk 
+ - Hinzufügen Design
+ - WIR: fragen ob struktur darf geändert werden.
+ - RETO: verschieben der ordner
+
+Build:
+ - Wir verwenden unser eigenes build.xml
+ - Java: wir verwende vorerst Java 1.5 da Debian Java 1.6 noch nicht paketiert hat
+   Ein Wechsel nach 1.6 sollte aber mit erträglichem Aufwand möglich sein.
+
+Coding Standard:
+ - ROBIN: bereitet eclipse config vor und verteilt diese.
+ - Klammer { auf gleicher Zeile
+ - 4er Tab, whitespaces für formatierung
+ - 80 Zeichen pro Zeile
+ - Sprache Deutsch
+
+JavaDoc:
+ - Javadoc vorzu schreiben (sofern bereits sinnvoll)
+ - Kein JavaDoc für getter und setter
+
+Projetplan:
+ - Struktur Arbeitspakete & Priorisierung werden nächste Woche überdacht, 
+   evtl. kann das Excel komlett von Dot-Project abgelöst werden
+
