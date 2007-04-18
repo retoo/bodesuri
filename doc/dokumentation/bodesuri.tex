@@ -139,7 +139,8 @@ Start      & Ende       & Wochen & Inhalt         & \multicolumn{2}{l}{Meilenste
 
 \subsubsection{Besprechungen}
 
-Alle Beteiligten treffen sich jeweils Dienstag Nachmittags zur Teambesprechung.
+Alle Beteiligten treffen sich jeweils Dienstag Nachmittags zur Teambesprechung. Wichtige Entscheidungen werden soweit möglich nur dort getroffen.\\
+Für wichtige Mitteilungen wird eine Mailingliste eingerichtet. Protokolle, Traktandenlisten und weitere wichtige Dokumenten werden über ein Wiki verwaltet.
 
 \subsubsection{Releases}
 
@@ -331,10 +332,12 @@ Subversion (SVN) / Bug Tracking & Reto & \\
 \paragraph{Software}
 \begin{itemize}
 	\item Eclipse
-	\item Java SDK 1.6
+	\item Java SDK
 	\item Java 2D
 	\item \LaTeX{}, Microsoft Excel
 	\item Apache Ant
+	\item dotProject (Zeit- \& Taskmanagement)
+	\item trac (Wiki, BugTracker)
 \end{itemize}
 
 
@@ -342,13 +345,29 @@ Subversion (SVN) / Bug Tracking & Reto & \\
 
 Um die Qualität der Applikation zu gewährleisten werden folgende Massnahmen ergriffen:
 \begin{itemize}
-	\item \textbf{Unit-Tests}: Fortlaufende Tests der Funktionalität mittels Unit-Tests (JUnit)
-	\item \textbf{Interne Tests}: Regelmässige manuelle Tests mittels Testprotokollen
-	\item \textbf{Externe Tests}: User Acceptance Tests über externe Tester (potenzielle Benutzer)
+	\item \textbf{Unit-Tests}: Fortlaufende Tests der Funktionalität mittels Unit-Tests (JUnit). Es werden XX\% Codeabdeckung angestrebt.
+	\item \textbf{Interne Tests}: Regelmässige, auf den Usecases basierende Tests mittels Testprotokollen
+	\item \textbf{Externe Tests}: Usability-Tests über externe Tester (potenzielle Benutzer)
 	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
 	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet
 	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle
+	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und geprüft, ob die Anwendung den Anforderungsspezifikationenen entspricht. 
 \end{itemize}
 
+\subsection{Coderichtlinien}\label{sub:coderichtlinien} % (fold)
+Grundsätzlich folgen wir den Java/Eclise Coderichtlinen.
+\begin{itemize}
+  \item Öffnende, geschwungene Klammer(\}) auf gleicher Zeile
+  \item Einrücken mit Tabulatoren, formatieren mit Leerzeichen
+  \item 1 Tab = 4 Leerzeichen
+  \item 80 Zeichen pro Zeile
+  \item Sprache: Deutsch mit vernünftigen Ausnahmen (get und nicht gib...)
+  \item Code mit Javadoc kommentieren wo es sinnvoll ist (z.B. keine Getter \& Getter kommentieren)
+  % TODO Noch richtig als Code formatieren.
+  \item Copyright-Header in allen Dateien: \texttt{/* Copyright (c) 2007 Danilo Couto, Philippe Eberli,
+   *                    Pascal Hobus, Reto Schüttel, Robin Stocker
+   */}
+\end{itemize}
+% subsection coderichtlinien (end)
 
 \end{document}
