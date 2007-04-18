@@ -390,6 +390,47 @@ Einrichten
 
 % chapter tools (end)
 
+
+\section{Trac}
+
+Trac stellt uns die folgenden Werkzeuge zur Verfügung:
+
+\begin{itemize}
+	\item Wiki
+	\item Code-Browser
+	\item Bug-Tracking
+\end{itemize}
+
+\paragraph{Installieren}
+
+\begin{verbatim}
+# aptitude install trac
+\end{verbatim}
+
+\paragraph{Konfigurieren}
+
+\begin{verbatim}
+# mkdir /home/trac
+# trac-admin /home/trac/ initenv
+\end{verbatim}
+
+trac-admin ist eine interaktive Konsolenapplikation, hier sind die Eingaben:
+
+\begin{itemize}
+	\item Project Name [My Project]> \textbf{Bodesuri}
+	\item Database connection string [sqlite:db/trac.db]>
+	\item Repository type [svn]>
+	\item Path to repository [/path/to/repos]> \textbf{/home/svn/}
+	\item Templates directory [/usr/share/trac/templates]>
+\end{itemize}
+
+\begin{verbatim}
+# chown -R www-data /home/trac
+\end{verbatim}
+
+(noch nicht fertig)
+
+
 \chapter{Backup} % (fold)
 \label{cha:backup}
 
