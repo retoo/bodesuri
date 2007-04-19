@@ -1,3 +1,18 @@
+Personas:
+Hans Müller, 28, Familienvater. Er ist gelernter Kaufmann und arbeitet als Sachbearbeiter bei einer Bank. Er nutzt den PC regelmäsig im Geschäft (Office, SAP und bankeigene Software). Surft privat ab und zu mal im Netz, um dort Informationen einzuholen. Kennt sich aber sonst eher wenig mit PCs aus.
+Er spielt seit mehreren Jahren angefressen Dog. Zu Spitzenzeiten bis zu 3 Mal pro Woche. Er möchte Bodesuri nutzen, damit er einfacher auf die schnelle mit seinen Kollegen zocken kann.
+
+Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vorallem um mit ihren Kollegen per MSN zu Chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich von Umwelt/Natur, da sie sich dafür interessiert.
+Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause zu einem Turnier eingeladen hat. Sie hat verloren und möchte nun etwas üben.
+
+Benutzergruppen:
+ - Benutzer
+
+Aktoren:
+ - Benutzer
+
+Use-Cases Brief:
+
 UC01: Spiel erstellen
 Spieler, welcher als Host agieren möchte, startet die Serverapplikation. System bestätigt erfolgreiche Erstellung.
 
