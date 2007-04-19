@@ -379,17 +379,32 @@ Einrichtung von MySQL.
 
 % section mysql (end)
 
+\section{PHP 4} % (fold)
+\label{sec:php_4}
+
+Für den erfoglreichen Betrieb von \textbf{Dotproject} werden folgende Pakete benötigt.
+
+\begin{verbatim}
+# aptitude install libapache2-mod-php4 php4-mysql php4-gd
+\end{verbatim}
+
+
+In der Datei \textbf{/etc/php4/apache2/php.ini} muss die Memory-Limite auf 50MB erhöht werden.
+
+\begin{verbatim}
+memory_limit = 50M  
+\end{verbatim}
+
+% section php_4 (end)
+
 \section{Dot-Project} % (fold)
 \label{sec:dot_project}
 
-Dot-Project kann von \url{http://www.dotproject.net/} heruntergeladen werden.
-
-Einrichten 
+Dotproject kann von \url{http://www.dotproject.net/} heruntergeladen werden.
 
 % section dot_project (end)
 
 % chapter tools (end)
-
 
 \section{Trac}
 
@@ -430,6 +445,13 @@ trac-admin ist eine interaktive Konsolenapplikation, hier sind die Eingaben:
 
 (noch nicht fertig)
 
+
+Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.speedpc.ch). Dies wird erreicht indem in der Datei \textbf{/etc/apache2/sites-enabled/000-default} folgende Datei die \emph{RewriteRule} auf trac umgeändert wird:
+
+\begin{verbatim}
+-                RedirectMatch ^/$ /apache2-default/
++                RedirectMatch ^/$ /trac/
+\end{verbatim}
 
 \chapter{Backup} % (fold)
 \label{cha:backup}
