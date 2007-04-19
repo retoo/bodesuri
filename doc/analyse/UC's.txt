@@ -1,0 +1,9 @@
+UC01: Spiel erstellen
+Spieler, welcher als Host agieren möchte, startet die Serverapplikation. System bestätigt erfolgreiche Erstellung.
+
+UC02: Spiel beitreten
+Spieler gibt einen Host an. System stellte eine Verbindung her und tritt dem Spiel bei. System zeigt bereits beigetretene Spieler an und wartet bis vier Spieler dem Spiel beigetreten sind. Sind vier Spieler beigetreten wird das Spiel begonnen.
+
+UC03: Spiel spielen
+Das System verteilt allen Spieler Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte.
+Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt.
