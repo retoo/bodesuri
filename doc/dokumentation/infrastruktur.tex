@@ -520,6 +520,14 @@ Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.spe
 +                RedirectMatch ^/$ /trac/
 \end{verbatim}
 
+Damit Trac in der Diff-Ansicht UTF-8 verwendet und somit Umlaute richtig darstellt, musste in \textbf{/home/trac/conf/trac.ini} die folgende Option geändert werden:
+
+\begin{verbatim}
+-default_charset = iso-8859-15
++default_charset = utf-8
+\end{verbatim}
+
+
 \chapter{Backup} % (fold)
 \label{cha:backup}
 
