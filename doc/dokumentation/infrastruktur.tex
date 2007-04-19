@@ -467,7 +467,7 @@ Dotproject kann von \url{http://www.dotproject.net/} heruntergeladen werden.
 
 \section{Trac}
 
-Trac stellt uns die folgenden Werkzeuge zur Verfügung:
+\href{http://trac.edgewall.org/}{Trac} stellt uns die folgenden Werkzeuge zur Verfügung:
 
 \begin{itemize}
 	\item Wiki
@@ -478,13 +478,14 @@ Trac stellt uns die folgenden Werkzeuge zur Verfügung:
 \paragraph{Installieren}
 
 \begin{verbatim}
-# aptitude install trac
+# aptitude install trac libapache2-mod-fcgid
 \end{verbatim}
 
 \paragraph{Konfigurieren}
 
 \begin{verbatim}
 # mkdir /home/trac
+# chown -R www-data /home/trac
 # trac-admin /home/trac/ initenv
 \end{verbatim}
 
@@ -498,11 +499,19 @@ trac-admin ist eine interaktive Konsolenapplikation, hier sind die Eingaben:
 	\item Templates directory [/usr/share/trac/templates]>
 \end{itemize}
 
-\begin{verbatim}
-# chown -R www-data /home/trac
-\end{verbatim}
+Apache-Konfiguration mit folgendem Text in \textbf{/etc/apache2/conf.d/trac} erstellen:
 
-(noch nicht fertig)
+\begin{verbatim}
+ScriptAlias /trac /usr/share/trac/cgi-bin/trac.fcgi
+DefaultInitEnv TRAC_ENV /home/trac
+DefaultInitEnv LC_ALL de_CH.UTF-8
+<Location /trac>
+        AuthType Basic
+        AuthName "Bodesuri Trac"
+        AuthUserFile /etc/apache2/dav_svn.passwd
+        Require valid-user
+</Location>
+\end{verbatim}
 
 Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.speedpc.ch). Dies wird erreicht indem in der Datei \textbf{/etc/apache2/sites-enabled/000-default} die \emph{RewriteRule} auf trac umgeändert wird:
 
