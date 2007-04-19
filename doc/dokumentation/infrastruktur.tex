@@ -41,14 +41,15 @@
 \chapter{Build-Server} % (fold)
 \label{cha:build_server}
 
-Bei dem Build-Server handelt es sich um ein virtueller Server welcher freundlicherweise für die Dauer des Projektes gesponsert durch Speed PC gesponsert wurde. Ein virtuelles System bietet dem Projekt beinahe alle Vorzüge eines richtigen dedizierten physikalischen Systems, erspart uns aber die sonst üblichen Aufwendungen wie Platzierung, Wartung etc. die durch den Dienstleister (in diesem Fall Speed PC) übernommen werden. Im Unterschied zu einer Shared-Hosting Lösung (Subversion Server HSR oder Variante Philipp Mächler) muss bei ein dem virtuellen Server keine Rücksicht auf andere Parteien genommen werden und das System lässt sich ganz den Bedürfnissen anpassen.
+Bei dem Build-Server handelt es sich um ein virtueller Server welcher freundlicherweise für die Dauer des Projektes durch Speed PC gesponsert wurde. Ein virtuelles System bietet dem Projekt beinahe alle Vorzüge eines richtigen dedizierten physikalischen Systems, erspart uns aber die sonst üblichen Aufwendungen wie Platzierung, Wartung etc. die durch den Dienstleister (in diesem Fall Speed PC) übernommen werden. Im Unterschied zu einer Shared-Hosting Lösung (Subversion Server HSR oder Variante Philipp Mächler) muss bei ein dem virtuellen Server keine Rücksicht auf andere Parteien genommen werden und das System lässt sich ganz den Bedürfnissen anpassen.
 
 
 \section{Wichtige Passwörter} % (fold)
 \label{sec:wichtige_passwörter}
 
 \begin{description}
-  \item[mysql] User: root Passwort: bodesuri
+  \item[mysql] Benutzer: \emph{root} Passwort: \emph{bodesuri}
+  \item[svn cruisecontrol] Benutzer: \emph{cruisecontrol} Passwort: \emph{bodesuri321}
 %FIXME: cruisecontrol
 \end{description}
 
@@ -71,11 +72,11 @@ Das Hostsystem steht in einem Rechenzentrum der Via.Networks in Zürich.
 \section{Soft- und Hardware} % (fold)
 \label{sec:soft_und_hardware}
 
-Der virtuelle Server besitzt 512 MB Memory und es steht ihm 2 GB Diskspace zur Verüfgung. Das Hostsystem läuft auf einem 2x Intel Xeon 3.2 GHZ System mit 2 GB Memory. Der virtuelle Server steht dediziert für das Projekt zur Verfügung.
+Der virtuelle Server besitzt 512 MB Memory und es steht ihm 2 GB Diskspace zur Verfügung. Das Hostsystem läuft auf einem 2x Intel Xeon 3.2 GHZ System mit 2 GB Memory. Der virtuelle Server steht dediziert für das Projekt zur Verfügung.
 
-Die Randdaten des virtuellen Servers (Disk \& Memory) können bei Bedarf sofort erhöht werden, solange die Ressourcen des Hostsystems nicht erschöpft sind geht das ohne Probleme und ohne physikalischen Eingriff. Genügt hingegen die Prozessorleistung nicht muss eine Umstieg auf einen physikalisch dediziertes System in Erwägung gezogen werden.
+Die Randdaten des virtuellen Servers (Disk \& Memory) können bei Bedarf sofort und ohne physikalischen Eingriff erhöht werden, vorausgesetzt natürlich die Ressourcen des Hostsystems sind nicht erschöpft. Genügt hingegen die Prozessorleistung nicht muss eine Umstieg auf einen physikalisch dediziertes System in Erwägung gezogen werden.
 
-Auf dem Virtuellen Server läuft ein frisch installiertes Debian 4.0 (Etch) mit allen Sicherheitsupdates installiert.
+Auf dem Virtuellen Server läuft ein frisch installiertes Debian 4.0 (Etch) mit allen Sicherheitsupdates.
 
 % section soft_und_hardware (end)
 
@@ -126,6 +127,24 @@ Done.
 # adduser <username> wheel
 \end{verbatim}
 
+\textbf{sudo} kann folgendermassen verwendet werden.
+
+\begin{verbatim}
+$ id
+uid=1003(rschuett) gid=1003(rschuett) Gruppen=101(wheel),1003(rschuett)
+$ \textbf{sudo id}
+Password:
+uid=0(root) gid=0(root) Gruppen=0(root)
+$ touch /asdf
+touch: cannot touch `/asdf': Permission denied
+$ sudo touch /asdf
+--> geht
+$ rm /asdf
+rm: cannot remove `/asdf': Permission denied
+$ sudo rm /asdf 
+--> geht
+\end{verbatim}
+
 
 % section verwaltung (end)
 
@@ -146,7 +165,7 @@ Benötigte Software installieren.
 # aptitude install apache2 libapache2-svn subversion subversion-tools
 \end{verbatim}
 
-Für CruiseControl muss \textbf{ant} auf Subverison-Repositories zugreiffen können. Hierfür wird die Erweiterung SvnAnt benötigt. http://subclipse.tigris.org/svnant.html
+Für CruiseControl muss \textbf{ant} auf Subverison-Repositories zugreifen können. Hierfür wird die Erweiterung SvnAnt benötigt. http://subclipse.tigris.org/svnant.html
 
 \begin{verbatim}
 # aptitude install libsvn-java
@@ -198,7 +217,7 @@ Apache neu starten
 # /etc/init.d/apache2 restart
 \end{verbatim}
 
-Zum testen kann das Repository im Browser geöffnet werden: \textbf{http://bodesuri.speedpc.ch/svn/} 
+Zum testen kann das Repository im Browser geöffnet werden: \url{http://bodesuri.speedpc.ch/svn/} 
 
 % subsection installation (end)
 
@@ -216,7 +235,7 @@ Zum testen kann das Repository im Browser geöffnet werden: \textbf{http://bodes
 \section{Java SDK 1.6} % (fold)
 \label{sec:java_sdk}
 
-Für Debian Etch ist kein Java 1.6 erhältlich (nur 1.5) - aus diesem Grund muss Java semi-manuell installiert werden. Anstatt Java direkt \emph{von hand} zu installieren kann das Tool \textbf{java-package} zu Hilfe genommen werden. Es wandelt die Java Pakete von Sun in richtige Debian Pakete um. 
+Für Debian Etch ist kein Java 1.6 erhältlich (nur 1.5) - aus diesem Grund muss Java semi-manuell installiert werden. Anstatt Java direkt \emph{von Hand} zu installieren kann das Tool \textbf{java-package} zu Hilfe genommen werden. Es wandelt die Java Pakete von Sun in richtige Debian Pakete um. 
 
 Installation java-package
 
@@ -261,7 +280,6 @@ Für das Reporting durch CruiseControl wird Apache2/Tomcat benötigt. Installati
 \subsection{Installation} % (fold)
 \label{sub:installation-cruisecontrol}
 
-
 Dependencies installieren.
 
 \begin{verbatim}
@@ -275,7 +293,7 @@ Download von CruiseControl.
 # wget 'http://heanet.dl.sourceforge.net/sourceforge/cruisecontrol/cruisecontrol-src-2.6.1.zip'
 \end{verbatim}
 
-Kompilierung.
+Compilierung.
 
 \begin{verbatim}
 # cd cruisecontrol-2.6.1/
@@ -287,14 +305,13 @@ Kompilierung.
 
 Jeweils nach den Aufrufen von \textbf{ant} sollte anhand des Outputes geprüft werden ob der Build erfolgreich war.
 
-Abschliessend muss cruisecontrol nach an seine finale Position verschoben werden.
+Abschliessend muss CruiseControl nach an seine finale Position verschoben werden.
 
 \begin{verbatim}
 # mv /tmp/cruisecontrol-2.6.1/ /opt/
 # cd /opt
 # ln -s cruisecontrol cruisecontrol-2.6.1
 \end{verbatim}
-
 
 % subsection installation (end)
 
@@ -316,6 +333,7 @@ Checkout des Repositories für den Builddaemon.
 # sudo -u cruisecontrol svn checkout --username cruisecontrol --password bodesuri321 http://bodesuri.speedpc.ch/svn bodesuri/
 \end{verbatim}
 
+Die Konfigurationsdateien \textbf{build-bodesuri.xml} und \textbf{config.xml} befinden sich im SVN Repository im Ordner \textbf{/build/} und müssen im WorkDir platziert werden.
 
 % subsection konfiguration_builddaemon (end)
 
@@ -334,7 +352,7 @@ Reporting in den Tomcat Applikationsfolder kopieren.
 # cp /opt/cruisecontrol/reporting/jsp/dist/cruisecontrol.war /var/lib/tomcat5/webapps/
 \end{verbatim}
 
-Tomcat wieder starten, es sollte nun das .war File entapcken.
+Tomcat wieder starten, es sollte nun das .war File antpacken.
 
 \begin{verbatim}
 # /etc/init.d/tomcat5 stat
@@ -354,6 +372,47 @@ Zusätzlich benötigt das Reporting Modul Zugriffsrechte auf den Ordner \textbf{
 # mkdir logs/bodesuri/_cache/
 # chown tomcat5 logs/bodesuri/_cache/
 \end{verbatim}
+
+Nun kann der Reporter über die URL \url{http://localhost:8180} getestet werden, idealerweise getunnelt per ssh.
+
+\begin{verbatim}
+System-Zuhause\$ ssh -L 8180:localhost:8180 bodesurispeedpc.ch
+bodesuri\$
+-> nun Browser starten und localhost:8180 öffnen
+\end{verbatim}
+
+Als nächstes muss Apache so konfiguriert werden, dass es eingehende Verbindungen nach \textbf{cruisecontrol/} automatisch zum tomcat umleitet. Hierfür müssen die Konfigurationen von Apache und libapache2-mod-jk angepast werden.
+
+Apache benötigt das File \textbf{/etc/apache2/conf.d/cruisecontrol}:
+
+\begin{verbatim}
+JkWorkersFile   /etc/libapache2-mod-jk/workers.properties
+JkLogFile       /var/log/apache2/mod_jk.log
+JkLogLevel      info
+JkMount /cruisecontrol/* cruisecontrol
+
+<Location /cruisecontrol>
+        AuthType Basic
+        AuthName "Bodesuri Cruisecontrol"
+        AuthUserFile /etc/apache2/dav_svn.passwd
+        Require valid-user
+</Location>
+\end{verbatim}
+
+Der hier verwendete Worker \emph{cruisecontrol} muss zuerst jedoch in \textbf{ /etc/libapache2-mod-jk/workers.properties} konfiguriert werden. Folgende Änderungen zur standardkonfig sind notwendig:
+
+\begin{verbatim}
+workers.tomcat_home=/usr/share/tomcat5
+workers.java_home=/usr/lib/jvm/java-1.5.0-sun-1.5.0.10
+worker.list=cruisecontrol
+worker.cruisecontrol_worker.port=8009
+worker.cruisecontrol_worker.host=localhost
+worker.cruisecontrol_worker.type=ajp13
+worker.cruisecontrol_worker.lbfactor=1
+worker.loadbalancer.balanced_workers=cruisecontrol_worker
+\end{verbatim}
+
+Ein Neustart des Apaches schliesst die Konfiguration ab.
 
 % subsection konfiguration_reporting (end)
 
@@ -445,8 +504,7 @@ trac-admin ist eine interaktive Konsolenapplikation, hier sind die Eingaben:
 
 (noch nicht fertig)
 
-
-Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.speedpc.ch). Dies wird erreicht indem in der Datei \textbf{/etc/apache2/sites-enabled/000-default} folgende Datei die \emph{RewriteRule} auf trac umgeändert wird:
+Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.speedpc.ch). Dies wird erreicht indem in der Datei \textbf{/etc/apache2/sites-enabled/000-default} die \emph{RewriteRule} auf trac umgeändert wird:
 
 \begin{verbatim}
 -                RedirectMatch ^/$ /apache2-default/
