@@ -10,7 +10,7 @@ import java.rmi.server.UnicastRemoteObject;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
 
-public class Client extends NachrichtenEmpfänger{
+public class Client extends NachrichtenEmpfänger{
 
 	private Client() {}
 
@@ -24,9 +24,9 @@ public class Client extends NachrichtenEmpfänger{
 		String host = "localhost";
 
 		Registry registry = LocateRegistry.getRegistry(host);		
-		NachrichtenEmpfängerInterface server = (NachrichtenEmpfängerInterface) registry.lookup("server");
+		NachrichtenEmpfaengerInterface server = (NachrichtenEmpfaengerInterface) registry.lookup("server");
 		
-		NachrichtenEmpfängerInterface stub = (NachrichtenEmpfängerInterface) UnicastRemoteObject.exportObject(this, 0);
+		NachrichtenEmpfaengerInterface stub = (NachrichtenEmpfaengerInterface) UnicastRemoteObject.exportObject(this, 0);
 		registry.bind("client", stub);
 		
 		server.sendeNachricht(new Registrierung("ich bin hier", "client"));

@@ -4,13 +4,13 @@ import java.util.concurrent.SynchronousQueue;
 
 import spielplatz.hilfsklassen.Nachricht;
 
-public class NachrichtenEmpfänger implements NachrichtenEmpfängerInterface  {
+public class NachrichtenEmpfänger implements NachrichtenEmpfaengerInterface  {
 	/* a Synced queue is kinda stupid here as .. wieso schreib ich das überhaupt 
 	 * auf english... ach.. schaut doch selber nach :) 
 	 */
 	SynchronousQueue<Nachricht> nachrichten = new SynchronousQueue<Nachricht>();
 
-	public NachrichtenEmpfänger() {
+	public NachrichtenEmpfänger() {
 		super();
 	}
 
