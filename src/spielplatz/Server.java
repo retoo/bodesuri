@@ -3,49 +3,52 @@ package spielplatz;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 import java.util.Vector;
 
+import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
 
-public class Server extends NachrichtenEmpfänger {
+public class Server {
+	private Briefkasten briefkasten;
 
-	public Server() {}
 
-	public static void main(String args[]) throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException  {
-		Server server = new Server();
-		server.run();
+	public Server() throws RemoteException, AlreadyBoundException {
+		/* briefkasten für eingehende Nachrichten */
+		briefkasten = new Briefkasten("server", true);
 	}
 
-	private void run() throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException {
-		NachrichtenEmpfaengerInterface stub = (NachrichtenEmpfaengerInterface) UnicastRemoteObject.exportObject(this, 0);
-		Registry registry = LocateRegistry.createRegistry(1099); 
-		registry.bind("server", stub);
-
+	private void run() throws RemoteException, NotBoundException {
 		Nachricht n;
-		
-		Vector<NachrichtenEmpfaengerInterface> clients = new Vector<NachrichtenEmpfaengerInterface>();
-		
-		
-		while ( ( n = getNächsteNachricht()) != null) {
+
+		Vector<EndPunkt> clients = new Vector<EndPunkt>();
+
+		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
+			/* Ah ein Nachbar stelllt sich vor, nehmen wir den 
+			 * in unser Adressbuch rein 
+			 */
 			if (n instanceof Registrierung) {
 				Registrierung reg = (Registrierung) n;
-				
-				NachrichtenEmpfaengerInterface client = (NachrichtenEmpfaengerInterface) registry.lookup(reg.name);
-				
+				EndPunkt client = briefkasten.schlageNach(reg.name);
+
+				System.out.println("ah.. guten tag herr " + client);
+
+				client.sendeNachricht(new ChatNachricht("Hallo kleiner " + client));
 				clients.add(client);
 			} else {
-				System.out.println("Got message " + n);
-				
-				for (NachrichtenEmpfaengerInterface client : clients) {
+				System.out.println("Bekam ne Nachricht" + n);
+
+				for (EndPunkt client : clients) {
 					client.sendeNachricht(n);
 				}				
 			}
 		}
-		
+
 		System.out.println("out of scope");
+	}
+
+	public static void main(String args[]) throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException  {
+		Server server = new Server();
+		server.run();
 	}
 }

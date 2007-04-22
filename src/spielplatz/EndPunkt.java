@@ -5,6 +5,6 @@ import java.rmi.RemoteException;
 
 import spielplatz.hilfsklassen.Nachricht;
 
-public interface NachrichtenEmpfaengerInterface extends Remote {
+public interface EndPunkt extends Remote {
 	void sendeNachricht(Nachricht n) throws RemoteException;
 }
