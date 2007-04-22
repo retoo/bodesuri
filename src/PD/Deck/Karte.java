@@ -1,39 +1,30 @@
-/**
- * @(#) Karte.java
- */
-
 package PD.Deck;
 
-public class Karte{
+import java.util.Vector;
+
+import PD.Regelsystem.Regel;
+
+public class Karte {
 	private int wert;
-	
-	/**
-	 * @param wert
-	 */
-	public void setWert( int wert ){
-		this.wert=wert;
+	protected Vector<Regel> regeln = new Vector<Regel>();
+
+	public void setWert(int wert) {
+		this.wert = wert;
 	}
-	
-	/**
-	 * @return 
-	 */
-	public int getWert( ){
+
+	public int getWert() {
 		return wert;
 	}
-	
-	/**
-	 * @param kartenFarbe
-	 */
-	public void setKartenFarbe( KartenFarbe kartenFarbe ){
-		
+
+	public void setKartenFarbe(KartenFarbe kartenFarbe) {
+
 	}
-	
-	/**
-	 * @return 
-	 */
-	public KartenFarbe getKartenFarbe( ){
+
+	public KartenFarbe getKartenFarbe() {
 		return null;
 	}
-	
-	
+
+	public Vector<Regel> getRegeln() {
+    	return regeln;
+    }
 }

@@ -1,9 +1,9 @@
-/**
- * @(#) Vier.java
- */
-
 package PD.Deck;
 
-public class Vier extends Karte{
-	
+import PD.Regelsystem.VorwaertsRegel;
+
+public class Vier extends Karte {
+	public Vier() {
+		regeln.add(new VorwaertsRegel(4));
+	}
 }

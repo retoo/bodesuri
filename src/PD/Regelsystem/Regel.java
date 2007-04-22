@@ -1,9 +1,9 @@
-/**
- * @(#) Regel.java
- */
-
 package PD.Regelsystem;
 
-public class Regel{
-	
+import PD.Zugsystem.Zug;
+
+public abstract class Regel {
+	public boolean validiere(Zug zug) {
+		return false;
+	}
 }
