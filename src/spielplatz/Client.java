@@ -26,12 +26,12 @@ public class Client {
 	}
 	
 	private void run() throws RemoteException {		
-		server.sendeNachricht(new ChatNachricht("Wie gehts grosser Server?"));
+		server.sende(new ChatNachricht("Wie gehts grosser Server?"));
 		
 		Nachricht n;
 		
 		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
-			System.out.println("Client: " + n);			
+			System.out.println("Client: " + n);
 		}
 	}
 

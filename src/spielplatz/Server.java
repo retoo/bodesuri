@@ -31,13 +31,13 @@ public class Server {
 				Registrierung reg = (Registrierung) n;
 				EndPunkt client = briefkasten.schlageNach(reg.name);
 
-				client.sendeNachricht(new ChatNachricht("Hallo kleiner " + client));
+				client.sende(new ChatNachricht("Hallo kleiner " + client));
 				clients.add(client);
 			} else {
 				System.out.println("Server: " + n);
 
 				for (EndPunkt client : clients) {
-					client.sendeNachricht(n);
+					client.sende(n);
 				}				
 			}
 		}

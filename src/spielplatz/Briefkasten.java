@@ -41,10 +41,10 @@ public class Briefkasten implements EndPunkt {
 
 	/* Meldet dem übergebenen peer den eigenen Namen */
 	public void registriereBei(EndPunkt endpunkt) throws RemoteException {
-		endpunkt.sendeNachricht(new Registrierung(name));
+		endpunkt.sende(new Registrierung(name));
 	}
 
-	public void sendeNachricht(Nachricht n)  {
+	public void sende(Nachricht n)  {
 		System.out.println("Übertrage Nachricht " + n);
 		try {
 			nachrichten.put(n);
