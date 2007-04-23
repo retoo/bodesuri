@@ -6,6 +6,10 @@ import spielplatz.EndPunkt;
 public class Spieler {
 	private String name;
 	public EndPunkt endpunkt;
+	
+	public Spieler(String name) {
+		this.name = name;
+	}
 
 	public Spieler(Briefkasten client) {
 		this.endpunkt = client;
