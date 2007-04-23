@@ -36,11 +36,11 @@ public class Server {
 				
 				Spieler neuerSpieler = new Spieler(client, reg.name);
 				
+				spieler.add(neuerSpieler);
+				
 				for (Spieler s : spieler) {
 					s.endpunkt.sende(new ChatNachricht("Neuer Spieler " + neuerSpieler));
-				}
-				
-				spieler.add(neuerSpieler);
+				}		
 			} else {
 				throw new RuntimeException("Unbekannte Nachricht " + n);
 			}
