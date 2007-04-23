@@ -1,25 +1,20 @@
-import PD.Deck.Karte;
 import PD.Deck.Vier;
 import PD.Regelsystem.Regel;
+import PD.Regelsystem.VorwaertsRegel;
 import PD.Zugsystem.Bewegung;
 import PD.Zugsystem.Zug;
 
 public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() {
-		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
-		Karte vier = new Vier();
-		Zug zug = new Zug(spieler, vier, bewegung);
-		for (Regel regel : vier.getRegeln()) {
-			assertTrue(regel.validiere(zug));
-		}
+		Zug zug = new Zug(spieler, new Vier(), new Bewegung(bankFeld, zielFeld));
+		Regel viererVorwaerts = new VorwaertsRegel(4);
+		assertTrue(viererVorwaerts.validiere(zug));
 	}
 
 	public void testVierFalsch() {
-		Bewegung bewegung = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		Karte vier = new Vier();
-		Zug zug = new Zug(spieler, vier, bewegung);
-		for (Regel regel : vier.getRegeln()) {
-			assertFalse(regel.validiere(zug));
-		}
+		Zug zug = new Zug(spieler, new Vier(),
+		                  new Bewegung(bankFeld, zielFeld.getVorheriges()));
+		Regel viererVorwaerts = new VorwaertsRegel(4);
+		assertFalse(viererVorwaerts.validiere(zug));
 	}
 }
