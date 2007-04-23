@@ -11,28 +11,37 @@ public class Client {
 	private EndPunkt server;
 	private Briefkasten briefkasten;
 
-	private Client() throws RemoteException, NotBoundException, AlreadyBoundException {
+	private Client(String name) throws RemoteException, NotBoundException, AlreadyBoundException {
+		if (name == null) {
+			name = this.toString();
+		}
 		
-		briefkasten = new Briefkasten(this.toString(), false);
+		briefkasten = new Briefkasten(name, false);
+		
 		/* handler des servers */
 		server = briefkasten.schlageNach("server");
 		
+		/* dem server mitteilen wer wir sind */
 		briefkasten.registriereBei(server);
 	}
 	
 	private void run() throws RemoteException {		
-		server.sendeNachricht(new ChatNachricht("hallo du"));
+		server.sendeNachricht(new ChatNachricht("Wie gehts grosser Server?"));
 		
 		Nachricht n;
 		
 		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
-			System.out.println("Client: Bekam Nachricht: " + n);			
+			System.out.println("Client: " + n);			
 		}
 	}
 
 	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException, InterruptedException {
-		Client c = new Client();
+		String name = null;
+		if ( args.length > 0) {
+			name = args[0];
+		}
 		
+		Client c = new Client(name);			
 		c.run();
 	}
 }

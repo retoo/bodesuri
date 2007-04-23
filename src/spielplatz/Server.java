@@ -31,12 +31,10 @@ public class Server {
 				Registrierung reg = (Registrierung) n;
 				EndPunkt client = briefkasten.schlageNach(reg.name);
 
-				System.out.println("ah.. guten tag herr " + client);
-
 				client.sendeNachricht(new ChatNachricht("Hallo kleiner " + client));
 				clients.add(client);
 			} else {
-				System.out.println("Bekam ne Nachricht" + n);
+				System.out.println("Server: " + n);
 
 				for (EndPunkt client : clients) {
 					client.sendeNachricht(n);

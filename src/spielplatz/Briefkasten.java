@@ -6,7 +6,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.concurrent.SynchronousQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
@@ -15,13 +15,13 @@ public class Briefkasten implements EndPunkt {
 	/* a Synced queue is kinda stupid here as .. wieso schreib ich das überhaupt 
 	 * auf english... ach.. schaut doch selber nach :) 
 	 */
-	private SynchronousQueue<Nachricht> nachrichten = new SynchronousQueue<Nachricht>();
+	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
 	private Registry telefonbuch;
 	private String name;
-	
+
 	public Briefkasten(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException {
 		this.name = name;
-		
+
 		/* Registry anlegen falls notwendig */
 		if (createRegistry) {
 			/* Registry anlegen */
@@ -29,7 +29,7 @@ public class Briefkasten implements EndPunkt {
 		} else {
 			telefonbuch = LocateRegistry.getRegistry("localhost");
 		}
-		
+
 		/* stub erstellen und der registry mitteilen */
 		telefonbuch.bind(name, UnicastRemoteObject.exportObject(this, 0));
 	}
@@ -45,14 +45,15 @@ public class Briefkasten implements EndPunkt {
 	}
 
 	public void sendeNachricht(Nachricht n)  {
-			try {
-				nachrichten.put(n);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-				System.exit(99);
-			}			
+		System.out.println("Übertrage Nachricht " + n);
+		try {
+			nachrichten.put(n);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			System.exit(99);
+		}			
 	}
-	
+
 	protected Nachricht getNächsteNachricht() {
 		Nachricht n = null;
 		try {
@@ -61,10 +62,10 @@ public class Briefkasten implements EndPunkt {
 			e.printStackTrace();
 			System.exit(99);
 		}
-		
+
 		return n;
 	}
-	
+
 	public String toString() {
 		return "Endpunkt: " + name;
 	}
