@@ -5,9 +5,10 @@
   <property name="obj-dir" location="obj"/>
   <property name="lib-dir" location="lib"/>
   <property name="tst-dir" location="test"/>
+  <property name="res-dir" location="results"/>
   <property name="src-dir" location="src"/>
   <path id="classpath.base">
-      <pathelement location="${lib-dir}/hello.jar"/>
+      <pathelement location="${lib-dir}/bodesuri.jar"/>
   </path>
   <path id="classpath.run">
     <path refid="classpath.base"/>
@@ -21,33 +22,44 @@
   <target name="init">
     <mkdir dir="${obj-dir}"/>
     <mkdir dir="${lib-dir}"/>
+    <mkdir dir="${res-dir}"/>
   </target>
 <!-- build -->
   <target name="compile" depends="init">
-    <javac srcdir="${src-dir}" destdir="${obj-dir}"/>
+    <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8"/>
   </target>
   <target name="compile-test" depends="jar">
-    <javac srcdir="${tst-dir}" verbose="${TALK}">
+    <javac srcdir="${tst-dir}" verbose="${TALK}" encoding="utf8">
       <classpath refid="classpath.test"/>
       <classpath refid="classpath.run"/>
     </javac>
   </target>
 <!-- conserve -->
   <target name="jar" depends="compile">
-    <jar destfile="${lib-dir}/hello.jar" basedir="${obj-dir}"/>
+    <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}"/>
   </target>
+<!-- documentation -->
+<target name="infrastruktur.tex" depends="init">
+
+</target>
 <!-- tests -->
   <target name="test" depends="compile-test">
     <junit>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
-      <test name="TestExample"/>
+      <!-- run all tests in in test/ -->
+      <batchtest todir="${res-dir}">
+        <fileset dir="${tst-dir}">
+          <include name="**/*.java"/>
+        </fileset>
+      </batchtest>
     </junit>
   </target>
 <!-- cleanup -->
   <target name="clean-init">
     <delete dir="${obj-dir}"/>
     <delete dir="${lib-dir}"/>
+    <delete dir="${res-dir}"/>
   </target>
   <target name="clean-compile">
     <delete>
@@ -55,7 +67,7 @@
     </delete>
   </target>
   <target name="clean-jar">
-    <delete file="${lib-dir}/hello.jar"/>
+    <delete file="${lib-dir}/bodesuri.jar"/>
   </target>
   <target name="clean-compile-test">
     <delete verbose="${TALK}">
@@ -64,5 +76,5 @@
   </target>
   <target name="build-everything" depends="compile,test"/>
   <target name="all" depends="build-everything"/>
-  <target name="clean" depends="clean-compile-test,clean-init"/>
+  <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>
