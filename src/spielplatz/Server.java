@@ -34,16 +34,18 @@ public class Server {
 				Registrierung reg = (Registrierung) n;
 				EndPunkt client = briefkasten.schlageNach(reg.name);
 				
-				Spieler s = new Spieler(client, reg.name); 
+				Spieler neuerSpieler = new Spieler(client, reg.name);
 				
-				spieler.add(s);
+				for (Spieler s : spieler) {
+					s.endpunkt.sende(new ChatNachricht("Neuer Spieler " + neuerSpieler));
+				}
+				
+				spieler.add(neuerSpieler);
 			} else {
 				throw new RuntimeException("Unbekannte Nachricht " + n);
 			}
 			
-			for (Spieler s : spieler) {
-				s.endpunkt.sende(new ChatNachricht("Neuer Spieler" + s));
-			}
+
 			
 			if (spieler.size() == 2) {
 				break;
