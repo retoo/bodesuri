@@ -32,9 +32,9 @@ public class Server {
 			 */
 			if (n instanceof Registrierung) {
 				Registrierung reg = (Registrierung) n;
-				Briefkasten client = briefkasten.schlageNach(reg.name);
+				EndPunkt client = briefkasten.schlageNach(reg.name);
 				
-				Spieler s = new Spieler(client); 
+				Spieler s = new Spieler(client, reg.name); 
 				
 				spieler.add(s);
 			} else {
