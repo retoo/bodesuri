@@ -17,7 +17,7 @@ public class Briefkasten implements EndPunkt {
 	 */
 	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
 	private Registry telefonbuch;
-	private String name;
+	public String name;
 
 	public Briefkasten(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException {
 		this.name = name;
@@ -35,8 +35,8 @@ public class Briefkasten implements EndPunkt {
 	}
 
 	/* liefert den stub zu einem gewissen namen */
-	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException {
-		return (EndPunkt) telefonbuch.lookup(name);
+	public Briefkasten schlageNach(String name) throws RemoteException, NotBoundException {
+		return (Briefkasten) telefonbuch.lookup(name);
 	}
 
 	/* Meldet dem übergebenen peer den eigenen Namen */

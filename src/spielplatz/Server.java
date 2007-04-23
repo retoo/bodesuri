@@ -5,6 +5,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Vector;
 
+import PD.Spielerverwaltung.Spieler;
+
 import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
@@ -21,7 +23,7 @@ public class Server {
 	private void run() throws RemoteException, NotBoundException {
 		Nachricht n;
 
-		Vector<EndPunkt> spieler = new Vector<EndPunkt>();
+		Vector<Spieler> spieler = new Vector<Spieler>();
 
 		/* Spielstart */
 		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
@@ -30,15 +32,17 @@ public class Server {
 			 */
 			if (n instanceof Registrierung) {
 				Registrierung reg = (Registrierung) n;
-				EndPunkt client = briefkasten.schlageNach(reg.name);
+				Briefkasten client = briefkasten.schlageNach(reg.name);
 				
-				spieler.add(client);
+				Spieler s = new Spieler(client); 
+				
+				spieler.add(s);
 			} else {
 				throw new RuntimeException("Unbekannte Nachricht " + n);
 			}
 			
-			for (EndPunkt s : spieler) {
-				s.sende(new ChatNachricht("Neuer Spieler" + s));
+			for (Spieler s : spieler) {
+				s.endpunkt.sende(new ChatNachricht("Neuer Spieler" + s));
 			}
 			
 			if (spieler.size() == 2) {
@@ -48,7 +52,7 @@ public class Server {
 		
 		System.out.println("Spiel komplett, Spieler sind: ");
 		
-		for (EndPunkt s : spieler) {
+		for (Spieler s : spieler) {
 			System.out.println(" - " + s);
 			
 		}
