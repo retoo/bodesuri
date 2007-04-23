@@ -2,7 +2,7 @@ import java.util.Vector;
 
 import PD.Zugsystem.Feld;
 
-public class FeldTest extends ProblemDomainTest {
+public class FeldTest extends ProblemDomainTestCase {
 	public void testNaechstesVorheriges() {
 		Feld feld = bankFeld.getNaechstes().getVorheriges();
 		assertEquals(bankFeld, feld);

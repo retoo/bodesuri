@@ -4,7 +4,7 @@ import PD.Regelsystem.Regel;
 import PD.Zugsystem.Bewegung;
 import PD.Zugsystem.Zug;
 
-public class RegelTest extends ProblemDomainTest {
+public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() {
 		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
 		Karte vier = new Vier();
