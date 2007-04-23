@@ -55,9 +55,18 @@ public class Briefkasten implements EndPunkt {
 	}
 
 	protected Nachricht getNächsteNachricht() {
+		return getNächsteNachricht(true);
+	}
+	
+	protected Nachricht getNächsteNachricht(boolean blocking) {
 		Nachricht n = null;
 		try {
-			n = nachrichten.take();
+			
+			if (blocking)
+				n = nachrichten.take();
+			else 
+				n = nachrichten.poll();
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 			System.exit(99);
