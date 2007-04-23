@@ -35,8 +35,8 @@ public class Briefkasten implements EndPunkt {
 	}
 
 	/* liefert den stub zu einem gewissen namen */
-	public Briefkasten schlageNach(String name) throws RemoteException, NotBoundException {
-		return (Briefkasten) telefonbuch.lookup(name);
+	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException {
+		return (EndPunkt) telefonbuch.lookup(name);
 	}
 
 	/* Meldet dem übergebenen peer den eigenen Namen */

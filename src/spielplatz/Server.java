@@ -10,7 +10,7 @@ import PD.Spielerverwaltung.Spieler;
 import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
-import spielplatz.hilfsklassen.SpielStart;
+import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Server {
 	private Briefkasten briefkasten;
@@ -58,7 +58,7 @@ public class Server {
 		}
 		
 		for (Spieler s : spieler) {
-			s.endpunkt.sende(new SpielStart());
+			s.endpunkt.sende(new SpielStartNachricht());
 		}
 		
 		while ( ( nachricht = briefkasten.getNächsteNachricht()) != null) {

@@ -7,8 +7,10 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
+import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Client {
 	private EndPunkt server;
@@ -32,7 +34,23 @@ public class Client {
 		
 		Nachricht n;
 		while ((n = briefkasten.getNächsteNachricht()) != null) {
-			System.out.println("Client: " + n);
+			if (n instanceof ChatNachricht) {
+				System.out.println("ChatNachricht: " + n);
+			} else if (n instanceof SpielStartNachricht) {
+				System.out.println("Spiel startet!");
+				break;
+			}
+		}
+		
+		while (true) {
+			String eingabe = in.readLine();
+			server.sende(new ChatNachricht(eingabe));
+			
+			while ((n = briefkasten.getNächsteNachricht(true)) != null) {
+				if (n instanceof ChatNachricht) {
+					System.out.println(n);
+				}
+			}
 		}
 	}
 
