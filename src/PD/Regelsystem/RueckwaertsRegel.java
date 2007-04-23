@@ -4,10 +4,10 @@ import PD.Zugsystem.Bewegung;
 import PD.Zugsystem.Feld;
 import PD.Zugsystem.Zug;
 
-public class VorwaertsRegel extends Regel {
+public class RueckwaertsRegel extends Regel {
 	private int schritte;
 	
-	public VorwaertsRegel(int schritte) {
+	public RueckwaertsRegel(int schritte) {
 		this.schritte = schritte;
 	}
 
@@ -15,12 +15,11 @@ public class VorwaertsRegel extends Regel {
 		Bewegung bewegung = zug.getBewegung();
 		Feld start = bewegung.getStart();
 		
-		/* TODO: Ist das bei allen Regeln so? -> Auslagern */
 		if (start.getFigur().getSpieler() != zug.getSpieler()) {
 			return false;
 		}
 		
-		if (start.getWeg(bewegung.getZiel()).size() != schritte) {
+		if (start.getWegRueckwaerts(bewegung.getZiel()).size() != schritte) {
 			return false;
 		}
 		

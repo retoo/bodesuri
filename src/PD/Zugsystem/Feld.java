@@ -22,6 +22,17 @@ public abstract class Feld {
 		return weg;
 	}
 	
+	public Vector<Feld> getWegRueckwaerts(Feld ziel) {
+		Vector<Feld> weg = new Vector<Feld>();
+		Feld feld = this;
+		while (feld != ziel) {
+			weg.add(feld);
+			feld = feld.getVorheriges();
+		}
+		weg.add(feld);
+		return weg;
+	}
+	
 	/*
 	 * TODO: Implementieren. Auch für LagerFeld, etc.
 	 */
