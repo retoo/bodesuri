@@ -10,6 +10,7 @@ import PD.Spielerverwaltung.Spieler;
 import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
+import spielplatz.hilfsklassen.SpielStart;
 
 public class Server {
 	private Briefkasten briefkasten;
@@ -21,17 +22,17 @@ public class Server {
 	}
 
 	private void run() throws RemoteException, NotBoundException {
-		Nachricht n;
+		Nachricht nachricht;
 
 		Vector<Spieler> spieler = new Vector<Spieler>();
 
 		/* Spielstart */
-		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
+		while ( ( nachricht = briefkasten.getNächsteNachricht()) != null) {
 			/* Ah ein Nachbar stelllt sich vor, nehmen wir den 
 			 * in unser Adressbuch rein 
 			 */
-			if (n instanceof Registrierung) {
-				Registrierung reg = (Registrierung) n;
+			if (nachricht instanceof Registrierung) {
+				Registrierung reg = (Registrierung) nachricht;
 				EndPunkt client = briefkasten.schlageNach(reg.name);
 				
 				Spieler neuerSpieler = new Spieler(client, reg.name);
@@ -42,10 +43,8 @@ public class Server {
 					s.endpunkt.sende(new ChatNachricht("Neuer Spieler " + neuerSpieler));
 				}		
 			} else {
-				throw new RuntimeException("Unbekannte Nachricht " + n);
+				throw new RuntimeException("Unbekannte Nachricht " + nachricht);
 			}
-			
-
 			
 			if (spieler.size() == 2) {
 				break;
@@ -56,7 +55,22 @@ public class Server {
 		
 		for (Spieler s : spieler) {
 			System.out.println(" - " + s);
-			
+		}
+		
+		for (Spieler s : spieler) {
+			s.endpunkt.sende(new SpielStart());
+		}
+		
+		while ( ( nachricht = briefkasten.getNächsteNachricht()) != null) {
+			if (nachricht instanceof ChatNachricht) {
+				System.out.println("Chat: " + nachricht);
+				
+				for (Spieler s : spieler) {
+					s.endpunkt.sende(nachricht);
+				}
+			} else {
+				throw new RuntimeException("Unbekannte Nachricht " + nachricht);
+			}
 		}
 
 		System.out.println("out of scope");
