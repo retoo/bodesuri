@@ -21,8 +21,9 @@ public class Server {
 	private void run() throws RemoteException, NotBoundException {
 		Nachricht n;
 
-		Vector<EndPunkt> clients = new Vector<EndPunkt>();
+		Vector<EndPunkt> spieler = new Vector<EndPunkt>();
 
+		/* Spielstart */
 		while ( ( n = briefkasten.getNächsteNachricht()) != null) {
 			/* Ah ein Nachbar stelllt sich vor, nehmen wir den 
 			 * in unser Adressbuch rein 
@@ -30,16 +31,26 @@ public class Server {
 			if (n instanceof Registrierung) {
 				Registrierung reg = (Registrierung) n;
 				EndPunkt client = briefkasten.schlageNach(reg.name);
-
-				client.sende(new ChatNachricht("Hallo kleiner " + client));
-				clients.add(client);
+				
+				spieler.add(client);
 			} else {
-				System.out.println("Server: " + n);
-
-				for (EndPunkt client : clients) {
-					client.sende(n);
-				}				
+				throw new RuntimeException("Unbekannte Nachricht " + n);
 			}
+			
+			for (EndPunkt s : spieler) {
+				s.sende(new ChatNachricht("Neuer Spieler" + s));
+			}
+			
+			if (spieler.size() == 2) {
+				break;
+			}
+		}
+		
+		System.out.println("Spiel komplett, Spieler sind: ");
+		
+		for (EndPunkt s : spieler) {
+			System.out.println(" - " + s);
+			
 		}
 
 		System.out.println("out of scope");
