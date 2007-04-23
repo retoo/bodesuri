@@ -6,7 +6,7 @@ import PD.Zugsystem.Figur;
 import PD.Zugsystem.WegFeld;
 import junit.framework.TestCase;
 
-public class ProblemDomainTest extends TestCase {
+public abstract class ProblemDomainTest extends TestCase {
 	protected Brett brett;
 	protected Spieler spieler;
 	protected Figur figur;
