@@ -43,7 +43,7 @@
 
 </target>
 <!-- tests -->
-  <target name="test" depends="compile-test">
+  <target name="test" depends="compile-test,clean-test-results">
     <junit>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
@@ -68,6 +68,11 @@
   </target>
   <target name="clean-jar">
     <delete file="${lib-dir}/bodesuri.jar"/>
+  </target>
+  <target name="clean-test-results" depends="init">
+    <delete verbose="${TALK}">
+      <fileset dir="${res-dir}" includes="**/*.xml"/>
+    </delete>
   </target>
   <target name="clean-compile-test">
     <delete verbose="${TALK}">
