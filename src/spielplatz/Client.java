@@ -13,7 +13,7 @@ import spielplatz.hilfsklassen.Registrierung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Client {
-	private EndPunkt server;
+	private Briefkasten server;
 	private Empfaenger briefkasten;
 
 	private Client(String name) throws RemoteException, NotBoundException, AlreadyBoundException {

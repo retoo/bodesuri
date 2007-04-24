@@ -34,7 +34,7 @@ public class Server {
 			 */
 			if (nachricht instanceof Registrierung) {
 				Registrierung reg = (Registrierung) nachricht;
-				EndPunkt client = briefkasten.schlageNach(reg.name);
+				Briefkasten client = briefkasten.schlageNach(reg.name);
 				
 				Spieler neuerSpieler = new Spieler(client, reg.name);
 				

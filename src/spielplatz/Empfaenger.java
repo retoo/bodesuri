@@ -13,36 +13,40 @@ import java.util.concurrent.LinkedBlockingQueue;
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
 
-public class Empfaenger  extends UnicastRemoteObject implements EndPunkt {
-	private static final long serialVersionUID = 1L;
+public class Empfaenger {
 	String registry_host = "localhost";
+	
 	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
+	
 	public String name;
 
 	public Empfaenger(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException, MalformedURLException {
 		this.name = name;
 
-		/* Registry anlegen falls notwendig */
-		if (createRegistry) {
-			/* Registry anlegen */
+		Briefkasten bk = new BriefKastenImpl(nachrichten);
+		
+		if (createRegistry) 
 			LocateRegistry.createRegistry(1099);
-		} 
-		//UnicastRemoteObject.exportObject((EndPunkt) this);
-		Naming.rebind( "rmi://" + registry_host + "/" + name, this);
+		
+		UnicastRemoteObject.exportObject(bk, 0);
+		
+		String url = "rmi://" + registry_host + "/" + name;
+		System.out.println("url: " + url);
+	
+		Naming.rebind(url, bk);
 
 	}
 
 	/* liefert den stub zu einem gewissen namen */
-	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
+	public Briefkasten schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
 		Remote x =  Naming.lookup("rmi://" + registry_host + "/" + name );
 		System.out.println("X ist " + x.getClass().toString());
 		
-		return (EndPunkt) x;
-		
+		return (Briefkasten) x;
 	}
 
 	/* Meldet dem übergebenen peer den eigenen Namen */
-	public void registriereBei(EndPunkt endpunkt) throws RemoteException {		
+	public void registriereBei(Briefkasten endpunkt) throws RemoteException {		
 		endpunkt.sende(new Registrierung(name));
 	}
 
