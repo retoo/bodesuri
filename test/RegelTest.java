@@ -1,9 +1,9 @@
-import PD.Deck.Vier;
-import PD.Regelsystem.Regel;
-import PD.Regelsystem.RueckwaertsRegel;
-import PD.Regelsystem.VorwaertsRegel;
-import PD.Zugsystem.Bewegung;
-import PD.Zugsystem.Zug;
+import PD.deck.Vier;
+import PD.regelsystem.Regel;
+import PD.regelsystem.RueckwaertsRegel;
+import PD.regelsystem.VorwaertsRegel;
+import PD.zugsystem.Bewegung;
+import PD.zugsystem.Zug;
 
 public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() {
