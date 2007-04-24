@@ -1,6 +1,7 @@
 import java.util.Vector;
 
-import PD.zugsystem.Feld;
+import pd.zugsystem.Feld;
+
 
 public class FeldTest extends ProblemDomainTestCase {
 	public void testNaechstesVorheriges() {

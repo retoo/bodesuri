@@ -1,9 +1,9 @@
-import PD.spielerverwaltung.Spieler;
-import PD.zugsystem.BankFeld;
-import PD.zugsystem.Brett;
-import PD.zugsystem.Feld;
-import PD.zugsystem.Figur;
-import PD.zugsystem.WegFeld;
+import pd.spielerverwaltung.Spieler;
+import pd.zugsystem.BankFeld;
+import pd.zugsystem.Brett;
+import pd.zugsystem.Feld;
+import pd.zugsystem.Figur;
+import pd.zugsystem.WegFeld;
 import junit.framework.TestCase;
 
 public abstract class ProblemDomainTestCase extends TestCase {
