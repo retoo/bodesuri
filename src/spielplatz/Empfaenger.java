@@ -1,46 +1,48 @@
 package spielplatz;
 
+import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import spielplatz.hilfsklassen.Nachricht;
 import spielplatz.hilfsklassen.Registrierung;
 
-public class Briefkasten implements EndPunkt {
-	/* a Synced queue is kinda stupid here as .. wieso schreib ich das überhaupt 
-	 * auf english... ach.. schaut doch selber nach :) 
-	 */
+public class Empfaenger  extends UnicastRemoteObject implements EndPunkt {
+	private static final long serialVersionUID = 1L;
+	String registry_host = "localhost";
 	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
-	private Registry telefonbuch;
 	public String name;
 
-	public Briefkasten(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException {
+	public Empfaenger(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException, MalformedURLException {
 		this.name = name;
 
 		/* Registry anlegen falls notwendig */
 		if (createRegistry) {
 			/* Registry anlegen */
-			telefonbuch = LocateRegistry.createRegistry(1099);
-		} else {
-			telefonbuch = LocateRegistry.getRegistry("localhost");
-		}
+			LocateRegistry.createRegistry(1099);
+		} 
+		//UnicastRemoteObject.exportObject((EndPunkt) this);
+		Naming.rebind( "rmi://" + registry_host + "/" + name, this);
 
-		/* stub erstellen und der registry mitteilen */
-		telefonbuch.bind(name, UnicastRemoteObject.exportObject(this, 0));
 	}
 
 	/* liefert den stub zu einem gewissen namen */
-	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException {
-		return (EndPunkt) telefonbuch.lookup(name);
+	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
+		Remote x =  Naming.lookup("rmi://" + registry_host + "/" + name );
+		System.out.println("X ist " + x.getClass().toString());
+		
+		return (EndPunkt) x;
+		
 	}
 
 	/* Meldet dem übergebenen peer den eigenen Namen */
-	public void registriereBei(EndPunkt endpunkt) throws RemoteException {
+	public void registriereBei(EndPunkt endpunkt) throws RemoteException {		
 		endpunkt.sende(new Registrierung(name));
 	}
 

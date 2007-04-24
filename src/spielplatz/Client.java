@@ -14,7 +14,7 @@ import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Client {
 	private EndPunkt server;
-	private Briefkasten briefkasten;
+	private Empfaenger briefkasten;
 
 	private Client(String name) throws RemoteException, NotBoundException, AlreadyBoundException {
 	}
@@ -25,7 +25,7 @@ public class Client {
 		System.out.print("Spielername: ");
 		String spielerName = in.readLine();
 		
-		briefkasten = new Briefkasten(spielerName, false);
+		briefkasten = new Empfaenger(spielerName, false);
 		
 		/* handler des servers */
 		server = briefkasten.schlageNach("server");

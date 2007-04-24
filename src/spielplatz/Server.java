@@ -1,5 +1,6 @@
 package spielplatz;
 
+import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -13,15 +14,15 @@ import spielplatz.hilfsklassen.Registrierung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Server {
-	private Briefkasten briefkasten;
+	private Empfaenger briefkasten;
 
 
-	public Server() throws RemoteException, AlreadyBoundException {
+	public Server() throws RemoteException, AlreadyBoundException, MalformedURLException {
 		/* briefkasten für eingehende Nachrichten */
-		briefkasten = new Briefkasten("server", true);
+		briefkasten = new Empfaenger("server", true);
 	}
 
-	private void run() throws RemoteException, NotBoundException {
+	private void run() throws RemoteException, NotBoundException, MalformedURLException {
 		Nachricht nachricht;
 
 		Vector<Spieler> spieler = new Vector<Spieler>();
@@ -76,7 +77,7 @@ public class Server {
 		System.out.println("out of scope");
 	}
 
-	public static void main(String args[]) throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException  {
+	public static void main(String args[]) throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException, MalformedURLException  {
 		Server server = new Server();
 		server.run();
 	}
