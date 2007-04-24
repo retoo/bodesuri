@@ -50,15 +50,7 @@ public class Empfaenger {
 		endpunkt.sende(new Registrierung(name));
 	}
 
-	public void sende(Nachricht n)  {
-		System.out.println("Übertrage Nachricht " + n);
-		try {
-			nachrichten.put(n);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-			System.exit(99);
-		}			
-	}
+
 
 	protected Nachricht getNächsteNachricht() {
 		return getNächsteNachricht(true);

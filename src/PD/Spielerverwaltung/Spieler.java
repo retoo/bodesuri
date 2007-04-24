@@ -1,16 +1,16 @@
 package PD.Spielerverwaltung;
 
-import spielplatz.EndPunkt;
+import spielplatz.Briefkasten;
 
 public class Spieler {
 	private String name;
-	public EndPunkt endpunkt;
+	public Briefkasten endpunkt;
 	
 	public Spieler(String name) {
 		this.name = name;
 	}
 
-	public Spieler(EndPunkt client, String name) {
+	public Spieler(Briefkasten client, String name) {
 		this(name);
 		this.endpunkt = client;
 		
