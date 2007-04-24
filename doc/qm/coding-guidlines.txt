@@ -1,0 +1,51 @@
+STILL WORK ING PROGRES
+
+Source:
+ - Öffnende Klammer auf gleicher oder neuer Zeile
+ - Eclipse Profil von Robin
+   ROBIN: anlegen des Eclipse Projektes
+ - 4 leerzeichen groses Tab
+ - Whitepaces für Formatierungen.
+   | <tab><tab>if_(__foo == "bar"
+   | <tab><tab>___||_bar == "bar ) "
+              _ = whitespaces
+ - Header in allen Sourcefiles (GPL wird später hinzugefügt)
+/* Copyright (c) 2007 Danilo Couto, Philippe Eberli,
+ *                    Pascal Hobus, Reto Schüttel, Robin Stocker
+ */
+
+
+Dokumentation:
+ D Sprache von Klassen, Variablen, Methoden
+ D Sprache von Kommentare
+ D Sprache von Commitmessages
+ | Wichtiges:
+ |  * Wichtige Neuerung
+ |    - Unterpunkt
+ |  - Wenier wichtige Neuerung
+
+
+
+
+Verzeichnis Layout:
+build.xml
+doc
+  analyse
+  projekt (Projektplan.xls, Protokoll, Zeiterfassung
+    protokoll
+    zeiterfassung
+src (.java)
+test (Testcases)
+tmp
+  tex (Temporaere Dateien von Tex)
+  bin (.class)
+  lib (.jar)
+
+
+Packages:
+ - app
+ - lib
+ - model
+ - view
+ - ggf noch weitere
+
