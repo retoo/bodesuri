@@ -1,106 +1,73 @@
-\documentclass[a4paper,12pt,halfparskip,DIV14]{scrreprt}
+\documentclass[a4paper,12pt,halfparskip,DIV14]{scrartcl}
 
-\usepackage{ngerman}
-\usepackage[utf8]{inputenc}
-\usepackage[pdftex]{graphicx}
-\usepackage{booktabs}
-
-% Schrift
-\usepackage[sc]{mathpazo}
-\usepackage[T1]{fontenc}
-\linespread{1.05}
-\setkomafont{sectioning}{\rmfamily \bfseries}
-
-% Referenzen
-\usepackage[pdftex]{hyperref}
-\usepackage{color}
-\definecolor{darkblue}{rgb}{0,0,.5}
-\hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
-
-% Kopf- und Fusszeile
-\usepackage[automark,headsepline]{scrpage2}
-\pagestyle{scrheadings}
-\renewcommand*{\chapterpagestyle}{scrheadings}
-\clearscrheadfoot
-\chead{\normalfont\sffamily \headmark}
-\cfoot{\pagemark}
-
+\newcommand{\dokumenttitel}{Analyse}
+\usepackage{../bodesuri}
 
 \begin{document}
 
-\title{Bodesuri \\ (Dog-Spiel)}
-\subject{SE2-Projekt}
-\author{Danilo~Couto, Philippe~Eberli, \\ Pascal~Hobus, Reto~Schüttel, Robin~Stocker}
-\maketitle
-
-\pagenumbering{roman}
-
-\tableofcontents
-\thispagestyle{plain}
-\newpage
-
-\pagenumbering{arabic}
+\input{../titelseite}
 
 
-\chapter{Use Cases}\label{cha:use_cases} % (fold)
-\section{Personas}\label{sec:personas} % (fold)
-\subsection{Hans Müller}\label{sub:hans_müller} % (fold)
+\section{Use Cases}
+
+\subsection{Personas}\label{sec:personas} % (fold)
+\subsubsection{Hans Müller}\label{sub:hans_müller} % (fold)
 Hans Müller, 28, Familienvater. Er ist gelernter Kaufmann und arbeitet als Sachbearbeiter bei einer Bank. Er nutzt den PC regelmäsig im Geschäft (Office, SAP und bankeigene Software). Surft privat ab und zu mal im Netz, um dort Informationen einzuholen. Kennt sich aber sonst eher wenig mit PCs aus. 
 
-Er spielt seit mehreren Jahren angefressen Dog. Zu Spitzenzeiten bis zu 3 Mal pro Woche. Er möchte Bodesuri nutzen, damit er einfacher auf die schneller mit seinen Kollegen zocken kann. 
+Er spielt seit mehreren Jahren angefressen Dog. Zu Spitzenzeiten bis zu 3 Mal pro Woche. Er möchte Bodesuri nutzen, damit er einfacher auf die Schnelle mit seinen Kollegen zocken kann. 
 % subsection hans_müller (end)
 
-\subsection{Maria Lehner}\label{sub:maria_lehner} % (fold)
-Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vorallem um mit ihren Kollegen per MSN zu Chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich von Umwelt/Natur, da sie sich dafür interessiert. 
+\subsubsection{Maria Lehner}\label{sub:maria_lehner} % (fold)
+Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vor allem um mit ihren Kollegen per MSN zu Chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich Umwelt/Natur, da sie sich dafür interessiert. 
 
 Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause zu einem Turnier eingeladen hat. Sie hat verloren und möchte nun etwas üben.
 % subsection maria_lehner (end)
 % section personas (end)
 
-\section{Benutzergruppen}\label{sec:benutzergruppen} % (fold)
+\subsection{Benutzergruppen}\label{sec:benutzergruppen} % (fold)
 \begin{itemize}
 	\item Benutzer
 \end{itemize}
 % section benutzergruppen (end)
 
-\section{Aktoren}\label{sec:aktoren} % (fold)
+\subsection{Aktoren}\label{sec:aktoren} % (fold)
 \begin{itemize}
 	\item Benutzer
 \end{itemize}
 % section aktoren (end)
 
-\section{Use Cases (Brief)}\label{sec:use_cases_brief_} % (fold)
-\subsection{UC01: Spiel erstellen}\label{sub:uc01_spiel_erstellen} % (fold)
-Spieler, welcher als Host agieren möchte, startet die Serverapplikation. System bestätigt erfolgreiche Erstellung.
+\subsection{Use Cases (Brief)}\label{sec:use_cases_brief_} % (fold)
+\subsubsection{UC01: Spiel erstellen}\label{sub:uc01_spiel_erstellen} % (fold)
+Spieler, welcher als Server agieren möchte, startet die Serverapplikation. System bestätigt erfolgreiche Erstellung.
 % subsection uc01_spiel_erstellen (end)
 
-\subsection{UC02: Spiel beitreten}\label{sub:uc02_spiel_beitreten} % (fold)
-Spieler gibt einen Host an. System stellte eine Verbindung her und tritt dem Spiel bei. System zeigt bereits beigetretene Spieler an und wartet bis vier Spieler dem Spiel beigetreten sind. Sind vier Spieler beigetreten wird das Spiel begonnen.
+\subsubsection{UC02: Spiel beitreten}\label{sub:uc02_spiel_beitreten} % (fold)
+Spieler gibt einen Server an. System stellte eine Verbindung her und tritt dem Spiel bei. System zeigt bereits beigetretene Spieler an und wartet bis vier Spieler dem Spiel beigetreten sind. Sind vier Spieler beigetreten wird das Spiel begonnen.
 % subsection uc02_spiel_beitreten (end)
 
-\subsection{UC03: Spiel Spielen}\label{sub:uc03_spiel_spielen} % (fold)
+\subsubsection{UC03: Spiel spielen}\label{sub:uc03_spiel_spielen} % (fold)
 Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
 % subsection uc03_spiel_spielen (end)
 % section use_cases_brief_ (end)
 % chapter use_cases (end)
 
-\chapter{Klassenspezifikation}\label{cha:klassenspezifikation} % (fold)
+\section{Klassenspezifikation}\label{cha:klassenspezifikation} % (fold)
 
 % chapter klassenspezifikation (end)
 
-\chapter{Nicht-Funktionale Anforderungen}\label{cha:nicht_funktionale_anforderungen} % (fold)
+\section{Nichtfunktionale Anforderungen}\label{cha:nichtfunktionale_anforderungen} % (fold)
 
 % chapter nicht_funktionale_anforderungen (end)
 
-\chapter{Domainmodell}\label{cha:domainmodell} % (fold)
+\section{Domainmodell}\label{cha:domainmodell} % (fold)
 
 % chapter domainmodell (end)
 
-\chapter{Systemsequenzdiagramme}\label{cha:systemsequenzdiagramme} % (fold)
+\section{Systemsequenzdiagramme}\label{cha:systemsequenzdiagramme} % (fold)
 
 % chapter systemsequenzdiagramme (end)
 
-\chapter{Contracts}\label{cha:contracts} % (fold)
+\section{Contracts}\label{cha:contracts} % (fold)
 
 % chapter contracts (end)
 
