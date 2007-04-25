@@ -1,5 +1,9 @@
 package pd.zugsystem;
 
-public class BankFeld extends SpielerFeld {
+import pd.spielerverwaltung.Spieler;
 
+public class BankFeld extends SpielerFeld {
+	public BankFeld(Spieler spieler) {
+		super(spieler);
+	}
 }

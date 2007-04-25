@@ -1,38 +1,32 @@
+import junit.framework.TestCase;
 import pd.spielerverwaltung.Spieler;
 import pd.zugsystem.BankFeld;
-import pd.zugsystem.Brett;
 import pd.zugsystem.Feld;
-import pd.zugsystem.Figur;
-import pd.zugsystem.WegFeld;
-import junit.framework.TestCase;
+import pd.zugsystem.Spiel;
 
 public abstract class ProblemDomainTestCase extends TestCase {
-	protected Brett brett;
+	protected Spiel spiel;
 	protected Spieler spieler;
-	protected Figur figur;
 	protected BankFeld bankFeld;
 	protected Feld zielFeld;
 	
 	protected void setUp() throws Exception {
-		brett = new Brett();
-		spieler = new Spieler("Frodo");
+		spiel = new Spiel();
 		
-		figur = new Figur(spieler);
-		
-		bankFeld = new BankFeld();
-		bankFeld.setSpieler(spieler);
-		bankFeld.setFigur(figur);
-		
-		Feld feld1 = bankFeld;
-		Feld feld2;
-		
-		for (int i = 0; i < 3; ++i) {
-			feld2 = new WegFeld();
-			feld2.setVorheriges(feld1);
-			feld1.setNaechstes(feld2);
-			feld1 = feld2;
+		for (int i = 0; i < 4; ++i) {
+			spiel.fuegeHinzu(new Spieler("Spieler" + i));
 		}
-		zielFeld = feld1;
+		spieler = spiel.getSpieler().get(0);
+		
+		spiel.brettAufstellen();
+		
+		bankFeld = spiel.getBrett().getBankFeldVon(spieler);
+		bankFeld.setFigur(spieler.getFiguren().get(0));
+		
+		zielFeld = bankFeld;
+		for (int i = 0; i < 3; ++i) {
+			zielFeld = zielFeld.getNaechstes();
+		}
 	}
 
 }

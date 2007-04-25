@@ -9,11 +9,12 @@ public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() {
 		Regel vierVorwaerts = new VorwaertsRegel(4);
 		
-		Zug zug = new Zug(spieler, new Vier(), new Bewegung(bankFeld, zielFeld));
+		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
+		Zug zug = new Zug(spieler, new Vier(), bewegung4);
 		assertTrue(vierVorwaerts.validiere(zug));
 		
-		Zug zugFalsch = new Zug(spieler, new Vier(),
-		                        new Bewegung(bankFeld, zielFeld.getVorheriges()));
+		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
+		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
 		assertFalse(vierVorwaerts.validiere(zugFalsch));
 	}
 
@@ -22,12 +23,13 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		zielFeld.setFigur(bankFeld.getFigur());
 		bankFeld.setFigur(null);
-		Zug zug = new Zug(spieler, new Vier(),
-		                  new Bewegung(zielFeld, bankFeld));
+		
+		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
+		Zug zug = new Zug(spieler, new Vier(), bewegung4);
 		assertTrue(vierRueckwaerts.validiere(zug));
 		
-		Zug zugFalsch = new Zug(spieler, new Vier(),
-		                        new Bewegung(zielFeld, bankFeld.getVorheriges()));
+		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
+		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
 		assertFalse(vierRueckwaerts.validiere(zugFalsch));
 	}
 }
