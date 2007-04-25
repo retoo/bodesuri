@@ -2,50 +2,178 @@
 
 \newcommand{\dokumenttitel}{Analyse}
 \usepackage{../bodesuri}
+\usepackage{multicol}
+
 
 \begin{document}
 
 \input{../titelseite}
 
-\section{Allgemeine Beschreibung}\label{sec:allgemeine_beschreibung} % (fold)
-\subsection{Benutzergruppen}\label{sec:benutzergruppen} % (fold)
+\section{Use Cases und Funktionale Anforderungen} 
+\subsection{Use Case Diagramm}\label{sub:use_case_diagramm} 
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=0.8 
+	\textwidth]{UseCaseDiagramm.png} \caption{Use Case Diagramm}\label{fig:UseCaseDiagramm.png} 
+\end{figure}
+
+\subsection{Aktoren}\label{sec:aktoren} 
 \begin{itemize}
-	\item \textbf{Hoster}: Startet den Server auf den sich die Spieler verbinden. (Ist immer auch ein Spieler)
-	\item \textbf{Spieler}: Spielt das Spiel.
+	\item \textbf{Spieler}: Spielt das Spiel. 
 \end{itemize}
-% section benutzergruppen (end)
-% section allgemeine_beschreibung (end)
 
-\section{Use Cases}
+\subsection{Personas}\label{sec:personas} 
 
-\subsection{Personas}\label{sec:personas} % (fold)
-\subsubsection{Hans Müller}\label{sub:hans_müller} % (fold)
+\subsubsection{Hans Müller}\label{sub:hans_müller} 
+
 Hans Müller, 28, Familienvater. Er ist gelernter Kaufmann und arbeitet als Sachbearbeiter bei einer Bank. Er nutzt den PC regelmäsig im Geschäft (Office, SAP und bankeigene Software). Surft privat ab und zu mal im Netz, um dort Informationen einzuholen. Kennt sich aber sonst eher wenig mit PCs aus. 
 
 Er spielt seit mehreren Jahren angefressen Dog. Zu Spitzenzeiten bis zu 3 Mal pro Woche. Er möchte Bodesuri nutzen, damit er einfacher auf die Schnelle mit seinen Kollegen zocken kann. 
-% subsection hans_müller (end)
 
-\subsubsection{Maria Lehner}\label{sub:maria_lehner} % (fold)
+\subsubsection{Maria Lehner}\label{sub:maria_lehner} 
+
 Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vor allem um mit ihren Kollegen per MSN zu Chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich Umwelt/Natur, da sie sich dafür interessiert. 
 
 Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause zu einem Turnier eingeladen hat. Sie hat verloren und möchte nun etwas üben.
-% subsection maria_lehner (end)
-% section personas (end)
 
-\subsection{Use Cases (Brief)}\label{sec:use_cases_brief_} % (fold)
-\subsubsection{UC01: Spiel erstellen}\label{sub:uc01_spiel_erstellen} % (fold)
-Spieler, welcher als Server agieren möchte, startet die Serverapplikation. System bestätigt erfolgreiche Erstellung.
-% subsection uc01_spiel_erstellen (end)
+\subsection{Beschreibung der Use Cases}\label{sub:use_cases}
+\subsubsection{UC01: Spiel erstellen}\label{ssub:uc01_spiel_erstellen}
+Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 
-\subsubsection{UC02: Spiel beitreten}\label{sub:uc02_spiel_beitreten} % (fold)
-Spieler gibt einen Server an. System stellte eine Verbindung her und tritt dem Spiel bei. System zeigt bereits beigetretene Spieler an und wartet bis vier Spieler dem Spiel beigetreten sind. Sind vier Spieler beigetreten wird das Spiel begonnen.
-% subsection uc02_spiel_beitreten (end)
+\begin{tabular}{@{} l l @{}}
+	Aktor:       								&	Spieler \\
+	Vorbedingungen:							& Keine \\
+	Nachbedingungen:						& Keine \\
+	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
+\end{tabular}
+\begin{multicols}{2}
+\raggedcolumns
+\paragraph{Actor Action}
+\begin{enumerate}
+	\item[1] Spieler startet den Server
+\end{enumerate}
+\columnbreak
+\paragraph{System Response}
+\begin{enumerate}
+	\item[2] System startet den Server
+	\item[3] System bestätigt korrektes Funktionieren des Servers
+\end{enumerate}
+\end{multicols}
+\paragraph{Alternative Abläufe}
+\begin{enumerate}
+	\item[2a] Start des Servers schlägt fehl.
+	\begin{enumerate}
+		\item System benachrichtigt den Benutzer.
+		\item Benutzer behebt den Fehler.
+		\item Use Case beginnt von vorne.
+	\end{enumerate}
+\end{enumerate}
 
-\subsubsection{UC03: Spiel spielen}\label{sub:uc03_spiel_spielen} % (fold)
+\subsubsection{UC02: Spiel beitreten}\label{ssub:uc02_spiel_beitreten}
+Der Spieler gibt einen Server an, zu welchem das System  eine Verbindung herstellt. Sobald vier Spieler dem Spiel beigetreten sind wird das Spiel begonnen.
+
+\begin{tabular}{@{} l l @{}}
+	Aktor:       								&	Spieler \\
+	Vorbedingungen:							& Ein laufender Server \\
+	Nachbedingungen:						& Keine \\
+	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
+\end{tabular}
+\begin{multicols}{2}
+\raggedcolumns
+\paragraph{Actor Action}
+\begin{enumerate}
+	\item[1] Spieler gibt Verbindungsdaten zu einem bestimmten Server ein.
+\end{enumerate}
+\columnbreak
+\paragraph{System Response}
+\begin{enumerate}
+	\item[2] System verbindet sich mit dem Server
+	\item[3] System bestätigt Erfolgreiche Verbindung und wartet bis der Server meldet das er voll ist.
+	\item[4] System erhält Nachricht dass der Server voll ist und beginnt das Spiel.
+\end{enumerate}
+\end{multicols}
+\paragraph{Alternative Abläufe}
+\begin{enumerate}
+	\item[*a] Benutzer bricht Verbindung ab.\newline
+	Das System benachrichtigt den Server.
+	\item[2a] Verbinung zum Server schlägt fehl.
+	\begin{enumerate}
+		\item System benachrichtigt den Benutzer.
+		\item Benutzer überprüft seine Einstellungen
+		\item Use Case beginnt von vorne.
+	\end{enumerate}
+	\item[2b] Der Server ist bereits voll.\newline
+	Der Benutzer sucht einen anderen oder startet seinen eigenen Server.
+\end{enumerate}
+
+\subsubsection{UC03: Spiel spielen}\label{ssub:uc03_spiel_erstellen}
 Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
-% subsection uc03_spiel_spielen (end)
-% section use_cases_brief_ (end)
-% chapter use_cases (end)
+
+\begin{tabular}{@{} l l @{}}
+	Aktor:       											&	Spieler \\
+	Vorbedingungen:										& Ein Server mit vier angemeldeten Spielern \\
+	Nachbedingungen:									& Der Server ist korrekt beendet \\
+	Häufigkeit des Auftretens:				& sehr oft \\
+\end{tabular}
+\newpage
+\begin{multicols}{2}
+\raggedcolumns
+\paragraph{Actor Action}
+\begin{enumerate}
+	\item[]
+	\item[]
+	\item[3] Spieler wählt Karte aus die er mit dem Partner tauschen will
+	\item[]
+	\item[]
+	\item[]
+	\item[7] Spieler wählt Karte die er spielen will aus und erfasst den Zug den er damit machen will.
+\end{enumerate}
+\emph{Schritte 6-10 werden wiederholt bis kein Spieler mehr Karten hat.\newline
+Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
+\columnbreak
+\paragraph{System Response}
+\begin{enumerate}
+	\item[1] System initialisiert Spielbrett
+	\item[2] System erhält Spielkarten vom Server
+	\item[4] System übermittlet getauschte Karte an den Server.
+	\item[5] System erhält getauschte Karte vom Server.
+	\item[6] System wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
+	\item[8] System validiert den Zug und übermittelt ihn an der Server.
+  \item[9] Server bestätigt den Zug.
+  \item[10] System visualisiert den Zug.
+\end{enumerate}
+\end{multicols}
+\paragraph{Alternative Abläufe}
+\begin{enumerate}
+	\item[*a] Benutzer verlässt das Spiel.
+	\begin{enumerate}
+		\item Das System benachrichtigt den Server, welcher alle anderen Spieler benachrichtigt.
+		\item Das Spiel wird beendet.
+	\end{enumerate}
+	\item[7a] Benutzer kann keine Karte spielen.\newline
+	Das System benachrichtigt den Server, dass der Spieler diese Runde nicht mehr spielen kann.
+	\begin{enumerate}
+		\item System benachrichtigt den Benutzer.
+		\item Benutzer überprüft seine Einstellungen
+		\item Use Case beginnt von vorne.
+	\end{enumerate}
+	\item[8a] Der gemachte Zug ist unültig.
+	\begin{enumerate}
+		\item System benachrichtigt den Benutzer.
+		\item Benutzer macht einen anderen Zug.
+		\item Validierung beginnt von vorne.
+	\end{enumerate}
+	\item[10a] Der Spieler hat gewonnen.
+	\begin{enumerate}
+		\item Der Partner hat auch schon gewonnen.\newline
+		Das System zeigt an welche Gruppe gewonnen hat.
+		\item Der Partner hat noch nicht gewonnen.
+		\begin{enumerate}
+			\item System benachrichtigt den Server.
+			\item System schaltet die Figuren des Partners frei.
+		\end{enumerate}
+	\end{enumerate}
+\end{enumerate}
 
 \section{Nichtfunktionale Anforderungen}\label{cha:nichtfunktionale_anforderungen} % (fold)
 
