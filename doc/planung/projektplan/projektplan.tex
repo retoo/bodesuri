@@ -1,48 +1,11 @@
-\documentclass[a4paper,12pt,halfparskip,DIV14]{scrreprt}
+\documentclass[a4paper,12pt,halfparskip,DIV14]{scrartcl}
 
-\usepackage{ngerman}
-\usepackage[utf8]{inputenc}
-\usepackage[pdftex]{graphicx}
-\usepackage{booktabs}
-
-% Schrift
-\usepackage[sc]{mathpazo}
-\usepackage[T1]{fontenc}
-\linespread{1.05}
-\setkomafont{sectioning}{\rmfamily \bfseries}
-
-% Referenzen
-\usepackage[pdftex]{hyperref}
-\usepackage{color}
-\definecolor{darkblue}{rgb}{0,0,.5}
-\hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
-
-% Kopf- und Fusszeile
-\usepackage[automark,headsepline]{scrpage2}
-\pagestyle{scrheadings}
-\renewcommand*{\chapterpagestyle}{scrheadings}
-\clearscrheadfoot
-\chead{\normalfont\sffamily \headmark}
-\cfoot{\pagemark}
-
+\newcommand{\dokumenttitel}{Projektplan}
+\usepackage{../../bodesuri}
 
 \begin{document}
 
-\title{Bodesuri \\ (Dog-Spiel)}
-\subject{SE2-Projekt}
-\author{Danilo~Couto, Philippe~Eberli, \\ Pascal~Hobus, Reto~Schüttel, Robin~Stocker}
-\maketitle
-
-\pagenumbering{roman}
-
-\tableofcontents
-\thispagestyle{plain}
-\newpage
-
-\pagenumbering{arabic}
-
-
-\chapter{Projektplan}
+\include{../../titelseite}
 
 
 \section{Einführung}

@@ -1,0 +1,26 @@
+\ProvidesPackage{bodesuri}
+
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{booktabs}
+
+% Schrift
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+\linespread{1.05}
+\setkomafont{sectioning}{\rmfamily \bfseries}
+
+% Referenzen
+\usepackage[pdftex]{hyperref}
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
+
+% Kopf- und Fusszeile
+\usepackage[headsepline]{scrpage2}
+\pagestyle{scrheadings}
+% \renewcommand*{\chapterpagestyle}{scrheadings}
+\clearscrheadfoot
+\chead{\normalfont\sffamily \headmark}
+\cfoot{\pagemark}
