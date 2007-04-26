@@ -5,8 +5,7 @@
 
 \begin{document}
 
-\include{../../titelseite}
-
+\input{../../titelseite}
 
 \section{Einführung}
 
@@ -109,15 +108,61 @@ Für wichtige Mitteilungen wird eine Mailingliste eingerichtet. Protokolle, Trak
 
 \subsubsection{Releases}
 
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}llll@{}}
 \toprule
-Release   & Datum       & Beschreibung \\
+Release   & Datum       & Beschreibung\\
 \midrule
-Prototyp  & 15.5.2007   & "<Proof of concept"> (nicht spielbar) \\
-Alpha     & 29.5.2007   & Rudimentär spielbare Version \\
-Beta      & 12.6.2007   & Mindestens Features der Priorität 1 \\
+Prototyp  & 1.5.2007    & "<Proof of concept"> (alle Features der Priorität 1)\\
+Alpha     & 29.5.2007   & Rudimentär spielbare Version t\\
+Beta      & 12.6.2007   & "<Feature complete"> (alle Features der Priorität 2)\\
 Final     & 26.6.2007   & Finale Version \\
 \bottomrule
+\end{tabular}
+
+\begin{tabular}{ll}
+\toprule
+Release 	&  Enthaltene Arbeitspakete \\
+\midrule
+Prototyp	&	Programmgerüst \\
+					& Karten \\
+					& Zugtyp Simpler Zug \\
+					& Zugtyp Rückwärtszug \\
+ 					& Feldtyp Normal \\
+					& Zugsystem \\
+					& Spielzustand-Synchronisation \\
+					& CLI (Text Ausgabe auf Konsole) \\
+					& Externes Design erstellen / umsetzen\\
+					& Zugerfassung (Simpler Zug) \\
+					& Zugerfassung (Rückwärtszug) \\
+					& Zusammenführen Client \\
+					& Zusammenführen Regelsystem / GUI \\
+					& Kartenstapel \\
+					& Zusammenführen Server\\
+\midrule
+Alpha			& Zugtyp Startzug (Ass, König) \\
+					& Zugtyp Aufteilbarer Zug (7) \\
+					& Feldtyp Lager \\
+					& Feldtyp Himmel \\
+					& Feldtyp Bänkli \\
+					& Rundensystem \\
+					& Karten \\
+					& Spielbrett grafisches Design \\
+					& Spielbrett Einbindung (Koordinaten, etc.) \\
+					& Zugvisualisierung \\
+					& Zugerfassung (Startzug) \\
+					& Zugerfassung (Aufteilbarer Zug) \\
+\midrule
+Beta			& Umwandlung Joker in beliebige Karte \\
+					& Zugtyp Tausch (Bauer) \\
+					& Steuerung der Figuren des Partners \\
+					& Austausch von Karten \\
+					& Zugerfassung (Tausch) \\
+					& Einstiegsview (Lobby) \\
+					& Joker verwenden\\
+\midrule
+Final			& \emph{Keine Arbeitspakete (Zeit um Bugs zu beheben.)}\\
+\bottomrule
+
 \end{tabular}
 
 \section{Risiko-Management}
@@ -144,141 +189,7 @@ Probleme mit Technologien (z. B. Java 2D \&  Netzwerk) & Verzögerungen durch Ei
 
 \section{Arbeitspakete}
 
-\subsection{Anfangsphase}
-
-\begin{tabular}{@{} l l @{}}
-\toprule
-Arbeitspaket & Verantwortlich \\
-\midrule
-\textbf{Projekt-Managment} & \\
-Projektantrag & Team \\
-Projektplan inkl. Zeitplan erstellen & Team \\
-Review / Korrektur Projektplan & Robin \\
-Arbeitspakete definieren / planen & Team \\
-Glossar & Team \\
-Coding Standards & Reto \\
-\midrule
-\textbf{Requirements} &  \\
-Use-Case Diagramm & Pascal \\
-Personas, Benutzergruppen, Aktoren identifizieren & Philippe \\
-Use-Cases in Brief-Format beschreiben & Philippe, Danilo \\
-Wichtigste Use-Cases fully-dressed & Reto, Robin \\
-Funktionale Anforderungen & Pascal \\
-Q-Merkmalse sicherstellen & Pascal \\
-Restliche Use-Cases fully-dressed & Philippe \\
-\midrule
-\textbf{Analyse} &  \\
-Domain Model & Team \\
-SSD für die wichtigsten UCs & Pascal \\
-Review / Korrektur Anforderungen & Danilo, Robin \\
-\bottomrule
-\end{tabular}
-
-\subsection{Iterativ bearbeitete Arbeitspakete}
-
-\begin{tabular}{@{} l l l @{}}
-\toprule
-(Prio) Arbeitspaket & Verantw. & Beschreibung \\
-\midrule
-\textbf{Prototyp} &  & \\
-(1) Programmgerüst & Pascal & Klassen- und Pakethierarchie erstellen \\
-(1) Einfaches Regelsystem & Robin & 1 Spielkarte mit Regeln implementieren \\
-(1) Einfache Kommunikation & Reto & Nachrichtenaustausch Client und Server \\
-(1) CLI (Textausgabe auf Konsole) & Danilo & Textausgabe der Züge \\
-\midrule
-\textbf{Regelsystem} & Robin & \\
-(1) Karten &  & Abbildung der Spielkarten \\
-(2) Umwandlung Joker in Karte &  & Spezialfall Joker implementieren \\
-(1) Zugtyp Simpler Zug &  & Spielfigur vorwärts bewegen \\
-(1) Zugtyp Rückwärtszug (4) &  & Spielfigur rückwärts bewegen \\
-(1) Zugtyp Startzug (Ass, König) &  & Spielfigur von Lager auf Bänkli stellen \\
-(2) Zugtyp Aufteilbarer Zug (7) &  & Zug auf mehrere Figuren aufgeteilt \\
-(2) Zugtyp Tausch (Bauer) &  & Tausch zweier Figuren \\
-(1) Feldtyp Normal &  & \\
-(1) Feldtyp Lager &  & Heimatfelder der Figuren \\
-(2) Feldtyp Himmel &  & Endfelder der Figuren \\
-(2) Feldtyp Bänkli &  & Startfeld jedes Spielers \\
-\midrule
-\textbf{Spielzustand} & Philippe & \\
-(1) Zugsystem &  & 1 Zug eines Spielers (Karte \& Ziehen) \\
-(1) Rundensystem &  & Runde von Zügen \\
-(2) Figursteuerung des Partners &  & Figursteuerung in Endphase $\rightarrow$ Anleitung \\
-\midrule
-\textbf{Kommunikation (Spielzustand)} & Reto & \\
-(1) Spielzustands-Synchronisation &  & Synchronisierung der Phasen und Züge \\
-(2) Austausch von Karten &  & Kartentausch zwischen zwei Spielern \\
-(3) Störungsbehandlung &  & Netzwerkprobleme (vor allem Timeouts) \\
-\midrule
-\textbf{GUI} & Danilo & \\
-(1) Externes Design erstellen/umsetzen &  & \\
-(1) Karten &  & Darstellung und Auswahl der Karten \\
-(1) Spielbrett Design &  & Bild des Spielbretts \\
-(1) Spielbrett einbinden (Koordinaten) &  & Spielbrett mit Feld-Koordinaten \\
-(1) Zugvisualisierung &  & Verschiebung der Figur \\
-(1) Zugerfassung (Normaler Zug) &  & Auswählen der Figur und des Zielfelds \\
-(1) Zugerfassung (Tausch) &  & Auswählen der zu tauschenden Figuren \\
-(1) Zugerfassung (Mehrfachzug) &  & Über mehrere Figuren verteilbarer Zug \\
-(2) Einstiegsview (Lobby) &  & Server-Verbindung und Spielstart \\
-(2) Joker verwenden &  & Joker als bestimmten Kartentyp spielen \\
-(3) Einstellungen &  & Parametrisieren des Clients \\
-(3) Sound / Vertonung &  & Geräuschliche Untermalung der Züge \\
-\bottomrule
-\end{tabular}
-
-\begin{tabular}{@{} l l l @{}}
-\toprule
-(Prio) Arbeitspaket & Verantw. & Beschreibung \\
-\midrule
-\textbf{Client} & Pascal & \\
-(1) Zusammenführen Client &  & Vereinigen der einzelnen Teile \\
-(1) Zusammenführen Regeln/GUI &  & Zusammenspiel zw. Regelsystem \& GUI \\
-(3) Starten des Servers aus Client &  & UI zum Starten des Servers \\
-(3) Chatclient &  & Chatfenster für GUI \\
-\midrule
-\textbf{Server} & Reto & \\
-(1) Kartenstapel &  & Realistische Verteilung des Kartenstapels \\
-(1) Zusammenführen Server &  & Vereinigen der einzelnen Teile \\
-(3) Protokollieren des Spiels &  & Log der Spielzüge \\
-(3) Zusätzliche Regelvalidation &  & Mogeln unterbinden durch Regelwerk \\
-(3) Verfolgung verteilter Karten &  & Mogeln unterbinden durch Kartenlog \\
-(3) Chatserver &  & \\
-\midrule
-\textbf{Test} & & \\
-Unit Tests - Regelsystem & Robin & \\
-Unit Tests - Spielablauf & & \\
-Benutzerfreundlichkeit testen & Team & Spielen mit Drittpersonen \\
-\midrule
-\textbf{Dokumentation} & Philippe & \\
-Entwicklerdokumentation & Team & Architektur und Designentscheidungen \\
-Spielanleitung/Benutzerhandbuch & Philippe & Bebilderte Anleitung erstellen \\
-Layout & Robin, Danilo & Logo etc. \\
-Webseite erstellen & & \\
-Präsentation & Team & \\
-\bottomrule
-\end{tabular}
-
-\subsection{Wiederkehrende Aufgaben}
-
-\begin{tabular}{@{} l l l @{}}
-\toprule
-Arbeitspaket & Verantwortlich \\
-\midrule
-\textbf{Studium Technologien} &  & \\
-Java 2D & Danilo & \\
-Netzwerkprogrammierung (Client / Server) & Reto & \\
-Regelsysteme (Spielregeln) & Robin & \\
-\midrule
-\textbf{Sitzungen} &  & \\
-Beratungen mit Betreuer & Team & \\
-Teamsitzungen & Team & \\
-\midrule
-\textbf{Qualitätssicherung} &  & \\
-Code Reviews & Team & \\
-Continuous Integration & Reto & \\
-Subversion (SVN) / Bug Tracking & Reto & \\
-\bottomrule
-\end{tabular}
-
+Siehe separates Dokument \texttt{Projektplan.xls} und \url{http://bodesuri.speedpc.ch/dotproject/}
 
 \section{Infrastruktur}
 
