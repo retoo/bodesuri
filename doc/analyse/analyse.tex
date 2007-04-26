@@ -67,18 +67,18 @@ Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Benutzer behebt den Fehler.
-		\item Use Case beginnt von vorne.
+		\item Use Case wird wiederholt.
 	\end{enumerate}
 \end{enumerate}
 
 \subsubsection{UC02: Spiel beitreten}\label{ssub:uc02_spiel_beitreten}
-Der Spieler gibt einen Server an, zu welchem das System  eine Verbindung erstellt. Sobald vier Spieler dem Spiel beigetreten sind wird das Spiel begonnen.
+Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erstellt. Sobald vier Spieler dem Spiel beigetreten sind wird das Spiel begonnen.
 
 \begin{tabular}{@{} l l @{}}
-	Aktor:       								&	Spieler \\
+	Aktor:											&	Spieler \\
 	Vorbedingungen:							& Ein laufender Server \\
-	Nachbedingungen:						& Keine \\
-	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
+	Nachbedingungen:						& Spieler beigetreten \\
+	Häufigkeit des Auftretens:	& Einmal pro Spiel und Spieler \\
 \end{tabular}
 
 \vspace{0.5cm}
@@ -93,21 +93,21 @@ Der Spieler gibt einen Server an, zu welchem das System  eine Verbindung erstell
 \paragraph{System Response}
 \begin{enumerate}
 	\item[2] System verbindet sich mit dem Server
-	\item[3] System bestätigt Erfolgreiche Verbindung und wartet bis der Server meldet das er voll ist.
-	\item[4] System erhält Nachricht dass der Server voll ist und beginnt das Spiel.
+	\item[3] System bestätigt erfolgreiche Verbindung und wartet bis der Server meldet, dass das Spiel vollständig ist.
+	\item[4] System erhält vom Server die Meldung, dass das Spiel beginnt.
 \end{enumerate}
 \end{multicols}
 \paragraph{Alternative Abläufe}
 \begin{enumerate}
 	\item[*a] Benutzer bricht Verbindung ab.\newline
 	Das System benachrichtigt den Server.
-	\item[2a] Verbinung zum Server schlägt fehl.
+	\item[2a] Verbindung zum Server schlägt fehl.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
-		\item Benutzer überprüft seine Einstellungen
-		\item Use Case beginnt von vorne.
+		\item Benutzer überprüft seine Einstellungen.
+		\item Use Case wird wiederholt.
 	\end{enumerate}
-	\item[2b] Der Server ist bereits voll.\newline
+	\item[2b] Das Spiel hat bereits begonnen.\newline
 	Der Benutzer sucht einen anderen oder startet seinen eigenen Server.
 \end{enumerate}
 
@@ -115,10 +115,10 @@ Der Spieler gibt einen Server an, zu welchem das System  eine Verbindung erstell
 Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
 
 \begin{tabular}{@{} l l @{}}
-	Aktor:       											&	Spieler \\
+	Aktor:														&	Spieler \\
 	Vorbedingungen:										& Ein Server mit vier angemeldeten Spielern \\
 	Nachbedingungen:									& Der Server ist korrekt beendet \\
-	Häufigkeit des Auftretens:				& sehr oft \\
+	Häufigkeit des Auftretens:				& Von einmal pro Woche bis 2--3 Mal pro Jahr \\
 \end{tabular}
 \newpage
 \begin{multicols}{2}
@@ -144,8 +144,8 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 	\item[5] System erhält getauschte Karte vom Server.
 	\item[6] System wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
 	\item[8] System validiert den Zug und übermittelt ihn an der Server.
-  \item[9] Server bestätigt den Zug.
-  \item[10] System visualisiert den Zug.
+	\item[9] Server bestätigt den Zug.
+	\item[10] System visualisiert den Zug.
 \end{enumerate}
 \end{multicols}
 \paragraph{Alternative Abläufe}
@@ -161,11 +161,11 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 		\item Spiel wird beendet.
 	\end{enumerate}	\item[7a] Benutzer kann keine Karte spielen.\newline
 	Das System benachrichtigt den Server, dass der Spieler diese Runde nicht mehr spielen kann.
-	\item[8a] Der gemachte Zug ist unültig.
+	\item[8a] Der angeforderte Zug ist ungültig.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Benutzer macht einen anderen Zug.
-		\item Validierung beginnt von vorne.
+		\item Validierung wird wiederholt.
 	\end{enumerate}
 	\item[10a] Der Spieler hat gewonnen.
 	\begin{enumerate}
@@ -185,10 +185,12 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \subsubsection{Leistungsanforderungen}\label{ssub:leistungsanforderungen} % (fold)
 \begin{itemize}
 	\item Damit ein Spieler im Spielfluss nicht gestört wird, soll ein Spielzug in maximal drei Sekunden über das Netzwerk synchronisiert sein.
+	\item Der Spielstand muss nach jedem Zug bei allen Spielern konsistent sein. Inkonsistenzen bzw. Synchronisationsprobleme sollten sofort zu einem kontrollierten Spielabbruch führen.
 \end{itemize}
 % subsubsection leistungsanforderungen (end)
 \subsubsection{Mengenanforderungen}\label{ssub:mengenanforderungen} % (fold)
 \begin{itemize}
+	\item Ein Server beherbergt immer nur ein Spiel.
 	\item Es müssen genau vier Spieler für ein Spiel vorhanden sein.
 	\item Es werden zwei Gruppen à zwei Spieler gebildet.
 	\item Im Spiel sind zwei Decks als Kartenstapel vorhanden.
