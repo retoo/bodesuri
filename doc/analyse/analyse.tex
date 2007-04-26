@@ -40,10 +40,10 @@ Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause
 Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 
 \begin{tabular}{@{} l l @{}}
-	Aktor:       								&	Spieler \\
-	Vorbedingungen:							& Keine \\
-	Nachbedingungen:						& Keine \\
-	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
+	\textbf{Aktor:}											&	Spieler \\
+	\textbf{Vorbedingungen:}						& Keine \\
+	\textbf{Nachbedingungen:}						& Keine \\
+	\textbf{Häufigkeit des Auftretens:}	& Einmal pro Spiel \\
 \end{tabular}
 
 \vspace{0.5cm}
@@ -75,10 +75,10 @@ Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erstellt. Sobald vier Spieler dem Spiel beigetreten sind wird das Spiel begonnen.
 
 \begin{tabular}{@{} l l @{}}
-	Aktor:											&	Spieler \\
-	Vorbedingungen:							& Ein laufender Server \\
-	Nachbedingungen:						& Spieler beigetreten \\
-	Häufigkeit des Auftretens:	& Einmal pro Spiel und Spieler \\
+	\textbf{Aktor:}											&	Spieler \\
+	\textbf{Vorbedingungen:}						& Ein laufender Server \\
+	\textbf{Nachbedingungen:}						& Spieler beigetreten \\
+	\textbf{Häufigkeit des Auftretens:}	& Einmal pro Spiel und Spieler \\
 \end{tabular}
 
 \vspace{0.5cm}
@@ -115,10 +115,10 @@ Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erst
 Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
 
 \begin{tabular}{@{} l l @{}}
-	Aktor:														&	Spieler \\
-	Vorbedingungen:										& Ein Server mit vier angemeldeten Spielern \\
-	Nachbedingungen:									& Der Server ist korrekt beendet \\
-	Häufigkeit des Auftretens:				& Von einmal pro Woche bis 2--3 Mal pro Jahr \\
+	\textbf{Aktor:}														&	Spieler \\
+	\textbf{Vorbedingungen:}									& Ein Server mit vier angemeldeten Spielern \\
+	\textbf{Nachbedingungen:}									& Der Server ist korrekt beendet \\
+	\textbf{Häufigkeit des Auftretens:}				& Von einmal pro Woche bis 2--3 Mal pro Jahr \\
 \end{tabular}
 \newpage
 \begin{multicols}{2}
@@ -128,7 +128,6 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 	\item[]
 	\item[]
 	\item[3] Spieler wählt Karte aus die er mit dem Partner tauschen will
-	\item[]
 	\item[]
 	\item[]
 	\item[7] Spieler wählt Karte die er spielen will aus und erfasst den Zug den er damit machen will.
@@ -170,7 +169,7 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 	\item[10a] Der Spieler hat gewonnen.
 	\begin{enumerate}
 		\item Der Partner hat auch schon gewonnen.\newline
-		Das System zeigt an welche Gruppe gewonnen hat.
+		Das System zeigt an welche Gruppe gewonnen hat und zeigt eine kleine Rangliste.
 		\item Der Partner hat noch nicht gewonnen.
 		\begin{enumerate}
 			\item System benachrichtigt den Server.
@@ -184,8 +183,8 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \subsection{Leistungs- und Mengenanforderungen}\label{sub:leistungs_und_mengenanforderungen} % (fold)
 \subsubsection{Leistungsanforderungen}\label{ssub:leistungsanforderungen} % (fold)
 \begin{itemize}
-	\item Damit ein Spieler im Spielfluss nicht gestört wird, soll ein Spielzug in maximal drei Sekunden über das Netzwerk synchronisiert sein.
-	\item Der Spielstand muss nach jedem Zug bei allen Spielern konsistent sein. Inkonsistenzen bzw. Synchronisationsprobleme sollten sofort zu einem kontrollierten Spielabbruch führen.
+	\item Damit der Spielfluss nicht gestört wird, soll ein Spielzug in maximal drei Sekunden über das Netzwerk synchronisiert sein.
+	\item Der Spielstand muss nach jedem Zug bei allen Spielern konsistent sein. Inkonsistenzen bzw. Synchronisationsprobleme sollten sofort zu einem kontrollierten Spielabbruch führen.\footnote{Das Client/Server-Modell sieht nur in zwei Fällen solche Fehler vor: Bei Verbindungsproblemen und bei Fehlern in der Applikation selber. In beiden Situationen ist eine automatische Fehlerkorrektur nicht vorgesehen.}
 \end{itemize}
 % subsubsection leistungsanforderungen (end)
 \subsubsection{Mengenanforderungen}\label{ssub:mengenanforderungen} % (fold)
@@ -193,19 +192,16 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 	\item Ein Server beherbergt immer nur ein Spiel.
 	\item Es müssen genau vier Spieler für ein Spiel vorhanden sein.
 	\item Es werden zwei Gruppen à zwei Spieler gebildet.
-	\item Im Spiel sind zwei Decks als Kartenstapel vorhanden.
-	\item Ein Deck besteht aus 52 Karten.
+	\item Der Kartenstapel besteht aus zwei Decks à 52 Karten.
 \end{itemize}
 % subsubsection mengenanforderungen (end)
 
 \subsubsection{Anforderungen an Schnittstellen}\label{ssub:anforderungen_an_schnittstellen} % (fold)
 \paragraph{Benutzerschnittstelle}\label{ssub:benutzerschnittstelle} % (fold)
 \begin{itemize}
-	\item GUI basierend auf Java 2D.
-	\item Das GUI soll so weit wie möglich nur mit der Maus bedienbar sein. Ausnahmen sind zu treffende Eingaben wie z. B. die IP-Adresse für den Verbindungsaufbau zum Server, der Spielername etc.
-	\item Am Ende eines Spiels soll eine einfache Statistik und eine Rangliste angezeigt werden.
-	\item Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
-	\item Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
+	\item Das GUI soll so weit wie möglich nur mit der Maus bedienbar sein.
+	\item (FIXME: ist das hier und so wirklich sinnvoll?) Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
+	\item (FIXME: ist das hier und so wirklich sinnvoll?) Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
 \end{itemize}
 % paragraph benutzerschnittstelle (end)
 \paragraph{Hardware-Schnittstelle}\label{ssub:hardware_schnittstelle} % (fold)
@@ -213,10 +209,10 @@ Das Spiel wird in Java entwickelt und ist plattformunabhängig. Es wird keine we
 % paragraph hardware_schnittstelle (end)
 \paragraph{Software-Schnittstelle}\label{ssub:software_schnittstelle} % (fold)
 \begin{itemize}
-	\item Java Virtual Machine
-	\item Java 1.5 SDK
+	\item Java 5
+	\item Swing
 	\item Java 2D
-	\item Java RMI (Remote Method Invocation)
+	\item Java RMI
 \end{itemize}
 % paragraph software_schnittstelle (end)
 \paragraph{Datenhaltung}\label{ssub:datenhaltung} % (fold)
@@ -224,10 +220,9 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 % paragraph datenhaltung (end)
 \paragraph{Kommunikationsschnittstelle}\label{ssub:kommunikationsschnittstelle} % (fold)
 \begin{itemize}
-	\item Als Framework wird RMI (Remote Method Invocation) verwendet.
-	\item Für eine Spiel-Session wird ein Server benötigt.
-	\item Jeder teilnehmende Spieler (vier insgesamt) ist ein Client.
-	\item Als Netzwerkprotokoll wird TCP/IP verwendet (gegeben durch RMI).
+	\item Als Kommunikations-Framework wird RMI verwendet.
+	\item Für ein Spiel ist ein Server unabdingbar.
+	\item Jeder teilnehmende Spieler stellt einen Client dar.
 \end{itemize}
 % paragraph kommunikationsschnittstelle (end)
 % subsubsection anforderungen_an_schnittstellen (end)
@@ -239,7 +234,7 @@ Als Code-Richtlinien werden weitgehend die "<Sun Coding Guidelines"> übernommen
 
 \paragraph{Einschränkungen bezüglich Software}\label{ssub:einschränkungen_bzgl_software} % (fold)
 \begin{itemize}
-	\item Java 1.5
+	\item Java 5
 	\item Betriebssysteme
 	\begin{itemize}
 		\item Mac OS X
@@ -247,9 +242,13 @@ Als Code-Richtlinien werden weitgehend die "<Sun Coding Guidelines"> übernommen
 		\item GNU/Linux
 	\end{itemize}
 \end{itemize}
+
 % paragraph einschränkungen_bzgl_software (end)
+
 \paragraph{Einschränkungen bezüglich Hardware}\label{ssub:einschränkungen_bzgl_hardware} % (fold)
+
 Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
+
 % paragraph einschränkungen_bzgl_hardware (end)
 % subsubsection randbedingungen_für_den_entwurf (end)
 % subsection anforderungen_im_einzelnen (end)
@@ -259,13 +258,14 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 \begin{itemize}
 	\item Kommunikation zwischen Client und Server ist nicht verschlüsselt.
 	\item Die Einhaltung der Spielregeln und der Datenkonsistenz wird sowohl im Client als auch im Server für jede Aktion geprüft.
-	\item Das Spiel macht sich implizit die eingebauten Sicherheitsmechanismen von Java (Typsicherheit) und RMI (bewährte Netzwerkkommunikation) zu Nutzen.
+	\item WEG Das Spiel macht sich implizit die eingebauten Sicherheitsmechanismen von Java (Typsicherheit) und RMI (bewährte Netzwerkkommunikation) zu Nutzen.
 \end{itemize}
 % paragraph sicherheit (end)
 
 \paragraph{Wartbarkeit}\label{ssub:wartbarkeit} % (fold)
+
 \begin{itemize}
-	\item Ein Chat-System soll einfach integrierbar sein.
+	\item FRAGE(haben wir chat nicht bereits drin?) Ein Chat-System soll mit ungefähr drei Personentagen Aufwand integrierbar sein.
 	\item Erweiterbarkeit für die Integration in einen Master-Server der im Internet eine Plattform bietet, um einfach einem Spiel beizutreten.
 \end{itemize}
 % paragraph wartbarkeit (end)
@@ -274,14 +274,15 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 \subsubsection{Andere Anforderungen}\label{ssub:andere_anforderungen} % (fold)
 \paragraph{Inbetriebnahme/Installation}\label{ssub:inbetriebnahme_installation} % (fold)
 \begin{itemize}
-	\item Es wird keine Installationsanleitung benötigt. Das Spiel wird als Jar kopiert, das direkt ausgeführt werden kann.
-	\item Infos zu schwierigen Schritten (z.B. Konfiguration) sollen im Programm selbst gegeben werden.
+	\item Es ist keine Installation oder Konfiguration notwendig.
+	\item Die grafische Oberfläche sollte intuitive bedient werden können. (FIXME, sollten wir da kein 'sollte' schreiben). 
 \end{itemize}
 % paragraph inbetriebnahme_installation (end)
 \paragraph{Konfigurierbarkeit}\label{ssub:konfigurierbarkeit} % (fold)
 \begin{itemize}
-	\item Am Anfang eines Spiels soll ein Spieler seinen Namen/Spitznamen eingeben können.
-	\item Um einem Spiel beitreten zu können soll ein Spieler lediglich die IP-Adresse oder den Hostnamen des Servers angeben müssen.
+	\item Ausser der Angabe des Spielernamens und des Servers müssen keine Konfigurationen gemacht werden. (FIXME: wollen wir die folgenden beiden Anforderungen nicht durch diesen ersetzen?)
+	\item WEG Am Anfang eines Spiels soll ein Spieler seinen Namen/Spitznamen angeben können.
+	\item WEG Um einem Spiel beitreten zu können soll ein Spieler lediglich die IP-Adresse oder den Hostnamen des Servers angeben müssen.
 \end{itemize}
 % paragraph konfigurierbarkeit (end)
 % subsubsection andere_anforderungen (end)
