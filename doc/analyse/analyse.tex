@@ -45,6 +45,9 @@ Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 	Nachbedingungen:						& Keine \\
 	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
 \end{tabular}
+
+\vspace{0.5cm}
+
 \begin{multicols}{2}
 \raggedcolumns
 \paragraph{Actor Action}
@@ -77,6 +80,9 @@ Der Spieler gibt einen Server an, zu welchem das System  eine Verbindung herstel
 	Nachbedingungen:						& Keine \\
 	Häufigkeit des Auftretens:	& Einmal pro Spiel \\
 \end{tabular}
+
+\vspace{0.5cm}
+
 \begin{multicols}{2}
 \raggedcolumns
 \paragraph{Actor Action}
@@ -193,15 +199,15 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \subsubsection{Anforderungen an Schnittstellen}\label{ssub:anforderungen_an_schnittstellen} % (fold)
 \paragraph{Benutzerschnittstelle}\label{ssub:benutzerschnittstelle} % (fold)
 \begin{itemize}
-	\item Java2D basiertes GUI.
-	\item Das GUI soll so weit als möglich nur mit der Maus bedienbar sein. Ausnahmen sind zu treffende Eingaben wie z.B. die IP-Adresse für den Verbindungsaufbau zum Server, der Spielername etc.
+	\item GUI basierend auf Java 2D.
+	\item Das GUI soll so weit wie möglich nur mit der Maus bedienbar sein. Ausnahmen sind zu treffende Eingaben wie z. B. die IP-Adresse für den Verbindungsaufbau zum Server, der Spielername etc.
 	\item Am Ende eines Spiels soll eine einfache Statistik und eine Rangliste angezeigt werden.
 	\item Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
-	\item Die Karten und der Kartenstapel werden im GUI viuell dargestellt.
+	\item Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
 \end{itemize}
 % paragraph benutzerschnittstelle (end)
 \paragraph{Hardware-Schnittstelle}\label{ssub:hardware_schnittstelle} % (fold)
-Das Spiel wird in Java entwickelt und ist Plattform unabhängig. Es wird keine weitere Hardware benötigt.
+Das Spiel wird in Java entwickelt und ist plattformunabhängig. Es wird keine weitere Hardware benötigt.
 % paragraph hardware_schnittstelle (end)
 \paragraph{Software-Schnittstelle}\label{ssub:software_schnittstelle} % (fold)
 \begin{itemize}
@@ -216,31 +222,31 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 % paragraph datenhaltung (end)
 \paragraph{Kommunikationsschnittstelle}\label{ssub:kommunikationsschnittstelle} % (fold)
 \begin{itemize}
-	\item Als Kommunikations-Framework wird RMI (Remote Method Invocation) verwendet.
+	\item Als Framework wird RMI (Remote Method Invocation) verwendet.
 	\item Für eine Spiel-Session wird ein Server benötigt.
 	\item Jeder teilnehmende Spieler (vier insgesamt) ist ein Client.
 	\item Als Netzwerkprotokoll wird TCP/IP verwendet (gegeben durch RMI).
-	\item Verbindungen via Firewall und Proxies werden nicht möglich sein.
 \end{itemize}
 % paragraph kommunikationsschnittstelle (end)
 % subsubsection anforderungen_an_schnittstellen (end)
 
 \subsection{Anforderungen im Einzelnen}\label{sub:anforderungen_im_einzelnen} % (fold)
 \subsubsection{Randbedingungen für den Entwurf}\label{ssub:randbedingungen_für_den_entwurf} % (fold)
-\begin{itemize}
-	\item Als Coding-Standard werden weitgehend die Sun Coding Guidelines übernommen (siehe separates Dokument).
-\end{itemize}
-\paragraph{Einschränkungen bzgl. Software}\label{ssub:einschränkungen_bzgl_software} % (fold)
+
+Als Code-Richtlinien werden weitgehend die "<Sun Coding Guidelines"> übernommen (siehe separates Dokument).
+
+\paragraph{Einschränkungen bezüglich Software}\label{ssub:einschränkungen_bzgl_software} % (fold)
 \begin{itemize}
 	\item Java 1.5
 	\item Betriebssysteme
 	\begin{itemize}
+		\item Mac OS X
 		\item Windows XP
-		\item 	Mac OS X (ab 10.4, Tiger)
+		\item GNU/Linux
 	\end{itemize}
 \end{itemize}
 % paragraph einschränkungen_bzgl_software (end)
-\paragraph{Einschränkungen bzgl. Hardware}\label{ssub:einschränkungen_bzgl_hardware} % (fold)
+\paragraph{Einschränkungen bezüglich Hardware}\label{ssub:einschränkungen_bzgl_hardware} % (fold)
 Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 % paragraph einschränkungen_bzgl_hardware (end)
 % subsubsection randbedingungen_für_den_entwurf (end)
@@ -248,47 +254,54 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 
 \subsubsection{Merkmale}\label{ssub:merkmale} % (fold)
 \paragraph{Sicherheit}\label{ssub:sicherheit} % (fold)
-Es werden keine speziellen Sicherheitsvorkehrungen im Spiel getroffen. Das Spiel macht sich aber implizit die eingebauten Sicherheitsmechanismen von Java, Java2D und RMI zu Nutzen.
+\begin{itemize}
+	\item Kommunikation zwischen Client und Server ist nicht verschlüsselt.
+	\item Die Einhaltung der Spielregeln und der Datenkonsistenz wird sowohl im Client als auch im Server für jede Aktion geprüft.
+	\item Das Spiel macht sich implizit die eingebauten Sicherheitsmechanismen von Java (Typsicherheit) und RMI (bewährte Netzwerkkommunikation) zu Nutzen.
+\end{itemize}
 % paragraph sicherheit (end)
+
 \paragraph{Wartbarkeit}\label{ssub:wartbarkeit} % (fold)
 \begin{itemize}
-	\item Ein Chat System soll einfach integrierbar sein.
-	\item Erweiterbarkeit für die Integration in einen  Master-Server der im Internet eine Plattform bietet, um einfach einem Spiel beizutreten.
+	\item Ein Chat-System soll einfach integrierbar sein.
+	\item Erweiterbarkeit für die Integration in einen Master-Server der im Internet eine Plattform bietet, um einfach einem Spiel beizutreten.
 \end{itemize}
 % paragraph wartbarkeit (end)
 % subsubsection merkmale (end)
 
 \subsubsection{Andere Anforderungen}\label{ssub:andere_anforderungen} % (fold)
-\paragraph{Inbetriebnahme / Installation}\label{ssub:inbetriebnahme_installation} % (fold)
+\paragraph{Inbetriebnahme/Installation}\label{ssub:inbetriebnahme_installation} % (fold)
 \begin{itemize}
-	\item Die Installation soll automatisiert sein und keine Installationsanleitung benötigen.
-	\item Infos zu schwierigen Schritten (z.B. Konfiguration) sollen im Programm selst gegeben werden.
+	\item Es wird keine Installationsanleitung benötigt. Das Spiel wird als Jar kopiert, das direkt ausgeführt werden kann.
+	\item Infos zu schwierigen Schritten (z.B. Konfiguration) sollen im Programm selbst gegeben werden.
 \end{itemize}
 % paragraph inbetriebnahme_installation (end)
 \paragraph{Konfigurierbarkeit}\label{ssub:konfigurierbarkeit} % (fold)
 \begin{itemize}
-	\item Am Anfang eines Spiels soll ein Spieler seinen Namen / Spitznamen eingeben können.
-	\item Um einem Spiel beitreten zu können soll ein Spieler lediglich die IP-Adresse des Servers angeben müssen.
+	\item Am Anfang eines Spiels soll ein Spieler seinen Namen/Spitznamen eingeben können.
+	\item Um einem Spiel beitreten zu können soll ein Spieler lediglich die IP-Adresse oder den Hostnamen des Servers angeben müssen.
 \end{itemize}
 % paragraph konfigurierbarkeit (end)
 % subsubsection andere_anforderungen (end)
 
-% chapter nicht_funktionale_anforderungen (end)
+\newpage
 
 \section{Domainmodell}\label{cha:domainmodell} % (fold)
-\subsection{Klassenspezifikationen}\label{sub:klassenspezifikationen} % (fold)
+
 \begin{figure}
 	[htp] \centering 
-	\includegraphics[width=1\textwidth]{DomainModel.png} \caption{Domainmodel}\label{fig:DomainModel.png} 
+	\includegraphics[width=1\textwidth]{DomainModel.png} \caption{Domainmodell}\label{fig:DomainModel.png} 
 \end{figure}
 \paragraph{Regel}\label{ssub:regel} % (fold)
-Eine Regel ist (selbst im Domain Model) ein abstraktes Gebilde. Eine Regel kann geweils für Karten, Züge oder Felder gelten, jedoch nicht für mehrere dieser Kategorien gleichzeitig. Dieses spezielle Regelsystem wird im Design verfeinert.
+Eine Regel ist abstrakt. Konkrete Regeln gehören zu einer Karte und werden bei einem Zug überprüft und angewendet. Dieses Regelsystem wird im Design verfeinert.
 % paragraph regel (end)
 \paragraph{Feldtypen}\label{ssub:feldtypen} % (fold)
 Jedem Spieler sind jeweils seine eigenen Instanzen der speziellen Feldtypen Bank, Start und Himmel zugewiesen.
 % paragraph feldtypen (end)
 % subsection klassenspezifikationen (end)
 % chapter domainmodell (end)
+
+\newpage
 
 \section{Systemsequenzdiagramme}\label{cha:systemsequenzdiagramme} % (fold)
 \begin{figure}
