@@ -13,8 +13,7 @@
 \subsection{Use Case Diagramm}\label{sub:use_case_diagramm} 
 \begin{figure}
 	[htp] \centering 
-	\includegraphics[width=0.8 
-	\textwidth]{UseCaseDiagramm.png} \caption{Use Case Diagramm}\label{fig:UseCaseDiagramm.png} 
+	\includegraphics[width=0.8\textwidth]{UseCaseDiagramm.png} \caption{Use Case Diagramm}\label{fig:UseCaseDiagramm.png} 
 \end{figure}
 
 \subsection{Aktoren}\label{sec:aktoren} 
@@ -135,7 +134,7 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \begin{enumerate}
 	\item[1] System initialisiert Spielbrett
 	\item[2] System erhält Spielkarten vom Server
-	\item[4] System übermittlet getauschte Karte an den Server.
+	\item[4] System übermittelt getauschte Karte an den Server.
 	\item[5] System erhält getauschte Karte vom Server.
 	\item[6] System wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
 	\item[8] System validiert den Zug und übermittelt ihn an der Server.
@@ -147,16 +146,15 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \begin{enumerate}
 	\item[*a] Benutzer verlässt das Spiel.
 	\begin{enumerate}
-		\item Das System benachrichtigt den Server, welcher alle anderen Spieler benachrichtigt.
-		\item Das Spiel wird beendet.
+		\item System benachrichtigt den Server, welcher alle anderen Spieler benachrichtigt.
+		\item Spiel wird beendet.
 	\end{enumerate}
-	\item[7a] Benutzer kann keine Karte spielen.\newline
-	Das System benachrichtigt den Server, dass der Spieler diese Runde nicht mehr spielen kann.
+	\item[*b] Server nicht mehr erreichbar.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
-		\item Benutzer überprüft seine Einstellungen
-		\item Use Case beginnt von vorne.
-	\end{enumerate}
+		\item Spiel wird beendet.
+	\end{enumerate}	\item[7a] Benutzer kann keine Karte spielen.\newline
+	Das System benachrichtigt den Server, dass der Spieler diese Runde nicht mehr spielen kann.
 	\item[8a] Der gemachte Zug ist unültig.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
@@ -279,6 +277,10 @@ Es werden keine speziellen Sicherheitsvorkehrungen im Spiel getroffen. Das Spiel
 
 \section{Domainmodell}\label{cha:domainmodell} % (fold)
 \subsection{Klassenspezifikationen}\label{sub:klassenspezifikationen} % (fold)
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=1\textwidth]{DomainModel.png} \caption{Domainmodel}\label{fig:DomainModel.png} 
+\end{figure}
 \paragraph{Regel}\label{ssub:regel} % (fold)
 Eine Regel ist (selbst im Domain Model) ein abstraktes Gebilde. Eine Regel kann geweils für Karten, Züge oder Felder gelten, jedoch nicht für mehrere dieser Kategorien gleichzeitig. Dieses spezielle Regelsystem wird im Design verfeinert.
 % paragraph regel (end)
@@ -289,11 +291,9 @@ Jedem Spieler sind jeweils seine eigenen Instanzen der speziellen Feldtypen Bank
 % chapter domainmodell (end)
 
 \section{Systemsequenzdiagramme}\label{cha:systemsequenzdiagramme} % (fold)
-
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=0.8\textwidth]{SystemSequenzDiagramm.png} \caption{Systemsequenzdiagramm des Spiels}\label{fig:SystemSequenzDiagramm.png} 
+\end{figure}
 % chapter systemsequenzdiagramme (end)
-
-\section{Contracts}\label{cha:contracts} % (fold)
-
-% chapter contracts (end)
-
 \end{document}
