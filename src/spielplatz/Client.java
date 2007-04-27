@@ -15,8 +15,10 @@ import spielplatz.hilfsklassen.SpielStartNachricht;
 public class Client {
 	private EndPunkt server;
 	private Empfaenger briefkasten;
+	private String serverHostname;
 
-	private Client(String name) throws RemoteException, NotBoundException, AlreadyBoundException {
+	private Client(String serverHostname) throws RemoteException, NotBoundException, AlreadyBoundException {
+		this.serverHostname = serverHostname;
 	}
 	
 	private void run() throws RemoteException, IOException, AlreadyBoundException, NotBoundException {
@@ -25,13 +27,18 @@ public class Client {
 		System.out.print("Spielername: ");
 		String spielerName = in.readLine();
 		
-		briefkasten = new Empfaenger(spielerName, false);
+		briefkasten = new Empfaenger(spielerName, false, serverHostname);
 		
+		System.out.println("Hole Server");
 		/* handler des servers */
 		server = briefkasten.schlageNach("server");
+		System.out.println("Hab Server");
 		
-		server.sende(new Registrierung(spielerName));
+		System.out.println("Sende Server..." );
+		System.out.println(server.briefkasten);
+		server.sende(new Registrierung(spielerName, briefkasten.stub));
 		
+		System.out.println("sendung abgeschickt...");
 		Nachricht n;
 		while ((n = briefkasten.getNaechsteNachricht()) != null) {
 			if (n instanceof ChatNachricht) {
@@ -41,6 +48,7 @@ public class Client {
 				break;
 			}
 		}
+		
 		
 		while (true) {
 			System.out.println("Client: Lese Eingabe ein...");

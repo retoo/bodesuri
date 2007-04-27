@@ -7,7 +7,7 @@ import spielplatz.hilfsklassen.Nachricht;
 public class EndPunkt {
 
 	private String name;
-	private Briefkasten briefkasten;
+	Briefkasten briefkasten;
 
 	public EndPunkt(String name, Briefkasten bk) {
 		this.name = name;

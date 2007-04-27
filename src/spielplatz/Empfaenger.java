@@ -12,37 +12,52 @@ import java.util.concurrent.LinkedBlockingQueue;
 import spielplatz.hilfsklassen.Nachricht;
 
 public class Empfaenger {
-	String registry_host = "localhost";
-	
+	public Briefkasten stub;
+	private String registry_host;
 	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
-	
 	public String name;
 
-	public Empfaenger(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException, MalformedURLException {
+
+
+	public Empfaenger(String name, boolean createRegistry, String registry_host) throws RemoteException, AlreadyBoundException, MalformedURLException {
+		//System.setProperty("java.security.policy", "rmi.policy");
 		System.setSecurityManager(new SecurityManager());
 		
 		this.name = name;
+		this.registry_host = registry_host;
 
-		Briefkasten bk = new BriefKastenImpl(nachrichten);
+		stub = new BriefKastenImpl(nachrichten);
 		
 		if (createRegistry) 
 			LocateRegistry.createRegistry(1099);
 		
-		UnicastRemoteObject.exportObject(bk, 0);
+		UnicastRemoteObject.exportObject(stub, 0);
 		
 		String url = "rmi://" + registry_host + "/" + name;
 		System.out.println("url: " + url);
 	
-		Naming.rebind(url, bk);
+		System.out.println("Rebinding start");
+		if (createRegistry)  {
+			Naming.rebind(url, stub);
+		}
+			
+		
+		System.out.println("Rebinding finished");
 
 	}
 
 	/* liefert den stub zu einem gewissen namen */
 	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
-		Briefkasten bk =  (Briefkasten) Naming.lookup("rmi://" + registry_host + "/" + name );
+		String url = "rmi://" + registry_host + "/" + name;
+		System.out.println("url: " + url);
+		Briefkasten bk =  (Briefkasten) Naming.lookup(url );
 		EndPunkt n = new EndPunkt(this.name, bk);
 		
 		return n;
+	}
+
+	public EndPunkt schlageNach(Briefkasten briefkasten) {
+		return new EndPunkt(this.name, briefkasten);
 	}
 
 
@@ -66,4 +81,5 @@ public class Empfaenger {
 
 		return n;
 	}
+
 }

@@ -20,7 +20,7 @@ public class Server {
 
 	public Server() throws RemoteException, AlreadyBoundException, MalformedURLException {
 		/* briefkasten für eingehende Nachrichten */
-		briefkasten = new Empfaenger("server", true);
+		briefkasten = new Empfaenger("server", true, "localhost");
 	}
 
 	private void run() throws RemoteException, NotBoundException, MalformedURLException {
@@ -35,7 +35,7 @@ public class Server {
 			 */
 			if (nachricht instanceof Registrierung) {
 				Registrierung reg = (Registrierung) nachricht;
-				EndPunkt client = briefkasten.schlageNach(reg.name);
+				EndPunkt client = briefkasten.schlageNach(reg.briefkasten);
 				
 				Spieler neuerSpieler = new Spieler(client, reg.name);
 				
