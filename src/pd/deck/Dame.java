@@ -1,9 +1,9 @@
-/**
- * @(#) Dame.java
- */
-
 package pd.deck;
 
-public class Dame extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Dame extends Karte {
+	public Dame() {
+		setRegel(new VorwaertsRegel(12));
+	}
 }

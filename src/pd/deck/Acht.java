@@ -1,9 +1,9 @@
-/**
- * @(#) Acht.java
- */
-
 package pd.deck;
 
-public class Acht extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Acht extends Karte {
+	public Acht() {
+		setRegel(new VorwaertsRegel(8));
+	}
 }

@@ -1,9 +1,9 @@
-/**
- * @(#) Fuenf.java
- */
-
 package pd.deck;
 
-public class Fuenf extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Fuenf extends Karte {
+	public Fuenf() {
+		setRegel(new VorwaertsRegel(5));
+	}
 }

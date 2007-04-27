@@ -1,9 +1,9 @@
-/**
- * @(#) Neun.java
- */
-
 package pd.deck;
 
-public class Neun extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Neun extends Karte {
+	public Neun() {
+		setRegel(new VorwaertsRegel(9));
+	}
 }

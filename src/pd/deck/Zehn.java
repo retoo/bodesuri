@@ -1,9 +1,9 @@
-/**
- * @(#) Zehn.java
- */
-
 package pd.deck;
 
-public class Zehn extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Zehn extends Karte {
+	public Zehn() {
+		setRegel(new VorwaertsRegel(10));
+	}
 }

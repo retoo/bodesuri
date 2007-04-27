@@ -1,9 +1,9 @@
-/**
- * @(#) Drei.java
- */
-
 package pd.deck;
 
-public class Drei extends Karte{
-	
+import pd.regelsystem.VorwaertsRegel;
+
+public class Drei extends Karte {
+	public Drei() {
+		setRegel(new VorwaertsRegel(3));
+	}
 }
