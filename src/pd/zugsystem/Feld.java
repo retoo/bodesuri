@@ -39,6 +39,11 @@ public abstract class Feld {
 	public Vector<Feld> getWeg(HimmelFeld ziel) {
 		return null;
 	}
+	
+	public void versetzeFigurAuf(Feld ziel) {
+		ziel.setFigur(getFigur());
+		setFigur(null);
+	}
 
 	public Feld getNaechstes() {
     	return naechstes;

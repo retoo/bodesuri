@@ -1,13 +1,10 @@
 package pd.deck;
 
-import java.util.Vector;
-
 import pd.regelsystem.Regel;
-
 
 public class Karte {
 	private int wert;
-	protected Vector<Regel> regeln = new Vector<Regel>();
+	private Regel regel;
 
 	public void setWert(int wert) {
 		this.wert = wert;
@@ -25,7 +22,11 @@ public class Karte {
 		return null;
 	}
 
-	public Vector<Regel> getRegeln() {
-    	return regeln;
+	public Regel getRegel() {
+    	return regel;
     }
+	
+	protected void setRegel(Regel regel) {
+		this.regel = regel;
+	}
 }

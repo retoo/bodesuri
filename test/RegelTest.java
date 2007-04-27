@@ -11,11 +11,11 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
 		Zug zug = new Zug(spieler, new Vier(), bewegung4);
-		assertTrue(vierVorwaerts.validiere(zug));
+		assertNotNull(vierVorwaerts.validiere(zug));
 		
 		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
 		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
-		assertFalse(vierVorwaerts.validiere(zugFalsch));
+		assertNull(vierVorwaerts.validiere(zugFalsch));
 	}
 
 	public void testVierRueckwaerts() {
@@ -26,10 +26,10 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
 		Zug zug = new Zug(spieler, new Vier(), bewegung4);
-		assertTrue(vierRueckwaerts.validiere(zug));
+		assertNotNull(vierRueckwaerts.validiere(zug));
 		
 		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
 		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
-		assertFalse(vierRueckwaerts.validiere(zugFalsch));
+		assertNull(vierRueckwaerts.validiere(zugFalsch));
 	}
 }

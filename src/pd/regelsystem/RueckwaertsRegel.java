@@ -11,19 +11,24 @@ public class RueckwaertsRegel extends Regel {
 		this.schritte = schritte;
 	}
 
-	public boolean validiere(Zug zug) {
+	public Regel validiere(Zug zug) {
 		Bewegung bewegung = zug.getBewegung();
 		Feld start = bewegung.getStart();
 		
 		if (start.getFigur().getSpieler() != zug.getSpieler()) {
-			return false;
+			return null;
 		}
 		
 		if (start.getWegRueckwaerts(bewegung.getZiel()).size() != schritte) {
-			return false;
+			return null;
 		}
 		
-		return true;
+		return this;
 	}
 
+	public void ausfuehren(Zug zug) {
+		Feld start = zug.getBewegung().getStart();
+		Feld ziel  = zug.getBewegung().getZiel();
+		start.versetzeFigurAuf(ziel);
+	}
 }
