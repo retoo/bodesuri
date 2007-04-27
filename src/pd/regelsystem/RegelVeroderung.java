@@ -8,7 +8,7 @@ public class RegelVeroderung extends Regel {
 	
 	Vector<Regel> regeln = new Vector<Regel>();
 	
-	public void fuegeRegelHinzu(Regel regel) {
+	public void fuegeHinzu(Regel regel) {
 		regeln.add(regel);
 	}
 
