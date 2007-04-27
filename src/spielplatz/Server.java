@@ -29,13 +29,13 @@ public class Server {
 		Vector<Spieler> spieler = new Vector<Spieler>();
 
 		/* Spielstart */
-		while ( ( nachricht = briefkasten.getNächsteNachricht()) != null) {
+		while ( ( nachricht = briefkasten.getNaechsteNachricht()) != null) {
 			/* Ah ein Nachbar stelllt sich vor, nehmen wir den 
 			 * in unser Adressbuch rein 
 			 */
 			if (nachricht instanceof Registrierung) {
 				Registrierung reg = (Registrierung) nachricht;
-				Briefkasten client = briefkasten.schlageNach(reg.name);
+				EndPunkt client = briefkasten.schlageNach(reg.name);
 				
 				Spieler neuerSpieler = new Spieler(client, reg.name);
 				
@@ -63,11 +63,12 @@ public class Server {
 			s.endpunkt.sende(new SpielStartNachricht());
 		}
 		
-		while ( ( nachricht = briefkasten.getNächsteNachricht()) != null) {
+		while ( ( nachricht = briefkasten.getNaechsteNachricht()) != null) {
 			if (nachricht instanceof ChatNachricht) {
 				System.out.println("Chat: " + nachricht);
 				
 				for (Spieler s : spieler) {
+					System.out.println("Sende Nachricht: (" + nachricht + ") an (" + s + ")");
 					s.endpunkt.sende(nachricht);
 				}
 			} else {

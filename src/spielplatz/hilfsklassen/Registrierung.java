@@ -1,6 +1,6 @@
 package spielplatz.hilfsklassen;
 
-public class Registrierung implements Nachricht {
+public class Registrierung extends Nachricht {
 	private static final long serialVersionUID = -495776719176123894L;
 
 	public String name;

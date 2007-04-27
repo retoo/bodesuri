@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.server.UnicastRemoteObject;
@@ -21,6 +20,8 @@ public class Empfaenger {
 	public String name;
 
 	public Empfaenger(String name, boolean createRegistry) throws RemoteException, AlreadyBoundException, MalformedURLException {
+		System.setSecurityManager(new SecurityManager());
+		
 		this.name = name;
 
 		Briefkasten bk = new BriefKastenImpl(nachrichten);
@@ -38,25 +39,19 @@ public class Empfaenger {
 	}
 
 	/* liefert den stub zu einem gewissen namen */
-	public Briefkasten schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
-		Remote x =  Naming.lookup("rmi://" + registry_host + "/" + name );
-		System.out.println("X ist " + x.getClass().toString());
+	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
+		Briefkasten bk =  (Briefkasten) Naming.lookup("rmi://" + registry_host + "/" + name );
+		EndPunkt n = new EndPunkt(this.name, bk);
 		
-		return (Briefkasten) x;
-	}
-
-	/* Meldet dem übergebenen peer den eigenen Namen */
-	public void registriereBei(Briefkasten endpunkt) throws RemoteException {		
-		endpunkt.sende(new Registrierung(name));
+		return n;
 	}
 
 
-
-	protected Nachricht getNächsteNachricht() {
-		return getNächsteNachricht(true);
+	protected Nachricht getNaechsteNachricht() {
+		return getNaechsteNachricht(true);
 	}
 	
-	protected Nachricht getNächsteNachricht(boolean blocking) {
+	protected Nachricht getNaechsteNachricht(boolean blocking) {
 		Nachricht n = null;
 		try {
 			
@@ -71,9 +66,5 @@ public class Empfaenger {
 		}
 
 		return n;
-	}
-
-	public String toString() {
-		return "Endpunkt: " + name;
 	}
 }

@@ -13,7 +13,7 @@ import spielplatz.hilfsklassen.Registrierung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Client {
-	private Briefkasten server;
+	private EndPunkt server;
 	private Empfaenger briefkasten;
 
 	private Client(String name) throws RemoteException, NotBoundException, AlreadyBoundException {
@@ -33,7 +33,7 @@ public class Client {
 		server.sende(new Registrierung(spielerName));
 		
 		Nachricht n;
-		while ((n = briefkasten.getNächsteNachricht()) != null) {
+		while ((n = briefkasten.getNaechsteNachricht()) != null) {
 			if (n instanceof ChatNachricht) {
 				System.out.println("ChatNachricht: " + n);
 			} else if (n instanceof SpielStartNachricht) {
@@ -43,12 +43,16 @@ public class Client {
 		}
 		
 		while (true) {
+			System.out.println("Client: Lese Eingabe ein...");
 			String eingabe = in.readLine();
+			System.out.println("Client: Eingelesen: (" + eingabe + ")");
 			server.sende(new ChatNachricht(eingabe));
 			
-			while ((n = briefkasten.getNächsteNachricht(true)) != null) {
+			while ((n = briefkasten.getNaechsteNachricht(false)) != null) {
 				if (n instanceof ChatNachricht) {
 					System.out.println(n);
+				} else {
+					throw new RuntimeException("Unbekannte Nachricht");
 				}
 			}
 		}

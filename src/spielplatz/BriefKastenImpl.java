@@ -14,7 +14,6 @@ public class BriefKastenImpl implements Briefkasten {
 	}
 
 	public void sende(Nachricht n) throws RemoteException {
-		System.out.println("Übertrage Nachricht " + n);
 		try {
 			nachrichten.put(n);
 		} catch (InterruptedException e) {

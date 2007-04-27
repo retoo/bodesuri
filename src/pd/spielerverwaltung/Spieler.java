@@ -3,11 +3,11 @@ package pd.spielerverwaltung;
 import java.util.Vector;
 
 import pd.zugsystem.Figur;
-import spielplatz.Briefkasten;
+import spielplatz.EndPunkt;
 
 public class Spieler {
 	private String name;
-	public Briefkasten endpunkt;
+	public EndPunkt endpunkt;
 	
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
@@ -18,7 +18,7 @@ public class Spieler {
 		}
 	}
 
-	public Spieler(Briefkasten client, String name) {
+	public Spieler(EndPunkt client, String name) {
 		this(name);
 		this.endpunkt = client;
 	}

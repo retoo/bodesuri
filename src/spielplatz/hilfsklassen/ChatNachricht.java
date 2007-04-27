@@ -1,6 +1,6 @@
 package spielplatz.hilfsklassen;
 
-public class ChatNachricht implements Nachricht {
+public class ChatNachricht extends Nachricht {
 	private static final long serialVersionUID = 564278019291322550L;
 	
 	String nachricht;
@@ -10,7 +10,7 @@ public class ChatNachricht implements Nachricht {
 	}
 	
 	public String toString() {
-		return nachricht;
+		return super.toString() + " " + nachricht;
 	}
 
 }
