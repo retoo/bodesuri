@@ -9,7 +9,7 @@ import pd.spielerverwaltung.Spieler;
 public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
-	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
+	// private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
 	
 	private Spiel spiel;
 	

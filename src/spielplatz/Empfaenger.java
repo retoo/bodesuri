@@ -10,7 +10,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import spielplatz.hilfsklassen.Nachricht;
-import spielplatz.hilfsklassen.Registrierung;
 
 public class Empfaenger {
 	String registry_host = "localhost";

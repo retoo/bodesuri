@@ -1,28 +1,15 @@
-/**
- * @(#) KartenGeber.java
- */
-
 package pd.deck;
 
-import java.util.Stack;
+public class KartenGeber {
+	// private Stack<KartenFarbe> kartenStapel;
 
-public class KartenGeber{
-	private Stack<KartenFarbe> kartenStapel;
-	
-	public KartenGeber( ){
-		
+	public KartenGeber() {
 	}
-	
-	public void mischen( ){
-		
+
+	public void mischen() {
 	}
-	
-	/**
-	 * @return 
-	 */
-	public Karte getKarte( ){
+
+	public Karte getKarte() {
 		return null;
 	}
-	
-	
 }
