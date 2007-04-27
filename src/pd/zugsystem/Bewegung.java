@@ -4,9 +4,9 @@ public class Bewegung {
 	private Feld start;
 	private Feld ziel;
 	
-	public Bewegung(Feld start, Feld ende) {
+	public Bewegung(Feld start, Feld ziel) {
 		this.start = start;
-		this.ziel  = ende;
+		this.ziel  = ziel;
 	}
 	
 	public Feld getStart() {
