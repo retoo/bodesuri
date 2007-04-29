@@ -24,7 +24,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		bankFeld.setFigur(spieler.getFiguren().get(0));
 		
 		zielFeld = bankFeld;
-		for (int i = 0; i < 3; ++i) {
+		for (int i = 0; i < 4; ++i) {
 			zielFeld = zielFeld.getNaechstes();
 		}
 	}

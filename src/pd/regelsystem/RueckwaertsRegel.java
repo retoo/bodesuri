@@ -19,7 +19,7 @@ public class RueckwaertsRegel extends Regel {
 			return null;
 		}
 		
-		if (start.getWegRueckwaerts(bewegung.getZiel()).size() != schritte) {
+		if (start.getWegRueckwaerts(bewegung.getZiel()).size()-1 != schritte) {
 			return null;
 		}
 		

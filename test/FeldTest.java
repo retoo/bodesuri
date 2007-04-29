@@ -11,8 +11,8 @@ public class FeldTest extends ProblemDomainTestCase {
 	
 	public void testWeg() {
 		Vector<Feld> weg = bankFeld.getWeg(zielFeld);
-		assertEquals(4, weg.size());
+		assertEquals(5, weg.size());
 		assertEquals(bankFeld, weg.get(0));
-		assertEquals(zielFeld, weg.get(3));
+		assertEquals(zielFeld, weg.get(4));
 	}
 }
