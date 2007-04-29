@@ -21,7 +21,6 @@ public class VorwaertsRegel extends Regel {
 		}
 		
 		if (start.getWeg(bewegung.getZiel()).size()-1 != schritte) {
-			System.out.println(start.getWeg(bewegung.getZiel()).size() + " " + schritte);
 			return null;
 		}
 		
