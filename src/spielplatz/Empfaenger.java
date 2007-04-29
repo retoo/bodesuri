@@ -1,85 +1,44 @@
 package spielplatz;
 
-import java.net.MalformedURLException;
-import java.rmi.AlreadyBoundException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.server.UnicastRemoteObject;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
+import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.Nachricht;
 
-public class Empfaenger {
-	public Briefkasten stub;
-	private String registry_host;
-	private LinkedBlockingQueue<Nachricht> nachrichten = new LinkedBlockingQueue<Nachricht>();
-	public String name;
+public class Empfaenger implements Runnable{
+	Briefkasten nachrichtenQueue;
+	private ObjectInputStream inputStream;
+	boolean isGeschlossen = false;
+	private EndPunkt endpunkt;
 
-
-
-	public Empfaenger(String name, boolean createRegistry, String registry_host) throws RemoteException, AlreadyBoundException, MalformedURLException {
-		//System.setProperty("java.security.policy", "rmi.policy");
-		System.setSecurityManager(new SecurityManager());
-		
-		this.name = name;
-		this.registry_host = registry_host;
-
-		stub = new BriefKastenImpl(nachrichten);
-		
-		if (createRegistry) 
-			LocateRegistry.createRegistry(1099);
-		
-		UnicastRemoteObject.exportObject(stub, 0);
-		
-		String url = "rmi://" + registry_host + "/" + name;
-		System.out.println("url: " + url);
-	
-		System.out.println("Rebinding start");
-		if (createRegistry)  {
-			Naming.rebind(url, stub);
-		}
-			
-		
-		System.out.println("Rebinding finished");
-
+	public Empfaenger(EndPunkt endpunkt, Briefkasten briefkasten) throws IOException {
+		inputStream = new ObjectInputStream(endpunkt.socket.getInputStream());
+		this.endpunkt = endpunkt;
+		this.nachrichtenQueue = briefkasten;
 	}
 
-	/* liefert den stub zu einem gewissen namen */
-	public EndPunkt schlageNach(String name) throws RemoteException, NotBoundException, MalformedURLException {
-		String url = "rmi://" + registry_host + "/" + name;
-		System.out.println("url: " + url);
-		Briefkasten bk =  (Briefkasten) Naming.lookup(url );
-		EndPunkt n = new EndPunkt(this.name, bk);
-		
-		return n;
-	}
-
-	public EndPunkt schlageNach(Briefkasten briefkasten) {
-		return new EndPunkt(this.name, briefkasten);
-	}
-
-
-	protected Nachricht getNaechsteNachricht() {
-		return getNaechsteNachricht(true);
-	}
-	
-	protected Nachricht getNaechsteNachricht(boolean blocking) {
-		Nachricht n = null;
+	public void run() {
 		try {
-			
-			if (blocking)
-				n = nachrichten.take();
-			else 
-				n = nachrichten.poll();
-			
-		} catch (InterruptedException e) {
+			Object obj; 
+			while ( ( obj = inputStream.readObject()) != null) {
+				Nachricht nachricht = (Nachricht) obj;
+				Brief brief = new Brief(endpunkt, nachricht);
+				
+				nachrichtenQueue.einwerfen(brief);
+			}			
+		} catch (EOFException eof) {
+			/* TODO: Nicht sicher ob das so gut */
+			isGeschlossen = true;
+			return;
+		} catch (IOException e) {
+			// TODO Sinnvolles Handling bei Fehlern
 			e.printStackTrace();
-			System.exit(99);
+		} catch (ClassNotFoundException e) {
+			// TODO Sinnvolles Handling bei Fehlern
+			e.printStackTrace();
 		}
-
-		return n;
+		
 	}
-
 }

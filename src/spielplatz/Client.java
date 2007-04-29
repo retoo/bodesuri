@@ -3,76 +3,47 @@ package spielplatz;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.rmi.AlreadyBoundException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+import java.net.UnknownHostException;
 
+import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.ChatNachricht;
-import spielplatz.hilfsklassen.Nachricht;
-import spielplatz.hilfsklassen.Registrierung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Client {
-	private EndPunkt server;
-	private Empfaenger briefkasten;
-	private String serverHostname;
-
-	private Client(String serverHostname) throws RemoteException, NotBoundException, AlreadyBoundException {
-		this.serverHostname = serverHostname;
-	}
-	
-	private void run() throws RemoteException, IOException, AlreadyBoundException, NotBoundException {
+	public static void main(String[] args) throws UnknownHostException,
+			IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		
-		System.out.print("Spielername: ");
-		String spielerName = in.readLine();
-		
-		briefkasten = new Empfaenger(spielerName, false, serverHostname);
-		
-		System.out.println("Hole Server");
-		/* handler des servers */
-		server = briefkasten.schlageNach("server");
-		System.out.println("Hab Server");
-		
-		System.out.println("Sende Server..." );
-		System.out.println(server.briefkasten);
-		server.sende(new Registrierung(spielerName, briefkasten.stub));
-		
-		System.out.println("sendung abgeschickt...");
-		Nachricht n;
-		while ((n = briefkasten.getNaechsteNachricht()) != null) {
-			if (n instanceof ChatNachricht) {
-				System.out.println("ChatNachricht: " + n);
-			} else if (n instanceof SpielStartNachricht) {
+
+		String hostname = "localhost";
+		int port = 3334;
+
+		EndPunkt kom = new EndPunkt(hostname, port);
+
+		while (true) {
+			Brief brief = kom.briefkasten.getBrief();
+
+			if (brief.nachricht instanceof ChatNachricht) {
+				System.out.println("ChatNachricht: " + brief);
+			} else if (brief.nachricht instanceof SpielStartNachricht) {
 				System.out.println("Spiel startet!");
 				break;
 			}
 		}
-		
-		
+
 		while (true) {
-			System.out.println("Client: Lese Eingabe ein...");
+			Brief brief;
+
 			String eingabe = in.readLine();
-			System.out.println("Client: Eingelesen: (" + eingabe + ")");
-			server.sende(new ChatNachricht(eingabe));
-			
-			while ((n = briefkasten.getNaechsteNachricht(false)) != null) {
-				if (n instanceof ChatNachricht) {
-					System.out.println(n);
+
+			kom.sende(new ChatNachricht(eingabe));
+
+			while ((brief = kom.briefkasten.getBrief(false)) != null) {
+				if (brief.nachricht instanceof ChatNachricht) {
+					System.out.println(brief);
 				} else {
 					throw new RuntimeException("Unbekannte Nachricht");
 				}
 			}
 		}
-	}
-
-	public static void main(String[] args) throws RemoteException, NotBoundException, AlreadyBoundException, InterruptedException, IOException {
-		String name = null;
-		if ( args.length > 0) {
-			name = args[0];
-		}
-		
-		Client c = new Client(name);			
-		c.run();
 	}
 }

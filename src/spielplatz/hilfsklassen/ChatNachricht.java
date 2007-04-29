@@ -1,5 +1,6 @@
 package spielplatz.hilfsklassen;
 
+
 public class ChatNachricht extends Nachricht {
 	private static final long serialVersionUID = 564278019291322550L;
 	
@@ -10,7 +11,7 @@ public class ChatNachricht extends Nachricht {
 	}
 	
 	public String toString() {
-		return super.toString() + " " + nachricht;
+		return nachricht;
 	}
 
 }

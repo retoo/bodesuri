@@ -1,51 +1,49 @@
 package spielplatz;
 
-import java.net.MalformedURLException;
-import java.rmi.AlreadyBoundException;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.Vector;
 
 import pd.spielerverwaltung.Spieler;
-
-
+import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.ChatNachricht;
-import spielplatz.hilfsklassen.Nachricht;
-import spielplatz.hilfsklassen.Registrierung;
+import spielplatz.hilfsklassen.NeueVerbindung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
 
 public class Server {
-	private Empfaenger briefkasten;
+	private static final int PORT = 3334;
 
-
-	public Server() throws RemoteException, AlreadyBoundException, MalformedURLException {
-		/* briefkasten für eingehende Nachrichten */
-		briefkasten = new Empfaenger("server", true, "localhost");
-	}
-
-	private void run() throws RemoteException, NotBoundException, MalformedURLException {
-		Nachricht nachricht;
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
+		
+		ServerSocket sock = new ServerSocket(PORT);
+		
+		Briefkasten serverBriefkasten = new Briefkasten();
+		Akzeptierer a = new Akzeptierer(sock, serverBriefkasten);
+		
+		Thread t = new Thread(a);
+		t.start();
+		
+		
+		Brief brief;
 
 		Vector<Spieler> spieler = new Vector<Spieler>();
 
 		/* Spielstart */
-		while ( ( nachricht = briefkasten.getNaechsteNachricht()) != null) {
+		while ( ( brief = serverBriefkasten.getBrief()) != null) {
 			/* Ah ein Nachbar stelllt sich vor, nehmen wir den 
 			 * in unser Adressbuch rein 
 			 */
-			if (nachricht instanceof Registrierung) {
-				Registrierung reg = (Registrierung) nachricht;
-				EndPunkt client = briefkasten.schlageNach(reg.briefkasten);
-				
-				Spieler neuerSpieler = new Spieler(client, reg.name);
+			if (brief.nachricht instanceof NeueVerbindung) {
+				Spieler neuerSpieler = new Spieler(brief.absender, brief.absender.toString());
 				
 				spieler.add(neuerSpieler);
 				
 				for (Spieler s : spieler) {
 					s.endpunkt.sende(new ChatNachricht("Neuer Spieler " + neuerSpieler));
-				}		
+				}
+				
 			} else {
-				throw new RuntimeException("Unbekannte Nachricht " + nachricht);
+				throw new RuntimeException("Unbekannte Nachricht " + brief);
 			}
 			
 			if (spieler.size() == 2) {
@@ -63,24 +61,17 @@ public class Server {
 			s.endpunkt.sende(new SpielStartNachricht());
 		}
 		
-		while ( ( nachricht = briefkasten.getNaechsteNachricht()) != null) {
-			if (nachricht instanceof ChatNachricht) {
-				System.out.println("Chat: " + nachricht);
+		while ( ( brief = serverBriefkasten.getBrief()) != null) {
+			if (brief.nachricht instanceof ChatNachricht) {
+				System.out.println("Chat: " + brief);
 				
 				for (Spieler s : spieler) {
-					System.out.println("Sende Nachricht: (" + nachricht + ") an (" + s + ")");
-					s.endpunkt.sende(nachricht);
+					System.out.println("Sende Nachricht: (" + brief + ") an (" + s + ")");
+					s.endpunkt.sende(brief.nachricht);
 				}
 			} else {
-				throw new RuntimeException("Unbekannte Nachricht " + nachricht);
+				throw new RuntimeException("Unbekannte Nachricht " + brief);
 			}
 		}
-
-		System.out.println("out of scope");
-	}
-
-	public static void main(String args[]) throws RemoteException, AlreadyBoundException, InterruptedException, NotBoundException, MalformedURLException  {
-		Server server = new Server();
-		server.run();
 	}
 }
