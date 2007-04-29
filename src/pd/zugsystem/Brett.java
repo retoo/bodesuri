@@ -18,7 +18,7 @@ public class Brett {
 		erstelleFelder();
 	}
 
-	/* TODO: Schritt für Schritt durchdenken */
+	/* TODO: Schritt fÃ¼r Schritt durchdenken */
 	private void erstelleFelder() {
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
