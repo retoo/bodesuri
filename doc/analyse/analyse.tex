@@ -9,11 +9,11 @@
 
 \input{../titelseite}
 
-\section{Use Cases und Funktionale Anforderungen} 
-\subsection{Use Case Diagramm}\label{sub:use_case_diagramm} 
+\section{Use-Cases und Funktionale Anforderungen} 
+\subsection{Use-Case-Diagramm}\label{sub:use_case_diagramm} 
 \begin{figure}
 	[htp] \centering 
-	\includegraphics[width=0.8\textwidth]{UseCaseDiagramm.png} \caption{Use Case Diagramm}\label{fig:UseCaseDiagramm.png} 
+	\includegraphics[width=0.8\textwidth]{UseCaseDiagramm.png} \caption{Use-Case-Diagramm}\label{fig:UseCaseDiagramm.png} 
 \end{figure}
 
 \subsection{Aktoren}\label{sec:aktoren} 
@@ -35,14 +35,14 @@ Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigene
 
 Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause zu einem Turnier eingeladen hat. Sie hat verloren und möchte nun etwas üben.
 
-\subsection{Beschreibung der Use Cases}\label{sub:use_cases}
+\subsection{Beschreibung der Use-Cases}\label{sub:use_cases}
 \subsubsection{UC01: Spiel erstellen}\label{ssub:uc01_spiel_erstellen}
 Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 
 \begin{tabular}{@{} l l @{}}
 	\textbf{Aktor:}											&	Spieler \\
-	\textbf{Vorbedingungen:}						& Keine \\
-	\textbf{Nachbedingungen:}						& Keine \\
+	\textbf{Vorbedingungen:}						& Erster Spieler vorhanden \\
+	\textbf{Nachbedingungen:}						& Server gestartet und bereit, Spieler aufzunehmen \\
 	\textbf{Häufigkeit des Auftretens:}	& Einmal pro Spiel \\
 \end{tabular}
 
@@ -67,7 +67,7 @@ Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Benutzer behebt den Fehler.
-		\item Use Case wird wiederholt.
+		\item Use-Case wird wiederholt.
 	\end{enumerate}
 \end{enumerate}
 
@@ -105,7 +105,7 @@ Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erst
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Benutzer überprüft seine Einstellungen.
-		\item Use Case wird wiederholt.
+		\item Use-Case wird wiederholt.
 	\end{enumerate}
 	\item[2b] Das Spiel hat bereits begonnen.\newline
 	Der Benutzer sucht einen anderen oder startet seinen eigenen Server.
@@ -121,32 +121,48 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 	\textbf{Häufigkeit des Auftretens:}				& Von einmal pro Woche bis 2--3 Mal pro Jahr \\
 \end{tabular}
 \newpage
-\begin{multicols}{2}
-\raggedcolumns
+
+\begin{multicols}{3}
+\raggedcolumns \centering
 \paragraph{Actor Action}
 \begin{enumerate}
-	\item[]
-	\item[]
-	\item[3] Spieler wählt Karte aus die er mit dem Partner tauschen will
-	\item[]
-	\item[]
-	\item[7] Spieler wählt Karte die er spielen will aus und erfasst den Zug den er damit machen will.
+	\item[] \vspace{1 \lineheight}
+	\item[] \vspace{1 \lineheight}
+	\item[3] Spieler wählt Karte aus die er mit dem Partner tauschen will.
+	\item[] \vspace{2 \lineheight}
+	\item[] \vspace{4 \lineheight}
+	\item[6] Spieler wählt Karte die er spielen will aus und erfasst den Zug den er damit machen will.
 \end{enumerate}
-\emph{Schritte 6-10 werden wiederholt bis kein Spieler mehr Karten hat.\newline
-Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \columnbreak
-\paragraph{System Response}
+\paragraph{Client}
 \begin{enumerate}
-	\item[1] System initialisiert Spielbrett
-	\item[2] System erhält Spielkarten vom Server
-	\item[4] System übermittelt getauschte Karte an den Server.
-	\item[5] System erhält getauschte Karte vom Server.
-	\item[6] System wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
-	\item[8] System validiert den Zug und übermittelt ihn an der Server.
-	\item[9] Server bestätigt den Zug.
-	\item[10] System visualisiert den Zug.
+	\item[] \vspace{1 \lineheight}
+	\item[2] Client erhält Spielkarten vom Server.
+	\item[] \vspace{2 \lineheight}
+	\item[4] Client übermittelt getauschte Karte an den Server.
+	\item[] \vspace{4 \lineheight}
+	\item[] \vspace{3 \lineheight}
+	\item[7] Client validiert den Zug und übermittelt ihn an den Server.
+\end{enumerate}
+\columnbreak
+\paragraph{Server}
+\begin{enumerate}
+	\item[1] Server initialisiert Spielbrett.
+	\item[] \vspace{1 \lineheight}
+	\item[] \vspace{2 \lineheight}
+	\item[] \vspace{2 \lineheight}
+	\item[5] Server wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
+	\item[] \vspace{3 \lineheight}
+	\item[] \vspace{2 \lineheight}
+	\item[8] Server bestätigt den Zug.
+	\item[9] Server visualisiert den Zug.
 \end{enumerate}
 \end{multicols}
+
+\emph{Schritte 6-10 werden wiederholt bis kein Spieler mehr Karten hat.}
+
+\emph{Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
+
 \paragraph{Alternative Abläufe}
 \begin{enumerate}
 	\item[*a] Benutzer verlässt das Spiel.
@@ -154,19 +170,24 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 		\item System benachrichtigt den Server, welcher alle anderen Spieler benachrichtigt.
 		\item Spiel wird beendet.
 	\end{enumerate}
+	
 	\item[*b] Server nicht mehr erreichbar.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Spiel wird beendet.
-	\end{enumerate}	\item[7a] Benutzer kann keine Karte spielen.\newline
-	Das System benachrichtigt den Server, dass der Spieler diese Runde nicht mehr spielen kann.
-	\item[8a] Der angeforderte Zug ist ungültig.
+	\end{enumerate}
+	
+	\item[6a] Benutzer kann keine Karte spielen.\newline
+	Das System teilt dem Server mit, dass der Spieler diese Runde nicht mehr spielen kann.
+	
+	\item[7a] Der angeforderte Zug ist ungültig.
 	\begin{enumerate}
 		\item System benachrichtigt den Benutzer.
 		\item Benutzer macht einen anderen Zug.
 		\item Validierung wird wiederholt.
 	\end{enumerate}
-	\item[10a] Der Spieler hat gewonnen.
+	
+	\item[9a] Der Spieler hat gewonnen.
 	\begin{enumerate}
 		\item Der Partner hat auch schon gewonnen.\newline
 		Das System zeigt an welche Gruppe gewonnen hat und zeigt eine kleine Rangliste.
@@ -177,6 +198,9 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 		\end{enumerate}
 	\end{enumerate}
 \end{enumerate}
+
+
+\newpage
 
 \section{Nichtfunktionale Anforderungen}\label{cha:nichtfunktionale_anforderungen} % (fold)
 
@@ -200,8 +224,8 @@ Schritte 2-10 werden wiederholt bis eine Gruppe gewonnen hat.}
 \paragraph{Benutzerschnittstelle}\label{ssub:benutzerschnittstelle} % (fold)
 \begin{itemize}
 	\item Das GUI soll so weit wie möglich nur mit der Maus bedienbar sein.
-	\item (FIXME: ist das hier und so wirklich sinnvoll?) Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
-	\item (FIXME: ist das hier und so wirklich sinnvoll?) Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
+	\item Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
+	\item Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
 \end{itemize}
 % paragraph benutzerschnittstelle (end)
 \paragraph{Hardware-Schnittstelle}\label{ssub:hardware_schnittstelle} % (fold)
@@ -258,15 +282,15 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 \begin{itemize}
 	\item Kommunikation zwischen Client und Server ist nicht verschlüsselt.
 	\item Die Einhaltung der Spielregeln und der Datenkonsistenz wird sowohl im Client als auch im Server für jede Aktion geprüft.
-	\item WEG Das Spiel macht sich implizit die eingebauten Sicherheitsmechanismen von Java (Typsicherheit) und RMI (bewährte Netzwerkkommunikation) zu Nutzen.
 \end{itemize}
 % paragraph sicherheit (end)
 
-\paragraph{Wartbarkeit}\label{ssub:wartbarkeit} % (fold)
+\paragraph{Erweiterbarkeit}\label{ssub:erweiterbarkeit} % (fold)
 
 \begin{itemize}
-	\item FRAGE(haben wir chat nicht bereits drin?) Ein Chat-System soll mit ungefähr drei Personentagen Aufwand integrierbar sein.
-	\item Erweiterbarkeit für die Integration in einen Master-Server der im Internet eine Plattform bietet, um einfach einem Spiel beizutreten.
+	\item Ein Chat-System soll mit ungefähr einem Personentag Aufwand integrierbar sein.
+	\item Ein Master-Server, der im Internet eine Plattform bietet um einfach einem Spiel beizutreten, soll in ungefähr 3 Personentagen erstellt werden können.
+	\item Das Aufzeichnen und spätere Abspielen von Spielen soll mit 2 Personentagen Aufwand integrierbar sein.
 \end{itemize}
 % paragraph wartbarkeit (end)
 % subsubsection merkmale (end)
@@ -275,14 +299,12 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 \paragraph{Inbetriebnahme/Installation}\label{ssub:inbetriebnahme_installation} % (fold)
 \begin{itemize}
 	\item Es ist keine Installation oder Konfiguration notwendig.
-	\item Die grafische Oberfläche sollte intuitive bedient werden können. (FIXME, sollten wir da kein 'sollte' schreiben). 
+	\item Die grafische Oberfläche kann intuitiv bedient werden.
 \end{itemize}
 % paragraph inbetriebnahme_installation (end)
 \paragraph{Konfigurierbarkeit}\label{ssub:konfigurierbarkeit} % (fold)
 \begin{itemize}
-	\item Ausser der Angabe des Spielernamens und des Servers müssen keine Konfigurationen gemacht werden. (FIXME: wollen wir die folgenden beiden Anforderungen nicht durch diesen ersetzen?)
-	\item WEG Am Anfang eines Spiels soll ein Spieler seinen Namen/Spitznamen angeben können.
-	\item WEG Um einem Spiel beitreten zu können soll ein Spieler lediglich die IP-Adresse oder den Hostnamen des Servers angeben müssen.
+	\item Ausser der Angabe des Spielernamens und des Servers müssen keine Konfigurationen gemacht werden.
 \end{itemize}
 % paragraph konfigurierbarkeit (end)
 % subsubsection andere_anforderungen (end)
