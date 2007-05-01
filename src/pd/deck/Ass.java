@@ -5,7 +5,6 @@
 package pd.deck;
 
 import pd.regelsystem.RegelVeroderung;
-import pd.regelsystem.RueckwaertsRegel;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Ass extends Karte{

@@ -5,8 +5,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Vector;
 
+import pd.deck.Acht;
+import pd.deck.Ass;
+import pd.deck.Dame;
+import pd.deck.Drei;
+import pd.deck.Fuenf;
 import pd.deck.Karte;
+import pd.deck.Koenig;
+import pd.deck.Neun;
+import pd.deck.Sechs;
+import pd.deck.Sieben;
 import pd.deck.Vier;
+import pd.deck.Zehn;
+import pd.deck.Zwei;
 import pd.spielerverwaltung.Spieler;
 import pd.zugsystem.BankFeld;
 import pd.zugsystem.Bewegung;
@@ -14,6 +25,7 @@ import pd.zugsystem.Brett;
 import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
 import pd.zugsystem.Zug;
+import ui.eigenschaften.EigenschaftenView;
 
 public class Prototyp {
 
@@ -85,8 +97,20 @@ public class Prototyp {
 
 	public void auswahlKarte() {
 		System.out.print("Gib die zu Spielende Karte ein: ");
-		if (Integer.parseInt(eingabeAuswerten()) == 4) {
-			this.karte = new Vier();
+		switch (Integer.parseInt(eingabeAuswerten())){ 
+			case 1: this.karte = new Ass(); break;
+			case 2: this.karte = new Zwei(); break;
+			case 3: this.karte = new Drei(); break;
+			case 4: this.karte = new Vier(); break;
+			case 5: this.karte = new Fuenf(); break;
+			case 6: this.karte = new Sechs(); break;
+			case 7: System.out.println("Sieben noch nicht möglich!"); break;
+			case 8: this.karte = new Acht(); break;
+			case 9: this.karte = new Neun(); break;
+			case 10: this.karte = new Zehn(); break;
+			case 11: this.karte = new Ass(); break;
+			case 12: this.karte = new Dame(); break;
+			case 13: this.karte = new Koenig(); break;
 		}
 		System.out.println("Die Karte " + this.karte.getWert()
 				+ " wurde gespielt.\n");
