@@ -54,6 +54,14 @@ public abstract class Feld {
 	public Feld getNaechstes() {
     	return naechstes;
     }
+	
+	public Feld getNtesFeld(int n) {
+		Feld f = this;
+		while (n-- > 0 )
+			f = f.naechstes;
+		
+		return f;		
+	}
 
 	public void setNaechstes(Feld naechstesFeld) {
     	this.naechstes = naechstesFeld;
