@@ -23,6 +23,8 @@ public class RegelVeroderung extends Regel {
 	}
 
 	/* TODO: Zweites Interface Ausfuehrer oder so machen. */
+	/* deprecated keyword hinzugefügt (-rschuett) */
+	@Deprecated
 	public void ausfuehren(Zug zug) {
 		throw new Error("Sollte gar nie aufgerufen werden.");
 	}
