@@ -5,6 +5,10 @@ import pd.regelsystem.Regel;
 public class Karte {
 	private int wert;
 	private Regel regel;
+	
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
 
 	public void setWert(int wert) {
 		this.wert = wert;

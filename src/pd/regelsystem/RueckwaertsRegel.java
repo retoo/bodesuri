@@ -15,7 +15,7 @@ public class RueckwaertsRegel extends Regel {
 		Bewegung bewegung = zug.getBewegung();
 		Feld start = bewegung.getStart();
 		
-		if (start.getFigur().getSpieler() != zug.getSpieler()) {
+		if (!start.besetztVon(zug.getSpieler())) {
 			return null;
 		}
 		

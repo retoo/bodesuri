@@ -16,7 +16,7 @@ public class VorwaertsRegel extends Regel {
 		Feld start = bewegung.getStart();
 		
 		/* TODO: Ist das bei allen Regeln so? -> Auslagern */
-		if (start.getFigur().getSpieler() != zug.getSpieler()) {
+		if (!start.besetztVon(zug.getSpieler())) {
 			return null;
 		}
 		

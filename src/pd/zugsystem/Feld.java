@@ -2,6 +2,8 @@ package pd.zugsystem;
 
 import java.util.Vector;
 
+import pd.spielerverwaltung.Spieler;
+
 public abstract class Feld {
 	protected Feld naechstes;
 	protected Feld vorheriges;
@@ -43,6 +45,10 @@ public abstract class Feld {
 	public void versetzeFigurAuf(Feld ziel) {
 		ziel.setFigur(getFigur());
 		setFigur(null);
+	}
+	
+	public boolean besetztVon(Spieler spieler) {
+		return figur != null && figur.getSpieler() == spieler;
 	}
 
 	public Feld getNaechstes() {

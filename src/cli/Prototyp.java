@@ -14,7 +14,6 @@ import pd.deck.Karte;
 import pd.deck.Koenig;
 import pd.deck.Neun;
 import pd.deck.Sechs;
-import pd.deck.Sieben;
 import pd.deck.Vier;
 import pd.deck.Zehn;
 import pd.deck.Zwei;
@@ -25,28 +24,17 @@ import pd.zugsystem.Brett;
 import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
 import pd.zugsystem.Zug;
-import ui.eigenschaften.EigenschaftenView;
 
 public class Prototyp {
-
 	private Spiel spiel;
-
 	private Brett brett;
-
 	private Spieler spieler;
-
 	private BankFeld bankFeld;
-
 	private Feld startFeld;
-
 	private Feld zielFeld;
-
 	private Vector<Feld> felder;
-
 	private Bewegung bewegung;
-
 	private Zug zug;
-
 	private Karte karte;
 
 	public Prototyp(Spiel spiel) {
@@ -57,18 +45,19 @@ public class Prototyp {
 		bankFeld.setFigur(spieler.getFiguren().get(0));
 		felder = new Vector<Feld>();
 		Feld feld = bankFeld;
-		for (int i = 0; i <= 10; i++) {
+		for (int i = 0; i <= 32; i++) {
 			felder.add(feld);
 			feld = feld.getNaechstes();
 		}
 	}
 
 	public void zeichneBrett() {
-		System.out.println("\n===========");
+		System.out.println();
 		for (Feld feld : felder) {
 			zeichneFeld(feld);
 		}
-		System.out.println("\n===========\n");
+		System.out.println();
+		System.out.println();
 	}
 
 	public void zeichneFeld(Feld feld) {
@@ -111,9 +100,9 @@ public class Prototyp {
 			case 11: this.karte = new Ass(); break;
 			case 12: this.karte = new Dame(); break;
 			case 13: this.karte = new Koenig(); break;
+			default: this.karte = new Vier(); break;
 		}
-		System.out.println("Die Karte " + this.karte.getWert()
-				+ " wurde gespielt.\n");
+		System.out.println("Die Karte " + this.karte + " wurde gespielt.\n");
 	}
 
 	public void auswahlFigur() {
@@ -154,6 +143,7 @@ public class Prototyp {
 			zug.ausfuehren();
 		} else {
 			System.out.println("\nFehler: Der Spielzug entspricht nicht der gespielten Karte.\n");
+			zeichneBrett();
 			ausfuehrenRunde();
 		}
 	}
