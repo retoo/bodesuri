@@ -1,5 +1,6 @@
 import pd.deck.Vier;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Feld;
 import pd.zugsystem.Zug;
 
 public class RegelTest extends ProblemDomainTestCase {
@@ -31,5 +32,14 @@ public class RegelTest extends ProblemDomainTestCase {
 		zug.ausfuehren();
 		assertNull(bewegung4.getStart().getFigur());
 		assertNotNull(bewegung4.getZiel().getFigur());
+	}
+	/* Verursacht(e) NullPointer Exception */
+	public void testUngueltigerZug() {
+		Feld a = bankFeld.getNtesFeld(3);
+		Feld b = bankFeld.getNtesFeld(1);
+		Bewegung bewegung = new Bewegung(a, b);
+		Zug nonsenseZug = new Zug(spieler, new Vier(), bewegung);
+		
+		assertFalse(nonsenseZug.validiere());
 	}
 }
