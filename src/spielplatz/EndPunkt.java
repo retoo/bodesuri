@@ -76,7 +76,8 @@ public class EndPunkt {
 		} catch (IOException e) {
 			// TODO Sinnvolles Handling bei Fehlern
 			e.printStackTrace();
-		}		
+		}
+
 	}
 
 	public void ausschalten() throws IOException {
