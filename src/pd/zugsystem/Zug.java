@@ -39,4 +39,13 @@ public class Zug {
 			validierteRegel.ausfuehren(this);
 		}
 	}
+
+	/***
+	 * Der Zug wurde vom UI verworfen und wird so in der Form nicht durchgeführt.
+	 * TODO: Evtl. wird das gar nicht gebraucht. Es gibt zurzeit nur eine Stele wo die
+	 * Methode aufgerufen wird (-rschuett)
+	 */
+	public void verwerfen() {
+		// TODO Auto-generated method stub
+	}
 }

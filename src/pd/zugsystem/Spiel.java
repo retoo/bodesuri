@@ -14,6 +14,7 @@ public class Spiel {
 	}
 	
 	/* TODO: Methodenname anpassen und Code sowieso ;) */
+	/* sollte man das nicht im Konstruktur machen ? (-rschuett) */
 	public void brettAufstellen() {
 		if (spieler.size() != 4) {
 			throw new Error("Noch nicht genug Spieler im Spiel.");
