@@ -3,7 +3,6 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Vector;
 
 import pd.deck.Acht;
 import pd.deck.Ass;
@@ -23,6 +22,7 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.Brett;
 import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
+import pd.zugsystem.WegFeld;
 import pd.zugsystem.Zug;
 
 public class Prototyp {
@@ -34,40 +34,54 @@ public class Prototyp {
 
 	private BankFeld bankFeld;
 
-	private Vector<Feld> felder;
+	private Feld feld;
 
+	private boolean aufstellung;
 
 	public Prototyp(Spiel spiel) {
 		this.spiel = spiel;
 		this.brett = spiel.getBrett();
-		this.spieler = spiel.getSpieler().get(0);
-		bankFeld = brett.getBankFeldVon(spieler);
-		bankFeld.setFigur(spieler.getFiguren().get(0));
-		felder = new Vector<Feld>();
-		Feld feld = bankFeld;
-		for (int i = 0; i <= 32; i++) {
-			felder.add(feld);
-			feld = feld.getNaechstes();
-		}
+		this.aufstellung = false;
 	}
 
 	public void zeichneBrett() {
 		System.out.println();
-		for (Feld feld : felder) {
-			zeichneFeld(feld);
+		this.spieler = spiel.getSpieler().get(0);
+		bankFeld = brett.getBankFeldVon(spieler);
+		bankFeld.setFigur(spieler.getFiguren().get(0));
+		this.feld = bankFeld;
+		for (int anzSpieler = 0; anzSpieler < 4; anzSpieler++) {
+			for (int felder = 0; felder < 16; felder++) {
+
+				if (!this.aufstellung) {
+					if (feld instanceof BankFeld) {
+						this.spieler = spiel.getSpieler().get(anzSpieler);
+						feld.setFigur(spieler.getFiguren().get(0));
+					}
+				}
+				zeichneFeld(feld);
+				feld = feld.getNaechstes();
+			}
 		}
 		System.out.println();
 		System.out.println();
+		this.aufstellung = true;
 	}
 
 	public void zeichneFeld(Feld feld) {
 		if (feld.getFigur() != null) {
-			System.out.print("1");
+			for (int i = 0; i < 4; i++) {
+				this.spieler = spiel.getSpieler().get(i);
+				if (feld.getFigur().getSpieler() == spieler) {
+					System.out.print(spieler.getNummer());
+				}
+			}
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
-		} else {
-			System.out.print("0");
+		} else if (feld instanceof WegFeld) {
+			System.out.print("-");
 		}
+
 	}
 
 	public void begruessungAusgaben() {
@@ -78,7 +92,7 @@ public class Prototyp {
 
 	public void auswahlSpieler() {
 		System.out.println("Wähle eine Spieler aus.");
-		System.out.println("Spielfigur [1 - 4]: ");
+		System.out.println("Spielfigur [0 - 3]: ");
 		this.spieler = spiel.getSpieler().get(liesZahlEin());
 		System.out.println(spieler.getName() + " wurde ausgewählt.");
 	}
@@ -86,11 +100,15 @@ public class Prototyp {
 	public Karte auswahlKarte() {
 		Karte karte;
 
-		System.out.print("Gib die zu Spielende Karte ein: ");
+		System.out.print(spieler.getName()
+				+ " gib die zu Spielende Karte ein: ");
 
 		int eingabe = liesZahlEin();
 
-		/* TODO: Robin: apfel-shift-f macht diesen block hier futsch, flick das :)) */
+		/*
+		 * TODO: Robin: apfel-shift-f macht diesen block hier futsch, flick das
+		 * :))
+		 */
 		switch (eingabe) {
 		case 1:
 			karte = new Ass();
@@ -140,7 +158,8 @@ public class Prototyp {
 		}
 		}
 
-		System.out.println("Die Karte " + karte + " wurde gespielt.\n");
+		System.out.println("Spieler " + spieler.getName()
+				+ " spielt die Karte " + karte + ".\n");
 
 		return karte;
 	}
@@ -151,12 +170,14 @@ public class Prototyp {
 
 	public Feld auswahlStartfeld() {
 		System.out.print("Gib das Feld der zu spielenden Figur ein: ");
-		return felder.get(liesZahlEin());
+		// System.out.println(feld.getNtesFeld(liesZahlEin()).getFigur()
+		// .getSpieler());
+		return feld.getNtesFeld(liesZahlEin());
 	}
 
 	public Feld auswahlZielfeld() {
 		System.out.print("Gib das Zielfeld der Figur ein: ");
-		return felder.get(liesZahlEin());
+		return feld.getNtesFeld(liesZahlEin());
 	}
 
 	private int liesZahlEin() {
@@ -197,7 +218,7 @@ public class Prototyp {
 		} else {
 			zug.verwerfen();
 			System.out
-			.println("\nFehler: Der Spielzug entspricht nicht der gespielten Karte.\n");
+					.println("\nFehler: Der Spielzug entspricht nicht der gespielten Karte.\n");
 			return false;
 		}
 	}
@@ -210,13 +231,13 @@ public class Prototyp {
 			if (ausfuerenZug(karte, start, ziel))
 				return;
 		}
-
 	}
 
 	private void run() {
 		begruessungAusgaben();
 		zeichneBrett();
 		while (true) {
+			auswahlSpieler();
 			ausfuehrenRunde();
 			zeichneBrett();
 		}
@@ -225,11 +246,10 @@ public class Prototyp {
 	public static void main(String[] args) {
 		Spiel spiel = new Spiel();
 		for (int i = 0; i < 4; ++i) {
-			spiel.fuegeHinzu(new Spieler("Spieler" + i));
+			spiel.fuegeHinzu(new Spieler("Spieler" + i, i));
 		}
 		spiel.brettAufstellen();
 		Prototyp spielBrett = new Prototyp(spiel);
 		spielBrett.run();
 	}
-
 }
