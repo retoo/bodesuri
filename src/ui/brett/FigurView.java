@@ -1,4 +1,4 @@
-package ui.figuren;
+package ui.brett;
 
 public class FigurView {
 }

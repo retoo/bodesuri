@@ -2,7 +2,7 @@
  * @(#) KarteView.java
  */
 
-package ui.deck;
+package ui.info;
 
 public class KarteView{
 	
