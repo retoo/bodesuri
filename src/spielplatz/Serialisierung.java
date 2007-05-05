@@ -3,59 +3,110 @@ package spielplatz;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-class FeldNummerierung {
-	private static Map<Feld, Integer> vonFeldZuInteger;
-	private static Map<Integer, Feld> vonIntegerZuFeld;
-	static {
-		vonFeldZuInteger = new HashMap<Feld, Integer>();
-		vonIntegerZuFeld = new HashMap<Integer, Feld>();
+class Codierer {
+	private Map<Feld, Integer> vonFeldZuCode;
+	private Map<Integer, Feld> vonCodeZuFeld;
+	
+	public Codierer() {
+		vonFeldZuCode = new HashMap<Feld, Integer>();
+		vonCodeZuFeld = new HashMap<Integer, Feld>();
 	}
 	
-	public static void speichere(Feld f, int i) {
-		vonFeldZuInteger.put(f, i);
-		vonIntegerZuFeld.put(i, f);
+	public static Codierer von(ObjectOutputStream out) {
+		if (!(out instanceof ObjectOutputStreamMitCodierer)) {
+			/* TODO: Exception oder so */
+		}
+		ObjectOutputStreamMitCodierer s = (ObjectOutputStreamMitCodierer) out;
+		return s.getCodierer();
 	}
 	
-	public static Feld getFeld(int i) {
-		return vonIntegerZuFeld.get(i);
+	public static Codierer von(ObjectInputStream in) {
+		if (!(in instanceof ObjectInputStreamMitCodierer)) {
+			/* TODO: Exception oder so */
+		}
+		ObjectInputStreamMitCodierer s = (ObjectInputStreamMitCodierer) in;
+		return s.getCodierer();
 	}
 	
-	public static int getInt(Feld f) {
-		return vonFeldZuInteger.get(f);
+	public void speichere(Feld feld, int code) {
+		vonFeldZuCode.put(feld, code);
+		vonCodeZuFeld.put(code, feld);
+	}
+	
+	public Integer getCode(Feld feld) {
+		return vonFeldZuCode.get(feld);
+	}
+	
+	public Feld getFeld(int code) {
+		return vonCodeZuFeld.get(code);
+	}
+}
+
+class ObjectOutputStreamMitCodierer extends ObjectOutputStream {
+	private Codierer codierer;
+	
+	public ObjectOutputStreamMitCodierer(OutputStream os, Codierer c)
+			throws IOException {
+		super(os);
+		codierer = c;
+	}
+	
+	public Codierer getCodierer() {
+		return codierer;
+	}
+}
+
+class ObjectInputStreamMitCodierer extends ObjectInputStream {
+	private Codierer codierer;
+	
+	public ObjectInputStreamMitCodierer(InputStream is, Codierer c)
+			throws IOException {
+		super(is);
+		codierer = c;
+	}
+	
+	public Codierer getCodierer() {
+		return codierer;
 	}
 }
 
 class Bewegung implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	public Feld start;
-	public Feld ziel;
+	private Feld start;
+	private Feld ziel;
+
+	public Bewegung(Feld start, Feld ziel) {
+		this.start = start;
+		this.ziel  = ziel;
+    }
 
 	private void writeObject(ObjectOutputStream out) throws IOException {
-		System.out.println("writeObject");
-		out.write(FeldNummerierung.getInt(start));
-		out.write(FeldNummerierung.getInt(ziel));
+		Codierer c = Codierer.von(out);
+		out.write(c.getCode(start));
+		out.write(c.getCode(ziel));
 	}
-	
-	private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-		System.out.println("readObject");
-		/*
-		 * Scheisse, dass FeldNummerierung global sein muss :/. Es geht aber
-		 * nicht anders, denn ich kann dem readObject keine Argumente übergeben
-		 * und das neue Bewegung-Objekt enthält noch keine Instanzvariablen oder
-		 * könnte nur serialisierbare Instanzvariablen enthalten.
-		 * 
-		 * Ne andere Möglichkeit wäre, eigene ObjectOutputStream- und
-		 * ObjectInputStream-Klassen zu schreiben, hmm...
-		 */
-		start = FeldNummerierung.getFeld(in.read());
-		ziel  = FeldNummerierung.getFeld(in.read());
+
+	private void readObject(ObjectInputStream in) throws IOException {
+		Codierer c = Codierer.von(in);
+		start = c.getFeld(in.read());
+		ziel  = c.getFeld(in.read());
+	}
+
+	public Feld getStart() {
+		return start;
+	}
+
+	public Feld getZiel() {
+		return ziel;
 	}
 }
 
@@ -66,17 +117,17 @@ public class Serialisierung {
 	public static void main(String[] args) {
 		Feld start = new Feld();
 		Feld ziel  = new Feld();
-		FeldNummerierung.speichere(start, 0);
-		FeldNummerierung.speichere(ziel, 1);
 		
-		Bewegung original = new Bewegung();
-		original.start = start;
-		original.ziel  = ziel;
+		Codierer codierer = new Codierer();
+		codierer.speichere(start, 0);
+		codierer.speichere(ziel, 1);
+		
+		Bewegung original = new Bewegung(start, ziel);
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ObjectOutputStream oos;
+		ObjectOutputStreamMitCodierer oos;
 		try {
-			oos = new ObjectOutputStream(baos);
+			oos = new ObjectOutputStreamMitCodierer(baos, codierer);
 			oos.writeObject(original);
 			oos.close();
 		} catch (IOException e) {
@@ -86,10 +137,10 @@ public class Serialisierung {
 		byte[] ausgabe = baos.toByteArray();
 
 		ByteArrayInputStream bais = new ByteArrayInputStream(ausgabe);
-		ObjectInputStream ois;
+		ObjectInputStreamMitCodierer ois;
 		Bewegung neu = null;
 		try {
-			ois = new ObjectInputStream(bais);
+			ois = new ObjectInputStreamMitCodierer(bais, codierer);
 			neu = (Bewegung) ois.readObject();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -98,7 +149,7 @@ public class Serialisierung {
 		}
 
 		System.out.println(ausgabe.length);
-		System.out.println(start == neu.start);
-		System.out.println(ziel  == neu.ziel);
+		System.out.println(start == neu.getStart());
+		System.out.println(ziel  == neu.getZiel());
 	}
 }
