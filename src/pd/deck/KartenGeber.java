@@ -4,7 +4,11 @@ import java.util.EmptyStackException;
 import java.util.Stack;
 
 public class KartenGeber {
-	private static final int MAX_VON_DECK = 112;
+	/*
+	 * 13 * 4 Farben + 2 Joker = 54 Karten = ein Deck
+	 * 54 Karten * 2 = 108 Karten
+	 */
+	private static final int ANZAHL_KARTEN = 108;
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
 
 	public KartenGeber() {
@@ -22,12 +26,14 @@ public class KartenGeber {
 			kartenStapel.addAll( (new Herz()).getKarten() );
 			kartenStapel.addAll( (new Kreuz()).getKarten() );
 			kartenStapel.addAll( (new Karo()).getKarten() );
+			kartenStapel.add(new Joker());
+			kartenStapel.add(new Joker());
 		}
 		
 		// Mischen
-		for (int i=0; i<=MAX_VON_DECK; ++i) {
-			int a = (int)(Math.random() * (MAX_VON_DECK-1));
-			int b = (int)(Math.random() * (MAX_VON_DECK-1));
+		for (int i = 0; i < ANZAHL_KARTEN; ++i) {
+			int a = (int)(Math.random() * ANZAHL_KARTEN);
+			int b = (int)(Math.random() * ANZAHL_KARTEN);
 			wechseln(a, b);
 		}
 	}
@@ -40,7 +46,8 @@ public class KartenGeber {
 	 * @param nach
 	 */
 	private void wechseln(int von, int nach) {
-		if (von < 0 || von > MAX_VON_DECK || nach < 0 || nach > MAX_VON_DECK)
+		if (von  < 0 || von  >= ANZAHL_KARTEN ||
+		    nach < 0 || nach >= ANZAHL_KARTEN)
 			return;
 		
 		Karte tmp = kartenStapel.get(von);

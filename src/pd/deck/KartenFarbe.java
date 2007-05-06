@@ -19,7 +19,6 @@ public abstract class KartenFarbe {
 		karten.add(new Dame(this));
 		karten.add(new Koenig(this));
 		karten.add(new Ass(this));
-		karten.add(new Joker(this));
 	}
 	
 	public Vector<Karte> getKarten() {
