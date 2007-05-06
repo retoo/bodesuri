@@ -28,47 +28,34 @@ import pd.zugsystem.Zug;
 
 public class Prototyp {
 	private Spiel spiel;
-
 	private Brett brett;
-
-	private BankFeld bankFeld;
-
-	private Feld feld;
-
-	private boolean aufstellung;
+	private BankFeld startFeld;
 
 	public Prototyp(Spiel spiel) {
 		this.spiel = spiel;
 		this.brett = spiel.getBrett();
-		this.aufstellung = false;
+		this.startFeld = brett.getBankFeldVon(spiel.getSpieler().get(0));
+		setzeFiguren();
+	}
+	
+	private void setzeFiguren() {
+		for (Spieler spieler : spiel.getSpieler()) {
+			Feld feld = brett.getBankFeldVon(spieler);
+			feld.setFigur(spieler.getFiguren().get(0));
+		}
 	}
 
 	public void zeichneBrett() {
 		System.out.println();
-		Spieler spieler = spiel.getSpieler().get(0);
-		bankFeld = brett.getBankFeldVon(spieler);
-		bankFeld.setFigur(spieler.getFiguren().get(0));
-		this.feld = bankFeld;
-		for (int anzSpieler = 0; anzSpieler < 4; anzSpieler++) {
-			for (int felder = 0; felder < 16; felder++) {
-
-				if (!this.aufstellung) {
-					if (feld instanceof BankFeld) {
-						spieler = spiel.getSpieler().get(anzSpieler);
-						feld.setFigur(spieler.getFiguren().get(0));
-					}
-				}
-				zeichneFeld(feld);
-				feld = feld.getNaechstes();
-			}
+		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
+			zeichneFeld(feld);
 		}
 		System.out.println();
 		System.out.println();
-		this.aufstellung = true;
 	}
 
 	public void zeichneFeld(Feld feld) {
-		if (feld.istBesetzt()) { 
+		if (feld.istBesetzt()) {
 			System.out.print(feld.getFigur().getSpieler().getNummer());
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
@@ -80,92 +67,55 @@ public class Prototyp {
 
 	public void begruessungAusgaben() {
 		System.out.println("Willkommen im Spiel Bodesuri (Prototyp).");
-		System.out
-				.println("(Legende: x = Bänkli, 0 = normales Feld, Zahl = Spieler)");
+		System.out.println("(Legende: X = Bänkli, - = normales Feld, " +
+		                   "Zahl = Spieler)");
 	}
 
 	public Spieler auswahlSpieler() {
-		System.out.println("Wähle eine Spieler aus.");
-		System.out.println("Spielfigur [0 - 3]: ");
+		System.out.println("Wähle einen Spieler aus [0-3]:");
 		Spieler spieler = spiel.getSpieler().get(liesZahlEin());
-		System.out.println(spieler.getName() + " wurde ausgewählt.");
+		System.out.println(spieler + " wurde ausgewählt.");
 		
 		return spieler;
 	}
 
 	public Karte auswahlKarte() {
-		Karte karte;
-
 		System.out.print("Welche Karte möchtest du spielen: ");
 		int eingabe = liesZahlEin();
+		
+		Herz herz = new Herz();
 
-		/* TODO: KartenFarbe Initialisierung richtig machen oder durch KartenGeber Karte geben lassen */
 		switch (eingabe) {
-		case 1:
-			karte = new Ass(new Herz());
-			break;
-		case 2:
-			karte = new Zwei(new Herz());
-			break;
-		case 3:
-			karte = new Drei(new Herz());
-			break;
-		case 4:
-			karte = new Vier(new Herz());
-			break;
-		case 5:
-			karte = new Fuenf(new Herz());
-			break;
-		case 6:
-			karte = new Sechs(new Herz());
-			break;
-		case 7: {
-			throw new RuntimeException("Sieben noch nicht möglich!");
-		}
-		case 8:
-			karte = new Acht(new Herz());
-			break;
-		case 9:
-			karte = new Neun(new Herz());
-			break;
-		case 10:
-			karte = new Zehn(new Herz());
-			break;
-		case 11:
-			karte = new Ass(new Herz());
-			break;
-		case 12:
-			karte = new Dame(new Herz());
-			break;
-		case 13:
-			karte = new Koenig(new Herz());
-			break;
-		default: {
+		case 1: return new Ass(herz);
+		case 2: return new Zwei(herz);
+		case 3: return new Drei(herz);
+		case 4: return new Vier(herz);
+		case 5: return new Fuenf(herz);
+		case 6: return new Sechs(herz);
+		case 7: throw new RuntimeException("Sieben noch nicht möglich!");
+		case 8: return new Acht(herz);
+		case 9: return new Neun(herz);
+		case 10: return new Zehn(herz);
+		case 11: return new Ass(herz);
+		case 12: return new Dame(herz);
+		case 13: return new Koenig(herz);
+		default:
 			/*
 			 * TODO: muss noch schöner werden, z.b. wiederholte eingabe wenn die
 			 * Karte unbeannt ist
 			 */
 			throw new RuntimeException("Unbekannte Karte");
 		}
-		}
-
-		return karte;
-	}
-
-	public void auswahlFigur() {
-		System.out.println("Wähle eine Figur aus.");
 	}
 
 	public Feld auswahlStartfeld() {
 		System.out.print("Gib das Feld der zu spielenden Figur ein: ");
-		// System.out.println(feld.getNtesFeld(liesZahlEin()).getFigur()
-		// .getSpieler());
-		return feld.getNtesFeld(liesZahlEin());
+		return startFeld.getNtesFeld(liesZahlEin());
 	}
 
 	public Feld auswahlZielfeld() {
 		System.out.print("Gib das Zielfeld der Figur ein: ");
-		return feld.getNtesFeld(liesZahlEin());
+		return startFeld.getNtesFeld(liesZahlEin());
 	}
 
 	private int liesZahlEin() {
@@ -203,17 +153,16 @@ public class Prototyp {
 			return true;
 		} else {
 			zug.verwerfen();
-			System.out
-					.println("\nFehler: Der Spielzug entspricht nicht der gespielten Karte.\n");
+			System.out.println("\nFehler: Der Spielzug entspricht nicht " +
+			                   "der gespielten Karte.\n");
 			return false;
 		}
 	}
 	
 	private Zug erfasseZug(Spieler spieler) {
-	    System.out.println("Spieler " + spieler + ", erfasse bitte deinen Zug!");
 	    Karte karte = auswahlKarte();
 	    Feld start = auswahlStartfeld();
-	    Feld ziel = auswahlZielfeld();
+	    Feld ziel  = auswahlZielfeld();
 	    
 	    Bewegung bewegung = new Bewegung(start, ziel);
 	    Zug zug = new Zug(spieler, karte, bewegung);
@@ -229,8 +178,6 @@ public class Prototyp {
 		}
 	}
 
-
-
 	private void run() {
 		begruessungAusgaben();
 		zeichneBrett();
@@ -244,10 +191,10 @@ public class Prototyp {
 	public static void main(String[] args) {		
 		Spiel spiel = new Spiel();
 		for (int i = 0; i < 4; ++i) {
-			spiel.fuegeHinzu(new Spieler("Spieler" + i, i));
+			spiel.fuegeHinzu(new Spieler("Nr. " + i, i));
 		}
 		spiel.brettAufstellen();
-		Prototyp spielBrett = new Prototyp(spiel);
-		spielBrett.run();
+		Prototyp prototyp = new Prototyp(spiel);
+		prototyp.run();
 	}
 }
