@@ -17,7 +17,7 @@ public class FeldTest extends ProblemDomainTestCase {
 	}
 	
 	public void testBesetztVon() {
-		assertTrue(bankFeld.besetztVon(spieler));
-		assertFalse(zielFeld.besetztVon(spieler));
+		assertTrue(bankFeld.istBesetztVon(spieler));
+		assertFalse(zielFeld.istBesetztVon(spieler));
 	}
 }
