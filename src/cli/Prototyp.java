@@ -9,6 +9,7 @@ import pd.deck.Ass;
 import pd.deck.Dame;
 import pd.deck.Drei;
 import pd.deck.Fuenf;
+import pd.deck.Herz;
 import pd.deck.Karte;
 import pd.deck.Koenig;
 import pd.deck.Neun;
@@ -98,45 +99,46 @@ public class Prototyp {
 		System.out.print("Welche Karte möchtest du spielen: ");
 		int eingabe = liesZahlEin();
 
+		/* TODO: KartenFarbe Initialisierung richtig machen oder durch KartenGeber Karte geben lassen */
 		switch (eingabe) {
 		case 1:
-			karte = new Ass();
+			karte = new Ass(new Herz());
 			break;
 		case 2:
-			karte = new Zwei();
+			karte = new Zwei(new Herz());
 			break;
 		case 3:
-			karte = new Drei();
+			karte = new Drei(new Herz());
 			break;
 		case 4:
-			karte = new Vier();
+			karte = new Vier(new Herz());
 			break;
 		case 5:
-			karte = new Fuenf();
+			karte = new Fuenf(new Herz());
 			break;
 		case 6:
-			karte = new Sechs();
+			karte = new Sechs(new Herz());
 			break;
 		case 7: {
 			throw new RuntimeException("Sieben noch nicht möglich!");
 		}
 		case 8:
-			karte = new Acht();
+			karte = new Acht(new Herz());
 			break;
 		case 9:
-			karte = new Neun();
+			karte = new Neun(new Herz());
 			break;
 		case 10:
-			karte = new Zehn();
+			karte = new Zehn(new Herz());
 			break;
 		case 11:
-			karte = new Ass();
+			karte = new Ass(new Herz());
 			break;
 		case 12:
-			karte = new Dame();
+			karte = new Dame(new Herz());
 			break;
 		case 13:
-			karte = new Koenig();
+			karte = new Koenig(new Herz());
 			break;
 		default: {
 			/*
