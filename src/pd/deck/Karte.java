@@ -7,6 +7,8 @@ public class Karte {
 	protected KartenFarbe farbe;
 	private Regel regel;
 
+	public Karte() { }
+	
 	public Karte(KartenFarbe farbe) {
 		this.farbe = farbe;
 	}
