@@ -8,10 +8,11 @@ import java.net.UnknownHostException;
 import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.SpielStartNachricht;
+import spielplatz.hilfsklassen.VerbindungWegException;
 
 public class Client {
 	public static void main(String[] args) throws UnknownHostException,
-			IOException {
+			IOException, VerbindungWegException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
 		String hostname = "localhost";

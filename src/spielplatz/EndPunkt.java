@@ -6,6 +6,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 import spielplatz.hilfsklassen.Nachricht;
+import spielplatz.hilfsklassen.VerbindungWegException;
 
 public class EndPunkt {
 	Socket socket;
@@ -69,13 +70,20 @@ public class EndPunkt {
 	 * Sende die angegebene Nachricht an den Host auf der anderen Seite des Kommunikationkanals.
 	 * 
 	 * @param nachricht zu übertragende Nachricht
+	 * @throws VerbindungWegException 
 	 */
-	public void sende(Nachricht nachricht) {
+	public void sende(Nachricht nachricht) throws VerbindungWegException {
 		try {
 			outputStream.writeObject(nachricht);
 		} catch (IOException e) {
-			// TODO Sinnvolles Handling bei Fehlern
-			e.printStackTrace();
+			if ( socket.isClosed() ) {
+				throw new VerbindungWegException();
+			} else {
+				System.out.println("IOException in Endpunkt#sende(), ohne dass Verbindung  geschlossen ist");
+				e.printStackTrace();
+				System.exit(99);
+			}
+			
 		}
 
 	}
@@ -83,4 +91,6 @@ public class EndPunkt {
 	public void ausschalten() throws IOException {
 		socket.shutdownInput();
 	}
+	
+	
 }

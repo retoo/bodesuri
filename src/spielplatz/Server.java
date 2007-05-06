@@ -1,7 +1,6 @@
 package spielplatz;
 
 import java.io.IOException;
-import java.net.ServerSocket;
 import java.util.Vector;
 
 import pd.spielerverwaltung.Spieler;
@@ -9,16 +8,13 @@ import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.ChatNachricht;
 import spielplatz.hilfsklassen.NeueVerbindung;
 import spielplatz.hilfsklassen.SpielStartNachricht;
+import spielplatz.hilfsklassen.VerbindungWegException;
 
 public class Server {
-	private static final int PORT = 3334;
-
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
-		
-		ServerSocket sock = new ServerSocket(PORT);
-		
+	public static void main(String[] args) throws IOException, ClassNotFoundException, VerbindungWegException {		
 		Briefkasten serverBriefkasten = new Briefkasten();
-		Akzeptierer a = new Akzeptierer(sock, serverBriefkasten);
+		
+		Daemon a = new Daemon(serverBriefkasten);
 		
 		Thread t = new Thread(a);
 		t.start();

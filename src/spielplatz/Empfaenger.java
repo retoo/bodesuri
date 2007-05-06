@@ -6,6 +6,7 @@ import java.io.ObjectInputStream;
 
 import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.Nachricht;
+import spielplatz.hilfsklassen.VerbindungGeschlossen;
 
 public class Empfaenger implements Runnable{
 	Briefkasten nachrichtenQueue;
@@ -31,13 +32,24 @@ public class Empfaenger implements Runnable{
 		} catch (EOFException eof) {
 			/* TODO: Nicht sicher ob das so gut */
 			isGeschlossen = true;
+			
+			Brief brief = new Brief(endpunkt, new VerbindungGeschlossen());
+			nachrichtenQueue.einwerfen(brief);
 			return;
 		} catch (IOException e) {
-			// TODO Sinnvolles Handling bei Fehlern
+			/* mir ist nicht ganz bekannt wann in welchen legitimen Fällen die Exception 
+			 * auftauchen kann... falls dieser Fehler auftaucht (z.B. bei 'normalen' Verbindungs
+			 * Problemen) dann muss das Handling dem vom EOFError angepasst werden (siehe oben).
+			 */
+			System.out.println("IOException im Empfänger (Endpunkt: " + endpunkt + ")");
 			e.printStackTrace();
+			System.exit(99);
+			
 		} catch (ClassNotFoundException e) {
-			// TODO Sinnvolles Handling bei Fehlern
+			/* der Client kannte die Klasse nicht die übertragen wurde, fehler schwerler */
+			System.out.println("ClassNotFoundException im Empfänger (Endpunkt: " + endpunkt + ")");
 			e.printStackTrace();
+			System.exit(99);
 		}
 		
 	}

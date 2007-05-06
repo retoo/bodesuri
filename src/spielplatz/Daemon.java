@@ -7,25 +7,29 @@ import java.net.Socket;
 import spielplatz.hilfsklassen.Brief;
 import spielplatz.hilfsklassen.NeueVerbindung;
 
-public class Akzeptierer implements Runnable {
-	private ServerSocket socket;
+public class Daemon implements Runnable {
+	private static final int PORT = 3334;
+	
 	private Briefkasten briefkasten;
 
-	public Akzeptierer(ServerSocket socket, Briefkasten briefkasten) {
-		this.socket = socket;
+	private ServerSocket serverSock;
+
+	public Daemon(Briefkasten briefkasten) throws IOException {
+		serverSock = new ServerSocket(PORT);
 		this.briefkasten = briefkasten;
 	}
 
 	public void run() {
 		try {
 			while (true) {
-				Socket clientSocket = socket.accept();
+				Socket clientSocket = serverSock.accept();
 				EndPunkt client = new EndPunkt(clientSocket, briefkasten);
 				briefkasten.einwerfen(new Brief(client, new NeueVerbindung(client)));
 			}
 		} catch (IOException e) {
-			// TODO Sinnvolles Handling bei Fehlern
+			System.out.println("IOException im Daemon");
 			e.printStackTrace();
+			System.exit(99);
 		}
 
 	}
