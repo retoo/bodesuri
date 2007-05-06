@@ -5,6 +5,8 @@ import java.util.Vector;
 import pd.spielerverwaltung.Spieler;
 
 public class Spiel {
+	private static final int ANZAHL_SPIELER = 4;
+	
 	private Brett brett;
 	
 	private Vector<Spieler> spieler = new Vector<Spieler>();
@@ -16,7 +18,7 @@ public class Spiel {
 	/* TODO: Methodenname anpassen und Code sowieso ;) */
 	/* sollte man das nicht im Konstruktur machen ? (-rschuett) */
 	public void brettAufstellen() {
-		if (spieler.size() != 4) {
+		if (spieler.size() != ANZAHL_SPIELER) {
 			throw new Error("Noch nicht genug Spieler im Spiel.");
 		}
 		

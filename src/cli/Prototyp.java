@@ -56,7 +56,8 @@ public class Prototyp {
 
 	public void zeichneFeld(Feld feld) {
 		if (feld.istBesetzt()) {
-			System.out.print(feld.getFigur().getSpieler().getNummer());
+			Spieler spieler = feld.getFigur().getSpieler();
+			System.out.print(spiel.getSpieler().indexOf(spieler));
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
 		} else if (feld instanceof WegFeld) {
@@ -191,7 +192,7 @@ public class Prototyp {
 	public static void main(String[] args) {		
 		Spiel spiel = new Spiel();
 		for (int i = 0; i < 4; ++i) {
-			spiel.fuegeHinzu(new Spieler("Nr. " + i, i));
+			spiel.fuegeHinzu(new Spieler("Nr. " + i));
 		}
 		spiel.brettAufstellen();
 		Prototyp prototyp = new Prototyp(spiel);
