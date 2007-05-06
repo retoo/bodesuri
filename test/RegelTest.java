@@ -1,3 +1,4 @@
+import pd.deck.Herz;
 import pd.deck.Vier;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Feld;
@@ -6,11 +7,11 @@ import pd.zugsystem.Zug;
 public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() {
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
-		Zug zug = new Zug(spieler, new Vier(), bewegung4);
+		Zug zug = new Zug(spieler, new Vier(new Herz()), bewegung4);
 		assertTrue(zug.validiere());
 		
 		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
+		Zug zugFalsch = new Zug(spieler, new Vier(new Herz()), bewegung3);
 		assertFalse(zugFalsch.validiere());
 		
 		zug.ausfuehren();
@@ -22,11 +23,11 @@ public class RegelTest extends ProblemDomainTestCase {
 		bankFeld.versetzeFigurAuf(zielFeld);
 		
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
-		Zug zug = new Zug(spieler, new Vier(), bewegung4);
+		Zug zug = new Zug(spieler, new Vier(new Herz()), bewegung4);
 		assertTrue(zug.validiere());
 		
 		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
-		Zug zugFalsch = new Zug(spieler, new Vier(), bewegung3);
+		Zug zugFalsch = new Zug(spieler, new Vier(new Herz()), bewegung3);
 		assertFalse(zugFalsch.validiere());
 		
 		zug.ausfuehren();
@@ -38,7 +39,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		Feld a = bankFeld.getNtesFeld(3);
 		Feld b = bankFeld.getNtesFeld(1);
 		Bewegung bewegung = new Bewegung(a, b);
-		Zug nonsenseZug = new Zug(spieler, new Vier(), bewegung);
+		Zug nonsenseZug = new Zug(spieler, new Vier(new Herz()), bewegung);
 		
 		assertFalse(nonsenseZug.validiere());
 	}

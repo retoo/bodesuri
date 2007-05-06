@@ -4,7 +4,12 @@ import pd.regelsystem.Regel;
 
 public class Karte {
 	private int wert;
+	protected KartenFarbe farbe;
 	private Regel regel;
+
+	public Karte(KartenFarbe farbe) {
+		this.farbe = farbe;
+	}
 	
 	public String toString() {
 		return this.getClass().getSimpleName();
@@ -19,17 +24,17 @@ public class Karte {
 	}
 
 	public void setKartenFarbe(KartenFarbe kartenFarbe) {
-
+		farbe = kartenFarbe;
 	}
 
 	public KartenFarbe getKartenFarbe() {
-		return null;
+		return farbe;
 	}
 
 	public Regel getRegel() {
-    	return regel;
-    }
-	
+		return regel;
+	}
+
 	protected void setRegel(Regel regel) {
 		this.regel = regel;
 	}

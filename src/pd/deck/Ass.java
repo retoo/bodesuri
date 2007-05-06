@@ -8,7 +8,8 @@ import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Ass extends Karte{
-	public Ass() {
+	public Ass(KartenFarbe farbe) {
+		super(farbe);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(1));
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(11));
