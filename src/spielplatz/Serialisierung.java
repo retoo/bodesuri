@@ -57,7 +57,7 @@ class Bewegung implements Serializable {
 class Feld implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	Object writeReplace() throws ObjectStreamException {
+	private Object writeReplace() throws ObjectStreamException {
 		return Codierer.getFeldCode(this);
 	}
 }
@@ -71,7 +71,7 @@ class FeldCode implements Serializable {
 		this.code = code;
 	}
 	
-	Object readResolve() throws ObjectStreamException {
+	private Object readResolve() throws ObjectStreamException {
 		return Codierer.getFeld(code);
 	}
 }
