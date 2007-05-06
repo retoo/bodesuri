@@ -30,8 +30,6 @@ public class Prototyp {
 
 	private Brett brett;
 
-	private Spieler spieler;
-
 	private BankFeld bankFeld;
 
 	private Feld feld;
@@ -46,7 +44,7 @@ public class Prototyp {
 
 	public void zeichneBrett() {
 		System.out.println();
-		this.spieler = spiel.getSpieler().get(0);
+		Spieler spieler = spiel.getSpieler().get(0);
 		bankFeld = brett.getBankFeldVon(spieler);
 		bankFeld.setFigur(spieler.getFiguren().get(0));
 		this.feld = bankFeld;
@@ -55,7 +53,7 @@ public class Prototyp {
 
 				if (!this.aufstellung) {
 					if (feld instanceof BankFeld) {
-						this.spieler = spiel.getSpieler().get(anzSpieler);
+						spieler = spiel.getSpieler().get(anzSpieler);
 						feld.setFigur(spieler.getFiguren().get(0));
 					}
 				}
@@ -69,13 +67,8 @@ public class Prototyp {
 	}
 
 	public void zeichneFeld(Feld feld) {
-		if (feld.getFigur() != null) {
-			for (int i = 0; i < 4; i++) {
-				this.spieler = spiel.getSpieler().get(i);
-				if (feld.getFigur().getSpieler() == spieler) {
-					System.out.print(spieler.getNummer());
-				}
-			}
+		if (feld.istBesetzt()) { 
+			System.out.print(feld.getFigur().getSpieler().getNummer());
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
 		} else if (feld instanceof WegFeld) {
@@ -90,25 +83,21 @@ public class Prototyp {
 				.println("(Legende: x = Bänkli, 0 = normales Feld, Zahl = Spieler)");
 	}
 
-	public void auswahlSpieler() {
+	public Spieler auswahlSpieler() {
 		System.out.println("Wähle eine Spieler aus.");
 		System.out.println("Spielfigur [0 - 3]: ");
-		this.spieler = spiel.getSpieler().get(liesZahlEin());
+		Spieler spieler = spiel.getSpieler().get(liesZahlEin());
 		System.out.println(spieler.getName() + " wurde ausgewählt.");
+		
+		return spieler;
 	}
 
 	public Karte auswahlKarte() {
 		Karte karte;
 
-		System.out.print(spieler.getName()
-				+ " gib die zu Spielende Karte ein: ");
-
+		System.out.print("Welche Karte möchtest du spielen: ");
 		int eingabe = liesZahlEin();
 
-		/*
-		 * TODO: Robin: apfel-shift-f macht diesen block hier futsch, flick das
-		 * :))
-		 */
 		switch (eingabe) {
 		case 1:
 			karte = new Ass();
@@ -158,9 +147,6 @@ public class Prototyp {
 		}
 		}
 
-		System.out.println("Spieler " + spieler.getName()
-				+ " spielt die Karte " + karte + ".\n");
-
 		return karte;
 	}
 
@@ -208,9 +194,7 @@ public class Prototyp {
 		// spieler.getKarten();
 	}
 
-	public boolean ausfuerenZug(Karte karte, Feld start, Feld ziel) {
-		Bewegung bewegung = new Bewegung(start, ziel);
-		Zug zug = new Zug(spieler, karte, bewegung);
+	public boolean ausfuerenZug(Zug zug) {
 		if (zug.validiere()) {
 			System.out.println("Führe Zug aus: " + zug);
 			zug.ausfuehren();
@@ -222,28 +206,40 @@ public class Prototyp {
 			return false;
 		}
 	}
+	
+	private Zug erfasseZug(Spieler spieler) {
+	    System.out.println("Spieler " + spieler + ", erfasse bitte deinen Zug!");
+	    Karte karte = auswahlKarte();
+	    Feld start = auswahlStartfeld();
+	    Feld ziel = auswahlZielfeld();
+	    
+	    Bewegung bewegung = new Bewegung(start, ziel);
+	    Zug zug = new Zug(spieler, karte, bewegung);
+	    return zug;
+    }
 
-	private void ausfuehrenRunde() {
+	private void ausfuehrenRunde(Spieler spieler) {
 		while (true) {
-			Karte karte = auswahlKarte();
-			Feld start = auswahlStartfeld();
-			Feld ziel = auswahlZielfeld();
-			if (ausfuerenZug(karte, start, ziel))
+			Zug zug = erfasseZug(spieler);
+			
+			if (ausfuerenZug(zug))
 				return;
 		}
 	}
+
+
 
 	private void run() {
 		begruessungAusgaben();
 		zeichneBrett();
 		while (true) {
-			auswahlSpieler();
-			ausfuehrenRunde();
+			Spieler spieler = auswahlSpieler();
+			ausfuehrenRunde(spieler);
 			zeichneBrett();
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		Spiel spiel = new Spiel();
 		for (int i = 0; i < 4; ++i) {
 			spiel.fuegeHinzu(new Spieler("Spieler" + i, i));

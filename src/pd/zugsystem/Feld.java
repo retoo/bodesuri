@@ -62,6 +62,10 @@ public abstract class Feld {
 		
 		return f;		
 	}
+	
+	public boolean istBesetzt() {
+	    return getFigur() != null;
+    }
 
 	public void setNaechstes(Feld naechstesFeld) {
     	this.naechstes = naechstesFeld;
