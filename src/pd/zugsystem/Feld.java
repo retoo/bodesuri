@@ -42,29 +42,29 @@ public abstract class Feld {
 		return null;
 	}
 	
+	public Feld getNtesFeld(int n) {
+		Feld f = this;
+		while (n-- > 0)
+			f = f.naechstes;
+		
+		return f;
+	}
+	
 	public void versetzeFigurAuf(Feld ziel) {
 		ziel.setFigur(getFigur());
 		setFigur(null);
 	}
 	
-	public boolean besetztVon(Spieler spieler) {
-		return figur != null && figur.getSpieler() == spieler;
+	public boolean istBesetzt() {
+	    return getFigur() != null;
+    }
+	
+	public boolean istBesetztVon(Spieler spieler) {
+		return istBesetzt() && getFigur().getSpieler() == spieler;
 	}
 
 	public Feld getNaechstes() {
     	return naechstes;
-    }
-	
-	public Feld getNtesFeld(int n) {
-		Feld f = this;
-		while (n-- > 0 )
-			f = f.naechstes;
-		
-		return f;		
-	}
-	
-	public boolean istBesetzt() {
-	    return getFigur() != null;
     }
 
 	public void setNaechstes(Feld naechstesFeld) {
