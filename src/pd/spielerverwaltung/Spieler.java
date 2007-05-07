@@ -34,6 +34,10 @@ public class Spieler extends CodierbaresObjekt {
 		this.endpunkt = client;
 	}
 
+	public Spieler(EndPunkt absender, String string) {
+	    // TODO Auto-generated constructor stub
+    }
+
 	public String toString() {
 		return "Spieler " + getName();
 	}
