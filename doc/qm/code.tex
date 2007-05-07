@@ -1,0 +1,51 @@
+\documentclass[a4paper,12pt,halfparskip,DIV14]{scrartcl}
+
+\newcommand{\dokumenttitel}{Code}
+\usepackage{../bodesuri}
+\usepackage{multicol}
+
+
+\begin{document}
+
+\input{../titelseite}
+
+\section{Coderichtlinien}\label{sub:coderichtlinien} % (fold)
+
+Grundsätzlich folgen wir den Coderichtlinen von Java/Eclipse. Zusätzlich gelten die folgenden Regeln:
+
+\begin{itemize}
+  \item Öffnende geschwungene Klammer (\texttt{\{}) auf gleicher Zeile
+  \item Einrücken mit Tabulatoren, Formatieren mit Leerzeichen
+  \item 1 Tabulator hat die Breite 4
+  \item Maximal 80 Zeichen pro Zeile
+  \item Sprache: Deutsch mit vernünftigen Ausnahmen (get und nicht gib...)
+  \item Mit Javadoc kommentieren wo sinnvoll (z. B. keine Getter/Setter kommentieren)
+  \item Paketnamen klein schreiben
+  \item Copyright-Header\footnote{Die Möglichkeit einer Veröffentlichung des Projekts unter einer FOSS-Lizenz wird nach Abschluss des Projektes geprüft werden.} in allen Dateien:
+    \begin{verbatim}
+/* Copyright (c) 2007 Danilo Couto, Philippe Eberli,
+ *                    Pascal Hobus, Reto Schüttel, Robin Stocker
+ */
+    \end{verbatim}
+\end{itemize}
+
+
+\paragraph{Beispielcode} (\texttt{----->} stellt einen Tabulator dar)
+
+\begin{verbatim}
+--->public void funktion(int erstens, int zweitens) {
+--->--->if (erstens == zweitens) {
+--->--->--->funktionZwei("Gleich");
+--->--->} else {
+--->--->--->funktionMitVielenArgumenten("Ungleich", erstens, zweitens,
+--->--->--->                            undNochEinArgument);
+--->--->}
+--->}
+\end{verbatim}
+
+\section{Reviews} % (fold)
+\label{sec:reviews}
+
+% section reviews (end)
+
+\end{document}

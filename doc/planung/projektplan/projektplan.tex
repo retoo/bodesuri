@@ -90,7 +90,7 @@ Siehe separates Dokument \texttt{Projektplan.xls}.
 \toprule
 Start      & Ende       & Wochen & Inhalt         & \multicolumn{2}{l}{Meilenstein} \\
 \midrule
-3.4.2007   & 8.4.2007   & 1      & Projektantrag  & 6.4.   & Projektantrag \\
+3.4.2007   & 8.4.2007   & 1      & Inception  & 6.4.   & Projektantrag \\
 9.4.2007   & 15.4.2007  & 1      & Inception      & 17.4.  & Projektplan \\
 16.4.2007  & 29.4.2007  & 2      & Elaboration 1  & 24.4.  & Requirements \\
 30.4.2007  & 13.5.2007  & 2      & Elaboration 2  & 15.5.  & Prototyp \\
@@ -189,7 +189,7 @@ Probleme mit Technologien (z. B. Java 2D \&  Netzwerk) & Verzögerungen durch Ei
 
 \section{Arbeitspakete}
 
-Siehe separates Dokument \texttt{Projektplan.xls} und \url{http://bodesuri.speedpc.ch/dotproject/}
+Siehe separates Dokument \texttt{Projektplan.xls}.
 
 \section{Infrastruktur}
 
@@ -227,43 +227,8 @@ Um die Qualität der Applikation zu gewährleisten werden folgende Massnahmen er
 	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
 	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet
 	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle
-	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und geprüft, ob die Anwendung den Anforderungsspezifikationenen entspricht. 
+	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und geprüft, ob die Anwendung den Anforderungsspezifikationenen entspricht.
 \end{itemize}
 
-\subsection{Coderichtlinien}\label{sub:coderichtlinien} % (fold)
-
-Grundsätzlich folgen wir den Coderichtlinen von Java/Eclipse. Zusätzlich gelten die folgenden Regeln:
-
-\begin{itemize}
-  \item Öffnende geschwungene Klammer (\texttt{\{}) auf gleicher Zeile
-  \item Einrücken mit Tabulatoren, Formatieren mit Leerzeichen
-  \item 1 Tabulator hat die Breite 4
-  \item Maximal 80 Zeichen pro Zeile
-  \item Sprache: Deutsch mit vernünftigen Ausnahmen (get und nicht gib...)
-  \item Mit Javadoc kommentieren wo sinnvoll (z. B. keine Getter/Setter kommentieren)
-  \item Paketnamen klein schreiben
-  \item Copyright-Header\footnote{Die Möglichkeit einer Veröffentlichung des Projekts unter einer FOSS-Lizenz wird nach Abschluss des Projektes geprüft werden.} in allen Dateien:
-    \begin{verbatim}
-/* Copyright (c) 2007 Danilo Couto, Philippe Eberli,
- *                    Pascal Hobus, Reto Schüttel, Robin Stocker
- */
-    \end{verbatim}
-\end{itemize}
-
-
-\paragraph{Beispielcode} (\texttt{----->} stellt einen Tabulator dar)
-
-\begin{verbatim}
---->public void funktion(int erstens, int zweitens) {
---->--->if (erstens == zweitens) {
---->--->--->funktionZwei("Gleich");
---->--->} else {
---->--->--->funktionMitVielenArgumenten("Ungleich", erstens, zweitens,
---->--->--->                            undNochEinArgument);
---->--->}
---->}
-\end{verbatim}
-
-
-
+Der Verlauf der Qualitätssicherung wird in separaten Dokumenten fesgehalten (\texttt{code.pdf}, \texttt{review.pdf}, \texttt{test.pdf})
 \end{document}
