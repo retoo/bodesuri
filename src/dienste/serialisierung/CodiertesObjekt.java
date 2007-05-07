@@ -16,6 +16,10 @@ public class CodiertesObjekt implements Serializable {
 	
 	private Object readResolve() throws ObjectStreamException {
 		/* Spiel.aktuelles ist leider global. */
-		return Spiel.aktuelles.getCodierer().get(code);
+		Object obj = Spiel.aktuelles.getCodierer().get(code);
+		if (obj == null) {
+			throw new UnbekannterCodeException("'" + code + "' unbekannt");
+		}
+		return obj;
 	}
 }
