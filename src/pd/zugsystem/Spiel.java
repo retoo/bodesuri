@@ -8,21 +8,20 @@ public class Spiel {
 	private static final int ANZAHL_SPIELER = 4;
 	
 	private Brett brett;
-	
 	private Vector<Spieler> spieler = new Vector<Spieler>();
 	
-	public void fuegeHinzu(Spieler s) {
-		spieler.add(s);
+	private int beigetreteneSpieler = 0;
+	
+	public Spiel() {
+		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
+			spieler.add(new Spieler());
+		}
+		brett = new Brett(this);
 	}
 	
-	/* TODO: Methodenname anpassen und Code sowieso ;) */
-	/* sollte man das nicht im Konstruktur machen ? (-rschuett) */
-	public void brettAufstellen() {
-		if (spieler.size() != ANZAHL_SPIELER) {
-			throw new Error("Noch nicht genug Spieler im Spiel.");
-		}
-		
-		brett = new Brett(this);
+	public void fuegeHinzu(String spielerName) {
+		spieler.get(beigetreteneSpieler).setName(spielerName);
+		++beigetreteneSpieler;
 	}
 
 	public Brett getBrett() {

@@ -11,11 +11,15 @@ public class Spieler {
 	
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
-	public Spieler(String name) {
-		this.name = name;
+	public Spieler() {
 		for (int i = 0; i < 4; ++i) {
 			figuren.add(new Figur(this));
 		}
+	}
+	
+	public Spieler(String name) {
+		this();
+		this.name = name;
 	}
 
 	public Spieler(EndPunkt client, String name) {
@@ -30,6 +34,10 @@ public class Spieler {
 	public String getName() {
     	return name;
     }
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	// Wird für das CLI verwendet, um die Spieler anzeigen zu können
 	public Vector<Figur> getFiguren() {

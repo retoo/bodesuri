@@ -192,9 +192,8 @@ public class Prototyp {
 	public static void main(String[] args) {		
 		Spiel spiel = new Spiel();
 		for (int i = 0; i < 4; ++i) {
-			spiel.fuegeHinzu(new Spieler("Nr. " + i));
+			spiel.fuegeHinzu("Nr. " + i);
 		}
-		spiel.brettAufstellen();
 		Prototyp prototyp = new Prototyp(spiel);
 		prototyp.run();
 	}

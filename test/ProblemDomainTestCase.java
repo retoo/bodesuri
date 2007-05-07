@@ -16,11 +16,9 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		spiel = new Spiel();
 		
 		for (int i = 0; i < 4; ++i) {
-			spiel.fuegeHinzu(new Spieler("Spieler" + i));
+			spiel.fuegeHinzu("Spieler" + i);
 		}
 		spieler = spiel.getSpieler().get(0);
-		
-		spiel.brettAufstellen();
 		
 		bankFeld = spiel.getBrett().getBankFeldVon(spieler);
 		bankFeld.setFigur(spieler.getFiguren().get(0));
