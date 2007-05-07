@@ -1,10 +1,14 @@
 package pd.zugsystem;
 
+import java.io.Serializable;
+
 import pd.deck.Karte;
 import pd.regelsystem.Regel;
 import pd.spielerverwaltung.Spieler;
 
-public class Zug {
+public class Zug implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Spieler spieler;
 	private Karte karte;
 	private Bewegung bewegung;

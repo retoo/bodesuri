@@ -2,28 +2,35 @@ package pd.spielerverwaltung;
 
 import java.util.Vector;
 
+import dienste.serialisierung.CodierbaresObjekt;
+
 import pd.zugsystem.Figur;
 import spielplatz.EndPunkt;
 
-public class Spieler {
+public class Spieler extends CodierbaresObjekt {
+	private static final long serialVersionUID = 1L;
+	
+	private int nummer;
+	
 	private String name;
 	public EndPunkt endpunkt;
 	
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
-	public Spieler() {
+	public Spieler(int nummer) {
+		this.nummer = nummer;
 		for (int i = 0; i < 4; ++i) {
 			figuren.add(new Figur(this));
 		}
 	}
 	
-	public Spieler(String name) {
-		this();
+	public Spieler(int nummer, String name) {
+		this(nummer);
 		this.name = name;
 	}
 
-	public Spieler(EndPunkt client, String name) {
-		this(name);
+	public Spieler(int nummer, EndPunkt client, String name) {
+		this(nummer, name);
 		this.endpunkt = client;
 	}
 
@@ -31,10 +38,14 @@ public class Spieler {
 		return "Spieler " + getName();
 	}
 
+    public String getCode() {
+	    return "Spieler " + nummer;
+    }
+
 	public String getName() {
     	return name;
     }
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}

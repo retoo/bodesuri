@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Zug;
 
 public class SerialisierungTest extends ProblemDomainTestCase {
 	private Object durchSerialisierung(Object original)
@@ -33,5 +34,20 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 
 		assertEquals(bankFeld, neu.getStart());
 		assertEquals(zielFeld, neu.getZiel());
+	}
+	
+	public void testZugSerialisieren()
+			throws IOException, ClassNotFoundException {
+		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
+		Zug zug = new Zug(spieler, kartenGeber.getKarte(), bewegung);
+		
+		Zug zug2 = (Zug) durchSerialisierung(zug);
+		assertEquals(zug.getSpieler(), zug2.getSpieler());
+		// TODO: Karten in Codierer speichern. 
+		// assertEquals(zug.getKarte(), zug2.getKarte());
+		assertEquals(zug.getBewegung().getStart(),
+		             zug2.getBewegung().getStart());
+		assertEquals(zug.getBewegung().getZiel(),
+		             zug2.getBewegung().getZiel());
 	}
 }

@@ -22,7 +22,9 @@ public class Spiel {
 		/* SCHEISSE */
 		Spiel.aktuelles = this;
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
-			spieler.add(new Spieler());
+			Spieler sp = new Spieler(i);
+			spieler.add(sp);
+			codierer.speichere(sp);
 		}
 		brett = new Brett(this);
 	}

@@ -1,8 +1,11 @@
 package pd.deck;
 
+import dienste.serialisierung.CodierbaresObjekt;
 import pd.regelsystem.Regel;
 
-public class Karte {
+public class Karte extends CodierbaresObjekt {
+	private static final long serialVersionUID = 1L;
+	
 	private int wert;
 	protected KartenFarbe farbe;
 	private Regel regel;
@@ -16,6 +19,10 @@ public class Karte {
 	public String toString() {
 		return this.getClass().getSimpleName();
 	}
+
+    public String getCode() {
+	    return "Karte " + farbe.getClass().getSimpleName() + wert;
+    }
 
 	public void setWert(int wert) {
 		this.wert = wert;
