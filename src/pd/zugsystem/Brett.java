@@ -18,21 +18,25 @@ public class Brett {
 		erstelleFelder();
 	}
 
-	/* TODO: Schritt fÃ¼r Schritt durchdenken */
+	/* TODO: Schritt für Schritt durchdenken */
 	private void erstelleFelder() {
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
 		
+		int nummer = 0;
+		
 		Vector<Feld> felderInRing = new Vector<Feld>();
 		
 		for (Spieler sp : spiel.getSpieler()) {
-			BankFeld bf = new BankFeld(sp);
+			BankFeld bf = new BankFeld(nummer++, sp);
+			spiel.getCodierer().speichere(bf);
 			bankFelder.put(sp, bf);
 			felderInRing.add(bf);
 			
 			Vector<LagerFeld> lager = new Vector<LagerFeld>();
 			for (int i = 0; i < 4; ++i) {
-				LagerFeld lf = new LagerFeld(sp);
+				LagerFeld lf = new LagerFeld(nummer++, sp);
+				spiel.getCodierer().speichere(lf);
 				lf.setFigur(sp.getFiguren().get(i));
 				lf.setNaechstes(bf);
 				lager.add(lf);
@@ -40,7 +44,9 @@ public class Brett {
 			lagerFelder.put(sp, lager);
 			
 			for (int i = 0; i < 15; ++i) {
-				felderInRing.add(new WegFeld());
+				WegFeld wf = new WegFeld(nummer++);
+				spiel.getCodierer().speichere(wf);
+				felderInRing.add(wf);
 			}
 		}
 		

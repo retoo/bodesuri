@@ -2,13 +2,21 @@ package pd.zugsystem;
 
 import java.util.Vector;
 
+import dienste.serialisierung.CodierbaresObjekt;
+
 import pd.spielerverwaltung.Spieler;
 
-public abstract class Feld {
+public abstract class Feld extends CodierbaresObjekt {
 	protected Feld naechstes;
 	protected Feld vorheriges;
 	
 	protected Figur figur;
+	
+	private int nummer;
+	
+	public Feld(int nummer) {
+		this.nummer = nummer;
+	}
 	
 	/*
 	 * TODO: Durchdenken wegen Endlosschleife.
@@ -62,6 +70,10 @@ public abstract class Feld {
 	public boolean istBesetztVon(Spieler spieler) {
 		return istBesetzt() && getFigur().getSpieler() == spieler;
 	}
+	
+    public String getCode() {
+	    return "Feld " + nummer;
+    }
 
 	public Feld getNaechstes() {
     	return naechstes;

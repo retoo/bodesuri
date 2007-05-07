@@ -2,6 +2,8 @@ package pd.zugsystem;
 
 import java.util.Vector;
 
+import dienste.serialisierung.Codierer;
+
 import pd.spielerverwaltung.Spieler;
 
 public class Spiel {
@@ -9,10 +11,16 @@ public class Spiel {
 	
 	private Brett brett;
 	private Vector<Spieler> spieler = new Vector<Spieler>();
+	private Codierer codierer = new Codierer();
 	
 	private int beigetreteneSpieler = 0;
 	
+	/* SCHEISSE */
+	public static Spiel aktuelles;
+	
 	public Spiel() {
+		/* SCHEISSE */
+		Spiel.aktuelles = this;
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
 			spieler.add(new Spieler());
 		}
@@ -27,6 +35,10 @@ public class Spiel {
 	public Brett getBrett() {
     	return brett;
     }
+
+	public Codierer getCodierer() {
+		return codierer;
+	}
 
 	public Vector<Spieler> getSpieler() {
     	return spieler;

@@ -1,6 +1,10 @@
 package pd.zugsystem;
 
-public class Bewegung {
+import java.io.Serializable;
+
+public class Bewegung implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Feld start;
 	private Feld ziel;
 	

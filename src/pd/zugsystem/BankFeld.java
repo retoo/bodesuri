@@ -3,7 +3,9 @@ package pd.zugsystem;
 import pd.spielerverwaltung.Spieler;
 
 public class BankFeld extends SpielerFeld {
-	public BankFeld(Spieler spieler) {
-		super(spieler);
+	private static final long serialVersionUID = 1L;
+
+	public BankFeld(int nummer, Spieler spieler) {
+		super(nummer, spieler);
 	}
 }
