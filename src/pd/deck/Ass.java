@@ -8,6 +8,8 @@ import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Ass extends Karte{
+	private static final long serialVersionUID = 1L;
+
 	public Ass(KartenFarbe farbe) {
 		super(farbe);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();

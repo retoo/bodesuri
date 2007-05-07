@@ -3,6 +3,8 @@ package pd.deck;
 import java.util.EmptyStackException;
 import java.util.Stack;
 
+import pd.zugsystem.Spiel;
+
 public class KartenGeber {
 	/*
 	 * 13 * 4 Farben + 2 Joker = 54 Karten = ein Deck
@@ -28,6 +30,10 @@ public class KartenGeber {
 			kartenStapel.addAll( (new Karo()).createKarten() );
 			kartenStapel.add(new Joker(new KeineFarbe()) );		// Null Object für Joker
 			kartenStapel.add(new Joker(new KeineFarbe()) );
+		}
+		
+		for (Karte karte : kartenStapel) {
+			Spiel.aktuelles.getCodierer().speichere(karte);
 		}
 		
 		// Mischen
