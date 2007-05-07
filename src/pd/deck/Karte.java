@@ -21,7 +21,8 @@ public class Karte extends CodierbaresObjekt {
 	}
 
     public String getCode() {
-	    return "Karte " + getKartenFarbe() + " " + getClass().getSimpleName();
+	    return "Karte " + getKartenFarbe().getClass().getSimpleName() + " " +
+	           getClass().getSimpleName();
     }
 
 	public void setWert(int wert) {
