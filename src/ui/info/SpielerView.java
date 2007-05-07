@@ -1,5 +1,6 @@
 package ui.info;
 
+import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
@@ -16,6 +17,7 @@ public class SpielerView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		this.add(new JLabel("Spieler 1"));
 		this.add(new JLabel("Spieler 2"));

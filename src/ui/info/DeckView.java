@@ -4,6 +4,7 @@
 
 package ui.info;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -20,6 +21,7 @@ public class DeckView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new FlowLayout());
+		setAlignmentX(Component.RIGHT_ALIGNMENT);
 		
 		this.add(new JLabel("Hier kommen die Karten hin..."));
     }

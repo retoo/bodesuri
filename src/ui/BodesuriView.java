@@ -1,8 +1,7 @@
 package ui;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -24,8 +23,8 @@ public class BodesuriView extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JMenuBar menuleiste;
 	private JMenu spielMenu;
-	private JMenuItem spielStarten;
-	private JMenuItem spielBeenden;
+	private JMenuItem spielBeitreten;
+	private JMenuItem spielVerlassen;
 
 	public BodesuriView() {
 		setTitle("Bodesuri");
@@ -39,43 +38,31 @@ public class BodesuriView extends JFrame {
 		spielMenu = new JMenu("Spiel");
 		menuleiste.add(spielMenu);
 
-		spielStarten = new JMenuItem("Spiel starten");
-		spielMenu.add(spielStarten);
+		spielBeitreten = new JMenuItem("Spiel beitreten");
+		spielMenu.add(spielBeitreten);
 
-		spielBeenden = new JMenuItem("Spiel beenden");
-		spielMenu.add(spielBeenden);
+		spielVerlassen = new JMenuItem("Spiel verlassen");
+		spielMenu.add(spielVerlassen);
 
 		setJMenuBar(menuleiste);
 
 		// Panels
-		/*
-		 * Hat sich nach längeren Test als das Beste erwiesen:
-		 * - Border nicht, weil wir die Kontrolle über die Grösse des 
-		 *   Spielfeldes haben wollen
-		 * - Box nicht, da zwei zusätzliche Panels erstelt werden müssen
-		 */
-		setLayout(new GridBagLayout());
+		// Box scheint das beste Layout zu sein.
+		// - Border geht nicht wegen dem Resize.
+		// - GridBag ist zu kompliziert, weil wir unabhängige Spalten haben.
+		setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
-		GridBagConstraints links = new GridBagConstraints();
-		links.anchor = GridBagConstraints.NORTHWEST;
-		links.gridx = 0;
-		links.gridy = 0;
-		add(new BrettView(), links);
+		Box links = Box.createVerticalBox();
+		links.add(new BrettView());
+		links.add(new ChatView());
 
-		links.gridx = 0;
-		links.gridy = 1;
-		add(new ChatView(), links);
+		Box rechts = Box.createVerticalBox();
+		rechts.add(new SpielerView());
+		rechts.add(new DeckView());
+		rechts.add(Box.createVerticalGlue());
 
-		GridBagConstraints rechts = new GridBagConstraints();
-		rechts.anchor = GridBagConstraints.NORTHWEST;
-		rechts.gridx = 1;
-		rechts.gridy = 0;
-		add(new SpielerView(), rechts);
-
-		rechts.gridx = 1;
-		rechts.gridy = 1;
-		add(new DeckView(), rechts);
-
+		add(links);
+		add(rechts);
 		pack();
 	}
 
