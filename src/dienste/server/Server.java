@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 
+import pd.deck.KartenGeber;
 import pd.zugsystem.Spiel;
 
 import dienste.netzwerk.Brief;
@@ -83,9 +84,13 @@ public class Server {
 	private void spieleSpiel() throws VerbindungWegException {
 		Spiel spiel = new Spiel();
 		
+		
 		for (Spieler spieler : spielers) {
 			spiel.fuegeHinzu(spieler.name);
 		}
+		
+		KartenGeber kartenGeber = new KartenGeber();
+		
 	
 		kuendigeSpielstartAn();
 		

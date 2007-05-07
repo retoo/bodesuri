@@ -8,6 +8,7 @@ import java.net.UnknownHostException;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.nachrichtentypen.ChatNachricht;
 import dienste.netzwerk.nachrichtentypen.Nachricht;
 import dienste.netzwerk.nachrichtentypen.SpielBeitreten;
 import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
@@ -23,6 +24,7 @@ import pd.deck.Drei;
 import pd.deck.Fuenf;
 import pd.deck.Herz;
 import pd.deck.Karte;
+import pd.deck.KartenGeber;
 import pd.deck.Koenig;
 import pd.deck.Neun;
 import pd.deck.Sechs;
@@ -233,6 +235,11 @@ public class Prototyp {
 				}
 				
 				System.out.println("Zug ausgeführt");
+			} else if (nachricht instanceof ChatNachricht) {
+				ChatNachricht cn = (ChatNachricht) nachricht;
+				
+				System.out.println(" > " + b.absender + ": " + cn);
+				
 			} else {
 				/* TODO: Platzhalter */
 				System.out.println("Unerwartete Nachricht " + nachricht);
@@ -280,6 +287,7 @@ public class Prototyp {
 		}
 		
 		Spiel spiel = new Spiel();
+		KartenGeber kartenGeber = new KartenGeber();
 		Spieler spielerIch = null;
 		for (int i = 0; i < startNachricht.spieler.length; i++) {
 			String name = startNachricht.spieler[i];
