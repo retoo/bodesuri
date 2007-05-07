@@ -43,8 +43,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		
 		Zug zug2 = (Zug) durchSerialisierung(zug);
 		assertEquals(zug.getSpieler(), zug2.getSpieler());
-		// TODO: Karten in Codierer speichern. 
-		// assertEquals(zug.getKarte(), zug2.getKarte());
+		assertEquals(zug.getKarte(), zug2.getKarte());
 		assertEquals(zug.getBewegung().getStart(),
 		             zug2.getBewegung().getStart());
 		assertEquals(zug.getBewegung().getZiel(),

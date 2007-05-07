@@ -28,8 +28,9 @@ public class KartenGeber {
 			kartenStapel.addAll( (new Herz()).createKarten() );
 			kartenStapel.addAll( (new Kreuz()).createKarten() );
 			kartenStapel.addAll( (new Karo()).createKarten() );
-			kartenStapel.add(new Joker(new KeineFarbe()) );		// Null Object für Joker
-			kartenStapel.add(new Joker(new KeineFarbe()) );
+			/* Den Jokern Farben zuweisen, damit sie unterscheidbar sind. */
+			kartenStapel.add(new Joker(new Pik()));
+			kartenStapel.add(new Joker(new Herz()));
 		}
 		
 		for (Karte karte : kartenStapel) {
