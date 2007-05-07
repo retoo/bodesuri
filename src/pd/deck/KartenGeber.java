@@ -22,12 +22,12 @@ public class KartenGeber {
 	 */
 	private void mischen() {
 		for (int i=0; i < 2; ++i) {
-			kartenStapel.addAll( (new Pik()).getKarten() );
-			kartenStapel.addAll( (new Herz()).getKarten() );
-			kartenStapel.addAll( (new Kreuz()).getKarten() );
-			kartenStapel.addAll( (new Karo()).getKarten() );
-			kartenStapel.add(new Joker());
-			kartenStapel.add(new Joker());
+			kartenStapel.addAll( (new Pik()).createKarten() );
+			kartenStapel.addAll( (new Herz()).createKarten() );
+			kartenStapel.addAll( (new Kreuz()).createKarten() );
+			kartenStapel.addAll( (new Karo()).createKarten() );
+			kartenStapel.add(new Joker(new KeineFarbe()) );		// Null Object für Joker
+			kartenStapel.add(new Joker(new KeineFarbe()) );
 		}
 		
 		// Mischen

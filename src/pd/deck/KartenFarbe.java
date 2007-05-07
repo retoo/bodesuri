@@ -5,7 +5,9 @@ import java.util.Vector;
 public abstract class KartenFarbe {	
 	private Vector<Karte> karten = new Vector<Karte>();
 	
-	public KartenFarbe() {
+	public KartenFarbe() { }
+	
+	public Vector<Karte> createKarten() {
 		karten.add(new Zwei(this));
 		karten.add(new Drei(this));
 		karten.add(new Vier(this));
@@ -19,9 +21,6 @@ public abstract class KartenFarbe {
 		karten.add(new Dame(this));
 		karten.add(new Koenig(this));
 		karten.add(new Ass(this));
-	}
-	
-	public Vector<Karte> getKarten() {
 		return karten;
 	}
 }
