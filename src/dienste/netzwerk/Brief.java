@@ -1,6 +1,6 @@
-package spielplatz.hilfsklassen;
+package dienste.netzwerk;
 
-import spielplatz.EndPunkt;
+import dienste.netzwerk.nachrichtentypen.Nachricht;
 
 public class Brief {
 	public EndPunkt absender;

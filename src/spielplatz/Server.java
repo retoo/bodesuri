@@ -3,18 +3,25 @@ package spielplatz;
 import java.io.IOException;
 import java.util.Vector;
 
-import pd.spielerverwaltung.Spieler;
-import spielplatz.hilfsklassen.Brief;
-import spielplatz.hilfsklassen.ChatNachricht;
-import spielplatz.hilfsklassen.NeueVerbindung;
-import spielplatz.hilfsklassen.SpielStartNachricht;
-import spielplatz.hilfsklassen.VerbindungWegException;
+import dienste.netzwerk.Brief;
+import dienste.netzwerk.Briefkasten;
+import dienste.netzwerk.Daemon;
+import dienste.netzwerk.nachrichtentypen.ChatNachricht;
+import dienste.netzwerk.nachrichtentypen.NeueVerbindung;
+import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
+import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
 
+import pd.spielerverwaltung.Spieler;
+
+@Deprecated
 public class Server {
+	private static final int PORT = 3334;
+	
+	@Deprecated
 	public static void main(String[] args) throws IOException, ClassNotFoundException, VerbindungWegException {		
 		Briefkasten serverBriefkasten = new Briefkasten();
 		
-		Daemon a = new Daemon(serverBriefkasten);
+		Daemon a = new Daemon(PORT, serverBriefkasten);
 		
 		Thread t = new Thread(a);
 		t.start();

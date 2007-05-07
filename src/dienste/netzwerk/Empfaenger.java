@@ -1,12 +1,12 @@
-package spielplatz;
+package dienste.netzwerk;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import spielplatz.hilfsklassen.Brief;
-import spielplatz.hilfsklassen.Nachricht;
-import spielplatz.hilfsklassen.VerbindungGeschlossen;
+import dienste.netzwerk.nachrichtentypen.Nachricht;
+import dienste.netzwerk.nachrichtentypen.VerbindungGeschlossen;
+
 
 public class Empfaenger implements Runnable{
 	Briefkasten nachrichtenQueue;

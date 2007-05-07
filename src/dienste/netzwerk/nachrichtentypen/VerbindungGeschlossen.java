@@ -1,4 +1,5 @@
-package spielplatz.hilfsklassen;
+package dienste.netzwerk.nachrichtentypen;
+
 
 
 public class VerbindungGeschlossen extends Nachricht {

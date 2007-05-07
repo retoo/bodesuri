@@ -2,10 +2,10 @@ package pd.spielerverwaltung;
 
 import java.util.Vector;
 
-import dienste.serialisierung.CodierbaresObjekt;
 
+import dienste.netzwerk.EndPunkt;
+import dienste.serialisierung.CodierbaresObjekt;
 import pd.zugsystem.Figur;
-import spielplatz.EndPunkt;
 
 public class Spieler extends CodierbaresObjekt {
 	private static final long serialVersionUID = 1L;

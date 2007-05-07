@@ -1,8 +1,8 @@
-package spielplatz;
+package dienste.netzwerk;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-import spielplatz.hilfsklassen.Brief;
+
 
 public class Briefkasten {
 	LinkedBlockingQueue<Brief> briefablage = new LinkedBlockingQueue<Brief>();

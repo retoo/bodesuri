@@ -1,6 +1,7 @@
-package spielplatz.hilfsklassen;
+package dienste.netzwerk.nachrichtentypen;
 
-import spielplatz.EndPunkt;
+import dienste.netzwerk.EndPunkt;
+import spielplatz.hilfsklassen.ServerMeldung;
 
 public class NeueVerbindung extends ServerMeldung {
 	private static final long serialVersionUID = 1L;

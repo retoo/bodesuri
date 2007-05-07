@@ -1,21 +1,19 @@
-package spielplatz;
+package dienste.netzwerk;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import spielplatz.hilfsklassen.Brief;
-import spielplatz.hilfsklassen.NeueVerbindung;
+import dienste.netzwerk.nachrichtentypen.NeueVerbindung;
 
-public class Daemon implements Runnable {
-	private static final int PORT = 3334;
-	
+
+public class Daemon implements Runnable {	
 	private Briefkasten briefkasten;
 
 	private ServerSocket serverSock;
 
-	public Daemon(Briefkasten briefkasten) throws IOException {
-		serverSock = new ServerSocket(PORT);
+	public Daemon(int port, Briefkasten briefkasten) throws IOException {
+		serverSock = new ServerSocket(port);
 		this.briefkasten = briefkasten;
 	}
 

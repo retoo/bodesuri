@@ -1,5 +1,6 @@
 package spielplatz.hilfsklassen;
 
+import dienste.netzwerk.nachrichtentypen.Nachricht;
 
 
 public class ServerMeldung extends Nachricht {

@@ -1,4 +1,4 @@
-package spielplatz.hilfsklassen;
+package dienste.netzwerk.nachrichtentypen;
 
 import java.io.Serializable;
 

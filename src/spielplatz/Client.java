@@ -5,10 +5,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 
-import spielplatz.hilfsklassen.Brief;
-import spielplatz.hilfsklassen.ChatNachricht;
-import spielplatz.hilfsklassen.SpielStartNachricht;
-import spielplatz.hilfsklassen.VerbindungWegException;
+import dienste.netzwerk.Brief;
+import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.nachrichtentypen.ChatNachricht;
+import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
+import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
+
 
 public class Client {
 	public static void main(String[] args) throws UnknownHostException,

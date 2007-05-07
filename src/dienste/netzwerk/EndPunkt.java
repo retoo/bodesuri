@@ -1,12 +1,13 @@
-package spielplatz;
+package dienste.netzwerk;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import spielplatz.hilfsklassen.Nachricht;
-import spielplatz.hilfsklassen.VerbindungWegException;
+import dienste.netzwerk.nachrichtentypen.Nachricht;
+import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
+
 
 public class EndPunkt {
 	Socket socket;
@@ -45,12 +46,16 @@ public class EndPunkt {
 	 * @throws IOException
 	 */
 	public EndPunkt(String hostname, int port) throws UnknownHostException, IOException {
+		System.out.println("Verbinde zu " + hostname + ":" + port);
+		
 		socket = new Socket(hostname, port);
 		
 		 /* Buffer für eingehende Nachrichten */
 		briefkasten = new Briefkasten();
 		
 		startVerhandlung();
+		
+		System.out.println("Verbindungsaufbau erfolgreich");
 	}
 	
 	private void startVerhandlung() throws IOException {
