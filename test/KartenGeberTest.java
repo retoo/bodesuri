@@ -1,5 +1,3 @@
-import junit.framework.TestCase;
-
 
 public class KartenGeberTest extends ProblemDomainTestCase {
 	public void testMischen() {
