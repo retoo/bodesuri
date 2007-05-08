@@ -1,6 +1,6 @@
 package dienste.netzwerk;
 
-import dienste.netzwerk.nachrichtentypen.Nachricht;
+import dienste.netzwerk.nachrichten.Nachricht;
 
 public class Brief {
 	public EndPunkt absender;

@@ -1,4 +1,4 @@
-package dienste.netzwerk.nachrichtentypen;
+package dienste.netzwerk.nachrichten;
 
 import pd.zugsystem.Zug;
 

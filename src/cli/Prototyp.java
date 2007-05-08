@@ -5,18 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 
-import dienste.netzwerk.Brief;
-import dienste.netzwerk.Briefkasten;
-import dienste.netzwerk.EndPunkt;
-import dienste.netzwerk.nachrichtentypen.ChatNachricht;
-import dienste.netzwerk.nachrichtentypen.Nachricht;
-import dienste.netzwerk.nachrichtentypen.SpielBeitreten;
-import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
-import dienste.netzwerk.nachrichtentypen.SpielVollNachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
-import dienste.netzwerk.nachrichtentypen.ZugAufforderung;
-import dienste.netzwerk.nachrichtentypen.ZugInformation;
-
 import pd.deck.Acht;
 import pd.deck.Ass;
 import pd.deck.Dame;
@@ -39,13 +27,23 @@ import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
 import pd.zugsystem.WegFeld;
 import pd.zugsystem.Zug;
+import dienste.netzwerk.Brief;
+import dienste.netzwerk.Briefkasten;
+import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.nachrichten.ChatNachricht;
+import dienste.netzwerk.nachrichten.Nachricht;
+import dienste.netzwerk.nachrichten.SpielBeitreten;
+import dienste.netzwerk.nachrichten.SpielStartNachricht;
+import dienste.netzwerk.nachrichten.SpielVollNachricht;
+import dienste.netzwerk.nachrichten.VerbindungWegException;
+import dienste.netzwerk.nachrichten.ZugAufforderung;
+import dienste.netzwerk.nachrichten.ZugInformation;
 
 public class Prototyp {
 	private Spiel spiel;
 	private Brett brett;
 
 	private BankFeld startFeld;
-
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
 
@@ -202,8 +200,7 @@ public class Prototyp {
 			zeichneBrett();
 			
 			Brief b = bk.getBrief();
-			Nachricht nachricht = b.nachricht;
-			
+			Nachricht nachricht = b.nachricht;	
 	
 			
 			if (nachricht instanceof ZugAufforderung) {

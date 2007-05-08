@@ -7,25 +7,23 @@ package dienste.server;
 import java.io.IOException;
 import java.util.Vector;
 
-
 import pd.deck.KartenGeber;
 import pd.zugsystem.Spiel;
-
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.Daemon;
-import dienste.netzwerk.nachrichtentypen.ChatNachricht;
-import dienste.netzwerk.nachrichtentypen.Nachricht;
-import dienste.netzwerk.nachrichtentypen.NeueVerbindung;
-import dienste.netzwerk.nachrichtentypen.SpielBeitreten;
-import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
-import dienste.netzwerk.nachrichtentypen.ZugAufforderung;
-import dienste.netzwerk.nachrichtentypen.ZugInformation;
+import dienste.netzwerk.nachrichten.ChatNachricht;
+import dienste.netzwerk.nachrichten.Nachricht;
+import dienste.netzwerk.nachrichten.NeueVerbindung;
+import dienste.netzwerk.nachrichten.SpielBeitreten;
+import dienste.netzwerk.nachrichten.SpielStartNachricht;
+import dienste.netzwerk.nachrichten.VerbindungWegException;
+import dienste.netzwerk.nachrichten.ZugAufforderung;
+import dienste.netzwerk.nachrichten.ZugInformation;
 
 
 public class Server {
-	private static final int PORT = 3334;
+	private static final int PORT = 54497;
 	private Briefkasten serverBriefkasten;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 

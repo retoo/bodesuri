@@ -7,9 +7,9 @@ import java.net.UnknownHostException;
 
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
-import dienste.netzwerk.nachrichtentypen.ChatNachricht;
-import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
+import dienste.netzwerk.nachrichten.ChatNachricht;
+import dienste.netzwerk.nachrichten.SpielStartNachricht;
+import dienste.netzwerk.nachrichten.VerbindungWegException;
 
 
 public class Client {

@@ -3,15 +3,14 @@ package spielplatz;
 import java.io.IOException;
 import java.util.Vector;
 
+import pd.spielerverwaltung.Spieler;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.Daemon;
-import dienste.netzwerk.nachrichtentypen.ChatNachricht;
-import dienste.netzwerk.nachrichtentypen.NeueVerbindung;
-import dienste.netzwerk.nachrichtentypen.SpielStartNachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
-
-import pd.spielerverwaltung.Spieler;
+import dienste.netzwerk.nachrichten.ChatNachricht;
+import dienste.netzwerk.nachrichten.NeueVerbindung;
+import dienste.netzwerk.nachrichten.SpielStartNachricht;
+import dienste.netzwerk.nachrichten.VerbindungWegException;
 
 @Deprecated
 public class Server {

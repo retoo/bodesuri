@@ -1,4 +1,4 @@
-package dienste.netzwerk.nachrichtentypen;
+package dienste.netzwerk.nachrichten;
 
 
 public class ZugAufforderung extends Nachricht {

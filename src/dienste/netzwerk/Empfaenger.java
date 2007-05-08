@@ -4,8 +4,8 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import dienste.netzwerk.nachrichtentypen.Nachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungGeschlossen;
+import dienste.netzwerk.nachrichten.Nachricht;
+import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 
 
 public class Empfaenger implements Runnable{

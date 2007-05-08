@@ -5,8 +5,8 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import dienste.netzwerk.nachrichtentypen.Nachricht;
-import dienste.netzwerk.nachrichtentypen.VerbindungWegException;
+import dienste.netzwerk.nachrichten.Nachricht;
+import dienste.netzwerk.nachrichten.VerbindungWegException;
 
 
 public class EndPunkt {
