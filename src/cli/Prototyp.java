@@ -54,6 +54,8 @@ public class Prototyp {
 	public void zeichneBrett() {
 		System.out.println("Spieler: " + lokalerSpieler);
 		System.out.println();
+		System.out.println("0000000000111111111122222222223333333333444444444455555555556666");
+		System.out.println("0123456789012345678901234567890123456789012345678901234567890123");
 		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
 			zeichneFeld(feld);
 		}
