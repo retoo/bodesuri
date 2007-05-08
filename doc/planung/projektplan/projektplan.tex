@@ -15,7 +15,7 @@ Der Projektplan bildet die Grundlage für Bodesuri. Es beinhaltet die vollständ
 
 \subsection{Gültigkeitsbereich}
 
-Dieses Dokument ist die Grundlage für das ganze Projekt und hat deshalb Gültigkeit für die gesamte Projektdauer. Änderungen werden laufend ergänzt und sind in der Änderungshistorie ersichtlich.
+Dieses Dokument ist die Grundlage für das ganze Projekt und hat deshalb Gültigkeit für die gesamte Projektdauer. Änderungen werden laufend ergänzt.
 
 \subsection{Definitionen und Abkürzungen}
 
@@ -26,7 +26,7 @@ Dieses Dokument ist die Grundlage für das ganze Projekt und hat deshalb Gültig
 \subsection{Referenzen}
 
 \begin{tabular}{@{}ll@{}}
-\url{http://www.netzone.ch/dog-spiel/} & Beschreibung von Dog, Spielregeln
+\url{http://www.dogspiel.info/} & Beschreibung von Dog, Spielregeln
 \end{tabular}
 
 \subsection{Übersicht}
@@ -44,7 +44,7 @@ Wir möchten mit diesem Projekt unser Wissen aus den Modulen Software Engineerin
 
 \subsection{Annahmen und Einschränkungen}
 
-Jedem einzelnen Projektmitglied wird eine Zeitspanne von 100 Stunden zur Verfügung gestellt, um entsprechende Arbeitspakete auszuführen. Wenn am Ende noch genug Zeit vorhanden ist, werden dem Spiel weitere Features, wie zum Beispiel dem Chat, hinzugefügt. Anderenfalls werden Arbeitspakete mit der Priorität 3 nicht implementiert, um den Abgabetermin einhalten zu können.
+Jedem einzelnen Projektmitglied wird eine Zeitspanne von 100 Stunden zur Verfügung gestellt, um entsprechende Arbeitspakete auszuführen. Wenn am Ende noch genug Zeit vorhanden ist, werden dem Spiel weitere Features (Arbeitspakete mit der Priorität 3) hinzugefügt. Anderenfalls werden diese Arbeitspakete nicht implementiert, um den Abgabetermin einhalten zu können.
 
 
 \section{Projektorganisation}
@@ -62,7 +62,7 @@ Edgar Danilo Couto  & Projektausführend, Grafik \\
 Philippe Eberli     & Projektausführend, Dokumentation \\
 Pascal Hobus        & Projektausführend, Modellierung \\
 Reto Schüttel       & Projektausführend, Engine \\
-Robin Stocker       & Projektausführend, Infrastruktur (SVN, Projektmanagement-Tools) \\
+Robin Stocker       & Projektausführend, Infrastruktur (SVN, Projektmanagement-Tools)\\
 \midrule
 \multicolumn{2}{@{}l}{\textbf{Externe Schnittstellen}} \\
 Daniel Keller       & Betreuender Dozent \\
@@ -90,14 +90,14 @@ Siehe separates Dokument \texttt{Projektplan.xls}.
 \toprule
 Start      & Ende       & Wochen & Inhalt         & \multicolumn{2}{l}{Meilenstein} \\
 \midrule
-3.4.2007   & 8.4.2007   & 1      & Inception  & 6.4.   & Projektantrag \\
-9.4.2007   & 15.4.2007  & 1      & Inception      & 17.4.  & Projektplan \\
-16.4.2007  & 29.4.2007  & 2      & Elaboration 1  & 24.4.  & Requirements \\
-30.4.2007  & 13.5.2007  & 2      & Elaboration 2  & 15.5.  & Prototyp \\
-14.5.2007  & 27.5.2007  & 2      & Construction 1 & 29.5.  & Design und Design-Dokumentation \\
-28.5.2007  & 10.6.2007  & 2      & Construction 2 \\
-11.6.2007  & 24.6.2007  & 2      & Construction 3 \\
-25.6.2007  & 6.7.2007   & 2      & Transition     & 6.7.   & Präsentation \\
+03.4.2007  & 09.4.2007  & 1      & Inception			& 06.4.  & Projektantrag \\
+10.4.2007  & 23.4.2007  & 2      & Elaboration 1	& 17.4.  & Projektplan \\
+24.4.2007  & 07.5.2007  & 2      & Elaboration 2  & 24.4.  & Requirements \\
+08.5.2007  & 21.5.2007  & 2      & Construction 1 & 15.5.  & Prototyp \\
+22.5.2007  & 04.6.2007  & 2      & Construction 2 & 29.5.  & Design und Design-Dokumentation \\
+05.6.2007  & 18.6.2007  & 2      & Construction 3 \\
+19.6.2007	 & 02.7.2007	& 1			 & Reserve				\\
+03.7.2007  & 06.7.2007  & 1      & Transition     & 05.7.  & Präsentation \\
 \bottomrule
 \end{tabular}
 
@@ -112,57 +112,11 @@ Für wichtige Mitteilungen wird eine Mailingliste eingerichtet. Protokolle, Trak
 \toprule
 Release   & Datum       & Beschreibung\\
 \midrule
-Prototyp  & 1.5.2007    & "<Proof of concept"> (alle Features der Priorität 1)\\
-Alpha     & 29.5.2007   & Rudimentär spielbare Version t\\
-Beta      & 12.6.2007   & "<Feature complete"> (alle Features der Priorität 2)\\
-Final     & 26.6.2007   & Finale Version \\
+Prototyp  & 01.5.2007   & "<Proof of concept"> (alle Features der Priorität 1)\\
+Alpha     & 29.5.2007   & Rudimentär spielbare Version\\
+Beta      & 04.6.2007   & "<Feature complete"> (alle Features der Priorität 2)\\
+Final     & 18.6.2007   & Finale Version \\
 \bottomrule
-\end{tabular}
-
-\begin{tabular}{ll}
-\toprule
-Release 	&  Enthaltene Arbeitspakete \\
-\midrule
-Prototyp	&	Programmgerüst \\
-					& Karten \\
-					& Zugtyp Simpler Zug \\
-					& Zugtyp Rückwärtszug \\
- 					& Feldtyp Normal \\
-					& Zugsystem \\
-					& Spielzustand-Synchronisation \\
-					& CLI (Text Ausgabe auf Konsole) \\
-					& Externes Design erstellen / umsetzen\\
-					& Zugerfassung (Simpler Zug) \\
-					& Zugerfassung (Rückwärtszug) \\
-					& Zusammenführen Client \\
-					& Zusammenführen Regelsystem / GUI \\
-					& Kartenstapel \\
-					& Zusammenführen Server\\
-\midrule
-Alpha			& Zugtyp Startzug (Ass, König) \\
-					& Zugtyp Aufteilbarer Zug (7) \\
-					& Feldtyp Lager \\
-					& Feldtyp Himmel \\
-					& Feldtyp Bänkli \\
-					& Rundensystem \\
-					& Karten \\
-					& Spielbrett grafisches Design \\
-					& Spielbrett Einbindung (Koordinaten, etc.) \\
-					& Zugvisualisierung \\
-					& Zugerfassung (Startzug) \\
-					& Zugerfassung (Aufteilbarer Zug) \\
-\midrule
-Beta			& Umwandlung Joker in beliebige Karte \\
-					& Zugtyp Tausch (Bauer) \\
-					& Steuerung der Figuren des Partners \\
-					& Austausch von Karten \\
-					& Zugerfassung (Tausch) \\
-					& Einstiegsview (Lobby) \\
-					& Joker verwenden\\
-\midrule
-Final			& \emph{Keine Arbeitspakete (Zeit um Bugs zu beheben.)}\\
-\bottomrule
-
 \end{tabular}
 
 \section{Risiko-Management}
@@ -212,7 +166,6 @@ Siehe separates Dokument \texttt{Projektplan.xls}.
 	\item Java 2D
 	\item \LaTeX{}, Microsoft Excel
 	\item Apache Ant
-	\item dotProject (Zeit- \& Taskmanagement)
 	\item trac (Wiki, BugTracker)
 \end{itemize}
 
@@ -224,7 +177,7 @@ Um die Qualität der Applikation zu gewährleisten werden folgende Massnahmen er
 	\item \textbf{Unit-Tests}: Fortlaufende Tests der Funktionalität mittels Unit-Tests (JUnit). Es werden XX\% Codeabdeckung angestrebt.
 	\item \textbf{Interne Tests}: Regelmässige, auf den Usecases basierende Tests mittels Testprotokollen
 	\item \textbf{Externe Tests}: Usability-Tests über externe Tester (potenzielle Benutzer)
-	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
+%	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
 	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet
 	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle
 	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und geprüft, ob die Anwendung den Anforderungsspezifikationenen entspricht.
