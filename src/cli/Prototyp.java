@@ -30,12 +30,12 @@ import pd.zugsystem.Zug;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.VerbindungWegException;
 import dienste.netzwerk.nachrichten.ChatNachricht;
 import dienste.netzwerk.nachrichten.Nachricht;
 import dienste.netzwerk.nachrichten.SpielBeitreten;
 import dienste.netzwerk.nachrichten.SpielStartNachricht;
 import dienste.netzwerk.nachrichten.SpielVollNachricht;
-import dienste.netzwerk.nachrichten.VerbindungWegException;
 import dienste.netzwerk.nachrichten.ZugAufforderung;
 import dienste.netzwerk.nachrichten.ZugInformation;
 
