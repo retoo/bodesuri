@@ -46,9 +46,6 @@ public class Prototyp {
 
 	private BankFeld startFeld;
 
-	
-	private static final int PORT = 3334;
-
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
 
@@ -254,10 +251,15 @@ public class Prototyp {
 		String spielerName = liesStringEin();
 		
 		String hostname = "localhost";
-		if (args.length == 1)
+		int port = 3334;
+		if (args.length >= 1) {
 			hostname = args[0];
+			if (args.length == 2) {
+				port = Integer.parseInt(args[1]);
+			}
+		}
 		
-		EndPunkt server = new EndPunkt(hostname, PORT);
+		EndPunkt server = new EndPunkt(hostname, port);
 		
 		server.sende(new SpielBeitreten(spielerName));
 		
