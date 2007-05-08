@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import dienste.serialisierung.Codierer;
 
+import pd.deck.KartenGeber;
 import pd.spielerverwaltung.Spieler;
 
 public class Spiel {
@@ -12,8 +13,8 @@ public class Spiel {
 	private Brett brett;
 	private Vector<Spieler> spieler = new Vector<Spieler>();
 	private Codierer codierer = new Codierer();
-	
 	private int beigetreteneSpieler = 0;
+	private KartenGeber kartenGeber;
 	
 	/* SCHEISSE */
 	public static Spiel aktuelles;
@@ -21,6 +22,7 @@ public class Spiel {
 	public Spiel() {
 		/* SCHEISSE */
 		Spiel.aktuelles = this;
+		kartenGeber = new KartenGeber();
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
 			Spieler sp = new Spieler(i);
 			spieler.add(sp);
@@ -44,5 +46,9 @@ public class Spiel {
 
 	public Vector<Spieler> getSpieler() {
     	return spieler;
+    }
+
+	public KartenGeber getKartenGeber() {
+    	return kartenGeber;
     }
 }

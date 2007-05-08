@@ -7,7 +7,6 @@ package dienste.server;
 import java.io.IOException;
 import java.util.Vector;
 
-import pd.deck.KartenGeber;
 import pd.zugsystem.Spiel;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
@@ -23,7 +22,7 @@ import dienste.netzwerk.nachrichten.ZugInformation;
 
 
 public class Server {
-	private static final int PORT = 54497;
+	private static final int PORT = 7788;
 	private Briefkasten serverBriefkasten;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 
@@ -86,9 +85,6 @@ public class Server {
 		for (Spieler spieler : spielers) {
 			spiel.fuegeHinzu(spieler.name);
 		}
-		
-		KartenGeber kartenGeber = new KartenGeber();
-		
 	
 		kuendigeSpielstartAn();
 		

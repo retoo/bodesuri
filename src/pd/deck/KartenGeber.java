@@ -1,7 +1,9 @@
 package pd.deck;
 
 import java.util.EmptyStackException;
+import java.util.List;
 import java.util.Stack;
+import java.util.Vector;
 
 import pd.zugsystem.Spiel;
 
@@ -72,4 +74,14 @@ public class KartenGeber {
 		}
 		return obersteKarte;
 	}
+
+	public List<Karte> getKarten(int anzahl) {
+	    Vector<Karte> karten = new Vector<Karte>();
+	    
+	    for (int i = 0; i < anzahl; i++) {
+	    	karten.add(getKarte());
+	    }
+	    
+	    return karten;
+    }
 }

@@ -4,21 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
+import java.util.List;
 
-import pd.deck.Acht;
-import pd.deck.Ass;
-import pd.deck.Dame;
-import pd.deck.Drei;
-import pd.deck.Fuenf;
-import pd.deck.Herz;
 import pd.deck.Karte;
-import pd.deck.KartenGeber;
-import pd.deck.Koenig;
-import pd.deck.Neun;
-import pd.deck.Sechs;
-import pd.deck.Vier;
-import pd.deck.Zehn;
-import pd.deck.Zwei;
 import pd.spielerverwaltung.Spieler;
 import pd.zugsystem.BankFeld;
 import pd.zugsystem.Bewegung;
@@ -100,31 +88,20 @@ public class Prototyp {
 	}
 
 	public Karte auswahlKarte() {
-		System.out.print("Welche Karte möchtest du spielen: ");
-		int eingabe = liesZahlEin();
-		
-		Herz herz = new Herz();
+		List<Karte> karten = spiel.getKartenGeber().getKarten(5);
 
-		switch (eingabe) {
-		case 1: return new Ass(herz);
-		case 2: return new Zwei(herz);
-		case 3: return new Drei(herz);
-		case 4: return new Vier(herz);
-		case 5: return new Fuenf(herz);
-		case 6: return new Sechs(herz);
-		case 7: throw new RuntimeException("Sieben noch nicht möglich!");
-		case 8: return new Acht(herz);
-		case 9: return new Neun(herz);
-		case 10: return new Zehn(herz);
-		case 11: return new Ass(herz);
-		case 12: return new Dame(herz);
-		case 13: return new Koenig(herz);
-		default:
-			/*
-			 * TODO: muss noch schöner werden, z.b. wiederholte eingabe wenn die
-			 * Karte unbeannt ist
-			 */
-			throw new RuntimeException("Unbekannte Karte");
+		while (true) {
+			
+			for (int i = 0; i < karten.size(); i ++) {
+				System.out.println("" + i + ") " + karten.get(i).getCode());
+			}
+			
+			System.out.print("Welche Karte möchtest du spielen: ");
+			int eingabe = liesZahlEin();
+			
+			if (eingabe >= 0 || eingabe < karten.size()) {
+				return karten.get(eingabe);
+			}
 		}
 	}
 
@@ -248,7 +225,7 @@ public class Prototyp {
 		String spielerName = liesStringEin();
 		
 		String hostname = "localhost";
-		int port = 3334;
+		int port = 7788;
 		if (args.length >= 1) {
 			hostname = args[0];
 			if (args.length == 2) {
@@ -286,7 +263,6 @@ public class Prototyp {
 		}
 		
 		Spiel spiel = new Spiel();
-		KartenGeber kartenGeber = new KartenGeber();
 		Spieler spielerIch = null;
 		for (int i = 0; i < startNachricht.spieler.length; i++) {
 			String name = startNachricht.spieler[i];
