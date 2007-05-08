@@ -209,7 +209,7 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 \subsubsection{Leistungsanforderungen}\label{ssub:leistungsanforderungen} % (fold)
 \begin{itemize}
 	\item Damit der Spielfluss nicht gestört wird, soll ein Spielzug in maximal drei Sekunden über das Netzwerk synchronisiert sein.
-	\item Der Spielstand muss nach jedem Zug bei allen Spielern konsistent sein. Inkonsistenzen bzw. Synchronisationsprobleme sollten sofort zu einem kontrollierten Spielabbruch führen.\footnote{Das Client/Server-Modell sieht nur in zwei Fällen solche Fehler vor: Bei Verbindungsproblemen und bei Fehlern in der Applikation selber. In beiden Situationen ist eine automatische Fehlerkorrektur nicht vorgesehen.}
+	\item Der Spielstand muss nach jedem Zug bei allen Spielern konsistent sein. Inkonsistenzen bzw. Synchronisationsprobleme sollten sofort zu einem kontrollierten Spielabbruch bei allen Clients und dem Server führen.\footnote{Das Client/Server-Modell sieht nur in zwei Fällen solche Fehler vor: Bei Verbindungsproblemen und bei Fehlern in der Applikation selber. In beiden Situationen ist eine automatische Fehlerkorrektur nicht vorgesehen.}
 \end{itemize}
 % subsubsection leistungsanforderungen (end)
 \subsubsection{Mengenanforderungen}\label{ssub:mengenanforderungen} % (fold)
@@ -217,7 +217,7 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 	\item Ein Server beherbergt immer nur ein Spiel.
 	\item Es müssen genau vier Spieler für ein Spiel vorhanden sein.
 	\item Es werden zwei Gruppen à zwei Spieler gebildet.
-	\item Der Kartenstapel besteht aus zwei Decks à 52 Karten.
+	\item Der Kartenstapel besteht aus zwei Decks à 54 Karten\footnote{Ein Deck hat jeweils vier Farben (Karo, Pik, Herz, Kreuz) à 14 Karten und zwei Joker.}.
 \end{itemize}
 % subsubsection mengenanforderungen (end)
 
@@ -235,9 +235,8 @@ Das Spiel wird in Java entwickelt und ist plattformunabhängig. Es wird keine we
 \paragraph{Software-Schnittstelle}\label{ssub:software_schnittstelle} % (fold)
 \begin{itemize}
 	\item Java 5
-	\item Swing
+	\item AWT/Swing
 	\item Java 2D
-	\item Java RMI
 \end{itemize}
 % paragraph software_schnittstelle (end)
 \paragraph{Datenhaltung}\label{ssub:datenhaltung} % (fold)
@@ -245,7 +244,8 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 % paragraph datenhaltung (end)
 \paragraph{Kommunikationsschnittstelle}\label{ssub:kommunikationsschnittstelle} % (fold)
 \begin{itemize}
-	\item Als Kommunikations-Framework wird RMI verwendet.
+	\item Die Client/Server Kommunikation wird mit Java Sockets realisiert.
+	\item Daten bzw. Objekte werden über Java Sockets serialisiert.
 	\item Für ein Spiel ist ein Server unabdingbar.
 	\item Jeder teilnehmende Spieler stellt einen Client dar.
 \end{itemize}
@@ -305,7 +305,7 @@ Für die Verwendung des Spiels ist ein netzwerkfähiger Computer vorausgesetzt.
 % paragraph inbetriebnahme_installation (end)
 \paragraph{Konfigurierbarkeit}\label{ssub:konfigurierbarkeit} % (fold)
 \begin{itemize}
-	\item Ausser der Angabe des Spielernamens und des Servers müssen keine Konfigurationen gemacht werden.
+	\item Ausser der Angabe des Spielernamens und des Servers müssen keine Konfigurationen vorgenommen werden.
 \end{itemize}
 % paragraph konfigurierbarkeit (end)
 % subsubsection andere_anforderungen (end)
