@@ -10,6 +10,8 @@ import java.awt.event.WindowEvent;
 import java.awt.geom.Ellipse2D;
 import javax.swing.JFrame;
 
+import spielplatz.Feld2d;
+
 public class Prototyp extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -35,19 +37,22 @@ public class Prototyp extends JFrame {
 	}
 
 	public void paint(Graphics g) {
-		int posx = 0;
 		Graphics2D g2d = (Graphics2D) g;
-		Color color = Color.orange;
+		
 		for (int i = 0; i < 64; i++) {
-			if(i > 15) color = Color.red;
-			if(i > 31) color = Color.cyan;
-			if(i > 47) color = Color.green;
-			posx += 20;
-			circle = new Ellipse2D.Double(posx, 50, 15, 15);
-			g2d.setColor(color);
-			g2d.fill(getCircle());
+			Color color = Color.orange;
+			if (i > 15)
+				color = Color.red;
+			if (i > 31)
+				color = Color.cyan;
+			if (i > 47)
+				color = Color.green;
+			
+			Feld2d f = new Feld2d(i, g2d, color);
+			f.zeichneFeld();
+			f.zeichneFigur("0");
 		}
-		drawBigString(g2d);
+		//drawBigString(g2d);
 	}
 
 	protected void drawBigString(Graphics2D g2d) {
