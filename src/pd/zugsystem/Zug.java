@@ -13,7 +13,8 @@ public class Zug implements Serializable {
 	private Karte karte;
 	private Bewegung bewegung;
 	
-	private Regel validierteRegel;
+	/* TODO: Besser machen */
+	private transient Regel validierteRegel;
 
 	public Zug(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this.spieler = spieler;
