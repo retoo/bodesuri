@@ -3,6 +3,7 @@ package cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.List;
 
@@ -21,6 +22,7 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.netzwerk.nachrichten.ChatNachricht;
 import dienste.netzwerk.nachrichten.Nachricht;
+import dienste.netzwerk.nachrichten.NeueVerbindung;
 import dienste.netzwerk.nachrichten.SpielBeitreten;
 import dienste.netzwerk.nachrichten.SpielStartNachricht;
 import dienste.netzwerk.nachrichten.SpielVollNachricht;
@@ -52,32 +54,29 @@ public class Prototyp {
 	}
 
 	public void zeichneBrett() {
-		System.out.println("Spieler: " + lokalerSpieler);
-		System.out.println();
 		System.out.println("0000000000111111111122222222223333333333444444444455555555556666");
 		System.out.println("0123456789012345678901234567890123456789012345678901234567890123");
 		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
 			zeichneFeld(feld);
 		}
 		System.out.println();
-		System.out.println();
 	}
 
 	public void zeichneFeld(Feld feld) {
 		if (feld.istBesetzt()) {
 			Spieler spieler = feld.getFigur().getSpieler();
-			System.out.print(spiel.getSpieler().indexOf(spieler));
+			System.out.print(spiel.getSpieler().indexOf(spieler) + 1);
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
 		} else if (feld instanceof WegFeld) {
-			System.out.print("-");
+			System.out.print("_");
 		}
 
 	}
 
 	public void begruessungAusgaben() {
 		System.out.println("Willkommen im Spiel Bodesuri (Prototyp).");
-		System.out.println("(Legende: X = Bänkli, - = normales Feld, " +
+		System.out.println("(Legende: X = Bänkli, _ = normales Feld, " +
 		                   "Zahl = Spieler)");
 	}
 
@@ -89,31 +88,30 @@ public class Prototyp {
 		return spieler;
 	}
 
-	public Karte auswahlKarte() {
-		List<Karte> karten = spiel.getKartenGeber().getKarten(5);
-
+	public Karte auswahlKarte(List<Karte> karten) {
 		while (true) {
+			System.out.println("Du hast folgende Karten zur Auswahl:");
 			
-			for (int i = 0; i < karten.size(); i ++) {
-				System.out.println("" + i + ") " + karten.get(i).getCode());
+			for (int i = 0; i < karten.size(); i++) {
+				System.out.println("" + (i+1) + ") " + karten.get(i));
 			}
 			
-			System.out.print("Welche Karte möchtest du spielen: ");
+			System.out.print("Karte (1-" + karten.size() + "): ");
 			int eingabe = liesZahlEin();
 			
-			if (eingabe >= 0 || eingabe < karten.size()) {
-				return karten.get(eingabe);
+			if (1 <= eingabe || eingabe <= karten.size()) {
+				return karten.get(eingabe - 1);
 			}
 		}
 	}
 
 	public Feld auswahlStartfeld() {
-		System.out.print("Gib das Feld der zu spielenden Figur ein: ");
+		System.out.print("Startfeld (0-63): ");
 		return startFeld.getNtesFeld(liesZahlEin());
 	}
 
 	public Feld auswahlZielfeld() {
-		System.out.print("Gib das Zielfeld der Figur ein: ");
+		System.out.print("Zielfeld  (0-63): ");
 		return startFeld.getNtesFeld(liesZahlEin());
 	}
 
@@ -123,7 +121,7 @@ public class Prototyp {
 				return Integer.parseInt(liesStringEin());
 			} catch (NumberFormatException e) {
 				/* TODO: prüfen ob das so okay ist */
-				System.out.print("Ungültige Zahl, btte erneut versuchen: ");
+				System.out.print("Ungültige Zahl, bitte erneut versuchen: ");
 			}
 		}
 	}
@@ -140,78 +138,73 @@ public class Prototyp {
 		
 		return null; /* wird nie hier hin kommen */
 	}
-
-	public void zeichneKarten(Spieler spieler) {
-		// spieler.getKarten();
-	}
-
-	public boolean ausfuerenZug(Zug zug) {
-		if (zug.validiere()) {
-			System.out.println("Führe Zug aus: " + zug);
-			zug.ausfuehren();
-			return true;
-		} else {
-			zug.verwerfen();
-			System.out.println("\nFehler: Der Spielzug entspricht nicht " +
-			                   "der gespielten Karte.\n");
-			return false;
-		}
-	}
 	
-	private Zug erfasseZug(Spieler spieler) {
-	    Karte karte = auswahlKarte();
+	private Zug erfasseZug(List<Karte> karten) {
+	    Karte karte = auswahlKarte(karten);
 	    Feld start = auswahlStartfeld();
 	    Feld ziel  = auswahlZielfeld();
 	    
 	    Bewegung bewegung = new Bewegung(start, ziel);
-	    Zug zug = new Zug(spieler, karte, bewegung);
+	    Zug zug = new Zug(lokalerSpieler, karte, bewegung);
 	    return zug;
     }
 
 
-
 	private void run() throws VerbindungWegException {
 		Briefkasten bk = server.briefkasten;
+		
 		begruessungAusgaben();
-
+		System.out.println();
+		zeichneBrett();
+		System.out.println();
 		
 		while (true) {
-			zeichneBrett();
+			// zeichneBrett();
 			
 			Brief b = bk.getBrief();
 			Nachricht nachricht = b.nachricht;	
-	
 			
 			if (nachricht instanceof ZugAufforderung) {
-				System.out.println("UUh.. wir sind an der Reihe, HOPP!");
+				System.out.println();
+				System.out.println(lokalerSpieler.getName() + ", du bist am Zug!");
+				System.out.println();
 				
+				List<Karte> karten = spiel.getKartenGeber().getKarten(5);
 				
 				while (true) {
-					Zug zug = erfasseZug(lokalerSpieler);
+					Zug zug = erfasseZug(karten);
 				
 					if (zug.validiere()) {
 						server.sende(new ZugInformation(zug));
 						break;
 					} else {
-						System.out.println("Huere michi, de zug isch scheiss ungültig");
+						System.out.println();
+						System.out.println("Ungültiger Zug, bitte erneut versuchen.");
+						System.out.println();
 					}
 				}
 				
-				
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
-				System.out.println("Zug erhalten " + zn.zug);
-				boolean res = ausfuerenZug(zn.zug);
 				
-				if (!res) {
-					throw new RuntimeException("Ungültiger Zug " + zn.zug); 
+				if (zn.zug.validiere()) {
+					zn.zug.ausfuehren();
+				} else {
+					throw new RuntimeException("Ungültiger Zug " + zn.zug);
 				}
 				
-				System.out.println("Zug ausgeführt");
+				Spieler sp = zn.zug.getSpieler();
+				int nummer = spiel.getSpieler().indexOf(sp) + 1;
+				System.out.println();
+				System.out.println(sp.getName() + " (" + nummer + ")" +
+				                   " hat folgendes gespielt:");
+				System.out.println();
+				zeichneBrett();
+				System.out.println();
+				
 			} else if (nachricht instanceof ChatNachricht) {
 				ChatNachricht cn = (ChatNachricht) nachricht;
-				
-				System.out.println(" > " + b.absender + ": " + cn);
+				System.out.println("> " + cn);
 				
 			} else {
 				/* TODO: Platzhalter */
@@ -223,19 +216,33 @@ public class Prototyp {
 
 
 	public static void main(String[] args) throws UnknownHostException, IOException, VerbindungWegException {
-		System.out.println("Bitte gib deinen Namen an!");
-		String spielerName = liesStringEin();
-		
+
 		String hostname = "localhost";
+		String spielerName = null;
 		int port = 7788;
 		if (args.length >= 1) {
 			hostname = args[0];
-			if (args.length == 2) {
+			if (args.length >= 2) {
 				port = Integer.parseInt(args[1]);
+				if (args.length >= 3) {
+					spielerName = args[2];
+				}
 			}
 		}
 		
-		EndPunkt server = new EndPunkt(hostname, port);
+		EndPunkt server = null;
+		try {
+			server = new EndPunkt(hostname, port);
+		} catch (ConnectException e) {
+			System.out.println("Verbindung zum Server konnte nicht aufgebaut werden.");
+			System.exit(1);
+		}
+		System.out.println();
+		
+		if (spielerName == null) {
+			System.out.print("Bitte gib deinen Namen an: ");
+			spielerName = liesStringEin();
+		}
 		
 		server.sende(new SpielBeitreten(spielerName));
 		
@@ -248,21 +255,24 @@ public class Prototyp {
 				startNachricht = (SpielStartNachricht) b.nachricht;
 				break;
 			} else if (nachricht instanceof SpielVollNachricht) {
-				System.out.println("Sorry, Spiel ist bereits voll");
-				System.exit(0);
+				System.out.println("Leider ist das Spiel bereits voll.");
+				System.exit(1);
+			} else if (nachricht instanceof ChatNachricht) {
+				System.out.println("> " + nachricht);
+			} else if (nachricht instanceof NeueVerbindung) {
+				// Ignorieren
 			} else {
 				/* TODO: Platzhalter */
-				System.out.println("Unbekannte Nachricht " + nachricht);	
+				System.out.println("Unbekannte Nachricht: " + nachricht);	
 			}
 		}
 
-		System.out.println("Das Spiel beginnt... ");
 		System.out.println();
-		
-		System.out.println("Die Spieler sind:");
-		for (String name : startNachricht.spieler ) {
-			System.out.println(" - " + name);
+		System.out.println("Das Spiel kann beginnen. Es spielen mit:");
+		for (int i = 0; i < startNachricht.spieler.length; ++i) {
+			System.out.println((i+1) + ") " + startNachricht.spieler[i]);
 		}
+		System.out.println();
 		
 		Spiel spiel = new Spiel();
 		Spieler spielerIch = null;
@@ -280,10 +290,7 @@ public class Prototyp {
 			throw new RuntimeException("Ups, ich bin ja gar nicht im Spiel");
 		}
 			
-	
 		Prototyp spielBrett = new Prototyp(spiel, spielerIch, server);
 		spielBrett.run();
-
-
 	}
 }

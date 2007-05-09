@@ -1,7 +1,3 @@
-/**
- * @(#) Server.java
- */
-
 package dienste.server;
 
 import java.io.IOException;
@@ -38,7 +34,7 @@ public class Server {
 
 	private void run() throws VerbindungWegException {
 		starteSpiel();
-		broadcast("Spiel vollständig");
+		broadcast("Spiel vollständig.");
 		spieleSpiel();
 		broadcast("Spiel abgeschlossen.. sollte zurzeit noch nicht passieren");
 
@@ -68,9 +64,7 @@ public class Server {
 					return; /* Spiel bereit */
 				}	
 			} else if (nachricht instanceof NeueVerbindung) {
-				String msg = "Neue Verbindung von " + brief;
-				System.out.println(msg);
-				broadcast(msg);
+				System.out.println("Neue Verbindung von " + brief);
 			} else {
 				/* Platzhalter für später */
 				throw new RuntimeException("Unbkenanter Nachrichtentyp " + brief);
@@ -93,6 +87,7 @@ public class Server {
 		
 		Spieler aktuellerSpieler = spielers.get(klicks.klick());
 		
+		broadcast(aktuellerSpieler.name + " fängt an.");
 		aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 		
 		while (true) {
@@ -108,15 +103,14 @@ public class Server {
 				}
 				
 				broadcast(zugInfo);
-				broadcast("Es wurde gespielt");
 				
 				aktuellerSpieler = spielers.get(klicks.klick());
-				broadcast("Nächster Spieler: " + aktuellerSpieler); 
+				broadcast("Nächster Spieler ist " + aktuellerSpieler.name + ".");
 				
 				aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 				
 			} else if (nachricht instanceof SpielBeitreten) {
-				String msg = "Da versucht ein weiterer zu verbinden, aber das boot ist voll: " + brief;
+				String msg = "Da versucht ein weiterer zu verbinden, aber das Boot ist voll: " + brief;
 				System.out.println(msg);
 				broadcast(msg);
 			}
@@ -129,10 +123,7 @@ public class Server {
 		
 		for (int i = 0; i < 4; i++) 
 			spielers_str[i] = spielers.get(i).name;
-			
-		
  		
-		broadcast("Wir sind komlett: " + spielers_str );
 		SpielStartNachricht ssn = new SpielStartNachricht(spielers_str);
 		broadcast(ssn);
     }

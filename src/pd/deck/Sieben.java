@@ -1,7 +1,3 @@
-/**
- * @(#) Sieben.java
- */
-
 package pd.deck;
 
 import pd.regelsystem.Regel;
@@ -14,6 +10,6 @@ public class Sieben extends Karte{
 	}
 	
 	public Regel getRegel() {
-		throw new RuntimeException("not yet implemented");
+		throw new RuntimeException("Noch nicht implementiert!");
 	}
 }
