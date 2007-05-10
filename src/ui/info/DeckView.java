@@ -21,16 +21,12 @@ public class DeckView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new FlowLayout());
-		setAlignmentX(Component.RIGHT_ALIGNMENT);
+		setAlignmentX(Component.LEFT_ALIGNMENT);
+		Dimension grösse = new Dimension(100, 100);
+		setPreferredSize(grösse);
+		setMaximumSize(grösse);
+		setMinimumSize(grösse);
 		
 		this.add(new JLabel("Hier kommen die Karten hin..."));
     }
-    
-	public Dimension getMaximumSize() {
-		return new Dimension(100, 1000);
-	}
-	
-	public Dimension getMinimumSize() {
-		return new Dimension(100, 0);
-	}
 }

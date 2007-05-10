@@ -63,6 +63,7 @@ public class BodesuriView extends JFrame {
 
 		add(links);
 		add(rechts);
+		add(Box.createHorizontalGlue());
 		pack();
 	}
 

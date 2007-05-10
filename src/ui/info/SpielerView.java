@@ -17,19 +17,15 @@ public class SpielerView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		setAlignmentX(Component.RIGHT_ALIGNMENT);
+		setAlignmentX(Component.LEFT_ALIGNMENT);
+		Dimension grösse = new Dimension(100, 100);
+		setPreferredSize(grösse);
+		setMaximumSize(grösse);
+		setMinimumSize(grösse);
 
 		this.add(new JLabel("Spieler 1"));
 		this.add(new JLabel("Spieler 2"));
 		this.add(new JLabel("Spieler 3"));
 		this.add(new JLabel("Spieler 4"));
-	}
-
-	public Dimension getMaximumSize() {
-		return new Dimension(100, 1000);
-	}
-	
-	public Dimension getMinimumSize() {
-		return new Dimension(100, 0);
 	}
 }
