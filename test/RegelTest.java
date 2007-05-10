@@ -1,6 +1,6 @@
 import pd.brett.Feld;
-import pd.deck.Herz;
-import pd.deck.Vier;
+import pd.karten.Herz;
+import pd.karten.Vier;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 

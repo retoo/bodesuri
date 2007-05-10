@@ -2,7 +2,7 @@
  * @(#) Ass.java
  */
 
-package pd.deck;
+package pd.karten;
 
 import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.VorwaertsRegel;

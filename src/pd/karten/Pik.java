@@ -2,7 +2,7 @@
  * @(#) Pik.java
  */
 
-package pd.deck;
+package pd.karten;
 
 public class Pik extends KartenFarbe{
 	

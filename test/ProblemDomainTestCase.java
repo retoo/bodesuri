@@ -3,7 +3,7 @@ import pd.Spiel;
 import pd.spieler.Spieler;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
-import pd.deck.KartenGeber;
+import pd.karten.KartenGeber;
 
 public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spiel spiel;

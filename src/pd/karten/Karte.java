@@ -1,4 +1,4 @@
-package pd.deck;
+package pd.karten;
 
 import dienste.serialisierung.CodierbaresObjekt;
 import pd.regelsystem.Regel;

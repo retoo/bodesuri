@@ -1,11 +1,11 @@
-package pd.deck;
+package pd.karten;
 
 import pd.regelsystem.Regel;
 
-public class Joker extends Karte {
+public class Bube extends Karte{
 	private static final long serialVersionUID = 1L;
 
-	public Joker(KartenFarbe farbe) {
+	public Bube(KartenFarbe farbe) {
 		super(farbe);
 	}
 	

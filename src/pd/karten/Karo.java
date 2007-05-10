@@ -2,7 +2,7 @@
  * @(#) Karo.java
  */
 
-package pd.deck;
+package pd.karten;
 
 public class Karo extends KartenFarbe{
 	

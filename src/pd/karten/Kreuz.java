@@ -2,7 +2,7 @@
  * @(#) Kreuz.java
  */
 
-package pd.deck;
+package pd.karten;
 
 public class Kreuz extends KartenFarbe{
 	

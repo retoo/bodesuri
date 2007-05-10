@@ -2,7 +2,7 @@ package pd.zugsystem;
 
 import java.io.Serializable;
 
-import pd.deck.Karte;
+import pd.karten.Karte;
 import pd.regelsystem.Regel;
 import pd.spieler.Spieler;
 

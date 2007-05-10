@@ -12,7 +12,7 @@ import pd.brett.BankFeld;
 import pd.brett.Brett;
 import pd.brett.Feld;
 import pd.brett.WegFeld;
-import pd.deck.Karte;
+import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;

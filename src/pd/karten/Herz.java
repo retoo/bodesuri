@@ -2,7 +2,7 @@
  * @(#) Herz.java
  */
 
-package pd.deck;
+package pd.karten;
 
 public class Herz extends KartenFarbe{
 	
