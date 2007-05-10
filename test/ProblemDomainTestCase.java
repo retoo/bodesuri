@@ -1,6 +1,6 @@
 import junit.framework.TestCase;
+import pd.Spiel;
 import pd.spieler.Spieler;
-import pd.zugsystem.Spiel;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.deck.KartenGeber;

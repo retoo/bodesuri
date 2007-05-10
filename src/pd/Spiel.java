@@ -1,4 +1,4 @@
-package pd.zugsystem;
+package pd;
 
 import java.util.Vector;
 

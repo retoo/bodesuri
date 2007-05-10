@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
-import pd.zugsystem.Spiel;
+import pd.Spiel;
 
 public class KartenGeber {
 	/*

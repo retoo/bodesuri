@@ -3,7 +3,7 @@ package dienste.serialisierung;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import pd.zugsystem.Spiel;
+import pd.Spiel;
 
 public class CodiertesObjekt implements Serializable {
 	private static final long serialVersionUID = 1L;

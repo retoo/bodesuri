@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import pd.Spiel;
 import pd.spieler.Spieler;
-import pd.zugsystem.Spiel;
 
 public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;
