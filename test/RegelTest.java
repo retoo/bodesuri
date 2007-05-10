@@ -1,7 +1,7 @@
+import pd.brett.Feld;
 import pd.deck.Herz;
 import pd.deck.Vier;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Feld;
 import pd.zugsystem.Zug;
 
 public class RegelTest extends ProblemDomainTestCase {

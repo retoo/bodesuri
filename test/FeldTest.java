@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-import pd.zugsystem.Feld;
+import pd.brett.Feld;
 
 
 public class FeldTest extends ProblemDomainTestCase {

@@ -1,10 +1,11 @@
-package pd.zugsystem;
+package pd.brett;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
 import pd.spielerverwaltung.Spieler;
+import pd.zugsystem.Spiel;
 
 public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;

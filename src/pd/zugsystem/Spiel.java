@@ -4,6 +4,7 @@ import java.util.Vector;
 
 import dienste.serialisierung.Codierer;
 
+import pd.brett.Brett;
 import pd.deck.KartenGeber;
 import pd.spielerverwaltung.Spieler;
 

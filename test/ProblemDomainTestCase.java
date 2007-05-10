@@ -1,8 +1,8 @@
 import junit.framework.TestCase;
 import pd.spielerverwaltung.Spieler;
-import pd.zugsystem.BankFeld;
-import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
+import pd.brett.BankFeld;
+import pd.brett.Feld;
 import pd.deck.KartenGeber;
 
 public abstract class ProblemDomainTestCase extends TestCase {

@@ -2,6 +2,8 @@ package pd.zugsystem;
 
 import java.io.Serializable;
 
+import pd.brett.Feld;
+
 public class Bewegung implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

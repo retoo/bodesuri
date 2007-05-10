@@ -1,7 +1,7 @@
 package pd.regelsystem;
 
+import pd.brett.Feld;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Feld;
 import pd.zugsystem.Zug;
 
 public class RueckwaertsRegel extends Regel {

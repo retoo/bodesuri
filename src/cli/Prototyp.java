@@ -7,14 +7,14 @@ import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.List;
 
+import pd.brett.BankFeld;
+import pd.brett.Brett;
+import pd.brett.Feld;
+import pd.brett.WegFeld;
 import pd.deck.Karte;
 import pd.spielerverwaltung.Spieler;
-import pd.zugsystem.BankFeld;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Brett;
-import pd.zugsystem.Feld;
 import pd.zugsystem.Spiel;
-import pd.zugsystem.WegFeld;
 import pd.zugsystem.Zug;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;

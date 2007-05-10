@@ -1,4 +1,4 @@
-package pd.zugsystem;
+package pd.brett;
 
 import pd.spielerverwaltung.Spieler;
 

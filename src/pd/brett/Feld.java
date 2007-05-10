@@ -1,10 +1,11 @@
-package pd.zugsystem;
+package pd.brett;
 
 import java.util.Vector;
 
 import dienste.serialisierung.CodierbaresObjekt;
 
 import pd.spielerverwaltung.Spieler;
+import pd.zugsystem.Figur;
 
 public abstract class Feld extends CodierbaresObjekt {
 	protected Feld naechstes;
