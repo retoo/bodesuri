@@ -4,8 +4,8 @@ import java.util.Vector;
 
 import dienste.serialisierung.CodierbaresObjekt;
 
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
-import pd.zugsystem.Figur;
 
 public abstract class Feld extends CodierbaresObjekt {
 	protected Feld naechstes;

@@ -1,6 +1,5 @@
-package pd.zugsystem;
+package pd.spieler;
 
-import pd.spieler.Spieler;
 
 public class Figur {
 	private Spieler spieler;

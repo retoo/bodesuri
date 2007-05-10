@@ -5,7 +5,6 @@ import java.util.Vector;
 
 import dienste.netzwerk.EndPunkt;
 import dienste.serialisierung.CodierbaresObjekt;
-import pd.zugsystem.Figur;
 
 public class Spieler extends CodierbaresObjekt {
 	private static final long serialVersionUID = 1L;
