@@ -5,9 +5,12 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.Ellipse2D;
+
 import javax.swing.JFrame;
 
 import spielplatz.Feld2d;
@@ -30,15 +33,24 @@ public class Prototyp extends JFrame {
 			}
 		});
 
+		//Klick endecken in J2D
+		addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				//Hier müssste nun eine For-Schlaufe über alle Felder rein
+				// for (Feld feld : felder)
+				//    drin? = feld.contains(e.getPoint())
+			}
+		});
+
 		GraphicsEnvironment env = GraphicsEnvironment
-				.getLocalGraphicsEnvironment();
+		                                             .getLocalGraphicsEnvironment();
 		env.getAvailableFontFamilyNames();
 		setFont(new Font("Arial", Font.BOLD, 11));
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		
+
 		for (int i = 0; i < 64; i++) {
 			Color color = Color.orange;
 			if (i > 15)
@@ -47,12 +59,12 @@ public class Prototyp extends JFrame {
 				color = Color.cyan;
 			if (i > 47)
 				color = Color.green;
-			
+
 			Feld2d f = new Feld2d(i, g2d, color);
 			f.zeichneFeld();
 			f.zeichneFigur("0");
 		}
-		//drawBigString(g2d);
+		// drawBigString(g2d);
 	}
 
 	protected void drawBigString(Graphics2D g2d) {
