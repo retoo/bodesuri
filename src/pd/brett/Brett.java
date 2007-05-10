@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 import pd.zugsystem.Spiel;
 
 public class Brett {

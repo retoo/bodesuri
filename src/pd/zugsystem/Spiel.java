@@ -6,7 +6,7 @@ import dienste.serialisierung.Codierer;
 
 import pd.brett.Brett;
 import pd.deck.KartenGeber;
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 
 public class Spiel {
 	private static final int ANZAHL_SPIELER = 4;

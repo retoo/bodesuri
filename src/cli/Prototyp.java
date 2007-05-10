@@ -12,7 +12,7 @@ import pd.brett.Brett;
 import pd.brett.Feld;
 import pd.brett.WegFeld;
 import pd.deck.Karte;
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Spiel;
 import pd.zugsystem.Zug;

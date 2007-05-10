@@ -1,4 +1,4 @@
-package pd.spielerverwaltung;
+package pd.spieler;
 
 import java.util.Vector;
 

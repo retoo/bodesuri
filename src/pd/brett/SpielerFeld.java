@@ -1,6 +1,6 @@
 package pd.brett;
 
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 
 public abstract class SpielerFeld extends Feld {
 	private Spieler spieler;

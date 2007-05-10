@@ -1,5 +1,5 @@
 import junit.framework.TestCase;
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 import pd.zugsystem.Spiel;
 import pd.brett.BankFeld;
 import pd.brett.Feld;

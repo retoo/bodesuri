@@ -1,6 +1,6 @@
 package pd.brett;
 
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 
 public class BankFeld extends SpielerFeld {
 	private static final long serialVersionUID = 1L;

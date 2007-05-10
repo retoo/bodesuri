@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import pd.deck.Karte;
 import pd.regelsystem.Regel;
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 
 public class Zug implements Serializable {
 	private static final long serialVersionUID = 1L;

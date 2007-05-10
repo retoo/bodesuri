@@ -4,7 +4,7 @@ import java.util.Vector;
 
 import dienste.serialisierung.CodierbaresObjekt;
 
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 import pd.zugsystem.Figur;
 
 public abstract class Feld extends CodierbaresObjekt {

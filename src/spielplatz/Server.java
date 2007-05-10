@@ -3,7 +3,7 @@ package spielplatz;
 import java.io.IOException;
 import java.util.Vector;
 
-import pd.spielerverwaltung.Spieler;
+import pd.spieler.Spieler;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.Daemon;
