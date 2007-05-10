@@ -30,7 +30,7 @@ public class BodesuriView extends JFrame {
 		setTitle("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		((JPanel) getContentPane()).setBorder(new EmptyBorder(10, 10, 10, 10));
+		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
 
 		// Menu
 		menuleiste = new JMenuBar();
