@@ -20,14 +20,136 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 
 \section{Systemtest} % (fold)
 \label{sec:systemtest}
-Beschreibung der einzelnen Tests.
 
-\begin{tabular}{cccc}
+\subsection{Tests anhand der Use-Cases}\label{sub:tests_anhand_der_use_cases} % (fold)
+
+\subsubsection{UC1: Spiel erstellen}\label{sub:uc1_spiel_erstellen} % (fold)
+\begin {tabular}{r | p{3cm} | p{8cm} | l}
+\hline \hline
+\textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 \hline
-Use Case & Implementiert & Fehler/Unschönheit & Status\\
+1, 2, 3 & Server-Start \newline erfolgreich & Der Server ist gestartet, funktioniert und ist betriebsbereit. & [Ok|Err] \\
+ \cline{3-4} & & An den Benutzer wurde eine Bestätigung ausgegeben, dass der Server läuft. & \\
 \hline
-\emph{UCname} & \emph{j/n} & \emph{Fehlerbeschreibung falls vorhanden} & \emph{status}\\
+2a & Server-Start fehlgeschlagen & Der Server ist nicht gestartet und befindet sich in einem wohldefinierten Zustand. & [Ok|Err] \\
+ \cline{3-4} & & An den Benutzer wurde eine Fehlermeldung ausgegeben, mit sprechenden Erklärungen und allfälligen Hinweisen die zur Behebung des Problems beitragen. & \\
+\hline
+1, 2 & Mehrere Server-Instanzen & FIXME: Es darf auf einem Rechner nur eine Server-Instanz laufen. (Evtl. Ports deklarierbar --> dann mehrere). & [Ok|Err] \\
+\hline
 \end{tabular}
+% subsubsection uc1_spiel_erstellen (end)
+
+\subsubsection{UC2: Spiel beitreten}\label{sub:uc2_spiel_beitreten} % (fold)
+\begin {tabular}{r | p{3cm} | p{8cm} | l}
+\hline \hline
+\textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+\hline
+1, 2, 3, 4 & Client verbunden & Der Client hat sich auf den Server verbunden und der Server kennt den Client. & [Ok|Err] \\
+ \cline{3-4} & & Der Benutzer ist informiert worden, dass er dem Spiel erfolgreich beigetreten ist. & \\
+\hline
+2a & Verbindung fehlgeschlagen & Der Client und der Server befinden sich in einem wohldefinierten Zustand. & [Ok|Err] \\
+ \cline{3-4} & & Der Benutzer wurde vom System über das Scheitern benachrichtigt. & \\
+\hline
+2b & Server besetzt & Der Client befindet sich in einem wohldefinierten Zustand. & [Ok|Err] \\
+ \cline{3-4} & & Der bereits laufende Server wird nicht beeinflusst (Spiel läuft normal weiter). & \\
+ \cline{3-4} & & Der Benutzer wurde darüber informiert, dass der Server bereit besetzt ist. & \\
+\hline
+*a & Verbindung abgebrochen & Der Client und der Server befinden sich in einem wohldefinierten Zustand und sind darüber informiert, dass der Benutzer die Verbindung abgebrochen hat. & [Ok|Err] \\
+\hline
+\end{tabular}
+% subsubsection uc2_spiel_beitreten (end)
+
+\subsubsection{UC3: Spiel spielen}\label{sub:uc3_spiel_spielen} % (fold)
+\begin {tabular}{r | p{3cm} | p{8cm} | l}
+\hline \hline
+\textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+\hline
+1 & Spielbrett initialisiert & Das Spielbrett ist initialisiert und auf allen Clients innerhalb der Zeitlimite von 3s synchronisiert. & [Ok|Err] \\
+ \cline{3-4} & & Alle Clients und der Server befinden sich in einem wohldefinierten Zustand. & \\
+\hline
+2 & Karten erhalten & Der beteiligte Client hat die Spielkarten erhalten und visualisiert sie korrekt für den Spieler. & [Ok|Err] \\
+\hline
+3 & Karten für Tausch auswählen & Vom Benutzer ausgewählte Spielkarten sind visualisiert und als ausgewählt hervorgehoben. & [Ok|Err] \\
+ \cline{3-4} & & Dem Spieler wird visuell mitgeteilt, dass das System bereit ist den Kartentausch abzuwickeln. & \\
+\hline
+4 & Karten-Tausch übermitteln & Die vom Benutzer getauschten Spielkarten sind an den Server übermittelt und auf dem Client (der die Spielkarten gesendet hat) nicht mehr vorhanden. & [Ok|Err] \\
+ \cline{3-4} & & Der Client (der die Spielkarten gesendet hat) hat diejenigen Spielkarten vom Server empfangen, die der Mitspieler zum Tausch an den Server übermittelt hatte. & \\
+ \cline{3-4} & & Für den Spieler werden die Spielkarten nach dem Tausch korrekt visualisiert. & \\
+\hline
+5 & Spielzüge visualisieren & Benutzer kann keine spieleingreifende Eingaben tätigen. & [Ok|Err] \\
+ \cline{3-4} & & Spielzüge werden korrekt auf dem Client visualisiert. & \\
+ \cline{3-4} & & Client ist nach jedem Spielzug zu den anderen Clients synchronisiert. & \\
+\hline
+6 & Spielzug auswählen & Vom Benutzer ausgewählte Spielkarte ist visualisiert und als ausgewählt hervorgehoben. & [Ok|Err] \\
+ \cline{3-4} & & Spielzug ist vom System erfasst und für den Spieler visuell ersichtlich. & \\
+ \cline{3-4} & & Dem Spieler wird visuell mitgeteilt, dass das System bereit ist den Spielzug durchzuführen. & \\
+\hline
+\end{tabular}
+
+\newpage
+
+\begin {tabular}{r | p{3cm} | p{8cm} | l}
+\hline \hline
+\textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+\hline
+7, 8, 9 & Spielzug übermitteln & Spielzug ist vom Client validiert worden und gültig. & [Ok|Err] \\
+ \cline{3-4} & & Spielzug ist an Server übermittelt worden und dort eingetroffen. & \\
+ \cline{3-4} & & Spielzug ist vom Server validiert worden und gültig. & \\
+ \cline{3-4} & & Spielzugübermittlung wurde dem Client vom Server bestätigt. & \\
+ \cline{3-4} & & Alle Clients haben den Spielzug visualisiert und sind synchronisiert. & \\
+\hline
+6a & Kein Karte spielbar & Dem Server wurde mitgeteilt, dass Spieler diese Runde nicht spielen kann. & [Ok|Err] \\
+ \cline{3-4} & & Alle Clients sind synchronisiert. & \\
+\hline
+7a & Spielzug ungültig & Benutzer wurde über ungültigen Zug benachrichtigt. & [Ok|Err] \\
+ \cline{3-4} & & Benutzer weiss, dass er anderen Spielzug auswählen muss. & \\
+\hline
+9a a) & Spiel gewonnen & Auf allen Clients und dem Server ist das Spiel beendet. & [Ok|Err] \\
+ \cline{3-4} & & Auf allen Clients wird eine Rangliste/Statistik angezeigt. & \\
+ \cline{3-4} & & Gewinner (-Team) ist klar ersichtlich. & \\
+\hline
+9a b) & Spiel gewonnen & Der Server weiss, dass der Spieler fertig ist. & [Ok|Err] \\
+ \cline{3-4} & & Spieler-Status ist auf allen Clients synchronisiert und für Spieler ersichtlich. & \\
+ \cline{3-4} & & Der Spieler, der neu fertig ist, kann nun auch die Figuren des Mitpsielers bedienen (wenn er an der Reihe ist). & \\
+\hline
+*a) & Benutzer verlässt Spiel & Spiel wurde auf allen Clients und dem Server beendet. & [Ok|Err] \\
+ \cline{3-4} & & Auf allen Clients wird eine Rangliste/Statistik angezeigt. & \\
+ \cline{3-4} & & Gewinner (-Team) ist klar ersichtlich. & \\
+\hline
+*b) & Server nicht erreichbar & Benutzer wurden vom System benachrichtigt. & [Ok|Err] \\
+ \cline{3-4} & & Auf allen Clients wird eine Fehlermeldung angezeigt. & \\
+\hline
+\end{tabular}
+% subsubsection uc3_spiel_spielen (end)
+
+% subsection tests_anhand_der_use_cases (end)
+
+\subsection{Tests anhand der nichtfunktionalen Anforderungen}\label{sub:tests_anhand_der_nichtfunktionalen_anforderungen} % (fold)
+\begin {tabular}{l | p{12cm} | l}
+\hline \hline
+\textbf{Nr.} & \textbf{Beschreibung} & \textbf{Eingehalten} \\
+\hline
+NF1 & Jeder Spielzug ist in maxmimal drei Sekunden über das Netzwerk synchronisiert. & [Ok|Err] \\
+\hline
+NF2 & Spielzustand ist nach jedem Spielzug in allen Clients und auf dem Server konsistent. & [Ok|Err] \\
+\hline
+NF3 & Inkonsistenz führt im Server und auf den Clients zu kontrolliertem Spielabbruch. & [Ok|Err] \\
+\hline
+NF4 & Es können nicht mehrere Spiele pro Server erstellt werden. & [Ok|Err] \\
+\hline
+NF5 & Ein Spiel kann nur mit der genauen Anzahl von vier Spielern gestartet werden. & [Ok|Err] \\
+\hline
+NF6 & Das GUI ist (bis auf die Server-Konfiguration und Verbindungsaufnahme) nur mit der Maus bedienbar. & [Ok|Err] \\
+\hline
+NF7 & Der Server sowie der Client ist uneingeschränkt auf den Plattformen Mac OS X 10.4, Windows XP SP2 und GNU/Linus spielbar. & [Ok|Err] \\
+\hline
+NF8 & Weder für den Server noch für den Client ist eine Installation oder Konfiguration (im Sinne einer Installation) notwendig. & [Ok|Err] \\
+\hline
+NF9 & Ausser des Spielernamens und der Serverkonfiguration müssen keine Konfigurationen eingegeben werden. & [Ok|Err] \\
+\hline
+\end{tabular}
+% subsection tests_anhand_der_nichtfunktionalen_anforderungen (end)
+
 
 % section systemtest (end)
 
