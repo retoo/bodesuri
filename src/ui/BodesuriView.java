@@ -67,6 +67,11 @@ public class BodesuriView extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		// Speziell für den Mac
+		if (System.getProperty("mrj.version") != null) {
+			// Menubar oben
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
+		}
 		new BodesuriView().setVisible(true);
 	}
 
