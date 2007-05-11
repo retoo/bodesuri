@@ -2,8 +2,6 @@ package pd.spieler;
 
 import java.util.Vector;
 
-
-import dienste.netzwerk.EndPunkt;
 import dienste.serialisierung.CodierbaresObjekt;
 
 public class Spieler extends CodierbaresObjekt {
@@ -12,7 +10,6 @@ public class Spieler extends CodierbaresObjekt {
 	private int nummer;
 	
 	private String name;
-	public EndPunkt endpunkt;
 	
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
@@ -27,15 +24,6 @@ public class Spieler extends CodierbaresObjekt {
 		this(nummer);
 		this.name = name;
 	}
-
-	public Spieler(int nummer, EndPunkt client, String name) {
-		this(nummer, name);
-		this.endpunkt = client;
-	}
-
-	public Spieler(EndPunkt absender, String string) {
-	    // TODO Auto-generated constructor stub
-    }
 
 	public String toString() {
 		return "Spieler " + getName();
