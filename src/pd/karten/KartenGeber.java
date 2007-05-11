@@ -26,13 +26,7 @@ public class KartenGeber {
 	 */
 	private void mischen() {
 		for (int i=0; i < 2; ++i) {
-			kartenStapel.addAll( (new Pik()).createKarten() );
-			kartenStapel.addAll( (new Herz()).createKarten() );
-			kartenStapel.addAll( (new Kreuz()).createKarten() );
-			kartenStapel.addAll( (new Karo()).createKarten() );
-			/* Den Jokern Farben zuweisen, damit sie unterscheidbar sind. */
-			kartenStapel.add(new Joker(new Pik()));
-			kartenStapel.add(new Joker(new Herz()));
+			kartenStapel.addAll(new Deck(i).getKarten());
 		}
 		
 		for (Karte karte : kartenStapel) {

@@ -10,19 +10,17 @@ public class Karte extends CodierbaresObjekt {
 	protected KartenFarbe farbe;
 	private Regel regel;
 
-	public Karte() { }
-	
 	public Karte(KartenFarbe farbe) {
 		this.farbe = farbe;
 	}
 	
 	public String toString() {
-		return getKartenFarbe().getClass().getSimpleName() + " " +
+		return getKartenFarbe() + " " +
                getClass().getSimpleName();
 	}
 
     public String getCode() {
-	    return "Karte " + getKartenFarbe().getClass().getSimpleName() + " " +
+	    return "Karte " + getKartenFarbe() + " " +
 	           getClass().getSimpleName();
     }
 
