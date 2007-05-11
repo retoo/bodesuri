@@ -10,6 +10,8 @@ public class Deck {
 	public Deck(int nummer) {
 		karten = new Vector<Karte>();
 		for (KartenFarbe farbe : KartenFarbe.values()) {
+			if (farbe == KartenFarbe.KEINE)
+				continue;
 			karten.add(new Zwei(farbe));
 			karten.add(new Drei(farbe));
 			karten.add(new Vier(farbe));
