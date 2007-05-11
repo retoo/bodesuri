@@ -34,5 +34,16 @@ public class BrettView extends JPanel {
 		debug = new JLabel();
 		debug.setBounds(20, 570, 200, 30);
 		add(debug);
+
+		for (int i = 0; i < 20; i++) {
+			Feld2d feld = new Feld2d(i);
+			felder.add(feld);
+		}
+
+		add(new Figur2d(felder.get(0)));
+		
+		for (Feld2d feld : felder) {
+			this.add(feld);
+		}
 	}
 }
