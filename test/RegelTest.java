@@ -8,7 +8,8 @@ import pd.zugsystem.Zug;
 public class RegelTest extends ProblemDomainTestCase {
 	private Karte vier;
 	
-	public void setUp() {
+	public void setUp() throws Exception {
+		super.setUp();
 		vier = new Vier(KartenFarbe.HERZ);
 	}
 	

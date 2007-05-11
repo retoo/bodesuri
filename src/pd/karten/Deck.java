@@ -25,6 +25,7 @@ public class Deck {
 			karten.add(new Ass(farbe));
 		}
 		karten.add(new Joker(KartenFarbe.KEINE));
+		karten.add(new Joker(KartenFarbe.KEINE));
 	}
 	
 	public List<Karte> getKarten() {
