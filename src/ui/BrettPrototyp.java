@@ -1,8 +1,6 @@
 package ui;
 
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -10,7 +8,8 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 
-import spielplatz.Feld2d;
+import ui.brett.Feld2d;
+
 
 public class BrettPrototyp extends JFrame {
 
@@ -22,6 +21,7 @@ public class BrettPrototyp extends JFrame {
 		setTitle(title);
 		setSize(1330, 100);
 		setVisible(true);
+		setLayout(null);
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -37,16 +37,12 @@ public class BrettPrototyp extends JFrame {
 
 		this.felder = felder;
 		System.out.println("Size: " + felder.size());
-	}
-
-	public void paint(Graphics g) {
-		Graphics2D g2d = (Graphics2D) g;
-		for (int i = 0; i < this.felder.size(); i++) {
-			if (felder.get(i) != null) {
-				felder.get(i).zeichneFeld(g2d);
-				felder.get(i).zeichneFigur(g2d);
-			}
+		
+		for (Feld2d feld: felder ){
+			add(feld);
 		}
 	}
+
+
 
 }

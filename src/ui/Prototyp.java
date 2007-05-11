@@ -20,6 +20,8 @@ public class Prototyp extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private Ellipse2D.Double circle;
+	Feld2d f;
+	private boolean in;
 
 	public Prototyp() {
 		setTitle("Bodesuri Prototyp");
@@ -46,8 +48,19 @@ public class Prototyp extends JFrame {
 		                                             .getLocalGraphicsEnvironment();
 		env.getAvailableFontFamilyNames();
 		setFont(new Font("Arial", Font.BOLD, 11));
+		
+		addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                feld_Clicked(evt);
+            }
+         });
 	}
 
+	public void feld_Clicked(java.awt.event.MouseEvent evt){
+		in = f.contains(evt.getPoint());
+		repaint();
+	}
+	
 	public void paint(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
 
@@ -60,9 +73,17 @@ public class Prototyp extends JFrame {
 			if (i > 47)
 				color = Color.green;
 
-			Feld2d f = new Feld2d(i, g2d, color);
-			f.zeichneFeld();
-			f.zeichneFigur("0");
+			f = new Feld2d(i, color);
+			f.zeichneFeld(g2d);
+			f.zeichneFigur(g2d);
+		}
+
+		
+		if(in){
+			System.out.println("Ich wurde geklickt.");
+			System.out.println(f.getFeldNr());
+		} else {
+			System.out.println("Ich wurde nicht geklickt.");
 		}
 		// drawBigString(g2d);
 	}

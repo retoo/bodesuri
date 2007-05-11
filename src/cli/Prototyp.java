@@ -18,8 +18,8 @@ import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
-import spielplatz.Feld2d;
 import ui.BrettPrototyp;
+import ui.brett.Feld2d;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
@@ -40,7 +40,7 @@ public class Prototyp {
 	private BankFeld startFeld;
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
-	private Feld2d feld2d;
+
 	private Vector<Feld2d> felder;
 
 	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server) {
@@ -64,12 +64,13 @@ public class Prototyp {
 		System.out.println("0000000000111111111122222222223333333333444444444455555555556666");
 		System.out.println("0123456789012345678901234567890123456789012345678901234567890123");
 		int i = 0;
+		Feld2d feld2d;
 		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
 			//zeichneFeld(feld);
-			feld2d = new Feld2d(i, Color.orange);
-			zeichneFeld(feld, feld2d);
+			feld2d = new Feld2d(i);
 			felder.add(feld2d);
 			i++;
+			zeichneFeld(feld, feld2d);
 		}
 		System.out.println();
 		new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler, felder);
@@ -79,10 +80,10 @@ public class Prototyp {
 		if (feld.istBesetzt()) {
 			Spieler spieler = feld.getFigur().getSpieler();
 			System.out.print(spiel.getSpieler().indexOf(spieler) + 1);
-			feld2d.setSpieler(spiel.getSpieler().indexOf(spieler));
+//			feld2d.setSpieler(spiel.getSpieler().indexOf(spieler));
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
-			feld2d.setBankFeld();
+//			feld2d.setBankFeld();
 		} else if (feld instanceof NormalesFeld) {
 			System.out.print("_");
 		}

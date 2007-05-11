@@ -19,6 +19,7 @@ import dienste.netzwerk.nachrichten.ZugInformation;
 
 public class Server {
 	private static final int PORT = 7788;
+	private static final int MAXSPIELER = 1;
 	private Briefkasten serverBriefkasten;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 
@@ -43,7 +44,7 @@ public class Server {
 
 	private void starteSpiel() throws VerbindungWegException {
 		/* potentielle klasse */
-		int maxSpieler = 4;
+
 
 		while (true) {
 			Brief brief = serverBriefkasten.getBrief();
@@ -56,11 +57,11 @@ public class Server {
 				spielers.add(spieler);
 
 				String msg = "Neuer Spieler " + spieler.name + ". Noch "
-				             + (maxSpieler - spielers.size())
+				             + (MAXSPIELER - spielers.size())
 				             + " Spieler nötig.";
 				broadcast(msg);
 
-				if (spielers.size() == maxSpieler) {
+				if (spielers.size() == MAXSPIELER) {
 					return; /* Spiel bereit */
 				}	
 			} else if (nachricht instanceof NeueVerbindung) {
@@ -83,7 +84,7 @@ public class Server {
 		kuendigeSpielstartAn();
 		
 		/* Versende den ersten Token  FIXME: das muss noch schöner :) */
-		Klicks klicks = new Klicks(4);
+		Klicks klicks = new Klicks(MAXSPIELER);
 		
 		Spieler aktuellerSpieler = spielers.get(klicks.klick());
 		
@@ -119,9 +120,9 @@ public class Server {
 	}
 
 	private void kuendigeSpielstartAn() throws VerbindungWegException {
-	    String[] spielers_str = new String[4];
+	    String[] spielers_str = new String[MAXSPIELER];
 		
-		for (int i = 0; i < 4; i++) 
+		for (int i = 0; i < MAXSPIELER; i++) 
 			spielers_str[i] = spielers.get(i).name;
  		
 		SpielStartNachricht ssn = new SpielStartNachricht(spielers_str);

@@ -14,18 +14,16 @@ import java.util.Vector;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pd.spieler.Figur;
+import ui.brett.Figur;
 import pd.spieler.Spieler;
 
 public class BrettView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	Vector<Feld> felder = new Vector<Feld>();
+	Vector<Feld2d> felder = new Vector<Feld2d>();
 
 	private JLabel debug;
-	private FeldMouse listener = new FeldMouse();
-
 
 	public BrettView() {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
@@ -41,39 +39,42 @@ public class BrettView extends JPanel {
 		debug = new JLabel();
 		debug.setBounds(20, 570, 200, 30);
 		add(debug);
-
-		for (int i = 30; i < 400; i += 70) {
-			Feld feld = new Feld(listener, i, 20, "Feld" + i);
-			felder.add(feld);
-			this.add(feld);
-		}
+		
+		Figur figur1 = new Figur(30, 20, "Figur1");
+		this.add(figur1);
+//		for (int i = 30; i < 400; i += 70) {
+//			Feld2d feld = new Feld2d(i);
+//			felder.add(feld);
+//			this.add(feld);
+//		}
 		Spieler sp = new Spieler(1);
-		felder.get(1).setFigur(new Figur(sp));
-		felder.get(2).setFigur(new Figur(sp));
+
+//		felder.get(1).setFigur(new Figur(sp));
+//		felder.get(2).setFigur(new Figur(sp));
 	}
 
 	class FeldMouse extends MouseAdapter {
-		private Feld selected;
+		
 		
 		public void mouseClicked(MouseEvent e) {
-			Feld clicked = (Feld) e.getComponent();
+			Feld2d clicked = (Feld2d) e.getComponent();
 
-			if (clicked.hasFigur()) {
-				if (selected == null) {
-					selected = clicked;
-				} else {
-					// Fressen
-					selected = null;
-				}
-			} else {
-				if (selected == null) {
-					// nichts
-				} else {
-					clicked.setFigur(selected.getFigur());
-					selected.setFigur(null);
-					selected = null;
-				}
-			}
+//			if (clicked.hasFigur()) {
+//				if (selected == null) {
+//					selected = clicked;
+//				} else {
+//					// Fressen
+//					selected = null;
+//				}
+//			} else {
+//				if (selected == null) {
+//					// nichts
+//				} else {
+//					clicked.setFigur(selected.getFigur());
+//					selected.setFigur(null);
+//					selected = null;
+//				}
+//			}
 
 			debug.setText(clicked.getText() + " / X: " + e.getX() + " / Y: "
 			               + e.getY());
