@@ -1,13 +1,11 @@
 package cli;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Vector;
 
 import pd.Spiel;
 import pd.brett.BankFeld;
@@ -20,6 +18,7 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
+import ui.brett.Figur2d;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
@@ -41,15 +40,12 @@ public class Prototyp {
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
 
-	private Vector<Feld2d> felder;
-
 	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server) {
 		this.server = server;
 		this.spiel = spiel;
 		this.lokalerSpieler = spielerIch;
 		this.brett = spiel.getBrett();
 		this.startFeld = brett.getBankFeldVon(spiel.getSpieler().get(0));
-		felder = new Vector<Feld2d>();
 		setzeFiguren();
 	}
 	
@@ -63,27 +59,19 @@ public class Prototyp {
 	public void zeichneBrett() {
 		System.out.println("0000000000111111111122222222223333333333444444444455555555556666");
 		System.out.println("0123456789012345678901234567890123456789012345678901234567890123");
-		int i = 0;
-		Feld2d feld2d;
 		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
-			//zeichneFeld(feld);
-			feld2d = new Feld2d(i);
-			felder.add(feld2d);
-			i++;
-			zeichneFeld(feld, feld2d);
+			zeichneFeld(feld);
+			
 		}
 		System.out.println();
-		new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler, felder);
 	}
 
-	public void zeichneFeld(Feld feld, Feld2d feld2d) {
+	public void zeichneFeld(Feld feld) {
 		if (feld.istBesetzt()) {
 			Spieler spieler = feld.getFigur().getSpieler();
 			System.out.print(spiel.getSpieler().indexOf(spieler) + 1);
-//			feld2d.setSpieler(spiel.getSpieler().indexOf(spieler));
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
-//			feld2d.setBankFeld();
 		} else if (feld instanceof NormalesFeld) {
 			System.out.print("_");
 		}
@@ -173,6 +161,18 @@ public class Prototyp {
 		System.out.println();
 		zeichneBrett();
 		System.out.println();
+		
+		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
+		int i = 0;
+		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
+			Feld2d feld2d = new Feld2d(i);
+			if (feld instanceof BankFeld) {
+				brettproto.add(new Figur2d(feld2d)); 
+			}
+			brettproto.add(feld2d);
+			i++;
+		}
+		brettproto.setVisible(true);
 		
 		while (true) {
 			// zeichneBrett();
