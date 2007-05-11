@@ -1,5 +1,5 @@
 package pd.karten;
 
 public enum KartenFarbe {
-	HERZ, KARO, KREUZ, PIK, KEINE
+	HERZ, KARO, KREUZ, PIK
 }

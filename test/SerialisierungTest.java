@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import pd.karten.Karte;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 
@@ -43,11 +44,16 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		
 		Zug zug2 = (Zug) durchSerialisierung(zug);
 		assertEquals(zug.getSpieler(), zug2.getSpieler());
-		// TODO: Funktioniert nicht zuverlässig, da zwei Decks im Spiel sind.
-		// assertEquals(zug.getKarte(), zug2.getKarte());
 		assertEquals(zug.getBewegung().getStart(),
 		             zug2.getBewegung().getStart());
 		assertEquals(zug.getBewegung().getZiel(),
 		             zug2.getBewegung().getZiel());
+	}
+	
+	public void testKarteSerialisierung()
+			throws IOException, ClassNotFoundException {
+		for (Karte karte : kartenGeber.getKarten(108)) {
+			assertEquals(karte, durchSerialisierung(karte));
+		}
 	}
 }

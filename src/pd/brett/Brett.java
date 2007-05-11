@@ -30,14 +30,12 @@ public class Brett {
 		
 		for (Spieler sp : spiel.getSpieler()) {
 			BankFeld bf = new BankFeld(nummer++, sp);
-			spiel.getCodierer().speichere(bf);
 			bankFelder.put(sp, bf);
 			felderInRing.add(bf);
 			
 			Vector<LagerFeld> lager = new Vector<LagerFeld>();
 			for (int i = 0; i < 4; ++i) {
 				LagerFeld lf = new LagerFeld(nummer++, sp);
-				spiel.getCodierer().speichere(lf);
 				lf.setFigur(sp.getFiguren().get(i));
 				lf.setNaechstes(bf);
 				lager.add(lf);
@@ -46,7 +44,6 @@ public class Brett {
 			
 			for (int i = 0; i < 15; ++i) {
 				NormalesFeld nf = new NormalesFeld(nummer++);
-				spiel.getCodierer().speichere(nf);
 				felderInRing.add(nf);
 			}
 		}

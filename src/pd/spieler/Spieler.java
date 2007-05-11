@@ -14,6 +14,7 @@ public class Spieler extends CodierbaresObjekt {
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
 	public Spieler(int nummer) {
+		super("Spieler " + nummer);
 		this.nummer = nummer;
 		for (int i = 0; i < 4; ++i) {
 			figuren.add(new Figur(this));
@@ -29,10 +30,6 @@ public class Spieler extends CodierbaresObjekt {
 		return "Spieler " + getName();
 	}
 
-    public String getCode() {
-	    return "Spieler " + nummer;
-    }
-
 	public String getName() {
     	return name;
     }
@@ -44,5 +41,9 @@ public class Spieler extends CodierbaresObjekt {
 	// Wird für das CLI verwendet, um die Spieler anzeigen zu können
 	public Vector<Figur> getFiguren() {
     	return figuren;
+    }
+
+	public int getNummer() {
+    	return nummer;
     }
 }

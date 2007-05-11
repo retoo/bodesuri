@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
-import pd.Spiel;
-
 public class KartenGeber {
 	/*
 	 * 13 * 4 Farben + 2 Joker = 54 Karten = ein Deck
@@ -27,10 +25,6 @@ public class KartenGeber {
 	private void mischen() {
 		for (int i=0; i < 2; ++i) {
 			kartenStapel.addAll(new Deck(i).getKarten());
-		}
-		
-		for (Karte karte : kartenStapel) {
-			Spiel.aktuelles.getCodierer().speichere(karte);
 		}
 		
 		// Mischen

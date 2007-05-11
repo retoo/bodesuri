@@ -13,10 +13,8 @@ public abstract class Feld extends CodierbaresObjekt {
 	
 	protected Figur figur;
 	
-	private int nummer;
-	
 	public Feld(int nummer) {
-		this.nummer = nummer;
+		super("Feld " + nummer);
 	}
 	
 	/*
@@ -71,10 +69,6 @@ public abstract class Feld extends CodierbaresObjekt {
 	public boolean istBesetztVon(Spieler spieler) {
 		return istBesetzt() && getFigur().getSpieler() == spieler;
 	}
-	
-    public String getCode() {
-	    return "Feld " + nummer;
-    }
 
 	public Feld getNaechstes() {
     	return naechstes;

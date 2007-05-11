@@ -27,7 +27,6 @@ public class Spiel {
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
 			Spieler sp = new Spieler(i);
 			spieler.add(sp);
-			codierer.speichere(sp);
 		}
 		brett = new Brett(this);
 	}

@@ -10,8 +10,8 @@ import pd.regelsystem.VorwaertsRegel;
 public class Ass extends Karte{
 	private static final long serialVersionUID = 1L;
 
-	public Ass(KartenFarbe farbe) {
-		super(farbe);
+	public Ass(KartenFarbe farbe, int deck) {
+		super("Ass", farbe, deck);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(1));
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(11));

@@ -10,8 +10,8 @@ public class Codierer {
 		objekte = new HashMap<String, CodierbaresObjekt>();
 	}
 	
-	public void speichere(CodierbaresObjekt objekt) {
-		objekte.put(objekt.getCode(), objekt);
+	public void speichere(String code, CodierbaresObjekt objekt) {
+		objekte.put(code, objekt);
 	}
 	
 	public Object get(String code) {

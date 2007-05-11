@@ -10,7 +10,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	
 	public void setUp() throws Exception {
 		super.setUp();
-		vier = new Vier(KartenFarbe.HERZ);
+		vier = new Vier(KartenFarbe.HERZ, 0);
 	}
 	
 	public void testVier() {
