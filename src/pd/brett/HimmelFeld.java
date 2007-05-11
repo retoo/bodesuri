@@ -1,9 +1,11 @@
 package pd.brett;
 
-public class HimmelFeld extends Feld {
+import pd.spieler.Spieler;
+
+public class HimmelFeld extends SpielerFeld {
 	private static final long serialVersionUID = 1L;
 
-	public HimmelFeld(int nummer) {
-		super(nummer);
+	public HimmelFeld(int nummer, Spieler spieler) {
+		super(nummer, spieler);
 	}
 }
