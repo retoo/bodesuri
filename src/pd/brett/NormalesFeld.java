@@ -1,9 +1,9 @@
 package pd.brett;
 
-public class WegFeld extends Feld {
+public class NormalesFeld extends Feld {
 	private static final long serialVersionUID = 1L;
 
-	public WegFeld(int nummer) {
+	public NormalesFeld(int nummer) {
 		super(nummer);
 	}
 }

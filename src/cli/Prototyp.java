@@ -13,7 +13,7 @@ import pd.Spiel;
 import pd.brett.BankFeld;
 import pd.brett.Brett;
 import pd.brett.Feld;
-import pd.brett.WegFeld;
+import pd.brett.NormalesFeld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
@@ -83,7 +83,7 @@ public class Prototyp {
 		} else if (feld instanceof BankFeld) {
 			System.out.print("X");
 			feld2d.setBankFeld();
-		} else if (feld instanceof WegFeld) {
+		} else if (feld instanceof NormalesFeld) {
 			System.out.print("_");
 		}
 

@@ -45,9 +45,9 @@ public class Brett {
 			lagerFelder.put(sp, lager);
 			
 			for (int i = 0; i < 15; ++i) {
-				WegFeld wf = new WegFeld(nummer++);
-				spiel.getCodierer().speichere(wf);
-				felderInRing.add(wf);
+				NormalesFeld nf = new NormalesFeld(nummer++);
+				spiel.getCodierer().speichere(nf);
+				felderInRing.add(nf);
 			}
 		}
 		
