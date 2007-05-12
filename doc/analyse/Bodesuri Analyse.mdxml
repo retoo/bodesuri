@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Sat May 12 13:40:26 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Sat May 12 14:41:23 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable shareDescription='Analyse Diagramme und Modelle für das Projekt Bodesuri.'>
@@ -17,7 +17,7 @@
 			<module resource='file:/Applications/Eigene%20Programme/Software%20Entwicklung/CASE%20Tools/MagicDraw%20UML/profiles/UseCase_Profile.xml' autoloadType='ALWAYS_LOAD' readOnly='true' loadIndex='true' requiredVersion='-1'>
 				<mount mountPoint='_be00301_1066743716538_320440_0' mountedOn='eee_1045467100313_135436_1'/>
 			</module>
-			<module resource='file:/Users/HobusP/Eigene%20Dokumente/Ausbildung/HSR%20Rapperswil/Software%20Engineering/Projekt/doc/design/Bodesuri%20Design.mdxml' shareDescription='Design Diagramme für Projekt Bodesuri.' autoloadType='ALWAYS_LOAD' readOnly='true' loadIndex='true' requiredVersion='-1'>
+			<module resource='file:/Users/HobusP/Eigene%20Dokumente/Ausbildung/HSR%20Rapperswil/Software%20Engineering/Projekt/doc/design/Bodesuri%20Design.mdxml' shareDescription='Design Diagramme für Projekt Bodesuri.' autoloadType='ALWAYS_LOAD' readOnly='false' loadIndex='true' requiredVersion='-1'>
 				<mount mountPoint='_11_6_7fe0252_1176840929080_243054_110' mountedOn='eee_1045467100313_135436_1'/>
 			</module>
 		</mountTable>
@@ -249,21 +249,9 @@
 			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_7fe0252_1176732701081_892095_1249' name='System Sequenz Diagramme' visibility='public'>
 				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_7fe0252_1178134162964_262539_1351' name='Spiel spielen' visibility='public' context='_11_6_7fe0252_1176732701081_892095_1249'>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_681568_1435' name='initiator' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_522706_1436' name='spielServer' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108037009_703617_9570'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Server::Server' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_522706_1436' name='spielServer' visibility='private'/>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_752343_1437' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162976_564432_1438' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108029353_793473_9543'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Client::Client' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162976_564432_1438' visibility='private'/>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134162965_498846_1352' visibility='public' represents='_11_6_7fe0252_1178134162975_681568_1435'>
 						<events xmi:idref='_11_6_7fe0252_1178134162970_900641_1385'/>
 						<events xmi:idref='_11_6_7fe0252_1178134162973_352793_1410'/>
@@ -433,21 +421,9 @@
 						</modelExtension>
 					</xmi:Extension>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733424541_743882_2241' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733448818_621899_2254' name='spielServer' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108037009_703617_9570'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Server::Server' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733448818_621899_2254' name='spielServer' visibility='private'/>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176988593188_611095_2280' visibility='private' type='_11_6_7fe0252_1176377815523_374951_634'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1177675180237_487836_992' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108029353_793473_9543'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Client::Client' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1177675180237_487836_992' visibility='private'/>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1176733424540_658844_2240' visibility='public' represents='_11_6_7fe0252_1176733424541_743882_2241'>
 						<events xmi:idref='_11_6_7fe0252_1178018861963_841328_496'/>
 						<events xmi:idref='_11_6_7fe0252_1176991854908_384297_1194'/>
@@ -634,21 +610,9 @@
 						</modelExtension>
 					</xmi:Extension>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_324381_2055' name='initiator' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_3895_2056' name='spielServer' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108037009_703617_9570'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Server::Server' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_3895_2056' name='spielServer' visibility='private'/>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_330776_2057' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_296357_2058' visibility='private'>
-						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1177108029353_793473_9543'>
-							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-								<referenceExtension referentPath='Design::Dienste::Client::Client' referentType='Class'/>
-							</xmi:Extension>
-						</type>
-					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_296357_2058' visibility='private'/>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134404316_482098_1972' visibility='public' represents='_11_6_7fe0252_1178134404326_324381_2055'>
 						<events xmi:idref='_11_6_7fe0252_1178134404325_312561_2048'/>
 					</lifeline>
@@ -881,20 +845,8 @@
 			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_7fe0252_1178917082333_869305_545' visibility='public'/>
 			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_7fe0252_1178917152371_503778_553' visibility='public'/>
 			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178963195311_708161_508' visibility='public'/>
-			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178963235073_924801_512' visibility='public'>
-				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178963235057_610731_511'>
-					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-						<referenceExtension referentPath='Design::Dienste::Client::Client::spielBeitreten' referentType='Operation'/>
-					</xmi:Extension>
-				</operation>
-			</ownedMember>
-			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178968602712_887541_968' visibility='public'>
-				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178968602710_917009_967'>
-					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-						<referenceExtension referentPath='Design::Dienste::Server::Server::spielEndeBestaetigen' referentType='Operation'/>
-					</xmi:Extension>
-				</operation>
-			</ownedMember>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178963235073_924801_512' visibility='public'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178968602712_887541_968' visibility='public'/>
 			<appliedProfile xmi:type='uml:ProfileApplication' xmi:id='_11_6_7fe0252_1176994149671_554724_176' visibility='public'>
 				<importedPackage xmi:type='uml:Profile' href='UML_Standard_Profile.xml#_9_0_be00301_1108050582343_527400_10847'>
 					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
@@ -929,12 +881,7 @@
 					<type>Sequence Diagram</type>
 					<umlType>Sequence Diagram</umlType>
 					<zoomFactor xmi:value='1.0'/>
-					<diagramOpened xmi:value='true'/>
-					<diagramWindowBounds>1, 26, 1372, 872</diagramWindowBounds>
-					<diagramScrollPositionX xmi:value='0'/>
-					<diagramScrollPositionY xmi:value='0'/>
-					<maximized xmi:value='false'/>
-					<active xmi:value='false'/>
+					<diagramOpened xmi:value='false'/>
 					<mdOwnedViews>
 						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_7fe0252_1176733425214_288965_2242'>
 							<elementID xmi:idref='_11_6_7fe0252_1176733424540_658844_2240'/>
@@ -977,8 +924,8 @@
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1176991854908_494036_1197'>
 													<elementID xmi:idref='_11_6_7fe0252_1176991854900_210266_1193'/>
-													<geometry>154, 513, 154, 15</geometry>
-													<text>spielBeitreten(server=s)</text>
+													<geometry>154, 513, 56, 15</geometry>
+													<text>(s)</text>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1176991854920_345730_1198'/>
@@ -1270,12 +1217,7 @@
 					<type>Sequence Diagram</type>
 					<umlType>Sequence Diagram</umlType>
 					<zoomFactor xmi:value='1.0'/>
-					<diagramOpened xmi:value='true'/>
-					<diagramWindowBounds>1, 26, 1372, 872</diagramWindowBounds>
-					<diagramScrollPositionX xmi:value='0'/>
-					<diagramScrollPositionY xmi:value='0'/>
-					<maximized xmi:value='false'/>
-					<active xmi:value='false'/>
+					<diagramOpened xmi:value='false'/>
 					<mdOwnedViews>
 						<mdElement elementClass='CombinedFragment' xmi:id='_11_6_7fe0252_1178134163017_22010_1629'>
 							<elementID xmi:idref='_11_6_7fe0252_1178134162971_513223_1389'/>
@@ -1692,12 +1634,7 @@
 					<type>Sequence Diagram</type>
 					<umlType>Sequence Diagram</umlType>
 					<zoomFactor xmi:value='1.0'/>
-					<diagramOpened xmi:value='true'/>
-					<diagramWindowBounds>1, 26, 1372, 872</diagramWindowBounds>
-					<diagramScrollPositionX xmi:value='0'/>
-					<diagramScrollPositionY xmi:value='30'/>
-					<maximized xmi:value='false'/>
-					<active xmi:value='true'/>
+					<diagramOpened xmi:value='false'/>
 					<mdOwnedViews>
 						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_7fe0252_1178134404365_61989_2225'>
 							<elementID xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
@@ -1713,40 +1650,40 @@
 									<value xmi:value='true'/>
 								</mdElement>
 							</properties>
-							<geometry>28, 75, 129, 24</geometry>
+							<geometry>28, 75, 80, 24</geometry>
 							<mdOwnedViews>
 								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134404365_224278_2226'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
 									<editable xmi:value='false'/>
-									<geometry>92, 99, 0, 694</geometry>
+									<geometry>68, 99, 0, 694</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178134404365_81509_2234'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_546419_1994'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
-											<geometry>284, 203; 97, 203; </geometry>
+											<geometry>275, 203; 73, 203; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404365_283042_2235'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404365_283042_2235'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_546419_1994'/>
-													<geometry>111, 189, 147, 15</geometry>
+													<geometry>94, 189, 147, 15</geometry>
 													<text>spielEndeAnkuendigen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641451_898809_2396'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>191, 199, 28, 15</geometry>
+													<geometry>176, 198, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641451_794976_2397'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>173, 221, 28, 14</geometry>
+													<geometry>156, 220, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641451_681113_2398'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>191, 196, 28, 14</geometry>
+													<geometry>176, 196, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641451_681113_2398'/>
@@ -1757,28 +1694,28 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178968478300_85999_926'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
-											<geometry>97, 239; 123, 239; 123, 212; 97, 212; </geometry>
+											<geometry>73, 239; 99, 239; 99, 212; 73, 212; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178968478301_327513_930'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968478311_135441_931'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>111, 184, 28, 14</geometry>
+													<geometry>87, 184, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178968478312_544552_933'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>111, 402, 28, 15</geometry>
+													<geometry>87, 402, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968478312_236436_936'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>111, 417, 28, 14</geometry>
+													<geometry>87, 417, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178968478301_327513_930'>
 													<elementID xmi:idref='_11_6_7fe0252_1178968478300_85999_926'/>
-													<geometry>134, 219, 94, 15</geometry>
+													<geometry>110, 219, 94, 15</geometry>
 													<text>setzeTimeout</text>
 												</mdElement>
 											</mdOwnedViews>
@@ -1787,35 +1724,35 @@
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178968478312_236436_936'/>
 										</mdElement>
 										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178969028773_80377_1249'>
-											<geometry>87, 154, 10, 493</geometry>
+											<geometry>63, 154, 10, 493</geometry>
 											<resizedByUser xmi:value='true'/>
 										</mdElement>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178968758631_889776_992'>
 											<elementID xmi:idref='_11_6_7fe0252_1178968758629_636275_989'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178968758641_627363_994'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
-											<geometry>102, 389; 132, 389; 132, 364; 97, 364; </geometry>
+											<geometry>78, 389; 108, 389; 108, 364; 73, 364; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178968758631_504070_993'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968758641_135456_995'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 353, 28, 14</geometry>
+													<geometry>94, 353, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178968758641_524370_997'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 396, 28, 15</geometry>
+													<geometry>94, 396, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968758641_348114_1000'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 404, 28, 14</geometry>
+													<geometry>94, 404, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178968758631_504070_993'>
 													<elementID xmi:idref='_11_6_7fe0252_1178968758629_636275_989'/>
-													<geometry>142, 370, 102, 15</geometry>
+													<geometry>118, 370, 102, 15</geometry>
 													<text>serverBeenden</text>
 												</mdElement>
 											</mdOwnedViews>
@@ -1827,10 +1764,10 @@
 										<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178968758642_131315_1004'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
 											<editable xmi:value='false'/>
-											<geometry>92, 389, 5, 50</geometry>
+											<geometry>68, 389, 5, 50</geometry>
 											<mdOwnedViews>
 												<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178968758641_627363_994'>
-													<geometry>92, 389, 10, 50</geometry>
+													<geometry>68, 389, 10, 50</geometry>
 													<resizedByUser xmi:value='true'/>
 												</mdElement>
 											</mdOwnedViews>
@@ -1841,28 +1778,28 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178968781526_151863_1006'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178968781538_833901_1011'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
-											<geometry>102, 526; 132, 526; 132, 501; 97, 501; </geometry>
+											<geometry>78, 526; 108, 526; 108, 501; 73, 501; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178968781528_444796_1010'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968781538_666144_1012'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 483, 28, 14</geometry>
+													<geometry>94, 483, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178968781538_63682_1014'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 526, 28, 15</geometry>
+													<geometry>94, 526, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178968781538_688532_1017'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>118, 541, 28, 14</geometry>
+													<geometry>94, 541, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178968781528_444796_1010'>
 													<elementID xmi:idref='_11_6_7fe0252_1178968781526_151863_1006'/>
-													<geometry>142, 507, 102, 15</geometry>
+													<geometry>118, 507, 102, 15</geometry>
 													<text>serverBeenden</text>
 												</mdElement>
 											</mdOwnedViews>
@@ -1874,10 +1811,10 @@
 										<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178968781539_681982_1021'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
 											<editable xmi:value='false'/>
-											<geometry>92, 526, 5, 50</geometry>
+											<geometry>68, 526, 5, 50</geometry>
 											<mdOwnedViews>
 												<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178968781538_833901_1011'>
-													<geometry>92, 526, 10, 50</geometry>
+													<geometry>68, 526, 10, 50</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<lifeLineHidden xmi:value='true'/>
@@ -1916,29 +1853,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404319_953074_1992'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178134404365_22180_2244'/>
-											<geometry>294, 136; 461, 136; </geometry>
+											<geometry>285, 136; 461, 136; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404365_707916_2246'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404365_707916_2246'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404319_953074_1992'/>
-													<geometry>332, 118, 93, 15</geometry>
+													<geometry>328, 118, 93, 15</geometry>
 													<text>spielBeenden</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641454_826524_2399'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>373, 149, 28, 15</geometry>
+													<geometry>369, 149, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641454_489025_2400'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>364, 160, 28, 14</geometry>
+													<geometry>360, 159, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641454_316027_2401'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>373, 127, 28, 14</geometry>
+													<geometry>369, 127, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641454_316027_2401'/>
@@ -1963,40 +1900,40 @@
 									<value xmi:value='true'/>
 								</mdElement>
 							</properties>
-							<geometry>259, 75, 60, 24</geometry>
+							<geometry>259, 75, 42, 24</geometry>
 							<mdOwnedViews>
 								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134404365_12558_2252'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
 									<editable xmi:value='false'/>
-									<geometry>289, 99, 0, 694</geometry>
+									<geometry>280, 99, 0, 694</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178134404366_158715_2264'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_896099_1995'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>97, 340; 284, 340; </geometry>
+											<geometry>73, 340; 275, 340; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_508552_2265'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_508552_2265'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_896099_1995'/>
-													<geometry>119, 326, 146, 15</geometry>
-													<text>spielEndeBestaetigen()</text>
+													<geometry>99, 326, 56, 15</geometry>
+													<text>()</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641468_579197_2405'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 354, 28, 15</geometry>
+													<geometry>159, 354, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641468_317368_2406'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>173, 354, 28, 14</geometry>
+													<geometry>156, 354, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641468_755055_2407'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 312, 28, 14</geometry>
+													<geometry>159, 312, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641468_755055_2407'/>
@@ -2007,29 +1944,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_621817_1996'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178134404365_22180_2244'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>461, 623; 294, 623; </geometry>
+											<geometry>461, 623; 285, 623; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_868013_2269'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_868013_2269'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_621817_1996'/>
-													<geometry>318, 605, 118, 15</geometry>
+													<geometry>313, 605, 118, 15</geometry>
 													<text>statistikDarstellen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641472_89622_2411'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>363, 634, 28, 15</geometry>
+													<geometry>358, 634, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641473_446712_2412'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>363, 647, 28, 14</geometry>
+													<geometry>358, 646, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641473_766455_2413'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>363, 598, 28, 14</geometry>
+													<geometry>358, 598, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641473_766455_2413'/>
@@ -2040,29 +1977,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404319_384917_1993'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>97, 154; 284, 154; </geometry>
+											<geometry>73, 154; 275, 154; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_912317_2273'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_912317_2273'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404319_384917_1993'/>
-													<geometry>151, 140, 67, 15</geometry>
+													<geometry>134, 140, 67, 15</geometry>
 													<text>beenden</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641475_521379_2414'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>191, 162, 28, 15</geometry>
+													<geometry>176, 161, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641475_787306_2415'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>173, 168, 28, 14</geometry>
+													<geometry>156, 168, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641476_341182_2416'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>191, 147, 28, 14</geometry>
+													<geometry>176, 147, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641476_341182_2416'/>
@@ -2070,7 +2007,7 @@
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178134641475_787306_2415'/>
 										</mdElement>
 										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178969028773_195444_1248'>
-											<geometry>284, 136, 10, 537</geometry>
+											<geometry>275, 136, 10, 537</geometry>
 											<resizedByUser xmi:value='true'/>
 										</mdElement>
 									</mdOwnedViews>
@@ -5165,20 +5102,7 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 					</ownedStereotype>
 				</ownedMember>
 			</proxy>
-			<proxy xmi:type='uml:Model' xmi:id='_11_6_7fe0252_1176840929080_243054_110' name='Design' visibility='public'>
-				<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1176841341347_92486_135' name='Dienste' visibility='public'>
-					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1177107772424_979060_9467' name='Server' visibility='public'>
-						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1177108037009_703617_9570' name='Server' visibility='public'>
-							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1178968602710_917009_967' name='spielEndeBestaetigen' visibility='public' concurrency='sequential'/>
-						</ownedMember>
-					</ownedMember>
-					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1177107751072_716814_9456' name='Client' visibility='public'>
-						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1177108029353_793473_9543' name='Client' visibility='public'>
-							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1178963235057_610731_511' name='spielBeitreten' visibility='public' concurrency='sequential'/>
-						</ownedMember>
-					</ownedMember>
-				</ownedMember>
-			</proxy>
+			<proxy xmi:type='uml:Model' xmi:id='_11_6_7fe0252_1176840929080_243054_110' name='Design' visibility='public'/>
 			<proxy xmi:type='uml:Profile' xmi:id='_be00301_1066743716538_320440_0' name='UseCase Description Profile' visibility='public'>
 				<ownedMember xmi:type='uml:Enumeration' xmi:id='_be00301_1066821693263_457671_100' name='UseCase Property Group Enumeration' visibility='public'>
 					<ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:id='_be00301_1066821820306_125547_101' name='Identity' visibility='public'/>
@@ -5271,6 +5195,14 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197803_558302_901application1' base_Element='_be00301_1066822235323_902656_106'/>
 		</stereotypeApplicationForProxies>
 		<stereotypesIDS>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
 			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
 			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
 			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
