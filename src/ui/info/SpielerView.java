@@ -18,10 +18,10 @@ public class SpielerView extends JPanel {
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setAlignmentX(Component.LEFT_ALIGNMENT);
-		Dimension grösse = new Dimension(100, 100);
-		setPreferredSize(grösse);
-		setMaximumSize(grösse);
-		setMinimumSize(grösse);
+		Dimension groesse = new Dimension(100, 100);
+		setPreferredSize(groesse);
+		setMaximumSize(groesse);
+		setMinimumSize(groesse);
 
 		this.add(new JLabel("Spieler 1"));
 		this.add(new JLabel("Spieler 2"));

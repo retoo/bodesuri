@@ -22,10 +22,10 @@ public class DeckView extends JPanel {
 		setBorder(titel);
 		setLayout(new FlowLayout());
 		setAlignmentX(Component.LEFT_ALIGNMENT);
-		Dimension grösse = new Dimension(100, 100);
-		setPreferredSize(grösse);
-		setMaximumSize(grösse);
-		setMinimumSize(grösse);
+		Dimension groesse = new Dimension(100, 100);
+		setPreferredSize(groesse);
+		setMaximumSize(groesse);
+		setMinimumSize(groesse);
 		
 		this.add(new JLabel("Hier kommen die Karten hin..."));
     }

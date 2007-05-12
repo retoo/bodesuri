@@ -25,10 +25,10 @@ public class BrettView extends JPanel {
 		setBackground(new Color(0, 150, 0));
 
 		setLayout(null);
-		Dimension grösse = new Dimension(600, 600);
-		setPreferredSize(grösse);
-		setMaximumSize(grösse);
-		setMinimumSize(grösse);
+		Dimension groesse = new Dimension(600, 600);
+		setPreferredSize(groesse);
+		setMaximumSize(groesse);
+		setMinimumSize(groesse);
 		setAlignmentX(Component.LEFT_ALIGNMENT);
 
 		debug = new JLabel();
