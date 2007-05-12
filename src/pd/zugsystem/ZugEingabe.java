@@ -6,7 +6,7 @@ import pd.karten.Karte;
 import pd.regelsystem.Regel;
 import pd.spieler.Spieler;
 
-public class Zug implements Serializable {
+public class ZugEingabe implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Spieler spieler;
@@ -16,7 +16,7 @@ public class Zug implements Serializable {
 	/* TODO: Besser machen */
 	private transient Regel validierteRegel;
 
-	public Zug(Spieler spieler, Karte karte, Bewegung bewegung) {
+	public ZugEingabe(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this.spieler = spieler;
 		this.karte = karte;
 		this.bewegung = bewegung;

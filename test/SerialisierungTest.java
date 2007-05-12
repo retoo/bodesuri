@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 
 import pd.karten.Karte;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 
 public class SerialisierungTest extends ProblemDomainTestCase {
 	private Object durchSerialisierung(Object original)
@@ -40,14 +40,14 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	public void testZugSerialisieren()
 			throws IOException, ClassNotFoundException {
 		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
-		Zug zug = new Zug(spieler, kartenGeber.getKarte(), bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler, kartenGeber.getKarte(), bewegung);
 		
-		Zug zug2 = (Zug) durchSerialisierung(zug);
-		assertEquals(zug.getSpieler(), zug2.getSpieler());
-		assertEquals(zug.getBewegung().getStart(),
-		             zug2.getBewegung().getStart());
-		assertEquals(zug.getBewegung().getZiel(),
-		             zug2.getBewegung().getZiel());
+		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
+		assertEquals(ze.getSpieler(), ze2.getSpieler());
+		assertEquals(ze.getBewegung().getStart(),
+		             ze2.getBewegung().getStart());
+		assertEquals(ze.getBewegung().getZiel(),
+		             ze2.getBewegung().getZiel());
 	}
 	
 	public void testKarteSerialisierung()

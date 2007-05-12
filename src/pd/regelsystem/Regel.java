@@ -1,9 +1,9 @@
 package pd.regelsystem;
 
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 
 public abstract class Regel {
-	public abstract Regel validiere(Zug zug);
+	public abstract Regel validiere(ZugEingabe zug);
 	
-	public abstract void ausfuehren(Zug zug);
+	public abstract void ausfuehren(ZugEingabe zug);
 }

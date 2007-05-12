@@ -2,7 +2,7 @@ package pd.regelsystem;
 
 import java.util.Vector;
 
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 
 public class RegelVeroderung extends Regel {
 	
@@ -12,9 +12,9 @@ public class RegelVeroderung extends Regel {
 		regeln.add(regel);
 	}
 
-	public Regel validiere(Zug zug) {
+	public Regel validiere(ZugEingabe zugEingabe) {
 		for (Regel regel : regeln) {
-			Regel resultat = regel.validiere(zug);
+			Regel resultat = regel.validiere(zugEingabe);
 			if (resultat != null) {
 				return resultat;
 			}
@@ -25,7 +25,7 @@ public class RegelVeroderung extends Regel {
 	/* TODO: Zweites Interface Ausfuehrer oder so machen. */
 	/* deprecated keyword hinzugefügt (-rschuett) */
 	@Deprecated
-	public void ausfuehren(Zug zug) {
+	public void ausfuehren(ZugEingabe zug) {
 		throw new Error("Sollte gar nie aufgerufen werden.");
 	}
 }

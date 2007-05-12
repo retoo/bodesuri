@@ -3,7 +3,7 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 
 public class RegelTest extends ProblemDomainTestCase {
 	private Karte vier;
@@ -15,14 +15,14 @@ public class RegelTest extends ProblemDomainTestCase {
 	
 	public void testVier() {
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
-		Zug zug = new Zug(spieler, vier, bewegung4);
-		assertTrue(zug.validiere());
+		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung4);
+		assertTrue(ze.validiere());
 		
 		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		Zug zugFalsch = new Zug(spieler, vier, bewegung3);
-		assertFalse(zugFalsch.validiere());
+		ZugEingabe zeFalsch = new ZugEingabe(spieler, vier, bewegung3);
+		assertFalse(zeFalsch.validiere());
 		
-		zug.ausfuehren();
+		ze.ausfuehren();
 		assertNull(bewegung4.getStart().getFigur());
 		assertNotNull(bewegung4.getZiel().getFigur());
 	}
@@ -31,14 +31,14 @@ public class RegelTest extends ProblemDomainTestCase {
 		bankFeld.versetzeFigurAuf(zielFeld);
 		
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
-		Zug zug = new Zug(spieler, vier, bewegung4);
-		assertTrue(zug.validiere());
+		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung4);
+		assertTrue(ze.validiere());
 		
 		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
-		Zug zugFalsch = new Zug(spieler, vier, bewegung3);
-		assertFalse(zugFalsch.validiere());
+		ZugEingabe zeFalsch = new ZugEingabe(spieler, vier, bewegung3);
+		assertFalse(zeFalsch.validiere());
 		
-		zug.ausfuehren();
+		ze.ausfuehren();
 		assertNull(bewegung4.getStart().getFigur());
 		assertNotNull(bewegung4.getZiel().getFigur());
 	}
@@ -47,7 +47,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		Feld a = bankFeld.getNtesFeld(3);
 		Feld b = bankFeld.getNtesFeld(1);
 		Bewegung bewegung = new Bewegung(a, b);
-		Zug nonsenseZug = new Zug(spieler, vier, bewegung);
+		ZugEingabe nonsenseZug = new ZugEingabe(spieler, vier, bewegung);
 		
 		assertFalse(nonsenseZug.validiere());
 	}

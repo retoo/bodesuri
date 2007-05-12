@@ -2,7 +2,7 @@ package pd.regelsystem;
 
 import pd.brett.Feld;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 
 public class VorwaertsRegel extends Regel {
 	private int schritte;
@@ -11,12 +11,12 @@ public class VorwaertsRegel extends Regel {
 		this.schritte = schritte;
 	}
 
-	public Regel validiere(Zug zug) {
-		Bewegung bewegung = zug.getBewegung();
+	public Regel validiere(ZugEingabe zugEingabe) {
+		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.getStart();
 		
 		/* TODO: Ist das bei allen Regeln so? -> Auslagern */
-		if (!start.istBesetztVon(zug.getSpieler())) {
+		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
 			return null;
 		}
 		
@@ -28,9 +28,9 @@ public class VorwaertsRegel extends Regel {
 	}
 
 	/* TODO: Andere Figur auf Ziel heim schicken */
-	public void ausfuehren(Zug zug) {
-		Feld start = zug.getBewegung().getStart();
-		Feld ziel  = zug.getBewegung().getZiel();
+	public void ausfuehren(ZugEingabe zugEingabe) {
+		Feld start = zugEingabe.getBewegung().getStart();
+		Feld ziel  = zugEingabe.getBewegung().getZiel();
 		start.versetzeFigurAuf(ziel);
 	}
 

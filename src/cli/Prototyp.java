@@ -15,7 +15,7 @@ import pd.brett.NormalesFeld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.Zug;
+import pd.zugsystem.ZugEingabe;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
 import ui.brett.Figur2d;
@@ -143,14 +143,14 @@ public class Prototyp {
 		return null; /* wird nie hier hin kommen */
 	}
 	
-	private Zug erfasseZug(List<Karte> karten) {
+	private ZugEingabe erfasseZug(List<Karte> karten) {
 	    Karte karte = auswahlKarte(karten);
 	    Feld start = auswahlStartfeld();
 	    Feld ziel  = auswahlZielfeld();
 	    
 	    Bewegung bewegung = new Bewegung(start, ziel);
-	    Zug zug = new Zug(lokalerSpieler, karte, bewegung);
-	    return zug;
+	    ZugEingabe zugEingabe = new ZugEingabe(lokalerSpieler, karte, bewegung);
+	    return zugEingabe;
     }
 
 
@@ -188,10 +188,10 @@ public class Prototyp {
 				List<Karte> karten = spiel.getKartenGeber().getKarten(5);
 				
 				while (true) {
-					Zug zug = erfasseZug(karten);
+					ZugEingabe zugEingabe = erfasseZug(karten);
 				
-					if (zug.validiere()) {
-						server.sende(new ZugInformation(zug));
+					if (zugEingabe.validiere()) {
+						server.sende(new ZugInformation(zugEingabe));
 						break;
 					} else {
 						System.out.println();
@@ -203,13 +203,13 @@ public class Prototyp {
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
 				
-				if ( ((Zug)zn.zug).validiere()) {
-					((Zug)zn.zug).ausfuehren();
+				if ( ((ZugEingabe)zn.zug).validiere()) {
+					((ZugEingabe)zn.zug).ausfuehren();
 				} else {
 					throw new RuntimeException("Ungültiger Zug " + zn.zug);
 				}
 				
-				Spieler sp = ((Zug)zn.zug).getSpieler();
+				Spieler sp = ((ZugEingabe)zn.zug).getSpieler();
 				int nummer = spiel.getSpieler().indexOf(sp) + 1;
 				System.out.println();
 				System.out.println(sp.getName() + " (" + nummer + ")" +
