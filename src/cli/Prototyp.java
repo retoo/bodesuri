@@ -203,13 +203,13 @@ public class Prototyp {
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
 				
-				if (zn.zug.validiere()) {
-					zn.zug.ausfuehren();
+				if ( ((Zug)zn.zug).validiere()) {
+					((Zug)zn.zug).ausfuehren();
 				} else {
 					throw new RuntimeException("Ungültiger Zug " + zn.zug);
 				}
 				
-				Spieler sp = zn.zug.getSpieler();
+				Spieler sp = ((Zug)zn.zug).getSpieler();
 				int nummer = spiel.getSpieler().indexOf(sp) + 1;
 				System.out.println();
 				System.out.println(sp.getName() + " (" + nummer + ")" +

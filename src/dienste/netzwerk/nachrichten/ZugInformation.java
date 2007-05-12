@@ -1,13 +1,11 @@
 package dienste.netzwerk.nachrichten;
 
-import pd.zugsystem.Zug;
-
 
 public class ZugInformation extends Nachricht {
     private static final long serialVersionUID = 1L;
-	public Zug zug;
+	public Object zug;
 	
-	public ZugInformation(Zug zug) {
+	public ZugInformation(Object zug) {
 		this.zug = zug;
 	}
 }
