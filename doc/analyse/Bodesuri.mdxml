@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Sun May 13 21:08:45 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Sun May 13 21:15:08 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable/>
@@ -17987,7 +17987,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>DIAGRAMS_LAYOUT</propertyID>
 						<propertyDescriptionID>DIAGRAMS_LAYOUT_DESCRIPTION</propertyDescriptionID>
-						<value>0 0 0 14 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 39 0 39 0 36 0 36 0 31 0 38 0 33 0 5f 0 36 0 33 0 33 0 35 0 37 0 30 0 5f 0 34 0 32 0 35 0 36 0 0 0 1 0 0 0 ca 0 0 0 e3 0 0 0 2 0 0 0 4 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 38 0 37 0 32 0 30 0 35 0 33 0 37 0 5f 0 35 0 30 0 34 0 38 0 31 0 30 0 5f 0 32 0 39 0 36 0 33 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 39 0 39 0 36 0 36 0 31 0 38 0 33 0 5f 0 36 0 33 0 33 0 35 0 37 0 30 0 5f 0 34 0 32 0 35 0 36 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 38 0 31 0 31 0 36 0 33 0 32 0 34 0 38 0 5f 0 36 0 31 0 31 0 30 0 39 0 32 0 5f 0 36 0 30 0 30 0 36 </value>
+						<value>0 0 0 14 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 1 0 0 0 ca 0 0 0 e3 0 0 0 1 0 0 0 4 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 38 0 37 0 32 0 30 0 35 0 33 0 37 0 5f 0 35 0 30 0 34 0 38 0 31 0 30 0 5f 0 32 0 39 0 36 0 33 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 39 0 39 0 36 0 36 0 31 0 38 0 33 0 5f 0 36 0 33 0 33 0 35 0 37 0 30 0 5f 0 34 0 32 0 35 0 36 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 38 0 31 0 31 0 36 0 33 0 32 0 34 0 38 0 5f 0 36 0 31 0 31 0 30 0 39 0 32 0 5f 0 36 0 30 0 30 0 36 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='StringProperty'>
@@ -18065,7 +18065,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>50 76 36 17 28 78 17 e 70 3c e4 e5 8d 5f 6f 70 5 75 a0 c1 4a b1 b2 50 98 26 62 26 fd a0 82 6a e8 35 c0 44 19 1d 2a ae b9 5c 66 6f 97 99 9e c4 ff 3c 3c 1a ea 55 1c 91 cb 2a d bd ef 47 80 dd dd e9 d8 c fd c4 </value>
+						<value>50 76 36 17 28 78 17 e 70 3c e4 e5 8d 5f 6f 70 5 75 a0 c1 4a b1 b2 50 98 27 6f 26 f9 ad 82 6a e8 35 c0 44 19 1d 2a ae b9 5c 66 6f 97 99 9e c4 ff 3c 3c 1a ea 55 1c 91 cb 2a d bd ef 47 80 dd dd e9 d8 c fd c4 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
