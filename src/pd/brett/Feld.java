@@ -1,11 +1,8 @@
 package pd.brett;
 
-import java.util.Vector;
-
-import dienste.serialisierung.CodierbaresObjekt;
-
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
+import dienste.serialisierung.CodierbaresObjekt;
 
 public abstract class Feld extends CodierbaresObjekt {
 	protected Feld naechstes;
@@ -15,38 +12,6 @@ public abstract class Feld extends CodierbaresObjekt {
 	
 	public Feld(int nummer) {
 		super("Feld " + nummer);
-	}
-	
-	/*
-	 * TODO: Durchdenken wegen Endlosschleife.
-	 */
-	public Vector<Feld> getWeg(Feld ziel) {
-		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = this;
-		while (feld != ziel) {
-			weg.add(feld);
-			feld = feld.getNaechstes();
-		}
-		weg.add(feld);
-		return weg;
-	}
-	
-	public Vector<Feld> getWegRueckwaerts(Feld ziel) {
-		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = this;
-		while (feld != ziel) {
-			weg.add(feld);
-			feld = feld.getVorheriges();
-		}
-		weg.add(feld);
-		return weg;
-	}
-	
-	/*
-	 * TODO: Implementieren. Auch für LagerFeld, etc.
-	 */
-	public Vector<Feld> getWeg(HimmelFeld ziel) {
-		return null;
 	}
 	
 	public Feld getNtesFeld(int n) {

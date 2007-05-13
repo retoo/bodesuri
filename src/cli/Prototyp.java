@@ -61,9 +61,10 @@ public class Prototyp {
 	public void zeichneBrett() {
 		System.out.println("0000000000111111111122222222223333333333444444444455555555556666");
 		System.out.println("0123456789012345678901234567890123456789012345678901234567890123");
-		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
+		Feld feld = startFeld;
+		while (feld != startFeld.getVorheriges()) {
 			zeichneFeld(feld);
-			
+			feld = feld.getNaechstes();
 		}
 		System.out.println();
 	}
@@ -166,13 +167,15 @@ public class Prototyp {
 		
 		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
 		int i = 0;
-		for (Feld feld : startFeld.getWeg(startFeld.getVorheriges())) {
+		Feld feld = startFeld;
+		while (feld != startFeld.getVorheriges()) {
 			Feld2d feld2d = new Feld2d(i);
 			if (feld instanceof BankFeld) {
 				brettproto.add(new Figur2d(feld2d)); 
 			}
 			brettproto.add(feld2d);
 			i++;
+			feld = feld.getNaechstes();
 		}
 		brettproto.setVisible(true);
 		
