@@ -7,10 +7,10 @@ import java.util.Vector;
 
 public class KartenGeber {
 	/*
-	 * 13 * 4 Farben + 2 Joker = 54 Karten = ein Deck
-	 * 54 Karten * 2 = 108 Karten
+	 * 13 * 4 Farben + 3 Joker = 55 Karten = ein Deck
+	 * 55 Karten * 2 = 110 Karten
 	 */
-	private static final int ANZAHL_KARTEN = 108;
+	private static final int ANZAHL_KARTEN = 110;
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
 
 	public KartenGeber() {

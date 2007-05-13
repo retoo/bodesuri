@@ -26,6 +26,7 @@ public class Deck {
 		}
 		karten.add(new Joker(KartenFarbe.HERZ, nummer));
 		karten.add(new Joker(KartenFarbe.KARO, nummer));
+		karten.add(new Joker(KartenFarbe.KREUZ, nummer));
 	}
 	
 	public List<Karte> getKarten() {
