@@ -24,7 +24,7 @@ public class KartenGeber {
 	 */
 	private void mischen() {
 		for (int i=0; i < 2; ++i) {
-			kartenStapel.addAll(Deck.createKarten(i));
+			kartenStapel.addAll(Deck.erstelleKarten(i));
 		}
 		
 		// Mischen
