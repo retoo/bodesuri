@@ -1,5 +1,8 @@
 package pd.regelsystem;
 
+import java.util.List;
+import java.util.Vector;
+
 import pd.brett.Feld;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
@@ -12,18 +15,17 @@ public class VorwaertsRegel extends Regel {
 	public VorwaertsRegel(int schritte) {
 		this.schritte = schritte;
 	}
-
+	
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.getStart();
 		Feld ziel  = bewegung.getZiel();
 		
-		/* TODO: Ist das bei allen Regeln so? -> Auslagern */
 		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
 			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
 		}
 		
-		if (start.getWeg(ziel).size() != schritte + 1) {
+		if (getWeg(bewegung).size() != schritte + 1) {
 			throw new RegelVerstoss("Zug muss über " + schritte +
 			                        " Felder gehen.");
 		}
@@ -34,5 +36,16 @@ public class VorwaertsRegel extends Regel {
 		/* TODO: Aktion für Figur auf Ziel heimschicken. */
 		
 		return zug;
+	}
+	
+	protected List<Feld> getWeg(Bewegung bewegung) {
+		Vector<Feld> weg = new Vector<Feld>();
+		Feld feld = bewegung.getStart();
+		while (feld != bewegung.getZiel()) {
+			weg.add(feld);
+			feld = feld.getNaechstes();
+		}
+		weg.add(feld);
+		return weg;
 	}
 }
