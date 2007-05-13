@@ -22,9 +22,9 @@ public class Deck {
 			karten.add(new Koenig(farbe, deck));
 			karten.add(new Ass(farbe, deck));
 		}
-		karten.add(new Joker(KartenFarbe.HERZ, deck));
-		karten.add(new Joker(KartenFarbe.KARO, deck));
-		karten.add(new Joker(KartenFarbe.KREUZ, deck));
+		karten.add(new Joker(KartenFarbe.Herz, deck));
+		karten.add(new Joker(KartenFarbe.Karo, deck));
+		karten.add(new Joker(KartenFarbe.Kreuz, deck));
 		
 		return karten;
 	}
