@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Sat May 12 14:41:23 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Sun May 13 11:47:58 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable shareDescription='Analyse Diagramme und Modelle für das Projekt Bodesuri.'>
@@ -248,62 +248,54 @@
 			</ownedMember>
 			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_7fe0252_1176732701081_892095_1249' name='System Sequenz Diagramme' visibility='public'>
 				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_7fe0252_1178134162964_262539_1351' name='Spiel spielen' visibility='public' context='_11_6_7fe0252_1176732701081_892095_1249'>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_681568_1435' name='initiator' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_522706_1436' name='spielServer' visibility='private'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_522706_1436' name='spielServer' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178972448693_348470_2660'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::server::Server' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162975_752343_1437' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162976_564432_1438' visibility='private'/>
-					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134162965_498846_1352' visibility='public' represents='_11_6_7fe0252_1178134162975_681568_1435'>
-						<events xmi:idref='_11_6_7fe0252_1178134162970_900641_1385'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162973_352793_1410'/>
-					</lifeline>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134162976_564432_1438' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178972448678_339976_2611'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::client::Client' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134162965_964894_1353' visibility='public' represents='_11_6_7fe0252_1178134162975_522706_1436'>
-						<events xmi:idref='_11_6_7fe0252_1178134162972_186578_1404'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162972_428898_1405'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162974_98843_1424'/>
 						<events xmi:idref='_11_6_7fe0252_1178134162971_513223_1389'/>
-						<events xmi:idref='_11_6_7fe0252_1178962540919_590821_447'/>
-						<events xmi:idref='_11_6_7fe0252_1178963879312_482637_884'/>
-						<events xmi:idref='_11_6_7fe0252_1178963879312_503777_885'/>
 						<events xmi:idref='_11_6_7fe0252_1178134163006_958582_1551'/>
+						<events xmi:idref='_11_6_7fe0252_1178962540919_590821_447'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162972_428898_1405'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162972_186578_1404'/>
 					</lifeline>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134162965_717728_1354' visibility='public' represents='_11_6_7fe0252_1178134162975_752343_1437'>
-						<events xmi:idref='_11_6_7fe0252_1178134162973_847277_1412'/>
 						<events xmi:idref='_11_6_7fe0252_1178134162971_513223_1389'/>
-						<events xmi:idref='_11_6_7fe0252_1178962573335_553270_465'/>
-						<events xmi:idref='_11_6_7fe0252_1178962685953_845642_490'/>
 						<events xmi:idref='_11_6_7fe0252_1178134163006_958582_1551'/>
+						<events xmi:idref='_11_6_7fe0252_1178962685953_845642_490'/>
+						<events xmi:idref='_11_6_7fe0252_1178962573335_553270_465'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162973_847277_1412'/>
 					</lifeline>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134162965_760377_1355' visibility='public' represents='_11_6_7fe0252_1178134162976_564432_1438'>
-						<events xmi:idref='_11_6_7fe0252_1178134162970_67268_1386'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162972_967442_1403'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162972_663428_1406'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162973_207980_1409'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162973_161600_1411'/>
-						<events xmi:idref='_11_6_7fe0252_1178134162974_98843_1424'/>
 						<events xmi:idref='_11_6_7fe0252_1178134162971_513223_1389'/>
-						<events xmi:idref='_11_6_7fe0252_1178962540920_802827_448'/>
-						<events xmi:idref='_11_6_7fe0252_1178962573335_172850_464'/>
-						<events xmi:idref='_11_6_7fe0252_1178962685953_964642_491'/>
+						<events xmi:idref='_11_6_7fe0252_1178134163006_958582_1551'/>
 						<events xmi:idref='_11_6_7fe0252_1178963861656_777603_866'/>
 						<events xmi:idref='_11_6_7fe0252_1178963861656_955570_867'/>
-						<events xmi:idref='_11_6_7fe0252_1178134163006_958582_1551'/>
+						<events xmi:idref='_11_6_7fe0252_1178962685953_964642_491'/>
+						<events xmi:idref='_11_6_7fe0252_1178962573335_172850_464'/>
+						<events xmi:idref='_11_6_7fe0252_1178962540920_802827_448'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162973_161600_1411'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162972_663428_1406'/>
+						<events xmi:idref='_11_6_7fe0252_1178134162972_967442_1403'/>
 					</lifeline>
-					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134162966_931490_1358' name='spielen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134162970_67268_1386' sendEvent='_11_6_7fe0252_1178134162970_900641_1385'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134162967_919838_1366' name='zugEntgegennehmen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134162972_186578_1404' sendEvent='_11_6_7fe0252_1178134162972_967442_1403'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134162967_857735_1367' name='sendeZug' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134162972_663428_1406' sendEvent='_11_6_7fe0252_1178134162972_428898_1405'/>
-					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134162968_511046_1369' name='spielDarstellen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134162973_352793_1410' sendEvent='_11_6_7fe0252_1178134162973_207980_1409'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134162968_871541_1370' name='spielDarstellen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134162973_847277_1412' sendEvent='_11_6_7fe0252_1178134162973_161600_1411'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178962540913_637528_446' name='zugaufforderungEntgegennehmen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178962540920_802827_448' sendEvent='_11_6_7fe0252_1178962540919_590821_447'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178962573333_532585_463' name='aufforderungZumZug' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178962573335_553270_465' sendEvent='_11_6_7fe0252_1178962573335_172850_464'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178962685952_97069_489' name='zugeingabeEntgegennehmen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178962685953_964642_491' sendEvent='_11_6_7fe0252_1178962685953_845642_490'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178963861655_986561_865' name='validiereZug' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178963861656_955570_867' sendEvent='_11_6_7fe0252_1178963861656_777603_866'/>
-					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178963879311_823603_883' name='vaidireZug' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178963879312_503777_885' sendEvent='_11_6_7fe0252_1178963879312_482637_884'/>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162970_900641_1385' visibility='public' message='_11_6_7fe0252_1178134162966_931490_1358'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_498846_1352'/>
-					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162970_67268_1386' visibility='public' message='_11_6_7fe0252_1178134162966_931490_1358'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
-					</fragment>
 					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134162971_513223_1389' name='spielen' visibility='public' interactionOperator='loop'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
@@ -314,21 +306,14 @@
 							</guard>
 							<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134163006_958582_1551' name='synchronisieren' visibility='public' interactionOperator='loop'>
 								<covered xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
-								<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 								<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
+								<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 								<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134163013_168018_1562' visibility='public'>
 									<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134163014_451743_1575' visibility='public'>
 										<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134163015_412725_1587' visibility='public' value='Bis alle Clients synchronisiert sind'/>
 									</guard>
 								</operand>
 							</fragment>
-						</operand>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134162971_415178_1396' name='erstellen' visibility='public' interactionOperator='loop'>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134162984_604327_1450' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134163006_753799_1552' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134163013_759467_1563' visibility='public' value='Bis 4 Client-Instanzen verbunden sind'/>
-							</guard>
 						</operand>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162972_967442_1403' visibility='public' message='_11_6_7fe0252_1178134162967_919838_1366'>
@@ -343,42 +328,11 @@
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162972_663428_1406' visibility='public' message='_11_6_7fe0252_1178134162967_857735_1367'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162973_207980_1409' visibility='public' message='_11_6_7fe0252_1178134162968_511046_1369'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
-					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162973_352793_1410' visibility='public' message='_11_6_7fe0252_1178134162968_511046_1369'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_498846_1352'/>
-					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162973_161600_1411' visibility='public' message='_11_6_7fe0252_1178134162968_871541_1370'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134162973_847277_1412' visibility='public' message='_11_6_7fe0252_1178134162968_871541_1370'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134162974_418079_1423' name='beenden' visibility='public' interactionOperator='loop'>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134162984_253579_1451' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134163006_656648_1553' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134163013_443696_1564' visibility='public' value='Bis Clients Spielende bestätit haben'/>
-							</guard>
-							<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134163006_849756_1554' visibility='public' interactionOperator='alt'>
-								<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134163013_571747_1565' visibility='public'>
-									<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134163014_75596_1576' visibility='public'>
-										<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134163015_186519_1588' visibility='public' value='Timer aktiv'/>
-									</guard>
-								</operand>
-								<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134163013_45539_1566' visibility='public'>
-									<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134163014_309602_1577' visibility='public'>
-										<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134163015_965506_1589' visibility='public' value='Timer abgelaufen'/>
-									</guard>
-								</operand>
-							</fragment>
-						</operand>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134162974_98843_1424' visibility='public' interactionOperator='alt'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134162985_442843_1452' visibility='public'/>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134162985_316013_1453' visibility='public'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178962540919_590821_447' visibility='public' message='_11_6_7fe0252_1178962540913_637528_446'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
@@ -404,12 +358,6 @@
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178963861656_955570_867' visibility='public' message='_11_6_7fe0252_1178963861655_986561_865'>
 						<covered xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178963879312_482637_884' visibility='public' message='_11_6_7fe0252_1178963879311_823603_883'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
-					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178963879312_503777_885' visibility='public' message='_11_6_7fe0252_1178963879311_823603_883'>
-						<covered xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
-					</fragment>
 				</ownedBehavior>
 				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_7fe0252_1176732701055_182215_1248' name='Spiel erstellen' visibility='public' context='_11_6_7fe0252_1176732701081_892095_1249'>
 					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
@@ -417,13 +365,24 @@
 							<event xmi:idref='_11_6_7fe0252_1178917082333_869305_545'/>
 							<event xmi:idref='_11_6_7fe0252_1178917152371_503778_553'/>
 							<event xmi:idref='_11_6_7fe0252_1178963195311_708161_508'/>
-							<event xmi:idref='_11_6_7fe0252_1178963235073_924801_512'/>
 						</modelExtension>
 					</xmi:Extension>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733424541_743882_2241' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733448818_621899_2254' name='spielServer' visibility='private'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176733448818_621899_2254' name='spielServer' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178972448693_348470_2660'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::server::Server' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1176988593188_611095_2280' visibility='private' type='_11_6_7fe0252_1176377815523_374951_634'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1177675180237_487836_992' visibility='private'/>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1177675180237_487836_992' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178972448678_339976_2611'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::client::Client' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1176733424540_658844_2240' visibility='public' represents='_11_6_7fe0252_1176733424541_743882_2241'>
 						<events xmi:idref='_11_6_7fe0252_1178018861963_841328_496'/>
 						<events xmi:idref='_11_6_7fe0252_1176991854908_384297_1194'/>
@@ -462,9 +421,7 @@
 						<events xmi:idref='_11_6_7fe0252_1178917653033_870102_657'/>
 					</lifeline>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1176988530047_603371_2263' name='createServer' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1176988530060_139519_2265' sendEvent='_11_6_7fe0252_1176988530060_28769_2264' replyMessage='_11_6_7fe0252_1178963195298_779806_505'/>
-					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1176991854900_210266_1193' name='spielBeitreten' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1176991854908_986369_1195' sendEvent='_11_6_7fe0252_1176991854908_384297_1194'>
-						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_7fe0252_1178963262953_825506_517' visibility='public' body='s'/>
-					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1176991854900_210266_1193' name='spielBeitreten(s)' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1176991854908_986369_1195' sendEvent='_11_6_7fe0252_1176991854908_384297_1194'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178018097386_210131_516' name='verbinden' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178018097387_310850_518' sendEvent='_11_6_7fe0252_1178018097387_879653_517'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178018759735_83024_463' name='verbindungBestaetigen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178018759736_326894_465' sendEvent='_11_6_7fe0252_1178018759736_732047_464'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178018861962_604890_494' name='beitrittBestaetigen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178018861963_841328_496' sendEvent='_11_6_7fe0252_1178018861963_414920_495'/>
@@ -496,7 +453,7 @@
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1176991854908_384297_1194' visibility='public' message='_11_6_7fe0252_1176991854900_210266_1193'>
 						<covered xmi:idref='_11_6_7fe0252_1176733424540_658844_2240'/>
 					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1176991854908_986369_1195' visibility='public' event='_11_6_7fe0252_1178963235073_924801_512' message='_11_6_7fe0252_1176991854900_210266_1193'>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1176991854908_986369_1195' visibility='public' message='_11_6_7fe0252_1176991854900_210266_1193'>
 						<covered xmi:idref='_11_6_7fe0252_1177675180236_550487_991'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178018097387_879653_517' visibility='public' message='_11_6_7fe0252_1178018097386_210131_516'>
@@ -604,30 +561,25 @@
 					</fragment>
 				</ownedBehavior>
 				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_7fe0252_1178134404316_454391_1971' name='Spiel beenden' visibility='public' context='_11_6_7fe0252_1176732701081_892095_1249'>
-					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-						<modelExtension>
-							<event xmi:idref='_11_6_7fe0252_1178968602712_887541_968'/>
-						</modelExtension>
-					</xmi:Extension>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_324381_2055' name='initiator' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_3895_2056' name='spielServer' visibility='private'/>
 					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_330776_2057' visibility='private' type='_11_6_7fe0252_1176732772664_524455_1272'/>
-					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_296357_2058' visibility='private'/>
-					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134404316_482098_1972' visibility='public' represents='_11_6_7fe0252_1178134404326_324381_2055'>
-						<events xmi:idref='_11_6_7fe0252_1178134404325_312561_2048'/>
-					</lifeline>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1178134404326_296357_2058' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1178972448678_339976_2611'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::client::Client' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134404317_558843_1973' visibility='public' represents='_11_6_7fe0252_1178134404326_3895_2056'>
 						<events xmi:idref='_11_6_7fe0252_1178134404324_656612_2038'/>
 						<events xmi:idref='_11_6_7fe0252_1178134404324_225518_2039'/>
 						<events xmi:idref='_11_6_7fe0252_1178134404324_626710_2042'/>
-						<events xmi:idref='_11_6_7fe0252_1178134404325_843262_2044'/>
 						<events xmi:idref='_11_6_7fe0252_1178968478301_4095_927'/>
 						<events xmi:idref='_11_6_7fe0252_1178968478301_108260_928'/>
 						<events xmi:idref='_11_6_7fe0252_1178968758630_346315_990'/>
 						<events xmi:idref='_11_6_7fe0252_1178968758630_95852_991'/>
 						<events xmi:idref='_11_6_7fe0252_1178968781527_260439_1007'/>
 						<events xmi:idref='_11_6_7fe0252_1178968781527_195138_1008'/>
-						<events xmi:idref='_11_6_7fe0252_1178968560279_664672_944'/>
 						<events xmi:idref='_11_6_7fe0252_1178969626849_975249_1268'/>
 					</lifeline>
 					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_7fe0252_1178134404317_453210_1974' visibility='public' represents='_11_6_7fe0252_1178134404326_330776_2057'>
@@ -639,10 +591,7 @@
 						<events xmi:idref='_11_6_7fe0252_1178134404324_92965_2037'/>
 						<events xmi:idref='_11_6_7fe0252_1178134404324_171013_2040'/>
 						<events xmi:idref='_11_6_7fe0252_1178134404324_972320_2041'/>
-						<events xmi:idref='_11_6_7fe0252_1178134404325_843262_2044'/>
 						<events xmi:idref='_11_6_7fe0252_1178134404325_849111_2045'/>
-						<events xmi:idref='_11_6_7fe0252_1178134404325_702324_2047'/>
-						<events xmi:idref='_11_6_7fe0252_1178968560279_664672_944'/>
 						<events xmi:idref='_11_6_7fe0252_1178969626849_975249_1268'/>
 					</lifeline>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134404319_953074_1992' name='spielBeenden' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134404324_53727_2036' sendEvent='_11_6_7fe0252_1178134404324_27104_2035'/>
@@ -650,31 +599,9 @@
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134404320_546419_1994' name='spielEndeAnkuendigen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134404324_171013_2040' sendEvent='_11_6_7fe0252_1178134404324_225518_2039'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134404320_896099_1995' name='spielEndeBestaetigen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134404324_626710_2042' sendEvent='_11_6_7fe0252_1178134404324_972320_2041'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134404320_621817_1996' name='statistikDarstellen' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134404325_665428_2046' sendEvent='_11_6_7fe0252_1178134404325_849111_2045'/>
-					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178134404320_919987_1997' name='statistikDarstellen1' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178134404325_312561_2048' sendEvent='_11_6_7fe0252_1178134404325_702324_2047'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178968478300_85999_926' name='setzeTimeout' visibility='public' messageSort='asynchCall' receiveEvent='_11_6_7fe0252_1178968478301_108260_928' sendEvent='_11_6_7fe0252_1178968478301_4095_927'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178968758629_636275_989' name='serverBeenden' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178968758630_95852_991' sendEvent='_11_6_7fe0252_1178968758630_346315_990'/>
 					<message xmi:type='uml:Message' xmi:id='_11_6_7fe0252_1178968781526_151863_1006' name='serverBeenden' visibility='public' messageSort='synchCall' receiveEvent='_11_6_7fe0252_1178968781527_195138_1008' sendEvent='_11_6_7fe0252_1178968781527_260439_1007'/>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134404321_951099_2009' name='spielen' visibility='public' interactionOperator='loop'>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404333_744388_2069' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134404354_58924_2170' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134404361_713341_2181' visibility='public' value='Alle Spieler machen mit'/>
-							</guard>
-							<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134404355_597361_2171' name='synchronisieren' visibility='public' interactionOperator='loop'>
-								<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404361_963438_2182' visibility='public'>
-									<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134404363_565486_2195' visibility='public'>
-										<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134404364_330222_2207' visibility='public' value='Alle Clients sind synchronisiert'/>
-									</guard>
-								</operand>
-							</fragment>
-						</operand>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134404322_600793_2016' name='erstellen' visibility='public' interactionOperator='loop'>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404333_508520_2070' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134404355_821248_2172' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134404361_79280_2183' visibility='public' value='Bis 4 Client-Instanzen verbunden sind'/>
-							</guard>
-						</operand>
-					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404324_27104_2035' visibility='public' message='_11_6_7fe0252_1178134404319_953074_1992'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_453210_1974'/>
 					</fragment>
@@ -696,33 +623,14 @@
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404324_972320_2041' visibility='public' message='_11_6_7fe0252_1178134404320_896099_1995'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
 					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404324_626710_2042' visibility='public' event='_11_6_7fe0252_1178968602712_887541_968' message='_11_6_7fe0252_1178134404320_896099_1995'>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404324_626710_2042' visibility='public' message='_11_6_7fe0252_1178134404320_896099_1995'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134404325_284946_2043' name='beenden' visibility='public' interactionOperator='loop'>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404333_229906_2071' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178134404355_246936_2173' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178134404361_655439_2184' visibility='public' value='Bis alle Verbindungen getrennt sind'/>
-							</guard>
-						</operand>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178134404325_843262_2044' visibility='public' interactionOperator='alt'>
-						<covered xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
-						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404334_22321_2072' visibility='public'/>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178134404334_570781_2073' visibility='public'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404325_849111_2045' visibility='public' message='_11_6_7fe0252_1178134404320_621817_1996'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404325_665428_2046' visibility='public' message='_11_6_7fe0252_1178134404320_621817_1996'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_453210_1974'/>
-					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404325_702324_2047' visibility='public' message='_11_6_7fe0252_1178134404320_919987_1997'>
-						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
-					</fragment>
-					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178134404325_312561_2048' visibility='public' message='_11_6_7fe0252_1178134404320_919987_1997'>
-						<covered xmi:idref='_11_6_7fe0252_1178134404316_482098_1972'/>
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178968478301_4095_927' visibility='public' message='_11_6_7fe0252_1178968478300_85999_926'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
@@ -741,20 +649,6 @@
 					</fragment>
 					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_7fe0252_1178968781527_195138_1008' visibility='public' message='_11_6_7fe0252_1178968781526_151863_1006'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
-					</fragment>
-					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178968560279_664672_944' visibility='public' interactionOperator='alt'>
-						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
-						<covered xmi:idref='_11_6_7fe0252_1178134404317_558843_1973'/>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178968560279_180354_945' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178968579665_311836_962' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178968579666_232271_963' visibility='public' value='Spielende bestätigt'/>
-							</guard>
-						</operand>
-						<operand xmi:type='uml:InteractionOperand' xmi:id='_11_6_7fe0252_1178968560280_877216_946' visibility='public'>
-							<guard xmi:type='uml:InteractionConstraint' xmi:id='_11_6_7fe0252_1178968589072_353880_964' visibility='public'>
-								<specification xmi:type='uml:LiteralString' xmi:id='_11_6_7fe0252_1178968589072_135085_965' visibility='public' value='Timout abgelaufen'/>
-							</guard>
-						</operand>
 					</fragment>
 					<fragment xmi:type='uml:CombinedFragment' xmi:id='_11_6_7fe0252_1178969626849_975249_1268' visibility='public' interactionOperator='alt'>
 						<covered xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
@@ -845,8 +739,6 @@
 			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_7fe0252_1178917082333_869305_545' visibility='public'/>
 			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_7fe0252_1178917152371_503778_553' visibility='public'/>
 			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178963195311_708161_508' visibility='public'/>
-			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178963235073_924801_512' visibility='public'/>
-			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_7fe0252_1178968602712_887541_968' visibility='public'/>
 			<appliedProfile xmi:type='uml:ProfileApplication' xmi:id='_11_6_7fe0252_1176994149671_554724_176' visibility='public'>
 				<importedPackage xmi:type='uml:Profile' href='UML_Standard_Profile.xml#_9_0_be00301_1108050582343_527400_10847'>
 					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
@@ -924,8 +816,8 @@
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1176991854908_494036_1197'>
 													<elementID xmi:idref='_11_6_7fe0252_1176991854900_210266_1193'/>
-													<geometry>154, 513, 56, 15</geometry>
-													<text>(s)</text>
+													<geometry>154, 511, 108, 15</geometry>
+													<text>spielBeitreten(s)</text>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1176991854920_345730_1198'/>
@@ -1222,14 +1114,14 @@
 						<mdElement elementClass='CombinedFragment' xmi:id='_11_6_7fe0252_1178134163017_22010_1629'>
 							<elementID xmi:idref='_11_6_7fe0252_1178134162971_513223_1389'/>
 							<editable xmi:value='false'/>
-							<geometry>21, 133, 671, 504</geometry>
+							<geometry>21, 133, 672, 413</geometry>
 							<operands>
 								<mdElement elementClass='InteractionOperand' xmi:id='_11_6_7fe0252_1178134163018_299307_1738'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134162984_958122_1449'/>
-									<geometry>27, 176, 659, 458</geometry>
+									<geometry>27, 176, 660, 367</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='TextArea' xmi:id='_11_6_7fe0252_1178962476091_2302_207'>
-											<geometry>30, 179, 653, 15</geometry>
+											<geometry>30, 179, 654, 15</geometry>
 										</mdElement>
 										<mdElement elementClass='TextArea' xmi:id='_11_6_7fe0252_1178916479296_834842_285'>
 											<geometry>30, 179, 566, 15</geometry>
@@ -1240,20 +1132,20 @@
 										<mdElement elementClass='CombinedFragment' xmi:id='_11_6_7fe0252_1178134163017_846765_1630'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134163006_958582_1551'/>
 											<editable xmi:value='false'/>
-											<geometry>63, 497, 619, 126</geometry>
+											<geometry>63, 399, 619, 126</geometry>
 											<operands>
 												<mdElement elementClass='InteractionOperand' xmi:id='_11_6_7fe0252_1178134163018_710662_1739'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134163013_168018_1562'/>
-													<geometry>69, 540, 607, 80</geometry>
+													<geometry>69, 442, 607, 80</geometry>
 													<mdOwnedViews>
 														<mdElement elementClass='TextArea' xmi:id='_11_6_7fe0252_1178962476092_567099_208'>
-															<geometry>72, 543, 601, 15</geometry>
+															<geometry>72, 445, 601, 15</geometry>
 														</mdElement>
 														<mdElement elementClass='TextArea' xmi:id='_11_6_7fe0252_1178916479297_870258_286'>
-															<geometry>72, 543, 311, 15</geometry>
+															<geometry>72, 445, 311, 15</geometry>
 														</mdElement>
 														<mdElement elementClass='TextArea' xmi:id='_11_6_7fe0252_1178134641428_469965_2392'>
-															<geometry>72, 539, 311, 15</geometry>
+															<geometry>72, 441, 311, 15</geometry>
 														</mdElement>
 													</mdOwnedViews>
 												</mdElement>
@@ -1277,35 +1169,35 @@
 								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134163017_314999_1606'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
 									<editable xmi:value='false'/>
-									<geometry>138, 99, 0, 664</geometry>
+									<geometry>138, 99, 0, 594</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178134163017_349051_1607'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134162967_857735_1367'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178962620923_21686_484'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178962620923_910555_485'/>
-											<geometry>398, 578; 143, 578; </geometry>
+											<geometry>398, 480; 143, 480; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134163017_656289_1608'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134163017_656289_1608'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134162967_857735_1367'/>
-													<geometry>226, 563, 72, 15</geometry>
+													<geometry>226, 465, 72, 15</geometry>
 													<text>sendeZug</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134287349_839639_1900'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>256, 592, 28, 15</geometry>
+													<geometry>256, 494, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134287349_630942_1903'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>256, 607, 28, 14</geometry>
+													<geometry>256, 509, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134287349_921153_1905'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>256, 550, 28, 14</geometry>
+													<geometry>256, 452, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134287349_921153_1905'/>
@@ -1346,54 +1238,65 @@
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178962540932_606058_456'/>
 										</mdElement>
 										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178962620923_910555_485'>
-											<geometry>133, 219, 10, 444</geometry>
+											<geometry>133, 219, 10, 374</geometry>
 											<resizedByUser xmi:value='true'/>
 										</mdElement>
-										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178963879313_43670_886'>
-											<elementID xmi:idref='_11_6_7fe0252_1178963879311_823603_883'/>
-											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178963879323_960164_888'/>
-											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178962620923_910555_485'/>
-											<geometry>148, 433; 178, 433; 178, 408; 143, 408; </geometry>
-											<linkNameID xmi:idref='_11_6_7fe0252_1178963879313_33155_887'/>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_7fe0252_1178134163017_91915_1620'>
+							<elementID xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-3342388'/>
+								</mdElement>
+							</properties>
+							<geometry>623, 75, 79, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134163017_558226_1621'>
+									<elementID xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
+									<editable xmi:value='false'/>
+									<geometry>662, 99, 0, 594</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178962685953_974455_492'>
+											<elementID xmi:idref='_11_6_7fe0252_1178962685952_97069_489'/>
+											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178962620923_21686_484'/>
+											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178964417584_534742_901'/>
+											<geometry>408, 264; 657, 264; </geometry>
+											<linkNameID xmi:idref='_11_6_7fe0252_1178962685953_10318_493'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
-												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178963879323_67520_889'>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962685963_488491_494'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>164, 390, 28, 14</geometry>
+													<geometry>518, 236, 28, 14</geometry>
 												</mdElement>
-												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178963879323_979428_891'>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178962685963_421827_496'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>164, 433, 28, 15</geometry>
+													<geometry>518, 278, 28, 15</geometry>
 												</mdElement>
-												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178963879323_257581_894'>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962685963_192367_499'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>164, 448, 28, 14</geometry>
+													<geometry>518, 292, 28, 14</geometry>
 												</mdElement>
-												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178963879313_33155_887'>
-													<elementID xmi:idref='_11_6_7fe0252_1178963879311_823603_883'/>
-													<geometry>153, 393, 76, 15</geometry>
-													<text>vaidireZug</text>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178962685953_10318_493'>
+													<elementID xmi:idref='_11_6_7fe0252_1178962685952_97069_489'/>
+													<geometry>449, 249, 182, 15</geometry>
+													<text>zugeingabeEntgegennehmen</text>
 												</mdElement>
 											</mdOwnedViews>
-											<linkConstraintID xmi:idref='_11_6_7fe0252_1178963879323_67520_889'/>
-											<linkStereotypeID xmi:idref='_11_6_7fe0252_1178963879323_979428_891'/>
-											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178963879323_257581_894'/>
-											<recursiveMessage xmi:value='true'/>
+											<linkConstraintID xmi:idref='_11_6_7fe0252_1178962685963_488491_494'/>
+											<linkStereotypeID xmi:idref='_11_6_7fe0252_1178962685963_421827_496'/>
+											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178962685963_192367_499'/>
 										</mdElement>
-										<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178963879323_582157_898'>
-											<elementID xmi:idref='_11_6_7fe0252_1178134162965_964894_1353'/>
-											<editable xmi:value='false'/>
-											<geometry>138, 433, 5, 50</geometry>
-											<mdOwnedViews>
-												<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178963879323_960164_888'>
-													<geometry>138, 433, 10, 50</geometry>
-												</mdElement>
-											</mdOwnedViews>
-											<lifeLineHidden xmi:value='true'/>
-											<lifeLineConcurrent xmi:value='true'/>
+										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178964417584_534742_901'>
+											<geometry>657, 233, 10, 331</geometry>
+											<resizedByUser xmi:value='true'/>
 										</mdElement>
 									</mdOwnedViews>
 								</mdElement>
@@ -1413,7 +1316,7 @@
 								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134163017_871260_1632'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
 									<editable xmi:value='false'/>
-									<geometry>403, 99, 0, 664</geometry>
+									<geometry>403, 99, 0, 594</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178134163017_899049_1633'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134162967_919838_1366'/>
@@ -1452,29 +1355,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134162968_871541_1370'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178964417584_534742_901'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178962620923_21686_484'/>
-											<geometry>657, 596; 408, 596; </geometry>
+											<geometry>657, 498; 408, 498; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134163017_230897_1640'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134163017_230897_1640'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134162968_871541_1370'/>
-													<geometry>478, 581, 101, 15</geometry>
+													<geometry>478, 483, 101, 15</geometry>
 													<text>spielDarstellen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134287351_307929_1909'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>518, 610, 28, 15</geometry>
+													<geometry>518, 512, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134287351_440824_1912'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>518, 624, 28, 14</geometry>
+													<geometry>518, 526, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134287351_606841_1914'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>518, 568, 28, 14</geometry>
+													<geometry>518, 470, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134287351_606841_1914'/>
@@ -1492,12 +1395,12 @@
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962573346_396576_468'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>518, 206, 28, 14</geometry>
+													<geometry>518, 205, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178962573346_537273_470'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>518, 246, 28, 15</geometry>
+													<geometry>518, 247, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962573346_255275_473'>
 													<editable xmi:value='false'/>
@@ -1513,10 +1416,6 @@
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178962573346_396576_468'/>
 											<linkStereotypeID xmi:idref='_11_6_7fe0252_1178962573346_537273_470'/>
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178962573346_255275_473'/>
-										</mdElement>
-										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178962620923_21686_484'>
-											<geometry>398, 219, 10, 437</geometry>
-											<resizedByUser xmi:value='true'/>
 										</mdElement>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178963861656_242271_868'>
 											<elementID xmi:idref='_11_6_7fe0252_1178963861655_986561_865'/>
@@ -1543,7 +1442,7 @@
 												</mdElement>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178963861656_993190_869'>
 													<elementID xmi:idref='_11_6_7fe0252_1178963861655_986561_865'/>
-													<geometry>418, 280, 86, 15</geometry>
+													<geometry>453, 301, 86, 15</geometry>
 													<text>validiereZug</text>
 												</mdElement>
 											</mdOwnedViews>
@@ -1551,6 +1450,10 @@
 											<linkStereotypeID xmi:idref='_11_6_7fe0252_1178963861667_111065_873'/>
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178963861667_387226_876'/>
 											<recursiveMessage xmi:value='true'/>
+										</mdElement>
+										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178962620923_21686_484'>
+											<geometry>398, 219, 10, 354</geometry>
+											<resizedByUser xmi:value='true'/>
 										</mdElement>
 										<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178963861668_875942_880'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134162965_760377_1355'/>
@@ -1563,63 +1466,6 @@
 											</mdOwnedViews>
 											<lifeLineHidden xmi:value='true'/>
 											<lifeLineConcurrent xmi:value='true'/>
-										</mdElement>
-									</mdOwnedViews>
-								</mdElement>
-							</mdOwnedViews>
-						</mdElement>
-						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_7fe0252_1178134163017_91915_1620'>
-							<elementID xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
-							<properties>
-								<mdElement elementClass='ColorProperty'>
-									<propertyID>FILL_COLOR</propertyID>
-									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
-									<value xmi:value='-3342388'/>
-								</mdElement>
-							</properties>
-							<geometry>623, 75, 79, 24</geometry>
-							<mdOwnedViews>
-								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134163017_558226_1621'>
-									<elementID xmi:idref='_11_6_7fe0252_1178134162965_717728_1354'/>
-									<editable xmi:value='false'/>
-									<geometry>662, 99, 0, 664</geometry>
-									<mdOwnedViews>
-										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178962685953_974455_492'>
-											<elementID xmi:idref='_11_6_7fe0252_1178962685952_97069_489'/>
-											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178962620923_21686_484'/>
-											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178964417584_534742_901'/>
-											<geometry>408, 264; 657, 264; </geometry>
-											<linkNameID xmi:idref='_11_6_7fe0252_1178962685953_10318_493'/>
-											<nameVisible xmi:value='true'/>
-											<mdOwnedViews>
-												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962685963_488491_494'>
-													<editable xmi:value='false'/>
-													<visible xmi:value='false'/>
-													<geometry>518, 236, 28, 14</geometry>
-												</mdElement>
-												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178962685963_421827_496'>
-													<editable xmi:value='false'/>
-													<visible xmi:value='false'/>
-													<geometry>518, 278, 28, 15</geometry>
-												</mdElement>
-												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178962685963_192367_499'>
-													<editable xmi:value='false'/>
-													<visible xmi:value='false'/>
-													<geometry>518, 292, 28, 14</geometry>
-												</mdElement>
-												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178962685953_10318_493'>
-													<elementID xmi:idref='_11_6_7fe0252_1178962685952_97069_489'/>
-													<geometry>449, 249, 182, 15</geometry>
-													<text>zugeingabeEntgegennehmen</text>
-												</mdElement>
-											</mdOwnedViews>
-											<linkConstraintID xmi:idref='_11_6_7fe0252_1178962685963_488491_494'/>
-											<linkStereotypeID xmi:idref='_11_6_7fe0252_1178962685963_421827_496'/>
-											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178962685963_192367_499'/>
-										</mdElement>
-										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178964417584_534742_901'>
-											<geometry>657, 233, 10, 413</geometry>
-											<resizedByUser xmi:value='true'/>
 										</mdElement>
 									</mdOwnedViews>
 								</mdElement>
@@ -1661,29 +1507,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_546419_1994'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
-											<geometry>275, 203; 73, 203; </geometry>
+											<geometry>284, 203; 73, 203; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404365_283042_2235'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404365_283042_2235'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_546419_1994'/>
-													<geometry>94, 189, 147, 15</geometry>
+													<geometry>98, 190, 147, 15</geometry>
 													<text>spielEndeAnkuendigen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641451_898809_2396'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 198, 28, 15</geometry>
+													<geometry>181, 198, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641451_794976_2397'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>156, 220, 28, 14</geometry>
+													<geometry>160, 219, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641451_681113_2398'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 196, 28, 14</geometry>
+													<geometry>181, 196, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641451_681113_2398'/>
@@ -1853,29 +1699,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404319_953074_1992'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178134404365_22180_2244'/>
-											<geometry>285, 136; 461, 136; </geometry>
+											<geometry>294, 136; 461, 136; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404365_707916_2246'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404365_707916_2246'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404319_953074_1992'/>
-													<geometry>328, 118, 93, 15</geometry>
+													<geometry>332, 119, 93, 15</geometry>
 													<text>spielBeenden</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641454_826524_2399'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>369, 149, 28, 15</geometry>
+													<geometry>373, 148, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641454_489025_2400'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>360, 159, 28, 14</geometry>
+													<geometry>364, 159, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641454_316027_2401'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>369, 127, 28, 14</geometry>
+													<geometry>373, 128, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641454_316027_2401'/>
@@ -1900,40 +1746,40 @@
 									<value xmi:value='true'/>
 								</mdElement>
 							</properties>
-							<geometry>259, 75, 42, 24</geometry>
+							<geometry>259, 75, 60, 24</geometry>
 							<mdOwnedViews>
 								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_7fe0252_1178134404365_12558_2252'>
 									<elementID xmi:idref='_11_6_7fe0252_1178134404317_349073_1975'/>
 									<editable xmi:value='false'/>
-									<geometry>280, 99, 0, 694</geometry>
+									<geometry>289, 99, 0, 694</geometry>
 									<mdOwnedViews>
 										<mdElement elementClass='SeqMessage' xmi:id='_11_6_7fe0252_1178134404366_158715_2264'>
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_896099_1995'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>73, 340; 275, 340; </geometry>
+											<geometry>73, 340; 284, 340; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_508552_2265'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_508552_2265'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_896099_1995'/>
-													<geometry>99, 326, 56, 15</geometry>
-													<text>()</text>
+													<geometry>105, 322, 138, 15</geometry>
+													<text>spielEndeBestaetigen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641468_579197_2405'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>159, 354, 28, 15</geometry>
+													<geometry>164, 354, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641468_317368_2406'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>156, 354, 28, 14</geometry>
+													<geometry>160, 354, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641468_755055_2407'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>159, 312, 28, 14</geometry>
+													<geometry>164, 312, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641468_755055_2407'/>
@@ -1944,29 +1790,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404320_621817_1996'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178134404365_22180_2244'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>461, 623; 285, 623; </geometry>
+											<geometry>461, 623; 294, 623; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_868013_2269'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_868013_2269'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404320_621817_1996'/>
-													<geometry>313, 605, 118, 15</geometry>
+													<geometry>318, 606, 118, 15</geometry>
 													<text>statistikDarstellen</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641472_89622_2411'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>358, 634, 28, 15</geometry>
+													<geometry>363, 634, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641473_446712_2412'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>358, 646, 28, 14</geometry>
+													<geometry>363, 646, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641473_766455_2413'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>358, 598, 28, 14</geometry>
+													<geometry>363, 598, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641473_766455_2413'/>
@@ -1977,29 +1823,29 @@
 											<elementID xmi:idref='_11_6_7fe0252_1178134404319_384917_1993'/>
 											<linkFirstEndID xmi:idref='_11_6_7fe0252_1178969028773_80377_1249'/>
 											<linkSecondEndID xmi:idref='_11_6_7fe0252_1178969028773_195444_1248'/>
-											<geometry>73, 154; 275, 154; </geometry>
+											<geometry>73, 154; 284, 154; </geometry>
 											<linkNameID xmi:idref='_11_6_7fe0252_1178134404366_912317_2273'/>
 											<nameVisible xmi:value='true'/>
 											<mdOwnedViews>
 												<mdElement elementClass='MessageSignature' xmi:id='_11_6_7fe0252_1178134404366_912317_2273'>
 													<elementID xmi:idref='_11_6_7fe0252_1178134404319_384917_1993'/>
-													<geometry>134, 140, 67, 15</geometry>
+													<geometry>138, 140, 67, 15</geometry>
 													<text>beenden</text>
 												</mdElement>
 												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_7fe0252_1178134641475_521379_2414'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 161, 28, 15</geometry>
+													<geometry>181, 160, 28, 15</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641475_787306_2415'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>156, 168, 28, 14</geometry>
+													<geometry>160, 168, 28, 14</geometry>
 												</mdElement>
 												<mdElement elementClass='TextBox' xmi:id='_11_6_7fe0252_1178134641476_341182_2416'>
 													<editable xmi:value='false'/>
 													<visible xmi:value='false'/>
-													<geometry>176, 147, 28, 14</geometry>
+													<geometry>181, 147, 28, 14</geometry>
 												</mdElement>
 											</mdOwnedViews>
 											<linkConstraintID xmi:idref='_11_6_7fe0252_1178134641476_341182_2416'/>
@@ -2007,7 +1853,7 @@
 											<linkTaggedValuesID xmi:idref='_11_6_7fe0252_1178134641475_787306_2415'/>
 										</mdElement>
 										<mdElement elementClass='Activation' xmi:id='_11_6_7fe0252_1178969028773_195444_1248'>
-											<geometry>275, 136, 10, 537</geometry>
+											<geometry>284, 136, 10, 537</geometry>
 											<resizedByUser xmi:value='true'/>
 										</mdElement>
 									</mdOwnedViews>
@@ -2056,11 +1902,6 @@
 					<umlType>Class Diagram</umlType>
 					<zoomFactor xmi:value='0.81317365'/>
 					<diagramOpened xmi:value='false'/>
-					<diagramWindowBounds>1, 26, 1132, 722</diagramWindowBounds>
-					<diagramScrollPositionX xmi:value='0'/>
-					<diagramScrollPositionY xmi:value='0'/>
-					<maximized xmi:value='false'/>
-					<active xmi:value='false'/>
 					<mdOwnedViews>
 						<mdElement elementClass='Class' xmi:id='_11_6_7fe0252_1176377756060_645399_361'>
 							<elementID xmi:idref='_11_6_7fe0252_1176377756059_632051_360'/>
@@ -5094,6 +4935,13 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 						<ownedAttribute xmi:type='uml:Property' xmi:id='_be00301_1073394345322_922552_1' name='Modification date' visibility='private'/>
 						<ownedAttribute xmi:type='uml:Property' xmi:id='_10_0EAPbeta_be00301_1123081772498_901864_356' name='base_Diagram' visibility='private' type='_9_0_62a020a_1106296071977_61607_0'/>
 					</ownedStereotype>
+					<ownedStereotype xmi:type='uml:Stereotype' xmi:id='_9_0_be00301_1108044563999_784946_1' name='HyperlinkOwner' visibility='public'>
+						<ownedAttribute xmi:type='uml:Property' xmi:id='_622020d_1063089736320_890266_3' name='hyperlinkModel' visibility='private'/>
+						<ownedAttribute xmi:type='uml:Property' xmi:id='_622020d_1063089736310_68488_2' name='hyperlinkTextActive' visibility='private'/>
+						<ownedAttribute xmi:type='uml:Property' xmi:id='_622020d_1063089736320_73815_4' name='hyperlinkModelActive' visibility='private'/>
+						<ownedAttribute xmi:type='uml:Property' xmi:id='_622020d_1063089736310_884303_1' name='hyperlinkText' visibility='private'/>
+						<ownedAttribute xmi:type='uml:Property' xmi:id='_10_0EAPbeta_be00301_1123081772148_910751_285' name='base_Element' visibility='private' type='_9_0_62a020a_1105704884807_371561_7741'/>
+					</ownedStereotype>
 					<ownedStereotype xmi:type='uml:Stereotype' xmi:id='_be00301_1069835754648_699954_1' name='tagGroup' visibility='public'>
 						<ownedAttribute xmi:type='uml:Property' xmi:id='_10_0EAPbeta_be00301_1123081771937_18103_234' name='base_Property' visibility='private' type='_9_0_62a020a_1105704884574_96724_7644'/>
 					</ownedStereotype>
@@ -5102,7 +4950,18 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 					</ownedStereotype>
 				</ownedMember>
 			</proxy>
-			<proxy xmi:type='uml:Model' xmi:id='_11_6_7fe0252_1176840929080_243054_110' name='Design' visibility='public'/>
+			<proxy xmi:type='uml:Model' xmi:id='_11_6_7fe0252_1176840929080_243054_110' name='Design' visibility='public'>
+				<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1178972448677_978427_2609' name='dienste' visibility='public'>
+					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1178972448679_945743_2613' name='netzwerk' visibility='public'>
+						<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1178972448678_653356_2610' name='client' visibility='public'>
+							<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1178972448678_339976_2611' name='Client' visibility='public'/>
+						</ownedMember>
+						<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1178972448692_765713_2657' name='server' visibility='public'>
+							<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1178972448693_348470_2660' name='Server' visibility='public'/>
+						</ownedMember>
+					</ownedMember>
+				</ownedMember>
+			</proxy>
 			<proxy xmi:type='uml:Profile' xmi:id='_be00301_1066743716538_320440_0' name='UseCase Description Profile' visibility='public'>
 				<ownedMember xmi:type='uml:Enumeration' xmi:id='_be00301_1066821693263_457671_100' name='UseCase Property Group Enumeration' visibility='public'>
 					<ownedLiteral xmi:type='uml:EnumerationLiteral' xmi:id='_be00301_1066821820306_125547_101' name='Identity' visibility='public'/>
@@ -5150,25 +5009,39 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 			<proxy xmi:type='uml:Package' xmi:id='magicdraw_uml_standard_profile_v_0001' name='UML Standard Profile' visibility='public'/>
 		</privateProxies>
 		<stereotypeApplicationForProxies>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197893_830415_912' base_Element='_be00301_1066810372024_418388_155'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197893_830415_912application1' base_Property='_be00301_1066810372024_418388_155' UseCase_Property_Group='Flow of events'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197892_962390_911' base_Element='_8bb027e_1073897792047_918194_4'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197901_788952_916' base_Element='_be00301_1069345036881_177859_3'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197901_788952_916application1' base_Property='_be00301_1069345036881_177859_3' UseCase_Property_Group='Conditions'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197978_21376_945' base_Element='_be00301_1066810372024_338362_156'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197978_21376_945application1' base_Property='_be00301_1066810372024_338362_156' UseCase_Property_Group='Flow of events'/>
+			<MagicDraw_Profile:HyperlinkOwner xmi:id='_11_6_7fe0252_1178972541279_847109_4203' base_Element='_11_6_7fe0252_1178972448679_945743_2613'/>
 			<UML_Standard_Profile:metamodel xmi:id='_10_0EAPbeta_be00301_1123081771126_233373_95' base_Model='_9_0_be00301_1108053761194_467635_11463'/>
-			<UML_Standard_Profile:modelLibrary xmi:id='_11_6_7fe0252_1177104537652_181064_7230' base_Package='_11_6_7fe0252_1176840929080_243054_110'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198022_794008_961' base_Element='_be00301_1066745578365_830651_25'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198022_794008_961application1' base_Property='_be00301_1066745578365_830651_25' UseCase_Property_Group='Description'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197972_191581_941' base_Element='_be00301_1066819978618_241022_86'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197972_191581_941application1' base_Property='_be00301_1066819978618_241022_86' UseCase_Property_Group='Identity'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197981_546964_947' base_Element='_be00301_1066813090914_271384_2'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197981_546964_947application1' base_Property='_be00301_1066813090914_271384_2' UseCase_Property_Group='Flow of events'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197964_866055_937' base_Element='_be00301_1066897101064_364082_97'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197964_866055_937application1' base_Property='_be00301_1066897101064_364082_97' UseCase_Property_Group='Other'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197903_824407_918' base_Element='_be00301_1066744391809_291056_1'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197903_824407_918application1' base_Property='_be00301_1066744391809_291056_1' UseCase_Property_Group='Identity'/>
+			<MagicDraw_Profile:HyperlinkOwner xmi:id='_11_6_7fe0252_1178972541270_618731_4173' base_Element='_11_6_7fe0252_1178972448692_765713_2657'/>
+			<MagicDraw_Profile:HyperlinkOwner xmi:id='_11_6_7fe0252_1178972541252_616902_4108' base_Element='_11_6_7fe0252_1178972448678_653356_2610'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_be00301_1123081771637_881165_168' base_Element='_622020d_1063089736310_68488_2'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197847_606483_909' base_Element='_be00301_1066745578365_232_29'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197847_606483_909application1' base_Property='_be00301_1066745578365_232_29' UseCase_Property_Group='Identity'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197845_512556_908' base_Element='_be00301_1069345036881_119566_4'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197845_512556_908application1' base_Property='_be00301_1069345036881_119566_4' UseCase_Property_Group='Conditions'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_be00301_1123081772748_869317_397' base_Element='_622020d_1063089736310_884303_1'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198053_132424_975' base_Element='_be00301_1066897101034_150494_93'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198053_132424_975application1' base_Property='_be00301_1066897101034_150494_93' UseCase_Property_Group='Description'/>
+			<MagicDraw_Profile:tagGroup xmi:id='_10_0EAPbeta_62a020a_1120463197803_558302_901' base_Property='_be00301_1066822235323_902656_106'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197803_558302_901application1' base_Element='_be00301_1066822235323_902656_106'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197893_830415_912' base_Element='_be00301_1066810372024_418388_155'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197893_830415_912application1' base_Property='_be00301_1066810372024_418388_155' UseCase_Property_Group='Flow of events'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197892_962390_911' base_Element='_8bb027e_1073897792047_918194_4'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197901_788952_916' base_Element='_be00301_1069345036881_177859_3'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197901_788952_916application1' base_Property='_be00301_1069345036881_177859_3' UseCase_Property_Group='Conditions'/>
+			<UML_Standard_Profile:modelLibrary xmi:id='_11_6_7fe0252_1177104537652_181064_7230' base_Package='_11_6_7fe0252_1176840929080_243054_110'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197972_191581_941' base_Element='_be00301_1066819978618_241022_86'/>
+			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197972_191581_941application1' base_Property='_be00301_1066819978618_241022_86' UseCase_Property_Group='Identity'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_be00301_1123081771126_531236_96' base_Element='_622020d_1063089736320_73815_4'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197982_994594_948' base_Element='_86b026b_1100852264416_278032_17'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197982_994594_948application1' base_Property='_86b026b_1100852264416_278032_17' UseCase_Property_Group='Other'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198018_482105_958' base_Element='_be00301_1066897101064_466615_101'/>
@@ -5176,25 +5049,135 @@ Als Ziel wird ein weiteres Feld angegeben (Assoziation).</text>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198051_195647_973' base_Property='_86b026b_1101133929591_761242_5' UseCase_Property_Group='Other'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198019_27151_959' base_Element='_be00301_1066813090914_199818_4'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198019_27151_959application1' base_Property='_be00301_1066813090914_199818_4' UseCase_Property_Group='Flow of events'/>
+			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_be00301_1123081772017_866847_253' base_Element='_622020d_1063089736320_890266_3'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197967_859750_939' base_Property='_86b026b_1100852264416_178731_18' UseCase_Property_Group='Other'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197847_606483_909' base_Element='_be00301_1066745578365_232_29'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197847_606483_909application1' base_Property='_be00301_1066745578365_232_29' UseCase_Property_Group='Identity'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198002_428637_956' base_Element='_be00301_1066897101074_628189_103'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198002_428637_956application1' base_Property='_be00301_1066897101074_628189_103' UseCase_Property_Group='Description'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198023_66775_962' base_Element='_be00301_1066897101054_362364_95'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198023_66775_962application1' base_Property='_be00301_1066897101054_362364_95' UseCase_Property_Group='Description'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197906_730032_920' base_Element='_be00301_1066745578365_161054_31'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197906_730032_920application1' base_Property='_be00301_1066745578365_161054_31' UseCase_Property_Group='Flow of events'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197845_512556_908' base_Element='_be00301_1069345036881_119566_4'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197845_512556_908application1' base_Property='_be00301_1069345036881_119566_4' UseCase_Property_Group='Conditions'/>
 			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197898_643246_914' base_Element='_be00301_1066808483999_917377_153'/>
 			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463197898_643246_914application1' base_Property='_be00301_1066808483999_917377_153' UseCase_Property_Group='Flow of events'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463198053_132424_975' base_Element='_be00301_1066897101034_150494_93'/>
-			<UseCase_Description_Profile:grouped xmi:id='_10_0EAPbeta_62a020a_1120463198053_132424_975application1' base_Property='_be00301_1066897101034_150494_93' UseCase_Property_Group='Description'/>
-			<MagicDraw_Profile:tagGroup xmi:id='_10_0EAPbeta_62a020a_1120463197803_558302_901' base_Property='_be00301_1066822235323_902656_106'/>
-			<MagicDraw_Profile:InvisibleStereotype xmi:id='_10_0EAPbeta_62a020a_1120463197803_558302_901application1' base_Element='_be00301_1066822235323_902656_106'/>
 		</stereotypeApplicationForProxies>
 		<stereotypesIDS>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
+			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
+			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
+			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
+			<stereotype name='UML_Standard_Profile:metamodel' stereotypeID='magicdraw_1046861421236_601240_36'/>
+			<stereotype name='MagicDraw_Profile:HyperlinkOwner' stereotypeID='_9_0_be00301_1108044563999_784946_1'/>
+			<stereotype name='MagicDraw_Profile:DiagramInfo' stereotypeID='_9_0_be00301_1108044380615_150487_0'/>
+			<stereotype name='MagicDraw_Profile:tagGroup' stereotypeID='_be00301_1069835754648_699954_1'/>
+			<stereotype name='UML_Standard_Profile:modelLibrary' stereotypeID='magicdraw_1046861421236_39100_29'/>
+			<stereotype name='UseCase_Description_Profile:useCaseModelDiagram' stereotypeID='_8bb027e_1073897757778_650674_3'/>
 			<stereotype name='UseCase_Description_Profile:requirementUseCase' stereotypeID='_9_0_2_be00301_1112960475215_37141_0'/>
 			<stereotype name='MagicDraw_Profile:InvisibleStereotype' stereotypeID='_9_0_be00301_1108044721245_236588_411'/>
 			<stereotype name='UseCase_Description_Profile:grouped' stereotypeID='_9_0_2_be00301_1112964767577_928108_227'/>
