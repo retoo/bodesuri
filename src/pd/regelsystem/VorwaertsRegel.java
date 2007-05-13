@@ -13,18 +13,19 @@ public class VorwaertsRegel extends Regel {
 		this.schritte = schritte;
 	}
 
-	public Zug validiere(ZugEingabe zugEingabe) {
+	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.getStart();
 		Feld ziel  = bewegung.getZiel();
 		
 		/* TODO: Ist das bei allen Regeln so? -> Auslagern */
 		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
-			return null;
+			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
 		}
 		
-		if (start.getWeg(ziel).size()-1 != schritte) {
-			return null;
+		if (start.getWeg(ziel).size() != schritte + 1) {
+			throw new RegelVerstoss("Zug muss über " + schritte +
+			                        " Felder gehen.");
 		}
 		
 		Zug zug = new Zug();

@@ -13,13 +13,19 @@ public class RegelVeroderung extends Regel {
 		regeln.add(regel);
 	}
 
-	public Zug validiere(ZugEingabe zugEingabe) {
+	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
+		RegelVerstoss regelVerstoss = null;
 		for (Regel regel : regeln) {
-			Zug resultat = regel.validiere(zugEingabe);
-			if (resultat != null) {
+			try {
+				Zug resultat = regel.validiere(zugEingabe);
 				return resultat;
+			} catch (RegelVerstoss rv) {
+				regelVerstoss = rv;
 			}
 		}
-		return null;
+		if (regelVerstoss == null) {
+			throw new RuntimeException("Sollte nicht passieren.");
+		}
+		throw regelVerstoss;
 	}
 }

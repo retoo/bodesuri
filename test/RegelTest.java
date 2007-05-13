@@ -1,6 +1,7 @@
 import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;
+import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -13,35 +14,46 @@ public class RegelTest extends ProblemDomainTestCase {
 		vier = new Vier(KartenFarbe.Herz, 0);
 	}
 	
-	public void testVier() {
+	public void testVier() throws RegelVerstoss {
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
 		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung4);
+		
 		Zug zug = ze.validiere();
-		assertNotNull(zug);
-		
-		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		ZugEingabe zeFalsch = new ZugEingabe(spieler, vier, bewegung3);
-		assertNull(zeFalsch.validiere());
-		
 		zug.ausfuehren();
 		assertNull(bewegung4.getStart().getFigur());
 		assertNotNull(bewegung4.getZiel().getFigur());
 	}
+	
+	public void testVierFalsch() {
+		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
+		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung3);
+		try {
+			ze.validiere();
+			fail("Sollte RegelVerstoss geben.");
+		} catch (RegelVerstoss rv) {
+			assertNotNull(rv);
+		}
+	}
 
-	public void testVierRueckwaerts() {
+	public void testVierRueckwaerts() throws RegelVerstoss {
 		bankFeld.versetzeFigurAuf(zielFeld);
-		
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
 		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung4);
+		
 		Zug zug = ze.validiere();
-		assertNotNull(zug);
-		
-		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
-		ZugEingabe zeFalsch = new ZugEingabe(spieler, vier, bewegung3);
-		assertNull(zeFalsch.validiere());
-		
 		zug.ausfuehren();
 		assertNull(bewegung4.getStart().getFigur());
 		assertNotNull(bewegung4.getZiel().getFigur());
+	}
+	
+	public void testVierRueckwaertsFalsch() {
+		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
+		ZugEingabe ze = new ZugEingabe(spieler, vier, bewegung3);
+		try {
+			ze.validiere();
+			fail("Sollte RegelVerstoss geben.");
+		} catch (RegelVerstoss rv) {
+			assertNotNull(rv);
+		}
 	}
 }

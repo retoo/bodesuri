@@ -13,17 +13,18 @@ public class RueckwaertsRegel extends Regel {
 		this.schritte = schritte;
 	}
 
-	public Zug validiere(ZugEingabe zugEingabe) {
+	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.getStart();
 		Feld ziel  = bewegung.getZiel();
 		
 		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
-			return null;
+			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
 		}
 		
 		if (start.getWegRueckwaerts(ziel).size()-1 != schritte) {
-			return null;
+			throw new RegelVerstoss("Zug muss über " + schritte +
+			                        " Felder gehen.");
 		}
 		
 		Zug zug = new Zug();

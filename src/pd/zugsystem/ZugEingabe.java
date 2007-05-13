@@ -3,6 +3,7 @@ package pd.zugsystem;
 import java.io.Serializable;
 
 import pd.karten.Karte;
+import pd.regelsystem.RegelVerstoss;
 import pd.spieler.Spieler;
 
 public class ZugEingabe implements Serializable {
@@ -18,7 +19,7 @@ public class ZugEingabe implements Serializable {
 		this.bewegung = bewegung;
 	}
 
-	public Zug validiere() {
+	public Zug validiere() throws RegelVerstoss {
 		return karte.getRegel().validiere(this);
 	}
 

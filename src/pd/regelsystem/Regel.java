@@ -4,5 +4,5 @@ import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
 public abstract class Regel {
-	public abstract Zug validiere(ZugEingabe zug);
+	public abstract Zug validiere(ZugEingabe zug) throws RegelVerstoss;
 }

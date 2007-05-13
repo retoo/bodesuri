@@ -13,6 +13,7 @@ import pd.brett.Brett;
 import pd.brett.Feld;
 import pd.brett.NormalesFeld;
 import pd.karten.Karte;
+import pd.regelsystem.RegelVerstoss;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
@@ -190,24 +191,26 @@ public class Prototyp {
 				
 				while (true) {
 					ZugEingabe zugEingabe = erfasseZug(karten);
-				
-					if (zugEingabe.validiere() != null) {
+					
+					try {
+						zugEingabe.validiere();
 						server.sende(new ZugInformation(zugEingabe));
 						break;
-					} else {
+					} catch (RegelVerstoss rv) {
 						System.out.println();
-						System.out.println("Ungültiger Zug, bitte erneut versuchen.");
+						System.out.println(rv);
 						System.out.println();
 					}
 				}
 				
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
-				Zug zug = ((ZugEingabe)zn.zug).validiere();
-				if (zug != null) {
+				
+				try {
+					Zug zug = ((ZugEingabe)zn.zug).validiere();
 					zug.ausfuehren();
-				} else {
-					throw new RuntimeException("Ungültiger Zug " + zn.zug);
+				} catch (RegelVerstoss rv) {
+					throw new RuntimeException(rv);
 				}
 				
 				Spieler sp = ((ZugEingabe)zn.zug).getSpieler();
