@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Vector;
 
 public class Deck {
-	private List<Karte> karten;
-	
-	/* TODO: Statische Methode machen, wenn Deck sonst nicht gebraucht. */
-	public Deck(int nummer) {
-		karten = new Vector<Karte>();
+	public static List<Karte> createKarten(int nummer) {
+		List<Karte> karten = new Vector<Karte>();
+		
 		for (KartenFarbe farbe : KartenFarbe.values()) {
 			karten.add(new Zwei(farbe, nummer));
 			karten.add(new Drei(farbe, nummer));
@@ -27,9 +25,7 @@ public class Deck {
 		karten.add(new Joker(KartenFarbe.HERZ, nummer));
 		karten.add(new Joker(KartenFarbe.KARO, nummer));
 		karten.add(new Joker(KartenFarbe.KREUZ, nummer));
-	}
-	
-	public List<Karte> getKarten() {
+		
 		return karten;
 	}
 }
