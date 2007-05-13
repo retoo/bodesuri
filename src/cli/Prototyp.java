@@ -15,6 +15,7 @@ import pd.brett.NormalesFeld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
@@ -190,7 +191,7 @@ public class Prototyp {
 				while (true) {
 					ZugEingabe zugEingabe = erfasseZug(karten);
 				
-					if (zugEingabe.validiere()) {
+					if (zugEingabe.validiere() != null) {
 						server.sende(new ZugInformation(zugEingabe));
 						break;
 					} else {
@@ -202,9 +203,9 @@ public class Prototyp {
 				
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
-				
-				if ( ((ZugEingabe)zn.zug).validiere()) {
-					((ZugEingabe)zn.zug).ausfuehren();
+				Zug zug = ((ZugEingabe)zn.zug).validiere();
+				if (zug != null) {
+					zug.ausfuehren();
 				} else {
 					throw new RuntimeException("Ungültiger Zug " + zn.zug);
 				}

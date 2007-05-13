@@ -3,7 +3,6 @@ package pd.zugsystem;
 import java.io.Serializable;
 
 import pd.karten.Karte;
-import pd.regelsystem.Regel;
 import pd.spieler.Spieler;
 
 public class ZugEingabe implements Serializable {
@@ -13,13 +12,14 @@ public class ZugEingabe implements Serializable {
 	private Karte karte;
 	private Bewegung bewegung;
 	
-	/* TODO: Besser machen */
-	private transient Regel validierteRegel;
-
 	public ZugEingabe(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this.spieler = spieler;
 		this.karte = karte;
 		this.bewegung = bewegung;
+	}
+
+	public Zug validiere() {
+		return karte.getRegel().validiere(this);
 	}
 
 	public Spieler getSpieler() {
@@ -32,25 +32,5 @@ public class ZugEingabe implements Serializable {
 
 	public Bewegung getBewegung() {
 		return bewegung;
-	}
-	
-	public boolean validiere() {
-		validierteRegel = karte.getRegel().validiere(this);
-		return validierteRegel != null;
-	}
-	
-	public void ausfuehren() {
-		if (validierteRegel != null) {
-			validierteRegel.ausfuehren(this);
-		}
-	}
-
-	/***
-	 * Der Zug wurde vom UI verworfen und wird so in der Form nicht durchgeführt.
-	 * TODO: Evtl. wird das gar nicht gebraucht. Es gibt zurzeit nur eine Stele wo die
-	 * Methode aufgerufen wird (-rschuett)
-	 */
-	public void verwerfen() {
-		// TODO Auto-generated method stub
 	}
 }
