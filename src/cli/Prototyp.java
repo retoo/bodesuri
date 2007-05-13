@@ -106,7 +106,7 @@ public class Prototyp {
 			System.out.print("Karte (1-" + karten.size() + "): ");
 			int eingabe = liesZahlEin();
 			
-			if (1 <= eingabe || eingabe <= karten.size()) {
+			if (1 <= eingabe && eingabe <= karten.size()) {
 				return karten.get(eingabe - 1);
 			}
 		}
