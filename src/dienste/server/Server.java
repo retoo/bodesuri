@@ -19,7 +19,7 @@ import dienste.netzwerk.nachrichten.ZugInformation;
 
 public class Server {
 	private static final int PORT = 7788;
-	private static final int MAXSPIELER = 1;
+	private static final int MAXSPIELER = 4;
 	private Briefkasten serverBriefkasten;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 
@@ -30,10 +30,10 @@ public class Server {
 
 		Thread t = new Thread(daemon);
 		t.start();
-
 	}
 
 	private void run() throws VerbindungWegException {
+		System.out.println("Server gestartet");
 		starteSpiel();
 		broadcast("Spiel vollständig.");
 		spieleSpiel();
@@ -42,7 +42,6 @@ public class Server {
 
 	private void starteSpiel() throws VerbindungWegException {
 		/* potentielle klasse */
-
 
 		while (true) {
 			Brief brief = serverBriefkasten.getBrief();
@@ -63,7 +62,7 @@ public class Server {
 					return; /* Spiel bereit */
 				}	
 			} else if (nachricht instanceof NeueVerbindung) {
-				System.out.println("Neue Verbindung von " + brief);
+				System.out.println("Neue Verbindung von " + brief.absender);
 			} else {
 				/* Platzhalter für später */
 				throw new RuntimeException("Unbkenanter Nachrichtentyp " + brief);
@@ -89,7 +88,6 @@ public class Server {
 		broadcast(aktuellerSpieler.name + " fängt an.");
 		aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 		// FIXME: Timer timer = new ZugAufforderungsTimer(serverBriefkasten);
-		
 		
 		while (true) {
 			Brief brief = serverBriefkasten.getBrief();
@@ -149,5 +147,4 @@ public class Server {
 
 		System.out.println("Reached end of main");
 	}
-
 }
