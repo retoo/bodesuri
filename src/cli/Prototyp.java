@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import pd.Spiel;
 import pd.brett.BankFeld;
@@ -14,6 +16,7 @@ import pd.brett.Feld;
 import pd.brett.NormalesFeld;
 import pd.karten.Karte;
 import pd.regelsystem.RegelVerstoss;
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
@@ -41,6 +44,9 @@ public class Prototyp {
 	private BankFeld startFeld;
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
+	
+	private Map<Figur, Figur2d> figuren2d;
+	private Map<Feld, Feld2d> felder2d;
 
 	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server) {
 		this.server = server;
@@ -48,6 +54,8 @@ public class Prototyp {
 		this.lokalerSpieler = spielerIch;
 		this.brett = spiel.getBrett();
 		this.startFeld = brett.getBankFeldVon(spiel.getSpieler().get(0));
+		figuren2d = new HashMap<Figur, Figur2d>();
+		felder2d  = new HashMap<Feld, Feld2d>();
 		setzeFiguren();
 	}
 	
@@ -64,6 +72,11 @@ public class Prototyp {
 		Feld feld = startFeld;
 		while (feld != startFeld.getVorheriges()) {
 			zeichneFeld(feld);
+			if (feld.istBesetzt()) {
+				Feld2d feld2d   = felder2d.get(feld);
+				Figur2d figur2d = figuren2d.get(feld.getFigur());
+				figur2d.setzeAuf(feld2d);
+			}
 			feld = feld.getNaechstes();
 		}
 		System.out.println();
@@ -161,23 +174,28 @@ public class Prototyp {
 		Briefkasten bk = server.briefkasten;
 		
 		begruessungAusgaben();
-		System.out.println();
-		zeichneBrett();
-		System.out.println();
 		
 		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
 		int i = 0;
 		Feld feld = startFeld;
 		while (feld != startFeld.getVorheriges()) {
 			Feld2d feld2d = new Feld2d(i);
+			felder2d.put(feld, feld2d);
 			if (feld instanceof BankFeld) {
-				brettproto.add(new Figur2d(feld2d)); 
+				Figur figur = feld.getFigur();
+				Figur2d figur2d = new Figur2d(feld2d);
+				figuren2d.put(figur, figur2d);
+				brettproto.add(figur2d);
 			}
 			brettproto.add(feld2d);
 			i++;
 			feld = feld.getNaechstes();
 		}
 		brettproto.setVisible(true);
+		
+		System.out.println();
+		zeichneBrett();
+		System.out.println();
 		
 		while (true) {
 			// zeichneBrett();

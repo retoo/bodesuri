@@ -9,8 +9,11 @@ public class Figur2d extends JLabel {
 
 	public Figur2d(Feld2d feld) {
 		super(bildFigur);
+		setzeAuf(feld);
+	}
+	
+	public void setzeAuf(Feld2d feld) {
 		setBounds(feld.getX(), feld.getY(), bildFigur.getIconWidth(),
 		          bildFigur.getIconHeight());
-
 	}
 }
