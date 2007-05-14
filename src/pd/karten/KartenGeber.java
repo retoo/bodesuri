@@ -10,7 +10,8 @@ public class KartenGeber {
 	 * 13 * 4 Farben + 3 Joker = 55 Karten = ein Deck
 	 * 55 Karten * 2 = 110 Karten
 	 */
-	private static final int ANZAHL_KARTEN = 64; // TODO: wieder auf 110 ändern
+	// Wird eigentlich gar nicht benötigt, oder? (Robin)
+	// private static final int ANZAHL_KARTEN = 64; // TODO: wieder auf 110 ändern
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
 
 	public KartenGeber() {
@@ -27,10 +28,10 @@ public class KartenGeber {
 			kartenStapel.addAll(Deck.erstelleKarten(i));
 		}
 		
-		// Mischen
-		for (int i = 0; i < ANZAHL_KARTEN; ++i) {
-			int a = (int)(Math.random() * ANZAHL_KARTEN);
-			int b = (int)(Math.random() * ANZAHL_KARTEN);
+		int anzahl = kartenStapel.size();
+		for (int i = 0; i < anzahl; ++i) {
+			int a = (int)(Math.random() * anzahl);
+			int b = (int)(Math.random() * anzahl);
 			wechseln(a, b);
 		}
 	}
@@ -43,10 +44,6 @@ public class KartenGeber {
 	 * @param nach
 	 */
 	private void wechseln(int von, int nach) {
-		if (von  < 0 || von  >= ANZAHL_KARTEN ||
-		    nach < 0 || nach >= ANZAHL_KARTEN)
-			return;
-		
 		Karte tmp = kartenStapel.get(von);
 		kartenStapel.setElementAt(kartenStapel.get(nach), von);
 		kartenStapel.setElementAt(tmp, nach);
