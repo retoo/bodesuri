@@ -11,8 +11,7 @@ public class BrettPrototyp extends JFrame {
 
 	public BrettPrototyp(String title) {
 		setTitle(title);
-		setSize(1330, 100);
-		setVisible(true);
+		setSize(1100, 80);
 		setLayout(null);
 
 		addWindowListener(new WindowAdapter() {
