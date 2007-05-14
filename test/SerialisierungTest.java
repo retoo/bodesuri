@@ -52,7 +52,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	
 	public void testKarteSerialisierung()
 			throws IOException, ClassNotFoundException {
-		for (Karte karte : kartenGeber.getKarten(108)) {
+		for (Karte karte : kartenGeber.getKarten(64)) {  // TODO: wieder nach 110 ändern
 			assertEquals(karte, durchSerialisierung(karte));
 		}
 	}

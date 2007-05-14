@@ -10,7 +10,7 @@ public class KartenGeber {
 	 * 13 * 4 Farben + 3 Joker = 55 Karten = ein Deck
 	 * 55 Karten * 2 = 110 Karten
 	 */
-	private static final int ANZAHL_KARTEN = 110;
+	private static final int ANZAHL_KARTEN = 64; // TODO: wieder auf 110 ändern
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
 
 	public KartenGeber() {
