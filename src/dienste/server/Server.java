@@ -26,9 +26,9 @@ public class Server {
 	private Server() throws IOException {
 		serverBriefkasten = new Briefkasten();
 
-		Daemon a = new Daemon(PORT, serverBriefkasten);
+		Daemon daemon = new Daemon(PORT, serverBriefkasten);
 
-		Thread t = new Thread(a);
+		Thread t = new Thread(daemon);
 		t.start();
 
 	}
@@ -38,9 +38,7 @@ public class Server {
 		broadcast("Spiel vollständig.");
 		spieleSpiel();
 		broadcast("Spiel abgeschlossen.. sollte zurzeit noch nicht passieren");
-
 	}
-
 
 	private void starteSpiel() throws VerbindungWegException {
 		/* potentielle klasse */
@@ -90,13 +88,15 @@ public class Server {
 		
 		broadcast(aktuellerSpieler.name + " fängt an.");
 		aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
+		// FIXME: Timer timer = new ZugAufforderungsTimer(serverBriefkasten);
+		
 		
 		while (true) {
 			Brief brief = serverBriefkasten.getBrief();
 			Nachricht nachricht = brief.nachricht;
+			
 			if (nachricht instanceof ZugInformation ) {
 				ZugInformation zugInfo = (ZugInformation) nachricht;
-				
 				
 				if (brief.absender != aktuellerSpieler.endpunkt) {
 					broadcast("HAH.. huere michi, de " + brief.absender + " wott voll bschisse" );
