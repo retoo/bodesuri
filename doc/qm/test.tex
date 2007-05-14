@@ -29,12 +29,12 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 \textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 \midrule
 1, 2, 3 & Server-Start \newline erfolgreich & Der Server ist gestartet, funktioniert und ist betriebsbereit. & [Ok|Err] \\
- \cline{3-4} & & An den Benutzer wurde eine Bestätigung ausgegeben, dass der Server läuft. & \\
+ \cline{3-4} & & Es wird eine Bestätigung ausgegeben, dass der Server läuft. & \\
 \midrule
-2a & Server-Start fehlgeschlagen & Der Server ist nicht gestartet und befindet sich in einem wohldefinierten Zustand. & [Ok|Err] \\
+2a & Serer-Start fehlgeschlagen & Es wird eine Fehlermeldung ausgegeben und der Server beendet sich vollständig. & [Ok|Err] \\
  \cline{3-4} & & An den Benutzer wurde eine Fehlermeldung ausgegeben, mit sprechenden Erklärungen und allfälligen Hinweisen die zur Behebung des Problems beitragen. & \\
 \midrule
-1, 2 & Mehrere Server-Instanzen & FIXME: Es darf auf einem Rechner nur eine Server-Instanz laufen. (Evtl. Ports deklarierbar --> dann mehrere). & [Ok|Err] \\
+1, 2 & Mehrere Server-Instanzen & Wird ein zweiter Server gestartet wird dem Benutzer mitgeteilt, dass bereites ein anderer Server am laufen ist. & [Ok|Err] \\
 \bottomrule
 \end{tabular}
 % subsubsection uc1_spiel_erstellen (end)
@@ -47,14 +47,12 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 1, 2, 3, 4 & Client verbunden & Der Client hat sich auf den Server verbunden und der Server kennt den Client. & [Ok|Err] \\
  \cline{3-4} & & Der Benutzer ist informiert worden, dass er dem Spiel erfolgreich beigetreten ist. & \\
 \midrule
-2a & Verbindung fehlgeschlagen & Der Client und der Server befinden sich in einem wohldefinierten Zustand. & [Ok|Err] \\
- \cline{3-4} & & Der Benutzer wurde vom System über das Scheitern benachrichtigt. & \\
+2a & Verbindung fehlgeschlagen & Der Benutzer wird vom System über das Scheitern benachrichtigt. &   \\
 \midrule
-2b & Server besetzt & Der Client befindet sich in einem wohldefinierten Zustand. & [Ok|Err] \\
- \cline{3-4} & & Der bereits laufende Server wird nicht beeinflusst (Spiel läuft normal weiter). & \\
- \cline{3-4} & & Der Benutzer wurde darüber informiert, dass der Server bereit besetzt ist. & \\
+2b & Server besetzt & Dem Benutzer wird mitgeteilt, dass der Server bereits voll ist. Das laufende Spiel wird nicht beeinflusst. & [Ok|Err] \\
 \midrule
-*a & Verbindung abgebrochen & Der Client und der Server befinden sich in einem wohldefinierten Zustand und sind darüber informiert, dass der Benutzer die Verbindung abgebrochen hat. & [Ok|Err] \\
+*a & Verbindung abgebrochen & Serverprozess beenden (Absturz simulieren). & [Ok|Err]  \\
+\cline{3-4} & & Das Spiel wird mit einer Fehlermeldung abgebrochen. Alle Parteien werden über das Ende informiert. & \\
 \bottomrule
 \end{tabular}
 % subsubsection uc2_spiel_beitreten (end)
@@ -73,7 +71,7 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
  \cline{3-4} & & Dem Spieler wird visuell mitgeteilt, dass das System bereit ist den Kartentausch abzuwickeln. & \\
 \midrule
 4 & Karten-Tausch übermitteln & Die vom Benutzer getauschten Spielkarten sind an den Server übermittelt und auf dem Client (der die Spielkarten gesendet hat) nicht mehr vorhanden. & [Ok|Err] \\
- \cline{3-4} & & Der Client (der die Spielkarten gesendet hat) hat diejenigen Spielkarten vom Server empfangen, die der Mitspieler zum Tausch an den Server übermittelt hatte. & \\
+ \cline{3-4} & & Der Client (der die Spielkarten gesendet hat) hat diejenigen Spielkarten vom Server empfangen, die der Partnerspieler zum Tausch an den Server übermittelt hatte. & \\
  \cline{3-4} & & Für den Spieler werden die Spielkarten nach dem Tausch korrekt visualisiert. & \\
 \midrule
 5 & Spielzüge visualisieren & Benutzer kann keine spieleingreifende Eingaben tätigen. & [Ok|Err] \\
@@ -82,6 +80,7 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 \midrule
 6 & Spielzug auswählen & Vom Benutzer ausgewählte Spielkarte ist visualisiert und als ausgewählt hervorgehoben. & [Ok|Err] \\
  \cline{3-4} & & Spielzug ist vom System erfasst und für den Spieler visuell ersichtlich. & \\
+ \cline{3-4} & & TODO: Hier müssen wir später verschiedene Zugerfassungs-Arten aufzeigen und testn. & \\
  \cline{3-4} & & Dem Spieler wird visuell mitgeteilt, dass das System bereit ist den Spielzug durchzuführen. & \\
 \bottomrule
 \end{tabular}
@@ -93,15 +92,14 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 \textbf{Use-Case} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 \midrule
 7, 8, 9 & Spielzug übermitteln & Spielzug ist vom Client validiert worden und gültig. & [Ok|Err] \\
- \cline{3-4} & & Spielzug ist an Server übermittelt worden und dort eingetroffen. & \\
- \cline{3-4} & & Spielzug ist vom Server validiert worden und gültig. & \\
- \cline{3-4} & & Spielzugübermittlung wurde dem Client vom Server bestätigt. & \\
+ \cline{3-4} & & Spielzug ist an Server übermittelt. & \\
+ \cline{3-4} & & Spielzug wird wird binnen drei Sekunden im Client visualisiert & \\
  \cline{3-4} & & Alle Clients haben den Spielzug visualisiert und sind synchronisiert. & \\
 \midrule
 6a & Kein Karte spielbar & Dem Server wurde mitgeteilt, dass Spieler diese Runde nicht spielen kann. & [Ok|Err] \\
  \cline{3-4} & & Alle Clients sind synchronisiert. & \\
 \midrule
-7a & Spielzug ungültig & Benutzer wurde über ungültigen Zug benachrichtigt. & [Ok|Err] \\
+7a & Spielzug ungültig & Benutzer wird über ungültigen Zug benachrichtigt. & [Ok|Err] \\
  \cline{3-4} & & Benutzer weiss, dass er anderen Spielzug auswählen muss. & \\
 \midrule
 9a a) & Spiel gewonnen & Auf allen Clients und dem Server ist das Spiel beendet. & [Ok|Err] \\
@@ -112,11 +110,11 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
  \cline{3-4} & & Spieler-Status ist auf allen Clients synchronisiert und für Spieler ersichtlich. & \\
  \cline{3-4} & & Der Spieler, der neu fertig ist, kann nun auch die Figuren des Mitpsielers bedienen (wenn er an der Reihe ist). & \\
 \midrule
-*a) & Benutzer verlässt Spiel & Spiel wurde auf allen Clients und dem Server beendet. & [Ok|Err] \\
+*a) & Benutzer verlässt Spiel & Spiel wird auf allen Clients und dem Server beendet. & [Ok|Err] \\
  \cline{3-4} & & Auf allen Clients wird eine Rangliste/Statistik angezeigt. & \\
  \cline{3-4} & & Gewinner (-Team) ist klar ersichtlich. & \\
 \midrule
-*b) & Server nicht erreichbar & Benutzer wurden vom System benachrichtigt. & [Ok|Err] \\
+*b) & Server nicht erreichbar & Benutzer wird vom System benachrichtigt. & [Ok|Err] \\
  \cline{3-4} & & Auf allen Clients wird eine Fehlermeldung angezeigt. & \\
 \bottomrule
 \end{tabular}
@@ -129,14 +127,14 @@ Was muss vor einem Test gemacht werden. Spezielle Einstellungen
 \toprule
 \textbf{Nr.} & \textbf{Beschreibung} & \textbf{Eingehalten} \\
 \midrule
-NF1 & Jeder Spielzug ist in maxmimal drei Sekunden über das Netzwerk synchronisiert. & [Ok|Err] \\
+NF1 & Jeder Spielzug wird nach maximal 3 Sekunden visualisiert. Sprich der Zug wurde an den Server gesendet und vom Server wieder zurückerhalten. & [Ok|Err] \\
 NF2 & Spielzustand ist nach jedem Spielzug in allen Clients und auf dem Server konsistent. & [Ok|Err] \\
 NF3 & Inkonsistenz führt im Server und auf den Clients zu kontrolliertem Spielabbruch. & [Ok|Err] \\
 NF4 & Es können nicht mehrere Spiele pro Server erstellt werden. & [Ok|Err] \\
 NF5 & Ein Spiel kann nur mit der genauen Anzahl von vier Spielern gestartet werden. & [Ok|Err] \\
 NF6 & Das GUI ist (bis auf die Server-Konfiguration und Verbindungsaufnahme) nur mit der Maus bedienbar. & [Ok|Err] \\
-NF7 & Der Server sowie der Client ist uneingeschränkt auf den Plattformen Mac OS X 10.4, Windows XP SP2 und GNU/Linus spielbar. & [Ok|Err] \\
-NF8 & Weder für den Server noch für den Client ist eine Installation oder Konfiguration (im Sinne einer Installation) notwendig. & [Ok|Err] \\
+NF7 & Der Server sowie der Client ist uneingeschränkt auf den Plattformen Mac OS X 10.4, Windows XP SP2 und GNU/Linux verwendbar. & [Ok|Err] \\
+NF8 & Weder für den Server noch für den Client ist eine Installation oder Konfiguration notwendig. & [Ok|Err] \\
 NF9 & Ausser des Spielernamens und der Serverkonfiguration müssen keine Konfigurationen eingegeben werden. & [Ok|Err] \\
 \bottomrule
 \end{tabular}
