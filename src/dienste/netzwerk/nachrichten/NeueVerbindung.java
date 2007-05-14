@@ -6,7 +6,7 @@ import spielplatz.hilfsklassen.ServerMeldung;
 public class NeueVerbindung extends ServerMeldung {
 	private static final long serialVersionUID = 1L;
 
-	public EndPunkt client;
+	final public EndPunkt client;
 
 	public NeueVerbindung(EndPunkt client) {
 		this.client = client;
