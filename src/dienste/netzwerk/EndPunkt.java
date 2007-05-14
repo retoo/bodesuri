@@ -9,7 +9,7 @@ import dienste.netzwerk.nachrichten.Nachricht;
 
 
 public class EndPunkt {
-	Socket socket;
+	private Socket socket;
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
@@ -64,7 +64,7 @@ public class EndPunkt {
 		/* Bis auf weiteres machen wir das Empfanger der Nachrichten mal in einem seperaetn
 		 * Thread. Später kann man das evtl. mit Select etc. besser lösen
 		 */
-		empfaenger = new Empfaenger(this, briefkasten);
+		empfaenger = new Empfaenger(this, socket, briefkasten);
 		empfaengerThread = new Thread(empfaenger);
 		empfaengerThread.start();
 	}
@@ -87,7 +87,6 @@ public class EndPunkt {
 				e.printStackTrace();
 				System.exit(99);
 			}
-			
 		}
 
 	}
@@ -95,6 +94,4 @@ public class EndPunkt {
 	public void ausschalten() throws IOException {
 		socket.shutdownInput();
 	}
-	
-	
 }

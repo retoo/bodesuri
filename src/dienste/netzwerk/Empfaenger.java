@@ -3,6 +3,7 @@ package dienste.netzwerk;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.net.Socket;
 
 import dienste.netzwerk.nachrichten.Nachricht;
 import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
@@ -11,19 +12,23 @@ import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 public class Empfaenger implements Runnable{
 	Briefkasten nachrichtenQueue;
 	private ObjectInputStream inputStream;
-	boolean isGeschlossen = false;
 	private EndPunkt endpunkt;
 
-	public Empfaenger(EndPunkt endpunkt, Briefkasten briefkasten) throws IOException {
-		inputStream = new ObjectInputStream(endpunkt.socket.getInputStream());
+	public Empfaenger(EndPunkt endpunkt, Socket socket, Briefkasten briefkasten) throws IOException {
+		inputStream = new ObjectInputStream(socket.getInputStream());
 		this.endpunkt = endpunkt;
 		this.nachrichtenQueue = briefkasten;
 	}
 
 	public void run() {
 		try {
-			Object obj; 
-			while ( ( obj = inputStream.readObject()) != null) {
+		
+			while (true) {
+				Object obj = inputStream.readObject();
+				
+				if (obj == null) 
+					throw new RuntimeException("FIXME FIXME");
+				
 				Nachricht nachricht = (Nachricht) obj;
 				Brief brief = new Brief(endpunkt, nachricht);
 				
@@ -31,7 +36,6 @@ public class Empfaenger implements Runnable{
 			}			
 		} catch (EOFException eof) {
 			/* TODO: Nicht sicher ob das so gut */
-			isGeschlossen = true;
 			
 			Brief brief = new Brief(endpunkt, new VerbindungGeschlossen());
 			nachrichtenQueue.einwerfen(brief);
