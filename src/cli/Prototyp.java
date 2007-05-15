@@ -34,6 +34,7 @@ import dienste.netzwerk.nachrichten.NeueVerbindung;
 import dienste.netzwerk.nachrichten.SpielBeitreten;
 import dienste.netzwerk.nachrichten.SpielStartNachricht;
 import dienste.netzwerk.nachrichten.SpielVollNachricht;
+import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 import dienste.netzwerk.nachrichten.ZugAufforderung;
 import dienste.netzwerk.nachrichten.ZugInformation;
 
@@ -246,7 +247,9 @@ public class Prototyp {
 			} else if (nachricht instanceof ChatNachricht) {
 				ChatNachricht cn = (ChatNachricht) nachricht;
 				System.out.println("> " + cn);
-				
+			} else if (nachricht instanceof VerbindungGeschlossen) {
+				System.out.println("Die Verbindung wurde durch den Server unerwartet geschlossen!");
+				System.exit(99);
 			} else {
 				/* TODO: Platzhalter */
 				System.out.println("Unerwartete Nachricht " + nachricht);
@@ -272,66 +275,85 @@ public class Prototyp {
 		}
 		
 		EndPunkt server = null;
+		
 		try {
+			
 			server = new EndPunkt(hostname, port);
+
+			
+			System.out.println();
+			
+			if (spielerName == null) {
+				System.out.print("Bitte gib deinen Namen an: ");
+				spielerName = liesStringEin();
+			}
+			
+			server.sende(new SpielBeitreten(spielerName));
+			
+			SpielStartNachricht startNachricht;
+			while (true) {
+				Brief b = server.briefkasten.getBrief();
+				Nachricht nachricht = b.nachricht; 
+	
+				if (nachricht instanceof SpielStartNachricht) {
+					startNachricht = (SpielStartNachricht) b.nachricht;
+					break;
+				} else if (nachricht instanceof SpielVollNachricht) {
+					System.out.println("Leider ist das Spiel bereits voll.");
+					System.exit(1);
+				} else if (nachricht instanceof ChatNachricht) {
+					System.out.println("> " + nachricht);
+				} else if (nachricht instanceof VerbindungGeschlossen) {
+					System.out.println("Die Verbindung wurde durch den Server unerwartet geschlossen!");
+					System.exit(99);
+				} else if (nachricht instanceof NeueVerbindung) {
+					// Ignorieren
+				} else {
+					/* TODO: Platzhalter */
+					System.out.println("Unbekannte Nachricht: " + nachricht);
+				}
+			}
+	
+			System.out.println();
+			System.out.println("Das Spiel kann beginnen. Es spielen mit:");
+			
+			for (int i = 0; i < startNachricht.spieler.length; ++i) {
+				System.out.println((i+1) + ") " + startNachricht.spieler[i]);
+			}
+			
+			System.out.println();
+			
+			Spiel spiel = new Spiel();
+			Spieler spielerIch = null;
+			
+			for (int i = 0; i < startNachricht.spieler.length; i++) {
+				String name = startNachricht.spieler[i];
+				
+				spiel.fuegeHinzu(name);
+				if (name.equals(spielerName)) {
+					spielerIch = spiel.getSpieler().get(i);
+				}
+			}
+			
+			if (spielerIch == null) {
+				/* FIXME besser machen */
+				throw new RuntimeException("Ups, ich bin ja gar nicht im Spiel");
+			}
+				
+			Prototyp spielBrett = new Prototyp(spiel, spielerIch, server);
+			spielBrett.run();
+		
 		} catch (ConnectException e) {
 			System.out.println("Verbindung zum Server konnte nicht aufgebaut werden.");
-			System.exit(1);
-		}
-		System.out.println();
-		
-		if (spielerName == null) {
-			System.out.print("Bitte gib deinen Namen an: ");
-			spielerName = liesStringEin();
-		}
-		
-		server.sende(new SpielBeitreten(spielerName));
-		
-		SpielStartNachricht startNachricht;
-		while (true) {
-			Brief b = server.briefkasten.getBrief();
-			Nachricht nachricht = b.nachricht; 
-
-			if (nachricht instanceof SpielStartNachricht) {
-				startNachricht = (SpielStartNachricht) b.nachricht;
-				break;
-			} else if (nachricht instanceof SpielVollNachricht) {
-				System.out.println("Leider ist das Spiel bereits voll.");
-				System.exit(1);
-			} else if (nachricht instanceof ChatNachricht) {
-				System.out.println("> " + nachricht);
-			} else if (nachricht instanceof NeueVerbindung) {
-				// Ignorieren
-			} else {
-				/* TODO: Platzhalter */
-				System.out.println("Unbekannte Nachricht: " + nachricht);	
+		} 
+		catch (VerbindungWegException v) {
+			System.out.println("Die Verbindung zum Server wurde unerwartetet abgebrochen!");
+			v.printStackTrace();
+		} finally {
+			/* So oder so wenn wir hier fertig sind machen wir den Socket zu. */
+			if (server != null) {
+				server.ausschalten(); /* FIXME: etwaige Exceptions in diesem Code können wir in der finalen Version ignorieren */
 			}
 		}
-
-		System.out.println();
-		System.out.println("Das Spiel kann beginnen. Es spielen mit:");
-		for (int i = 0; i < startNachricht.spieler.length; ++i) {
-			System.out.println((i+1) + ") " + startNachricht.spieler[i]);
-		}
-		System.out.println();
-		
-		Spiel spiel = new Spiel();
-		Spieler spielerIch = null;
-		for (int i = 0; i < startNachricht.spieler.length; i++) {
-			String name = startNachricht.spieler[i];
-			
-			spiel.fuegeHinzu(name);
-			if (name.equals(spielerName)) {
-				spielerIch = spiel.getSpieler().get(i);
-			}
-		}
-		
-		if (spielerIch == null) {
-			/* FIXME besser machen */
-			throw new RuntimeException("Ups, ich bin ja gar nicht im Spiel");
-		}
-			
-		Prototyp spielBrett = new Prototyp(spiel, spielerIch, server);
-		spielBrett.run();
 	}
 }

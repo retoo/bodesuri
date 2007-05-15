@@ -2,6 +2,7 @@ package dienste.netzwerk;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -80,18 +81,18 @@ public class EndPunkt {
 		try {
 			outputStream.writeObject(nachricht);
 		} catch (IOException e) {
-			if ( socket.isClosed() ) {
-				throw new VerbindungWegException();
-			} else {
-				System.out.println("IOException in Endpunkt#sende(), ohne dass Verbindung  geschlossen ist");
-				e.printStackTrace();
-				System.exit(99);
-			}
-		}
+			throw new VerbindungWegException();
+		}	
 
 	}
-
+	
 	public void ausschalten() throws IOException {
 		socket.shutdownInput();
+		socket.shutdownOutput();
+	}
+	
+	public String toString() {
+		InetAddress addr = socket.getInetAddress();
+		return addr.getHostAddress() + ":" + socket.getPort();
 	}
 }

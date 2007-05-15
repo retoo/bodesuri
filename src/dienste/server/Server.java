@@ -13,6 +13,7 @@ import dienste.netzwerk.nachrichten.Nachricht;
 import dienste.netzwerk.nachrichten.NeueVerbindung;
 import dienste.netzwerk.nachrichten.SpielBeitreten;
 import dienste.netzwerk.nachrichten.SpielStartNachricht;
+import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 import dienste.netzwerk.nachrichten.ZugAufforderung;
 import dienste.netzwerk.nachrichten.ZugInformation;
 
@@ -33,11 +34,18 @@ public class Server {
 	}
 
 	private void run() throws VerbindungWegException {
-		System.out.println("Server gestartet");
-		starteSpiel();
-		broadcast("Spiel vollständig.");
-		spieleSpiel();
-		broadcast("Spiel abgeschlossen.. sollte zurzeit noch nicht passieren");
+		try {
+			System.out.println("Server gestartet");
+			starteSpiel();
+			broadcast("Spiel vollständig.");
+			spieleSpiel();
+			broadcast("Spiel abgeschlossen.. sollte zurzeit noch nicht passieren");
+		} catch (Exception e) {
+			/* FIXME: gefällt mir nicht! */
+			System.out.println("Unerwarteter schwerer Fehler! Server wird gestoppt!");
+			e.printStackTrace();
+			System.exit(99);
+		}
 	}
 
 	private void starteSpiel() throws VerbindungWegException {
@@ -65,7 +73,7 @@ public class Server {
 				System.out.println("Neue Verbindung von " + brief.absender);
 			} else {
 				/* Platzhalter für später */
-				throw new RuntimeException("Unbkenanter Nachrichtentyp " + brief);
+				throw new RuntimeException("Unbkenanter Nachrichtentyp in Brief" + brief);
 			}
 		}
 	}
@@ -112,6 +120,11 @@ public class Server {
 				String msg = "Da versucht ein weiterer zu verbinden, aber das Boot ist voll: " + brief;
 				System.out.println(msg);
 				broadcast(msg);
+			} else if (nachricht instanceof VerbindungGeschlossen) {
+				System.out.println("Die Verbindung wurde durch den EndPunkt " + brief.absender + "  unerwartet geschlossen!");
+				System.exit(99);
+			} else {
+				System.out.println("Unbekannte Nachricht im Brief " + brief);
 			}
 		}		 
 
@@ -131,7 +144,12 @@ public class Server {
 	/* potentiele neue klasse */
 	private void broadcast(Nachricht nachricht) throws VerbindungWegException {
 		for (Spieler spieler : spielers) {
-			spieler.endpunkt.sende(nachricht);
+			try {
+				spieler.endpunkt.sende(nachricht);
+			} catch (VerbindungWegException e) {
+				System.out.println("uhuh.. scheint als ob folgender Spieler nicht mehr erreichbar wäre: " + spieler);
+				throw e;
+			}
 		}
 	}
 	
@@ -142,7 +160,7 @@ public class Server {
 
 	public static void main(String[] args) throws IOException, VerbindungWegException {
 		Server srv = new Server();
-
+		
 		srv.run();
 
 		System.out.println("Reached end of main");

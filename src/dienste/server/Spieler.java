@@ -11,4 +11,8 @@ public class Spieler {
 	    this.name = name;
 	    this.endpunkt = endpunkt;
     }
+	
+	public String toString() {
+		return name + " (" + endpunkt + ")";
+	}
 }
