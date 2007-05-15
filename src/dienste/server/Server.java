@@ -65,6 +65,8 @@ public class Server {
 				             + (MAXSPIELER - spielers.size())
 				             + " Spieler nötig.";
 				broadcast(msg);
+				
+				System.out.println("Neuer Spieler: " + spieler);
 
 				if (spielers.size() == MAXSPIELER) {
 					return; /* Spiel bereit */
@@ -97,6 +99,8 @@ public class Server {
 		aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 		// FIXME: Timer timer = new ZugAufforderungsTimer(serverBriefkasten);
 		
+		System.out.println("Aktueller Spieler: " + aktuellerSpieler);
+		
 		while (true) {
 			Brief brief = serverBriefkasten.getBrief();
 			Nachricht nachricht = brief.nachricht;
@@ -111,11 +115,15 @@ public class Server {
 				
 				broadcast(zugInfo);
 				
+				System.out.println("Ausgeführter Zug: " + zugInfo);
+				
 				aktuellerSpieler = spielers.get(klicks.klick());
 				broadcast("Nächster Spieler ist " + aktuellerSpieler.name + ".");
 				
 				aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 				
+				System.out.println("Nächster Spieler: " + aktuellerSpieler);
+			
 			} else if (nachricht instanceof SpielBeitreten) {
 				String msg = "Da versucht ein weiterer zu verbinden, aber das Boot ist voll: " + brief;
 				System.out.println(msg);
