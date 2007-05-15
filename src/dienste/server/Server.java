@@ -115,7 +115,7 @@ public class Server {
 				
 				broadcast(zugInfo);
 				
-				System.out.println("Ausgeführter Zug: " + zugInfo);
+				System.out.println("Ausgeführter Zug: " + zugInfo.zug.getKarte() + " wurde von " + zugInfo.zug.getSpieler() + " gespielt");
 				
 				aktuellerSpieler = spielers.get(klicks.klick());
 				broadcast("Nächster Spieler ist " + aktuellerSpieler.name + ".");
