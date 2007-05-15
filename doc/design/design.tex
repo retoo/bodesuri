@@ -13,27 +13,32 @@
 \label{sec:architektur}
 \subsection{Architektonische Darstellung } % (fold)
 \label{sub:architektonische_darstellung_}
-Beschreibt die Softwarearchitektur eines Systems und wie sie sich präsentiert.
+Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet. Dabei setzt jede Schicht direkt auf der darunterliegenden Schicht auf und nutzt deren angebotenen Dienste. Wo möglich und sinnvoll, werden solche Schnittstellen zwischen Layern mit dem Facade-Pattern gebündelt um die Kopplung zwischen den Schichten zu verringern (wenige, starke Kopplungen sind besser als viele, schwache). Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen.
 % subsection architektonische_darstellung_ (end)
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschränkungen}
-Beschreibt die Softwareanforderungen und Objekte, welche einen Einfluss auf die Architektur haben [Bspl: Safety, Security, Privacy, Distribution, …] Beinhaltet auch eine Beschreibung von Design und Implementationsstrategie, Teamstruktur, Entwicklungstools, Zeitplan, etc…
+\paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
+Die Applikationsschicht wurde deshalb eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (zB. für Zustände) gibt. Die Zustandssynchronisation ist die erste Vorstufe der Netzwerkkommunikation. In diesem Package werden die spezifischen Nachrichten eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann schlussendlich über das Netzwerk verteilt und empfangen zu werden.
+% paragraph designentscheidungen (end)
+\paragraph{Verwendete Entwicklungswerkzeuge}\label{ssub:verwendete_entwicklungswerkzeuge} % (fold)
+Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunabhängig (Java), ist einfach handhabbar und hat sehr gute Code-Generierung Funktionalität. Die erzeugten Dateien lassen sich im XML Format im SVN Repository verwalten. Ein Nachteil ist, dass immer nur eine Person gleichzeitig an einem Projekt / Modul arbeiten kann, da MagicDraw UML keine SVN Integration bietet.
+% paragraph verwendete_entwicklungswerkzeuge (end)
+\paragraph{Teamstruktur}\label{ssub:teamstruktur} % (fold)
+Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung ersichtlich. Die Verantwortlichkeiten sind in der Analysespzifikation geregelt.
+% paragraph teamstruktur (end)
+\newpage
+\subsubsection{Legende der in den Diagrammen verwendeten Farben}\label{ssub:legende} % (fold)
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=1\textwidth]{legende.png} \caption{Legende der Diagrammfarben}\label{fig:legende.png} 
+\end{figure}
+% subsubsection legende (end)
 % subsection architektonische_ziele_einschränkungen (end)
 
 \newpage
 \subsection{Logische Architektur} % (fold)
 \label{sub:logische_architektur}
-
-\subsubsection{Legende für die verwendeten Farben in den Diagrammen}\label{ssub:legende} % (fold)
-\begin{figure}
-	[htp] \centering 
-	\includegraphics[width=1\textwidth]{legende.png} \caption{Legende für Diagrammfarben}\label{fig:legende.png} 
-\end{figure}
-% subsubsection legende (end)
-
-\newpage
-Beschreibung der logischen Struktur des Projekts
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=1\textwidth]{Architektur.png} \caption{Architektur}\label{fig:Architektur.png} 
@@ -42,27 +47,21 @@ Beschreibung der logischen Struktur des Projekts
 \newpage
 \subsubsection{Übersicht} % (fold)
 \label{ssub:Übersicht}
-Beschreibung mit Text und Diagramm der Architektur. Aufteilung in Packages (zum Beispiel: 3-Layer-Architektur mit  GUI, Problem Domain und Datenhaltung)
 % subsubsection Übersicht (end)
 
 \subsubsection{Package pd} % (fold)
 \label{ssub:package_pd}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+In der Problem-Domain Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
 % subparagraph beschreibung_des_packages (end)
-\subparagraph{Diagramme} % (fold)
-\label{ssub:diagramme}
-Klassendiagramm
-% subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
-Beschreibung der Schnittstellen
+\begin{itemize}
+	\item Package pd.zustandsynchronisation wird von applikation.zustandsynchronisation verwendet um Nachrichten vorzubereiten und an die darunterliegende Schicht zum Versenden weiterzuleiten.
+	\item Package pd.zugsystem wird von applikation.zugentgegennahme verwendet, um Züge zu verarbeiten.
+\end{itemize}
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_pd (end)
 
 \newpage
@@ -70,7 +69,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_pd_karten}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für gesamte Handhabung der Karten ist.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -94,7 +93,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_pd_regelsystem}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain Schicht war und stellen die Validierung der Züge und der Aktionen sicher.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -109,7 +108,6 @@ Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
 \subparagraph{Operationen} % (fold)
 \label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=1\textwidth]{pd_validierung.png} \caption{Validierung von Spielzügen}\label{fig:pd_validierung.png} 
@@ -122,7 +120,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_pd_brett}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion des Bretts, der Figuren und des Spielers in der Problem Domain dar.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -167,20 +165,12 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Die Dienstschicht stellt die grundlegende Netzwerkkommunikation dar. Er kapselt die Java Socket Schnittstelle und stellt eine abstrakte Schnittstelle der Problem-Domain Schicht zur Verfügung.
 % subparagraph beschreibung_des_packages (end)
-\subparagraph{Diagramme} % (fold)
-\label{ssub:diagramme}
-Klassendiagramm
-% subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_dienste (end)
 
 \newpage
@@ -188,7 +178,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_dienste_serialisierung}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -213,7 +203,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_dienste_netzwerk}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Dieses Package kapselt die Java-Socket Schnittstelle und bietet Dienste für die Netzwerkkommunikation an.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -259,7 +249,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_ui}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Die UI Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -363,7 +353,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_applikation}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beschreibung des Package. Aufgabe, etc…
+Die Applikationsschicht ist für die Zustandsynchronisation (Spielstände usw.) verantwortlich. 
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
