@@ -235,11 +235,12 @@ public class Prototyp {
 					throw new RuntimeException(rv);
 				}
 				
-				Spieler sp = ((ZugEingabe)zn.zug).getSpieler();
+				ZugEingabe ze = (ZugEingabe)zn.zug;
+				Spieler sp = ze.getSpieler();
 				int nummer = spiel.getSpieler().indexOf(sp) + 1;
 				System.out.println();
 				System.out.println(sp.getName() + " (" + nummer + ")" +
-				                   " hat folgendes gespielt:");
+				                   " hat mit " + ze.getKarte() + " folgendes gespielt:");
 				System.out.println();
 				zeichneBrett();
 				System.out.println();
