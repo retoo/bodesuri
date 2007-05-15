@@ -443,23 +443,25 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 
 % section architektur (end)
 
-\section{Eingeregene Risiken} % (fold)
+\section{Eingetretene Risiken} % (fold)
 \label{sec:risiken}
 
 \subsection{RMI} % (fold)
 \label{sub:rmi}
 
-Im Verlauf der ersten Tests mit RMI stellte sich schnell heraus, dass RMI weit mehr kann als für das Projekt Notwenig wäre und es dem Projekt somit unnötig Komplexität hinzufügt. Andererseits stellt RMI  einige Anforderungen an die Client/Server Struktur die sich nur schwer mit den Projektanforderungen decken lassen. So kann RMI nur erschwert hinter Firewalls betrieben werden und eine Kommunikation über ein durch NAT\footnote{Network Adress Translation. Firewall-Feature welches Netzbereiche auf andere Netzbereiche zu mappen. Wird häufig verwendet um private Adressbereiche im Internet hinter einer einzelnen Adresse verstecken zu lasssen.} verstecktes Netzwerk ist gar nicht erst möglich. Da die Internet-Zugangslösungen in den meisten Haushalten auf Firewalls und NAT basieren könnte das Spiel von einem grösseren Teil der potentiellen Kundschaft gar nicht gespielt werden.
+Im Verlauf der ersten Tests mit RMI stellte sich schnell heraus, dass RMI weit mehr kann als für das Projekt notwendig wäre und es dem Projekt somit unnötig Komplexität hinzufügt. Andererseits stellt RMI  einige Anforderungen an die Client/Server-Struktur, die sich nur schwer mit den Projektanforderungen decken lassen. So kann RMI nur erschwert hinter Firewalls betrieben werden und eine Kommunikation über ein durch NAT\footnote{Network Adress Translation. Firewall-Feature welches Netzbereiche auf andere Netzbereiche abbildet. Wird häufig verwendet, um private Adressbereiche im Internet hinter einer einzelnen Adresse zu verstecken.} verstecktes Netzwerk ist gar nicht erst möglich. Da die Internet-Zugangslösungen in den meisten Haushalten auf Firewalls und NAT basieren, könnte das Spiel von einem grösseren Teil der potenziellen Kundschaft gar nicht gespielt werden.
 
-Wir entschieden uns, auf Grund dieser Probleme, auf eine eigene Lösung umzusteigen welche auf den Java Klassen Socket und Input/OutputObjectStream basidert. Insgesamt gingen etwa 10 Stunden Arbeit für diese Umstellung verloren.
+Wir entschieden uns auf Grund dieser Probleme, auf eine eigene Lösung umzusteigen, welche auf den Java-Klassen Socket und Object(Input|Output)Stream basiert. Insgesamt gingen etwa 10 Stunden Arbeit für diese Umstellung verloren.
 % subsection rmi (end)
 
 \subsection{Java 2D} % (fold)
 \label{sub:java_2d}
 
-Nachdem das CLI (Command Line Interface) erstellt war, entwarfen wir ein GUI dafür, das lediglich die Felder und Figuren darstellen soll. Mit Java 2D ist das zeichnen sehr simple, da man die Koordinaten angeben kann. Doch mussten wir leider feststellen, dass das ansprechen eines Objektes etwas komplizierter ist. In einem 2. Versuch erstellten wir das selbe Spielbrett mit Swing und wir kamen zum Entschluss, dass dies die einfachere Methode ist. Da wir mit Swing die selben Möglichkeiten haben und wir lediglich Labels per Koordinaten platzieren müssen, reicht dies für ein Brettspiel vollkommen aus. 
+Nachdem das CLI (Command Line Interface) erstellt war, entwarfen wir ein GUI dafür, das die Felder und Figuren darstellen sollte. Mit Java 2D ist das Zeichnen sehr einfach, da man die Koordinaten der zu zeichnenden Elemente angeben kann. Doch mussten wir leider feststellen, dass das Ansprechen eines Objektes etwas komplizierter ist. So muss zum Beispiel bei einem Mausklick das geklickte Objekt über die Koordinaten ermittelt werden. Ausserdem muss man sich um das Aktualisieren der Anzeige bei Veränderungen selber kümmern.
 
-Aus diesen Gründen haben wir entschlossen, für das GUI als einigste Technology Swing einzusetzten.
+In einem zweiten Versuch erstellten wir das selbe Spielbrett mit Swing und wir kamen zum Schluss, dass dies die einfachere Methode ist. Die Objekte können mit einem speziellen Layout auch auf Koordinaten genau platziert werden und Klicke darauf kann man wie gewohnt mit einem MouseListener abfangen. Als Objekt kann man zum Beispiel ein Label mit einem Icon verwenden. Dies reicht für ein Brettspiel vollkommen aus.
+
+Aus diesen Gründen haben wir uns dazu entschlossen, für das GUI als einzige Technologie Swing einzusetzen.
 
 % subsection java_2d (end)
 
