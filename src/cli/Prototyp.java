@@ -176,7 +176,6 @@ public class Prototyp {
 		
 		begruessungAusgaben();
 		
-		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
 		int i = 0;
 		Feld feld = startFeld;
 		while (feld != startFeld.getVorheriges()) {
@@ -186,11 +185,17 @@ public class Prototyp {
 				Figur figur = feld.getFigur();
 				Figur2d figur2d = new Figur2d(feld2d);
 				figuren2d.put(figur, figur2d);
-				brettproto.add(figur2d);
 			}
-			brettproto.add(feld2d);
 			i++;
 			feld = feld.getNaechstes();
+		}
+		
+		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
+		for (Figur2d figur2d : figuren2d.values()) {
+			brettproto.add(figur2d);
+		}
+		for (Feld2d feld2d : felder2d.values()) {
+			brettproto.add(feld2d);
 		}
 		brettproto.setVisible(true);
 		
