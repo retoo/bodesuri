@@ -30,6 +30,10 @@ public class VorwaertsRegel extends Regel {
 			                        " Felder gehen.");
 		}
 		
+		if (ziel.istBesetzt()) {
+			throw new RegelVerstoss("Das Zielfeld ist bereits besetzt.");
+		}
+		
 		Zug zug = new Zug();
 		zug.fuegeHinzu(new Aktion(start, ziel));
 		
