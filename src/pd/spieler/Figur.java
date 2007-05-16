@@ -1,7 +1,10 @@
 package pd.spieler;
 
+import java.util.Observable;
 
-public class Figur {
+import pd.brett.Feld;
+
+public class Figur extends Observable {
 	private Spieler spieler;
 
 	public Figur(Spieler spieler) {
@@ -9,6 +12,11 @@ public class Figur {
 	}
 
 	public Spieler getSpieler() {
-    	return spieler;
-    }
+		return spieler;
+	}
+
+	public void wurdeBewegt(Feld ziel) {
+		setChanged();
+		notifyObservers(ziel);
+	}
 }
