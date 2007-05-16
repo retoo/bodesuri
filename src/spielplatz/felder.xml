@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC  "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<brett name="prototyp">
+	<feld name="Feld1">
+		<koordinaten>
+			<x>550</x>
+			<y>300</y>
+		</koordinaten>
+	</feld>
+	<feld name="Feld2">
+		<koordinaten>
+			<x>550</x>
+			<y>270</y>
+		</koordinaten>
+	</feld>
+	<feld name="Feld3">
+		<koordinaten>
+			<x>550</x>
+			<y>240</y>
+		</koordinaten>
+	</feld>
+</brett>
