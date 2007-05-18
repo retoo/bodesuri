@@ -1,5 +1,6 @@
 package cli;
 
+import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -179,7 +180,8 @@ public class Prototyp {
 		int i = 0;
 		Feld feld = startFeld;
 		while (feld != startFeld.getVorheriges()) {
-			Feld2d feld2d = new Feld2d(i);
+			Point p = new Point(i*17 + 10, 20);
+			Feld2d feld2d = new Feld2d(p);
 			felder2d.put(feld, feld2d);
 			if (feld instanceof BankFeld) {
 				Figur figur = feld.getFigur();

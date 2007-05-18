@@ -1,21 +1,99 @@
 <!DOCTYPE html PUBLIC  "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <brett name="prototyp">
-	<feld name="Feld1">
+	<feld name="1">
 		<koordinaten>
-			<x>550</x>
-			<y>300</y>
-		</koordinaten>
-	</feld>
-	<feld name="Feld2">
-		<koordinaten>
-			<x>550</x>
-			<y>270</y>
-		</koordinaten>
-	</feld>
-	<feld name="Feld3">
-		<koordinaten>
-			<x>550</x>
+			<x>560</x>
 			<y>240</y>
+		</koordinaten>
+	</feld>
+	<feld name="2">
+		<koordinaten>
+			<x>530</x>
+			<y>240</y>
+		</koordinaten>
+	</feld>
+	<feld name="3">
+		<koordinaten>
+			<x>500</x>
+			<y>240</y>
+		</koordinaten>
+	</feld>
+	<feld name="4">
+		<koordinaten>
+			<x>470</x>
+			<y>240</y>
+		</koordinaten>
+	</feld>
+	<feld name="5">
+		<koordinaten>
+			<x>440</x>
+			<y>240</y>
+		</koordinaten>
+	</feld>
+	<feld name="6">
+		<koordinaten>
+			<x>420</x>
+			<y>220</y>
+		</koordinaten>
+	</feld>
+	<feld name="7">
+		<koordinaten>
+			<x>400</x>
+			<y>200</y>
+		</koordinaten>
+	</feld>
+	<feld name="8">
+		<koordinaten>
+			<x>380</x>
+			<y>180</y>
+		</koordinaten>
+	</feld>
+	<feld name="9">
+		<koordinaten>
+			<x>360</x>
+			<y>160</y>
+		</koordinaten>
+	</feld>
+	<feld name="10">
+		<koordinaten>
+			<x>360</x>
+			<y>130</y>
+		</koordinaten>
+	</feld>
+	<feld name="11">
+		<koordinaten>
+			<x>360</x>
+			<y>100</y>
+		</koordinaten>
+	</feld>
+	<feld name="12">
+		<koordinaten>
+			<x>360</x>
+			<y>70</y>
+		</koordinaten>
+	</feld>
+	<feld name="13">
+		<koordinaten>
+			<x>360</x>
+			<y>40</y>
+		</koordinaten>
+	</feld>
+	<feld name="14">
+		<koordinaten>
+			<x>330</x>
+			<y>40</y>
+		</koordinaten>
+	</feld>
+	<feld name="15">
+		<koordinaten>
+			<x>300</x>
+			<y>40</y>
+		</koordinaten>
+	</feld>
+	<feld name="16">
+		<koordinaten>
+			<x>270</x>
+			<y>40</y>
 		</koordinaten>
 	</feld>
 </brett>
