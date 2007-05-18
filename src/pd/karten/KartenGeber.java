@@ -1,6 +1,5 @@
 package pd.karten;
 
-import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
@@ -10,8 +9,6 @@ public class KartenGeber {
 	 * 13 * 4 Farben + 3 Joker = 55 Karten = ein Deck
 	 * 55 Karten * 2 = 110 Karten
 	 */
-	// Wird eigentlich gar nicht benötigt, oder? (Robin)
-	// private static final int ANZAHL_KARTEN = 64; // TODO: wieder auf 110 ändern
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
 
 	public KartenGeber() {
@@ -51,12 +48,10 @@ public class KartenGeber {
 
 	public Karte getKarte() {
 		Karte obersteKarte;
-		try {
-			obersteKarte = kartenStapel.pop();
-		} catch (EmptyStackException ex) {
+		if ( kartenStapel.size() == 0 ) {
 			mischen();
-			obersteKarte = getKarte();		// rekursiver Aufruf
 		}
+		obersteKarte = kartenStapel.pop();
 		return obersteKarte;
 	}
 
