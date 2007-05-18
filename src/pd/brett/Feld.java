@@ -9,9 +9,12 @@ public abstract class Feld extends CodierbaresObjekt {
 	protected Feld vorheriges;
 
 	protected Figur figur;
+	
+	private int nummer;
 
 	public Feld(int nummer) {
 		super("Feld " + nummer);
+		this.nummer = nummer;
 	}
 
 	public Feld getNtesFeld(int n) {
@@ -60,5 +63,9 @@ public abstract class Feld extends CodierbaresObjekt {
 		if (figur != null) {
 			figur.wurdeBewegt(this);
 		}
+	}
+	
+	public String toString() {
+		return "Feld" + nummer;
 	}
 }
