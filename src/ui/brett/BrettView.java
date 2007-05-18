@@ -89,10 +89,13 @@ public class BrettView extends JPanel {
 //		add(new Figur2d(felder.get(32)));
 //		add(new Figur2d(felder.get(48)));
 
-		add(new Figur2d(felder.get(0), this));
+		Point point = new Point(560,240);
+		Feld2d feld2d = new Feld2d(point);
+		
+		add(new Figur2d(feld2d, this));
 
-		for (Feld2d feld2d : felder.values()) {
-			this.add(feld2d);
+		for (Feld2d feld2 : felder.values()) {
+			this.add(feld2);
 
 		}
 	}
