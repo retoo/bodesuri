@@ -42,7 +42,7 @@ public class BrettView extends JPanel {
 		Feld feld = startFeld;
 		int i = 1;
 		while (feld != startFeld.getVorheriges()) {
-			Feld2d feld2d = new Feld2d(null);
+			Feld2d feld2d = new Feld2d(felderXML.getKoordinaten(i));
 			felder.put(feld, feld2d);
 			if (feld.istBesetzt()) {
 				new Figur2d(feld2d, this);

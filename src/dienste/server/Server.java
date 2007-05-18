@@ -20,7 +20,7 @@ import dienste.netzwerk.nachrichten.ZugInformation;
 
 public class Server {
 	private static final int PORT = 7788;
-	private static final int MAXSPIELER = 4;
+	private static final int MAXSPIELER = 1;
 	private Briefkasten serverBriefkasten;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 

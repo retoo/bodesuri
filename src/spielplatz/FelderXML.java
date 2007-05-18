@@ -1,5 +1,6 @@
 package spielplatz;
 
+import java.awt.Point;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -47,6 +48,28 @@ public class FelderXML {
 	public int getY(Element feld) {
 		return Integer.valueOf(feld.getChild("koordinaten").getChild("y")
 				.getValue());
+	}
+
+	public Point getKoordinaten(int i) {
+		Element feld;
+		if (hasNext()) {
+			feld = (Element) this.getNext();
+		} else {
+			felder = this.brett.getChildren("feld").iterator();
+			feld = (Element) this.getNext();
+		}
+
+		if (i / 16 == 1) {
+			return new Point(getY(feld), 600 - getX(feld));
+		}
+		if (i / 16 == 2) {
+			return new Point(600 - getX(feld), 600 - getY(feld));
+		}
+		if (i / 16 == 3) {
+			return new Point(600 - getY(feld), getX(feld));
+		}
+
+		return new Point(getX(feld), getY(feld));
 	}
 
 	public static void main(String[] args) throws JDOMException, IOException {

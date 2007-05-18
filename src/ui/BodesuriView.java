@@ -37,11 +37,15 @@ import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 public class BodesuriView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
+
 	private JMenuBar menuleiste;
+
 	private JMenu spielMenu;
+
 	private JMenuItem spielBeitreten;
+
 	private JMenuItem spielVerlassen;
-	
+
 	private static BrettView brett;
 
 	public BodesuriView() {
@@ -86,7 +90,7 @@ public class BodesuriView extends JFrame {
 	}
 
 	public static void main(String[] args) throws UnknownHostException,
-	                                      IOException, VerbindungWegException {
+			IOException, VerbindungWegException {
 		// Speziell für den Mac
 		if (System.getProperty("mrj.version") != null) {
 			// Menubar oben
@@ -99,9 +103,7 @@ public class BodesuriView extends JFrame {
 	}
 
 	private static void voruebergehend(String[] args)
-	                                                 throws UnknownHostException,
-	                                                 IOException,
-	                                                 VerbindungWegException {
+			throws UnknownHostException, IOException, VerbindungWegException {
 
 		String hostname = "localhost";
 		String spielerName = "TEST";
@@ -139,7 +141,7 @@ public class BodesuriView extends JFrame {
 					System.out.println("> " + nachricht);
 				} else if (nachricht instanceof VerbindungGeschlossen) {
 					System.out
-					          .println("Die Verbindung wurde durch den Server unerwartet geschlossen!");
+							.println("Die Verbindung wurde durch den Server unerwartet geschlossen!");
 					System.exit(99);
 				} else if (nachricht instanceof NeueVerbindung) {
 					// Ignorieren
@@ -180,10 +182,10 @@ public class BodesuriView extends JFrame {
 
 		} catch (ConnectException e) {
 			System.out
-			          .println("Verbindung zum Server konnte nicht aufgebaut werden.");
+					.println("Verbindung zum Server konnte nicht aufgebaut werden.");
 		} catch (VerbindungWegException v) {
 			System.out
-			          .println("Die Verbindung zum Server wurde unerwartetet abgebrochen!");
+					.println("Die Verbindung zum Server wurde unerwartetet abgebrochen!");
 			v.printStackTrace();
 		} finally {
 			/* So oder so wenn wir hier fertig sind machen wir den Socket zu. */
