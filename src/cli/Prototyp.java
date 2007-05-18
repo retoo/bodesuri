@@ -183,7 +183,7 @@ public class Prototyp {
 			felder2d.put(feld, feld2d);
 			if (feld instanceof BankFeld) {
 				Figur figur = feld.getFigur();
-				Figur2d figur2d = new Figur2d(feld2d);
+				Figur2d figur2d = new Figur2d(feld2d, null);
 				figuren2d.put(figur, figur2d);
 			}
 			i++;
