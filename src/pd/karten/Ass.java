@@ -18,7 +18,5 @@ public class Ass extends Karte{
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(11));
 		regelVeroderung.fuegeHinzu(new StartRegel());
 		setRegel(regelVeroderung);
-		/* TODO: ein weiteres Attribut hinzufügen oder setWert(string)*/
-		setWert(1);
 	}
 }

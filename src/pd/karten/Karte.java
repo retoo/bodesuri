@@ -6,8 +6,7 @@ import pd.regelsystem.Regel;
 public class Karte extends CodierbaresObjekt {
 	private static final long serialVersionUID = 1L;
 	
-	private int wert;
-	protected KartenFarbe farbe;
+	private KartenFarbe farbe;
 	private Regel regel;
 
 	public Karte(String name, KartenFarbe farbe, int deck) {
@@ -18,14 +17,6 @@ public class Karte extends CodierbaresObjekt {
 	public String toString() {
 		return getKartenFarbe() + " " +
                getClass().getSimpleName();
-	}
-
-	public void setWert(int wert) {
-		this.wert = wert;
-	}
-
-	public int getWert() {
-		return wert;
 	}
 
 	public void setKartenFarbe(KartenFarbe kartenFarbe) {
