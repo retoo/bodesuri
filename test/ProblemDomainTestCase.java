@@ -1,15 +1,15 @@
 import junit.framework.TestCase;
 import pd.Spiel;
-import pd.spieler.Spieler;
-import pd.brett.BankFeld;
-import pd.brett.Feld;
+import pd.brett.Brett;
 import pd.karten.KartenGeber;
+import pd.spieler.Figur;
+import pd.spieler.Spieler;
 
 public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spiel spiel;
-	protected Spieler spieler;
-	protected BankFeld bankFeld;
-	protected Feld zielFeld;
+	protected Brett brett;
+	protected Spieler spieler1;
+	protected Figur figur1;
 	protected KartenGeber kartenGeber;
 	
 	protected void setUp() throws Exception {
@@ -18,17 +18,13 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		for (int i = 0; i < 4; ++i) {
 			spiel.fuegeHinzu("Spieler" + i);
 		}
-		spieler = spiel.getSpieler().get(0);
 		
-		bankFeld = spiel.getBrett().getBankFeldVon(spieler);
-		bankFeld.setFigur(spieler.getFiguren().get(0));
+		spieler1 = spiel.getSpieler().get(0);
+		figur1 = spieler1.getFiguren().get(0);
 		
-		zielFeld = bankFeld;
-		for (int i = 0; i < 4; ++i) {
-			zielFeld = zielFeld.getNaechstes();
-		}
+		brett = spiel.getBrett();
 		
-		kartenGeber = new KartenGeber();
+		kartenGeber = spiel.getKartenGeber();
 	}
 
 }
