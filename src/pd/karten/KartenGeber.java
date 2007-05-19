@@ -26,10 +26,9 @@ public class KartenGeber {
 		}
 		
 		int anzahl = kartenStapel.size();
-		for (int i = 0; i < anzahl; ++i) {
-			int a = (int)(Math.random() * anzahl);
-			int b = (int)(Math.random() * anzahl);
-			wechseln(a, b);
+		for (int i = 0; i < anzahl - 1; ++i) {
+			int k = i + (int)(Math.random() * (anzahl - i));
+			wechseln(i, k);
 		}
 	}
 	
