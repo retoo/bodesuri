@@ -3,7 +3,9 @@ import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;
+import pd.regelsystem.Regel;
 import pd.regelsystem.RegelVerstoss;
+import pd.regelsystem.StartRegel;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -27,8 +29,8 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		Zug zug = ze.validiere();
 		zug.ausfuehren();
-		assertNull(bewegung4.getStart().getFigur());
-		assertNotNull(bewegung4.getZiel().getFigur());
+		assertFalse(bewegung4.getStart().istBesetzt());
+		assertTrue(bewegung4.getZiel().istBesetztVon(spieler1));
 	}
 	
 	public void testVierFalsch() {
@@ -50,8 +52,8 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		Zug zug = ze.validiere();
 		zug.ausfuehren();
-		assertNull(bewegung4.getStart().getFigur());
-		assertNotNull(bewegung4.getZiel().getFigur());
+		assertFalse(bewegung4.getStart().istBesetzt());
+		assertTrue(bewegung4.getZiel().istBesetztVon(spieler1));
 	}
 	
 	public void testVierRueckwaertsFalsch() {
@@ -64,5 +66,19 @@ public class RegelTest extends ProblemDomainTestCase {
 		} catch (RegelVerstoss rv) {
 			assertNotNull(rv);
 		}
+	}
+	
+	public void testStartRegel() throws RegelVerstoss {
+		Feld lagerFeld = brett.getLagerFelderVon(spieler1).get(0);
+		lagerFeld.setFigur(figur1);
+		
+		Bewegung bewegung = new Bewegung(lagerFeld, bankFeld);
+		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		
+		Regel regel = new StartRegel();
+		Zug zug = regel.validiere(ze);
+		zug.ausfuehren();
+		assertFalse(lagerFeld.istBesetzt());
+		assertTrue(bankFeld.istBesetztVon(spieler1));
 	}
 }

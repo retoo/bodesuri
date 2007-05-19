@@ -1,6 +1,7 @@
 package pd.brett;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
@@ -60,4 +61,8 @@ public class Brett {
 	public BankFeld getBankFeldVon(Spieler spieler) {
 		return bankFelder.get(spieler);
 	}
+
+	public List<LagerFeld> getLagerFelderVon(Spieler spieler) {
+	    return lagerFelder.get(spieler);
+    }
 }
