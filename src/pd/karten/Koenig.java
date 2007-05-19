@@ -1,5 +1,7 @@
 package pd.karten;
 
+import pd.regelsystem.RegelVeroderung;
+import pd.regelsystem.StartRegel;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Koenig extends Karte{
@@ -7,7 +9,9 @@ public class Koenig extends Karte{
 
 	public Koenig(KartenFarbe farbe, int deck){
 		super("Koenig", farbe, deck);
-		/* TODO: ein Stein vom Startraum auf die Startposition */
-		setRegel(new VorwaertsRegel(13));
+		RegelVeroderung r = new RegelVeroderung();
+		r.fuegeHinzu(new VorwaertsRegel(13));
+		r.fuegeHinzu(new StartRegel());
+		setRegel(r);
 	}
 }
