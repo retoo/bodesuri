@@ -35,8 +35,13 @@ public class StartRegel extends Regel {
 		Zug zug = new Zug();
 		
 		if (ziel.istBesetzt() && !ziel.istBesetztVon(spieler)) {
-			// TODO: Heimschicken
-			// TODO: Was passiert, wenn von eigener Figur besetzt?
+			Spieler sp = ziel.getFigur().getSpieler();
+			// TODO: Gefällt mir noch nicht, vielleicht ne Methode in Spieler?
+			LagerFeld lf = sp.getSpiel().getBrett().getFreiesLagerFeldVon(sp);
+			zug.fuegeHinzu(new Aktion(ziel, lf));
+		} else if (ziel.istBesetztVon(spieler)) {
+			// TODO: Wenn Figur geschützt: RegelVerstoss. Sonst heimschicken.
+			throw new RegelVerstoss("Bankfeld ist von eigener Figur besetzt.");
 		}
 		
 		zug.fuegeHinzu(new Aktion(start, ziel));

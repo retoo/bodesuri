@@ -13,8 +13,7 @@ public class Aktion {
 	
 	public void ausfuehren() {
 		if (ziel.istBesetzt()) {
-			// TODO: In Zuegen auch Aktion fuer Heimschicken generieren.
-			// throw new RuntimeException("Ziel von Aktion sollte leer sein.");
+			throw new RuntimeException("Ziel von Aktion sollte leer sein.");
 		}
 		start.versetzeFigurAuf(ziel);
 	}
