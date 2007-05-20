@@ -63,7 +63,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(viererRegel);
 	}
 	
-	public void testStartRegel() throws RegelVerstoss {
+	public void testStart() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		
