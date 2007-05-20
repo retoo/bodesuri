@@ -10,16 +10,15 @@ import java.awt.Dimension;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.JPanel;
-
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import spielplatz.FelderXML;
+import ui.HauptView;
 import dienste.netzwerk.EndPunkt;
 
-public class BrettView extends JPanel {
+public class BrettView extends HauptView {
 
 	private static final long serialVersionUID = 1L;
 

@@ -25,19 +25,19 @@ import pd.zugsystem.ZugEingabe;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
 import ui.brett.Figur2d;
+import applikation.synchronisation.nachrichten.ChatNachricht;
+import applikation.synchronisation.nachrichten.NeueVerbindung;
+import applikation.synchronisation.nachrichten.SpielBeitreten;
+import applikation.synchronisation.nachrichten.SpielStartNachricht;
+import applikation.synchronisation.nachrichten.SpielVollNachricht;
+import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
+import applikation.synchronisation.nachrichten.ZugAufforderung;
+import applikation.synchronisation.nachrichten.ZugInformation;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.netzwerk.nachrichten.ChatNachricht;
-import dienste.netzwerk.nachrichten.Nachricht;
-import dienste.netzwerk.nachrichten.NeueVerbindung;
-import dienste.netzwerk.nachrichten.SpielBeitreten;
-import dienste.netzwerk.nachrichten.SpielStartNachricht;
-import dienste.netzwerk.nachrichten.SpielVollNachricht;
-import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
-import dienste.netzwerk.nachrichten.ZugAufforderung;
-import dienste.netzwerk.nachrichten.ZugInformation;
 
 public class Prototyp {
 	private Spiel spiel;
