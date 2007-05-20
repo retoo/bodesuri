@@ -4,7 +4,7 @@ import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.StartRegel;
 import pd.regelsystem.VorwaertsRegel;
 
-public class Koenig extends Karte{
+public class Koenig extends Karte {
 	private static final long serialVersionUID = 1L;
 
 	public Koenig(KartenFarbe farbe, int deck){
