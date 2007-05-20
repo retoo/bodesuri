@@ -167,7 +167,8 @@ public class Prototyp {
 	    Feld ziel  = auswahlZielfeld();
 	    
 	    Bewegung bewegung = new Bewegung(start, ziel);
-	    ZugEingabe zugEingabe = new ZugEingabe(lokalerSpieler, karte, bewegung);
+	    ZugEingabe zugEingabe = new ZugEingabe(spiel, lokalerSpieler,
+	                                           karte, bewegung);
 	    return zugEingabe;
     }
 
