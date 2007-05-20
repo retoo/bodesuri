@@ -61,10 +61,10 @@ public class Brett {
 		Vector<HimmelFeld> himmel = new Vector<HimmelFeld>();
 		for (int i = 0; i < 4; ++i) {
 			HimmelFeld hf = new HimmelFeld(feldNummer++, sp);
-			bf.setHimmel(hf);
-			hf.setVorheriges(bf);
 			himmel.add(hf);
 		}
+		bf.setHimmel(himmel.get(0));
+		himmel.get(0).setVorheriges(bf);
 		verkette(himmel, false);
 		himmelFelder.put(sp, himmel);
 	}
@@ -87,6 +87,10 @@ public class Brett {
 	public List<LagerFeld> getLagerFelderVon(Spieler spieler) {
 	    return lagerFelder.get(spieler);
     }
+	
+	public List<HimmelFeld> getHimmelFelderVon(Spieler spieler) {
+		return himmelFelder.get(spieler);
+	}
 	
 	public LagerFeld getFreiesLagerFeldVon(Spieler spieler) {
 		for (LagerFeld feld : lagerFelder.get(spieler)) {
