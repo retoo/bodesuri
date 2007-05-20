@@ -51,8 +51,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	public void testZugSerialisieren()
 			throws IOException, ClassNotFoundException {
 		Bewegung bewegung = new Bewegung(feld1, feld2);
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1,
-		                               kartenGeber.getKarte(), bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler1, kartenGeber.getKarte(), bewegung);
 		
 		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
 		assertEquals(ze.getSpieler(), ze2.getSpieler());

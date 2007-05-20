@@ -25,7 +25,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	public void testVier() throws RegelVerstoss {
 		bankFeld.setFigur(figur1);
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1, vier, bewegung4);
+		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
 		
 		Zug zug = ze.validiere();
 		zug.ausfuehren();
@@ -36,7 +36,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	public void testVierFalsch() {
 		bankFeld.setFigur(figur1);
 		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1, vier, bewegung3);
+		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
 		try {
 			ze.validiere();
 			fail("Sollte RegelVerstoss geben.");
@@ -48,7 +48,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	public void testVierRueckwaerts() throws RegelVerstoss {
 		zielFeld.setFigur(figur1);
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1, vier, bewegung4);
+		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
 		
 		Zug zug = ze.validiere();
 		zug.ausfuehren();
@@ -59,7 +59,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	public void testVierRueckwaertsFalsch() {
 		zielFeld.setFigur(figur1);
 		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1, vier, bewegung3);
+		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
 		try {
 			ze.validiere();
 			fail("Sollte RegelVerstoss geben.");
@@ -72,7 +72,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		Feld lagerFeld = brett.getLagerFelderVon(spieler1).get(0);
 		
 		Bewegung bewegung = new Bewegung(lagerFeld, bankFeld);
-		ZugEingabe ze = new ZugEingabe(spiel, spieler1, null, bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
 		
 		Regel regel = new StartRegel();
 		Zug zug = regel.validiere(ze);
