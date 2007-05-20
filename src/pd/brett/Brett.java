@@ -11,7 +11,7 @@ import pd.spieler.Spieler;
 public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
-	// private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
+	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
 	
 	private Spiel spiel;
 	
@@ -24,6 +24,7 @@ public class Brett {
 	private void erstelleFelder() {
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
+		himmelFelder = new HashMap<Spieler, Vector<HimmelFeld>>();
 		
 		int nummer = 0;
 		
@@ -33,6 +34,21 @@ public class Brett {
 			BankFeld bf = new BankFeld(nummer++, sp);
 			bankFelder.put(sp, bf);
 			felderInRing.add(bf);
+			
+			Vector<HimmelFeld> himmel = new Vector<HimmelFeld>();
+			for (int i = 0; i < 4; ++i) {
+				HimmelFeld hf = new HimmelFeld(nummer++, sp);
+				bf.setHimmel(hf);
+				hf.setVorheriges(bf);
+				himmel.add(hf);
+			}
+			for (int i = 0; i < himmel.size() - 1; ++i) {
+				HimmelFeld f1 = himmel.get(i);
+				HimmelFeld f2 = himmel.get(i + 1);
+				f1.setNaechstes(f2);
+				f2.setVorheriges(f1);
+			}
+			himmelFelder.put(sp, himmel);
 			
 			Vector<LagerFeld> lager = new Vector<LagerFeld>();
 			for (int i = 0; i < 4; ++i) {
