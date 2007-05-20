@@ -65,4 +65,14 @@ public class Brett {
 	public List<LagerFeld> getLagerFelderVon(Spieler spieler) {
 	    return lagerFelder.get(spieler);
     }
+	
+	public LagerFeld getFreiesLagerFeldVon(Spieler spieler) {
+		for (LagerFeld feld : lagerFelder.get(spieler)) {
+			if (!feld.istBesetzt()) {
+				return feld;
+			}
+		}
+		throw new RuntimeException("getFreiesLagerFeldVon wurde aufgerufen, " +
+				"aber es sind keine freien Lagerfelder mehr vorhanden.");
+	}
 }

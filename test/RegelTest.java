@@ -70,7 +70,6 @@ public class RegelTest extends ProblemDomainTestCase {
 	
 	public void testStartRegel() throws RegelVerstoss {
 		Feld lagerFeld = brett.getLagerFelderVon(spieler1).get(0);
-		lagerFeld.setFigur(figur1);
 		
 		Bewegung bewegung = new Bewegung(lagerFeld, bankFeld);
 		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
