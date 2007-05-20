@@ -65,11 +65,11 @@ public class Brett {
 			hf.setVorheriges(bf);
 			himmel.add(hf);
 		}
-		verkette(new Vector<Feld>(himmel), false);
+		verkette(himmel, false);
 		himmelFelder.put(sp, himmel);
 	}
 	
-	private void verkette(Vector<Feld> felder, boolean ringsum) {
+	private void verkette(List<? extends Feld> felder, boolean ringsum) {
 		int anzahl = ringsum ? felder.size() : felder.size() - 1;
 		for (int i = 0; i < anzahl; ++i) {
 			int i2 = (i + 1) % felder.size();
