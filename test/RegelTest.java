@@ -116,4 +116,21 @@ public class RegelTest extends ProblemDomainTestCase {
 		assertTrue(feld1.istBesetztVon(spieler2));
 		assertTrue(feld2.istBesetztVon(spieler1));
 	}
+	
+	public void testTauschenFalsch() {
+		Feld feld1 = bankFeld.getNtesFeld(2);
+		Feld feld2 = bankFeld.getNtesFeld(5);
+		feld1.setFigur(spieler1.getFiguren().get(0));
+		feld2.setFigur(spieler1.getFiguren().get(1));
+		
+		Bewegung bewegung = new Bewegung(feld1, feld2);
+		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		Regel regel = new TauschRegel();
+        try {
+	        regel.validiere(ze);
+	        fail("Sollte RegelVerstoss geben.");
+        } catch (RegelVerstoss rv) {
+        	assertNotNull(rv);
+        }
+	}
 }
