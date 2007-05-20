@@ -1,5 +1,6 @@
 import junit.framework.TestCase;
 import pd.Spiel;
+import pd.brett.BankFeld;
 import pd.brett.Brett;
 import pd.brett.LagerFeld;
 import pd.karten.KartenGeber;
@@ -10,6 +11,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 	protected Brett brett;
 	protected Spieler spieler1;
 	protected Spieler spieler2;
+	protected BankFeld bankFeld1;
 	protected LagerFeld lagerFeld1;
 	protected LagerFeld lagerFeld2;
 	protected KartenGeber kartenGeber;
@@ -23,6 +25,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		}
 		
 		spieler1 = spiel.getSpieler().get(0);
+		bankFeld1 = brett.getBankFeldVon(spieler1);
 		lagerFeld1 = brett.getLagerFelderVon(spieler1).get(0);
 		
 		spieler2 = spiel.getSpieler().get(1);

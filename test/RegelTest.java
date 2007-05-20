@@ -1,6 +1,4 @@
-import pd.brett.BankFeld;
 import pd.brett.Feld;
-import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;
 import pd.regelsystem.Regel;
@@ -9,123 +7,126 @@ import pd.regelsystem.StartRegel;
 import pd.regelsystem.TauschRegel;
 import pd.regelsystem.VorwaertsRegel;
 import pd.spieler.Figur;
+import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
 public class RegelTest extends ProblemDomainTestCase {
-	private Karte vier;
-	protected BankFeld bankFeld;
-	protected Feld zielFeld;
+	private Regel viererRegel;
+	
+	private Spieler spieler;
+	private Feld start;
+	private Feld ziel;
 	
 	public void setUp() throws Exception {
 		super.setUp();
-		vier = new Vier(KartenFarbe.Herz, 0);
-		bankFeld = brett.getBankFeldVon(spieler1);
-		zielFeld = bankFeld.getNtesFeld(4);
+		viererRegel = new Vier(KartenFarbe.Herz, 0).getRegel();
+		spieler = spieler1;
 	}
 	
 	public void testVier() throws RegelVerstoss {
-		lagerFeld1.versetzeFigurAuf(bankFeld);
-		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
-		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
+		start = bankFeld1;
+		ziel  = start.getNtesFeld(4);
+		lagerFeld1.versetzeFigurAuf(start);
 		
-		Zug zug = ze.validiere();
-		zug.ausfuehren();
-		assertFalse(bewegung4.getStart().istBesetzt());
-		assertTrue(bewegung4.getZiel().istBesetztVon(spieler1));
+		sollteValidieren(viererRegel);
+		
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
 	}
 	
 	public void testVierFalsch() {
-		lagerFeld1.versetzeFigurAuf(bankFeld);
-		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
-		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
-		try {
-			ze.validiere();
-			fail("Sollte RegelVerstoss geben.");
-		} catch (RegelVerstoss rv) {
-			assertNotNull(rv);
-		}
+		start = bankFeld1;
+		ziel  = start.getNtesFeld(3);
+		lagerFeld1.versetzeFigurAuf(start);
+		
+		sollteVerstossGeben(viererRegel);
 	}
 
 	public void testVierRueckwaerts() throws RegelVerstoss {
-		lagerFeld1.versetzeFigurAuf(zielFeld);
-		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
-		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
+		start = bankFeld1.getNtesFeld(4);
+		ziel  = bankFeld1;
+		lagerFeld1.versetzeFigurAuf(start);
 		
-		Zug zug = ze.validiere();
-		zug.ausfuehren();
-		assertFalse(bewegung4.getStart().istBesetzt());
-		assertTrue(bewegung4.getZiel().istBesetztVon(spieler1));
+		sollteValidieren(viererRegel);
+		
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
 	}
 	
 	public void testVierRueckwaertsFalsch() {
-		lagerFeld1.versetzeFigurAuf(zielFeld);
-		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
-		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
-		try {
-			ze.validiere();
-			fail("Sollte RegelVerstoss geben.");
-		} catch (RegelVerstoss rv) {
-			assertNotNull(rv);
-		}
+		start = bankFeld1.getNtesFeld(3);
+		ziel  = bankFeld1;
+		lagerFeld1.versetzeFigurAuf(start);
+		
+		sollteVerstossGeben(viererRegel);
 	}
 	
 	public void testStartRegel() throws RegelVerstoss {
-		Feld lagerFeld = brett.getLagerFelderVon(spieler1).get(0);
+		start = lagerFeld1;
+		ziel  = bankFeld1;
 		
-		Bewegung bewegung = new Bewegung(lagerFeld, bankFeld);
-		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		sollteValidieren(new StartRegel());
 		
-		Regel regel = new StartRegel();
-		Zug zug = regel.validiere(ze);
-		zug.ausfuehren();
-		assertFalse(lagerFeld.istBesetzt());
-		assertTrue(bankFeld.istBesetztVon(spieler1));
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
 	}
 	
 	public void testHeimSchicken() throws RegelVerstoss {
-		zielFeld = bankFeld.getNtesFeld(5);
-		lagerFeld1.versetzeFigurAuf(bankFeld);
-		lagerFeld2.versetzeFigurAuf(zielFeld);
-		Figur figur2 = zielFeld.getFigur();
+		start = bankFeld1;
+		ziel  = start.getNtesFeld(5);
+		lagerFeld1.versetzeFigurAuf(start);
+		lagerFeld2.versetzeFigurAuf(ziel);
+		Figur figur2 = ziel.getFigur();
 		
-		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
-		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		sollteValidieren(new VorwaertsRegel(5));
 		
-		Regel regel = new VorwaertsRegel(5);
-		Zug zug = regel.validiere(ze);
-		zug.ausfuehren();
-		assertFalse(bankFeld.istBesetzt());
-		assertTrue(zielFeld.istBesetztVon(spieler1));
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
 		assertEquals(figur2, lagerFeld2.getFigur());
 	}
 	
 	public void testTauschen() throws RegelVerstoss {
-		Feld feld1 = bankFeld.getNtesFeld(2);
-		Feld feld2 = bankFeld.getNtesFeld(5);
-		lagerFeld1.versetzeFigurAuf(feld1);
-		lagerFeld2.versetzeFigurAuf(feld2);
+		start = bankFeld1.getNtesFeld(2);
+		ziel  = bankFeld1.getNtesFeld(5);
+		lagerFeld1.versetzeFigurAuf(start);
+		lagerFeld2.versetzeFigurAuf(ziel);
 		
-		Bewegung bewegung = new Bewegung(feld1, feld2);
-		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
-		Regel regel = new TauschRegel();
-		Zug zug = regel.validiere(ze);
-		zug.ausfuehren();
+		sollteValidieren(new TauschRegel());
 		
-		assertTrue(feld1.istBesetztVon(spieler2));
-		assertTrue(feld2.istBesetztVon(spieler1));
+		assertTrue(start.istBesetztVon(spieler2));
+		assertTrue(ziel.istBesetztVon(spieler1));
 	}
 	
-	public void testTauschenFalsch() {
-		Feld feld1 = bankFeld.getNtesFeld(2);
-		Feld feld2 = bankFeld.getNtesFeld(5);
-		feld1.setFigur(spieler1.getFiguren().get(0));
-		feld2.setFigur(spieler1.getFiguren().get(1));
+	public void testTauschenZweiEigene() {
+		start = bankFeld1.getNtesFeld(2);
+		ziel  = bankFeld1.getNtesFeld(5);
+		start.setFigur(spieler1.getFiguren().get(0));
+		ziel.setFigur(spieler1.getFiguren().get(1));
 		
-		Bewegung bewegung = new Bewegung(feld1, feld2);
-		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
-		Regel regel = new TauschRegel();
+		sollteVerstossGeben(new TauschRegel());
+	}
+	
+	public void testTauschenZweiFremde() {
+		start = bankFeld1.getNtesFeld(2);
+		ziel  = bankFeld1.getNtesFeld(5);
+		start.setFigur(spieler2.getFiguren().get(0));
+		ziel.setFigur(spieler2.getFiguren().get(1));
+		
+		sollteVerstossGeben(new TauschRegel());
+	}
+	
+	private void sollteValidieren(Regel regel) throws RegelVerstoss {
+		Bewegung bewegung = new Bewegung(start, ziel);
+		ZugEingabe ze = new ZugEingabe(spieler, null, bewegung);
+		Zug zug = regel.validiere(ze);
+		zug.ausfuehren();
+    }
+	
+	private void sollteVerstossGeben(Regel regel) {
+		Bewegung bewegung = new Bewegung(start, ziel);
+		ZugEingabe ze = new ZugEingabe(spieler, null, bewegung);
         try {
 	        regel.validiere(ze);
 	        fail("Sollte RegelVerstoss geben.");
