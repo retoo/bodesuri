@@ -6,6 +6,8 @@ import pd.karten.Vier;
 import pd.regelsystem.Regel;
 import pd.regelsystem.RegelVerstoss;
 import pd.regelsystem.StartRegel;
+import pd.regelsystem.VorwaertsRegel;
+import pd.spieler.Figur;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -23,7 +25,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	}
 	
 	public void testVier() throws RegelVerstoss {
-		bankFeld.setFigur(figur1);
+		lagerFeld1.versetzeFigurAuf(bankFeld);
 		Bewegung bewegung4 = new Bewegung(bankFeld, zielFeld);
 		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
 		
@@ -34,7 +36,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	}
 	
 	public void testVierFalsch() {
-		bankFeld.setFigur(figur1);
+		lagerFeld1.versetzeFigurAuf(bankFeld);
 		Bewegung bewegung3 = new Bewegung(bankFeld, zielFeld.getVorheriges());
 		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
 		try {
@@ -46,7 +48,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	}
 
 	public void testVierRueckwaerts() throws RegelVerstoss {
-		zielFeld.setFigur(figur1);
+		lagerFeld1.versetzeFigurAuf(zielFeld);
 		Bewegung bewegung4 = new Bewegung(zielFeld, bankFeld);
 		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung4);
 		
@@ -57,7 +59,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	}
 	
 	public void testVierRueckwaertsFalsch() {
-		zielFeld.setFigur(figur1);
+		lagerFeld1.versetzeFigurAuf(zielFeld);
 		Bewegung bewegung3 = new Bewegung(zielFeld, bankFeld.getVorheriges());
 		ZugEingabe ze = new ZugEingabe(spieler1, vier, bewegung3);
 		try {
@@ -79,5 +81,22 @@ public class RegelTest extends ProblemDomainTestCase {
 		zug.ausfuehren();
 		assertFalse(lagerFeld.istBesetzt());
 		assertTrue(bankFeld.istBesetztVon(spieler1));
+	}
+	
+	public void testHeimSchicken() throws RegelVerstoss {
+		zielFeld = bankFeld.getNtesFeld(5);
+		lagerFeld1.versetzeFigurAuf(bankFeld);
+		lagerFeld2.versetzeFigurAuf(zielFeld);
+		Figur figur2 = zielFeld.getFigur();
+		
+		Bewegung bewegung = new Bewegung(bankFeld, zielFeld);
+		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		
+		Regel regel = new VorwaertsRegel(5);
+		Zug zug = regel.validiere(ze);
+		zug.ausfuehren();
+		assertFalse(bankFeld.istBesetzt());
+		assertTrue(zielFeld.istBesetztVon(spieler1));
+		assertEquals(figur2, lagerFeld2.getFigur());
 	}
 }

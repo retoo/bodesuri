@@ -7,7 +7,7 @@ public class FeldTest extends ProblemDomainTestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		feld1 = brett.getBankFeldVon(spieler1);
-		feld1.setFigur(figur1);
+		lagerFeld1.versetzeFigurAuf(feld1);
 		feld2 = feld1.getNaechstes();
 	}
 
