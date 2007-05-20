@@ -6,6 +6,7 @@ import pd.karten.Vier;
 import pd.regelsystem.Regel;
 import pd.regelsystem.RegelVerstoss;
 import pd.regelsystem.StartRegel;
+import pd.regelsystem.TauschRegel;
 import pd.regelsystem.VorwaertsRegel;
 import pd.spieler.Figur;
 import pd.zugsystem.Bewegung;
@@ -98,5 +99,21 @@ public class RegelTest extends ProblemDomainTestCase {
 		assertFalse(bankFeld.istBesetzt());
 		assertTrue(zielFeld.istBesetztVon(spieler1));
 		assertEquals(figur2, lagerFeld2.getFigur());
+	}
+	
+	public void testTauschen() throws RegelVerstoss {
+		Feld feld1 = bankFeld.getNtesFeld(2);
+		Feld feld2 = bankFeld.getNtesFeld(5);
+		lagerFeld1.versetzeFigurAuf(feld1);
+		lagerFeld2.versetzeFigurAuf(feld2);
+		
+		Bewegung bewegung = new Bewegung(feld1, feld2);
+		ZugEingabe ze = new ZugEingabe(spieler1, null, bewegung);
+		Regel regel = new TauschRegel();
+		Zug zug = regel.validiere(ze);
+		zug.ausfuehren();
+		
+		assertTrue(feld1.istBesetztVon(spieler2));
+		assertTrue(feld2.istBesetztVon(spieler1));
 	}
 }

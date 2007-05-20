@@ -3,8 +3,8 @@ package pd.zugsystem;
 import pd.brett.Feld;
 
 public class Aktion {
-	private Feld start;
-	private Feld ziel;
+	protected Feld start;
+	protected Feld ziel;
 	
 	public Aktion(Feld start, Feld ziel) {
 		this.start = start;

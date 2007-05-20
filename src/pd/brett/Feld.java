@@ -30,6 +30,10 @@ public abstract class Feld extends CodierbaresObjekt {
 		setFigur(null);
 	}
 
+	public boolean istFrei() {
+		return getFigur() == null;
+	}
+
 	public boolean istBesetzt() {
 		return getFigur() != null;
 	}
