@@ -14,6 +14,7 @@ public class Brett {
 	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
 	
 	private Spiel spiel;
+	private int feldNummer;
 	
 	public Brett(Spiel spiel) {
 		this.spiel = spiel;
@@ -26,49 +27,54 @@ public class Brett {
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
 		himmelFelder = new HashMap<Spieler, Vector<HimmelFeld>>();
 		
-		int nummer = 0;
-		
+		feldNummer = 0;
 		Vector<Feld> felderInRing = new Vector<Feld>();
 		
 		for (Spieler sp : spiel.getSpieler()) {
-			BankFeld bf = new BankFeld(nummer++, sp);
+			BankFeld bf = new BankFeld(feldNummer++, sp);
 			bankFelder.put(sp, bf);
+			
+			erstelleLager(sp, bf);
+			erstelleHimmel(sp, bf);
+			
 			felderInRing.add(bf);
-			
-			Vector<HimmelFeld> himmel = new Vector<HimmelFeld>();
-			for (int i = 0; i < 4; ++i) {
-				HimmelFeld hf = new HimmelFeld(nummer++, sp);
-				bf.setHimmel(hf);
-				hf.setVorheriges(bf);
-				himmel.add(hf);
-			}
-			for (int i = 0; i < himmel.size() - 1; ++i) {
-				HimmelFeld f1 = himmel.get(i);
-				HimmelFeld f2 = himmel.get(i + 1);
-				f1.setNaechstes(f2);
-				f2.setVorheriges(f1);
-			}
-			himmelFelder.put(sp, himmel);
-			
-			Vector<LagerFeld> lager = new Vector<LagerFeld>();
-			for (int i = 0; i < 4; ++i) {
-				LagerFeld lf = new LagerFeld(nummer++, sp);
-				lf.setFigur(sp.getFiguren().get(i));
-				lf.setNaechstes(bf);
-				lager.add(lf);
-			}
-			lagerFelder.put(sp, lager);
-			
 			for (int i = 0; i < 15; ++i) {
-				NormalesFeld nf = new NormalesFeld(nummer++);
-				felderInRing.add(nf);
+				felderInRing.add(new NormalesFeld(feldNummer++));
 			}
 		}
 		
-		for (int i = 0; i < felderInRing.size(); ++i) {
-			int i2 = (i + 1) % felderInRing.size();
-			Feld f1 = felderInRing.get(i);
-			Feld f2 = felderInRing.get(i2);
+		verkette(felderInRing, true);
+	}
+
+	private void erstelleLager(Spieler sp, BankFeld bf) {
+	    Vector<LagerFeld> lager = new Vector<LagerFeld>();
+	    for (int i = 0; i < 4; ++i) {
+	    	LagerFeld lf = new LagerFeld(feldNummer++, sp);
+	    	lf.setFigur(sp.getFiguren().get(i));
+	    	lf.setNaechstes(bf);
+	    	lager.add(lf);
+	    }
+	    lagerFelder.put(sp, lager);
+    }
+
+	private void erstelleHimmel(Spieler sp, BankFeld bf) {
+		Vector<HimmelFeld> himmel = new Vector<HimmelFeld>();
+		for (int i = 0; i < 4; ++i) {
+			HimmelFeld hf = new HimmelFeld(feldNummer++, sp);
+			bf.setHimmel(hf);
+			hf.setVorheriges(bf);
+			himmel.add(hf);
+		}
+		verkette(new Vector<Feld>(himmel), false);
+		himmelFelder.put(sp, himmel);
+	}
+	
+	private void verkette(Vector<Feld> felder, boolean ringsum) {
+		int anzahl = ringsum ? felder.size() : felder.size() - 1;
+		for (int i = 0; i < anzahl; ++i) {
+			int i2 = (i + 1) % felder.size();
+			Feld f1 = felder.get(i);
+			Feld f2 = felder.get(i2);
 			f1.setNaechstes(f2);
 			f2.setVorheriges(f1);
 		}
