@@ -15,23 +15,9 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	
 	protected void setUp() throws Exception {
 		super.setUp();
-		feld1 = brett.getBankFeldVon(spieler1);
-		lagerFeld1.versetzeFigurAuf(feld1);
+		feld1 = bankFeld1;
 		feld2 = feld1.getNaechstes();
-	}
-	
-	private Object durchSerialisierung(Object original)
-			throws IOException, ClassNotFoundException {
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ObjectOutputStream oos;
-		oos = new ObjectOutputStream(baos);
-		oos.writeObject(original);
-		oos.close();
-
-		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-		ObjectInputStream ois;
-		ois = new ObjectInputStream(bais);
-		return ois.readObject();
+		lagerFeld1.versetzeFigurAuf(feld1);
 	}
 	
 	public void testFeldSerialisieren()
@@ -48,7 +34,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		assertEquals(feld2, neu.getZiel());
 	}
 	
-	public void testZugSerialisieren()
+	public void testZugEingabeSerialisieren()
 			throws IOException, ClassNotFoundException {
 		Bewegung bewegung = new Bewegung(feld1, feld2);
 		ZugEingabe ze = new ZugEingabe(spieler1, kartenGeber.getKarte(), bewegung);
@@ -66,5 +52,19 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		for (Karte karte : kartenGeber.getKarten(110)) {
 			assertEquals(karte, durchSerialisierung(karte));
 		}
+	}
+	
+	private Object durchSerialisierung(Object original)
+			throws IOException, ClassNotFoundException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ObjectOutputStream oos;
+		oos = new ObjectOutputStream(baos);
+		oos.writeObject(original);
+		oos.close();
+		
+		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+		ObjectInputStream ois;
+		ois = new ObjectInputStream(bais);
+		return ois.readObject();
 	}
 }
