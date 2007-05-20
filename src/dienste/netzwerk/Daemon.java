@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+// FIXME: Abhängigkeit auflösen
 import applikation.synchronisation.nachrichten.NeueVerbindung;
 
 

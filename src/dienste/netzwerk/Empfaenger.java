@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+//FIXME: Abhängigkeit auflösen
 import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
 
 
