@@ -7,15 +7,18 @@
   <property name="tst-dir" location="test"/>
   <property name="res-dir" location="results"/>
   <property name="src-dir" location="src"/>
+  <property name="ext-dir" location="vendor"/>
   <path id="classpath.base">
-      <pathelement location="${lib-dir}/bodesuri.jar"/>
+      <pathelement location="${ext-dir}/jdom-1.0-2004-09-09.jar"/>
   </path>
   <path id="classpath.run">
+    <pathelement location="${lib-dir}/bodesuri.jar"/>
     <path refid="classpath.base"/>
   </path>
   <path id="classpath.test">
     <pathelement location="${tst-dir}"/>
-    <pathelement location="/Applications/Eclipse/plugins/org.junit4_4.1.0.1/junit-4.1.jar"/>
+    <pathelement location="${lib-dir}/bodesuri.jar"/>
+    <pathelement location="${ext-dir}/junit4_4.1.0.1"/>
     <path refid="classpath.base"/>
   </path>
 <!-- initialization -->
@@ -26,7 +29,9 @@
   </target>
 <!-- build -->
   <target name="compile" depends="init">
-    <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8"/>
+    <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8">
+      <classpath refid="classpath.base"/>
+    </javac>
   </target>
   <target name="compile-test" depends="jar">
     <javac srcdir="${tst-dir}" verbose="${TALK}" encoding="utf8">
