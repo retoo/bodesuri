@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.brett.Feld;
+import pd.brett.LagerFeld;
+import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
@@ -30,14 +32,16 @@ public class VorwaertsRegel extends Regel {
 			                        " Felder gehen.");
 		}
 		
+		Zug zug = new Zug();
+		
 		if (ziel.istBesetzt()) {
-			throw new RegelVerstoss("Das Zielfeld ist bereits besetzt.");
+			Spieler sp = ziel.getFigur().getSpieler();
+			// TODO: Gefällt mir noch nicht, vielleicht ne Methode in Spieler?
+			LagerFeld lf = sp.getSpiel().getBrett().getFreiesLagerFeldVon(sp);
+			zug.fuegeHinzu(new Aktion(ziel, lf));
 		}
 		
-		Zug zug = new Zug();
 		zug.fuegeHinzu(new Aktion(start, ziel));
-		
-		/* TODO: Aktion für Figur auf Ziel heimschicken. */
 		
 		return zug;
 	}

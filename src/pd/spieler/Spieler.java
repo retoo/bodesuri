@@ -2,28 +2,26 @@ package pd.spieler;
 
 import java.util.Vector;
 
+import pd.Spiel;
 import dienste.serialisierung.CodierbaresObjekt;
 
 public class Spieler extends CodierbaresObjekt {
 	private static final long serialVersionUID = 1L;
 	
 	private int nummer;
-	
 	private String name;
+	
+	private Spiel spiel;
 	
 	private Vector<Figur> figuren = new Vector<Figur>();
 	
-	public Spieler(int nummer) {
+	public Spieler(int nummer, Spiel spiel) {
 		super("Spieler " + nummer);
 		this.nummer = nummer;
+		this.spiel = spiel;
 		for (int i = 0; i < 4; ++i) {
 			figuren.add(new Figur(this));
 		}
-	}
-	
-	public Spieler(int nummer, String name) {
-		this(nummer);
-		this.name = name;
 	}
 
 	public String toString() {
@@ -46,4 +44,8 @@ public class Spieler extends CodierbaresObjekt {
 	public int getNummer() {
     	return nummer;
     }
+
+	public Spiel getSpiel() {
+		return spiel;
+	}
 }

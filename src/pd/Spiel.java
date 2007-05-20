@@ -25,7 +25,7 @@ public class Spiel {
 		Spiel.aktuelles = this;
 		kartenGeber = new KartenGeber();
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
-			Spieler sp = new Spieler(i);
+			Spieler sp = new Spieler(i, this);
 			spieler.add(sp);
 		}
 		brett = new Brett(this);
