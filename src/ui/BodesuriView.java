@@ -13,6 +13,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import applikation.synchronisation.nachrichten.ChatNachricht;
+import applikation.synchronisation.nachrichten.NeueVerbindung;
+import applikation.synchronisation.nachrichten.SpielBeitreten;
+import applikation.synchronisation.nachrichten.SpielStartNachricht;
+import applikation.synchronisation.nachrichten.SpielVollNachricht;
+import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
+
 import pd.Spiel;
 import pd.spieler.Spieler;
 import ui.brett.BrettView;
@@ -21,14 +28,8 @@ import ui.info.DeckView;
 import ui.info.SpielerView;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.netzwerk.nachrichten.ChatNachricht;
-import dienste.netzwerk.nachrichten.Nachricht;
-import dienste.netzwerk.nachrichten.NeueVerbindung;
-import dienste.netzwerk.nachrichten.SpielBeitreten;
-import dienste.netzwerk.nachrichten.SpielStartNachricht;
-import dienste.netzwerk.nachrichten.SpielVollNachricht;
-import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
 
 /**
  * Das GUI des Spieles...

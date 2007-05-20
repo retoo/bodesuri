@@ -4,7 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import dienste.netzwerk.nachrichten.NeueVerbindung;
+import applikation.synchronisation.nachrichten.NeueVerbindung;
+
 
 
 public class Daemon implements Runnable {	

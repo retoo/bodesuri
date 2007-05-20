@@ -6,7 +6,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import dienste.netzwerk.nachrichten.Nachricht;
 
 
 public class EndPunkt {

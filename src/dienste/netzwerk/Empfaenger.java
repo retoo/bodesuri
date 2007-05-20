@@ -5,8 +5,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-import dienste.netzwerk.nachrichten.Nachricht;
-import dienste.netzwerk.nachrichten.VerbindungGeschlossen;
+import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
+
 
 
 public class Empfaenger implements Runnable{
