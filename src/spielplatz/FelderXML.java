@@ -59,13 +59,13 @@ public class FelderXML {
 			feld = (Element) this.getNext();
 		}
 
-		if (i / 16 == 1) {
+		if (i / 24 == 1) {
 			return new Point(getY(feld), 600 - getX(feld));
 		}
-		if (i / 16 == 2) {
+		if (i / 24 == 2) {
 			return new Point(600 - getX(feld), 600 - getY(feld));
 		}
-		if (i / 16 == 3) {
+		if (i / 24 == 3) {
 			return new Point(600 - getY(feld), getX(feld));
 		}
 
