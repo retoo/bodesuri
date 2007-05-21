@@ -21,7 +21,14 @@ public class Brett {
 		erstelleFelder();
 	}
 
-	/* TODO: Schritt für Schritt durchdenken */
+	/*
+	 * Feldnummerierung ist folgendermassen:
+	 * - Bankfeld 0
+	 * - Lagerfelder von 1-4
+	 * - Himmelfelder von 5-8
+	 * - Normale Felder von 9-23
+	 * Also 24 Felder pro "Ecke" von Spieler.
+	 */
 	private void erstelleFelder() {
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
