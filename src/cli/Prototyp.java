@@ -287,7 +287,7 @@ public class Prototyp {
 		EndPunkt server = null;
 		
 		try {
-			server = new EndPunkt(hostname, port);
+			server = new EndPunkt(hostname, port, new Briefkasten());
 			
 			System.out.println();
 			

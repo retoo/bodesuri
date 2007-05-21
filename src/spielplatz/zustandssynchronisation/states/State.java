@@ -1,8 +1,17 @@
 package spielplatz.zustandssynchronisation.states;
 
-public class State {
+import spielplatz.zustandssynchronisation.Event;
+import spielplatz.zustandssynchronisation.StateMachine;
+import spielplatz.zustandssynchronisation.UnbekannterEventException;
 
-	public State execute() {   
-	    return null;
+public class State {
+	StateMachine machine;
+
+	public State execute(Event event) {
+		throw new UnbekannterEventException("State " + this + " didn't return the next state");
+    }
+
+	public void setMachine(StateMachine machine) {
+		this.machine = machine;
     }
 }

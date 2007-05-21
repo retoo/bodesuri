@@ -1,7 +1,7 @@
 package spielplatz.zustandssynchronisation;
 
-public class UnknownNextStateException extends RuntimeException {
-    public UnknownNextStateException(String msg) {
+public class UnbekannterEventException extends RuntimeException {
+    public UnbekannterEventException(String msg) {
 	    super(msg);
     }
 

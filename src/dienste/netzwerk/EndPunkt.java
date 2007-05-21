@@ -41,16 +41,17 @@ public class EndPunkt {
 	 * 
 	 * @param hostname Hostname des zu verbindenen Systems
 	 * @param port Port des zu verbinden Systems
+	 * @param briefkasten 
 	 * @throws UnknownHostException 
 	 * @throws IOException
 	 */
-	public EndPunkt(String hostname, int port) throws UnknownHostException, IOException {
+	public EndPunkt(String hostname, int port, Briefkasten briefkasten) throws UnknownHostException, IOException {
 		System.out.println("Verbinde zu " + hostname + ":" + port);
 		
 		socket = new Socket(hostname, port);
 		
 		 /* Buffer für eingehende Nachrichten */
-		briefkasten = new Briefkasten();
+		this.briefkasten = briefkasten;
 		
 		startVerhandlung();
 		

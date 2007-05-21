@@ -1,6 +1,6 @@
 package spielplatz.zustandssynchronisation.states;
 
 
-public class SpielStartState extends State {
-
+public class Lobby extends BodesuriState {
+	
 }
