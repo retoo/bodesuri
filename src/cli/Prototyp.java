@@ -42,8 +42,6 @@ import dienste.netzwerk.VerbindungWegException;
 public class Prototyp {
 	private Spiel spiel;
 	private Brett brett;
-
-	FehlerFuerBuildDaemon asd;
 	
 	private BankFeld startFeld;
 	private EndPunkt server;
