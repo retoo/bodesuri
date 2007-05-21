@@ -1,4 +1,4 @@
-package spielplatz;
+package spielplatz.zustandssynchronisation;
 
 import java.util.List;
 import java.util.Vector;

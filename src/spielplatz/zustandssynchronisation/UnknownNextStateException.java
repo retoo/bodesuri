@@ -1,4 +1,4 @@
-package spielplatz;
+package spielplatz.zustandssynchronisation;
 
 public class UnknownNextStateException extends RuntimeException {
     public UnknownNextStateException(String msg) {

@@ -1,4 +1,4 @@
-package spielplatz;
+package spielplatz.zustandssynchronisation;
 
 import spielplatz.zustandssynchronisation.states.SpielEndeState;
 import spielplatz.zustandssynchronisation.states.SpielStartState;
