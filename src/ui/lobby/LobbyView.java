@@ -6,15 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import spielplatz.zustandssynchronisation.VerbindenEvent;
-import ui.HauptView;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 
-public class LobbyView extends HauptView {
+public class LobbyView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField hostname;
@@ -26,10 +26,8 @@ public class LobbyView extends HauptView {
 		this.briefkasten = bk;
 		
 		setLayout(new GridLayout(4, 2));
-		Dimension groesse = new Dimension(600, 600);
+		Dimension groesse = new Dimension(300, 150);
 		setPreferredSize(groesse);
-		setMaximumSize(groesse);
-		setMinimumSize(groesse);
 		
 		add(new JLabel("Server:"));
 		hostname = new JTextField("localhost");
@@ -54,6 +52,8 @@ public class LobbyView extends HauptView {
             }
 		});
 		add(ok);
+		
+		pack();
 	}
 
 //	private void verbinden() throws UnknownHostException, IOException,

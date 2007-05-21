@@ -40,7 +40,7 @@ public class BodesuriView extends JFrame {
 		setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 
 		Box links = Box.createVerticalBox();
-		links.add(new LobbyView(briefkasten));
+		links.add(Box.createVerticalGlue());
 		links.add(new ChatView());
 
 		Box rechts = Box.createVerticalBox();
@@ -52,6 +52,9 @@ public class BodesuriView extends JFrame {
 		add(rechts);
 		add(Box.createHorizontalGlue());
 		pack();
+		
+		LobbyView lobbyView = new LobbyView(briefkasten);
+		lobbyView.setVisible(true);
 	}
 
 	public static void main(String[] args) throws UnknownHostException,
