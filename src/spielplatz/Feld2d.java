@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 
-@Deprecated
+@Deprecated 
 public class Feld2d extends Ellipse2D {
 	private int x;
 
