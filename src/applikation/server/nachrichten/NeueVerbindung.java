@@ -1,9 +1,9 @@
-package applikation.synchronisation.nachrichten;
+package applikation.server.nachrichten;
 
 import dienste.netzwerk.EndPunkt;
-import spielplatz.hilfsklassen.ServerMeldung;
+import dienste.netzwerk.Nachricht;
 
-public class NeueVerbindung extends ServerMeldung {
+public class NeueVerbindung extends Nachricht {
 	private static final long serialVersionUID = 1L;
 
 	final public EndPunkt client;

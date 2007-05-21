@@ -1,4 +1,4 @@
-package applikation.synchronisation.nachrichten;
+package applikation.server.nachrichten;
 
 import dienste.netzwerk.Nachricht;
 

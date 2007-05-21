@@ -1,40 +1,29 @@
-package dienste.netzwerk.server;
+package applikation.server;
 
 import java.io.IOException;
 import java.util.Vector;
 
-//FIXME: Abhängigkeit auflösen
 import pd.Spiel;
-
+import applikation.server.nachrichten.ChatNachricht;
+import applikation.server.nachrichten.NeueVerbindung;
+import applikation.server.nachrichten.SpielBeitreten;
+import applikation.server.nachrichten.SpielStartNachricht;
+import applikation.server.nachrichten.VerbindungGeschlossen;
+import applikation.server.nachrichten.ZugAufforderung;
+import applikation.server.nachrichten.ZugInformation;
+import applikation.server.pd.Spieler;
 import dienste.netzwerk.Brief;
-import dienste.netzwerk.Briefkasten;
-import dienste.netzwerk.Daemon;
-import dienste.netzwerk.VerbindungWegException;
 import dienste.netzwerk.Nachricht;
-
-//FIXME: Abhängigkeit auflösen
-import applikation.synchronisation.nachrichten.ChatNachricht;
-import applikation.synchronisation.nachrichten.NeueVerbindung;
-import applikation.synchronisation.nachrichten.SpielBeitreten;
-import applikation.synchronisation.nachrichten.SpielStartNachricht;
-import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
-import applikation.synchronisation.nachrichten.ZugAufforderung;
-import applikation.synchronisation.nachrichten.ZugInformation;
+import dienste.netzwerk.VerbindungWegException;
+import dienste.netzwerk.server.Klicks;
+import dienste.netzwerk.server.Server;
 
 
-public class Server {
-	private static final int PORT = 7788;
-	private static final int MAXSPIELER = 1;
-	private Briefkasten serverBriefkasten;
+public class BodesuriServer extends Server {
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 
-	private Server() throws IOException {
-		serverBriefkasten = new Briefkasten();
-
-		Daemon daemon = new Daemon(PORT, serverBriefkasten);
-
-		Thread t = new Thread(daemon);
-		t.start();
+	private BodesuriServer() throws IOException {
+		super();
 	}
 
 	private void run() throws VerbindungWegException {
@@ -171,10 +160,8 @@ public class Server {
     }
 
 	public static void main(String[] args) throws IOException, VerbindungWegException {
-		Server srv = new Server();
+		BodesuriServer server = new BodesuriServer();
 		
-		srv.run();
-
-		System.out.println("Reached end of main");
+		server.run();
 	}
 }
