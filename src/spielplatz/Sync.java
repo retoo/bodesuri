@@ -1,5 +1,8 @@
 package spielplatz;
 
+import spielplatz.zustandssynchronisation.states.SpielEndeState;
+import spielplatz.zustandssynchronisation.states.SpielStartState;
+
 
 public class Sync extends StateMachine {
 	public Sync() {

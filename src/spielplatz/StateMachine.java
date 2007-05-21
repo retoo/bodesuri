@@ -3,6 +3,10 @@ package spielplatz;
 import java.util.List;
 import java.util.Vector;
 
+import spielplatz.zustandssynchronisation.states.EndState;
+import spielplatz.zustandssynchronisation.states.State;
+
+
 public class StateMachine {
 	protected List<State> states;
 	private State start;
@@ -31,7 +35,7 @@ public class StateMachine {
 				throw new UnknownNextStateException("State " + currentState + " didn't return the next state");
 
 			if (newState instanceof EndState) {
-				
+				/* FIXME */
 			}
 		}
 	}
