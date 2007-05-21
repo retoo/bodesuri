@@ -25,14 +25,14 @@ import pd.zugsystem.ZugEingabe;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
 import ui.brett.Figur2d;
-import applikation.synchronisation.nachrichten.ChatNachricht;
-import applikation.synchronisation.nachrichten.NeueVerbindung;
-import applikation.synchronisation.nachrichten.SpielBeitreten;
-import applikation.synchronisation.nachrichten.SpielStartNachricht;
-import applikation.synchronisation.nachrichten.SpielVollNachricht;
-import applikation.synchronisation.nachrichten.VerbindungGeschlossen;
-import applikation.synchronisation.nachrichten.ZugAufforderung;
-import applikation.synchronisation.nachrichten.ZugInformation;
+import applikation.server.nachrichten.ChatNachricht;
+import applikation.server.nachrichten.NeueVerbindung;
+import applikation.server.nachrichten.SpielBeitreten;
+import applikation.server.nachrichten.SpielStartNachricht;
+import applikation.server.nachrichten.SpielVollNachricht;
+import applikation.server.nachrichten.VerbindungGeschlossen;
+import applikation.server.nachrichten.ZugAufforderung;
+import applikation.server.nachrichten.ZugInformation;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
@@ -235,14 +235,16 @@ public class Prototyp {
 			} else if (nachricht instanceof ZugInformation) {
 				ZugInformation zn = (ZugInformation) nachricht;
 				
+				
+				ZugEingabe ze = zn.zug;
+				
 				try {
-					Zug zug = ((ZugEingabe)zn.zug).validiere();
+					Zug zug = ze.validiere();
 					zug.ausfuehren();
 				} catch (RegelVerstoss rv) {
 					throw new RuntimeException(rv);
 				}
 				
-				ZugEingabe ze = (ZugEingabe)zn.zug;
 				Spieler sp = ze.getSpieler();
 				int nummer = spiel.getSpieler().indexOf(sp) + 1;
 				System.out.println();
@@ -285,9 +287,7 @@ public class Prototyp {
 		EndPunkt server = null;
 		
 		try {
-			
 			server = new EndPunkt(hostname, port);
-
 			
 			System.out.println();
 			
