@@ -7,8 +7,8 @@ package ui.brett;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+import java.util.Vector;
 
 import pd.Spiel;
 import pd.brett.Feld;
@@ -21,8 +21,7 @@ import dienste.netzwerk.EndPunkt;
 public class BrettView extends HauptView {
 
 	private static final long serialVersionUID = 1L;
-
-	Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
+	List<Feld2d> felder = new Vector<Feld2d>();
 
 	public BrettView(Spiel spiel, Spieler spielerIch, EndPunkt server) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
@@ -41,8 +40,8 @@ public class BrettView extends HauptView {
 		Feld feld = startFeld;
 		int i = 0;
 		do {
-			Feld2d feld2d = new Feld2d(felderXML.getKoordinaten(i));
-			felder.put(feld, feld2d);
+			Feld2d feld2d = new Feld2d(felderXML.getKoordinaten(i), feld);
+			felder.add(feld2d);
 			System.out.println(i);
 			System.out.println(feld);
 			if (feld.istBesetzt()) {
@@ -53,7 +52,7 @@ public class BrettView extends HauptView {
 			i++;
 		} while (feld != startFeld);
 
-		for (Feld2d feld2 : felder.values()) {
+		for (Feld2d feld2 : felder) {
 			this.add(feld2);
 
 		}
