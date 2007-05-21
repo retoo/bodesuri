@@ -2,18 +2,20 @@ package dienste.netzwerk.server;
 
 import java.io.IOException;
 
-import dienste.netzwerk.Briefkasten;
+import spielplatz.zustandssynchronisation.EventQueue;
+import dienste.netzwerk.BriefKastenInterface;
+import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.Daemon;
 
 public class Server {
-	
-	
 	private static final int PORT = 7788;
 	protected static final int MAXSPIELER = 1;
-	protected Briefkasten serverBriefkasten;
+	protected BriefKastenInterface serverBriefkasten;
+	protected EventQueue queue;
 
 	public Server() throws IOException {
-		serverBriefkasten = new Briefkasten();
+		this.queue = new EventQueue();
+		serverBriefkasten = new BriefkastenAdapter(queue);
 
 		Daemon daemon = new Daemon(PORT, serverBriefkasten);
 

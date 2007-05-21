@@ -5,17 +5,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-//FIXME: Abhängigkeit auflösen
 import applikation.server.nachrichten.VerbindungGeschlossen;
 
 
 
 public class Empfaenger implements Runnable{
-	Briefkasten nachrichtenQueue;
+	BriefKastenInterface nachrichtenQueue;
 	private ObjectInputStream inputStream;
 	private EndPunkt endpunkt;
 
-	public Empfaenger(EndPunkt endpunkt, Socket socket, Briefkasten briefkasten) throws IOException {
+	public Empfaenger(EndPunkt endpunkt, Socket socket, BriefKastenInterface briefkasten) throws IOException {
 		inputStream = new ObjectInputStream(socket.getInputStream());
 		this.endpunkt = endpunkt;
 		this.nachrichtenQueue = briefkasten;

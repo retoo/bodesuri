@@ -4,17 +4,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-// FIXME: Abhängigkeit auflösen
 import applikation.server.nachrichten.NeueVerbindung;
 
-
-
 public class Daemon implements Runnable {	
-	private Briefkasten briefkasten;
+	private BriefKastenInterface briefkasten;
 
 	private ServerSocket serverSock;
 
-	public Daemon(int port, Briefkasten briefkasten) throws IOException {
+	public Daemon(int port, BriefKastenInterface briefkasten) throws IOException {
 		serverSock = new ServerSocket(port);
 		this.briefkasten = briefkasten;
 	}
@@ -31,7 +28,5 @@ public class Daemon implements Runnable {
 			e.printStackTrace();
 			System.exit(99);
 		}
-
 	}
-
 }

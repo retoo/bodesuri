@@ -5,9 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import dienste.netzwerk.Briefkasten;
-import dienste.netzwerk.EndPunkt;
 
+import spielplatz.zustandssynchronisation.events.Event;
 import spielplatz.zustandssynchronisation.states.State;
 
 
@@ -16,9 +15,6 @@ public class StateMachine {
 	private State start;
 	private EventSource eventSource;
 	private Map<Class<? extends State>, State> stateMap;
-	public EndPunkt endpunkt;
-	public Briefkasten briefkasten;
-	
 	
 	public StateMachine() {
 		states = new Vector<State>();
@@ -35,7 +31,7 @@ public class StateMachine {
 		start = getState(klasse);
 	}
 	
-	protected void setEvenSource(EventSource source) {
+	protected void setEventSource(EventSource source) {
 		eventSource = source;
     }
 	

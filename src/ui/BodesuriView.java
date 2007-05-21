@@ -9,13 +9,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import spielplatz.zustandssynchronisation.EventQueue;
 import spielplatz.zustandssynchronisation.StateMachine;
 import spielplatz.zustandssynchronisation.StateMachineClient;
 import ui.chat.ChatView;
 import ui.info.DeckView;
 import ui.info.SpielerView;
 import ui.lobby.LobbyView;
-import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.VerbindungWegException;
 
 /**
@@ -26,7 +26,7 @@ public class BodesuriView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public BodesuriView(Briefkasten briefkasten) throws UnknownHostException,
+	public BodesuriView(EventQueue queue) throws UnknownHostException,
 	        IOException, VerbindungWegException {
 		setTitle("Bodesuri");
 		setLocationByPlatform(true);
@@ -53,18 +53,18 @@ public class BodesuriView extends JFrame {
 		add(Box.createHorizontalGlue());
 		pack();
 		
-		LobbyView lobbyView = new LobbyView(briefkasten);
+		LobbyView lobbyView = new LobbyView(queue);
 		lobbyView.setVisible(true);
 	}
 
 	public static void main(String[] args) throws UnknownHostException,
 	                                      IOException, VerbindungWegException {
 		
-		Briefkasten briefkasten = new Briefkasten();
+		EventQueue queue = new EventQueue();
 		
-		StateMachine sync = new StateMachineClient(briefkasten);
+		StateMachine sync = new StateMachineClient(queue);
 		
-		new BodesuriView(briefkasten).setVisible(true);
+		new BodesuriView(queue).setVisible(true);
 		
 		sync.run();
 	}

@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 import applikation.server.nachrichten.SpielBeitreten;
-import spielplatz.zustandssynchronisation.VerbindenEvent;
+import spielplatz.zustandssynchronisation.events.VerbindenEvent;
+import dienste.netzwerk.BriefKastenInterface;
+import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 
@@ -12,7 +14,9 @@ public class ProgrammStart extends BodesuriState {
 	State verbinden(VerbindenEvent ve) {
 
 		try {
-			machine.endpunkt = new EndPunkt(ve.hostname, ve.port, machine.briefkasten);
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(machine.queue);
+			
+			machine.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
 			machine.endpunkt.sende(new SpielBeitreten(ve.spieler));
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block

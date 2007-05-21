@@ -1,10 +1,8 @@
-package spielplatz.zustandssynchronisation;
+package spielplatz.zustandssynchronisation.events;
 
-import dienste.netzwerk.Nachricht;
 
-public class VerbindenEvent extends Nachricht {
-	private static final long serialVersionUID = 1L;
-	
+
+public class VerbindenEvent extends Event {
 	public final String hostname;
 	public final Integer port;
 	public final String spieler;

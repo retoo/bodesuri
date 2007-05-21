@@ -10,9 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import spielplatz.zustandssynchronisation.VerbindenEvent;
-import dienste.netzwerk.Brief;
-import dienste.netzwerk.Briefkasten;
+import spielplatz.zustandssynchronisation.EventQueue;
+import spielplatz.zustandssynchronisation.events.VerbindenEvent;
 
 public class LobbyView extends JFrame {
 
@@ -20,10 +19,10 @@ public class LobbyView extends JFrame {
 	private JTextField hostname;
 	private JTextField port;
 	private JTextField spielerName;
-	private Briefkasten briefkasten;
+	private EventQueue queue;
 
-	public LobbyView(Briefkasten bk) {
-		this.briefkasten = bk;
+	public LobbyView(EventQueue queue) {
+		this.queue = queue;
 		
 		setLayout(new GridLayout(4, 2));
 		Dimension groesse = new Dimension(300, 150);
@@ -48,7 +47,8 @@ public class LobbyView extends JFrame {
 				Integer port_raw = Integer.valueOf(port.getText());
 				
 				VerbindenEvent e = new VerbindenEvent(host, port_raw, spieler);
-				briefkasten.einwerfen(new Brief(null, e));
+				
+				LobbyView.this.queue.enqueue(e);
             }
 		});
 		add(ok);

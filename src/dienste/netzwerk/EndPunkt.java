@@ -8,12 +8,13 @@ import java.net.UnknownHostException;
 
 
 
+
 public class EndPunkt {
 	private Socket socket;
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
-	public Briefkasten briefkasten;
+	public BriefKastenInterface briefkasten;
 	
 	
 	/**
@@ -26,7 +27,7 @@ public class EndPunkt {
 	 * @param briefkasten Briefkasten in welchem die Nachrichten abgelegt werden können
 	 * @throws IOException
 	 */
-	public EndPunkt(Socket socket, Briefkasten briefkasten) throws IOException {
+	public EndPunkt(Socket socket, BriefKastenInterface briefkasten) throws IOException {
 		this.briefkasten = briefkasten;
 		this.socket = socket;
 		
@@ -45,7 +46,7 @@ public class EndPunkt {
 	 * @throws UnknownHostException 
 	 * @throws IOException
 	 */
-	public EndPunkt(String hostname, int port, Briefkasten briefkasten) throws UnknownHostException, IOException {
+	public EndPunkt(String hostname, int port, BriefKastenInterface briefkasten) throws UnknownHostException, IOException {
 		System.out.println("Verbinde zu " + hostname + ":" + port);
 		
 		socket = new Socket(hostname, port);

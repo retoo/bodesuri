@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import pd.Spiel;
+import spielplatz.zustandssynchronisation.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -45,7 +46,8 @@ public class BodesuriServer extends Server {
 		/* potentielle klasse */
 
 		while (true) {
-			Brief brief = serverBriefkasten.getBrief();
+			/* FIXME: foldgender hässlciher code wird bald im statemachine verschwinden */
+			Brief brief = ((NetzwerkEvent) queue.dequeue()).brief;
 			Nachricht nachricht = brief.nachricht;
 
 			if (nachricht instanceof SpielBeitreten) {
@@ -95,7 +97,8 @@ public class BodesuriServer extends Server {
 		System.out.println("Aktueller Spieler: " + aktuellerSpieler);
 		
 		while (true) {
-			Brief brief = serverBriefkasten.getBrief();
+			/* FIXME: foldgender hässlciher code wird bald im statemachine verschwinden */
+			Brief brief = ((NetzwerkEvent) queue.dequeue()).brief;
 			Nachricht nachricht = brief.nachricht;
 			
 			if (nachricht instanceof ZugInformation ) {

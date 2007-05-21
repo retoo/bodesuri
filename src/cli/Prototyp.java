@@ -5,9 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ConnectException;
 import java.net.UnknownHostException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import pd.Spiel;
 import pd.brett.BankFeld;
@@ -16,17 +14,12 @@ import pd.brett.Feld;
 import pd.brett.NormalesFeld;
 import pd.karten.Karte;
 import pd.regelsystem.RegelVerstoss;
-import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
-import spielplatz.zustandssynchronisation.BriefKastenInterface;
 import spielplatz.zustandssynchronisation.EventQueue;
-import spielplatz.zustandssynchronisation.states.BriefkastenAdapter;
-import ui.BrettPrototyp;
-import ui.brett.Feld2d;
-import ui.brett.Figur2d;
+import spielplatz.zustandssynchronisation.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -36,6 +29,7 @@ import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
 import dienste.netzwerk.Brief;
+import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
@@ -47,18 +41,15 @@ public class Prototyp {
 	private BankFeld startFeld;
 	private EndPunkt server;
 	private Spieler lokalerSpieler;
-	
-	private Map<Figur, Figur2d> figuren2d;
-	private Map<Feld, Feld2d> felder2d;
+	private EventQueue queue;
 
-	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server) {
+	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server, EventQueue queue) {
 		this.server = server;
 		this.spiel = spiel;
 		this.lokalerSpieler = spielerIch;
 		this.brett = spiel.getBrett();
 		this.startFeld = brett.getBankFeldVon(spiel.getSpieler().get(0));
-		figuren2d = new HashMap<Figur, Figur2d>();
-		felder2d  = new HashMap<Feld, Feld2d>();
+		this.queue = queue;
 		setzeFiguren();
 	}
 	
@@ -75,11 +66,6 @@ public class Prototyp {
 		Feld feld = startFeld;
 		while (feld != startFeld.getVorheriges()) {
 			zeichneFeld(feld);
-			if (feld.istBesetzt()) {
-				Feld2d feld2d   = felder2d.get(feld);
-				Figur2d figur2d = figuren2d.get(feld.getFigur());
-				figur2d.setzeAuf(feld2d);
-			}
 			feld = feld.getNaechstes();
 		}
 		System.out.println();
@@ -173,19 +159,8 @@ public class Prototyp {
     }
 
 
-	private void run() throws VerbindungWegException {
-		BriefKastenInterface bk = server.briefkasten;
-		
+	private void run() throws VerbindungWegException {		
 		begruessungAusgaben();
-		
-		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
-		for (Figur2d figur2d : figuren2d.values()) {
-			brettproto.add(figur2d);
-		}
-		for (Feld2d feld2d : felder2d.values()) {
-			brettproto.add(feld2d);
-		}
-		brettproto.setVisible(true);
 		
 		System.out.println();
 		zeichneBrett();
@@ -194,8 +169,9 @@ public class Prototyp {
 		while (true) {
 			// zeichneBrett();
 			
-			Brief b = bk.getBrief();
-			Nachricht nachricht = b.nachricht;	
+			/* FIXME: foldgender hässlciher code wird bald im statemachine verschwinden */
+			Brief brief = ((NetzwerkEvent) queue.dequeue()).brief;
+			Nachricht nachricht = brief.nachricht;	
 			
 			if (nachricht instanceof ZugAufforderung) {
 				System.out.println();
@@ -273,7 +249,8 @@ public class Prototyp {
 		EndPunkt server = null;
 		
 		try {
-			server = new EndPunkt(hostname, port, new BriefkastenAdapter(new EventQueue()));
+			EventQueue queue = new EventQueue();
+			server = new EndPunkt(hostname, port, new BriefkastenAdapter(queue));
 			
 			System.out.println();
 			
@@ -286,11 +263,12 @@ public class Prototyp {
 			
 			SpielStartNachricht startNachricht;
 			while (true) {
-				Brief b = server.briefkasten.getBrief();
-				Nachricht nachricht = b.nachricht; 
+				/* FIXME: foldgender hässlciher code wird bald im statemachine verschwinden */
+				Brief brief = ((NetzwerkEvent) queue.dequeue()).brief;
+				Nachricht nachricht = brief.nachricht; 
 	
 				if (nachricht instanceof SpielStartNachricht) {
-					startNachricht = (SpielStartNachricht) b.nachricht;
+					startNachricht = (SpielStartNachricht) brief.nachricht;
 					break;
 				} else if (nachricht instanceof SpielVollNachricht) {
 					System.out.println("Leider ist das Spiel bereits voll.");
@@ -334,7 +312,7 @@ public class Prototyp {
 				throw new RuntimeException("Ups, ich bin ja gar nicht im Spiel");
 			}
 				
-			Prototyp spielBrett = new Prototyp(spiel, spielerIch, server);
+			Prototyp spielBrett = new Prototyp(spiel, spielerIch, server, queue);
 			spielBrett.run();
 		
 		} catch (ConnectException e) {
