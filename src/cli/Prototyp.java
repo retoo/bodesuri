@@ -1,6 +1,5 @@
 package cli;
 
-import java.awt.Point;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +21,9 @@ import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import spielplatz.zustandssynchronisation.BriefKastenInterface;
+import spielplatz.zustandssynchronisation.EventQueue;
+import spielplatz.zustandssynchronisation.states.BriefkastenAdapter;
 import ui.BrettPrototyp;
 import ui.brett.Feld2d;
 import ui.brett.Figur2d;
@@ -34,7 +36,6 @@ import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
 import dienste.netzwerk.Brief;
-import dienste.netzwerk.Briefkasten;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
@@ -173,24 +174,9 @@ public class Prototyp {
 
 
 	private void run() throws VerbindungWegException {
-		Briefkasten bk = server.briefkasten;
+		BriefKastenInterface bk = server.briefkasten;
 		
 		begruessungAusgaben();
-		
-		int i = 0;
-		Feld feld = startFeld;
-		while (feld != startFeld.getVorheriges()) {
-			Point p = new Point(i*17 + 10, 20);
-			Feld2d feld2d = new Feld2d(p);
-			felder2d.put(feld, feld2d);
-			if (feld instanceof BankFeld) {
-				Figur figur = feld.getFigur();
-				Figur2d figur2d = new Figur2d(feld2d, null);
-				figuren2d.put(figur, figur2d);
-			}
-			i++;
-			feld = feld.getNaechstes();
-		}
 		
 		BrettPrototyp brettproto = new BrettPrototyp("Bodesuri Prototyp" + lokalerSpieler);
 		for (Figur2d figur2d : figuren2d.values()) {
@@ -287,7 +273,7 @@ public class Prototyp {
 		EndPunkt server = null;
 		
 		try {
-			server = new EndPunkt(hostname, port, new Briefkasten());
+			server = new EndPunkt(hostname, port, new BriefkastenAdapter(new EventQueue()));
 			
 			System.out.println();
 			
