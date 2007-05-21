@@ -73,18 +73,16 @@ public class FelderXML {
 	}
 
 	public static void main(String[] args) throws JDOMException, IOException {
-
 		FelderXML felder = new FelderXML();
 
-		while (felder.hasNext()) {
-			Element feld = (Element) felder.getNext();
-			System.out.println(feld.getAttributeValue("name"));
-			System.out.println("x-Wert: "
-					+ feld.getChild("koordinaten").getChild("x").getValue());
-			System.out.println("y-Wert: "
-					+ feld.getChild("koordinaten").getChild("y").getValue());
+		for (int i = 0; i < (24 * 4); ++i) {
+			Point p = felder.getKoordinaten(i);
+			System.out.println("\t<feld nummer=\"" + i + "\">");
+			System.out.println("\t\t<koordinaten>");
+			System.out.println("\t\t\t<x>" + p.x + "</x>");
+			System.out.println("\t\t\t<y>" + p.y + "</y>");
+			System.out.println("\t\t</koordinaten>");
+			System.out.println("\t</feld>");
 		}
-
 	}
-
 }
