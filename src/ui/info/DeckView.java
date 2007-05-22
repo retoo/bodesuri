@@ -4,8 +4,6 @@
 
 package ui.info;
 
-import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
@@ -21,11 +19,6 @@ public class DeckView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new FlowLayout());
-		setAlignmentX(Component.LEFT_ALIGNMENT);
-		Dimension groesse = new Dimension(100, 100);
-		setPreferredSize(groesse);
-		setMaximumSize(groesse);
-		setMinimumSize(groesse);
 		
 		this.add(new JLabel("Hier kommen die Karten hin..."));
     }

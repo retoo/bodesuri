@@ -1,7 +1,6 @@
 package ui.brett;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.List;
@@ -29,11 +28,8 @@ public class BrettView extends HauptView {
 		setBackground(new Color(0, 150, 0));
 
 		setLayout(null);
-		Dimension groesse = new Dimension(600, 600);
-		setPreferredSize(groesse);
-		setMaximumSize(groesse);
-		setMinimumSize(groesse);
-		setAlignmentX(Component.LEFT_ALIGNMENT);
+		setPreferredSize(new Dimension(600, 600));
+		setMinimumSize(new Dimension(600, 600));
 
 		Map<Integer, Point> koordinaten = null;
 		try {
