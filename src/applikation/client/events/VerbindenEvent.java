@@ -2,8 +2,6 @@ package applikation.client.events;
 
 import dienste.statemachine.Event;
 
-
-
 public class VerbindenEvent extends Event {
 	public final String hostname;
 	public final Integer port;
@@ -13,5 +11,5 @@ public class VerbindenEvent extends Event {
 		this.hostname = hostname;
 		this.port = port;
 		this.spieler = spieler;
-    }
+	}
 }
