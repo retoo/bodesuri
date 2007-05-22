@@ -31,18 +31,35 @@ public class StateMachine {
 	}
 
 	public State getState(Class<? extends State> klasse) {
-		return stateMap.get(klasse);
+		State state = stateMap.get(klasse);
+		
+		if (state == null) 
+			throw new RuntimeException("Nichtregistierer Zustand " + klasse);
+		
+		return state;
 	}
 
 	public void run() {
 		State currentState = start;
 
 		while (true) {
-			Event event = eventSource.getEevent();
-			System.out.println("Handling of event " + event);
-			State newState = currentState.execute(event);
-
+			State newState;
+			
+			System.out.println("Execute State: " + currentState);
+			
+			currentState.init();
+		
+			if (currentState instanceof ActiveState) {
+				ActiveState state = (ActiveState) currentState;
+				
+				Event event = eventSource.getEevent();
+				
+				newState = state.execute(event);
+			} else {
+				PassiveState state = (PassiveState) currentState;
+				newState = state.execute();
+			}
 			currentState = newState;
-		}
+		}			
 	}
 }

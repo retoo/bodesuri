@@ -1,5 +1,14 @@
 package applikation.client.states;
 
+import dienste.statemachine.State;
 
-public class SchwererFehlerState extends ClientStates {
+public class SchwererFehlerState extends PassiveClientState {
+	public void init() {
+		System.out.println("Error");
+	}
+	
+	@Override
+    protected State getNextState() {
+		return null;
+    }
 }

@@ -11,7 +11,7 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.State;
 
-public class ProgrammStart extends ClientStates {
+public class VerbindungErfassen extends ClientStates {
 	State verbinden(VerbindenEvent ve) {
 
 		try {
@@ -21,7 +21,7 @@ public class ProgrammStart extends ClientStates {
 			machine.endpunkt.sende(new SpielBeitreten(ve.spieler));
 		} catch (UnknownHostException e) {
 			machine.endpunkt = null;
-			return machine.getState(ProgrammStart.class);
+			return machine.getState(VerbindungErfassen.class);
 		}  catch (VerbindungWegException e) {
 			return machine.getState(SchwererFehlerState.class);
 		} catch (IOException e) {

@@ -10,12 +10,13 @@ import applikation.server.nachrichten.SpielVollNachricht;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.statemachine.ActiveState;
 import dienste.statemachine.Event;
 import dienste.statemachine.KeinUebergangException;
 import dienste.statemachine.State;
 import dienste.statemachine.StateMachine;
 
-public class ClientStates extends State {
+public class ClientStates extends ActiveState {
 	protected BodesuriClient machine;
 
 	public State execute(Event event) {
