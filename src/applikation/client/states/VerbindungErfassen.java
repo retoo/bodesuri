@@ -23,9 +23,11 @@ public class VerbindungErfassen extends ClientState {
 			machine.endpunkt = null;
 			return machine.getState(VerbindungErfassen.class);
 		}  catch (VerbindungWegException e) {
-			return machine.getState(SchwererFehlerState.class);
+			machine.endpunkt = null;
+			return machine.getState(VerbindungErfassen.class);
 		} catch (IOException e) {
-			return machine.getState(SchwererFehlerState.class);
+			machine.endpunkt = null;
+			return machine.getState(VerbindungErfassen.class);
 		}
 		
 		return machine.getState(VerbindungWirdAufgebaut.class);
