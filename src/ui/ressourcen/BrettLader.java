@@ -1,4 +1,4 @@
-package spielplatz;
+package ui.ressourcen;
 
 import java.awt.Point;
 import java.io.File;

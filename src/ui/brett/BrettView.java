@@ -12,8 +12,8 @@ import pd.Spiel;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
-import spielplatz.BrettLader;
 import ui.HauptView;
+import ui.ressourcen.BrettLader;
 import dienste.netzwerk.EndPunkt;
 
 public class BrettView extends HauptView {
