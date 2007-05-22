@@ -9,6 +9,6 @@ public class SchwererFehlerState extends PassiveClientState {
 	
 	@Override
     protected State getNextState() {
-		return null;
+		throw new RuntimeException("Schwerer Fehler");
     }
 }

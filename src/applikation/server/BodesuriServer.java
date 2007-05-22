@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import pd.Spiel;
 import applikation.client.events.NetzwerkEvent;
+import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -19,6 +20,7 @@ import dienste.netzwerk.server.Klicks;
 import dienste.netzwerk.server.Server;
 
 public class BodesuriServer extends Server {
+	protected static final int MAXSPIELER = 4;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
 
 	private BodesuriServer() throws IOException {
@@ -57,6 +59,16 @@ public class BodesuriServer extends Server {
 				Spieler spieler = new Spieler(brief.absender,
 				                              beitrittNachricht.spielerName);
 				spielers.add(spieler);
+				
+				String[] spielers_str = new String[MAXSPIELER];
+				
+	
+				
+				for (int i = 0; i < spielers.size(); i++)
+					spielers_str[i] = spielers.get(i).name;
+				
+				spieler.endpunkt.sende(new BeitrittsBestaetigung(spielers_str));
+				
 
 				String msg = "Neuer Spieler " + spieler.name + ". Noch "
 				             + (MAXSPIELER - spielers.size())
@@ -149,7 +161,7 @@ public class BodesuriServer extends Server {
 
 	private void kuendigeSpielstartAn() throws VerbindungWegException {
 		String[] spielers_str = new String[MAXSPIELER];
-
+		
 		for (int i = 0; i < MAXSPIELER; i++)
 			spielers_str[i] = spielers.get(i).name;
 

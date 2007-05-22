@@ -3,6 +3,7 @@ package applikation.client.states;
 import applikation.client.BodesuriClient;
 import applikation.client.events.NetzwerkEvent;
 import applikation.client.events.VerbindenEvent;
+import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -16,7 +17,7 @@ import dienste.statemachine.KeinUebergangException;
 import dienste.statemachine.State;
 import dienste.statemachine.StateMachine;
 
-public class ClientStates extends ActiveState {
+public class ClientState extends ActiveState {
 	protected BodesuriClient machine;
 
 	public State execute(Event event) {
@@ -36,6 +37,8 @@ public class ClientStates extends ActiveState {
 				return chatNachricht(brief.absender, (ChatNachricht) nachricht);
 			else if (nachricht instanceof SpielVollNachricht)
 				return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
+			else if (nachricht instanceof BeitrittsBestaetigung) 
+				return beitrittsBestaetitigung((BeitrittsBestaetigung) nachricht);
 
 		} else {
 			if (event instanceof VerbindenEvent)
@@ -62,6 +65,10 @@ public class ClientStates extends ActiveState {
 	}
 
 	State spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+		return keinUebergang();
+	}
+	
+	State beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		return keinUebergang();
 	}
 

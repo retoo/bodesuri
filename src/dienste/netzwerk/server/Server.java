@@ -9,7 +9,6 @@ import dienste.statemachine.EventQueue;
 
 public class Server {
 	private static final int PORT = 7788;
-	protected static final int MAXSPIELER = 1;
 	protected BriefKastenInterface serverBriefkasten;
 	protected EventQueue queue;
 

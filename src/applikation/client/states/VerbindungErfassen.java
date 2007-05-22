@@ -11,7 +11,7 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.State;
 
-public class VerbindungErfassen extends ClientStates {
+public class VerbindungErfassen extends ClientState {
 	State verbinden(VerbindenEvent ve) {
 
 		try {
@@ -28,6 +28,6 @@ public class VerbindungErfassen extends ClientStates {
 			return machine.getState(SchwererFehlerState.class);
 		}
 		
-		return machine.getState(Lobby.class);
+		return machine.getState(VerbindungWirdAufgebaut.class);
 	}
 }
