@@ -30,7 +30,7 @@ public class BodesuriView extends JFrame {
 
 	public BodesuriView(EventQueue queue) throws UnknownHostException,
 	        IOException, VerbindungWegException {
-		setTitle("Bodesuri");
+		setTitle("Bodesuri - Spiel");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -82,17 +82,13 @@ public class BodesuriView extends JFrame {
 
 		pack();
 
-
 	}
 
 	public static void main(String[] args) throws UnknownHostException,
 	                                      IOException, VerbindungWegException {
-
 		EventQueue queue = new EventQueue();
-
 		StateMachine sync = new BodesuriClient(queue);
 
-		//new BodesuriView(queue).setVisible(true);
 		sync.run();
 	}
 }
