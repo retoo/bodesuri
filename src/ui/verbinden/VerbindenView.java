@@ -8,7 +8,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import applikation.client.events.VerbindenEvent;
 
@@ -25,6 +27,11 @@ public class VerbindenView extends JFrame {
 
 	public VerbindenView(EventQueue queue) {
 		this.queue = queue;
+		
+		setTitle("Bodesuri - Verbinden");
+		setLocationByPlatform(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
 		
 		setLayout(new GridLayout(4, 2));
 		Dimension groesse = new Dimension(300, 150);
