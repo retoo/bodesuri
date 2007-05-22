@@ -22,7 +22,7 @@ public class Feld2d extends javax.swing.JLabel {
 		this.feld = feld;
 
 		setBounds((int)p.getX(), (int)p.getY(), bildFeld.getIconWidth(), bildFeld.getIconHeight());
-		addMouseListener(new FeldMouse());
+		addMouseListener(new FeldMouseAdapter());
 	}
 	
 	public int getX() {
@@ -37,10 +37,7 @@ public class Feld2d extends javax.swing.JLabel {
 		return feld;
 	}
 
-	class FeldMouse extends MouseAdapter {
-		private Feld zugStart = null;
-		private Feld zugZiel = null;
-		
+	private class FeldMouseAdapter extends MouseAdapter {				
 		// FIXME: woher bekomme ich den Spieler, der auf das Feld geklickt hat?
 		// TODO: Anhand der Klicks die Regel entscheiden? Müsste doch von Karte aus geschehen
 		/**
@@ -51,23 +48,11 @@ public class Feld2d extends javax.swing.JLabel {
 		 */
 		public void mouseClicked(MouseEvent e) {
 			// TODO: kann hier auch direkt feld Instanzvariable genommen werden?
-			Feld2d angeklicktesFeld = (Feld2d) e.getComponent();
-			
-			if (zugStart == null && zugZiel == null) {
-				zugStart = angeklicktesFeld.getFeld();
-			} else if (zugStart != null && zugZiel == null) {
-				zugZiel = angeklicktesFeld.getFeld();
-				ZugEntgegennahme.zugBestaetigen(zugStart, zugZiel);
-			} else {	// Im Fehlerfall wird Zug abgebrochen
-				abbrechen();
-			}
+			//       --> schöner machen
+			Feld angeklicktesFeld = ((Feld2d) e.getComponent()).getFeld();
+			ZugEntgegennahme.ziehen(angeklicktesFeld);
 		}
 		
-		private void abbrechen() {
-			zugStart = null;
-			zugZiel = null;
-		}
+		
 	}
-	
-	// TODO: Handling für ZugAbbrechen() hinzufügen
 }
