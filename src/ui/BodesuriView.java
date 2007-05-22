@@ -83,8 +83,7 @@ public class BodesuriView extends JFrame {
 
 		pack();
 
-		VerbindenView verbindenView = new VerbindenView(queue);
-		verbindenView.setVisible(true);
+
 	}
 
 	public static void main(String[] args) throws UnknownHostException,
@@ -94,8 +93,7 @@ public class BodesuriView extends JFrame {
 
 		StateMachine sync = new BodesuriClient(queue);
 
-		new BodesuriView(queue).setVisible(true);
-
+		//new BodesuriView(queue).setVisible(true);
 		sync.run();
 	}
 }
