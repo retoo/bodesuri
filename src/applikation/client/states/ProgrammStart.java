@@ -20,16 +20,14 @@ public class ProgrammStart extends ClientStates {
 			machine.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
 			machine.endpunkt.sende(new SpielBeitreten(ve.spieler));
 		} catch (UnknownHostException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			machine.endpunkt = null;
+			return machine.getState(ProgrammStart.class);
+		}  catch (VerbindungWegException e) {
+			return machine.getState(SchwererFehlerState.class);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (VerbindungWegException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return machine.getState(SchwererFehlerState.class);
 		}
-
+		
 		return machine.getState(Lobby.class);
 	}
 }
