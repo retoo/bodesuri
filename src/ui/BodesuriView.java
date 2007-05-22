@@ -15,7 +15,7 @@ import ui.brett.BrettView;
 import ui.chat.ChatView;
 import ui.info.DeckView;
 import ui.info.SpielerView;
-import ui.lobby.LobbyView;
+import ui.verbinden.VerbindenView;
 import applikation.client.BodesuriClient;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.EventQueue;
@@ -82,8 +82,8 @@ public class BodesuriView extends JFrame {
 
 		pack();
 
-		LobbyView lobbyView = new LobbyView(queue);
-		lobbyView.setVisible(true);
+		VerbindenView verbindenView = new VerbindenView(queue);
+		verbindenView.setVisible(true);
 	}
 
 	public static void main(String[] args) throws UnknownHostException,

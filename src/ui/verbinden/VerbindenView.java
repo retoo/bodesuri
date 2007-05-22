@@ -15,7 +15,7 @@ import applikation.client.events.VerbindenEvent;
 import dienste.statemachine.EventQueue;
 
 
-public class LobbyView extends JFrame {
+public class VerbindenView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField hostname;
@@ -23,7 +23,7 @@ public class LobbyView extends JFrame {
 	private JTextField spielerName;
 	private EventQueue queue;
 
-	public LobbyView(EventQueue queue) {
+	public VerbindenView(EventQueue queue) {
 		this.queue = queue;
 		
 		setLayout(new GridLayout(4, 2));
@@ -50,7 +50,7 @@ public class LobbyView extends JFrame {
 				
 				VerbindenEvent e = new VerbindenEvent(host, port_raw, spieler);
 				
-				LobbyView.this.queue.enqueue(e);
+				VerbindenView.this.queue.enqueue(e);
             }
 		});
 		add(ok);
