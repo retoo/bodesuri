@@ -87,7 +87,6 @@ public class LobbyView extends JFrame {
 //				} else if (nachricht instanceof NeueVerbindung) {
 //					// Ignorieren
 //				} else {
-//					/* TODO: Platzhalter */
 //					System.out.println("Unbekannte Nachricht: " + nachricht);
 //				}
 //			}
