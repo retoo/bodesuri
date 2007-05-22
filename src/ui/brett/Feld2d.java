@@ -39,7 +39,6 @@ public class Feld2d extends javax.swing.JLabel {
 
 	private class FeldMouseAdapter extends MouseAdapter {				
 		// FIXME: woher bekomme ich den Spieler, der auf das Feld geklickt hat?
-		// TODO: Anhand der Klicks die Regel entscheiden? Müsste doch von Karte aus geschehen
 		/**
 		 * Anhand der Instanzvariablen wird entschieden, ob gerade der Anfangspunkt oder 
 		 * der Endpunkt angeklickt wurde.
@@ -47,10 +46,7 @@ public class Feld2d extends javax.swing.JLabel {
 		 * @param e MouseEvent enthält die angeklickte Komponente
 		 */
 		public void mouseClicked(MouseEvent e) {
-			// TODO: kann hier auch direkt feld Instanzvariable genommen werden?
-			//       --> schöner machen
-			Feld angeklicktesFeld = ((Feld2d) e.getComponent()).getFeld();
-			ZugEntgegennahme.ziehen(angeklicktesFeld);
+			ZugEntgegennahme.ziehen(feld);
 		}
 		
 		
