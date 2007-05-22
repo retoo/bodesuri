@@ -7,15 +7,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JPanel;
+
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
-import ui.HauptView;
 import ui.ressourcen.BrettLader;
 import dienste.netzwerk.EndPunkt;
 
-public class BrettView extends HauptView {
+public class BrettView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	// Wenn wir von Feld nach Feld2d und umgekehrt abbilden wollen:
