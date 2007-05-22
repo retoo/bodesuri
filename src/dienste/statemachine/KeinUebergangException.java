@@ -1,4 +1,4 @@
-package spielplatz.zustandssynchronisation;
+package dienste.statemachine;
 
 public class KeinUebergangException extends RuntimeException {
     public KeinUebergangException(String msg) {

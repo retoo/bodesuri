@@ -18,8 +18,7 @@ import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
-import spielplatz.zustandssynchronisation.EventQueue;
-import spielplatz.zustandssynchronisation.events.NetzwerkEvent;
+import applikation.client.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -33,6 +32,7 @@ import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
+import dienste.statemachine.EventQueue;
 
 public class Prototyp {
 	private Spiel spiel;

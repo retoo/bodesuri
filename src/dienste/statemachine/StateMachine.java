@@ -1,4 +1,4 @@
-package spielplatz.zustandssynchronisation;
+package dienste.statemachine;
 
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -6,8 +6,6 @@ import java.util.Map;
 import java.util.Vector;
 
 
-import spielplatz.zustandssynchronisation.events.Event;
-import spielplatz.zustandssynchronisation.states.State;
 
 
 public class StateMachine {

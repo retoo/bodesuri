@@ -1,8 +1,10 @@
-package spielplatz.zustandssynchronisation;
+package applikation.client;
 
-import spielplatz.zustandssynchronisation.states.Lobby;
-import spielplatz.zustandssynchronisation.states.ProgrammStart;
+import applikation.client.states.Lobby;
+import applikation.client.states.ProgrammStart;
 import dienste.netzwerk.EndPunkt;
+import dienste.statemachine.EventQueue;
+import dienste.statemachine.StateMachine;
 
 public class StateMachineClient extends StateMachine {
 	public EventQueue queue;

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import pd.Spiel;
-import spielplatz.zustandssynchronisation.events.NetzwerkEvent;
+import applikation.client.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;

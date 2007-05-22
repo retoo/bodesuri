@@ -1,11 +1,8 @@
-package spielplatz.zustandssynchronisation.states;
+package applikation.client.states;
 
-import spielplatz.zustandssynchronisation.KeinUebergangException;
-import spielplatz.zustandssynchronisation.StateMachine;
-import spielplatz.zustandssynchronisation.StateMachineClient;
-import spielplatz.zustandssynchronisation.events.Event;
-import spielplatz.zustandssynchronisation.events.NetzwerkEvent;
-import spielplatz.zustandssynchronisation.events.VerbindenEvent;
+import applikation.client.StateMachineClient;
+import applikation.client.events.NetzwerkEvent;
+import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
@@ -13,6 +10,10 @@ import applikation.server.nachrichten.SpielVollNachricht;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.statemachine.Event;
+import dienste.statemachine.KeinUebergangException;
+import dienste.statemachine.State;
+import dienste.statemachine.StateMachine;
 
 public class BodesuriState extends State {
 	protected StateMachineClient machine;

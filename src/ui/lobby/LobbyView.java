@@ -10,8 +10,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import spielplatz.zustandssynchronisation.EventQueue;
-import spielplatz.zustandssynchronisation.events.VerbindenEvent;
+import applikation.client.events.VerbindenEvent;
+
+import dienste.statemachine.EventQueue;
+
 
 public class LobbyView extends JFrame {
 

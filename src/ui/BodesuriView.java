@@ -9,14 +9,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import spielplatz.zustandssynchronisation.EventQueue;
-import spielplatz.zustandssynchronisation.StateMachine;
-import spielplatz.zustandssynchronisation.StateMachineClient;
+import applikation.client.StateMachineClient;
+
 import ui.chat.ChatView;
 import ui.info.DeckView;
 import ui.info.SpielerView;
 import ui.lobby.LobbyView;
 import dienste.netzwerk.VerbindungWegException;
+import dienste.statemachine.EventQueue;
+import dienste.statemachine.StateMachine;
 
 /**
  * Das GUI des Spieles...

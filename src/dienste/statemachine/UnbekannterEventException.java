@@ -1,4 +1,4 @@
-package spielplatz.zustandssynchronisation;
+package dienste.statemachine;
 
 public class UnbekannterEventException extends RuntimeException {
     public UnbekannterEventException(String msg) {

@@ -1,14 +1,15 @@
-package spielplatz.zustandssynchronisation.states;
+package applikation.client.states;
 
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.SpielBeitreten;
-import spielplatz.zustandssynchronisation.events.VerbindenEvent;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
+import dienste.statemachine.State;
 
 public class ProgrammStart extends BodesuriState {
 	State verbinden(VerbindenEvent ve) {

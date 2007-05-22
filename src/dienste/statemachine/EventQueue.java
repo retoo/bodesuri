@@ -1,9 +1,9 @@
-package spielplatz.zustandssynchronisation;
+package dienste.statemachine;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import spielplatz.zustandssynchronisation.events.Event;
+
 
 public class EventQueue implements EventSource {
 	BlockingQueue<Event> queue;
