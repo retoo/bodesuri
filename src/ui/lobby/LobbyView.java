@@ -7,6 +7,10 @@ public class LobbyView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public LobbyView() {
-		add(new JLabel("Test"));
+		setTitle("Bodesuri - Lobby");
+		setLocationByPlatform(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		add(new JLabel("Hier kommt mal eine Lobby..."));
 	}
 }
