@@ -15,7 +15,6 @@ import ui.brett.BrettView;
 import ui.chat.ChatView;
 import ui.info.DeckView;
 import ui.info.SpielerView;
-import ui.verbinden.VerbindenView;
 import applikation.client.BodesuriClient;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.EventQueue;
