@@ -34,7 +34,7 @@ public class BrettView extends JPanel {
 
 		Map<Integer, Point> koordinaten = null;
 		try {
-			koordinaten = BrettLader.ladeXML("src/spielplatz/brett.xml");
+			koordinaten = BrettLader.ladeXML("src/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
 			// Checked Exception in unchecked umwandeln
 			throw new RuntimeException(e);
