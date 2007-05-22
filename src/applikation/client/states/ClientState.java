@@ -5,7 +5,6 @@ import applikation.client.events.NetzwerkEvent;
 import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielVollNachricht;
 import dienste.netzwerk.Brief;
@@ -20,7 +19,7 @@ import dienste.statemachine.StateMachine;
 public class ClientState extends ActiveState {
 	protected BodesuriClient machine;
 
-	public State execute(Event event) {
+	public State handle(Event event) {
 
 		if (event instanceof NetzwerkEvent) {
 			NetzwerkEvent be = (NetzwerkEvent) event;
@@ -31,8 +30,6 @@ public class ClientState extends ActiveState {
 			if (nachricht instanceof SpielBeitreten)
 				return spielBeitreten(brief.absender,
 				                      (SpielBeitreten) nachricht);
-			else if (nachricht instanceof NeueVerbindung)
-				return neueVerbindeung(brief.absender);
 			else if (nachricht instanceof ChatNachricht)
 				return chatNachricht(brief.absender, (ChatNachricht) nachricht);
 			else if (nachricht instanceof SpielVollNachricht)
@@ -45,7 +42,7 @@ public class ClientState extends ActiveState {
 				return verbinden((VerbindenEvent) event);
 		}
 
-		return super.execute(event);
+		return super.handle(event);
 	}
 
 	State verbinden(VerbindenEvent event) {

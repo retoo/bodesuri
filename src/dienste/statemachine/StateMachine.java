@@ -54,7 +54,7 @@ public class StateMachine {
 				
 				Event event = eventSource.getEevent();
 				
-				newState = state.execute(event);
+				newState = state.handle(event);
 			} else {
 				PassiveState state = (PassiveState) currentState;
 				newState = state.getNextState();
