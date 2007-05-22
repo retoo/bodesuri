@@ -6,7 +6,6 @@ import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import pd.brett.Feld;
 import pd.spieler.Figur;
 
 public class Figur2d extends JLabel implements Observer {
@@ -16,6 +15,7 @@ public class Figur2d extends JLabel implements Observer {
 
 	public Figur2d(Feld2d feld, BrettView brett) {
 		super(bildFigur);
+//		this.setComponentZOrder(comp, index)
 		setzeAuf(feld);
 		this.brett = brett;
 	}
@@ -26,7 +26,7 @@ public class Figur2d extends JLabel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (arg instanceof Feld) {
+		if (arg instanceof Figur) {
 			setzeAuf(brett.getFigur2d((Figur)arg));
 		}
 	}

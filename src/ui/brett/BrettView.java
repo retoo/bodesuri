@@ -21,6 +21,9 @@ import dienste.netzwerk.EndPunkt;
 public class BrettView extends HauptView {
 
 	private static final long serialVersionUID = 1L;
+	// Wenn wir von Feld nach Feld2d und umgekehrt abbilden wollen:
+	// HashIdentityMap
+	// Evtl. auch noch eine Struktur von Figur2d
 	List<Feld2d> felder = new Vector<Feld2d>();
 
 	public BrettView(Spiel spiel, Spieler spielerIch, EndPunkt server) {
@@ -52,6 +55,8 @@ public class BrettView extends HauptView {
 			i++;
 		} while (feld != startFeld);
 
+		// TODO Diese For-Schaufe könnte/sollte durch Spielen mit
+		// setComponentZIndex obsolet werden.
 		for (Feld2d feld2 : felder) {
 			this.add(feld2);
 
