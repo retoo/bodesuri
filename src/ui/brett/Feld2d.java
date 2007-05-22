@@ -14,7 +14,7 @@ public class Feld2d extends javax.swing.JLabel {
 	private Point p;
 	private Feld feld;
 
-	static final private ImageIcon bildFeld = new ImageIcon(Feld2d.class.getResource("/ui/brett/feld.png"));
+	static final private ImageIcon bildFeld = new ImageIcon(Feld2d.class.getResource("/ui/ressourcen/feld.png"));
 
 	public Feld2d(Point p, Feld feld) {
 		super(bildFeld);
