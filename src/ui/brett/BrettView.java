@@ -45,7 +45,7 @@ public class BrettView extends JPanel {
 			felder.add(feld2d);
 			System.out.println(feld);
 			if (feld.istBesetzt()) {
-				new Figur2d(feld2d, this);
+				this.add(new Figur2d(feld2d, this));
 			}
 		}
 
