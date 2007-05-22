@@ -11,7 +11,7 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.State;
 
-public class ProgrammStart extends BodesuriState {
+public class ProgrammStart extends ClientStates {
 	State verbinden(VerbindenEvent ve) {
 
 		try {

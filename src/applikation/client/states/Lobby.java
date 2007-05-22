@@ -1,6 +1,6 @@
 package applikation.client.states;
 
 
-public class Lobby extends BodesuriState {
+public class Lobby extends ClientStates {
 	
 }

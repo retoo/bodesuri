@@ -15,7 +15,7 @@ import dienste.statemachine.KeinUebergangException;
 import dienste.statemachine.State;
 import dienste.statemachine.StateMachine;
 
-public class BodesuriState extends State {
+public class ClientStates extends State {
 	protected StateMachineClient machine;
 
 	public State execute(Event event) {
