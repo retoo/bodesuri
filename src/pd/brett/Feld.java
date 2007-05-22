@@ -72,4 +72,8 @@ public abstract class Feld extends CodierbaresObjekt {
 	public String toString() {
 		return "Feld" + nummer;
 	}
+
+	public int getNummer() {
+		return nummer;
+	}
 }

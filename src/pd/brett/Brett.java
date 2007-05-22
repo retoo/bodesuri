@@ -12,6 +12,7 @@ public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
 	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
+	private Vector<Feld> alleFelder;
 	
 	private Spiel spiel;
 	private int feldNummer;
@@ -30,6 +31,7 @@ public class Brett {
 	 * Also 24 Felder pro "Ecke" von Spieler.
 	 */
 	private void erstelleFelder() {
+		alleFelder   = new Vector<Feld>();
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
 		himmelFelder = new HashMap<Spieler, Vector<HimmelFeld>>();
@@ -40,13 +42,16 @@ public class Brett {
 		for (Spieler sp : spiel.getSpieler()) {
 			BankFeld bf = new BankFeld(feldNummer++, sp);
 			bankFelder.put(sp, bf);
+			alleFelder.add(bf);
 			
 			erstelleLager(sp, bf);
 			erstelleHimmel(sp, bf);
 			
 			felderInRing.add(bf);
 			for (int i = 0; i < 15; ++i) {
-				felderInRing.add(new NormalesFeld(feldNummer++));
+				NormalesFeld nf = new NormalesFeld(feldNummer++);
+				felderInRing.add(nf);
+				alleFelder.add(nf);
 			}
 		}
 		
@@ -62,6 +67,7 @@ public class Brett {
 	    	lager.add(lf);
 	    }
 	    lagerFelder.put(sp, lager);
+	    alleFelder.addAll(lager);
     }
 
 	private void erstelleHimmel(Spieler sp, BankFeld bf) {
@@ -74,6 +80,7 @@ public class Brett {
 		himmel.get(0).setVorheriges(bf);
 		verkette(himmel, false);
 		himmelFelder.put(sp, himmel);
+		alleFelder.addAll(himmel);
 	}
 	
 	private void verkette(List<? extends Feld> felder, boolean ringsum) {
@@ -107,5 +114,9 @@ public class Brett {
 		}
 		throw new RuntimeException("getFreiesLagerFeldVon wurde aufgerufen, " +
 				"aber es sind keine freien Lagerfelder mehr vorhanden.");
+	}
+	
+	public List<Feld> getAlleFelder() {
+		return alleFelder;
 	}
 }
