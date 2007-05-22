@@ -12,13 +12,12 @@ import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import ui.ressourcen.BrettLader;
-import dienste.netzwerk.EndPunkt;
 
 public class BrettView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public BrettView(Spiel spiel, Spieler spielerIch, EndPunkt server) {
+	public BrettView(Spiel spiel, Spieler spielerIch) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
 		setBackground(new Color(0, 150, 0));
 
@@ -45,7 +44,7 @@ public class BrettView extends JPanel {
 	}
 
 	public Feld2d getFigur2d(Figur figur) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	    // TODO Auto-generated method stub
+	    return null;
+    }
 }

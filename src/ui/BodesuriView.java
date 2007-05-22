@@ -28,15 +28,11 @@ public class BodesuriView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public BodesuriView(EventQueue queue) throws UnknownHostException,
-	        IOException, VerbindungWegException {
+	public BodesuriView(Spiel spiel, Spieler spielerIch) {
 		setTitle("Bodesuri - Spiel");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
-
-		Spiel spiel = new Spiel();
-		Spieler spieler = new Spieler(1, spiel);
 
 		// Panels
 		// Box scheint das beste Layout zu sein.
@@ -62,7 +58,7 @@ public class BodesuriView extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridheight = 2;
-		add(new BrettView(spiel, spieler, null), gbc);
+		add(new BrettView(spiel, spielerIch), gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;
