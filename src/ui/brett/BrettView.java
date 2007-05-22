@@ -39,7 +39,7 @@ public class BrettView extends JPanel {
 			// Checked Exception in unchecked umwandeln
 			throw new RuntimeException(e);
 		}
-		
+
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d = new Feld2d(koordinaten.get(feld.getNummer()), feld);
 			felder.add(feld2d);
@@ -49,8 +49,8 @@ public class BrettView extends JPanel {
 			}
 		}
 
-		// TODO Diese For-Schaufe könnte/sollte durch Spielen mit
-		// setComponentZIndex obsolet werden.
+		// TODO Diese For-Schaufe sollte durch setComponentZOrder anstelle von
+		// add obsolet werden
 		for (Feld2d feld2 : felder) {
 			this.add(feld2);
 		}

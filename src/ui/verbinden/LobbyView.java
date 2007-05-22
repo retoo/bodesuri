@@ -1,4 +1,4 @@
-package ui.lobby;
+package ui.verbinden;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
