@@ -6,11 +6,11 @@ import dienste.netzwerk.EndPunkt;
 import dienste.statemachine.EventQueue;
 import dienste.statemachine.StateMachine;
 
-public class StateMachineClient extends StateMachine {
+public class BodesuriClient extends StateMachine {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
 
-	public StateMachineClient(EventQueue queue) {
+	public BodesuriClient(EventQueue queue) {
 		register(new ProgrammStart());
 		register(new Lobby());
 		setStartState(ProgrammStart.class);

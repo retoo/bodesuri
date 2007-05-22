@@ -1,4 +1,4 @@
-package applikation.server.pd;
+package applikation.server;
 
 import dienste.netzwerk.EndPunkt;
 

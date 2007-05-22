@@ -1,6 +1,6 @@
 package applikation.client.states;
 
-import applikation.client.StateMachineClient;
+import applikation.client.BodesuriClient;
 import applikation.client.events.NetzwerkEvent;
 import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.ChatNachricht;
@@ -16,7 +16,7 @@ import dienste.statemachine.State;
 import dienste.statemachine.StateMachine;
 
 public class ClientStates extends State {
-	protected StateMachineClient machine;
+	protected BodesuriClient machine;
 
 	public State execute(Event event) {
 
@@ -71,6 +71,6 @@ public class ClientStates extends State {
 
 	@Override
     public void setMachine(StateMachine machine) {
-		this.machine = (StateMachineClient) machine;
+		this.machine = (BodesuriClient) machine;
     }
 }

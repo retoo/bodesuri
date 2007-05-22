@@ -12,7 +12,6 @@ import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
-import applikation.server.pd.Spieler;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;

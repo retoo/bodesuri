@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.StateMachineClient;
+import applikation.client.BodesuriClient;
 
 import ui.chat.ChatView;
 import ui.info.DeckView;
@@ -63,7 +63,7 @@ public class BodesuriView extends JFrame {
 		
 		EventQueue queue = new EventQueue();
 		
-		StateMachine sync = new StateMachineClient(queue);
+		StateMachine sync = new BodesuriClient(queue);
 		
 		new BodesuriView(queue).setVisible(true);
 		
