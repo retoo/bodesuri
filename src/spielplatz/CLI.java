@@ -1,4 +1,4 @@
-package cli;
+package spielplatz;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,7 @@ import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.EventQueue;
 
-public class Prototyp {
+public class CLI {
 	private Spiel spiel;
 	private Brett brett;
 	
@@ -43,7 +43,7 @@ public class Prototyp {
 	private Spieler lokalerSpieler;
 	private EventQueue queue;
 
-	public Prototyp(Spiel spiel, Spieler spielerIch, EndPunkt server, EventQueue queue) {
+	public CLI(Spiel spiel, Spieler spielerIch, EndPunkt server, EventQueue queue) {
 		this.server = server;
 		this.spiel = spiel;
 		this.lokalerSpieler = spielerIch;
@@ -312,7 +312,7 @@ public class Prototyp {
 				throw new RuntimeException("Ups, ich bin ja gar nicht im Spiel");
 			}
 				
-			Prototyp spielBrett = new Prototyp(spiel, spielerIch, server, queue);
+			CLI spielBrett = new CLI(spiel, spielerIch, server, queue);
 			spielBrett.run();
 		
 		} catch (ConnectException e) {
