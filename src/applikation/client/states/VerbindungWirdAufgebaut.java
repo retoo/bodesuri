@@ -3,7 +3,7 @@ package applikation.client.states;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import dienste.statemachine.State;
 
-public class VerbindungWirdAufgebaut extends ClientState {
+public class VerbindungWirdAufgebaut extends ActiveClientState {
 	State beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		
 		System.out.println("Folgende Spieler sind dabei: ");
@@ -12,6 +12,6 @@ public class VerbindungWirdAufgebaut extends ClientState {
 			System.out.println(" - " + name);
 		}
 		
-		return machine.getState(Lobby.class);
+		return machine.getState(LobbyStart.class);
 	}
 }

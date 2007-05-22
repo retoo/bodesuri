@@ -11,14 +11,15 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.State;
 
-public class VerbindungErfassen extends ClientState {
+public class VerbindungErfassen extends ActiveClientState {
 	State verbinden(VerbindenEvent ve) {
 
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(machine.queue);
 			
 			machine.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
-			machine.endpunkt.sende(new SpielBeitreten(ve.spieler));
+			machine.endpunkt.sende(new SpielBeitreten(ve.spielerName));
+			machine.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			machine.endpunkt = null;
 			return machine.getState(VerbindungErfassen.class);
