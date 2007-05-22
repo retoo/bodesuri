@@ -74,6 +74,7 @@ public class BodesuriView extends JFrame {
 		gbc.gridy = 0;
 		gbc.weightx = 0.1;
 		gbc.weighty = 0.1;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
 		add(new SpielerView(), gbc);
 
 		gbc.gridx = 1;
