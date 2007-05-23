@@ -1,4 +1,4 @@
-package applikation.client.states;
+package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
 import applikation.client.events.NetzwerkEvent;

@@ -1,4 +1,4 @@
-package applikation.client.states;
+package applikation.client.zustaende;
 
 import ui.BodesuriView;
 import dienste.automat.State;
