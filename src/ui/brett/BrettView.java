@@ -36,7 +36,6 @@ public class BrettView extends JPanel {
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d = new Feld2d(koordinaten.get(feld.getNummer()), feld);
 			this.add(feld2d);
-			System.out.println(feld);
 			if (feld.istBesetzt()) {
 				this.setComponentZOrder(new Figur2d(feld2d, this), 0);
 			}

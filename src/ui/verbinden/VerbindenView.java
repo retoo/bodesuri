@@ -50,7 +50,6 @@ public class VerbindenView extends JFrame {
 		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-	            // TODO Auto-generated method stub
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
