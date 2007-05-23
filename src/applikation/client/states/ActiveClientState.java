@@ -8,14 +8,14 @@ import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.SpielVollNachricht;
+import dienste.automat.ActiveState;
+import dienste.automat.Automat;
+import dienste.automat.Event;
+import dienste.automat.KeinUebergangException;
+import dienste.automat.State;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
-import dienste.statemachine.ActiveState;
-import dienste.statemachine.Event;
-import dienste.statemachine.KeinUebergangException;
-import dienste.statemachine.State;
-import dienste.statemachine.Automat;
 
 public class ActiveClientState extends ActiveState {
 	protected BodesuriClient automat;

@@ -1,4 +1,4 @@
-package dienste.statemachine;
+package dienste.automat;
 
 
 public interface EventSource {

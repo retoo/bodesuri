@@ -1,7 +1,7 @@
 package applikation.client.states;
 
 import applikation.server.nachrichten.BeitrittsBestaetigung;
-import dienste.statemachine.State;
+import dienste.automat.State;
 
 public class VerbindungWirdAufgebaut extends ActiveClientState {
 	State beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {

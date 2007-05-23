@@ -1,7 +1,7 @@
 package dienste.netzwerk;
 
 import applikation.client.events.NetzwerkEvent;
-import dienste.statemachine.EventQueue;
+import dienste.automat.EventQueue;
 
 public class BriefkastenAdapter implements BriefKastenInterface {
 	private EventQueue queue;

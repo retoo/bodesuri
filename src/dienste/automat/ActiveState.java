@@ -1,4 +1,4 @@
-package dienste.statemachine;
+package dienste.automat;
 
 public abstract class ActiveState extends State {
 	public State handle(Event event) {

@@ -12,9 +12,9 @@ import applikation.client.states.Spiel;
 import applikation.client.states.SpielStart;
 import applikation.client.states.VerbindungErfassen;
 import applikation.client.states.VerbindungWirdAufgebaut;
+import dienste.automat.Automat;
+import dienste.automat.EventQueue;
 import dienste.netzwerk.EndPunkt;
-import dienste.statemachine.EventQueue;
-import dienste.statemachine.Automat;
 
 public class BodesuriClient extends Automat {
 	public EventQueue queue;

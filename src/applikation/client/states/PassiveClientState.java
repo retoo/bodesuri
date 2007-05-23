@@ -1,8 +1,8 @@
 package applikation.client.states;
 
 import applikation.client.BodesuriClient;
-import dienste.statemachine.PassiveState;
-import dienste.statemachine.Automat;
+import dienste.automat.Automat;
+import dienste.automat.PassiveState;
 
 public abstract class PassiveClientState extends PassiveState {
 	protected BodesuriClient automat;

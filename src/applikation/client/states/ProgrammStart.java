@@ -1,7 +1,7 @@
 package applikation.client.states;
 
 import ui.verbinden.VerbindenView;
-import dienste.statemachine.State;
+import dienste.automat.State;
 
 public class ProgrammStart extends PassiveClientState {
 	@Override

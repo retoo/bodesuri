@@ -1,4 +1,4 @@
-package dienste.statemachine;
+package dienste.automat;
 
 public class KeinUebergangException extends RuntimeException {
     public KeinUebergangException(String msg) {

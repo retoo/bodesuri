@@ -2,8 +2,8 @@ package applikation.client.states;
 
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielStartNachricht;
+import dienste.automat.State;
 import dienste.netzwerk.EndPunkt;
-import dienste.statemachine.State;
 
 public class Lobby extends ActiveClientState {
 	State chatNachricht(EndPunkt absender, ChatNachricht nachricht) {

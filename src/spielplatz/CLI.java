@@ -27,12 +27,12 @@ import applikation.server.nachrichten.SpielVollNachricht;
 import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
+import dienste.automat.EventQueue;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.statemachine.EventQueue;
 
 public class CLI {
 	private Spiel spiel;

@@ -1,4 +1,4 @@
-package dienste.statemachine;
+package dienste.automat;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

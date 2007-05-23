@@ -5,11 +5,11 @@ import java.net.UnknownHostException;
 
 import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.SpielBeitreten;
+import dienste.automat.State;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.statemachine.State;
 
 public class VerbindungErfassen extends ActiveClientState {
 	State verbinden(VerbindenEvent ve) {

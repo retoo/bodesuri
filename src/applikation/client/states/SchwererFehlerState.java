@@ -1,6 +1,6 @@
 package applikation.client.states;
 
-import dienste.statemachine.State;
+import dienste.automat.State;
 
 public class SchwererFehlerState extends PassiveClientState {
 	public void init() {

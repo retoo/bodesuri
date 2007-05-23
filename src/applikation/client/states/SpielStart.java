@@ -1,7 +1,7 @@
 package applikation.client.states;
 
 import ui.BodesuriView;
-import dienste.statemachine.State;
+import dienste.automat.State;
 
 public class SpielStart extends PassiveClientState {
 

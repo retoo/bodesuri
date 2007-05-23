@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import applikation.client.events.VerbindenEvent;
 
-import dienste.statemachine.EventQueue;
+import dienste.automat.EventQueue;
 
 
 public class VerbindenView extends JFrame {

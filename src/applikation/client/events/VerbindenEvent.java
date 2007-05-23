@@ -1,6 +1,6 @@
 package applikation.client.events;
 
-import dienste.statemachine.Event;
+import dienste.automat.Event;
 
 public class VerbindenEvent extends Event {
 	public final String hostname;

@@ -16,9 +16,9 @@ import ui.chat.ChatView;
 import ui.info.DeckView;
 import ui.info.SpielerView;
 import applikation.client.BodesuriClient;
+import dienste.automat.Automat;
+import dienste.automat.EventQueue;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.statemachine.EventQueue;
-import dienste.statemachine.Automat;
 
 /**
  * Das GUI des Spieles...

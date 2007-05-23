@@ -1,7 +1,7 @@
 package applikation.client.events;
 
+import dienste.automat.Event;
 import dienste.netzwerk.Brief;
-import dienste.statemachine.Event;
 
 public class NetzwerkEvent extends Event {
 	final public Brief brief;

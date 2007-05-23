@@ -1,7 +1,7 @@
 package applikation.client.states;
 
 import ui.lobby.LobbyView;
-import dienste.statemachine.State;
+import dienste.automat.State;
 
 public class LobbyStart extends PassiveClientState {
 

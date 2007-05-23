@@ -1,8 +1,8 @@
 package applikation.client.states;
 
 import applikation.server.nachrichten.ChatNachricht;
+import dienste.automat.State;
 import dienste.netzwerk.EndPunkt;
-import dienste.statemachine.State;
 
 // TODO ist nun das 3. Spiel. Ein anderer Name wäre gut.
 public class Spiel extends ActiveClientState {
