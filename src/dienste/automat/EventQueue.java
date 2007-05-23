@@ -5,7 +5,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 
 
-public class EventQueue implements EventSource {
+public class EventQueue implements EventQuelle {
 	BlockingQueue<Event> queue;
 	
 	public EventQueue() {

@@ -40,7 +40,7 @@ public class BodesuriClient extends Automat {
 
 		setStart(ProgrammStart.class);
 
-		setEventSource(queue);
+		setEventQuelle(queue);
 
 		this.queue = queue;
 	}

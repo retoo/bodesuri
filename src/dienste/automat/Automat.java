@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Automat {
 	private Zustand start;
-	private EventSource eventSource;
+	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
 
 	public Automat() {
@@ -21,8 +21,8 @@ public class Automat {
 		start = getZustand(klasse);
 	}
 
-	protected void setEventSource(EventSource source) {
-		eventSource = source;
+	protected void setEventQuelle(EventQuelle quelle) {
+		eventQuelle = quelle;
 	}
 
 	public Zustand getZustand(Class<? extends Zustand> klasse) {
@@ -47,7 +47,7 @@ public class Automat {
 			if (aktuellerZustand instanceof AktiverZustand) {
 				AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
 				
-				Event event = eventSource.getEevent();
+				Event event = eventQuelle.getEevent();
 				
 				neuerZustand = zustand.handle(event);
 			} else {

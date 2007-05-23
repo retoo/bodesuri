@@ -1,6 +1,6 @@
 package dienste.automat;
 
 
-public interface EventSource {
+public interface EventQuelle {
 	Event getEevent();
 }
