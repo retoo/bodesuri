@@ -6,8 +6,8 @@ import dienste.automat.Zustand;
 public class SpielStart extends PassiverClientZustand {
 
 	@Override
-	protected Zustand getNextState() {
-		return automat.getState(Spiel.class);
+	protected Zustand getNaechstenZustand() {
+		return automat.getZustand(Spiel.class);
 	}
 
 	protected void init() {

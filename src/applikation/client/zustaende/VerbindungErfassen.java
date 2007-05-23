@@ -22,15 +22,15 @@ public class VerbindungErfassen extends AktiverClientZustand {
 			automat.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			automat.endpunkt = null;
-			return automat.getState(VerbindungErfassen.class);
+			return automat.getZustand(VerbindungErfassen.class);
 		}  catch (VerbindungWegException e) {
 			automat.endpunkt = null;
-			return automat.getState(VerbindungErfassen.class);
+			return automat.getZustand(VerbindungErfassen.class);
 		} catch (IOException e) {
 			automat.endpunkt = null;
-			return automat.getState(VerbindungErfassen.class);
+			return automat.getZustand(VerbindungErfassen.class);
 		}
 		
-		return automat.getState(VerbindungWirdAufgebaut.class);
+		return automat.getZustand(VerbindungWirdAufgebaut.class);
 	}
 }

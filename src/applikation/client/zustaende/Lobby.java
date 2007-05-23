@@ -24,6 +24,6 @@ public class Lobby extends AktiverClientZustand {
 			}
 		}
 
-		return automat.getState(SpielStart.class);
+		return automat.getZustand(SpielStart.class);
 	}
 }

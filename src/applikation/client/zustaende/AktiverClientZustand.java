@@ -78,12 +78,12 @@ public class AktiverClientZustand extends AktiverZustand {
 	}
 
 	Zustand keinUebergang() {
-		throw new KeinUebergangException("Kein Übergang definiert in state "
+		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
 		                                 + this);
 	}
 
 	@Override
-    public void setMachine(Automat automat) {
+    public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;
     }
 }

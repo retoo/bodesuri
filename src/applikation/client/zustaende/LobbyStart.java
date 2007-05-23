@@ -6,8 +6,8 @@ import dienste.automat.Zustand;
 public class LobbyStart extends PassiverClientZustand {
 
 	@Override
-	protected Zustand getNextState() {
-		return automat.getState(Lobby.class);
+	protected Zustand getNaechstenZustand() {
+		return automat.getZustand(Lobby.class);
 	}
 	
 	protected void init() {

@@ -5,8 +5,8 @@ import dienste.automat.Zustand;
 
 public class ProgrammStart extends PassiverClientZustand {
 	@Override
-    protected Zustand getNextState() {
-	    return automat.getState(VerbindungErfassen.class);
+    protected Zustand getNaechstenZustand() {
+	    return automat.getZustand(VerbindungErfassen.class);
     }
 	
 	protected void init() {

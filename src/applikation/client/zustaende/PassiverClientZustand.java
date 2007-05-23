@@ -8,7 +8,7 @@ public abstract class PassiverClientZustand extends PassiverZustand {
 	protected BodesuriClient automat;
 
 	@Override
-    public void setMachine(Automat automat) {
+    public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;
     }
 }

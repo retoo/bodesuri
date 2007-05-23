@@ -7,7 +7,7 @@ import ui.verbinden.VerbindenView;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;
 import applikation.client.zustaende.ProgrammStart;
-import applikation.client.zustaende.SchwererFehlerState;
+import applikation.client.zustaende.SchwererFehler;
 import applikation.client.zustaende.Spiel;
 import applikation.client.zustaende.SpielStart;
 import applikation.client.zustaende.VerbindungErfassen;
@@ -29,7 +29,7 @@ public class BodesuriClient extends Automat {
 	public Spieler spielerIch;
 
 	public BodesuriClient(EventQueue queue) {
-		register(new SchwererFehlerState());
+		register(new SchwererFehler());
 		register(new ProgrammStart());
 		register(new VerbindungErfassen());
 		register(new VerbindungWirdAufgebaut());
@@ -38,7 +38,7 @@ public class BodesuriClient extends Automat {
 		register(new SpielStart());
 		register(new Spiel());
 
-		setStartState(ProgrammStart.class);
+		setStart(ProgrammStart.class);
 
 		setEventSource(queue);
 

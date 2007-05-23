@@ -1,65 +1,60 @@
 package dienste.automat;
 
 import java.util.IdentityHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 
 public class Automat {
-	protected List<Zustand> states;
 	private Zustand start;
 	private EventSource eventSource;
-	private Map<Class<? extends Zustand>, Zustand> stateMap;
+	private Map<Class<? extends Zustand>, Zustand> zustaende;
 
 	public Automat() {
-		states = new Vector<Zustand>();
-		stateMap = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
+		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 	}
 
-	protected void register(Zustand state) {
-		states.add(state);
-		state.setMachine(this);
-		stateMap.put(state.getClass(), state);
+	protected void register(Zustand zustand) {
+		zustand.setAutomat(this);
+		zustaende.put(zustand.getClass(), zustand);
 	}
 
-	protected void setStartState(Class<? extends Zustand> klasse) {
-		start = getState(klasse);
+	protected void setStart(Class<? extends Zustand> klasse) {
+		start = getZustand(klasse);
 	}
 
 	protected void setEventSource(EventSource source) {
 		eventSource = source;
 	}
 
-	public Zustand getState(Class<? extends Zustand> klasse) {
-		Zustand state = stateMap.get(klasse);
+	public Zustand getZustand(Class<? extends Zustand> klasse) {
+		Zustand zustand = zustaende.get(klasse);
 		
-		if (state == null) 
+		if (zustand == null) 
 			throw new RuntimeException("Nichtregistierer Zustand " + klasse);
 		
-		return state;
+		return zustand;
 	}
 
 	public void run() {
-		Zustand currentState = start;
+		Zustand aktuellerZustand = start;
 
 		while (true) {
-			Zustand newState;
+			Zustand neuerZustand;
 			
-			System.out.println("Execute State: " + currentState);
+			System.out.println("Uebergang nach: " + aktuellerZustand);
 			
-			currentState.init();
+			aktuellerZustand.init();
 		
-			if (currentState instanceof AktiverZustand) {
-				AktiverZustand state = (AktiverZustand) currentState;
+			if (aktuellerZustand instanceof AktiverZustand) {
+				AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
 				
 				Event event = eventSource.getEevent();
 				
-				newState = state.handle(event);
+				neuerZustand = zustand.handle(event);
 			} else {
-				PassiverZustand state = (PassiverZustand) currentState;
-				newState = state.getNextState();
+				PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
+				neuerZustand = zustand.getNaechstenZustand();
 			}
-			currentState = newState;
+			aktuellerZustand = neuerZustand;
 		}			
 	}
 }
