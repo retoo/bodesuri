@@ -14,9 +14,9 @@ import applikation.client.states.VerbindungErfassen;
 import applikation.client.states.VerbindungWirdAufgebaut;
 import dienste.netzwerk.EndPunkt;
 import dienste.statemachine.EventQueue;
-import dienste.statemachine.StateMachine;
+import dienste.statemachine.Automat;
 
-public class BodesuriClient extends StateMachine {
+public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
 

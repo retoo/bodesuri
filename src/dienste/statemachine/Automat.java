@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-public class StateMachine {
+public class Automat {
 	protected List<State> states;
 	private State start;
 	private EventSource eventSource;
 	private Map<Class<? extends State>, State> stateMap;
 
-	public StateMachine() {
+	public Automat() {
 		states = new Vector<State>();
 		stateMap = new IdentityHashMap<Class<? extends State>, State>();
 	}

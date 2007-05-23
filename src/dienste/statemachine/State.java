@@ -2,7 +2,7 @@ package dienste.statemachine;
 
 
 public abstract class State {
-	abstract public void setMachine(StateMachine machine);
+	abstract public void setMachine(Automat machine);
 	
 	protected void init() {
 	}

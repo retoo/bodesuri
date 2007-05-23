@@ -18,7 +18,7 @@ import ui.info.SpielerView;
 import applikation.client.BodesuriClient;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.statemachine.EventQueue;
-import dienste.statemachine.StateMachine;
+import dienste.statemachine.Automat;
 
 /**
  * Das GUI des Spieles...
@@ -83,7 +83,7 @@ public class BodesuriView extends JFrame {
 	public static void main(String[] args) throws UnknownHostException,
 	                                      IOException, VerbindungWegException {
 		EventQueue queue = new EventQueue();
-		StateMachine sync = new BodesuriClient(queue);
+		Automat sync = new BodesuriClient(queue);
 
 		sync.run();
 	}

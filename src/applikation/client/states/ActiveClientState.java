@@ -15,7 +15,7 @@ import dienste.statemachine.ActiveState;
 import dienste.statemachine.Event;
 import dienste.statemachine.KeinUebergangException;
 import dienste.statemachine.State;
-import dienste.statemachine.StateMachine;
+import dienste.statemachine.Automat;
 
 public class ActiveClientState extends ActiveState {
 	protected BodesuriClient machine;
@@ -83,7 +83,7 @@ public class ActiveClientState extends ActiveState {
 	}
 
 	@Override
-    public void setMachine(StateMachine machine) {
+    public void setMachine(Automat machine) {
 		this.machine = (BodesuriClient) machine;
     }
 }
