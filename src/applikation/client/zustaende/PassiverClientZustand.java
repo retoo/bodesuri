@@ -2,9 +2,9 @@ package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
 import dienste.automat.Automat;
-import dienste.automat.PassiveState;
+import dienste.automat.PassiverZustand;
 
-public abstract class PassiveClientState extends PassiveState {
+public abstract class PassiverClientZustand extends PassiverZustand {
 	protected BodesuriClient automat;
 
 	@Override

@@ -8,19 +8,19 @@ import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.SpielVollNachricht;
-import dienste.automat.ActiveState;
+import dienste.automat.AktiverZustand;
 import dienste.automat.Automat;
 import dienste.automat.Event;
 import dienste.automat.KeinUebergangException;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 
-public class ActiveClientState extends ActiveState {
+public class AktiverClientZustand extends AktiverZustand {
 	protected BodesuriClient automat;
 
-	public State handle(Event event) {
+	public Zustand handle(Event event) {
 
 		if (event instanceof NetzwerkEvent) {
 			NetzwerkEvent be = (NetzwerkEvent) event;
@@ -49,35 +49,35 @@ public class ActiveClientState extends ActiveState {
 		return super.handle(event);
 	}
 
-	State verbinden(VerbindenEvent event) {
+	Zustand verbinden(VerbindenEvent event) {
 		return keinUebergang();
 	}
 
-	State spielVoll(EndPunkt absender, SpielVollNachricht nachricht) {
+	Zustand spielVoll(EndPunkt absender, SpielVollNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	State chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	State neueVerbindeung(EndPunkt absender) {
+	Zustand neueVerbindeung(EndPunkt absender) {
 		return keinUebergang();
 	}
 
-	State spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
 		return keinUebergang();
 	}
 	
-	State beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+	Zustand beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		return keinUebergang();
 	}
 	
-	State spielStarten(SpielStartNachricht nachricht) {
+	Zustand spielStarten(SpielStartNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	State keinUebergang() {
+	Zustand keinUebergang() {
 		throw new KeinUebergangException("Kein Übergang definiert in state "
 		                                 + this);
 	}

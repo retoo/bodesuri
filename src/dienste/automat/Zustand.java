@@ -1,7 +1,7 @@
 package dienste.automat;
 
 
-public abstract class State {
+public abstract class Zustand {
 	abstract public void setMachine(Automat automat);
 	
 	protected void init() {

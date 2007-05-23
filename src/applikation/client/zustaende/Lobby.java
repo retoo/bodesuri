@@ -2,17 +2,17 @@ package applikation.client.zustaende;
 
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielStartNachricht;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 import dienste.netzwerk.EndPunkt;
 
-public class Lobby extends ActiveClientState {
-	State chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+public class Lobby extends AktiverClientZustand {
+	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ":");
 		System.out.println(nachricht);
 		return this;
 	}
 
-	State spielStarten(SpielStartNachricht startNachricht) {
+	Zustand spielStarten(SpielStartNachricht startNachricht) {
 		automat.spiel = new pd.Spiel();
 
 		for (int i = 0; i < startNachricht.spieler.length; i++) {

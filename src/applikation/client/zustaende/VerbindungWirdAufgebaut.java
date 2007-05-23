@@ -1,10 +1,10 @@
 package applikation.client.zustaende;
 
 import applikation.server.nachrichten.BeitrittsBestaetigung;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 
-public class VerbindungWirdAufgebaut extends ActiveClientState {
-	State beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+public class VerbindungWirdAufgebaut extends AktiverClientZustand {
+	Zustand beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		
 		System.out.println("Folgende Spieler sind dabei: ");
 		

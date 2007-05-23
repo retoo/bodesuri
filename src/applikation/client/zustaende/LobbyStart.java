@@ -1,12 +1,12 @@
 package applikation.client.zustaende;
 
 import ui.lobby.LobbyView;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 
-public class LobbyStart extends PassiveClientState {
+public class LobbyStart extends PassiverClientZustand {
 
 	@Override
-	protected State getNextState() {
+	protected Zustand getNextState() {
 		return automat.getState(Lobby.class);
 	}
 	

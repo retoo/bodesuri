@@ -1,11 +1,11 @@
 package applikation.client.zustaende;
 
 import ui.verbinden.VerbindenView;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 
-public class ProgrammStart extends PassiveClientState {
+public class ProgrammStart extends PassiverClientZustand {
 	@Override
-    protected State getNextState() {
+    protected Zustand getNextState() {
 	    return automat.getState(VerbindungErfassen.class);
     }
 	

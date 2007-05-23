@@ -6,23 +6,23 @@ import java.util.Map;
 import java.util.Vector;
 
 public class Automat {
-	protected List<State> states;
-	private State start;
+	protected List<Zustand> states;
+	private Zustand start;
 	private EventSource eventSource;
-	private Map<Class<? extends State>, State> stateMap;
+	private Map<Class<? extends Zustand>, Zustand> stateMap;
 
 	public Automat() {
-		states = new Vector<State>();
-		stateMap = new IdentityHashMap<Class<? extends State>, State>();
+		states = new Vector<Zustand>();
+		stateMap = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 	}
 
-	protected void register(State state) {
+	protected void register(Zustand state) {
 		states.add(state);
 		state.setMachine(this);
 		stateMap.put(state.getClass(), state);
 	}
 
-	protected void setStartState(Class<? extends State> klasse) {
+	protected void setStartState(Class<? extends Zustand> klasse) {
 		start = getState(klasse);
 	}
 
@@ -30,8 +30,8 @@ public class Automat {
 		eventSource = source;
 	}
 
-	public State getState(Class<? extends State> klasse) {
-		State state = stateMap.get(klasse);
+	public Zustand getState(Class<? extends Zustand> klasse) {
+		Zustand state = stateMap.get(klasse);
 		
 		if (state == null) 
 			throw new RuntimeException("Nichtregistierer Zustand " + klasse);
@@ -40,23 +40,23 @@ public class Automat {
 	}
 
 	public void run() {
-		State currentState = start;
+		Zustand currentState = start;
 
 		while (true) {
-			State newState;
+			Zustand newState;
 			
 			System.out.println("Execute State: " + currentState);
 			
 			currentState.init();
 		
-			if (currentState instanceof ActiveState) {
-				ActiveState state = (ActiveState) currentState;
+			if (currentState instanceof AktiverZustand) {
+				AktiverZustand state = (AktiverZustand) currentState;
 				
 				Event event = eventSource.getEevent();
 				
 				newState = state.handle(event);
 			} else {
-				PassiveState state = (PassiveState) currentState;
+				PassiverZustand state = (PassiverZustand) currentState;
 				newState = state.getNextState();
 			}
 			currentState = newState;

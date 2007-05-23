@@ -5,14 +5,14 @@ import java.net.UnknownHostException;
 
 import applikation.client.events.VerbindenEvent;
 import applikation.server.nachrichten.SpielBeitreten;
-import dienste.automat.State;
+import dienste.automat.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 
-public class VerbindungErfassen extends ActiveClientState {
-	State verbinden(VerbindenEvent ve) {
+public class VerbindungErfassen extends AktiverClientZustand {
+	Zustand verbinden(VerbindenEvent ve) {
 
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
