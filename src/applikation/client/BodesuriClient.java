@@ -29,14 +29,14 @@ public class BodesuriClient extends Automat {
 	public Spieler spielerIch;
 
 	public BodesuriClient(EventQueue queue) {
-		register(new SchwererFehler());
-		register(new ProgrammStart());
-		register(new VerbindungErfassen());
-		register(new VerbindungWirdAufgebaut());
-		register(new LobbyStart());
-		register(new Lobby());
-		register(new SpielStart());
-		register(new Spiel());
+		registriere(new SchwererFehler());
+		registriere(new ProgrammStart());
+		registriere(new VerbindungErfassen());
+		registriere(new VerbindungWirdAufgebaut());
+		registriere(new LobbyStart());
+		registriere(new Lobby());
+		registriere(new SpielStart());
+		registriere(new Spiel());
 
 		setStart(ProgrammStart.class);
 

@@ -12,7 +12,7 @@ public class Automat {
 		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 	}
 
-	protected void register(Zustand zustand) {
+	protected void registriere(Zustand zustand) {
 		zustand.setAutomat(this);
 		zustaende.put(zustand.getClass(), zustand);
 	}
