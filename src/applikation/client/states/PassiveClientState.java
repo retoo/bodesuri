@@ -5,10 +5,10 @@ import dienste.statemachine.PassiveState;
 import dienste.statemachine.Automat;
 
 public abstract class PassiveClientState extends PassiveState {
-	protected BodesuriClient machine;
+	protected BodesuriClient automat;
 
 	@Override
-    public void setMachine(Automat machine) {
-		this.machine = (BodesuriClient) machine;
+    public void setMachine(Automat automat) {
+		this.automat = (BodesuriClient) automat;
     }
 }

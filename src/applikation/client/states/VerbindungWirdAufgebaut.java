@@ -12,6 +12,6 @@ public class VerbindungWirdAufgebaut extends ActiveClientState {
 			System.out.println(" - " + name);
 		}
 		
-		return machine.getState(LobbyStart.class);
+		return automat.getState(LobbyStart.class);
 	}
 }

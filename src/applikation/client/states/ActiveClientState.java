@@ -18,7 +18,7 @@ import dienste.statemachine.State;
 import dienste.statemachine.Automat;
 
 public class ActiveClientState extends ActiveState {
-	protected BodesuriClient machine;
+	protected BodesuriClient automat;
 
 	public State handle(Event event) {
 
@@ -83,7 +83,7 @@ public class ActiveClientState extends ActiveState {
 	}
 
 	@Override
-    public void setMachine(Automat machine) {
-		this.machine = (BodesuriClient) machine;
+    public void setMachine(Automat automat) {
+		this.automat = (BodesuriClient) automat;
     }
 }

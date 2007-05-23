@@ -7,14 +7,14 @@ public class SpielStart extends PassiveClientState {
 
 	@Override
 	protected State getNextState() {
-		return machine.getState(Spiel.class);
+		return automat.getState(Spiel.class);
 	}
 
 	protected void init() {
-		machine.lobbyView.setVisible(false);
+		automat.lobbyView.setVisible(false);
 
-		machine.spielView = new BodesuriView(machine.spiel, machine.spielerIch);
-		machine.spielView.setVisible(true);
+		automat.spielView = new BodesuriView(automat.spiel, automat.spielerIch);
+		automat.spielView.setVisible(true);
 	}
 
 }

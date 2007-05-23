@@ -15,22 +15,22 @@ public class VerbindungErfassen extends ActiveClientState {
 	State verbinden(VerbindenEvent ve) {
 
 		try {
-			BriefKastenInterface briefkasten = new BriefkastenAdapter(machine.queue);
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
 			
-			machine.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
-			machine.endpunkt.sende(new SpielBeitreten(ve.spielerName));
-			machine.spielerName = ve.spielerName;
+			automat.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
+			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
+			automat.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
-			machine.endpunkt = null;
-			return machine.getState(VerbindungErfassen.class);
+			automat.endpunkt = null;
+			return automat.getState(VerbindungErfassen.class);
 		}  catch (VerbindungWegException e) {
-			machine.endpunkt = null;
-			return machine.getState(VerbindungErfassen.class);
+			automat.endpunkt = null;
+			return automat.getState(VerbindungErfassen.class);
 		} catch (IOException e) {
-			machine.endpunkt = null;
-			return machine.getState(VerbindungErfassen.class);
+			automat.endpunkt = null;
+			return automat.getState(VerbindungErfassen.class);
 		}
 		
-		return machine.getState(VerbindungWirdAufgebaut.class);
+		return automat.getState(VerbindungWirdAufgebaut.class);
 	}
 }

@@ -6,11 +6,11 @@ import dienste.statemachine.State;
 public class ProgrammStart extends PassiveClientState {
 	@Override
     protected State getNextState() {
-	    return machine.getState(VerbindungErfassen.class);
+	    return automat.getState(VerbindungErfassen.class);
     }
 	
 	protected void init() {
-		machine.verbindenView = new VerbindenView(machine.queue);
-		machine.verbindenView.setVisible(true);
+		automat.verbindenView = new VerbindenView(automat.queue);
+		automat.verbindenView.setVisible(true);
 	}	
 }

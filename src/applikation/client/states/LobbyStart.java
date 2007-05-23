@@ -7,14 +7,14 @@ public class LobbyStart extends PassiveClientState {
 
 	@Override
 	protected State getNextState() {
-		return machine.getState(Lobby.class);
+		return automat.getState(Lobby.class);
 	}
 	
 	protected void init() {
-		machine.verbindenView.setVisible(false);
+		automat.verbindenView.setVisible(false);
 
-		machine.lobbyView = new LobbyView();
-		machine.lobbyView.setVisible(true);
+		automat.lobbyView = new LobbyView();
+		automat.lobbyView.setVisible(true);
 	}
 
 }

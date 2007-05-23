@@ -13,17 +13,17 @@ public class Lobby extends ActiveClientState {
 	}
 
 	State spielStarten(SpielStartNachricht startNachricht) {
-		machine.spiel = new pd.Spiel();
+		automat.spiel = new pd.Spiel();
 
 		for (int i = 0; i < startNachricht.spieler.length; i++) {
 			String name = startNachricht.spieler[i];
 
-			machine.spiel.fuegeHinzu(name);
-			if (name.equals(machine.spielerName)) {
-				machine.spielerIch = machine.spiel.getSpieler().get(i);
+			automat.spiel.fuegeHinzu(name);
+			if (name.equals(automat.spielerName)) {
+				automat.spielerIch = automat.spiel.getSpieler().get(i);
 			}
 		}
 
-		return machine.getState(SpielStart.class);
+		return automat.getState(SpielStart.class);
 	}
 }
