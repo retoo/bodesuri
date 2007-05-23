@@ -14,73 +14,13 @@
 
 \subsection{Architekturübersicht} % (fold)
 \label{sub:architekturuebersicht}
-
 \subsection{Architektonische Darstellung} % (fold)
 \label{sub:architektonische_darstellung}
+Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet. Dabei setzt jede Schicht direkt auf der darunterliegenden Schicht auf und nutzt deren angebotenen Dienste. Wo möglich und sinnvoll, werden solche Schnittstellen zwischen Layern mit dem Facade-Pattern gebündelt um die Kopplung zwischen den Schichten zu verringern (wenige, starke Kopplungen sind besser als viele, schwache). Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen.
+% subsection architekturuebersicht (end)
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
-
-\subsection{Logische Sicht} % (fold)
-\label{sub:logische_schicht}
-
-\subsubsection{Legende f�r die verwendeten Farben in den Diagrammen} % (fold)
-\label{sub:legende_fuer_die_verwendeten_farben_in_den_diagrammen}
-
-\subsubsection{Schichtenarchitektur} % (fold)
-\label{sub:schichtenarchitektur}
-
-\subsubsection{Client Architektur} % (fold)
-\label{sub:client_architektur}
-
-\subsubsection{Server Architektur} % (fold)
-\label{sub:server_architektur}
-
-\subsubsection{Packagebeschreibung} % (fold)
-\label{sub:pagebeschreibung}
-
-\subsection{Physikalische Schicht} % (fold)
-\label{sub:physikalische_schicht}
-
-\subsubsection{Deployment Diagramm} % (fold)
-\label{sub:deployment_diagramm}
-
-\subsubsection{Prozess \& Threads} % (fold)
-\label{sub:prozess_threads}
-
-\subsection{Schnittstellen der Packages} % (fold)
-\label{sub:schnittstellen_der_packages}
-
-\section{Spielzuste \& Nachrichten} % (fold)
-\label{spielzustaende_nachrichten}
-
-\section{Design Pakete} % (fold)
-\label{design_pakete}
-
-\section{Dynamische Abläufe} % (fold)
-\label{dynamische_ablauefe}
-
-\section{Externes Design} % (fold)
-\label{externes_design}
-
-\section{Eingetretene Risiken} % (fold)
-\label{eingetretene_risiken}
-
-\subsection{RMI} % (fold)
-\label{rmi}
-
-\subsection{Java 2D} % (fold)
-\label{java_2d}
-
-\section{Architektur} % (fold)
-\label{sec:architektur}
-\subsection{Architektonische Darstellung } % (fold)
-\label{sub:architektonische_darstellung_}
-Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet. Dabei setzt jede Schicht direkt auf der darunterliegenden Schicht auf und nutzt deren angebotenen Dienste. Wo möglich und sinnvoll, werden solche Schnittstellen zwischen Layern mit dem Facade-Pattern gebündelt um die Kopplung zwischen den Schichten zu verringern (wenige, starke Kopplungen sind besser als viele, schwache). Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen.
-% subsection architektonische_darstellung_ (end)
-
-\subsection{Architektonische Ziele \& Einschränkungen} % (fold)
-\label{sub:architektonische_ziele_einschränkungen}
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
 Die Applikationsschicht wurde deshalb eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (zB. für Zustände) gibt. Die Zustandssynchronisation ist die erste Vorstufe der Netzwerkkommunikation. In diesem Package werden die spezifischen Nachrichten eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann schlussendlich über das Netzwerk verteilt und empfangen zu werden.
 % paragraph designentscheidungen (end)
@@ -90,27 +30,39 @@ Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunab
 \paragraph{Teamstruktur}\label{ssub:teamstruktur} % (fold)
 Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung ersichtlich. Die Verantwortlichkeiten sind in der Analysespzifikation geregelt.
 % paragraph teamstruktur (end)
-\newpage
-\subsubsection{Legende der in den Diagrammen verwendeten Farben}\label{ssub:legende} % (fold)
+% subsection architektonische_ziele_einschraenkungen (end)
+
+\newline
+\subsection{Logische Sicht} % (fold)
+\label{sub:logische_schicht}
+
+\subsubsection{Legende für die verwendeten Farben in den Diagrammen} % (fold)
+\label{ssub:legende_fuer_die_verwendeten_farben_in_den_diagrammen}
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=1\textwidth]{legende.png} \caption{Legende der Diagrammfarben}\label{fig:legende.png} 
 \end{figure}
-% subsubsection legende (end)
-% subsection architektonische_ziele_einschränkungen (end)
+% subsubsection legende_fuer_die_verwendeten_farben_in_den_diagrammen (end)
 
-\newpage
-\subsection{Logische Architektur} % (fold)
-\label{sub:logische_architektur}
+\subsubsection{Schichtenarchitektur} % (fold)
+\label{sub:schichtenarchitektur}
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=1\textwidth]{Architektur.png} \caption{Architektur}\label{fig:Architektur.png} 
 \end{figure}
+% subsubsection schichtenarchitektur (end)
 
-\newpage
-\subsubsection{Übersicht} % (fold)
-\label{ssub:Übersicht}
-% subsubsection Übersicht (end)
+\subsubsection{Client Architektur} % (fold)
+\label{sub:client_architektur}
+% subsubsection client_architektur (end)
+
+\subsubsection{Server Architektur} % (fold)
+\label{sub:server_architektur}
+% subsubsection server_architektur (end)
+
+\subsubsection{Packagebeschreibung} % (fold)
+\label{sub:pagebeschreibung}
+% subsubsection pagebeschreibung (end)
 
 \subsubsection{Package pd} % (fold)
 \label{ssub:package_pd}
@@ -125,7 +77,7 @@ In der Problem-Domain Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 	\item Package pd.zugsystem wird von applikation.zugentgegennahme verwendet, um Züge zu verarbeiten.
 \end{itemize}
 % subparagraph schnittstellen (end)
-% paragraph package_pd (end)
+% subsubsection package_pd (end)
 
 \newpage
 \subsubsection{Package pd.karten} % (fold)
@@ -149,7 +101,7 @@ Beschreibung der Schnittstellen
 \label{ssub:operationen}
 Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 % subparagraph operationen (end)
-% paragraph package_pd_karten (end)
+% subsubsection package_pd_karten (end)
 
 \newpage
 \subsubsection{Package pd.regelsystem, pd.zugsystem} % (fold)
@@ -349,6 +301,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 % subparagraph operationen (end)
 % paragraph package_ui_brett (end)
 
+\newpage
 \subsubsection{Package ui.eigenschaften} % (fold)
 \label{ssub:package_ui_eigenschaften}
 \subparagraph{Beschreibung des Packages} % (fold)
@@ -477,27 +430,59 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 % subsubsection design_pakete (end)
 % subsection logische_architektur (end)
 
-
 \newpage
-\subsection{Externes Design}\label{sub:externes_design} % (fold)
-\begin{figure}
-	[htp] \centering 
-	\includegraphics[width=1\textwidth]{Externes Design - Lobby.png} \caption{Externes Design}\label{fig:Externes_Design.jpg} 
-\end{figure}
-\begin{figure}
-	[htp] \centering 
-	\includegraphics[width=1\textwidth]{Externes Design - Spiel.png} \caption{Externes Design}\label{fig:Externes_Design.jpg} 
-\end{figure}
-% subsection externes_design (end)
-\subsection{Prozesse \& Threads} % (fold)
+\subsection{Physikalische Schicht} % (fold)
+\label{sub:physikalische_schicht}
+
+\subsubsection{Deployment Diagramm} % (fold)
+\label{sub:deployment_diagramm}
+
+\subsubsection{Prozess \& Threads} % (fold)
+\label{sub:prozess_threads}
 \label{sub:prozesse_threads}
 Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, etc...
 % subsection prozesse_threads (end)
 
-% section architektur (end)
+\newpage
+\subsection{Schnittstellen der Packages} % (fold)
+\label{sub:schnittstellen_der_packages}
 
+\newpage
+\section{Spielzustände \& Nachrichten} % (fold)
+\label{spielzustaende_nachrichten}
+
+\newpage
+\section{Design Pakete} % (fold)
+\label{design_pakete}
+
+\newpage
+\section{Dynamische Abläufe} % (fold)
+\label{dynamische_ablauefe}
+
+\newpage
+\section{Externes Design} % (fold)
+\label{externes_design}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=0.80\textwidth]{Externes Design - Verbindung.png}
+		\caption{Verbindung zum Server}
+	\label{fig:Externes Design - Verbindung}
+\end{figure}
+
+\begin{figure}	[htp] \centering 
+	\includegraphics[width=0.8\textwidth]{Externes Design - Lobby.png} \caption{Lobby vor dem Spielbeginn}\label{fig:Externes_Design.jpg} 
+\end{figure}
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=0.8\textwidth]{Externes Design - Spiel.png} \caption{Spielbrett}\label{fig:Externes_Design.jpg} 
+\end{figure}
+
+% subsection externes_design (end)
+
+\newpage
 \section{Eingetretene Risiken} % (fold)
-\label{sec:risiken}
+\label{eingetretene_risiken}
 
 \subsection{RMI} % (fold)
 \label{sub:rmi}
@@ -508,7 +493,7 @@ Wir entschieden uns auf Grund dieser Probleme, auf eine eigene Lösung umzusteig
 % subsection rmi (end)
 
 \subsection{Java 2D} % (fold)
-\label{sub:java_2d}
+\label{java_2d}
 
 Nachdem das CLI (Command Line Interface) erstellt war, entwarfen wir ein GUI dafür, das die Felder und Figuren darstellen sollte. Mit Java 2D ist das Zeichnen sehr einfach, da man die Koordinaten der zu zeichnenden Elemente angeben kann. Doch mussten wir leider feststellen, dass das Ansprechen eines Objektes etwas komplizierter ist. So muss zum Beispiel bei einem Mausklick das geklickte Objekt über die Koordinaten ermittelt werden. Ausserdem muss man sich um das Aktualisieren der Anzeige bei Veränderungen selber kümmern.
 
@@ -518,6 +503,6 @@ Aus diesen Gründen haben wir uns dazu entschlossen, für das GUI als einzige Te
 
 % subsection java_2d (end)
 
-% section risiken (end)
+% section eingetretene_risiken (end)
 
 \end{document}
