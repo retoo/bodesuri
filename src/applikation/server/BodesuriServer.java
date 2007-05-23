@@ -19,6 +19,9 @@ import dienste.netzwerk.VerbindungWegException;
 import dienste.netzwerk.server.Klicks;
 import dienste.netzwerk.server.Server;
 
+/**
+ * Der Server. Wird vom Benutzer gestartet.
+ */
 public class BodesuriServer extends Server {
 	protected static final int MAXSPIELER = 4;
 	private Vector<Spieler> spielers = new Vector<Spieler>();;
@@ -59,18 +62,15 @@ public class BodesuriServer extends Server {
 				Spieler spieler = new Spieler(brief.absender,
 				                              beitrittNachricht.spielerName);
 				spielers.add(spieler);
-				
-				String[] spielers_str = new String[MAXSPIELER];
-				
-	
-				
-				for (int i = 0; i < spielers.size(); i++)
-					spielers_str[i] = spielers.get(i).name;
-				
-				spieler.endpunkt.sende(new BeitrittsBestaetigung(spielers_str));
-				
 
-				String msg = "Neuer Spieler " + spieler.name + ". Noch "
+				String[] spielers_str = new String[MAXSPIELER];
+
+				for (int i = 0; i < spielers.size(); i++)
+					spielers_str[i] = spielers.get(i).spielerName;
+
+				spieler.endpunkt.sende(new BeitrittsBestaetigung(spielers_str));
+
+				String msg = "Neuer Spieler " + spieler.spielerName + ". Noch "
 				             + (MAXSPIELER - spielers.size())
 				             + " Spieler nötig.";
 				broadcast(msg);
@@ -95,7 +95,7 @@ public class BodesuriServer extends Server {
 		Spiel spiel = new Spiel();
 
 		for (Spieler spieler : spielers) {
-			spiel.fuegeHinzu(spieler.name);
+			spiel.fuegeHinzu(spieler.spielerName);
 		}
 
 		kuendigeSpielstartAn();
@@ -105,7 +105,7 @@ public class BodesuriServer extends Server {
 
 		Spieler aktuellerSpieler = spielers.get(klicks.klick());
 
-		broadcast(aktuellerSpieler.name + " fängt an.");
+		broadcast(aktuellerSpieler.spielerName + " fängt an.");
 		aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 		// FIXME: Timer timer = new ZugAufforderungsTimer(serverBriefkasten);
 
@@ -136,7 +136,7 @@ public class BodesuriServer extends Server {
 				                   + zugInfo.zug.getSpieler() + " gespielt");
 
 				aktuellerSpieler = spielers.get(klicks.klick());
-				broadcast("Nächster Spieler ist " + aktuellerSpieler.name + ".");
+				broadcast("Nächster Spieler ist " + aktuellerSpieler.spielerName + ".");
 
 				aktuellerSpieler.endpunkt.sende(new ZugAufforderung());
 
@@ -161,9 +161,9 @@ public class BodesuriServer extends Server {
 
 	private void kuendigeSpielstartAn() throws VerbindungWegException {
 		String[] spielers_str = new String[MAXSPIELER];
-		
+
 		for (int i = 0; i < MAXSPIELER; i++)
-			spielers_str[i] = spielers.get(i).name;
+			spielers_str[i] = spielers.get(i).spielerName;
 
 		SpielStartNachricht ssn = new SpielStartNachricht(spielers_str);
 		broadcast(ssn);
@@ -187,6 +187,14 @@ public class BodesuriServer extends Server {
 		broadcast(new ChatNachricht(msg));
 	}
 
+	/**
+	 * Startet den Server.
+	 * 
+	 * @param args
+	 *            Wird nicht genutzt.
+	 * @throws IOException
+	 * @throws VerbindungWegException
+	 */
 	public static void main(String[] args) throws IOException,
 	                                      VerbindungWegException {
 		BodesuriServer server = new BodesuriServer();

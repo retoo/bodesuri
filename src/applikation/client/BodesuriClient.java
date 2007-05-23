@@ -16,6 +16,9 @@ import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 import dienste.netzwerk.EndPunkt;
 
+/**
+ * Version des Automaten für den Client
+ */
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
@@ -28,6 +31,11 @@ public class BodesuriClient extends Automat {
 	public String spielerName;
 	public Spieler spielerIch;
 
+	/**
+	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
+	 * 
+	 * @param queue Die Warteschlange für die Events
+	 */
 	public BodesuriClient(EventQueue queue) {
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart());
