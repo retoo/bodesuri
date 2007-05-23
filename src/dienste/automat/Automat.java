@@ -47,7 +47,7 @@ public class Automat {
 			if (aktuellerZustand instanceof AktiverZustand) {
 				AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
 				
-				Event event = eventQuelle.getEevent();
+				Event event = eventQuelle.getEvent();
 				
 				neuerZustand = zustand.handle(event);
 			} else {

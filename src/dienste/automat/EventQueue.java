@@ -29,7 +29,7 @@ public class EventQueue implements EventQuelle {
         }
 	}
 
-	public Event getEevent() {
+	public Event getEvent() {
 	    return dequeue();
     }
 }
