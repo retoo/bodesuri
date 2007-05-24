@@ -46,7 +46,7 @@ public class AktiverClientZustand extends AktiverZustand {
 			else if (nachricht instanceof ZugInformation)
 				return zugWurdeGemacht((ZugInformation) nachricht);
 			else if (nachricht instanceof ZugAufforderung)
-				return zugAufforderung((ZugAufforderung) nachricht);
+				return zugAufforderung();
 			else
 				System.out.println("Nachricht " + nachricht.getClass()
 				                   + " ist (noch) nicht implementiert!");
@@ -91,7 +91,7 @@ public class AktiverClientZustand extends AktiverZustand {
 		return keinUebergang();
 	}
 
-	Zustand zugAufforderung(ZugAufforderung aufforderung) {
+	Zustand zugAufforderung() {
 		return keinUebergang();
 	}
 

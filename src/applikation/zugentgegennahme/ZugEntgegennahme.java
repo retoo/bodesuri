@@ -55,7 +55,6 @@ public class ZugEntgegennahme {
 	 */
 	public void ziehen(Feld feld) {
 		zugStatus.handle(feld);
-		System.out.println("Auf " + feld + "geklickt.");
 	}
 
 	/**

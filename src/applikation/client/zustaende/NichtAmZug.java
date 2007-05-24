@@ -2,7 +2,6 @@ package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.Zustand;
 import dienste.netzwerk.EndPunkt;
@@ -13,8 +12,7 @@ public class NichtAmZug extends AktiverClientZustand {
 		return this;
 	}
 
-	//TODO: Brauchen wir die Nachricht übrerhaupt?
-	Zustand zugAufforderung(ZugAufforderung aufforderung) {
+	Zustand zugAufforderung() {
 		return automat.getZustand(AmZug.class);
 	}
 	
