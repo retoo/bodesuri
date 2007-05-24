@@ -12,7 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import pd.karten.Drei;
+import pd.karten.Ass;
 import pd.karten.KartenFarbe;
 import applikation.client.events.KarteGewaehltEvent;
 import dienste.automat.EventQueue;
@@ -33,7 +33,7 @@ public class DeckView extends JPanel {
 		JButton karteSpielen = new JButton("Karte spielen");
 		karteSpielen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent event) {
-				KarteGewaehltEvent e = new KarteGewaehltEvent(new Drei(KartenFarbe.Herz, 1));
+				KarteGewaehltEvent e = new KarteGewaehltEvent(new Ass(KartenFarbe.Herz, 1));
 				
 				DeckView.this.queue.enqueue(e);
             }

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
+import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import ui.ressourcen.BrettLader;
@@ -34,7 +35,14 @@ public class BrettView extends JPanel {
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(automat);
 		for (Feld feld : automat.spiel.getBrett().getAlleFelder()) {
-			Feld2d feld2d = new Feld2d(koordinaten.get(feld.getNummer()), feld, mouseAdapter);
+			Feld2d feld2d;
+			if (feld instanceof BankFeld) {
+				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+				                        feld, mouseAdapter);
+			} else {
+				feld2d = new NormalesFeld2d(koordinaten.get(feld.getNummer()),
+				                            feld, mouseAdapter);
+			}
 			this.add(feld2d);
 			if (feld.istBesetzt()) {
 				this.setComponentZOrder(new Figur2d(feld2d, this), 0);
@@ -44,7 +52,7 @@ public class BrettView extends JPanel {
 
 	public Feld2d getFigur2d(Figur figur) {
 		System.out.println("TODO!!!!!!");
-	    // TODO Auto-generated method stub
-	    return null;
-    }
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
