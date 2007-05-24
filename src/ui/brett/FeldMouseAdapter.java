@@ -20,10 +20,7 @@ class FeldMouseAdapter extends MouseAdapter {
 	 *            MouseEvent enthält die angeklickte Komponente
 	 */
 	public void mouseClicked(MouseEvent e) {
-		// TODO: Es wäre eigentlich besser zu überprüfen ob der Automat im
-		// Zustand Ziehen ist. Der Automat will seinen Zustand aber nicht
-		// verraten.
-		if (automat != null) {
+		if (automat.zugentgegennahme != null) {
 			automat.zugentgegennahme.ziehen(((Feld2d) e.getComponent()).feld);
 		}
 	}
