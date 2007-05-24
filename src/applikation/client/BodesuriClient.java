@@ -2,7 +2,6 @@ package applikation.client;
 
 import pd.karten.Karte;
 import pd.spieler.Spieler;
-import pd.zugsystem.Bewegung;
 import ui.BodesuriView;
 import ui.lobby.LobbyView;
 import ui.verbinden.VerbindenView;
@@ -17,7 +16,6 @@ import applikation.client.zustaende.SpielStart;
 import applikation.client.zustaende.VerbindungErfassen;
 import applikation.client.zustaende.VerbindungSteht;
 import applikation.client.zustaende.Ziehen;
-import applikation.client.zustaende.ZugValidieren;
 import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
@@ -42,7 +40,6 @@ public class BodesuriClient extends Automat {
 	// Sind zu fest vom Status abhängig. Müssen aber momentan so sein, da es
 	// nicht möglich ist Daten von Event zu Event zu übergeben.
 	public Karte karte;
-	public Bewegung bewegung;
 	public ZugEntgegennahme zugentgegennahme;
 
 	/**
@@ -63,7 +60,6 @@ public class BodesuriClient extends Automat {
 		registriere(new NichtAmZug());
 		registriere(new KarteWaehlen());
 		registriere(new Ziehen());
-		registriere(new ZugValidieren());		
 
 		setStart(ProgrammStart.class);
 
