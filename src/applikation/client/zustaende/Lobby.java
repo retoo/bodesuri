@@ -7,8 +7,7 @@ import dienste.netzwerk.EndPunkt;
 
 public class Lobby extends AktiverClientZustand {
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ":");
-		System.out.println(nachricht);
+		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;
 	}
 
