@@ -1,4 +1,4 @@
-package ui.brett;
+package ui.spiel.brett;
 
 import java.awt.Color;
 import java.awt.Dimension;

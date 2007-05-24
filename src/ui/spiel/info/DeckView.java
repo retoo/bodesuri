@@ -2,7 +2,7 @@
  * @(#) DeckView.java
  */
 
-package ui.info;
+package ui.spiel.info;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;

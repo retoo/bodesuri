@@ -2,7 +2,7 @@
  * @(#) KarteView.java
  */
 
-package ui.info;
+package ui.spiel.info;
 
 public class KarteView{
 	

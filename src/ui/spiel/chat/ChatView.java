@@ -1,4 +1,4 @@
-package ui.chat;
+package ui.spiel.chat;
 
 import java.awt.Color;
 

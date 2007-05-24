@@ -9,10 +9,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ui.brett.BrettView;
-import ui.chat.ChatView;
-import ui.info.DeckView;
-import ui.info.SpielerView;
+import ui.spiel.brett.BrettView;
+import ui.spiel.chat.ChatView;
+import ui.spiel.info.DeckView;
+import ui.spiel.info.SpielerView;
 import applikation.client.BodesuriClient;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;

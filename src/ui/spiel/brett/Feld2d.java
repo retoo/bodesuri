@@ -1,4 +1,4 @@
-package ui.brett;
+package ui.spiel.brett;
 
 import java.awt.Point;
 
