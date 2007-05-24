@@ -6,7 +6,7 @@ import java.util.Observer;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import pd.spieler.Figur;
+import pd.brett.Feld;
 
 public class Figur2d extends JLabel implements Observer {
 	private static final long serialVersionUID = 1L;
@@ -25,8 +25,8 @@ public class Figur2d extends JLabel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (arg instanceof Figur) {
-			setzeAuf(brett.getFigur2d((Figur)arg));
+		if (arg instanceof Feld) {
+			setzeAuf(brett.getFeld2d((Feld)arg));
 		}
 	}
 }

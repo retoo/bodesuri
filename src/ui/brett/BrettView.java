@@ -3,19 +3,19 @@ package ui.brett;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.JPanel;
 
 import pd.brett.BankFeld;
 import pd.brett.Feld;
-import pd.spieler.Figur;
 import ui.ressourcen.BrettLader;
 import applikation.client.BodesuriClient;
 
 public class BrettView extends JPanel {
-
 	private static final long serialVersionUID = 1L;
+	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 
 	public BrettView(BodesuriClient automat) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
@@ -43,16 +43,17 @@ public class BrettView extends JPanel {
 				feld2d = new NormalesFeld2d(koordinaten.get(feld.getNummer()),
 				                            feld, mouseAdapter);
 			}
+			felder.put(feld, feld2d);
 			this.add(feld2d);
 			if (feld.istBesetzt()) {
-				this.setComponentZOrder(new Figur2d(feld2d, this), 0);
+				Figur2d figur2d = new Figur2d(feld2d, this);
+				this.setComponentZOrder(figur2d, 0);
+				feld.getFigur().addObserver(figur2d);
 			}
 		}
 	}
 
-	public Feld2d getFigur2d(Figur figur) {
-		System.out.println("TODO!!!!!!");
-		// TODO Auto-generated method stub
-		return null;
+	public Feld2d getFeld2d(Feld feld) {
+		return felder.get(feld);
 	}
 }
