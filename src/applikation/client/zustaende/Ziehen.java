@@ -2,7 +2,7 @@ package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.events.ZugEingegebenEvent;
+import applikation.client.events.BewegungEingegebenEvent;
 import applikation.server.nachrichten.ZugInformation;
 import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.Zustand;
@@ -13,7 +13,7 @@ public class Ziehen extends AktiverClientZustand {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
 	}
 
-	Zustand zugEingegeben(ZugEingegebenEvent event) {
+	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
 		automat.zugentgegennahme = null;
 
 		ZugEingabe zugEingabe = new ZugEingabe(automat.spielerIch,

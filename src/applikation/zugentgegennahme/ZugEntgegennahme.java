@@ -6,9 +6,10 @@ package applikation.zugentgegennahme;
 
 import pd.brett.Feld;
 import pd.zugsystem.Bewegung;
-import applikation.client.events.ZugEingegebenEvent;
+import applikation.client.events.BewegungEingegebenEvent;
 import dienste.automat.EventQueue;
 
+//TODO: Sollte dies nun nicht eher BewegungsEntgegennahme heissen?
 public class ZugEntgegennahme {
 	private ZugStatus zugStatus;
 	private Feld start;
@@ -67,6 +68,6 @@ public class ZugEntgegennahme {
 	 */
 	private void zugBestaetigen(Feld start, Feld ziel) {
 		Bewegung bewegung = new Bewegung(start, ziel);
-		queue.enqueue(new ZugEingegebenEvent(bewegung));
+		queue.enqueue(new BewegungEingegebenEvent(bewegung));
 	}
 }
