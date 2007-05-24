@@ -25,11 +25,6 @@ public class ZugEntgegennahme {
 	 * Status-Handhabung für die Zugentgegennahme.
 	 */
 	private abstract class ZugStatus {
-		public void abbrechen() {
-			start = null;
-			ziel = null;
-		}
-
 		abstract public void handle(Feld feld);
 	}
 
