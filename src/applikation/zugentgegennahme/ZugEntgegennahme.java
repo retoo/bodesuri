@@ -10,20 +10,21 @@ import applikation.client.events.ZugEingegebenEvent;
 import dienste.automat.EventQueue;
 
 public class ZugEntgegennahme {
-	private ZugStatus zugStatus = new WartenAufStarteingabe();
+	private ZugStatus zugStatus;
+	private Feld start;
+	private Feld ziel;
+	
 	private EventQueue queue;
 
 	public ZugEntgegennahme(EventQueue queue) {
 		this.queue = queue;
+		zugStatus = new WartenAufStarteingabe();
 	}
 
 	/**
 	 * Status-Handhabung für die Zugentgegennahme.
 	 */
 	private abstract class ZugStatus {
-		private Feld start;
-		private Feld ziel;
-
 		public void abbrechen() {
 			start = null;
 			ziel = null;
@@ -34,16 +35,16 @@ public class ZugEntgegennahme {
 
 	private class WartenAufStarteingabe extends ZugStatus {
 		public void handle(Feld feld) {
-			super.start = feld;
+			start = feld;
 			zugStatus = new WartenAufZieleingabe();
 		}
 	}
 
 	private class WartenAufZieleingabe extends ZugStatus {
 		public void handle(Feld feld) {
-			super.ziel = feld;
-			zugBestaetigen(super.start, super.ziel);
+			ziel = feld;
 			zugStatus = new ZugErfasst();
+			zugBestaetigen(start, ziel);
 		}
 	}
 	
