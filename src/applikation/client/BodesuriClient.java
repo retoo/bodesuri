@@ -2,8 +2,8 @@ package applikation.client;
 
 import pd.karten.Karte;
 import pd.spieler.Spieler;
-import ui.BodesuriView;
 import ui.lobby.LobbyView;
+import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteWaehlen;

@@ -1,4 +1,4 @@
-package ui;
+package ui.spiel;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

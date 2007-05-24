@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import ui.BodesuriView;
+import ui.spiel.BodesuriView;
 import dienste.automat.Zustand;
 
 public class SpielStart extends PassiverClientZustand {
