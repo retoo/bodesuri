@@ -1,13 +1,17 @@
 package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
+import applikation.client.events.ZugEingegebenEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.NetzwerkEvent;
-import applikation.client.events.VerbindenEvent;
+import applikation.client.events.VerbindeEvent;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.SpielVollNachricht;
+import applikation.server.nachrichten.ZugAufforderung;
+import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.AktiverZustand;
 import dienste.automat.Automat;
 import dienste.automat.Event;
@@ -35,21 +39,31 @@ public class AktiverClientZustand extends AktiverZustand {
 				return chatNachricht(brief.absender, (ChatNachricht) nachricht);
 			else if (nachricht instanceof SpielVollNachricht)
 				return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
-			else if (nachricht instanceof BeitrittsBestaetigung) 
+			else if (nachricht instanceof BeitrittsBestaetigung)
 				return beitrittsBestaetitigung((BeitrittsBestaetigung) nachricht);
 			else if (nachricht instanceof SpielStartNachricht)
-				//TODO SpielStarten wäre unten eigentlich besser. Aber was hier?
 				return spielStarten((SpielStartNachricht) nachricht);
+			else if (nachricht instanceof ZugInformation)
+				return zugWurdeGemacht((ZugInformation) nachricht);
+			else if (nachricht instanceof ZugAufforderung)
+				return zugAufforderung((ZugAufforderung) nachricht);
+			else
+				System.out.println("Nachricht " + nachricht.getClass()
+				                   + " ist (noch) nicht implementiert!");
 
 		} else {
-			if (event instanceof VerbindenEvent)
-				return verbinden((VerbindenEvent) event);
+			if (event instanceof VerbindeEvent)
+				return verbinden((VerbindeEvent) event);
+			else if (event instanceof KarteGewaehltEvent)
+				return karteGewaehlt((KarteGewaehltEvent) event);
+			else if (event instanceof ZugEingegebenEvent)
+				return zugEingegeben((ZugEingegebenEvent) event);
 		}
 
 		return super.handle(event);
 	}
 
-	Zustand verbinden(VerbindenEvent event) {
+	Zustand verbinden(VerbindeEvent event) {
 		return keinUebergang();
 	}
 
@@ -61,29 +75,41 @@ public class AktiverClientZustand extends AktiverZustand {
 		return keinUebergang();
 	}
 
-	Zustand neueVerbindeung(EndPunkt absender) {
-		return keinUebergang();
-	}
-
 	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
 		return keinUebergang();
 	}
-	
+
 	Zustand beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		return keinUebergang();
 	}
-	
+
 	Zustand spielStarten(SpielStartNachricht nachricht) {
 		return keinUebergang();
 	}
 
+	Zustand zugWurdeGemacht(ZugInformation information) {
+		return keinUebergang();
+	}
+
+	Zustand zugAufforderung(ZugAufforderung aufforderung) {
+		return keinUebergang();
+	}
+
+	Zustand karteGewaehlt(KarteGewaehltEvent event) {
+		return keinUebergang();
+    }
+	
+	Zustand zugEingegeben(ZugEingegebenEvent event) {
+		return keinUebergang();
+	}
+	
 	Zustand keinUebergang() {
 		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
 		                                 + this);
 	}
 
 	@Override
-    public void setAutomat(Automat automat) {
+	public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;
-    }
+	}
 }

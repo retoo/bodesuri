@@ -10,8 +10,8 @@ public class SpielStart extends PassiverClientZustand {
 
 		automat.lobbyView.setVisible(false);
 
-		automat.spielView = new BodesuriView(automat.spiel, automat.spielerIch);
+		automat.spielView = new BodesuriView(automat);
 		automat.spielView.setVisible(true);
-		return automat.getZustand(Spiel.class);
+		return automat.getZustand(NichtAmZug.class);
 	}
 }

@@ -3,7 +3,7 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import applikation.client.events.VerbindenEvent;
+import applikation.client.events.VerbindeEvent;
 import applikation.server.nachrichten.SpielBeitreten;
 import dienste.automat.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
@@ -12,7 +12,7 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 
 public class VerbindungErfassen extends AktiverClientZustand {
-	Zustand verbinden(VerbindenEvent ve) {
+	Zustand verbinden(VerbindeEvent ve) {
 
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
@@ -22,15 +22,15 @@ public class VerbindungErfassen extends AktiverClientZustand {
 			automat.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			automat.endpunkt = null;
-			return automat.getZustand(VerbindungErfassen.class);
+			return this;
 		}  catch (VerbindungWegException e) {
 			automat.endpunkt = null;
-			return automat.getZustand(VerbindungErfassen.class);
+			return this;
 		} catch (IOException e) {
 			automat.endpunkt = null;
-			return automat.getZustand(VerbindungErfassen.class);
+			return this;
 		}
 		
-		return automat.getZustand(VerbindungWirdAufgebaut.class);
+		return automat.getZustand(VerbindungSteht.class);
 	}
 }

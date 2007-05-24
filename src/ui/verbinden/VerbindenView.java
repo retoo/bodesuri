@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.events.VerbindenEvent;
+import applikation.client.events.VerbindeEvent;
 
 import dienste.automat.EventQueue;
 
@@ -54,7 +54,7 @@ public class VerbindenView extends JFrame {
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
 				
-				VerbindenEvent e = new VerbindenEvent(host, port_raw, spieler);
+				VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
 				
 				VerbindenView.this.queue.enqueue(e);
             }

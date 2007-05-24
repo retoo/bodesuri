@@ -9,8 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import pd.Spiel;
-import pd.spieler.Spieler;
 import ui.brett.BrettView;
 import ui.chat.ChatView;
 import ui.info.DeckView;
@@ -28,7 +26,7 @@ public class BodesuriView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public BodesuriView(Spiel spiel, Spieler spielerIch) {
+	public BodesuriView(BodesuriClient automat) {
 		setTitle("Bodesuri - Spiel");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,7 +56,7 @@ public class BodesuriView extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridheight = 2;
-		add(new BrettView(spiel, spielerIch), gbc);
+		add(new BrettView(automat), gbc);
 
 		gbc.gridx = 0;
 		gbc.gridy = 3;
@@ -74,7 +72,7 @@ public class BodesuriView extends JFrame {
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;
-		add(new DeckView(), gbc);
+		add(new DeckView(automat.queue), gbc);
 
 		pack();
 
