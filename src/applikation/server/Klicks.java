@@ -1,4 +1,4 @@
-package dienste.netzwerk.server;
+package applikation.server;
 
 /* Huere michi du..
  */

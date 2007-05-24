@@ -52,7 +52,7 @@ public class Automat {
 				neuerZustand = zustand.handle(event);
 			} else {
 				PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-				neuerZustand = zustand.getNaechstenZustand();
+				neuerZustand = zustand.execute();
 			}
 			aktuellerZustand = neuerZustand;
 		}			

@@ -1,5 +1,5 @@
 package dienste.automat;
 
 public abstract class PassiverZustand extends Zustand {
-	abstract protected Zustand getNaechstenZustand();
+	abstract protected Zustand execute();
 }

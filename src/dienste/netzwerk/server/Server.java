@@ -9,14 +9,14 @@ import dienste.netzwerk.Daemon;
 
 public class Server {
 	private static final int PORT = 7788;
-	protected BriefKastenInterface serverBriefkasten;
-	protected EventQueue queue;
+	private BriefKastenInterface serverBriefkasten;
+	public EventQueue queue;
 
-	public Server() throws IOException {
-		this.queue = new EventQueue();
+	public Server(EventQueue queue) throws IOException {
+		this.queue = queue;
 		serverBriefkasten = new BriefkastenAdapter(queue);
 
-		Daemon daemon = new Daemon(PORT, serverBriefkasten);
+		Daemon daemon = new Daemon(PORT, serverBriefkasten, queue);
 
 		Thread t = new Thread(daemon);
 		t.start();

@@ -1,36 +1,43 @@
 package applikation.server;
 
-import java.io.IOException;
 import java.util.Vector;
 
 import pd.Spiel;
 import applikation.client.events.NetzwerkEvent;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
+import dienste.automat.Automat;
+import dienste.automat.EventQueue;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
-import dienste.netzwerk.server.Klicks;
 import dienste.netzwerk.server.Server;
 
 /**
  * Der Server. Wird vom Benutzer gestartet.
  */
-public class BodesuriServer extends Server {
+public class BodesuriServer extends Automat {
 	protected static final int MAXSPIELER = 4;
-	private Vector<Spieler> spielers = new Vector<Spieler>();;
+	Vector<Spieler> spielers = new Vector<Spieler>();
+	protected Server server;
+	protected EventQueue queue;;
 
-	private BodesuriServer() throws IOException {
-		super();
+	private BodesuriServer() {
+		this.queue = new EventQueue();
+		
+		registriere(new ServerStart());
+		registriere(new EmpfangeSpieler());
+		
+		setStart(ServerStart.class);
+		setEventQuelle(queue);
 	}
 
-	private void run() throws VerbindungWegException {
+	private void rundol() throws VerbindungWegException {
 		try {
 			System.out.println("Server gestartet");
 			starteSpiel();
@@ -80,8 +87,6 @@ public class BodesuriServer extends Server {
 				if (spielers.size() == MAXSPIELER) {
 					return; /* Spiel bereit */
 				}
-			} else if (nachricht instanceof NeueVerbindung) {
-				System.out.println("Neue Verbindung von " + brief.absender);
 			} else {
 				/* Platzhalter für später */
 				throw new RuntimeException(
@@ -183,7 +188,7 @@ public class BodesuriServer extends Server {
 		}
 	}
 
-	private void broadcast(String msg) throws VerbindungWegException {
+	void broadcast(String msg) throws VerbindungWegException {
 		broadcast(new ChatNachricht(msg));
 	}
 
@@ -192,13 +197,10 @@ public class BodesuriServer extends Server {
 	 * 
 	 * @param args
 	 *            Wird nicht genutzt.
-	 * @throws IOException
-	 * @throws VerbindungWegException
 	 */
-	public static void main(String[] args) throws IOException,
-	                                      VerbindungWegException {
+	public static void main(String[] args) {
 		BodesuriServer server = new BodesuriServer();
-
+		
 		server.run();
 	}
 }

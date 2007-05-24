@@ -20,7 +20,6 @@ import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.SpielVollNachricht;
@@ -278,8 +277,6 @@ public class CLI {
 				} else if (nachricht instanceof VerbindungGeschlossen) {
 					System.out.println("Die Verbindung wurde durch den Server unerwartet geschlossen!");
 					System.exit(99);
-				} else if (nachricht instanceof NeueVerbindung) {
-					// Ignorieren
 				} else {
 					/* TODO: Platzhalter */
 					System.out.println("Unbekannte Nachricht: " + nachricht);
