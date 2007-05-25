@@ -1,11 +1,11 @@
-package applikation.server;
+package applikation.server.zustaende;
 
 import java.io.IOException;
 
 import dienste.automat.Zustand;
 import dienste.netzwerk.server.Server;
 
-public class ServerStart extends PassiveServerState {
+public class ServerStart extends PassiveServerZustand {
 	protected Zustand execute() {
 		System.out.println("Initialiere Server");
 

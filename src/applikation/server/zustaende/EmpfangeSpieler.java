@@ -1,7 +1,9 @@
-package applikation.server;
+package applikation.server.zustaende;
 
 import java.util.Vector;
 
+import applikation.server.BodesuriServer;
+import applikation.server.Spieler;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.SpielBeitreten;
 import dienste.automat.Zustand;

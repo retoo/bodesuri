@@ -1,6 +1,7 @@
-package applikation.server;
+package applikation.server.zustaende;
 
 import applikation.client.events.NetzwerkEvent;
+import applikation.server.BodesuriServer;
 import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
 import dienste.automat.AktiverZustand;

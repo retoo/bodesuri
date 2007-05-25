@@ -11,6 +11,8 @@ import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
+import applikation.server.zustaende.EmpfangeSpieler;
+import applikation.server.zustaende.ServerStart;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 import dienste.netzwerk.Brief;
@@ -22,10 +24,10 @@ import dienste.netzwerk.server.Server;
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class BodesuriServer extends Automat {
-	protected static final int MAXSPIELER = 4;
-	Vector<Spieler> spielers = new Vector<Spieler>();
-	protected Server server;
-	protected EventQueue queue;;
+	public static final int MAXSPIELER = 4;
+	public Vector<Spieler> spielers = new Vector<Spieler>();
+	public Server server;
+	public EventQueue queue;;
 
 	private BodesuriServer() {
 		this.queue = new EventQueue();
@@ -188,7 +190,7 @@ public class BodesuriServer extends Automat {
 		}
 	}
 
-	void broadcast(String msg) throws VerbindungWegException {
+	public void broadcast(String msg) throws VerbindungWegException {
 		broadcast(new ChatNachricht(msg));
 	}
 
