@@ -11,7 +11,9 @@
 
 \section{Architekturübersicht} % (fold)
 \label{sec:architekturübersicht}
-Bodesuri ist über mehrere Computer aufgeteilt. Grundbaustein der Kommunikation ist die ZugEingabe. Diese wird vom Spieler der am Zug ist an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler.
+Bodesuri ist über mehrere Computer aufgeteilt. Es gibt vier Clients und einen Server pro Spiel. Der Client und der Server sind getrennte Programme, welche aber eine gemeinsame Codebasis haben.
+
+Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe und ZugInformation. ZugEingabe wird vom Spieler der am Zug ist an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler.
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=0.50\textwidth]{clientServer.png} \caption{Kommunikation zwischen Client & Server}\label{fig:legende.png} 
