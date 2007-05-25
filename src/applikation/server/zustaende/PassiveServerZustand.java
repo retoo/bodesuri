@@ -5,10 +5,10 @@ import dienste.automat.Automat;
 import dienste.automat.PassiverZustand;
 
 public abstract class PassiveServerZustand extends PassiverZustand {
-	protected BodesuriServer machine;
+	protected BodesuriServer automat;
 
 	@Override
 	public void setAutomat(Automat automat) {
-		this.machine = (BodesuriServer) automat;
+		this.automat = (BodesuriServer) automat;
 	}
 }

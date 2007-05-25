@@ -8,6 +8,7 @@ import dienste.netzwerk.EndPunkt;
 public class Spieler {
 
 	public String spielerName;
+	/* FIXME: das sollte früher doer später private sein */
 	public EndPunkt endpunkt;
 
 	public Spieler(EndPunkt endpunkt, String name) {

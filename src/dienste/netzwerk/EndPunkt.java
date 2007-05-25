@@ -78,7 +78,7 @@ public class EndPunkt {
 	 * @param nachricht zu übertragende Nachricht
 	 * @throws VerbindungWegException 
 	 */
-	public void sende(Nachricht nachricht) throws VerbindungWegException {
+	public void sende(Nachricht nachricht) {
 		try {
 			outputStream.writeObject(nachricht);
 		} catch (IOException e) {
