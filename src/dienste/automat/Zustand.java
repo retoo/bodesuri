@@ -11,3 +11,16 @@ public abstract class Zustand {
 		return this.getClass().getSimpleName();
 	}
 }
+
+
+abstract class CZustand {
+	
+}
+
+class CPassiverZustand extends CZustand {
+	
+}
+
+interface CAktiverZustand {
+	
+}
