@@ -1,15 +1,15 @@
 \ProvidesPackage{bodesuri}
 
-\usepackage{ngerman}
+\usepackage{ngerman} % Deutsche Ueberschriften, Silbentrennung
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
 \usepackage{booktabs}
 
 % Schrift
-\usepackage[sc]{mathpazo}
+\usepackage[sc]{mathpazo} % Schriftart Palatino
 \usepackage[T1]{fontenc}
 \linespread{1.05}
-\setkomafont{sectioning}{\rmfamily \bfseries}
+\setkomafont{sectioning}{\rmfamily \bfseries} % Ueberschriften serif und fett
 
 % Referenzen
 \usepackage[pdftex]{hyperref}
@@ -22,5 +22,5 @@
 \pagestyle{scrheadings}
 % \renewcommand*{\chapterpagestyle}{scrheadings}
 \clearscrheadfoot
-\chead{\normalfont\sffamily \headmark}
-\cfoot{\pagemark}
+\chead{\normalfont\sffamily \headmark} % Kopfzeile serif
+\cfoot{\pagemark} % Seitennummer in Fusszeile
