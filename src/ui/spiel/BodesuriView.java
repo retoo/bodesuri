@@ -2,8 +2,6 @@ package ui.spiel;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.io.IOException;
-import java.net.UnknownHostException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,9 +12,6 @@ import ui.spiel.chat.ChatView;
 import ui.spiel.info.DeckView;
 import ui.spiel.info.SpielerView;
 import applikation.client.BodesuriClient;
-import dienste.automat.Automat;
-import dienste.automat.EventQueue;
-import dienste.netzwerk.VerbindungWegException;
 
 /**
  * Das GUI des Spieles...
@@ -76,13 +71,5 @@ public class BodesuriView extends JFrame {
 
 		pack();
 
-	}
-
-	public static void main(String[] args) throws UnknownHostException,
-	                                      IOException, VerbindungWegException {
-		EventQueue queue = new EventQueue();
-		Automat sync = new BodesuriClient(queue);
-
-		sync.run();
 	}
 }
