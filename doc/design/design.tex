@@ -9,6 +9,17 @@
 
 \input{../titelseite}
 
+\section{Architekturübersicht} % (fold)
+\label{sec:architekturübersicht}
+Bodesuri ist über mehrere Computer aufgeteilt. Grundbaustein der Kommunikation ist die ZugEingabe. Diese wird vom Spieler der am Zug ist an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler.
+\begin{figure}
+	[htp] \centering 
+	\includegraphics[width=0.50\textwidth]{clientServer.png} \caption{Kommunikation zwischen Client & Server}\label{fig:legende.png} 
+\end{figure}
+
+Die Validierung der gespielten Züge geschieht beim Client, der Server ist zuständig für den Spielablauf.
+% section architekturübersicht (end)
+
 \section{Systemstruktur} % (fold)
 \label{Systemstruktur}
 
