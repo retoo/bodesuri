@@ -2,6 +2,9 @@ package pd.zugsystem;
 
 import pd.brett.Feld;
 
+/**
+ * Aktion, die eine Figur von einem Start- auf ein Zielfeld setzt.
+ */
 public class Aktion {
 	protected Feld start;
 	protected Feld ziel;
@@ -11,6 +14,9 @@ public class Aktion {
 		this.ziel  = ziel;
 	}
 	
+	/**
+	 * Führt Aktion aus, die Figur wird vom Start- aufs Zielfeld versetzt.
+	 */
 	public void ausfuehren() {
 		if (ziel.istBesetzt()) {
 			throw new RuntimeException("Ziel von Aktion sollte leer sein.");
