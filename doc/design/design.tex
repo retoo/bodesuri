@@ -10,9 +10,9 @@
 
 \section{Architekturübersicht} % (fold)
 \label{sec:architekturübersicht}
-Bodesuri ist über mehrere Computer aufgeteilt. Es gibt vier Clients und einen Server pro Spiel. Der Client und der Server sind getrennte Programme, welche aber eine gemeinsame Codebasis haben.
+Bodesuri ist über mehrere Rechner verteilt. Es gibt vier Clients und einen Server pro Spiel. Der Client und der Server sind getrennte Programme, welche aber eine gemeinsame Codebasis haben.
 
-Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe und ZugInformation. ZugEingabe wird vom Spieler der am Zug ist an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler.
+Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe und ZugInformation. Die ZugEingabe wird vom Spieler, der am Zug ist, an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler.
 \begin{figure}
 	[htp] \centering 
 	\includegraphics[width=0.50\textwidth]{clientServer.png} \caption{Kommunikation zwischen Client \& Server}\label{fig:legende.png} 
@@ -28,19 +28,19 @@ Die Validierung der gespielten Züge geschieht beim Client, der Server ist zust�
 \label{sub:architekturuebersicht}
 \subsection{Architektonische Darstellung} % (fold)
 \label{sub:architektonische_darstellung}
-Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet. Dabei setzt jede Schicht direkt auf der darunterliegenden Schicht auf und nutzt deren angebotenen Dienste. Wo möglich und sinnvoll, werden solche Schnittstellen zwischen Layern mit dem Facade-Pattern gebündelt um die Kopplung zwischen den Schichten zu verringern (wenige, starke Kopplungen sind besser als viele, schwache). Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen.
+Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet. Dabei setzt jede Schicht direkt auf der darunterliegenden Schicht auf und nutzt deren angebotenen Dienste. Wo möglich und sinnvoll, werden solche Schnittstellen zwischen Schichten mit dem Facade-Pattern gebündelt um die Kopplung zwischen den Schichten zu verringern (wenige, starke Kopplungen sind besser als viele, schwache). Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen.
 % subsection architekturuebersicht (end)
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
-Die Applikationsschicht wurde deshalb eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (zB. für Zustände) gibt. Die Zustandssynchronisation ist die erste Vorstufe der Netzwerkkommunikation. In diesem Package werden die spezifischen Nachrichten eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann schlussendlich über das Netzwerk verteilt und empfangen zu werden.
+Die Applikationsschicht wurde deshalb eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (z.\,B. für Zustände) gibt. Die Zustandssynchronisation ist die erste Vorstufe der Netzwerkkommunikation. In diesem Package werden die spezifischen Nachrichten eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann schlussendlich über das Netzwerk verteilt und empfangen zu werden.
 % paragraph designentscheidungen (end)
 \paragraph{Verwendete Entwicklungswerkzeuge}\label{ssub:verwendete_entwicklungswerkzeuge} % (fold)
-Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunabhängig (Java), ist einfach handhabbar und hat sehr gute Code-Generierung Funktionalität. Die erzeugten Dateien lassen sich im XML Format im SVN Repository verwalten. Ein Nachteil ist, dass immer nur eine Person gleichzeitig an einem Projekt / Modul arbeiten kann, da MagicDraw UML keine SVN Integration bietet.
+Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunabhängig (Java), ist einfach handhabbar und hat sehr gute Funktionalitäten zur Code-Generierung. Die erzeugten Dateien lassen sich im XML-Format im SVN-Repository verwalten. Ein Nachteil ist, dass immer nur eine Person gleichzeitig an einem Projekt/Modul arbeiten kann, da MagicDraw UML keine SVN-Integration bietet und Konflikte nicht aufgelöst werden können.
 % paragraph verwendete_entwicklungswerkzeuge (end)
 \paragraph{Teamstruktur}\label{ssub:teamstruktur} % (fold)
-Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung ersichtlich. Die Verantwortlichkeiten sind in der Analysespzifikation geregelt.
+Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung ersichtlich. Die Verantwortlichkeiten sind in der Analysespezifikation geregelt.
 % paragraph teamstruktur (end)
 % subsection architektonische_ziele_einschraenkungen (end)
 
@@ -63,13 +63,9 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 \end{figure}
 % subsubsection schichtenarchitektur (end)
 
-\subsubsection{Client Architektur} % (fold)
-\label{sub:client_architektur}
-% subsubsection client_architektur (end)
+\subsubsection{Client-Architektur}
 
-\subsubsection{Server Architektur} % (fold)
-\label{sub:server_architektur}
-% subsubsection server_architektur (end)
+\subsubsection{Server-Architektur}
 
 \subsubsection{Packagebeschreibung} % (fold)
 \label{sub:pagebeschreibung}
@@ -79,7 +75,7 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 \label{ssub:package_pd}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-In der Problem-Domain Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
+In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -95,7 +91,7 @@ In der Problem-Domain Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \label{ssub:package_pd_karten}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für gesamte Handhabung der Karten ist.
+Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für die gesamte Handhabung der Karten ist.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -119,7 +115,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_pd_regelsystem}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain Schicht war und stellen die Validierung der Züge und der Aktionen sicher.
+Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge und der Aktionen sicher.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -191,7 +187,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Die Dienstschicht stellt die grundlegende Netzwerkkommunikation dar. Er kapselt die Java Socket Schnittstelle und stellt eine abstrakte Schnittstelle der Problem-Domain Schicht zur Verfügung.
+Die Dienstschicht stellt die grundlegende Netzwerkkommunikation dar. Er kapselt die Socket-Schnittstelle von Java und stellt eine abstrakte Schnittstelle der Problem-Domain-Schicht zur Verfügung.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -229,7 +225,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_dienste_netzwerk}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Dieses Package kapselt die Java-Socket Schnittstelle und bietet Dienste für die Netzwerkkommunikation an.
+Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für die Netzwerkkommunikation an.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -275,7 +271,7 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \label{ssub:package_ui}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Die UI Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer.
+Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
@@ -442,14 +438,11 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 % subsection logische_architektur (end)
 
 \clearpage
-\subsection{Physikalische Schicht} % (fold)
-\label{sub:physikalische_schicht}
+\subsection{Physikalische Sicht}
 
-\subsubsection{Deployment Diagramm} % (fold)
-\label{sub:deployment_diagramm}
+\subsubsection{Deployment-Diagramm}
 
-\subsubsection{Prozess \& Threads} % (fold)
-\label{sub:prozess_threads}
+\subsubsection{Prozesse \& Threads} % (fold)
 \label{sub:prozesse_threads}
 Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, etc...
 % subsection prozesse_threads (end)
