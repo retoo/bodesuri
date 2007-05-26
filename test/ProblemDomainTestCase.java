@@ -12,6 +12,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spieler spieler1;
 	protected Spieler spieler2;
 	protected BankFeld bankFeld1;
+	protected BankFeld bankFeld2;
 	protected LagerFeld lagerFeld1;
 	protected LagerFeld lagerFeld2;
 	protected KartenGeber kartenGeber;
@@ -29,6 +30,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		lagerFeld1 = brett.getLagerFelderVon(spieler1).get(0);
 		
 		spieler2 = spiel.getSpieler().get(1);
+		bankFeld2 = brett.getBankFeldVon(spieler2);
 		lagerFeld2 = brett.getLagerFelderVon(spieler2).get(0);
 		
 		kartenGeber = spiel.getKartenGeber();
