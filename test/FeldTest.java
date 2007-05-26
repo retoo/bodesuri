@@ -50,4 +50,9 @@ public class FeldTest extends ProblemDomainTestCase {
 		assertEquals(spieler1, bankFeld1.getSpieler());
 		assertEquals(spieler1, bankFeld1.getHimmel().getSpieler());
 	}
+	
+	public void testGetNummer() {
+		assertEquals(0, bankFeld1.getNummer());
+		assertEquals("Feld 0", bankFeld1.toString());
+	}
 }
