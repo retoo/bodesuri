@@ -9,8 +9,23 @@ import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustands
- *
+ * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere abarbeiten eines
+ * Zustandsautomaten anhand eingehender Events.
+ * 
+ * Die Erstellung eines Automaten besteht aus folgenden Schritten:
+ *  - Situationsabhänige aktive Zustandsklasse erstellen
+ *  - Situationsabhänige passive Zustandsklasse erstellen
+ *  - Zustände erstellen die die beiden obigen Klassen als Basis-Klasse
+ * verwenden
+ *  - Automat erstellen und alle Zustände mit
+ * {@link Automat#registriere(Zustand)} registrieren
+ *  - Startzustand mit {@link Automat#setStart(Class)} definieren
+ *  - EvenQuelle implementieren. Zum Beispiel kann die EventQueue als 
+ *    Back-End verwendet werden.
+ *  - Automat mit run() starten
+ *  
+ *   FIXME: formatierugn
+ * 
  */
 public class Automat {
 	private Zustand start;
@@ -54,7 +69,8 @@ public class Automat {
 	/**
 	 * Setzt die zu verwendende EventQuelle
 	 * 
-	 * @param quelle Zum lesen der Eventes verwendete Quelle
+	 * @param quelle
+	 *            Zum lesen der Eventes verwendete Quelle
 	 */
 	public void setEventQuelle(EventQuelle quelle) {
 		eventQuelle = quelle;
