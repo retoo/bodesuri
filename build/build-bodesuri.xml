@@ -15,6 +15,6 @@
 		<update dir="." />
 	</svn>
         <!-- Call the target that does everything -->
-        <ant antfile="build.xml" target="build-everything"/>
+        <ant antfile="build.xml" target="all"/>
     </target>
 </project>
