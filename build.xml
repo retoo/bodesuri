@@ -2,54 +2,98 @@
 
 <project default="all">
 <!-- Variables -->
-  <property name="obj-dir" location="obj"/>
-  <property name="lib-dir" location="lib"/>
   <property name="tst-dir" location="test"/>
-  <property name="res-dir" location="results"/>
   <property name="src-dir" location="src"/>
+  
+  <property name="lib-dir" location="lib"/>
   <property name="ext-dir" location="vendor"/>
+  
+  <property name="rep-dir" location="report"/>
+  <property name="tmp-dir" location="tmp"/>
+  
+  <property name="obj-dir" location="${tmp-dir}/obj"/>
+  <property name="obt-dir" location="${tmp-dir}/obj-test"/>  
+  <property name="res-dir" location="${tmp-dir}/results"/>
+  <property name="ins-dir" location="${tmp-dir}/instrumented-classes"/>
+  
+  <property name="cov-dir" location="${rep-dir}/test-coverage-report"/>
+  <property name="jdc-dir" location="${rep-dir}/javadoc"/>
+  <property name="doc-dir" location="${rep-dir}/doc"/>
+  
   <path id="classpath.base">
-      <pathelement location="${ext-dir}/jdom-1.0-2004-09-09.jar"/>
   </path>
   <path id="classpath.run">
     <pathelement location="${lib-dir}/bodesuri.jar"/>
     <path refid="classpath.base"/>
   </path>
-  <path id="classpath.test">
-    <pathelement location="${tst-dir}"/>
-    <pathelement location="${lib-dir}/bodesuri.jar"/>
-    <pathelement location="${ext-dir}/junit4_4.1.0.1"/>
+  <path id="classpath.coberate">
+    <pathelement location="${ext-dir}/cobertura/asm-2.2.1.jar"/>
+    <pathelement location="${ext-dir}/cobertura/cobertura.jar"/>
+    <pathelement location="${ext-dir}/cobertura/jakarta-oro-2.0.8.jar"/>
+    <pathelement location="${ext-dir}/cobertura/log4j-1.2.9.jar"/>
+  </path>
+  <path id="classpath.junit">
+    <pathelement location="${ext-dir}/junit-4.3.1.jar"/>
+  </path>
+  <path id="classpath.test-compile">
+    <pathelement location="${obj-dir}"/>
     <path refid="classpath.base"/>
   </path>
+  <path id="classpath.test">
+    <pathelement location="${obt-dir}"/>
+    <pathelement location="${ins-dir}"/>
+    <pathelement location="${obj-dir}"/>
+    <path refid="classpath.base"/>
+  </path>
+<!-- taskdefs-->
+  <taskdef resource="tasks.properties">
+    <classpath refid="classpath.coberate"/>
+  </taskdef>
 <!-- initialization -->
   <target name="init">
-    <mkdir dir="${obj-dir}"/>
-    <mkdir dir="${lib-dir}"/>
-    <mkdir dir="${res-dir}"/>
+    <mkdir dir="${lib-dir}" />
+
+    <!-- tmp -->
+    <mkdir dir="${tmp-dir}" /> 
+    <mkdir dir="${obj-dir}" /> 
+    <mkdir dir="${obt-dir}" /> 
+    <mkdir dir="${res-dir}" /> 
+    <mkdir dir="${ins-dir}" /> 
+    
+    <!-- report -->
+    <mkdir dir="${rep-dir}" /> 
+    <mkdir dir="${cov-dir}" /> 
+    <mkdir dir="${jdc-dir}" /> 
+    <mkdir dir="${doc-dir}" /> 
   </target>
 <!-- build -->
   <target name="compile" depends="init">
-    <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8">
+    <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8" debug="true">
       <classpath refid="classpath.base"/>
     </javac>
   </target>
   <target name="compile-test" depends="jar">
-    <javac srcdir="${tst-dir}" verbose="${TALK}" encoding="utf8">
-      <classpath refid="classpath.test"/>
-      <classpath refid="classpath.run"/>
+    <javac srcdir="${tst-dir}" destdir="${obt-dir}" verbose="${TALK}" encoding="utf8">
+      <classpath refid="classpath.coberate"/>
+      <classpath refid="classpath.test-compile"/>
     </javac>
   </target>
 <!-- conserve -->
   <target name="jar" depends="compile">
     <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}"/>
   </target>
-<!-- documentation -->
-<target name="infrastruktur.tex" depends="init">
-
-</target>
+<!-- instrumentations -->
+  <target name="generate-instrument">
+    <cobertura-instrument todir="${ins-dir}" datafile="${ins-dir}/data.ser">
+        <fileset dir="${obj-dir}">
+            <include name="**/*.class"/>
+        </fileset>
+    </cobertura-instrument>
+  </target>
 <!-- tests -->
-  <target name="test" depends="compile-test,clean-test-results">
-    <junit>
+  <target name="test" depends="compile-test,clean-test-results,generate-instrument">
+    <junit fork="true">
+      <classpath refid="classpath.coberate"/>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
       <!-- run all tests in in test/ -->
@@ -60,31 +104,48 @@
       </batchtest>
     </junit>
   </target>
+<!-- coverage report -->
+  <target name="cobertura-report" depends="test">
+  <cobertura-report
+      destdir="${cov-dir}"
+      srcdir="${src-dir}" />
+  </target>
+<!-- javadoc -->
+  <target name="javadoc" depends="init">
+    <javadoc 
+          charset="utf-8"
+          destdir="${jdc-dir}">
+      <fileset dir="${src-dir}" />
+    </javadoc>
+  </target>
+<!-- documentation -->
+  <target name="tex" depends="init">
+  </target>
 <!-- cleanup -->
   <target name="clean-init">
-    <delete dir="${obj-dir}"/>
+    <delete dir="${tmp-dir}"/>
     <delete dir="${lib-dir}"/>
-    <delete dir="${res-dir}"/>
+    <delete dir="${rep-dir}"/>
   </target>
   <target name="clean-compile">
     <delete>
       <fileset dir="${obj-dir}" includes="**/*.class"/>
     </delete>
   </target>
+  <target name="clean-compile-test">
+    <delete>
+      <fileset dir="${obt-dir}" includes="**/*.class"/>
+    </delete>
+  </target>
   <target name="clean-jar">
     <delete file="${lib-dir}/bodesuri.jar"/>
   </target>
   <target name="clean-test-results" depends="init">
-    <delete verbose="${TALK}">
+    <delete>
       <fileset dir="${res-dir}" includes="**/*.xml"/>
     </delete>
   </target>
-  <target name="clean-compile-test">
-    <delete verbose="${TALK}">
-      <fileset dir="${tst-dir}" includes="**/*.class"/>
-    </delete>
-  </target>
   <target name="build-everything" depends="compile,test"/>
-  <target name="all" depends="build-everything"/>
+  <target name="all" depends="build-everything,cobertura-report,javadoc"/>
   <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>
