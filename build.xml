@@ -40,9 +40,9 @@
     <path refid="classpath.base"/>
   </path>
   <path id="classpath.test">
-    <pathelement location="${obt-dir}"/>
     <pathelement location="${ins-dir}"/>
     <pathelement location="${obj-dir}"/>
+    <pathelement location="${obt-dir}"/>
     <path refid="classpath.base"/>
   </path>
 <!-- taskdefs-->
@@ -93,6 +93,8 @@
 <!-- tests -->
   <target name="test" depends="compile-test,clean-test-results,generate-instrument">
     <junit fork="true">
+       <sysproperty key="net.sourceforge.cobertura.datafile"
+         file="${tmp-dir}/data.ser" />
       <classpath refid="classpath.coberate"/>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
