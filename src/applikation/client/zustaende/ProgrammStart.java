@@ -1,15 +1,15 @@
 package applikation.client.zustaende;
 
 import ui.verbinden.VerbindenView;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class ProgrammStart extends PassiverClientZustand {
 	@Override
-    protected Zustand execute() {
+    public Zustand handle() {
 	    return automat.getZustand(VerbindungErfassen.class);
     }
 	
-	protected void init() {
+	public void init() {
 		automat.verbindenView = new VerbindenView(automat.queue);
 		automat.verbindenView.setVisible(true);
 	}	

@@ -5,11 +5,11 @@ import pd.zugsystem.ZugEingabe;
 import applikation.client.events.BewegungEingegebenEvent;
 import applikation.server.nachrichten.ZugInformation;
 import applikation.zugentgegennahme.ZugEntgegennahme;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.VerbindungWegException;
 
 public class Ziehen extends AktiverClientZustand {
-	protected void init() {
+	public void init() {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
 	}
 

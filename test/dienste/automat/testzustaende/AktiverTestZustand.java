@@ -1,15 +1,15 @@
 package dienste.automat.testzustaende;
 
-import dienste.automat.AktiverZustand;
 import dienste.automat.Automat;
-import dienste.automat.EndZustand;
 import dienste.automat.Event;
 import dienste.automat.KeinUebergangException;
 import dienste.automat.TestAutomat;
-import dienste.automat.Zustand;
 import dienste.automat.events.TestEventA;
 import dienste.automat.events.TestEventB;
 import dienste.automat.events.TestExitEvent;
+import dienste.automat.zustaende.AktiverZustand;
+import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.Zustand;
 
 public class AktiverTestZustand extends AktiverZustand {
 	protected TestAutomat automat;

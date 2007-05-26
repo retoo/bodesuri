@@ -8,12 +8,19 @@ import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
+/**
+ * Zustands
+ *
+ */
 public class Automat {
 	private Zustand start;
 	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
 	private Zustand aktuellerZustand;
 
+	/**
+	 * Erstellt einen neuen Automaten
+	 */
 	public Automat() {
 		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 
@@ -31,12 +38,24 @@ public class Automat {
 		zustaende.put(zustand.getClass(), zustand);
 	}
 
-	public void setStart(Class<? extends Zustand> klasse) {
-		start = getZustand(klasse);
+	/**
+	 * Setzt den übergebenen Zustand als Startzustand
+	 * 
+	 * @param zustandsKlasse
+	 *            Klasse des Zustandes der als Startzustand verwendet werden
+	 *            soll
+	 */
+	public void setStart(Class<? extends Zustand> zustandsKlasse) {
+		start = getZustand(zustandsKlasse);
 
 		aktuellerZustand = start;
 	}
 
+	/**
+	 * Setzt die zu verwendende EventQuelle
+	 * 
+	 * @param quelle Zum lesen der Eventes verwendete Quelle
+	 */
 	public void setEventQuelle(EventQuelle quelle) {
 		eventQuelle = quelle;
 	}
@@ -71,7 +90,7 @@ public class Automat {
 			neuerZustand = zustand.handle(event);
 		} else if (aktuellerZustand instanceof PassiverZustand) {
 			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-			neuerZustand = zustand.execute();
+			neuerZustand = zustand.handle();
 		} else { /* kann nur endzustand sein */
 			System.out.println("Erreichte Endzustand");
 			return false;

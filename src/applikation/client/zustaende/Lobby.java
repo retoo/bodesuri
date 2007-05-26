@@ -2,7 +2,7 @@ package applikation.client.zustaende;
 
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielStartNachricht;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
 public class Lobby extends AktiverClientZustand {

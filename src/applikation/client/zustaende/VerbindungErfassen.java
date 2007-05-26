@@ -5,7 +5,7 @@ import java.net.UnknownHostException;
 
 import applikation.client.events.VerbindeEvent;
 import applikation.server.nachrichten.SpielBeitreten;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;

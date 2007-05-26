@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
 import applikation.server.nachrichten.BeitrittsBestaetigung;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class VerbindungSteht extends AktiverClientZustand {
 	Zustand beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {

@@ -1,11 +1,11 @@
 package dienste.automat.testzustaende;
-import dienste.automat.EndZustand;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.Zustand;
 
 
 public class PassiverTestZustandBeta extends PassiverTestZustand {
 	@Override
-	protected Zustand execute() {
+    public Zustand handle() {
 		return automat.getZustand(EndZustand.class);
 	}
 }

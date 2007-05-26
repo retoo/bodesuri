@@ -1,10 +1,10 @@
 package applikation.client.zustaende;
 
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class SchwererFehler extends PassiverClientZustand {
 	@Override
-    protected Zustand execute() {
+    public Zustand handle() {
 		throw new RuntimeException("Schwerer Fehler");
     }
 }

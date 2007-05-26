@@ -1,7 +1,6 @@
 import junit.framework.TestCase;
 
 import dienste.automat.Automat;
-import dienste.automat.EndZustand;
 import dienste.automat.EventQueue;
 import dienste.automat.KeinUebergangException;
 import dienste.automat.TestAutomat;
@@ -15,6 +14,7 @@ import dienste.automat.testzustaende.AktiverTestZustandBeta;
 import dienste.automat.testzustaende.DummyZustand;
 import dienste.automat.testzustaende.PassiverTestZustandAlpha;
 import dienste.automat.testzustaende.PassiverTestZustandBeta;
+import dienste.automat.zustaende.EndZustand;
 
 public class AutomatenTest extends TestCase {
 	private Automat automat;

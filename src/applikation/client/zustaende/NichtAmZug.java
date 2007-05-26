@@ -3,7 +3,7 @@ package applikation.client.zustaende;
 import pd.regelsystem.RegelVerstoss;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.ZugInformation;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
 public class NichtAmZug extends AktiverClientZustand {

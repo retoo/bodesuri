@@ -1,10 +1,10 @@
 package applikation.client.zustaende;
 
 import ui.lobby.LobbyView;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class LobbyStart extends PassiverClientZustand {
-	protected Zustand execute() {
+	public Zustand handle() {
 		automat.verbindenView.setVisible(false);
 
 		automat.lobbyView = new LobbyView();

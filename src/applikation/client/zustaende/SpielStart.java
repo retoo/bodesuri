@@ -1,12 +1,12 @@
 package applikation.client.zustaende;
 
 import ui.spiel.BodesuriView;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class SpielStart extends PassiverClientZustand {
 
 	@Override
-	protected Zustand execute() {
+    public Zustand handle() {
 
 		automat.lobbyView.setVisible(false);
 

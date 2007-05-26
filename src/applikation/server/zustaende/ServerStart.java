@@ -5,11 +5,11 @@ import java.io.IOException;
 import applikation.server.BodesuriServer;
 import applikation.server.Spielerschaft;
 
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.server.Server;
 
 public class ServerStart extends PassiveServerZustand {
-	protected Zustand execute() {
+	public Zustand handle() {
 		System.out.println("Initialiere Server");
 
 		try {

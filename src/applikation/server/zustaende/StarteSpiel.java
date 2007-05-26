@@ -5,12 +5,12 @@ import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.ZugAufforderung;
-import dienste.automat.Zustand;
+import dienste.automat.zustaende.Zustand;
 
 public class StarteSpiel extends PassiveServerZustand {
 
 	@Override
-	protected Zustand execute() {
+    public Zustand handle() {
 		Spielerschaft spielerschaft = automat.spielerschaft;
 		
 		Spiel spiel = new Spiel();		

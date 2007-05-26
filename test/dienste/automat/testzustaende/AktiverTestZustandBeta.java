@@ -1,8 +1,8 @@
 package dienste.automat.testzustaende;
 
 import dienste.automat.Event;
-import dienste.automat.Zustand;
 import dienste.automat.events.TestEventC;
+import dienste.automat.zustaende.Zustand;
 
 public class AktiverTestZustandBeta extends AktiverTestZustand {
 	public Zustand handle(Event e) {

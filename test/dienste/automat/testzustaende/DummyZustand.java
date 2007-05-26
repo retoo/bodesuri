@@ -1,6 +1,6 @@
 package dienste.automat.testzustaende;
-import dienste.automat.AktiverZustand;
 import dienste.automat.Automat;
+import dienste.automat.zustaende.AktiverZustand;
 
 
 public class DummyZustand extends AktiverZustand {

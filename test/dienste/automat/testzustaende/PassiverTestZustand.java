@@ -1,7 +1,7 @@
 package dienste.automat.testzustaende;
 import dienste.automat.Automat;
-import dienste.automat.PassiverZustand;
 import dienste.automat.TestAutomat;
+import dienste.automat.zustaende.PassiverZustand;
 
 
 public abstract class PassiverTestZustand extends PassiverZustand {
