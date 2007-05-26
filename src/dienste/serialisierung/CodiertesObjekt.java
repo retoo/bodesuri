@@ -5,20 +5,40 @@ import java.io.Serializable;
 
 import pd.Spiel;
 
+/**
+ * Objekt, das einen Code enthält und serialisiert werden kann.
+ * 
+ * Dieses Objekt wird serialisiert und über das Netzwerk geschickt. Am anderen
+ * Ende wird das Objekt deserialisiert und der ObjectInputStream ruft
+ * readResolve() auf.
+ */
 public class CodiertesObjekt implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String code;
 	
+	/**
+	 * Erstellt ein CodiertesObjekt.
+	 * 
+	 * @param code Code, der dem codierten Objekt zugeordnet ist
+	 */
 	public CodiertesObjekt(String code) {
 		this.code = code;
 	}
 	
+	/*
+	 * Wird von ObjectInputStream aufgerufen, um herauszufinden, welches Objekt
+	 * diesem codierten Objekt zugeordnet ist. Dies wird über den Codierer des
+	 * aktuellen Spiels herausgefunden.
+	 * 
+	 * Wenn der Codierer den Code nicht kennt, ihm also kein Objekt zugeordnet
+	 * worden ist, wird eine UnbekannterCodeException geworfen.
+	 */
 	private Object readResolve() throws ObjectStreamException {
 		/* Spiel.aktuelles ist leider global. */
 		Object obj = Spiel.aktuelles.getCodierer().get(code);
 		if (obj == null) {
-			throw new UnbekannterCodeException("'" + code + "' unbekannt");
+			throw new UnbekannterCodeException(code);
 		}
 		return obj;
 	}
