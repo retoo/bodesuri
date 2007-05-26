@@ -10,7 +10,7 @@ public class KartenGeberTest extends ProblemDomainTestCase {
 	
 	public void testGetKarte() {		
 		// Verhalten bei erneutem Mischeln
-		for (int i=0; i<=55; ++i) {
+		for (int i = 0; i < 150; ++i) {
 			assertNotNull(kartenGeber.getKarte());
 		}
 		
