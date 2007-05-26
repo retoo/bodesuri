@@ -12,6 +12,7 @@
 \setkomafont{sectioning}{\rmfamily \bfseries} % Ueberschriften serif und fett
 
 % Referenzen
+\usepackage[ngerman]{varioref} % Referenzen mit "auf Seite X"
 \usepackage[pdftex]{hyperref}
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0,0,.5}
@@ -24,3 +25,7 @@
 \clearscrheadfoot
 \chead{\normalfont\sffamily \headmark} % Kopfzeile serif
 \cfoot{\pagemark} % Seitennummer in Fusszeile
+
+% Anderes
+\usepackage{fixltx2e} % Aktuelle Patches fuer LaTeX
+\usepackage{microtype} % Fuer perfekten Blocksatz
