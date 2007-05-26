@@ -3,7 +3,6 @@ package dienste.automat;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-	
 public class Automat {
 	private Zustand start;
 	private EventQuelle eventQuelle;
@@ -29,7 +28,7 @@ public class Automat {
 
 	public void setStart(Class<? extends Zustand> klasse) {
 		start = getZustand(klasse);
-		
+
 		aktuellerZustand = start;
 	}
 
@@ -65,19 +64,17 @@ public class Automat {
 			Event event = eventQuelle.getEvent();
 
 			neuerZustand = zustand.handle(event);
-		} else {
+		} else if (aktuellerZustand instanceof PassiverZustand) {
 			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 			neuerZustand = zustand.execute();
+		} else { /* kann nur endzustand sein */
+			System.out.println("Erreichte Endzustand");
+			return false;
 		}
 
 		aktuellerZustand = neuerZustand;
-		
-		if (neuerZustand instanceof EndZustand) {
-			System.out.println("Erreichte Endzustand");
-			return false;
-		} else {
-			return true;
-		}
+
+		return true;
 	}
 
 	/**

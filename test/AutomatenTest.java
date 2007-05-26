@@ -1,7 +1,5 @@
 import junit.framework.TestCase;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import dienste.automat.Automat;
@@ -14,18 +12,17 @@ import dienste.automat.events.TestEventA;
 import dienste.automat.events.TestEventB;
 import dienste.automat.events.TestEventC;
 import dienste.automat.events.TestExitEvent;
+import dienste.automat.testzustaende.AktiverTestZustandAlpha;
+import dienste.automat.testzustaende.AktiverTestZustandBeta;
 import dienste.automat.testzustaende.DummyZustand;
 import dienste.automat.testzustaende.PassiverTestZustandAlpha;
 import dienste.automat.testzustaende.PassiverTestZustandBeta;
-import dienste.automat.testzustaende.AktiverTestZustandAlpha;
-import dienste.automat.testzustaende.AktiverTestZustandBeta;
 
 public class AutomatenTest extends TestCase {
 	private Automat automat;
 	private EventQueue input;
 	private EventQueue output;
 
-	@Before
 	public void setUp() throws Exception {
 		input = new EventQueue();
 		output = new EventQueue();
@@ -33,17 +30,14 @@ public class AutomatenTest extends TestCase {
 		automat = new TestAutomat(input, output);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-
-	}
 
 	@Test
 	public void testStop() {
 		input.enqueue(new TestExitEvent());
 
+		automat.step();
 		boolean res = automat.step();
-		assertFalse("Endender Schritt", res);
+		assertFalse("Letzter Schritt Schritt", res);
 
 		assertEquals(automat.getZustand(EndZustand.class),
 		             automat.getAktuellerZustand());
@@ -109,7 +103,7 @@ public class AutomatenTest extends TestCase {
 			automat.setStart(DummyZustand.class);
 		} catch (Exception e) {
 			fehlerAufgetreten = true;
-			assertEquals("Nichtregistierer Zustand class DummyZustand",
+			assertEquals("Nichtregistierer Zustand class dienste.automat.testzustaende.DummyZustand",
 			             e.getMessage());
 		}
 

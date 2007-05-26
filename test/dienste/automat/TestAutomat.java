@@ -1,5 +1,4 @@
 package dienste.automat;
-import dienste.automat.Automat;
 import dienste.automat.testzustaende.AktiverTestZustandAlpha;
 import dienste.automat.testzustaende.AktiverTestZustandBeta;
 
