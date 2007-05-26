@@ -8,6 +8,13 @@ import java.util.Vector;
 import pd.Spiel;
 import pd.spieler.Spieler;
 
+/**
+ * Spielbrett, das es pro Spiel gibt und alle Felder beinhaltet.
+ * 
+ * Die Felder bilden eine verkettete Liste.
+ * 
+ * @see Feld
+ */
 public class Brett {
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
@@ -17,6 +24,11 @@ public class Brett {
 	private Spiel spiel;
 	private int feldNummer;
 	
+	/**
+	 * Erstellt ein Brett.
+	 * 
+	 * @param spiel Spiel, zu dem Brett gehört
+	 */
 	public Brett(Spiel spiel) {
 		this.spiel = spiel;
 		erstelleFelder();
@@ -94,18 +106,42 @@ public class Brett {
 		}
 	}
 	
+	/**
+	 * Bankfeld eines Spielers herausfinden.
+	 * 
+	 * @param spieler Spieler
+	 * @return Bankfeld des Spielers
+	 */
 	public BankFeld getBankFeldVon(Spieler spieler) {
 		return bankFelder.get(spieler);
 	}
 
+	/**
+	 * Lagerfelder eines Spielers herausfinden.
+	 * 
+	 * @param spieler Spieler
+	 * @return Lagerfelder des Spielers
+	 */
 	public List<LagerFeld> getLagerFelderVon(Spieler spieler) {
 	    return lagerFelder.get(spieler);
     }
 	
+	/**
+	 * Himmelfelder eines Spielers herausfinden.
+	 * 
+	 * @param spieler Spieler
+	 * @return Himmelfelder des Spielers
+	 */
 	public List<HimmelFeld> getHimmelFelderVon(Spieler spieler) {
 		return himmelFelder.get(spieler);
 	}
 	
+	/**
+	 * Erstes freies Lagerfeld eines Spielers herausfinden.
+	 * 
+	 * @param spieler Spieler
+	 * @return Erstes freies Lagerfeld
+	 */
 	public LagerFeld getFreiesLagerFeldVon(Spieler spieler) {
 		for (LagerFeld feld : lagerFelder.get(spieler)) {
 			if (!feld.istBesetzt()) {
@@ -116,6 +152,11 @@ public class Brett {
 				"aber es sind keine freien Lagerfelder mehr vorhanden.");
 	}
 	
+	/**
+	 * Gibt alle Felder, die auf dem Brett sind, zurück.
+	 * 
+	 * @return Eine Liste aller Felder
+	 */
 	public List<Feld> getAlleFelder() {
 		return alleFelder;
 	}
