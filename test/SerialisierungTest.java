@@ -30,8 +30,8 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		Bewegung original = new Bewegung(feld1, feld2);
 		Bewegung neu = (Bewegung) durchSerialisierung(original);
 
-		assertEquals(feld1, neu.getStart());
-		assertEquals(feld2, neu.getZiel());
+		assertEquals(feld1, neu.start);
+		assertEquals(feld2, neu.ziel);
 	}
 	
 	public void testZugEingabeSerialisieren()
@@ -41,10 +41,10 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		
 		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
 		assertEquals(ze.getSpieler(), ze2.getSpieler());
-		assertEquals(ze.getBewegung().getStart(),
-		             ze2.getBewegung().getStart());
-		assertEquals(ze.getBewegung().getZiel(),
-		             ze2.getBewegung().getZiel());
+		assertEquals(ze.getBewegung().start,
+		             ze2.getBewegung().start);
+		assertEquals(ze.getBewegung().ziel,
+		             ze2.getBewegung().ziel);
 	}
 	
 	public void testKarteSerialisierung()

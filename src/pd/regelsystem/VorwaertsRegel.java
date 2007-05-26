@@ -31,8 +31,8 @@ public class VorwaertsRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Bewegung bewegung = zugEingabe.getBewegung();
-		Feld start = bewegung.getStart();
-		Feld ziel  = bewegung.getZiel();
+		Feld start = bewegung.start;
+		Feld ziel  = bewegung.ziel;
 		
 		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
 			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
@@ -59,8 +59,8 @@ public class VorwaertsRegel extends Regel {
 	
 	protected List<Feld> getWeg(Bewegung bewegung) {
 		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = bewegung.getStart();
-		while (feld != bewegung.getZiel()) {
+		Feld feld = bewegung.start;
+		while (feld != bewegung.ziel) {
 			weg.add(feld);
 			feld = feld.getNaechstes();
 		}

@@ -16,8 +16,8 @@ public class TauschRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Spieler spieler = zugEingabe.getSpieler();
-		Feld start = zugEingabe.getBewegung().getStart();
-		Feld ziel  = zugEingabe.getBewegung().getZiel();
+		Feld start = zugEingabe.getBewegung().start;
+		Feld ziel  = zugEingabe.getBewegung().ziel;
 		
 		if (start.istFrei() || ziel.istFrei()) {
 			throw new RegelVerstoss("Es müssen zwei Figuren getauscht werden.");

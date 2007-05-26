@@ -19,8 +19,8 @@ public class StartRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Spieler spieler = zugEingabe.getSpieler();
-		Feld start = zugEingabe.getBewegung().getStart();
-		Feld ziel  = zugEingabe.getBewegung().getZiel();
+		Feld start = zugEingabe.getBewegung().start;
+		Feld ziel  = zugEingabe.getBewegung().ziel;
 		
 		if (!(start instanceof LagerFeld)) {
 			throw new RegelVerstoss("Der Start muss ein Lagerfeld sein.");

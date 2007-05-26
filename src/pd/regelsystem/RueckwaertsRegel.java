@@ -16,8 +16,8 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 	
 	protected List<Feld> getWeg(Bewegung bewegung) {
 		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = bewegung.getStart();
-		while (feld != bewegung.getZiel()) {
+		Feld feld = bewegung.start;
+		while (feld != bewegung.ziel) {
 			weg.add(feld);
 			feld = feld.getVorheriges();
 		}
