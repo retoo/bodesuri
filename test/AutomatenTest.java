@@ -96,7 +96,8 @@ public class AutomatenTest extends TestCase {
 			automat.setStart(DummyZustand.class);
 		} catch (Exception e) {
 			fehlerAufgetreten = true;
-			assertEquals("Nichtregistierer Zustand class dienste.automat.testzustaende.DummyZustand",
+			assertEquals(
+			             "Nichtregistierer Zustand class dienste.automat.testzustaende.DummyZustand",
 			             e.getMessage());
 		}
 
@@ -160,9 +161,9 @@ public class AutomatenTest extends TestCase {
 	public void testPassiverZustand() {
 		automat.registriere(new PassiverTestZustandAlpha());
 		automat.registriere(new PassiverTestZustandBeta());
-		
+
 		automat.setStart(PassiverTestZustandAlpha.class);
-		
+
 		automat.run();
 
 		assertEquals(automat.getZustand(EndZustand.class),
