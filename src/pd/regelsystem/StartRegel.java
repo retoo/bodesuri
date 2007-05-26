@@ -8,7 +8,15 @@ import pd.zugsystem.Aktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
+/**
+ * Regel für das Starten mit einer Figur vom {@link LagerFeld} auf das
+ * {@link BankFeld}.
+ */
 public class StartRegel extends Regel {
+	/**
+	 * Validiere ZugEingabe. Der Zug muss von einem Lagerfeld des Spielers auf
+	 * sein Bankfeld gehen. Geht nicht, wenn das Bankfeld geschützt ist.
+	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Spieler spieler = zugEingabe.getSpieler();
 		Feld start = zugEingabe.getBewegung().getStart();

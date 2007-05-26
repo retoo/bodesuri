@@ -6,6 +6,9 @@ import java.util.Vector;
 import pd.brett.Feld;
 import pd.zugsystem.Bewegung;
 
+/**
+ * Gleich wie {@link VorwaertsRegel}, aber Zugrichtung ist rückwärts.
+ */
 public class RueckwaertsRegel extends VorwaertsRegel {
 	public RueckwaertsRegel(int schritte) {
 		super(schritte);

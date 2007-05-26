@@ -11,13 +11,24 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
+/**
+ * Regel für normales Vorwärtsfahren, mit Heimschicken von Figur auf Zielfeld.
+ */
 public class VorwaertsRegel extends Regel {
 	private int schritte;
 	
+	/**
+	 * @param schritte Anzahl Schritte, die die Regel überprüfen soll
+	 */
 	public VorwaertsRegel(int schritte) {
 		this.schritte = schritte;
 	}
 	
+	/**
+	 * Validiere Zugeingabe. Der Zug muss mit eigener Figur ausgeführt werden
+	 * und auf ein ungeschütztes Zielfeld gehen. Wenn das Zielfeld von einer
+	 * Figur besetzt ist, wird diese heimgeschickt.
+	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.getStart();

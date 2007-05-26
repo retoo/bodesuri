@@ -6,7 +6,14 @@ import pd.zugsystem.TauschAktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
+/**
+ * Regel für das Tauschen zweier Figuren.
+ */
 public class TauschRegel extends Regel {
+	/**
+	 * Validiere Zugeingabe. Der Zug muss mit einer eigenen Figur und der eines
+	 * anderen Spielers gemacht werden.
+	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		Spieler spieler = zugEingabe.getSpieler();
 		Feld start = zugEingabe.getBewegung().getStart();
