@@ -1,7 +1,5 @@
 import junit.framework.TestCase;
 
-import org.junit.Test;
-
 import dienste.automat.Automat;
 import dienste.automat.EndZustand;
 import dienste.automat.EventQueue;
@@ -30,8 +28,6 @@ public class AutomatenTest extends TestCase {
 		automat = new TestAutomat(input, output);
 	}
 
-
-	@Test
 	public void testStop() {
 		input.enqueue(new TestExitEvent());
 
@@ -43,7 +39,6 @@ public class AutomatenTest extends TestCase {
 		             automat.getAktuellerZustand());
 	}
 
-	@Test
 	public void testKeineZustaende() {
 		Automat autmat = new Automat();
 
@@ -76,7 +71,6 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
-	@Test
 	public void testKeineSource() {
 		Automat automat = new Automat();
 
@@ -95,7 +89,6 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
-	@Test
 	public void testUnbkeannterStart() {
 		boolean fehlerAufgetreten = false;
 
@@ -110,7 +103,6 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
-	@Test
 	public void testStep() {
 		input.enqueue(new TestEventA());
 
@@ -134,7 +126,6 @@ public class AutomatenTest extends TestCase {
 		             automat.getAktuellerZustand());
 	}
 
-	@Test
 	public void testUnbekannterEvent() {
 		input.enqueue(new TestEventC());
 
@@ -149,7 +140,6 @@ public class AutomatenTest extends TestCase {
 		assertTrue(fehlerAufgetreten);
 	}
 
-	@Test
 	public void testKeinUebergang() {
 		input.enqueue(new TestEventB());
 		input.enqueue(new TestEventC());
@@ -167,7 +157,6 @@ public class AutomatenTest extends TestCase {
 		assertTrue(fehlerAufgetreten);
 	}
 
-	@Test
 	public void testPassiverZustand() {
 		automat.registriere(new PassiverTestZustandAlpha());
 		automat.registriere(new PassiverTestZustandBeta());
@@ -180,7 +169,6 @@ public class AutomatenTest extends TestCase {
 		             automat.getAktuellerZustand());
 	}
 
-	@Test
 	public void testRun() {
 		input.enqueue(new TestEventA());
 		input.enqueue(new TestEventB());
