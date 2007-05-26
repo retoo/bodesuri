@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import dienste.serialisierung.CodiertesObjekt;
+import dienste.serialisierung.UnbekannterCodeException;
+
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.zugsystem.Bewegung;
@@ -54,17 +57,33 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		}
 	}
 	
+	public void testUnbekannterCodeException()
+			throws IOException, ClassNotFoundException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ObjectOutputStream oos = new ObjectOutputStream(baos);
+		oos.writeObject(new CodiertesObjekt("Spieler 666"));
+		oos.close();
+		
+		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+		ObjectInputStream ois = new ObjectInputStream(bais);
+		try {
+			ois.readObject();
+			fail("Sollte UnbekannterCodeException geben.");
+		} catch (UnbekannterCodeException e) {
+			assertNotNull(e);
+			assertEquals("'Spieler 666' unbekannt", e.getMessage());
+		}
+	}
+	
 	private Object durchSerialisierung(Object original)
 			throws IOException, ClassNotFoundException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ObjectOutputStream oos;
-		oos = new ObjectOutputStream(baos);
+		ObjectOutputStream oos = new ObjectOutputStream(baos);
 		oos.writeObject(original);
 		oos.close();
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
-		ObjectInputStream ois;
-		ois = new ObjectInputStream(bais);
+		ObjectInputStream ois = new ObjectInputStream(bais);
 		return ois.readObject();
 	}
 }
