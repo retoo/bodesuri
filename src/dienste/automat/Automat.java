@@ -3,13 +3,17 @@ package dienste.automat;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
+	
 public class Automat {
 	private Zustand start;
 	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
+	private Zustand aktuellerZustand;
 
 	public Automat() {
 		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
+
+		registriere(new EndZustand());
 	}
 
 	/**
@@ -25,14 +29,73 @@ public class Automat {
 
 	public void setStart(Class<? extends Zustand> klasse) {
 		start = getZustand(klasse);
-
-		if (start == null) {
-			throw new RuntimeException("Unbekannter Start-Zustand" + klasse);
-		}
+		
+		aktuellerZustand = start;
 	}
 
 	public void setEventQuelle(EventQuelle quelle) {
 		eventQuelle = quelle;
+	}
+
+	/**
+	 * Startet den Mainloop
+	 */
+	public void run() {
+		pruefeAutomat();
+
+		while (true) {
+			boolean cont = step();
+
+			if (!cont) {
+				return;
+			}
+		}
+	}
+
+	public boolean step() {
+		Zustand neuerZustand;
+
+		System.out.println("Uebergang nach: " + aktuellerZustand);
+
+		aktuellerZustand.init();
+
+		if (aktuellerZustand instanceof AktiverZustand) {
+			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
+
+			Event event = eventQuelle.getEvent();
+
+			neuerZustand = zustand.handle(event);
+		} else {
+			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
+			neuerZustand = zustand.execute();
+		}
+
+		aktuellerZustand = neuerZustand;
+		
+		if (neuerZustand instanceof EndZustand) {
+			System.out.println("Erreichte Endzustand");
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	/**
+	 * Prüft den Automaten auf Fehler
+	 */
+	private void pruefeAutomat() {
+		if (zustaende.size() <= 1)
+			throw new RuntimeException("Keine Zustände registriert");
+
+		if (start == null)
+			throw new RuntimeException("Kein Startzustand gesetzt");
+
+		if (eventQuelle == null)
+			throw new RuntimeException("Keine EventQuelle definiertt");
+	}
+
+	public Zustand getAktuellerZustand() {
+		return aktuellerZustand;
 	}
 
 	/**
@@ -51,48 +114,4 @@ public class Automat {
 
 		return zustand;
 	}
-
-	/**
-	 * Startet den Mainloop
-	 */
-	public void run() {
-		pruefeAutomat();
-			
-		
-		Zustand aktuellerZustand = start;
-
-		while (true) {
-			Zustand neuerZustand;
-
-			System.out.println("Uebergang nach: " + aktuellerZustand);
-
-			aktuellerZustand.init();
-
-			if (aktuellerZustand instanceof AktiverZustand) {
-				AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
-
-				Event event = eventQuelle.getEvent();
-
-				neuerZustand = zustand.handle(event);
-			} else {
-				PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-				neuerZustand = zustand.execute();
-			}
-			aktuellerZustand = neuerZustand;
-		}
-	}
-
-	/**
-	 * Prüft den Automaten auf Fehler
-	 */
-	private void pruefeAutomat() {
-	    if (zustaende.isEmpty())
-			throw new RuntimeException("Keine Zustände registriert");
-
-		if (start == null)
-			throw new RuntimeException("Kein Startzustand gesetzt");
-		
-		if (eventQuelle == null) 
-			throw new RuntimeException("Keine EventQuelle definiertt");
-    }
 }
