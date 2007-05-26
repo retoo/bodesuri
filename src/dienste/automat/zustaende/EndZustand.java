@@ -1,4 +1,6 @@
-package dienste.automat;
+package dienste.automat.zustaende;
+
+import dienste.automat.Automat;
 
 public class EndZustand extends Zustand {
 	Automat automat;

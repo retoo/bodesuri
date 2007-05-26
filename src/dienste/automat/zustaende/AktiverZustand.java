@@ -1,4 +1,7 @@
-package dienste.automat;
+package dienste.automat.zustaende;
+
+import dienste.automat.Event;
+import dienste.automat.UnbekannterEventException;
 
 public abstract class AktiverZustand extends Zustand {
 	public Zustand handle(Event event) {

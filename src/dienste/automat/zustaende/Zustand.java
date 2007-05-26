@@ -1,10 +1,12 @@
-package dienste.automat;
+package dienste.automat.zustaende;
+
+import dienste.automat.Automat;
 
 
 public abstract class Zustand {
 	abstract public void setAutomat(Automat automat);
 	
-	protected void init() {
+	public void init() {
 	}
 	
 	public String toString() {

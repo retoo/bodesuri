@@ -3,6 +3,11 @@ package dienste.automat;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
+import dienste.automat.zustaende.AktiverZustand;
+import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.PassiverZustand;
+import dienste.automat.zustaende.Zustand;
+
 public class Automat {
 	private Zustand start;
 	private EventQuelle eventQuelle;
