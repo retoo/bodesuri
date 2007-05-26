@@ -1,8 +1,7 @@
-package applikation.server.nachrichten;
+package dienste.netzwerk;
 
 
 import dienste.automat.Event;
-import dienste.netzwerk.EndPunkt;
 
 public class NeueVerbindung extends Event {
 	public final EndPunkt endpunkt;

@@ -6,7 +6,6 @@ import java.net.Socket;
 
 import dienste.automat.EventQueue;
 
-import applikation.server.nachrichten.NeueVerbindung;
 
 public class Daemon implements Runnable {
 	private BriefKastenInterface briefkasten;

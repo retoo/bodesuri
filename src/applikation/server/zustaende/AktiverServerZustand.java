@@ -2,7 +2,6 @@ package applikation.server.zustaende;
 
 import applikation.client.events.NetzwerkEvent;
 import applikation.server.BodesuriServer;
-import applikation.server.nachrichten.NeueVerbindung;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugInformation;
@@ -14,6 +13,7 @@ import dienste.automat.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.NeueVerbindung;
 
 
 public class AktiverServerZustand extends AktiverZustand {
