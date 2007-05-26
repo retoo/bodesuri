@@ -3,6 +3,7 @@
 \newcommand{\dokumenttitel}{Design}
 \usepackage{../bodesuri}
 
+\graphicspath{{img/}}
 
 \begin{document}
 
@@ -16,9 +17,9 @@ Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5 \textwidth]{clientServer.png}
+	\includegraphics[width=0.5 \textwidth]{client_server}
 	\caption{Kommunikation zwischen Client \& Server}
-	\label{fig:legende.png}
+	\label{fig:client_server}
 \end{figure}
 
 Die Validierung der gespielten Züge geschieht beim Client, der Server ist zuständig für den Spielablauf.
@@ -55,9 +56,9 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{legende.png}
+	\includegraphics[width=\textwidth]{legende_diagramme}
 	\caption{Legende der Diagrammfarben}
-	\label{fig:legende.png}
+	\label{fig:legende_diagramme}
 \end{figure}
 % subsubsection legende_fuer_die_verwendeten_farben_in_den_diagrammen (end)
 
@@ -66,9 +67,9 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Architektur.png}
+	\includegraphics[width=\textwidth]{architektur_schichten}
 	\caption{Architektur}
-	\label{fig:Architektur.png}
+	\label{fig:architektur_schichten}
 \end{figure}
 % subsubsection schichtenarchitektur (end)
 
@@ -106,9 +107,9 @@ Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für die gesamte Handh
 \label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{pd_kartengeber.png}
+	\includegraphics[width=\textwidth]{pd_kartengeber}
 	\caption{Kartengeber}
-	\label{fig:pd_kartengeber.png}
+	\label{fig:pd_kartengeber}
 \end{figure}
 % subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
@@ -132,9 +133,9 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{pd_regelsystem.png}
+	\includegraphics[width=\textwidth]{pd_regelsystem}
 	\caption{Regelsystem}
-	\label{fig:pd_regelsystem.png}
+	\label{fig:pd_regelsystem}
 \end{figure}
 % subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
@@ -145,9 +146,9 @@ Beschreibung der Schnittstellen
 \label{ssub:operationen}
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{pd_validierung.png}
+	\includegraphics[width=\textwidth]{pd_validierung}
 	\caption{Validierung von Spielzügen}
-	\label{fig:pd_validierung.png}
+	\label{fig:pd_validierung}
 \end{figure}
 % subparagraph operationen (end)
 % paragraph package_pd_regelsystem (end)
@@ -163,9 +164,9 @@ Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion d
 \label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{pd_brett.png}
+	\includegraphics[width=\textwidth]{pd_brett}
 	\caption{Brett und Figuren}
-	\label{fig:pd_brett.png}
+	\label{fig:pd_brett}
 \end{figure}
 % subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
@@ -232,9 +233,9 @@ Beschreibung der Schnittstellen
 Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{dienste_serialisierung.png}
+	\includegraphics[width=\textwidth]{dienste_serialisierung}
 	\caption{Serialisierung}
-	\label{fig:dienste_serialisierung.png}
+	\label{fig:dienste_serialisierung}
 \end{figure}
 % subparagraph operationen (end)
 % paragraph package_dienste_serialisierung (end)
@@ -259,39 +260,39 @@ Beschreibung der Schnittstellen
 Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1.png}
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
 	\caption{Normale Partnerschaft - Teil 1 von 2}
-	\label{fig:dienste_partnerschaft_normal_1.png}
+	\label{fig:dienste_partnerschaft_normal_1}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2.png}
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
 	\caption{Normale Partnerschaft - Teil 2 von 2}
-	\label{fig:dienste_partnerschaft_normal_2.png}
+	\label{fig:dienste_partnerschaft_normal_2}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{dienste_partner.png}
+	\includegraphics[width=\textwidth]{dienste_partner}
 	\caption{Partner Verhalten}
-	\label{fig:dienste_partner.png}
+	\label{fig:dienste_partner}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{dienste_rundenstart.png}
+	\includegraphics[width=\textwidth]{dienste_rundenstart}
 	\caption{Rundenstart}
-	\label{fig:dienste_rundenstart.png}
+	\label{fig:dienste_rundenstart}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8 \textwidth]{dienste_client.png}
+	\includegraphics[width=0.8 \textwidth]{dienste_client}
 	\caption{Zustände des Client}
-	\label{fig:dienste_client.png}
+	\label{fig:dienste_client}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{dienste_chat.png}
+	\includegraphics[width=\textwidth]{dienste_chat}
 	\caption{Chat Subsystem}
-	\label{fig:dienste_chat.png}
+	\label{fig:dienste_chat}
 \end{figure}
 % subparagraph operationen (end)
 % paragraph package_dienste_netzwerk (end)
@@ -499,22 +500,23 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8 \textwidth]{Externes Design - Verbindung.png}
+	\includegraphics[width=0.8 \textwidth]{gui_verbindung}
 	\caption{Verbindung zum Server}
-	\label{fig:Externes Design - Verbindung}
+	\label{fig:gui_verbindung}
 \end{figure}
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7 \textwidth]{Externes Design - Lobby.png}
+	\includegraphics[width=0.7 \textwidth]{gui_lobby}
 	\caption{Lobby vor dem Spielbeginn}
-	\label{fig:Externes_Design.jpg}
+	\label{fig:gui_lobby}
 \end{figure}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8 \textwidth]{Externes Design - Spiel.png}
+	\includegraphics[width=0.8 \textwidth]{gui_spiel}
 	\caption{Spielbrett}
-	\label{fig:Externes_Design.jpg}
+	\label{fig:gui_spiel}
 \end{figure}
 
 % subsection externes_design (end)
