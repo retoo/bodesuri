@@ -1,42 +1,12 @@
-\documentclass[a4paper,12pt,halfparskip,DIV14]{scrreprt}
+\documentclass[12pt,halfparskip]{scrreprt}
 
-\usepackage{ngerman}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[pdftex, colorlinks, linkcolor=blue]{hyperref}
-\usepackage[pdftex]{graphicx}
-\usepackage{booktabs}
-\usepackage{xcolor}
-
-\usepackage[automark,headsepline]{scrpage2}
-
-\pagestyle{scrheadings}
-\renewcommand*{\chapterpagestyle}{scrheadings}
-
-\clearscrheadfoot
-\chead{\normalfont\sffamily \headmark}
-\cfoot{\pagemark}
-
-\usepackage{enumitem}
-\setlist{itemsep=-2pt}
+\newcommand{\dokumenttitel}{Infrastruktur}
+\usepackage{bodesuri}
 
 
 \begin{document}
-% FIXME: header passt mir noch nicht
-\title{Bodesuri\\Infrastruktur}
-\subject{Infastruktur-Dokumentation}
-\author{Philipe~Eberli, Pascal~Hobus, \\ Danilo~Couto, Reto~Schüttel, Robin~Stocker}
-\maketitle
 
-\pagenumbering{roman}
-
-\tableofcontents
-\thispagestyle{plain}
-\newpage
-
-\pagenumbering{arabic}
+\input{titelseite}
 
 \chapter{Build-Server} % (fold)
 \label{cha:build_server}
@@ -217,7 +187,8 @@ Apache neu starten
 # /etc/init.d/apache2 restart
 \end{verbatim}
 
-Zum testen kann das Repository im Browser geöffnet werden: \url{http://bodesuri.speedpc.ch/svn/} 
+Zum testen kann das Repository im Browser geöffnet werden:\newline
+\url{http://bodesuri.speedpc.ch/svn/}
 
 % subsection installation (end)
 
@@ -249,7 +220,6 @@ $ mkdir java-package
 $ cd java-package
 $ apt-get source java-package
 $ cd java-package-0.28/
-$
 \end{verbatim}
 
 Anschliessend muss das neuste Java 6 SDK (Version: \textbf{Linux self-extracting file}) von \textbf{http://java.sun.com/javase/downloads/index.jsp} heruntergeladen werden.
@@ -349,7 +319,8 @@ Stoppen der Tomcat Engine.
 Reporting in den Tomcat Applikationsfolder kopieren.
 
 \begin{verbatim}
-# cp /opt/cruisecontrol/reporting/jsp/dist/cruisecontrol.war /var/lib/tomcat5/webapps/
+# cp /opt/cruisecontrol/reporting/jsp/dist/cruisecontrol.war \
+  /var/lib/tomcat5/webapps/
 \end{verbatim}
 
 Tomcat wieder starten, es sollte nun das .war File antpacken.
@@ -358,7 +329,8 @@ Tomcat wieder starten, es sollte nun das .war File antpacken.
 # /etc/init.d/tomcat5 stat
 \end{verbatim}
 
-Anschliessend müssen folgende Felder in der Datei \textbf{/var/lib/tomcat5/webapps/cruisecontrol/WEB-INF/web.xml} angepasst werden:
+Anschliessend müssen folgende Felder in der Datei\newline
+\textbf{/var/lib/tomcat5/webapps/cruisecontrol/WEB-INF/web.xml} angepasst werden:
 
 \begin{description}
   \item[logDir] /home/cruisecontrol/logs/
