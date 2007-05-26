@@ -20,7 +20,7 @@
 
     <!-- Configures the actual build loop, how often and which
          build file/target -->
-    <schedule interval="60">
+    <schedule interval="300">
       <ant anthome="/usr"
            buildfile="build-bodesuri.xml"
            target="build"
@@ -31,12 +31,19 @@
 
     <!-- directory to write build logs to -->
     <log logdir="logs/bodesuri/">
-    	<merge file="checkout/bodesuri/TEST-TestExample.xml"/>
+    	<merge dir="checkout/bodesuri/tmp/results/" pattern="*.xml"/>
     </log>
 
     <!-- Publishers are run *after* a build completes -->
     <publishers>
     	<currentbuildstatuspublisher file="logs/bodesuri/buildstatus.txt"/>
+	<email mailhost="localhost" returnaddress="cruisecontrol@bodesuri.speedpc.ch"
+	       buildresultsurl="http://bodesuri.speedpc.ch/cruisecontrol/"
+	       skipusers="true" 
+	       reportsuccess="fixes"
+	       spamwhilebroken="true">
+		<always address="se2p-commit@pfadi-st-anton.ch"/>
+	</email>
     </publishers>
   </project>
 </cruisecontrol>
