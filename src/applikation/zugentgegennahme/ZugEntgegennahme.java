@@ -64,7 +64,6 @@ public class ZugEntgegennahme {
 	 * 
 	 * @param start
 	 * @param ziel
-	 * @return
 	 */
 	private void zugBestaetigen(Feld start, Feld ziel) {
 		Bewegung bewegung = new Bewegung(start, ziel);
