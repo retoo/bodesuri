@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Codierer, den es pro {@link Spiel} einmal gibt und der die Abbildung von
+ * Codierer, den es pro {@link pd.Spiel} einmal gibt und der die Abbildung von
  * Codes zu Objekten verwaltet.
  * 
  * Jedes codierbare Objekt hat einen eindeutigen Code zugeordnet. Wenn das
