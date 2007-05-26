@@ -26,7 +26,7 @@
     <pathelement location="${lib-dir}/bodesuri.jar"/>
     <path refid="classpath.base"/>
   </path>
-  <path id="classpath.coberate">
+  <path id="classpath.cobertura">
     <pathelement location="${ext-dir}/cobertura/asm-2.2.1.jar"/>
     <pathelement location="${ext-dir}/cobertura/cobertura.jar"/>
     <pathelement location="${ext-dir}/cobertura/jakarta-oro-2.0.8.jar"/>
@@ -47,7 +47,7 @@
   </path>
 <!-- taskdefs-->
   <taskdef resource="tasks.properties">
-    <classpath refid="classpath.coberate"/>
+    <classpath refid="classpath.cobertura"/>
   </taskdef>
 <!-- initialization -->
   <target name="init">
@@ -74,7 +74,7 @@
   </target>
   <target name="compile-test" depends="jar">
     <javac srcdir="${tst-dir}" destdir="${obt-dir}" verbose="${TALK}" encoding="utf8">
-      <classpath refid="classpath.coberate"/>
+      <classpath refid="classpath.cobertura"/>
       <classpath refid="classpath.test-compile"/>
     </javac>
   </target>
@@ -83,8 +83,8 @@
     <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}"/>
   </target>
 <!-- instrumentations -->
-  <target name="generate-instrument">
-    <cobertura-instrument todir="${ins-dir}" datafile="${tmp-dir}/data.ser">
+  <target name="generate-instrument" depends="clean-cobertura">
+    <cobertura-instrument todir="${ins-dir}" datafile="${tmp-dir}/cobertura.ser">
         <fileset dir="${obj-dir}">
             <include name="**/*.class"/>
         </fileset>
@@ -94,8 +94,8 @@
   <target name="test" depends="compile-test,clean-test-results,generate-instrument">
     <junit fork="true">
        <sysproperty key="net.sourceforge.cobertura.datafile"
-         file="${tmp-dir}/data.ser" />
-      <classpath refid="classpath.coberate"/>
+         file="${tmp-dir}/cobertura.ser" />
+      <classpath refid="classpath.cobertura"/>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
       <!-- run all tests in in test/ -->
@@ -111,7 +111,7 @@
   <cobertura-report
       destdir="${cov-dir}"
       srcdir="${src-dir}" 
-      datafile="${tmp-dir}/data.ser" />
+      datafile="${tmp-dir}/cobertura.ser" />
   </target>
 <!-- javadoc -->
   <target name="javadoc" depends="init">
@@ -138,6 +138,12 @@
   <target name="clean-compile-test">
     <delete>
       <fileset dir="${obt-dir}" includes="**/*.class"/>
+    </delete>
+  </target>
+  <target name="clean-cobertura">
+    <delete file="${tmp-dir}/cobertura.ser"/>
+    <delete>
+      <fileset dir="${ins-dir}" includes="**/*.class"/>
     </delete>
   </target>
   <target name="clean-jar">
