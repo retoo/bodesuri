@@ -84,7 +84,7 @@
   </target>
 <!-- instrumentations -->
   <target name="generate-instrument">
-    <cobertura-instrument todir="${ins-dir}" datafile="${ins-dir}/data.ser">
+    <cobertura-instrument todir="${ins-dir}" datafile="${tmp-dir}/data.ser">
         <fileset dir="${obj-dir}">
             <include name="**/*.class"/>
         </fileset>
@@ -108,7 +108,8 @@
   <target name="cobertura-report" depends="test">
   <cobertura-report
       destdir="${cov-dir}"
-      srcdir="${src-dir}" />
+      srcdir="${src-dir}" 
+      datafile="${tmp-dir}/data.ser" />
   </target>
 <!-- javadoc -->
   <target name="javadoc" depends="init">
