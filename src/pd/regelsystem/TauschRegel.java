@@ -23,6 +23,11 @@ public class TauschRegel extends Regel {
 			throw new RegelVerstoss("Es müssen zwei Figuren getauscht werden.");
 		}
 		
+		if (start.istGeschuetzt() || ziel.istGeschuetzt()) {
+			throw new RegelVerstoss("Es können keine geschützten Figuren " +
+			                        "getauscht werden.");
+		}
+		
 		if (!(start.istBesetztVon(spieler) ^ ziel.istBesetztVon(spieler))) {
 			throw new RegelVerstoss("Es muss eine eigene Figur und " +
 			                        "eine andere getauscht werden.");

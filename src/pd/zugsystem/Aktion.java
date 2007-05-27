@@ -1,6 +1,9 @@
 package pd.zugsystem;
 
+import pd.brett.BankFeld;
 import pd.brett.Feld;
+import pd.brett.HimmelFeld;
+import pd.brett.LagerFeld;
 
 /**
  * Aktion, die eine Figur von einem Start- auf ein Zielfeld setzt.
@@ -22,5 +25,11 @@ public class Aktion {
 			throw new RuntimeException("Ziel von Aktion sollte leer sein.");
 		}
 		start.versetzeFigurAuf(ziel);
+		start.setGeschuetzt(false);
+		if (start instanceof LagerFeld && ziel instanceof BankFeld) {
+			ziel.setGeschuetzt(true);
+		} else if (ziel instanceof HimmelFeld) {
+			ziel.setGeschuetzt(true);
+		}
 	}
 }

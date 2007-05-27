@@ -43,6 +43,12 @@ public class VorwaertsRegel extends Regel {
 			                        " Felder gehen.");
 		}
 		
+		// TODO: Auf ganzem Weg prüfen.
+		if (ziel.istGeschuetzt()) {
+			throw new RegelVerstoss("Es kann nicht auf ein geschütztes Feld " +
+			                        "gezogen werden.");
+		}
+		
 		Zug zug = new Zug();
 		
 		if (ziel.istBesetzt()) {

@@ -65,6 +65,21 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(viererRegel);
 	}
 	
+	public void testVorwaertsAufGeschuetztes() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		sollteValidieren(new StartRegel());
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+
+		spieler = spieler2;
+		start = bankFeld1.getVorheriges().getVorheriges();
+		ziel  = bankFeld1;
+		lagerFeld2.versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(2));
+	}
+	
 	public void testStart() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
@@ -73,6 +88,13 @@ public class RegelTest extends ProblemDomainTestCase {
 		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+		
+		start = bankFeld1;
+		ziel  = start.getNtesFeld(5);
+		sollteValidieren(new VorwaertsRegel(5));
+		assertFalse(start.istGeschuetzt());
+		assertFalse(ziel.istGeschuetzt());
 	}
 	
 	public void testStartNichtVonLagerFeldAus() {
@@ -100,6 +122,32 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld2;
 		ziel  = bankFeld2;
 		sollteVerstossGeben(new StartRegel());
+	}
+	
+	public void testStartGeschuetzt() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		sollteValidieren(new StartRegel());
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+		
+		start = brett.getLagerFelderVon(spieler1).get(3);
+		ziel  = bankFeld1;
+		sollteVerstossGeben(new StartRegel());
+	}
+	
+	public void testStartHeimSchicken() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		lagerFeld2.versetzeFigurAuf(ziel);
+		
+		sollteValidieren(new StartRegel());
+		
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+		assertTrue(lagerFeld2.istBesetztVon(spieler2));
 	}
 	
 	public void testHeimSchicken() throws RegelVerstoss {
@@ -152,6 +200,20 @@ public class RegelTest extends ProblemDomainTestCase {
 		lagerFeld1.versetzeFigurAuf(start);
 		sollteVerstossGeben(new TauschRegel());
 		start.versetzeFigurAuf(ziel);
+		sollteVerstossGeben(new TauschRegel());
+	}
+	
+	public void testTauschenGeschuetzt() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		sollteValidieren(new StartRegel());
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+		
+		start = bankFeld1;
+		ziel  = bankFeld1.getNtesFeld(7);
+		lagerFeld2.versetzeFigurAuf(ziel);
 		sollteVerstossGeben(new TauschRegel());
 	}
 	

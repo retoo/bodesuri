@@ -13,12 +13,14 @@ import dienste.serialisierung.CodierbaresObjekt;
  * @see Brett
  */
 public abstract class Feld extends CodierbaresObjekt {
-	protected Feld naechstes;
-	protected Feld vorheriges;
-
-	protected Figur figur;
-	
 	private int nummer;
+	
+	private Feld naechstes;
+	private Feld vorheriges;
+
+	private Figur figur;
+	
+	private boolean geschuetzt;
 
 	/**
 	 * Erstellt ein Feld.
@@ -75,6 +77,20 @@ public abstract class Feld extends CodierbaresObjekt {
 	 */
 	public boolean istBesetztVon(Spieler spieler) {
 		return istBesetzt() && getFigur().getSpieler() == spieler;
+	}
+	
+	/**
+	 * @return true, wenn Feld geschuetzt ist (nicht darauf gezogen werden kann)
+	 */
+	public boolean istGeschuetzt() {
+		return geschuetzt;
+	}
+	
+	/**
+	 * @param geschuetzt Soll Feld geschuetzt sein?
+	 */
+	public void setGeschuetzt(boolean geschuetzt) {
+		this.geschuetzt = geschuetzt;
 	}
 
 	/**
