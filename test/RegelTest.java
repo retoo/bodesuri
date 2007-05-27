@@ -217,6 +217,11 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(new TauschRegel());
 	}
 	
+	public void testRegelVerstoss() {
+		RegelVerstoss rv = new RegelVerstoss("Des Todes!");
+		assertEquals("Regelverstoss: Des Todes!", rv.toString());
+	}
+	
 	private void sollteValidieren(Regel regel) throws RegelVerstoss {
 		Bewegung bewegung = new Bewegung(start, ziel);
 		ZugEingabe ze = new ZugEingabe(spieler, null, bewegung);
