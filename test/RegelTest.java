@@ -29,7 +29,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = bankFeld1;
 		ziel  = start.getNtesFeld(4);
 		lagerFeld1.versetzeFigurAuf(start);
-		
 		sollteValidieren(viererRegel);
 		
 		assertTrue(start.istFrei());
@@ -40,8 +39,8 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = bankFeld1;
 		ziel  = start.getNtesFeld(3);
 		lagerFeld1.versetzeFigurAuf(start);
-		
 		sollteVerstossGeben(viererRegel);
+		
 		start = lagerFeld1;
 		sollteVerstossGeben(viererRegel);
 	}
@@ -50,7 +49,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = bankFeld1.getNtesFeld(4);
 		ziel  = bankFeld1;
 		lagerFeld1.versetzeFigurAuf(start);
-		
 		sollteValidieren(viererRegel);
 		
 		assertTrue(start.istFrei());
@@ -61,7 +59,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = bankFeld1.getNtesFeld(3);
 		ziel  = bankFeld1;
 		lagerFeld1.versetzeFigurAuf(start);
-		
 		sollteVerstossGeben(viererRegel);
 	}
 	
@@ -69,6 +66,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		sollteValidieren(new StartRegel());
+		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler1));
 		assertTrue(ziel.istGeschuetzt());
@@ -80,10 +78,25 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(new VorwaertsRegel(2));
 	}
 	
+	public void testVorwaertsAufBankFeldBesetztVonBesitzer()
+			throws RegelVerstoss {
+		start = bankFeld1.getVorheriges().getVorheriges();
+		ziel  = bankFeld1;
+		lagerFeld1.versetzeFigurAuf(bankFeld1);
+		lagerFeld2.versetzeFigurAuf(start);
+		spieler = spieler2;
+		sollteValidieren(new VorwaertsRegel(2));
+		
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler2));
+		assertTrue(lagerFeld1.istBesetztVon(spieler1));
+	}
+	
 	public void testVorwaertsUeberGeschuetztes() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		sollteValidieren(new StartRegel());
+		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler1));
 		assertTrue(ziel.istGeschuetzt());
@@ -95,10 +108,30 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(new VorwaertsRegel(2));
 	}
 	
+	public void testVorwaertsUeberBankFeldBesetzt() throws RegelVerstoss {
+		start = bankFeld1.getVorheriges();
+		ziel  = bankFeld1.getNaechstes();
+		lagerFeld1.versetzeFigurAuf(start);
+		lagerFeld2.versetzeFigurAuf(bankFeld1);
+		sollteValidieren(new VorwaertsRegel(2));
+		
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(bankFeld1.istBesetztVon(spieler2));
+	}
+	
+	public void testVorwaertsUeberBankFeldBesetztVonBesitzer() {
+		start = bankFeld1.getVorheriges();
+		ziel  = bankFeld1.getNaechstes();
+		lagerFeld1.versetzeFigurAuf(bankFeld1);
+		lagerFeld2.versetzeFigurAuf(start);
+		spieler = spieler2;
+		sollteVerstossGeben(new VorwaertsRegel(2));
+	}
+	
 	public void testStart() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
-		
 		sollteValidieren(new StartRegel());
 		
 		assertTrue(start.istFrei());
@@ -108,6 +141,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = bankFeld1;
 		ziel  = start.getNtesFeld(5);
 		sollteValidieren(new VorwaertsRegel(5));
+		
 		assertFalse(start.istGeschuetzt());
 		assertFalse(ziel.istGeschuetzt());
 	}
@@ -129,6 +163,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld1;
 		ziel  = bankFeld1.getNaechstes();
 		sollteVerstossGeben(new StartRegel());
+		
 		ziel  = bankFeld2;
 		sollteVerstossGeben(new StartRegel());
 	}
@@ -143,6 +178,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		sollteValidieren(new StartRegel());
+		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler1));
 		assertTrue(ziel.istGeschuetzt());
@@ -156,7 +192,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		lagerFeld2.versetzeFigurAuf(ziel);
-		
 		sollteValidieren(new StartRegel());
 		
 		assertTrue(start.istFrei());
@@ -171,7 +206,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		lagerFeld1.versetzeFigurAuf(start);
 		lagerFeld2.versetzeFigurAuf(ziel);
 		Figur figur2 = ziel.getFigur();
-		
 		sollteValidieren(new VorwaertsRegel(5));
 		
 		assertTrue(start.istFrei());
@@ -184,7 +218,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		ziel  = bankFeld1.getNtesFeld(5);
 		lagerFeld1.versetzeFigurAuf(start);
 		lagerFeld2.versetzeFigurAuf(ziel);
-		
 		sollteValidieren(new TauschRegel());
 		
 		assertTrue(start.istBesetztVon(spieler2));
@@ -196,7 +229,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		ziel  = bankFeld1.getNtesFeld(5);
 		start.setFigur(spieler1.getFiguren().get(0));
 		ziel.setFigur(spieler1.getFiguren().get(1));
-		
 		sollteVerstossGeben(new TauschRegel());
 	}
 	
@@ -205,7 +237,6 @@ public class RegelTest extends ProblemDomainTestCase {
 		ziel  = bankFeld1.getNtesFeld(5);
 		start.setFigur(spieler2.getFiguren().get(0));
 		ziel.setFigur(spieler2.getFiguren().get(1));
-		
 		sollteVerstossGeben(new TauschRegel());
 	}
 	
@@ -214,6 +245,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		ziel  = bankFeld1.getNaechstes();
 		lagerFeld1.versetzeFigurAuf(start);
 		sollteVerstossGeben(new TauschRegel());
+		
 		start.versetzeFigurAuf(ziel);
 		sollteVerstossGeben(new TauschRegel());
 	}
@@ -222,6 +254,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
 		sollteValidieren(new StartRegel());
+		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler1));
 		assertTrue(ziel.istGeschuetzt());

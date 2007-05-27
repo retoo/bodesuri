@@ -3,6 +3,7 @@ package pd.regelsystem;
 import java.util.List;
 import java.util.Vector;
 
+import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.LagerFeld;
 import pd.spieler.Spieler;
@@ -48,8 +49,14 @@ public class VorwaertsRegel extends Regel {
 		for (Feld feld : weg) {
 			if (feld == start) continue;
 			
+			if (feld instanceof BankFeld && feld != ziel &&
+			    ((BankFeld)feld).istBesetztVonBesitzer()) {
+				throw new RegelVerstoss("Es kann nicht über eine Figur " +
+				                        "auf ihrem Bankfeld gezogen werden.");
+			}
+			
 			if (feld.istGeschuetzt()) {
-				throw new RegelVerstoss("Es kann nicht auf/über ein " +
+				throw new RegelVerstoss("Es kann nicht auf oder über ein " +
 				                        "geschütztes Feld gezogen werden.");
 			}
 		}

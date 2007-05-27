@@ -19,6 +19,13 @@ public class BankFeld extends SpielerFeld {
 	}
 	
 	/**
+	 * @return true, wenn Bankfeld von ihrem Besitzer besetzt ist
+	 */
+	public boolean istBesetztVonBesitzer() {
+		return istBesetztVon(getSpieler());
+	}
+	
+	/**
 	 * Gibt das erste Feld des Himmels zurück.
 	 * 
 	 * @return Erstes Himmelfeld, das nach Bankfeld kommt
