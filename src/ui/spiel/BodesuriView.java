@@ -22,7 +22,7 @@ public class BodesuriView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public BodesuriView(BodesuriClient automat) {
-		setTitle("Bodesuri - Spiel");
+		setTitle("Bodesuri - Spiel ");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
@@ -63,7 +63,7 @@ public class BodesuriView extends JFrame {
 		gbc.weightx = 0.1;
 		gbc.weighty = 0.1;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		add(new SpielerView(), gbc);
+		add(new SpielerView(automat), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;

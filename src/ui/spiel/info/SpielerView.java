@@ -5,19 +5,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import applikation.client.BodesuriClient;
+
 public class SpielerView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public SpielerView() {
+	public SpielerView(BodesuriClient automat) {
 		TitledBorder titel = new TitledBorder("Spieler");
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-		this.add(new JLabel("Spieler 1"));
-		this.add(new JLabel("Spieler 2"));
-		this.add(new JLabel("Spieler 3"));
-		this.add(new JLabel("Spieler 4"));
+		
+		this.add(new JLabel(automat.spiel.getSpieler().get(0).getName()));
+		this.add(new JLabel(automat.spiel.getSpieler().get(1).getName()));
+		this.add(new JLabel(automat.spiel.getSpieler().get(2).getName()));
+		this.add(new JLabel(automat.spiel.getSpieler().get(3).getName()));
 	}
 }
