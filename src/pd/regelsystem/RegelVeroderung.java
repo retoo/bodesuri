@@ -23,18 +23,16 @@ public class RegelVeroderung extends Regel {
 	 * Wenn keine Regel gültig ist, wird eine RegelVerstoss geworfen.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
-		RegelVerstoss regelVerstoss = null;
+		StringBuilder s = new StringBuilder();
+		s.append("Keine Regel war gültig");
 		for (Regel regel : regeln) {
 			try {
 				Zug resultat = regel.validiere(zugEingabe);
 				return resultat;
 			} catch (RegelVerstoss rv) {
-				regelVerstoss = rv;
+				s.append("\n - " + rv.getMessage());
 			}
 		}
-		if (regelVerstoss == null) {
-			throw new RuntimeException("Sollte nicht passieren.");
-		}
-		throw regelVerstoss;
+		throw new RegelVerstoss(s.toString());
 	}
 }
