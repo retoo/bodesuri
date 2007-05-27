@@ -15,12 +15,7 @@ public class Karte extends CodierbaresObjekt {
 	}
 	
 	public String toString() {
-		return getKartenFarbe() + " " +
-               getClass().getSimpleName();
-	}
-
-	public void setKartenFarbe(KartenFarbe kartenFarbe) {
-		farbe = kartenFarbe;
+		return getKartenFarbe() + " " + getClass().getSimpleName();
 	}
 
 	public KartenFarbe getKartenFarbe() {
