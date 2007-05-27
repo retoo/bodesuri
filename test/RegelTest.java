@@ -80,6 +80,21 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(new VorwaertsRegel(2));
 	}
 	
+	public void testVorwaertsUeberGeschuetztes() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		sollteValidieren(new StartRegel());
+		assertTrue(start.istFrei());
+		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istGeschuetzt());
+
+		spieler = spieler2;
+		start = bankFeld1.getVorheriges();
+		ziel  = bankFeld1.getNaechstes();
+		lagerFeld2.versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(2));
+	}
+	
 	public void testStart() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;

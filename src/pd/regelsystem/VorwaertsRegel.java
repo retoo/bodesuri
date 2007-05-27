@@ -38,15 +38,20 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
 		}
 		
-		if (getWeg(bewegung).size() != schritte + 1) {
+		List<Feld> weg = getWeg(bewegung);
+		
+		if (weg.size() != schritte + 1) {
 			throw new RegelVerstoss("Zug muss über " + schritte +
 			                        " Felder gehen.");
 		}
 		
-		// TODO: Auf ganzem Weg prüfen.
-		if (ziel.istGeschuetzt()) {
-			throw new RegelVerstoss("Es kann nicht auf ein geschütztes Feld " +
-			                        "gezogen werden.");
+		for (Feld feld : weg) {
+			if (feld == start) continue;
+			
+			if (feld.istGeschuetzt()) {
+				throw new RegelVerstoss("Es kann nicht auf/über ein " +
+				                        "geschütztes Feld gezogen werden.");
+			}
 		}
 		
 		Zug zug = new Zug();
