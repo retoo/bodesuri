@@ -21,11 +21,13 @@ import dienste.netzwerk.NetzwerkEvent;
 public class Server {
 	private static final int PORT = 7788;
 	private BriefKastenInterface serverBriefkasten;
+	private Daemon daemon;
 	
 	/**
 	 * Queue für eingehende Events
 	 */
 	public EventQueue queue;
+
 
 	/**
 	 * Erstellt einen neuen Server.
@@ -37,7 +39,7 @@ public class Server {
 		this.queue = queue;
 		serverBriefkasten = new BriefkastenAdapter(queue);
 
-		Daemon daemon = new Daemon(PORT, serverBriefkasten, queue);
+		daemon = new Daemon(PORT, serverBriefkasten, queue);
 
 		Thread t = new Thread(daemon);
 		t.start();
