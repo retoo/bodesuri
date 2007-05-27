@@ -2,12 +2,21 @@ package applikation.server.nachrichten;
 
 import dienste.netzwerk.Nachricht;
 
+/**
+ * Nachricht die dem Spieler den Beitritt zum Spiel bestätigt.
+ */
 public class BeitrittsBestaetigung extends Nachricht {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    public final String[] spielerNamen;
-    
-    public BeitrittsBestaetigung(String[] spielerNamen ) {
-    	this.spielerNamen = spielerNamen;
-    }  
+	/**
+	 * Name der bereits 
+	 */
+	public final String[] spielerNamen;
+
+	/**
+	 * @param spielerNamen
+	 */
+	public BeitrittsBestaetigung(String[] spielerNamen) {
+		this.spielerNamen = spielerNamen;
+	}
 }
