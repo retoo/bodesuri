@@ -15,6 +15,8 @@ public class KartenTest extends ProblemDomainTestCase {
 	public void testDeck() {
 		List<Karte> deck = Deck.erstelleKarten(0);
 		assertEquals(55, deck.size());
+		// Für 100% Abdeckung
+		new Deck();
 	}
 	
 	public void testGetKarte() {

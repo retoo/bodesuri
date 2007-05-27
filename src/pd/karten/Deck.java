@@ -3,7 +3,7 @@ package pd.karten;
 import java.util.List;
 import java.util.Vector;
 
-public abstract class Deck {
+public class Deck {
 	public static List<Karte> erstelleKarten(int deck) {
 		List<Karte> karten = new Vector<Karte>();
 		

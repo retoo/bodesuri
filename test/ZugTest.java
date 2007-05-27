@@ -15,6 +15,8 @@ public class ZugTest extends ProblemDomainTestCase {
 		assertEquals(spieler1, ze.getSpieler());
 		assertEquals(ass, ze.getKarte());
 		assertEquals(bewegung, ze.getBewegung());
+		
+		ze.validiere();
 	}
 	
 	public void testKarteOhneRegel() {
