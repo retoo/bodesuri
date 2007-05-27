@@ -13,6 +13,10 @@ import dienste.automat.EventQueue;
 public class BriefkastenAdapter implements BriefKastenInterface {
 	private EventQueue queue;
 
+	/**
+	 * Erstellt den BriefkastenAdapter
+	 * @param queue zu adaptierende EventQueue
+	 */
 	public BriefkastenAdapter(EventQueue queue) {
 		this.queue = queue;
 	}

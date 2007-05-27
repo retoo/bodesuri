@@ -13,6 +13,10 @@ public class NeueVerbindung extends Event {
 	 */
 	public final EndPunkt endpunkt;
 
+	/**
+	 * Erstellt Nachricht
+	 * * @param client 
+	 */
 	public NeueVerbindung(EndPunkt client) {
 		this.endpunkt = client;
 	}
