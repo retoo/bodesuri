@@ -7,6 +7,10 @@ import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
+/**
+ * Zustand während des Spieles. Eingende ZugInformationen werden an 
+ * alle Spieler verteilt.
+ */
 public class SpieleSpiel extends AktiverServerZustand {
 	
 	Zustand zugInfo(EndPunkt absender, ZugInformation zugInfo) {
@@ -33,9 +37,7 @@ public class SpieleSpiel extends AktiverServerZustand {
 		spielers.broadcast("Nächster Spieler ist " + naechsterSpieler + ".");
 
 		naechsterSpieler.endpunkt.sende(new ZugAufforderung());
-        
-		System.out.println("Nächster Spieler: " + aktuellerSpieler);
-		
+        	
 		return this;
 	}
 }

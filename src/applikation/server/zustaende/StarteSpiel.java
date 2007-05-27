@@ -7,6 +7,9 @@ import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.ZugAufforderung;
 import dienste.automat.zustaende.Zustand;
 
+/**
+ * Passiver Zustand der das Spiel initialisiert.
+ */
 public class StarteSpiel extends PassiveServerZustand {
 
 	@Override
@@ -16,7 +19,7 @@ public class StarteSpiel extends PassiveServerZustand {
 		Spiel spiel = new Spiel();		
 		
 		for (Spieler spieler : spielerschaft) {
-			spiel.fuegeHinzu(spieler.spielerName);
+			spiel.fuegeHinzu(spieler.name);
 		}
 
 		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getStringArray());

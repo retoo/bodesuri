@@ -12,12 +12,29 @@ import dienste.netzwerk.server.Server;
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class BodesuriServer extends Automat {
+	/**
+	 * Maximale Anzahl Spieler
+	 * 
+	 * TODO: muss das wirklich so ne Konstante sein.
+	 */
 	public static final int MAXSPIELER = 4;
+	/**
+	 * Server
+	 */
 	public Server server;
+	/**
+	 * EventQueue
+	 */
 	public EventQueue queue;
+	/**
+	 * Spielerschaft
+	 */
 	public Spielerschaft spielerschaft;
 	
 	
+	/**
+	 * Initialisiert den Server-Automaten
+	 */
 	public BodesuriServer() {
 		registriere(new ServerStart());
 		registriere(new EmpfangeSpieler());

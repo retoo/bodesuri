@@ -16,9 +16,15 @@ import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NeueVerbindung;
 
 
-public class AktiverServerZustand extends AktiverZustand {
+/**
+ * Spezfischer aktiver Server Zustand
+ */
+public abstract class AktiverServerZustand extends AktiverZustand {
 	protected BodesuriServer automat;
 	
+	/* (non-Javadoc)
+	 * @see dienste.automat.zustaende.AktiverZustand#handle(dienste.automat.Event)
+	 */
 	public Zustand handle(Event event) {
     	if (event instanceof NetzwerkEvent) {
     		NetzwerkEvent ne = (NetzwerkEvent) event;
@@ -43,6 +49,8 @@ public class AktiverServerZustand extends AktiverZustand {
     	return null;
     }
 	
+	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
+	
 	Zustand verbindungGeschlossen(EndPunkt absender) {
     	return keinUebergang();
     }
@@ -65,6 +73,9 @@ public class AktiverServerZustand extends AktiverZustand {
     	                                 + this);
     }
 	
+	/* (non-Javadoc)
+	 * @see dienste.automat.zustaende.Zustand#setAutomat(dienste.automat.Automat)
+	 */
 	@Override
     public void setAutomat(Automat automat) {
 		this.automat = (BodesuriServer) automat;

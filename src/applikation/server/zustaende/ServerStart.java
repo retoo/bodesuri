@@ -8,6 +8,9 @@ import applikation.server.Spielerschaft;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.server.Server;
 
+/**
+ * Passiver Zustand der den Server initialisiert.
+ */
 public class ServerStart extends PassiveServerZustand {
 	public Zustand handle() {
 		System.out.println("Initialiere Server");

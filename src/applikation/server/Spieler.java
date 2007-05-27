@@ -6,17 +6,32 @@ import dienste.netzwerk.EndPunkt;
  * Repräsentiert den Spieler auf dem Server.
  */
 public class Spieler {
+	/**
+	 * Name des Spielers
+	 */
+	public String name;
 
-	public String spielerName;
-	/* FIXME: das sollte früher doer später private sein */
+	/**
+	 * Endpunkt des Spielers
+	 * 
+	 * FIXME: das sollte früher doer später private sein
+	 */
 	public EndPunkt endpunkt;
 
+	/**
+	 * Erstellt einen neune Spieler
+	 * 
+	 * @param endpunkt
+	 *            Endpunkt des Spielers
+	 * @param name
+	 *            Name des Spielers
+	 */
 	public Spieler(EndPunkt endpunkt, String name) {
-	    this.spielerName = name;
-	    this.endpunkt = endpunkt;
-    }
-	
+		this.name = name;
+		this.endpunkt = endpunkt;
+	}
+
 	public String toString() {
-		return spielerName + " (" + endpunkt + ")";
+		return name + " (" + endpunkt + ")";
 	}
 }

@@ -7,13 +7,23 @@ import applikation.server.nachrichten.ChatNachricht;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 
+/**
+ * Repräsentiert eine Gruppe von Spieler die in einem Spiel auf dem Server
+ * mitspielen.
+ */
 public class Spielerschaft implements Iterable<Spieler> {
-	private final int maxSpieler;
+	private final int anzahlSpieler;
 	private Vector<Spieler> spielers = new Vector<Spieler>();
 	private int aktuellerSpieler;
 
-	public Spielerschaft(int maxSpieler) {
-		this.maxSpieler = maxSpieler;
+	/**
+	 * Erstellt eine neue Spielerschaft.
+	 * 
+	 * @param anzahlSpieler
+	 *            Anzahl der Spieler
+	 */
+	public Spielerschaft(int anzahlSpieler) {
+		this.anzahlSpieler = anzahlSpieler;
 		spielers = new Vector<Spieler>();
 		aktuellerSpieler = 0;
 	}
@@ -37,7 +47,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 		String[] spielers_str = new String[spielers.size()];
 
 		for (int i = 0; i < spielers.size(); i++)
-			spielers_str[i] = spielers.get(i).spielerName;
+			spielers_str[i] = spielers.get(i).name;
 
 		return spielers_str;
 	}
@@ -73,31 +83,51 @@ public class Spielerschaft implements Iterable<Spieler> {
 	 * 
 	 * @return Anzahl der Spieler
 	 */
-	public int getAnZahlSpieler() {
+	public int getAnzahlSpieler() {
 		return spielers.size();
 	}
 
+	/**
+	 * Anzahl der offenen Spielposten
+	 * 
+	 * @return Anzahl der noch offenen Spielslots
+	 */
+	public int getAnzahlOffen() {
+		return anzahlSpieler - getAnzahlSpieler();
+	}
+	
 	/**
 	 * Prüft ob Spiel komplett ist
 	 * 
 	 * @return true falls Spiel komplett
 	 */
 	public boolean isKomplett() {
-		return getAnZahlSpieler() == maxSpieler;
+		return getAnzahlSpieler() == anzahlSpieler;
 	}
 
 	/**
-	 * Markiert den nächsten Spieler als 'aktuellerSpieler'. Methode darf erst aufgerufen ewrden 
-	 * nachdem mindestens ein Spieler hinzugefügt wurde.
+	 * Markiert den nächsten Spieler als 'aktuellerSpieler'. Methode darf erst
+	 * aufgerufen ewrden nachdem mindestens ein Spieler hinzugefügt wurde.
 	 */
 	public void rotiereSpieler() {
 		int anzahlSpieler = spielers.size();
-		
+
 		if (anzahlSpieler > 0)
 			aktuellerSpieler = (aktuellerSpieler + 1) % anzahlSpieler;
-		else 
-			throw new RuntimeException("Kann nicht rotieren, es gibt ja noch gar keine Spieler");
-    }
+		else
+			throw new RuntimeException(
+			                           "Kann nicht rotieren, es gibt ja noch gar keine Spieler");
+	}
+
+	/**
+	 * Iterator welcher ermöglicht über alle Spieler zu iterieren.
+	 * 
+	 * @see java.lang.Iterable#iterator()
+	 * @return spieler-iterator
+	 */
+	public Iterator<Spieler> iterator() {
+		return spielers.iterator();
+	}
 
 	/**
 	 * Liefert aktuellen Spieler
@@ -107,14 +137,4 @@ public class Spielerschaft implements Iterable<Spieler> {
 	public Spieler getAktuellerSpieler() {
 		return spielers.get(aktuellerSpieler);
 	}
-
-	/**
-	 * Iterator welcher ermöglciht über alle Spieler zu iterieren.
-	 * 
-	 * @see java.lang.Iterable#iterator()
-	 * @return spieler-iterator
-	 */
-	public Iterator<Spieler> iterator() {
-	    return spielers.iterator();
-    }
 }

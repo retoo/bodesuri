@@ -4,6 +4,9 @@ import applikation.server.BodesuriServer;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.PassiverZustand;
 
+/**
+ * Spezifischer passiver Server-Zustand
+ */
 public abstract class PassiveServerZustand extends PassiverZustand {
 	protected BodesuriServer automat;
 
