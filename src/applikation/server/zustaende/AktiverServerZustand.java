@@ -35,12 +35,10 @@ public class AktiverServerZustand extends AktiverZustand {
     			return verbindungGeschlossen(brief.absender);
     		else
     			throw new RuntimeException("Unbekannte Nachricht");
-    	} else {
-    		/* Systemnachricht */
-    
-    		if (event instanceof NeueVerbindung)
+    	} 	/* Systemnachrichten */ 
+    	else if (event instanceof NeueVerbindung)
     			return neueVerbindung((NeueVerbindung) event);
-    	}
+    	
     
     	return null;
     }

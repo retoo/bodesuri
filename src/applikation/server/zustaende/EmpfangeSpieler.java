@@ -31,8 +31,8 @@ public class EmpfangeSpieler extends AktiverServerZustand {
 
 		if (spielers.isKomplett()) {
 			return automat.getZustand(StarteSpiel.class);
-		} else {
-			return this;
 		}
+		
+		return this;
 	}
 }
