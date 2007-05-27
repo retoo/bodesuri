@@ -1,6 +1,5 @@
 package dienste.serialisierung;
 
-import java.io.ObjectStreamException;
 import java.io.Serializable;
 
 import pd.Spiel;
@@ -24,12 +23,12 @@ abstract public class CodierbaresObjekt implements Serializable {
 		this.code = code;
 	}
 	
-	/*
+	/**
 	 * Wird von ObjectOutputStream aufgerufen, um herauszufinden, was für ein
 	 * Objekt anstelle dieses Objekts in den ObjectOutputStream geschrieben
 	 * werden soll. Es soll ein CodiertesObjekt mit dem Code geschrieben werden.
 	 */
-	protected Object writeReplace() throws ObjectStreamException {
+	protected Object writeReplace() {
 		return new CodiertesObjekt(code);
 	}
 }
