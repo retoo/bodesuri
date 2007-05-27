@@ -1,13 +1,9 @@
-package applikation.server.nachrichten;
+package dienste.netzwerk;
 
-import dienste.netzwerk.EndPunkt;
-import dienste.netzwerk.Nachricht;
 
 /**
  * Nachricht die meldet, dass die Verbindung zu einem {@link EndPunkt}
  * unerwartet geschlossen wurde.
- * 
- * FIXME: gehört ins Dienste Package
  * 
  */
 public class VerbindungGeschlossen extends Nachricht {

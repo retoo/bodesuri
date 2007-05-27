@@ -18,12 +18,10 @@ import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.events.NetzwerkEvent;
 import applikation.server.nachrichten.ChatNachricht;
 import applikation.server.nachrichten.SpielBeitreten;
 import applikation.server.nachrichten.SpielStartNachricht;
 import applikation.server.nachrichten.SpielVollNachricht;
-import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugAufforderung;
 import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.EventQueue;
@@ -31,6 +29,8 @@ import dienste.netzwerk.Brief;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.NetzwerkEvent;
+import dienste.netzwerk.VerbindungGeschlossen;
 import dienste.netzwerk.VerbindungWegException;
 
 public class CLI {

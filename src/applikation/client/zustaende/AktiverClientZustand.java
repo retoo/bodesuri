@@ -3,7 +3,6 @@ package applikation.client.zustaende;
 import applikation.client.BodesuriClient;
 import applikation.client.events.BewegungEingegebenEvent;
 import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.events.NetzwerkEvent;
 import applikation.client.events.VerbindeEvent;
 import applikation.server.nachrichten.BeitrittsBestaetigung;
 import applikation.server.nachrichten.ChatNachricht;
@@ -20,6 +19,7 @@ import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.NetzwerkEvent;
 
 public class AktiverClientZustand extends AktiverZustand {
 	protected BodesuriClient automat;

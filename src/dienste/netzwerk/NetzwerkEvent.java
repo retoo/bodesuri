@@ -1,7 +1,6 @@
-package applikation.client.events;
+package dienste.netzwerk;
 
 import dienste.automat.Event;
-import dienste.netzwerk.Brief;
 
 /**
  * Event der ausgelöst wird wenn eine Netzwerknachricht eintrifft.

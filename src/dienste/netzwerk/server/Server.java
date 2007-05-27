@@ -2,12 +2,12 @@ package dienste.netzwerk.server;
 
 import java.io.IOException;
 
-import applikation.client.events.NetzwerkEvent;
 
 import dienste.automat.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.Daemon;
+import dienste.netzwerk.NetzwerkEvent;
 
 /**
  * Server welcher die Kommunikation mit mehreren Clients ermöglicht. Beim Start

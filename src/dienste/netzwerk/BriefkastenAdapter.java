@@ -1,6 +1,5 @@
 package dienste.netzwerk;
 
-import applikation.client.events.NetzwerkEvent;
 import dienste.automat.EventQueue;
 
 /**

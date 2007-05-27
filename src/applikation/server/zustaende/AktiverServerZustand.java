@@ -1,9 +1,7 @@
 package applikation.server.zustaende;
 
-import applikation.client.events.NetzwerkEvent;
 import applikation.server.BodesuriServer;
 import applikation.server.nachrichten.SpielBeitreten;
-import applikation.server.nachrichten.VerbindungGeschlossen;
 import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.Automat;
 import dienste.automat.Event;
@@ -13,7 +11,9 @@ import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.NetzwerkEvent;
 import dienste.netzwerk.NeueVerbindung;
+import dienste.netzwerk.VerbindungGeschlossen;
 
 
 /**

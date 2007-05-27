@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-import applikation.server.nachrichten.VerbindungGeschlossen;
 
 class Empfaenger implements Runnable {
 	private BriefKastenInterface nachrichtenQueue;
