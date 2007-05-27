@@ -207,17 +207,30 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 % paragraph package_pd_zustandsynchronisation (end)
 
 \clearpage
-\subsubsection{Package dienste} % (fold)
+\subsubsection{Package dienste.automat} % (fold)
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Die Dienstschicht stellt die grundlegende Netzwerkkommunikation dar. Er kapselt die Socket-Schnittstelle von Java und stellt eine abstrakte Schnittstelle der Problem-Domain-Schicht zur Verfügung.
+Beinhaltet einen Zustandsautomaten der im Client und im Server eine gezielte Abarbeitung
+des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten
+Bahnen zwischen den Zuständen hin und her.
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
-Beschreibung der Schnittstellen
+\begin{itemize}
+	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
+\end{itemize}	
 % subparagraph schnittstellen (end)
-% paragraph package_dienste (end)
+\subparagraph{Operationen} % (fold)
+\label{ssub:operationen}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
+	\caption{Automat Klassendiagramm}
+	\label{fig:dienste_serialisierung}
+\end{figure}
+% subparagraph operationen (end)
+% paragraph package_automat (end)
 
 \clearpage
 \subsubsection{Package dienste.serialisierung} % (fold)
@@ -259,7 +272,10 @@ Klassendiagramm
 % subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
-Beschreibung der Schnittstellen
+\begin{itemize}
+	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
+	\item Die Kommunikation mit dem Netzewrk findet über die Bibliotheken java.net statt.
+\end{itemize}
 % subparagraph schnittstellen (end)
 \subparagraph{Operationen} % (fold)
 \label{ssub:operationen}
