@@ -9,7 +9,7 @@ public abstract class SpielerFeld extends Feld {
 	private Spieler spieler;
 
 	/**
-	 * @param nummer Feldnummer, siehe {@link Feld#Feld}
+	 * @param nummer Feldnummer, siehe {@link Feld#Feld(int)}
 	 * @param spieler Spieler, zu dem das Feld gehört
 	 */
 	public SpielerFeld(int nummer, Spieler spieler) {

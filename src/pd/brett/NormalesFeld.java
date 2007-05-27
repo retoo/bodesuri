@@ -10,7 +10,7 @@ public class NormalesFeld extends Feld {
 	/**
 	 * Erstellt ein normales Feld.
 	 * 
-	 * @param nummer Feldnummer, siehe {@link Feld#Feld}
+	 * @param nummer Feldnummer, siehe {@link Feld#Feld(int)}
 	 */
 	public NormalesFeld(int nummer) {
 		super(nummer);
