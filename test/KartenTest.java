@@ -1,5 +1,5 @@
 
-public class KartenGeberTest extends ProblemDomainTestCase {
+public class KartenTest extends ProblemDomainTestCase {
 	public void testMischen() {
 		
 	}
