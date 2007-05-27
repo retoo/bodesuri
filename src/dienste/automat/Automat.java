@@ -13,18 +13,18 @@ import dienste.automat.zustaende.Zustand;
  * Zustandsautomaten anhand eingehender Events.
  * 
  * Die Erstellung eines Automaten besteht aus folgenden Schritten:
- *  - Situationsabhänige aktive Zustandsklasse erstellen
- *  - Situationsabhänige passive Zustandsklasse erstellen
- *  - Zustände erstellen die die beiden obigen Klassen als Basis-Klasse
- * verwenden
- *  - Automat erstellen und alle Zustände mit
- * {@link Automat#registriere(Zustand)} registrieren
- *  - Startzustand mit {@link Automat#setStart(Class)} definieren
- *  - EvenQuelle implementieren. Zum Beispiel kann die EventQueue als 
- *    Back-End verwendet werden.
- *  - Automat mit run() starten
- *  
- *   FIXME: formatierugn
+ * <ul>
+ * <il>Situationsabhänige aktive Zustandsklasse erstellen</li>
+ * <il>Situationsabhänige passive Zustandsklasse erstellen</li>
+ * <il>Zustände erstellen die die beiden obigen Klassen als Basis-Klasse
+ * verwenden</li>
+ * <il>Automat erstellen und alle Zustände mit
+ * {@link Automat#registriere(Zustand)} registrieren</li>
+ * <il>Startzustand mit {@link Automat#setStart(Class)} definieren</li>
+ * <il>EvenQuelle implementieren. Zum Beispiel kann die EventQueue als Baack-End
+ * verwendet werden.</li>
+ * <il>Automat mit run() starten</li>
+ * </ul>
  * 
  */
 public class Automat {
@@ -77,7 +77,8 @@ public class Automat {
 	}
 
 	/**
-	 * Startet den Mainloop
+	 * Startet den Zustandsautomaten und führt ihn so lange bis ein
+	 * {@link EndZustand} eintritt.
 	 */
 	public void run() {
 		pruefeAutomat();
@@ -91,11 +92,31 @@ public class Automat {
 		}
 	}
 
-	public boolean step() {
+	/**
+	 * Verarbeitet einen einzigen Zustand. Bei Aktiven Zuständen bedeutet dies,
+	 * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
+	 * ausgeführt.
+	 * 
+	 * Endzustände beenden den Zustandsautomaten.
+	 * 
+	 * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
+	 * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
+	 * werden
+	 * 
+	 * @see AktiverZustand
+	 * @see PassiverZustand
+	 * @see EndZustand
+	 * 
+	 * @return true wenn es sich beim verarbeiteten Zustand nicht um einen
+	 *         Endzustand handelte.
+	 */
+	@SuppressWarnings("deprecation")
+    public boolean step() {
 		Zustand neuerZustand;
 
 		System.out.println("Uebergang nach: " + aktuellerZustand);
 
+		aktuellerZustand.entry();
 		aktuellerZustand.init();
 
 		if (aktuellerZustand instanceof AktiverZustand) {
@@ -111,6 +132,8 @@ public class Automat {
 			System.out.println("Erreichte Endzustand");
 			return false;
 		}
+
+		aktuellerZustand.exit();
 
 		aktuellerZustand = neuerZustand;
 
@@ -131,6 +154,12 @@ public class Automat {
 			throw new RuntimeException("Keine EventQuelle definiertt");
 	}
 
+	/**
+	 * Meldete den Zustand in welchem sich der Zustandsautomaten zurzeit
+	 * befindet.
+	 * 
+	 * @return Aktueller Zustand
+	 */
 	public Zustand getAktuellerZustand() {
 		return aktuellerZustand;
 	}
