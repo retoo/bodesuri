@@ -37,8 +37,9 @@ public abstract class Feld extends CodierbaresObjekt {
 	 * @return Feld
 	 */
 	public Feld getNtesFeld(int n) {
+		int i = n;
 		Feld f = this;
-		while (n-- > 0)
+		while (i-- > 0)
 			f = f.naechstes;
 
 		return f;
