@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import pd.brett.BankFeld;
 import pd.brett.Feld;
+import pd.brett.HimmelFeld;
 import pd.brett.LagerFeld;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
@@ -34,9 +35,11 @@ public class VorwaertsRegel extends Regel {
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
+		Spieler spieler = zugEingabe.getSpieler();
 		
-		if (!start.istBesetztVon(zugEingabe.getSpieler())) {
-			throw new RegelVerstoss("Zug muss mit Figur begonnen werden.");
+		if (!start.istBesetztVon(spieler)) {
+			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
+			                        "werden.");
 		}
 		
 		List<Feld> weg = getWeg(bewegung);
@@ -44,6 +47,19 @@ public class VorwaertsRegel extends Regel {
 		if (weg.size() != schritte + 1) {
 			throw new RegelVerstoss("Zug muss über " + schritte +
 			                        " Felder gehen.");
+		}
+		
+		if (start instanceof BankFeld && ziel instanceof HimmelFeld &&
+		    start.istGeschuetzt()) {
+			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
+		}
+		
+		if (ziel instanceof HimmelFeld) {
+			HimmelFeld himmel = (HimmelFeld) ziel;
+			if (himmel.getSpieler() != spieler) {
+				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
+				                        "gezogen werden.");
+			}
 		}
 		
 		for (Feld feld : weg) {
@@ -75,12 +91,31 @@ public class VorwaertsRegel extends Regel {
 		return zug;
 	}
 	
-	protected List<Feld> getWeg(Bewegung bewegung) {
+	protected List<Feld> getWeg(Bewegung bewegung) throws RegelVerstoss {
 		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = bewegung.start;
-		while (feld != bewegung.ziel) {
+		
+		Feld start = bewegung.start;
+		Feld ziel  = bewegung.ziel;
+		
+		if (start instanceof HimmelFeld && !(ziel instanceof HimmelFeld)) {
+			throw new RegelVerstoss(
+				"Im Himmel kann nur noch vorwärts gefahren werden.");
+		} else if (start instanceof LagerFeld) {
+			throw new RegelVerstoss(
+				"Es kann nur auf eine Art gestartet werden.");
+		} else if (ziel instanceof LagerFeld) {
+			throw new RegelVerstoss(
+				"Es gibt nur eine Art, ins Lager zurückzukehren...");
+		}
+		
+		Feld feld = start;
+		while (feld != ziel) {
 			weg.add(feld);
-			feld = feld.getNaechstes();
+			if (feld instanceof BankFeld && ziel instanceof HimmelFeld) {
+				feld = ((BankFeld) feld).getHimmel();
+			} else {
+				feld = feld.getNaechstes();
+			}
 		}
 		weg.add(feld);
 		return weg;

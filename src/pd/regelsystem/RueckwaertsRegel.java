@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.brett.Feld;
+import pd.brett.HimmelFeld;
+import pd.brett.LagerFeld;
 import pd.zugsystem.Bewegung;
 
 /**
@@ -14,10 +16,20 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		super(schritte);
 	}
 	
-	protected List<Feld> getWeg(Bewegung bewegung) {
+	protected List<Feld> getWeg(Bewegung bewegung) throws RegelVerstoss {
 		Vector<Feld> weg = new Vector<Feld>();
-		Feld feld = bewegung.start;
-		while (feld != bewegung.ziel) {
+		
+		Feld start = bewegung.start;
+		Feld ziel  = bewegung.ziel;
+		
+		if (start instanceof HimmelFeld || start instanceof LagerFeld) {
+			throw new RegelVerstoss("Ungültiges Startfeld.");
+		} else if (ziel instanceof HimmelFeld || ziel instanceof LagerFeld) {
+			throw new RegelVerstoss("Ungültiges Zielfeld.");
+		}
+		
+		Feld feld = start;
+		while (feld != ziel) {
 			weg.add(feld);
 			feld = feld.getVorheriges();
 		}

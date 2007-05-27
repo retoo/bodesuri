@@ -129,6 +129,38 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteVerstossGeben(new VorwaertsRegel(2));
 	}
 	
+	public void testVorwaertsAufHimmelFeld() throws RegelVerstoss {
+		start = bankFeld1.getVorheriges();
+		ziel  = himmelFeld1;
+		lagerFeld1.versetzeFigurAuf(start);
+		sollteValidieren(new VorwaertsRegel(2));
+	}
+	
+	public void testVorwaertsAufFremdesHimmelFeld() throws RegelVerstoss {
+		start = himmelFeld1;
+		ziel  = himmelFeld1.getNtesFeld(2);
+		lagerFeld2.versetzeFigurAuf(start);
+		spieler = spieler2;
+		sollteVerstossGeben(new VorwaertsRegel(2));
+	}
+	
+	public void testVorwaertsAufHimmelFeldNachStart() throws RegelVerstoss {
+		start = lagerFeld1;
+		ziel  = bankFeld1;
+		sollteValidieren(new StartRegel());
+		
+		start = bankFeld1;
+		ziel  = himmelFeld1.getNaechstes();
+		sollteVerstossGeben(new VorwaertsRegel(2));
+	}
+	
+	public void testVorwaertsImHimmel() throws RegelVerstoss {
+		start = himmelFeld1;
+		ziel  = himmelFeld1.getNtesFeld(2);
+		lagerFeld1.versetzeFigurAuf(start);
+		sollteValidieren(new VorwaertsRegel(2));
+	}
+	
 	public void testStart() throws RegelVerstoss {
 		start = lagerFeld1;
 		ziel  = bankFeld1;
