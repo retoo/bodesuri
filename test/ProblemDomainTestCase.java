@@ -17,7 +17,7 @@ public abstract class ProblemDomainTestCase extends TestCase {
 	protected LagerFeld lagerFeld2;
 	protected KartenGeber kartenGeber;
 	
-	protected void setUp() throws Exception {
+	protected void setUp() {
 		spiel = new Spiel();
 		brett = spiel.getBrett();
 		

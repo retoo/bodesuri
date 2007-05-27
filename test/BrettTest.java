@@ -1,6 +1,6 @@
 
 public class BrettTest extends ProblemDomainTestCase {
-	protected void setUp() throws Exception {
+	protected void setUp() {
 		super.setUp();
 	}
 	

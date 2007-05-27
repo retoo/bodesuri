@@ -19,7 +19,7 @@ public class RegelTest extends ProblemDomainTestCase {
 	private Feld start;
 	private Feld ziel;
 	
-	protected void setUp() throws Exception {
+	protected void setUp() {
 		super.setUp();
 		viererRegel = new Vier(KartenFarbe.Herz, 0).getRegel();
 		spieler = spieler1;
