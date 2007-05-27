@@ -520,12 +520,22 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 \section{Externes Design} % (fold)
 \label{externes_design}
 
+\subsection{Verbindung zum Server} % (fold)
+\label{externes_design_verbindung}
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8 \textwidth]{gui_verbindung}
+	\includegraphics[width=0.7 \textwidth]{gui_verbindung}
 	\caption{Verbindung zum Server}
 	\label{fig:gui_verbindung}
 \end{figure}
+
+Beim starten des Spieles wird der Spieler aufgefordert die Serverdaten zur Verbindung eizugeben, sowie auch seinen Spielernamen.
+
+\clearpage
+
+\subsection{Lobby} % (fold)
+\label{externes_design_lobby}
 
 \begin{figure}
 	\centering
@@ -534,12 +544,21 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 	\label{fig:gui_lobby}
 \end{figure}
 
+In der Lobby können die Spieler eine Partner für das Spiel auswählen. Der Partner wird ausgewählt und einen Gruppennamen eingegeben. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, um das Spiel beizutreten wählt er im Spielstatus die CheckBox bereit aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
+
+\clearpage
+
+\subsection{Spiel} % (fold)
+\label{externes_design_spielbrett}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8 \textwidth]{gui_spiel}
+	\includegraphics[width=0.7 \textwidth]{gui_spiel}
 	\caption{Spielbrett}
 	\label{fig:gui_spiel}
 \end{figure}
+
+Das Spiel besteht aus verschiedenen Views. Im BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. Im SpielerView werden die einzelnen Spieler mit deren Gruppen aufgelistet. Das KartenView beinhaltet die Karten des Spielers. Im ChatView können sich die Spieler unterhalten (Priorität 3).
 
 % subsection externes_design (end)
 
