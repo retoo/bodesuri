@@ -8,10 +8,12 @@ public class Karte extends CodierbaresObjekt {
 	
 	private KartenFarbe farbe;
 	private Regel regel;
+	private String name;
 
 	public Karte(String name, KartenFarbe farbe, int deck) {
 		super("Karte " + farbe + " " + name + " " + deck);
 		this.farbe = farbe;
+		this.name = name;
 	}
 	
 	public String toString() {
@@ -28,5 +30,9 @@ public class Karte extends CodierbaresObjekt {
 
 	protected void setRegel(Regel regel) {
 		this.regel = regel;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }

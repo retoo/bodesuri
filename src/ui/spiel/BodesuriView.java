@@ -22,7 +22,7 @@ public class BodesuriView extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	public BodesuriView(BodesuriClient automat) {
-		setTitle("Bodesuri - Spiel ");
+		setTitle("Bodesuri - Spiel (" + automat.spielerName + ")");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
