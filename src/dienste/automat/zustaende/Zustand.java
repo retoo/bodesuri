@@ -24,8 +24,6 @@ public abstract class Zustand {
 	 */
 	@Deprecated
 	public void init() {
-		System.out.println("Veraltete Methode, bitte entry anstatt init verwenden!");
-		entry();
 	}
 
 	/**
