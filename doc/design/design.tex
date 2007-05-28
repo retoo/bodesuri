@@ -398,7 +398,7 @@ Ein reguläres Bodesuri Spiel besteht aus fünf eigenständigen Komponenten. Die
 
 Der Main Thread des Clienten ist für die geordnete Koordination zwischen dem User (via GUI) und den anderen Clienten (via Server) zuständig.
 
-\begin{tabular}{@{} l l}
+\begin{tabular}{@{} l p{12.5cm}}
 \textbf{Hauptklasse}  & BodesuriClient \\
 \textbf{Anzahl}       & 1 \\
 \textbf{Gestartet}    & Wird bei Prozessbeginn gestartet \\
@@ -412,12 +412,12 @@ Der Main Thread des Clienten ist für die geordnete Koordination zwischen dem Us
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangene Nachrichten über das Briefkasten Interface in der EventQueue.
 
-\begin{description}
-	\item[Hauptklasse] Empfänger
-	\item[Anzahl] 1
-	\item[Gestartet] Wird bei Verbindungsaufbau durch den MainThread (Klasse Endpunkt) gestartet 
-	\item[Beendet] Wird bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt) gestoppt
-\end{description}
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Hauptklasse}  & Empfänger \\
+\textbf{Anzahl}       & 1 \\
+\textbf{Gestartet}    & Wird bei Verbindungsaufbau durch den MainThread (Klasse Endpunkt) gestartet \\
+\textbf{Beendet}      & Wird bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt) gestoppt
+\end{tabular}
 
 % paragraph empfänger_thread (end)
 
