@@ -479,8 +479,8 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 \clearpage
 \section{Spielzustände \& Nachrichten} % (fold)
 \label{spielzustaende_nachrichten}
-\subsection{Zustände des Client} % (fold)
-\label{sub:zustände_des_client}
+\subsection{Zustände Client} % (fold)
+\label{sub:zustände_client}
 Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \begin{figure}[h]
 	\centering
@@ -488,8 +488,38 @@ Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 	\caption{Zustände des Client}
 	\label{fig:dienste_client}
 \end{figure}
-% subsection zustände_des_client (end)
 
+\subsection{Zustände Server} % (fold)
+\label{sub:zustände_server}
+
+\subsubsection{ServerStart} % (fold)
+\label{ssub:serverStart}
+Server wird gestartet. Der TCP Daemon wird initialisiert und es werden die notwenigen Vorbereitungen getroffen um Spieler zu akzeptieren.
+
+% subsubsection spielstart (end)
+
+\subsubsection{EmpfangeSpieler} % (fold)
+\label{ssub:empfangespieler}
+Neue Spieler können mittels der Nachricht SpielBeitreten dem Spiel beitreten. Den beigetretenen Spieler wird über die Nachricht BeitrittBestätigung der Beitritt bestätigt.
+
+Sobald alle Spieler komplett wird in den Zustand StarteSpiel gewechselt.
+
+% subsubsection empfangespieler (end)
+
+\subsubsection{StarteSpiel} % (fold)
+\label{ssub:startespiel}
+Das Spiel wird gestartet, den Spielen wird 
+
+
+
+% subsubsection startespiel (end)
+
+% subsection zustände_server (end)
+
+
+% subsubsection subsubsection_name (end)
+
+% subsection zustände_client (end)
 
 \clearpage
 \section{Dynamische Abläufe} % (fold)
