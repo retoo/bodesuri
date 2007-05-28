@@ -60,7 +60,7 @@ public abstract class AktiverServerZustand extends AktiverZustand {
     }
 
 	Zustand neueVerbindung(NeueVerbindung verbindung) {
-		System.out.println("Neue verbindung von " + verbindung.endpunkt);
+		System.out.println("Neue Verbindung von " + verbindung.endpunkt);
     	return this;
     }
 
