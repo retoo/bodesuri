@@ -409,8 +409,7 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 \subsection{Verbindung zum Server} % (fold)
 \label{externes_design_verbindung}
 
-
-Beim starten des Spieles wird der Spieler aufgefordert die Serverdaten zur Verbindung eizugeben, sowie auch seinen Spielernamen.
+Beim Starten des Spiels wird der Spieler aufgefordert, die Serverdaten zur Verbindung eizugeben, sowie seinen Spielernamen.
 
 \begin{figure}[h]
 	\centering
@@ -424,8 +423,7 @@ Beim starten des Spieles wird der Spieler aufgefordert die Serverdaten zur Verbi
 \subsection{Lobby} % (fold)
 \label{externes_design_lobby}
 
-
-In der Lobby können die Spieler eine Partner für das Spiel auswählen. Der Partner wird ausgewählt und einen Gruppennamen eingegeben. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, um das Spiel beizutreten wählt er im Spielstatus die CheckBox bereit aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
+In der Lobby können die Spieler einen Partner für das Spiel auswählen. Man wählt den Partner aus und gibt einen Gruppennamen ein. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, dem Spiel beizutreten wählt er im Spielstatus das Häkchen "<bereit"> aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
 
 \begin{figure}[h]
 	\centering
@@ -439,8 +437,7 @@ In der Lobby können die Spieler eine Partner für das Spiel auswählen. Der Par
 \subsection{Spiel} % (fold)
 \label{externes_design_spielbrett}
 
-
-Das Spiel besteht aus verschiedenen Views. Im BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. Im SpielerView werden die einzelnen Spieler mit deren Gruppen aufgelistet. Das KartenView beinhaltet die Karten des Spielers. Im ChatView können sich die Spieler unterhalten (Priorität 3).
+Das Spiel besteht aus verschiedenen Views. In der BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. In der SpielerView werden die einzelnen Spieler mit Gruppenzugehörigkeit aufgelistet. Die KartenView beinhaltet die Karten des Spielers. In der ChatView können sich die Spieler unterhalten (Priorität 3).
 
 \begin{figure}[h]
 	\centering
