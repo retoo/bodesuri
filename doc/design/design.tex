@@ -20,7 +20,7 @@ Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe 
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5 \textwidth]{client_server}
+	\includegraphics[width=0.7 \textwidth]{client_server}
 	\caption{Kommunikation zwischen Client \& Server}
 	\label{fig:client_server}
 \end{figure}
@@ -113,16 +113,11 @@ Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für die gesamte Handh
 	\includegraphics[width=\textwidth]{pd_kartengeber}
 	\caption{Kartengeber}
 	\label{fig:pd_kartengeber}
-\end{figure}
-% subparagraph diagramme (end)
+\end{figure}% subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % subsubsection package_pd_karten (end)
 
 \clearpage
@@ -145,15 +140,6 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{pd_validierung}
-	\caption{Validierung von Spielzügen}
-	\label{fig:pd_validierung}
-\end{figure}
-% subparagraph operationen (end)
 % paragraph package_pd_regelsystem (end)
 
 \clearpage
@@ -176,10 +162,6 @@ Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion d
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_pd_brett (end)
 
 \clearpage
@@ -197,10 +179,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_pd_zustandsynchronisation (end)
 
 \clearpage
@@ -212,21 +190,21 @@ Beinhaltet einen Zustandsautomaten der im Client und im Server eine gezielte Aba
 des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten
 Bahnen zwischen den Zuständen hin und her.
 % subparagraph beschreibung_des_packages (end)
+\subparagraph{Diagramme} % (fold)
+\label{ssub:diagramme}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
+	\caption{Automat Klassendiagramm}
+	\label{fig:dienste_serialisierung}
+\end{figure}
+% subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
 \begin{itemize}
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
 \end{itemize}	
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
-	\caption{Automat Klassendiagramm}
-	\label{fig:dienste_serialisierung}
-\end{figure}
-% subparagraph operationen (end)
 % paragraph package_automat (end)
 
 \clearpage
@@ -243,16 +221,7 @@ Klassendiagramm% subparagraph diagramme (end)
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_serialisierung}
-	\caption{Serialisierung}
-	\label{fig:dienste_serialisierung}
-\end{figure}% paragraph package_dienste_serialisierung (end)
+% paragraph package_dienste_serialisierung (end)
 
 \clearpage
 \subsubsection{Package dienste.netzwerk} % (fold)
@@ -272,46 +241,6 @@ Klassendiagramm
 	\item Die Kommunikation mit dem Netzewrk findet über die Bibliotheken java.net statt.
 \end{itemize}
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
-	\caption{Normale Partnerschaft - Teil 1 von 2}
-	\label{fig:dienste_partnerschaft_normal_1}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
-	\caption{Normale Partnerschaft - Teil 2 von 2}
-	\label{fig:dienste_partnerschaft_normal_2}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partner}
-	\caption{Partner Verhalten}
-	\label{fig:dienste_partner}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_rundenstart}
-	\caption{Rundenstart}
-	\label{fig:dienste_rundenstart}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8 \textwidth]{dienste_client}
-	\caption{Zustände des Client}
-	\label{fig:dienste_client}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{dienste_chat}
-	\caption{Chat Subsystem}
-	\label{fig:dienste_chat}
-\end{figure}
-% subparagraph operationen (end)
 % paragraph package_dienste_netzwerk (end)
 
 \clearpage
@@ -329,10 +258,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_ui (end)
 
 \clearpage
@@ -350,10 +275,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_ui_brett (end)
 
 \clearpage
@@ -371,10 +292,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_ui_eigenschaften (end)
 
 \clearpage
@@ -392,10 +309,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_ui_info (end)
 
 \clearpage
@@ -413,10 +326,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_ui_ressourcen (end)
 
 \clearpage
@@ -434,10 +343,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_applikation (end)
 
 \clearpage
@@ -455,10 +360,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_applikation_zugentgegennahme (end)
 
 \clearpage
@@ -476,10 +377,6 @@ Klassendiagramm
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
 % subparagraph schnittstellen (end)
-\subparagraph{Operationen} % (fold)
-\label{ssub:operationen}
-Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
-% subparagraph operationen (end)
 % paragraph package_app_zustandsynchronisation (end)
 
 % subsubsection design_pakete (end)
@@ -502,12 +399,71 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 \section{Dynamische Abläufe} % (fold)
 \label{dynamische_ablauefe}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{pd_validierung}
+	\caption{Validierung von Spielzügen}
+	\label{fig:pd_validierung}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_serialisierung}
+	\caption{Serialisierung}
+	\label{fig:dienste_serialisierung}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
+	\caption{Normale Partnerschaft - Teil 1 von 2}
+	\label{fig:dienste_partnerschaft_normal_1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
+	\caption{Normale Partnerschaft - Teil 2 von 2}
+	\label{fig:dienste_partnerschaft_normal_2}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partner}
+	\caption{Partner Verhalten}
+	\label{fig:dienste_partner}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_rundenstart}
+	\caption{Rundenstart}
+	\label{fig:dienste_rundenstart}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{dienste_client}
+	\caption{Zustände des Client}
+	\label{fig:dienste_client}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_chat}
+	\caption{Chat Subsystem}
+	\label{fig:dienste_chat}
+\end{figure}
+
 \clearpage
 \section{Externes Design} % (fold)
 \label{externes_design}
 
 \subsection{Verbindung zum Server} % (fold)
 \label{externes_design_verbindung}
+
+
+Beim starten des Spieles wird der Spieler aufgefordert die Serverdaten zur Verbindung eizugeben, sowie auch seinen Spielernamen.
 
 \begin{figure}[h]
 	\centering
@@ -516,35 +472,35 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 	\label{fig:gui_verbindung}
 \end{figure}
 
-Beim starten des Spieles wird der Spieler aufgefordert die Serverdaten zur Verbindung eizugeben, sowie auch seinen Spielernamen.
-
 \clearpage
 
 \subsection{Lobby} % (fold)
 \label{externes_design_lobby}
 
-\begin{figure}
+
+In der Lobby können die Spieler eine Partner für das Spiel auswählen. Der Partner wird ausgewählt und einen Gruppennamen eingegeben. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, um das Spiel beizutreten wählt er im Spielstatus die CheckBox bereit aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
+
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7 \textwidth]{gui_lobby}
+	\includegraphics[width=0.9 \textwidth]{gui_lobby}
 	\caption{Lobby vor dem Spielbeginn}
 	\label{fig:gui_lobby}
 \end{figure}
-
-In der Lobby können die Spieler eine Partner für das Spiel auswählen. Der Partner wird ausgewählt und einen Gruppennamen eingegeben. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, um das Spiel beizutreten wählt er im Spielstatus die CheckBox bereit aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
 
 \clearpage
 
 \subsection{Spiel} % (fold)
 \label{externes_design_spielbrett}
 
-\begin{figure}
+
+Das Spiel besteht aus verschiedenen Views. Im BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. Im SpielerView werden die einzelnen Spieler mit deren Gruppen aufgelistet. Das KartenView beinhaltet die Karten des Spielers. Im ChatView können sich die Spieler unterhalten (Priorität 3).
+
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7 \textwidth]{gui_spiel}
+	\includegraphics[width=0.9 \textwidth]{gui_spiel}
 	\caption{Spielbrett}
 	\label{fig:gui_spiel}
 \end{figure}
-
-Das Spiel besteht aus verschiedenen Views. Im BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. Im SpielerView werden die einzelnen Spieler mit deren Gruppen aufgelistet. Das KartenView beinhaltet die Karten des Spielers. Im ChatView können sich die Spieler unterhalten (Priorität 3).
 
 % subsection externes_design (end)
 
