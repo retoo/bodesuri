@@ -1,9 +1,9 @@
 package pd.karten;
 
-import dienste.serialisierung.CodierbaresObjekt;
 import pd.regelsystem.Regel;
+import pd.serialisierung.BodesuriCodierbaresObjekt;
 
-public class Karte extends CodierbaresObjekt {
+public class Karte extends BodesuriCodierbaresObjekt {
 	private static final long serialVersionUID = 1L;
 	
 	private KartenFarbe farbe;

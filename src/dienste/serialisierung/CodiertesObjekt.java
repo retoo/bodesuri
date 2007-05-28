@@ -3,8 +3,6 @@ package dienste.serialisierung;
 import java.io.ObjectStreamException;
 import java.io.Serializable;
 
-import pd.Spiel;
-
 /**
  * Objekt, das einen Code enthält und serialisiert werden kann.
  * 
@@ -12,7 +10,7 @@ import pd.Spiel;
  * Ende wird das Objekt deserialisiert und der ObjectInputStream ruft
  * readResolve() auf.
  */
-public class CodiertesObjekt implements Serializable {
+public abstract class CodiertesObjekt implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String code;
@@ -34,12 +32,14 @@ public class CodiertesObjekt implements Serializable {
 	 * Wenn der Codierer den Code nicht kennt, ihm also kein Objekt zugeordnet
 	 * worden ist, wird eine UnbekannterCodeException geworfen.
 	 */
-	private Object readResolve() throws ObjectStreamException {
+	protected Object readResolve() throws ObjectStreamException {
 		/* Spiel.aktuelles ist leider global. */
-		Object obj = Spiel.aktuelles.getCodierer().get(code);
+		Object obj = getCodierer().get(code);
 		if (obj == null) {
 			throw new UnbekannterCodeException(code);
 		}
 		return obj;
 	}
+	
+	protected abstract Codierer getCodierer();
 }

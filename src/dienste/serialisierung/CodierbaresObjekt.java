@@ -2,15 +2,13 @@ package dienste.serialisierung;
 
 import java.io.Serializable;
 
-import pd.Spiel;
-
 /**
  * Objekt, dem ein Code zugeordnet ist und codiert werden kann.
  * 
  * Das Objekt wird mithilfe des Codierers codiert, um das codierte Objekt
  * anstelle des ursprünglichen Objekts über das Netzwerk zu schicken.
  */
-abstract public class CodierbaresObjekt implements Serializable {
+public abstract class CodierbaresObjekt implements Serializable {
 	private String code;
 	
 	/**
@@ -19,7 +17,7 @@ abstract public class CodierbaresObjekt implements Serializable {
 	 * @param code Eindeutiger Code, der dem Objekt zugeordnet ist
 	 */
 	public CodierbaresObjekt(String code) {
-		Spiel.aktuelles.getCodierer().speichere(code, this);
+		getCodierer().speichere(code, this);
 		this.code = code;
 	}
 	
@@ -29,6 +27,10 @@ abstract public class CodierbaresObjekt implements Serializable {
 	 * werden soll. Es soll ein CodiertesObjekt mit dem Code geschrieben werden.
 	 */
 	protected Object writeReplace() {
-		return new CodiertesObjekt(code);
+		return getCodiertesObjekt(code);
 	}
+	
+	protected abstract Codierer getCodierer();
+	
+	protected abstract CodiertesObjekt getCodiertesObjekt(String code);
 }

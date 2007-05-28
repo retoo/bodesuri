@@ -1,8 +1,8 @@
 package pd.brett;
 
+import pd.serialisierung.BodesuriCodierbaresObjekt;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
-import dienste.serialisierung.CodierbaresObjekt;
 
 /**
  * Basisklasse der Felder, die auf dem Spielbrett liegen.
@@ -12,7 +12,7 @@ import dienste.serialisierung.CodierbaresObjekt;
  * 
  * @see Brett
  */
-public abstract class Feld extends CodierbaresObjekt {
+public abstract class Feld extends BodesuriCodierbaresObjekt {
 	private int nummer;
 	
 	private Feld naechstes;

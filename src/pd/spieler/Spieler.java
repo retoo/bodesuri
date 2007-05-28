@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.Spiel;
-import dienste.serialisierung.CodierbaresObjekt;
+import pd.serialisierung.BodesuriCodierbaresObjekt;
 
 /**
  * Spieler, der bei einem {@link Spiel} mitspielt, und 4 {@link Figur Figuren}
  * hat.
  */
-public class Spieler extends CodierbaresObjekt {
+public class Spieler extends BodesuriCodierbaresObjekt {
 	private static final long serialVersionUID = 1L;
 	
 	private int nummer;

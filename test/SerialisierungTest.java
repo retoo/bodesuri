@@ -4,13 +4,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import dienste.serialisierung.CodiertesObjekt;
-import dienste.serialisierung.UnbekannterCodeException;
-
 import pd.brett.Feld;
 import pd.karten.Karte;
+import pd.serialisierung.BodesuriCodiertesObjekt;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
+import dienste.serialisierung.UnbekannterCodeException;
 
 public class SerialisierungTest extends ProblemDomainTestCase {
 	private Feld feld1;
@@ -61,7 +60,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 			throws IOException, ClassNotFoundException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);
-		oos.writeObject(new CodiertesObjekt("Spieler 666"));
+		oos.writeObject(new BodesuriCodiertesObjekt("Spieler 666"));
 		oos.close();
 		
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
