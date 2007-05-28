@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Passiver Zustand der das Spiel initialisiert.
  */
-public class StarteSpiel extends PassiveServerZustand {
+public class StarteSpiel extends PassiverServerZustand {
     public Zustand handle() {
 		Spielerschaft spielerschaft = automat.spielerschaft;
 		

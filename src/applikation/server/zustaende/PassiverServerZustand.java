@@ -7,7 +7,7 @@ import dienste.automat.zustaende.PassiverZustand;
 /**
  * Spezifischer passiver Server-Zustand
  */
-public abstract class PassiveServerZustand extends PassiverZustand {
+public abstract class PassiverServerZustand extends PassiverZustand {
 	protected BodesuriServer automat;
 
 	public void setAutomat(Automat automat) {

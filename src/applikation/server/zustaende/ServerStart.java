@@ -11,7 +11,7 @@ import dienste.netzwerk.server.Server;
 /**
  * Passiver Zustand der den Server initialisiert.
  */
-public class ServerStart extends PassiveServerZustand {
+public class ServerStart extends PassiverServerZustand {
 	public Zustand handle() {
 		System.out.println("Initialiere Server");
 
