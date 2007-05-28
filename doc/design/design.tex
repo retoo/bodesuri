@@ -8,8 +8,12 @@
 
 \input{../titelseite}
 
-\section{Architekturübersicht} % (fold)
-\label{sec:architekturübersicht}
+\section{Systemstruktur} % (fold)
+\label{Systemstruktur}
+
+\subsection{Architekturübersicht} % (fold)
+\label{sub:architekturuebersicht}
+
 Bodesuri ist über mehrere Rechner verteilt. Es gibt vier Clients und einen Server pro Spiel. Der Client und der Server sind getrennte Programme, welche aber eine gemeinsame Codebasis haben.
 
 Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe und ZugInformation. Die ZugEingabe wird vom Spieler, der am Zug ist, an den Server geschickt. Sie enthält den Zug, den Spieler und die gezogene Karte. Der Server verteilt diese Informationen als ZugInformation dann an alle Spieler, wie man in Abbildung~\vref{fig:client_server} sehen kann.
@@ -22,17 +26,6 @@ Die Grundbausteine der Kommunikation zwischen Client und Server sind ZugEingabe 
 \end{figure}
 
 Die Validierung der gespielten Züge geschieht beim Client, der Server ist zuständig für den Spielablauf.
-% section architekturübersicht (end)
-
-\section{Systemstruktur} % (fold)
-\label{Systemstruktur}
-
-\subsection{Architekturübersicht} % (fold)
-\label{sub:architekturuebersicht}
-\subsection{Architektonische Darstellung} % (fold)
-\label{sub:architektonische_darstellung}
-FIXME: Verschoben in Logische Sicht --> Schichtenarchitektur
-% subsection architekturuebersicht (end)
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
@@ -55,6 +48,10 @@ Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunab
 Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung ersichtlich. Die Verantwortlichkeiten sind in der Analysespezifikation geregelt.
 % paragraph teamstruktur (end)
 % subsection architektonische_ziele_einschraenkungen (end)
+
+\clearpage
+\section{Design Pakete} % (fold)
+\label{design_pakete}
 
 \subsection{Logische Sicht} % (fold)
 \label{sub:logische_sicht}
@@ -241,8 +238,7 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 % subparagraph beschreibung_des_packages (end)
 \subparagraph{Diagramme} % (fold)
 \label{ssub:diagramme}
-Klassendiagramm
-% subparagraph diagramme (end)
+Klassendiagramm% subparagraph diagramme (end)
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
 Beschreibung der Schnittstellen
@@ -250,14 +246,13 @@ Beschreibung der Schnittstellen
 \subparagraph{Operationen} % (fold)
 \label{ssub:operationen}
 Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
+% subparagraph operationen (end)
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
 	\caption{Serialisierung}
 	\label{fig:dienste_serialisierung}
-\end{figure}
-% subparagraph operationen (end)
-% paragraph package_dienste_serialisierung (end)
+\end{figure}% paragraph package_dienste_serialisierung (end)
 
 \clearpage
 \subsubsection{Package dienste.netzwerk} % (fold)
@@ -493,24 +488,15 @@ Beschreibung der internen Operationen (evtl auch mit Sequendiagramm).
 \clearpage
 \subsection{Physikalische Sicht}
 
-\subsubsection{Deployment-Diagramm}
-
 \subsubsection{Prozesse \& Threads} % (fold)
 \label{sub:prozesse_threads}
 Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, etc...
 % subsection prozesse_threads (end)
 
-\clearpage
-\subsection{Schnittstellen der Packages} % (fold)
-\label{sub:schnittstellen_der_packages}
 
 \clearpage
 \section{Spielzustände \& Nachrichten} % (fold)
 \label{spielzustaende_nachrichten}
-
-\clearpage
-\section{Design Pakete} % (fold)
-\label{design_pakete}
 
 \clearpage
 \section{Dynamische Abläufe} % (fold)
