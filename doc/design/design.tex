@@ -472,6 +472,34 @@ Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \clearpage
 \section{Dynamische Abläufe} % (fold)
 \label{dynamische_ablauefe}
+\subsection{Nachrichtenfluss durch die Schichten} % (fold)
+\label{sub:nachrichtenfluss_durch_die_schichten}
+Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigten die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_client}
+	\caption{Verbindung erstellen - Client}
+	\label{fig:sd_verbindung_erstellen_client}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_server}
+	\caption{Verbindung erstellen - Server}
+	\label{fig:sd_verbindung_erstellen_server}
+\end{figure}
+% subsection nachrichtenfluss_durch_die_schichten (end)
+
+\subsection{Rundenstart} % (fold)
+\label{sub:rundenstart}
+Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer neuen Runde.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_rundenstart}
+	\caption{Rundenstart}
+	\label{fig:dienste_rundenstart}
+\end{figure}
+% subsection rundenstart (end)
+
 \subsection{Validierung von Spielzügen} % (fold)
 \label{ssub:validierung_von_spielzügen}
 Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
@@ -515,18 +543,7 @@ Die Abildung~\vref{fig:dienste_partnerschaft_normal} zeigt Ablauf des Bildens vo
 \end{figure}
 % subsection partnerschaften_bilden (end)
 
-\subsection{Rundenstart} % (fold)
-\label{sub:rundenstart}
-Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer neuen Runde.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_rundenstart}
-	\caption{Rundenstart}
-	\label{fig:dienste_rundenstart}
-\end{figure}
-% subsection rundenstart (end)
-
-\subsection{Nachrichtenaustausch zwischen Client und Server} % (fold)
+\subsection{Chat} % (fold)
 \label{sub:nachrichtenaustausch_zwischen_client_und_server}
 Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
 \begin{figure}[h]
@@ -536,23 +553,6 @@ Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen z
 	\label{fig:dienste_chat}
 \end{figure}
 % subsection nachrichtenaustausch_zwischen_client_und_server (end)
-
-\subsection{Nachrichtenfluss durch die Schichten} % (fold)
-\label{sub:nachrichtenfluss_durch_die_schichten}
-Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigten die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_client}
-	\caption{Verbindung erstellen - Client}
-	\label{fig:sd_verbindung_erstellen_client}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_server}
-	\caption{Verbindung erstellen - Server}
-	\label{fig:sd_verbindung_erstellen_server}
-\end{figure}
-% subsection nachrichtenfluss_durch_die_schichten (end)
 \clearpage
 
 \section{Externes Design} % (fold)
