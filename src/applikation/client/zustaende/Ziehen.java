@@ -19,6 +19,8 @@ public class Ziehen extends AktiverClientZustand {
 	}
 
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
+		//TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
+		//TODO Entry & exit besser nutzen.
 		automat.zugentgegennahme = null;
 
 		ZugEingabe zugEingabe = new ZugEingabe(automat.spielerIch,

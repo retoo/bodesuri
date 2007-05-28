@@ -31,6 +31,7 @@ public class ClientController implements Observer {
 		
 	}
 	
+	//TODO: Zügeln nach applikation.client.BodesuriClient
 	/**
 	 * Diese <code>main</code> Methode ist der Ersteinstiegspunkt der gesamten Applikation.
 	 * Wenn ein Client gestartet wird, werden alle initialien Schritte hier eingeleitet.
