@@ -32,12 +32,16 @@ Die Validierung der gespielten Züge geschieht beim Client, der Server ist zust�
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
 \subparagraph{Zustandsautomat} % (fold)
 \label{ssub:zustandsautomat}
+Da unser Spiel einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite hat. Und der grösste Teil der Abläufe von Events im Userinterface oder über das Netzwerk eingetroffene Nachrichten ausgelöst werden. Haben wir uns entschlossen den Spielablauf in einem Zustandautomaten zu verpacken.
+Damit ist es möglich den Programmablauf, der sonst in komplexen nacheinander aufzurufenden Programmcode verpackt wäre in verschiedene Klassen auszulagern und den Gap zwischen dem Code und in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
+% subparagraph zustandsautomat (end)
+
 \subparagraph{Layers} % (fold)
 \label{ssub:layers}
-
+\textbf{TODO!!!!}
 % subparagraph layers (end)
 
-% subparagraph zustandsautomat (end)
+
 \paragraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
 % paragraph multitier_architektur_des_servers (end)
@@ -64,7 +68,7 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 \subsection{Logische Sicht} % (fold)
 \label{sub:logische_sicht}
 
-Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten, Tiers, Packages und Klassen. 
+%Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten, Tiers, Packages und Klassen. TODO: Hier fehlt doch Text!!!
 
 \subsubsection{Schichtenarchitektur} % (fold)
 \label{sub:schichtenarchitektur}
@@ -305,15 +309,22 @@ Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch 
 \label{ssub:package_applikation_client} % (fold)
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
-bla...
+Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Client-Seite. Verarbeitet die eintretenden Events von GUI und Netzwerk und löst entsprechende Aktionen aus.
 % subparagraph beschreibung (end)
 
 \subparagraph{Schnittstellen}
 \label{ssub:schnittstellen}
 \begin{itemize}
-	\item bla...
+	\item Bietet verschiedenste Instanzvariablen für das GUI und die zum Server gehörenden Zustände an.
 \end{itemize}
 % subparagraph schnittstellen (end)
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kd_applikation_client}
+	\caption{Klassendiagramm Client (in Applikation)}
+	\label{fig:kd_applikation_client}
+\end{figure}
 % subsubsection package_applikation_client (end)
 
 \clearpage
@@ -321,15 +332,9 @@ bla...
 \label{ssub:package_applikation_server} % (fold)
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
-bla...
+Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen um den Spielablauf zu steuern aus.
 % subparagraph beschreibung (end)
 
-\subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
-\begin{itemize}
-	\item bla...
-\end{itemize}
-% subparagraph schnittstellen (end)
 % subsubsection package_applikation_server (end)
 
 \begin{figure}[h]
@@ -339,15 +344,13 @@ bla...
 	\label{fig:kd_applikation_server}
 \end{figure}
 
-\clearpage
 \subsubsection{Package applikation.events}
 \label{ssub:package_applikation_events} % (fold)
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
-Dieses Package beinhaltet die Events, die eintreten können. Diese werden dann verwendet um die Handels aufzurufen, die dazu führen von einem Zustand auf einen anderen Zustand zu wechseln.
+Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 % subparagraph beschreibung (end)
 
-\clearpage
 \subsubsection{Package applikation.nachrichten}
 \label{ssub:package_applikation_nachrichten} % (fold)
 \subparagraph{Beschreibung}
