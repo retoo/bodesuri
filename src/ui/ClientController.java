@@ -63,6 +63,7 @@ public class ClientController implements Observer {
 		Automat automat = (BodesuriClient) o;
 		Zustand aktuellerZustand = automat.getAktuellerZustand();
 		
+		
 		// TODO: Wäre schön, wenn das mit Polymorphismus ginge
 		if (aktuellerZustand instanceof AmZug) {
 			handle( (AmZug)aktuellerZustand );

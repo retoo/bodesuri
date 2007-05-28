@@ -103,7 +103,7 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \subsubsection{Package pd.karten} % (fold)
 \label{ssub:package_pd_karten}
 \subparagraph{Beschreibung}
-Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
+Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber. 
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -266,11 +266,13 @@ Beschreibung der Schnittstellen
 \subsubsection{Package applikation.zugentgegennahme} % (fold)
 \label{ssub:package_applikation_zugentgegennahme}
 \subparagraph{Beschreibung}
-Beschreibung des Package. Aufgabe, etc…
+Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch das Klicken (ziehen der Figur) im UI werden Züge an die Problem-Domain weitergeleitet und die Validierung eingeleitet.
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
-Beschreibung der Schnittstellen
+\begin{itemize}
+	\item Bietet die Methode ziehen() an, welche die Zugentgegennahme in einen neuen Status versetzt.
+\end{itemize}
 % subparagraph schnittstellen (end)
 % paragraph package_applikation_zugentgegennahme (end)
 

@@ -1,7 +1,3 @@
-/**
- * @(#) ZugEntgegennahme.java
- */
-
 package applikation.zugentgegennahme;
 
 import pd.brett.Feld;
@@ -45,6 +41,10 @@ public class ZugEntgegennahme {
 		abstract public void handle(Feld feld);
 	}
 
+	/**
+	 * Status der ZugEntgegennahme welche das Warten auf die Starteingabe
+	 * repräsentiert.
+	 */
 	private class WartenAufStarteingabe extends ZugStatus {
 		public void handle(Feld feld) {
 			start = feld;
@@ -52,6 +52,10 @@ public class ZugEntgegennahme {
 		}
 	}
 
+	/**
+	 * Status der ZugEntgegennahme welche das Warten auf die Zieleingabe
+	 * repräsentiert.
+	 */
 	private class WartenAufZieleingabe extends ZugStatus {
 		public void handle(Feld feld) {
 			ziel = feld;
@@ -60,6 +64,9 @@ public class ZugEntgegennahme {
 		}
 	}
 
+	/**
+	 * Status der ZugEntgegennahme für fertige Zugerfassung.
+	 */
 	private class ZugErfasst extends ZugStatus {
 		public void handle(Feld feld) {
 		}
