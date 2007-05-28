@@ -2,6 +2,7 @@ package dienste.automat;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
+import java.util.Observable;
 
 import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
@@ -27,7 +28,7 @@ import dienste.automat.zustaende.Zustand;
  * </ul>
  * 
  */
-public class Automat {
+public class Automat extends Observable {
 	private Zustand start;
 	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
@@ -121,9 +122,7 @@ public class Automat {
 
 		if (aktuellerZustand instanceof AktiverZustand) {
 			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
-
 			Event event = eventQuelle.getEvent();
-
 			neuerZustand = zustand.handle(event);
 		} else if (aktuellerZustand instanceof PassiverZustand) {
 			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
@@ -134,9 +133,12 @@ public class Automat {
 		}
 
 		aktuellerZustand.exit();
-
 		aktuellerZustand = neuerZustand;
 
+		// Observer benachrichtigen
+		setChanged();
+		notifyObservers();
+		
 		return true;
 	}
 
