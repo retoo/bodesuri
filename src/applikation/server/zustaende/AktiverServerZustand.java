@@ -17,7 +17,7 @@ import dienste.netzwerk.VerbindungGeschlossen;
 
 
 /**
- * Spezfischer aktiver Server Zustand
+ * Spezifischer aktiver Server-Zustand
  */
 public abstract class AktiverServerZustand extends AktiverZustand {
 	protected BodesuriServer automat;

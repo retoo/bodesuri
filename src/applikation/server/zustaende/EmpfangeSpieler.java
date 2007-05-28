@@ -9,7 +9,7 @@ import dienste.netzwerk.EndPunkt;
 
 /**
  * Zustand in welchem neue Spieler empfangen werden. Sobald das Spiel komplett
- * ist wird der Zustand {@link StarteSpiel} aufgerufen.s
+ * ist wird der Zustand {@link StarteSpiel} aufgerufen.
  */
 public class EmpfangeSpieler extends AktiverServerZustand {
 	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
