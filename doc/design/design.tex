@@ -98,7 +98,7 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \label{ssub:package_pd_karten}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Beinhaltet den Kartengeber, welcher die Verwaltungsklasse für die gesamte Handhabung der Karten ist.
+Beinhaltet alle Karten und den Kartengeber, welcher die Verwaltungsklasse für die gesamte Handhabung der Karten ist.
 % subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
@@ -120,7 +120,7 @@ Beschreibung der Schnittstellen
 \label{ssub:package_pd_regelsystem}
 \subparagraph{Beschreibung des Packages} % (fold)
 \label{ssub:beschreibung_des_packages}
-Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge und der Aktionen sicher.
+Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnet die daraus resultierenden Aktionen in der Problem Domain (Figur von Feld X auf Feld Y verschieben).
 % subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
@@ -159,6 +159,15 @@ Beschreibung der Schnittstellen
 \end{figure}
 
 % paragraph package_pd_brett (end)
+
+\clearpage
+\subsubsection{Package pd.serialisierung}
+
+\subparagraph{Beschreibung des Packages}
+Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung für die Problem Domain zu ermöglichen.
+
+\subparagraph{Schnittstellen}
+Bietet eine Basisklasse (BodesuriCodierbaresObjekt) für die Klassen der PD an, die serialisiert werden können.
 
 \clearpage
 \subsubsection{Package pd.zustandsynchronisation} % (fold)
@@ -210,7 +219,7 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
-Beschreibung der Schnittstellen
+Um die Serialisierung zu Nutzen, müssen die beiden abstrakten Klassen CodierbaresObjekt und CodiertesObjekt implementiert werden. In beiden muss die Methode getCodierer() implementiert werden, die eine Instanz des verwendeten Codierers zurückgibt. In CodierbaresObjekt muss zusätzlich noch die Methode getCodiertesObjekt(String code) implementiert werden, die ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen sollte.
 % subparagraph schnittstellen (end)
 % paragraph package_dienste_serialisierung (end)
 
