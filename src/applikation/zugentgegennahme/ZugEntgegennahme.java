@@ -6,7 +6,7 @@ package applikation.zugentgegennahme;
 
 import pd.brett.Feld;
 import pd.zugsystem.Bewegung;
-import applikation.client.events.BewegungEingegebenEvent;
+import applikation.events.BewegungEingegebenEvent;
 import dienste.automat.EventQueue;
 
 //TODO: Sollte dies nun nicht eher BewegungsEntgegennahme heissen?

@@ -1,16 +1,16 @@
 package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
-import applikation.client.events.BewegungEingegebenEvent;
-import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.events.VerbindeEvent;
-import applikation.server.nachrichten.BeitrittsBestaetigung;
-import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.SpielBeitreten;
-import applikation.server.nachrichten.SpielStartNachricht;
-import applikation.server.nachrichten.SpielVollNachricht;
-import applikation.server.nachrichten.ZugAufforderung;
-import applikation.server.nachrichten.ZugInformation;
+import applikation.events.BewegungEingegebenEvent;
+import applikation.events.KarteGewaehltEvent;
+import applikation.events.VerbindeEvent;
+import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.ChatNachricht;
+import applikation.nachrichten.SpielBeitreten;
+import applikation.nachrichten.SpielStartNachricht;
+import applikation.nachrichten.SpielVollNachricht;
+import applikation.nachrichten.ZugAufforderung;
+import applikation.nachrichten.ZugInformation;
 import dienste.automat.Automat;
 import dienste.automat.Event;
 import dienste.automat.KeinUebergangException;

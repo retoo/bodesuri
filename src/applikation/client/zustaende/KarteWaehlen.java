@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
-import applikation.client.events.KarteGewaehltEvent;
-import applikation.server.nachrichten.ChatNachricht;
+import applikation.events.KarteGewaehltEvent;
+import applikation.nachrichten.ChatNachricht;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 

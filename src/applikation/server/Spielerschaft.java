@@ -3,7 +3,7 @@ package applikation.server;
 import java.util.Iterator;
 import java.util.Vector;
 
-import applikation.server.nachrichten.ChatNachricht;
+import applikation.nachrichten.ChatNachricht;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 

@@ -1,9 +1,9 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.ZugAufforderung;
+import applikation.nachrichten.ZugInformation;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
-import applikation.server.nachrichten.ZugAufforderung;
-import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 

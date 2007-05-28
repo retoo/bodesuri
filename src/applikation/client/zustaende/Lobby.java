@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
-import applikation.server.nachrichten.ChatNachricht;
-import applikation.server.nachrichten.SpielStartNachricht;
+import applikation.nachrichten.ChatNachricht;
+import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 

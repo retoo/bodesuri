@@ -1,4 +1,4 @@
-package applikation.client.events;
+package applikation.events;
 
 import pd.zugsystem.Bewegung;
 import dienste.automat.Event;

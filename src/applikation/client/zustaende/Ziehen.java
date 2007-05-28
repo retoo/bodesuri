@@ -2,14 +2,14 @@ package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.events.BewegungEingegebenEvent;
-import applikation.server.nachrichten.ZugInformation;
+import applikation.events.BewegungEingegebenEvent;
+import applikation.nachrichten.ZugInformation;
 import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.VerbindungWegException;
 
 public class Ziehen extends AktiverClientZustand {
-	public void init() {
+	public void entry() {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
 	}
 

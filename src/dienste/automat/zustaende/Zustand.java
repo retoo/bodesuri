@@ -20,13 +20,6 @@ public abstract class Zustand {
 	public abstract void setAutomat(Automat automat);
 
 	/**
-	 * Bitte entry() verwendnd.
-	 */
-	@Deprecated
-	public void init() {
-	}
-
-	/**
 	 * Die entry() Methode wird augefrufen bevor die Events verarbeitet werden. 
 	 */
 	public void entry() {

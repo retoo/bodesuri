@@ -1,9 +1,9 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.SpielBeitreten;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
-import applikation.server.nachrichten.BeitrittsBestaetigung;
-import applikation.server.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 

@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.server.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.BeitrittsBestaetigung;
 import dienste.automat.zustaende.Zustand;
 
 public class VerbindungSteht extends AktiverClientZustand {

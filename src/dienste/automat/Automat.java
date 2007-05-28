@@ -111,14 +111,12 @@ public class Automat extends Observable {
 	 * @return true wenn es sich beim verarbeiteten Zustand nicht um einen
 	 *         Endzustand handelte.
 	 */
-	@SuppressWarnings("deprecation")
     public boolean step() {
 		Zustand neuerZustand;
 
 		System.out.println("Uebergang nach: " + aktuellerZustand);
 
 		aktuellerZustand.entry();
-		aktuellerZustand.init();
 
 		if (aktuellerZustand instanceof AktiverZustand) {
 			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;

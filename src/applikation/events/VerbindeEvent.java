@@ -1,4 +1,4 @@
-package applikation.client.events;
+package applikation.events;
 
 import dienste.automat.Event;
 

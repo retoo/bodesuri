@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.events.VerbindeEvent;
+import applikation.events.VerbindeEvent;
 
 import dienste.automat.EventQueue;
 

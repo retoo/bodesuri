@@ -1,4 +1,4 @@
-package applikation.server.nachrichten;
+package applikation.nachrichten;
 
 import pd.zugsystem.ZugEingabe;
 import dienste.netzwerk.Nachricht;

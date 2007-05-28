@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import pd.karten.Karte;
-import applikation.client.events.KarteGewaehltEvent;
+import applikation.events.KarteGewaehltEvent;
 import dienste.automat.EventQueue;
 
 public class KarteView extends JLabel {

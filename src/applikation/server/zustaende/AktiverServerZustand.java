@@ -1,8 +1,8 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.SpielBeitreten;
+import applikation.nachrichten.ZugInformation;
 import applikation.server.BodesuriServer;
-import applikation.server.nachrichten.SpielBeitreten;
-import applikation.server.nachrichten.ZugInformation;
 import dienste.automat.Automat;
 import dienste.automat.Event;
 import dienste.automat.KeinUebergangException;

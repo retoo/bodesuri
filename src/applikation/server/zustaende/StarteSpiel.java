@@ -1,10 +1,10 @@
 package applikation.server.zustaende;
 
 import pd.Spiel;
+import applikation.nachrichten.SpielStartNachricht;
+import applikation.nachrichten.ZugAufforderung;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
-import applikation.server.nachrichten.SpielStartNachricht;
-import applikation.server.nachrichten.ZugAufforderung;
 import dienste.automat.zustaende.Zustand;
 
 /**

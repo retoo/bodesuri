@@ -3,8 +3,8 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import applikation.client.events.VerbindeEvent;
-import applikation.server.nachrichten.SpielBeitreten;
+import applikation.events.VerbindeEvent;
+import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
