@@ -67,7 +67,7 @@ Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten,
 
 \subsubsection{Schichtenarchitektur} % (fold)
 \label{sub:schichtenarchitektur}
-Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet, wie in Abbildung~\vref{fig:architektur_schichten} gezeigt. Dabei setzt jede Schicht direkt auf den Diensten der darunterliegenden Schichten auf. Schichten können transparent sein. Dadurch ergeben sich wenige Indirektionen und eine einfache Nutzung der Dienste einer Schicht. Wo möglich und sinnvoll, werden Schnittstellen zwischen Schichten durch eine Fassade gebündelt, um die Kopplung zwischen den Schichten zu verringern. Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen. Im UI wird das MVC-Konzept verwendet, da eine komplexe Darstellungslogik durch das Spiel gegeben ist.
+Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet, wie in Abbildung~\vref{fig:architektur_schichten} dargestellt. Dabei setzt jede Schicht direkt auf den Diensten der darunterliegenden Schichten auf. Schichten können transparent sein. Dadurch ergeben sich wenige Indirektionen und eine einfache Nutzung der Dienste einer Schicht. Wo möglich und sinnvoll, werden Schnittstellen zwischen Schichten durch eine Fassade gebündelt, um die Kopplung zwischen den Schichten zu verringern. Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen. Im UI wird das MVC-Konzept verwendet, da eine komplexe Darstellungslogik durch das Spiel gegeben ist.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{architektur_schichten}
