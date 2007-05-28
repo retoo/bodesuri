@@ -30,14 +30,6 @@ Die Validierung der gespielten Züge geschieht beim Client, der Server ist zust�
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
-\subparagraph{Zustandsautomat} % (fold)
-\label{ssub:zustandsautomat}
-\subparagraph{Layers} % (fold)
-\label{ssub:layers}
-
-% subparagraph layers (end)
-
-% subparagraph zustandsautomat (end)
 \paragraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
 % paragraph multitier_architektur_des_servers (end)
@@ -88,10 +80,9 @@ Für die logische Strukturierung des Projektes wird eine vierschichtige Architek
 
 \subsubsection{Package pd} % (fold)
 \label{ssub:package_pd}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
-% subparagraph beschreibung_des_packages (end)
+
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
 \begin{itemize}
@@ -103,10 +94,8 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \clearpage
 \subsubsection{Package pd.karten} % (fold)
 \label{ssub:package_pd_karten}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -127,10 +116,8 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 \clearpage
 \subsubsection{Package pd.regelsystem, pd.zugsystem} % (fold)
 \label{ssub:package_pd_regelsystem}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnet die daraus resultierenden Aktionen in der Problem Domain (Figur von Feld X auf Feld Y verschieben).
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -151,10 +138,8 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \clearpage
 \subsubsection{Package pd.brett, pd.spieler} % (fold)
 \label{ssub:package_pd_brett}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion des Bretts (welches die Felder enthält), der Figuren und des Spielers in der Problem Domain dar.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -174,7 +159,7 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package pd.serialisierung}
 
-\subparagraph{Beschreibung des Packages}
+\subparagraph{Beschreibung}
 Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung von Klassen der Problem Domain zu ermöglichen.
 
 \subparagraph{Schnittstellen}
@@ -185,10 +170,8 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 \clearpage
 \subsubsection{Package pd.zustandsynchronisation} % (fold)
 \label{ssub:package_pd_zustandsynchronisation}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -199,12 +182,10 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package dienste.automat} % (fold)
 \label{ssub:package_dienste}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beinhaltet einen Zustandsautomaten der im Client und im Server eine gezielte Abarbeitung
 des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten
 Bahnen zwischen den Zuständen hin und her.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -225,10 +206,8 @@ Bahnen zwischen den Zuständen hin und her.
 \clearpage
 \subsubsection{Package dienste.serialisierung} % (fold)
 \label{ssub:package_dienste_serialisierung}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -239,10 +218,8 @@ Um die Serialisierung zu Nutzen, müssen die beiden abstrakten Klassen Codierbar
 \clearpage
 \subsubsection{Package dienste.netzwerk} % (fold)
 \label{ssub:package_dienste_netzwerk}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für die Netzwerkkommunikation an.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -256,10 +233,8 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \clearpage
 \subsubsection{Package ui} % (fold)
 \label{ssub:package_ui}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer.
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -270,10 +245,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package ui.brett} % (fold)
 \label{ssub:package_ui_brett}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -284,10 +257,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package ui.eigenschaften} % (fold)
 \label{ssub:package_ui_eigenschaften}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -298,10 +269,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package ui.info} % (fold)
 \label{ssub:package_ui_info}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -312,10 +281,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package ui.ressourcen} % (fold)
 \label{ssub:package_ui_ressourcen}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -326,10 +293,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package applikation} % (fold)
 \label{ssub:package_applikation}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Die Applikationsschicht ist für die Zustandsynchronisation (Spielstände usw.) verantwortlich. 
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -340,10 +305,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package applikation.zugentgegennahme} % (fold)
 \label{ssub:package_applikation_zugentgegennahme}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -354,10 +317,8 @@ Beschreibung der Schnittstellen
 \clearpage
 \subsubsection{Package applikation.zustandsynchronisation} % (fold)
 \label{ssub:package_app_zustandsynchronisation}
-\subparagraph{Beschreibung des Packages} % (fold)
-\label{ssub:beschreibung_des_packages}
+\subparagraph{Beschreibung}
 Beschreibung des Package. Aufgabe, etc…
-% subparagraph beschreibung_des_packages (end)
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -384,31 +345,35 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 \clearpage
 \section{Dynamische Abläufe} % (fold)
 \label{dynamische_ablauefe}
-\subsection{Validierung von Spielzügen} % (fold)
-\label{ssub:validierung_von_spielzügen}
-Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{pd_validierung}
 	\caption{Validierung von Spielzügen}
 	\label{fig:pd_validierung}
 \end{figure}
-% subsection validierung_von_spielzügen (end)
 
-\subsection{Serialiserung} % (fold)
-\label{sub:serialiserung}
-Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können. \textbf{FIXME: 1. Linie -> Erstellen eines serialisierbaren Objektes.}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
 	\caption{Serialisierung}
 	\label{fig:dienste_serialisierung}
 \end{figure}
-% subsection serialiserung (end)
 
-\subsection{Partnerschaften bilden} % (fold)
-\label{sub:partnerschaften_bilden}
-Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden eines Partners.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
+	\caption{Normale Partnerschaft - Teil 1 von 2}
+	\label{fig:dienste_partnerschaft_normal_1}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
+	\caption{Normale Partnerschaft - Teil 2 von 2}
+	\label{fig:dienste_partnerschaft_normal_2}
+\end{figure}
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_partner}
@@ -416,55 +381,28 @@ Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden 
 	\label{fig:dienste_partner}
 \end{figure}
 
-Die Abildungen~\vref{fig:dienste_partnerschaft_normal_1} und~\vref{fig:dienste_partnerschaft_normal_2} zeigen Ablauf des bildens von Partnerschaften.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
-	\caption{Normale Partnerschaft - Teil 1 von 2}
-	\label{fig:dienste_partnerschaft_normal_1}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
-	\caption{Normale Partnerschaft - Teil 2 von 2}
-	\label{fig:dienste_partnerschaft_normal_2}
-\end{figure}
-% subsection partnerschaften_bilden (end)
-
-\subsection{Rundenstart} % (fold)
-\label{sub:rundenstart}
-Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer neuen Runde.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_rundenstart}
 	\caption{Rundenstart}
 	\label{fig:dienste_rundenstart}
 \end{figure}
-% subsection rundenstart (end)
 
-\subsection{Zustände des Client} % (fold)
-\label{sub:zustände_des_client}
-Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{dienste_client}
 	\caption{Zustände des Client}
 	\label{fig:dienste_client}
 \end{figure}
-% subsection zustände_des_client (end)
 
-\subsection{Nachrichtenaustausch zwischen Client und Server} % (fold)
-\label{sub:nachrichtenaustausch_zwischen_client_und_server}
-Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_chat}
 	\caption{Chat Subsystem}
 	\label{fig:dienste_chat}
 \end{figure}
-% subsection nachrichtenaustausch_zwischen_client_und_server (end)
-\clearpage
 
+\clearpage
 \section{Externes Design} % (fold)
 \label{externes_design}
 
