@@ -136,7 +136,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		sollteValidieren(new VorwaertsRegel(2));
 	}
 	
-	public void testVorwaertsAufFremdesHimmelFeld() throws RegelVerstoss {
+	public void testVorwaertsAufFremdesHimmelFeld() {
 		start = himmelFeld1;
 		ziel  = himmelFeld1.getNtesFeld(2);
 		lagerFeld2.versetzeFigurAuf(start);
