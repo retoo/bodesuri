@@ -30,6 +30,14 @@ Die Validierung der gespielten Züge geschieht beim Client, der Server ist zust�
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
+\subparagraph{Zustandsautomat} % (fold)
+\label{ssub:zustandsautomat}
+\subparagraph{Layers} % (fold)
+\label{ssub:layers}
+
+% subparagraph layers (end)
+
+% subparagraph zustandsautomat (end)
 \paragraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
 % paragraph multitier_architektur_des_servers (end)
@@ -345,35 +353,31 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 \clearpage
 \section{Dynamische Abläufe} % (fold)
 \label{dynamische_ablauefe}
-
+\subsection{Validierung von Spielzügen} % (fold)
+\label{ssub:validierung_von_spielzügen}
+Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{pd_validierung}
 	\caption{Validierung von Spielzügen}
 	\label{fig:pd_validierung}
 \end{figure}
+% subsection validierung_von_spielzügen (end)
 
+\subsection{Serialiserung} % (fold)
+\label{sub:serialiserung}
+Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können. \textbf{FIXME: 1. Linie -> Erstellen eines serialisierbaren Objektes.}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
 	\caption{Serialisierung}
 	\label{fig:dienste_serialisierung}
 \end{figure}
+% subsection serialiserung (end)
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
-	\caption{Normale Partnerschaft - Teil 1 von 2}
-	\label{fig:dienste_partnerschaft_normal_1}
-\end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
-	\caption{Normale Partnerschaft - Teil 2 von 2}
-	\label{fig:dienste_partnerschaft_normal_2}
-\end{figure}
-
+\subsection{Partnerschaften bilden} % (fold)
+\label{sub:partnerschaften_bilden}
+Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden eines Partners.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_partner}
@@ -381,28 +385,55 @@ Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, s
 	\label{fig:dienste_partner}
 \end{figure}
 
+Die Abildungen~\vref{fig:dienste_partnerschaft_normal_1} und~\vref{fig:dienste_partnerschaft_normal_2} zeigen Ablauf des bildens von Partnerschaften.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
+	\caption{Normale Partnerschaft - Teil 1 von 2}
+	\label{fig:dienste_partnerschaft_normal_1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
+	\caption{Normale Partnerschaft - Teil 2 von 2}
+	\label{fig:dienste_partnerschaft_normal_2}
+\end{figure}
+% subsection partnerschaften_bilden (end)
+
+\subsection{Rundenstart} % (fold)
+\label{sub:rundenstart}
+Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer neuen Runde.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_rundenstart}
 	\caption{Rundenstart}
 	\label{fig:dienste_rundenstart}
 \end{figure}
+% subsection rundenstart (end)
 
+\subsection{Zustände des Client} % (fold)
+\label{sub:zustände_des_client}
+Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{dienste_client}
 	\caption{Zustände des Client}
 	\label{fig:dienste_client}
 \end{figure}
+% subsection zustände_des_client (end)
 
+\subsection{Nachrichtenaustausch zwischen Client und Server} % (fold)
+\label{sub:nachrichtenaustausch_zwischen_client_und_server}
+Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_chat}
 	\caption{Chat Subsystem}
 	\label{fig:dienste_chat}
 \end{figure}
-
+% subsection nachrichtenaustausch_zwischen_client_und_server (end)
 \clearpage
+
 \section{Externes Design} % (fold)
 \label{externes_design}
 
