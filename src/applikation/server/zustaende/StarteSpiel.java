@@ -11,8 +11,6 @@ import dienste.automat.zustaende.Zustand;
  * Passiver Zustand der das Spiel initialisiert.
  */
 public class StarteSpiel extends PassiveServerZustand {
-
-	@Override
     public Zustand handle() {
 		Spielerschaft spielerschaft = automat.spielerschaft;
 		

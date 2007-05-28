@@ -108,7 +108,6 @@ public class AktiverClientZustand extends AktiverZustand {
 		                                 + this);
 	}
 
-	@Override
 	public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;
 	}

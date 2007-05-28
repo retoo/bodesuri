@@ -76,7 +76,6 @@ public abstract class AktiverServerZustand extends AktiverZustand {
 	/* (non-Javadoc)
 	 * @see dienste.automat.zustaende.Zustand#setAutomat(dienste.automat.Automat)
 	 */
-	@Override
     public void setAutomat(Automat automat) {
 		this.automat = (BodesuriServer) automat;
     }

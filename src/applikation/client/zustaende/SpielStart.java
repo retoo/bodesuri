@@ -4,8 +4,6 @@ import ui.spiel.BodesuriView;
 import dienste.automat.zustaende.Zustand;
 
 public class SpielStart extends PassiverClientZustand {
-
-	@Override
     public Zustand handle() {
 
 		automat.lobbyView.setVisible(false);

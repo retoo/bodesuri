@@ -11,7 +11,6 @@ public abstract class Event {
 	 * 
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
 	public String toString() {
 		return getClass().toString();
 	}
