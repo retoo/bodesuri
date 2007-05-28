@@ -16,7 +16,10 @@ import applikation.events.VerbindeEvent;
 
 import dienste.automat.EventQueue;
 
-
+/**
+ * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll, 
+ * sowie auch zur Erfassung der Spielerinformationen.
+ */
 public class VerbindenView extends JFrame {
 
 	private static final long serialVersionUID = 1L;

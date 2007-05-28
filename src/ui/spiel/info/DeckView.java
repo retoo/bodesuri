@@ -21,6 +21,10 @@ import pd.karten.Sechs;
 import pd.karten.Zehn;
 import dienste.automat.EventQueue;
 
+/**
+ * JPanel, das DeckView wird zur Darstellung der Karten verwendet.
+ * Hier werden die Karten der Spieler verwaltet und dargestellt.
+ */
 public class DeckView extends JPanel {
 
 	private static final long serialVersionUID = 1L;

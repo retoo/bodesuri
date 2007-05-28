@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 
 import pd.brett.Feld;
 
+/**
+ * JLabel, ist die Oberklase aller Felder.
+ * Von dieser Klasse leiten alle weiteren Typen von Feldern ab.
+ */
 public class Feld2d extends javax.swing.JLabel {
 	private static final long serialVersionUID = 1L;
 	private Point position;

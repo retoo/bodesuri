@@ -5,6 +5,9 @@ import java.awt.event.MouseEvent;
 
 import applikation.client.BodesuriClient;
 
+/**
+ * MouseEventListener, der auf die Klicks der Felder achtet.
+ */
 class FeldMouseAdapter extends MouseAdapter {
 	BodesuriClient automat;
 

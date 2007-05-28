@@ -5,6 +5,9 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den einzelnen Clients dient.
+ */
 public class ChatView extends JPanel {
 
 	private static final long serialVersionUID = 1L;

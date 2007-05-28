@@ -17,6 +17,9 @@ import pd.karten.Karte;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.EventQueue;
 
+/**
+ * JLabel, dient zur Darstellung der einzelnen Karten, die im DeckView verwaltet werden.
+ */
 public class KarteView extends JLabel {
 
 	private static final long serialVersionUID = 1L;

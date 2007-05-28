@@ -19,6 +19,10 @@ import dienste.netzwerk.VerbindungWegException;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * Der ClientController dient zur Zustandsverwaltung des Clients.
+ * 
+ */
 public class ClientController implements Observer {
 	public ClientController() {
 		
@@ -38,6 +42,13 @@ public class ClientController implements Observer {
 		}
 	}
 
+	/**
+     * OBSERVER-PATTERN: OBSERVER
+     * überschreibt <code>update()</code> Methode des Observer.
+     *
+     * @param observable Zu observierendes Objekt
+     * @param object Objekt
+     */
 	public void update(Observable o, Object arg) {
 		Automat automat = (BodesuriClient) o;
 		Zustand aktuellerZustand = automat.getAktuellerZustand();
@@ -69,26 +80,55 @@ public class ClientController implements Observer {
 		
 	}
 		
+	/**
+	 * Definition wer am Zug ist.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(AmZug aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Der Spieler kann eine Karte auswählen.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(KarteWaehlen aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Der Spieler befindet sich in der Lobby.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(Lobby aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * 
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(LobbyStart aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Der Spieler ist nicht am Zug.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(NichtAmZug aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(ProgrammStart aktuellerZustand) {
 		
 	}
