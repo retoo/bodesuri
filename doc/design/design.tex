@@ -398,11 +398,12 @@ Ein reguläres Bodesuri Spiel besteht aus fünf eigenständigen Komponenten. Die
 
 Der Main-Thread des Clienten ist für die geordnete Koordination zwischen dem User (via GUI) und den anderen Clienten (via Server) zuständig.
 
+
 \begin{tabular}{@{} l p{12.5cm}}
-\textbf{Hauptklasse}  & BodesuriClient \\
+\textbf{Klasse}       & BodesuriClient \\
 \textbf{Anzahl}       & 1 \\
-\textbf{Gestartet}    & Wird bei Prozessbeginn gestartet \\
-\textbf{Beendet}      & Wird initiiert durch das GUI initiiert
+\textbf{Gestartet}    & Bei Prozessbeginn \\
+\textbf{Beendet}      & Bei Programmende
 \end{tabular}
 
 % paragraph main_thread (end)
@@ -413,53 +414,83 @@ Der Main-Thread des Clienten ist für die geordnete Koordination zwischen dem Us
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
 
 \begin{tabular}{@{} l p{12.5cm}}
-\textbf{Hauptklasse}  & Empfänger \\
+\textbf{Klasse}       & Empfänger \\
 \textbf{Anzahl}       & 1 \\
-\textbf{Gestartet}    & Wird bei Verbindungsaufbau durch den Main-Thread (Klasse Endpunkt) gestartet \\
-\textbf{Beendet}      & Wird bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt) gestoppt
+\textbf{Gestartet}    & Bei Verbindungsaufbau durch den Main-Thread (Klasse Endpunkt) \\
+\textbf{Beendet}      & Bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt)
 \end{tabular}
 
 % paragraph empfänger_thread (end)
 
+\paragraph{Timer(s)} % (fold)
+\label{ssub:timer_s_}
 
-...Timer(s)
 Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie werden bei Bedarf gestartet und lössen nach einer definierten Zeitspanne einen Event aus bzw. werden vom Anwender wieder gestoppt.
 
-Anzahl: 0..*
-HauptKlasse: Timer
-Gestartet: Durch den Main-Thread. Bei Bedarf.
-Beendet: Entweder durch sich selber wenn der Timer ablief oder auf Anweisung des Mainthreads wenn der Timer nicht mehr benötigt wird. 
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Klasse}       & Timer \\
+\textbf{Anzahl}       & 0..* \\
+\textbf{Gestartet}    & Bei Bedarf durch den Main-Thread \\
+\textbf{Beendet}      & Entweder durch sich selber wenn der Timer ablief oder auf Anweisung des Mainthreads wenn der Timer nicht mehr benötigt wird. 
+\end{tabular}
 
+% paragraph timer_s_ (end)
 
-...Swing-Thread(s)
+\paragraph{Swing-Threads} % (fold)
+\label{ssub:swing_threads}
+
 Swing startet intern verschiedne Threads. Die genauen Abläufe und Struktur diese Threads sind für dieses Projekt nicht relevant.
 
-Anzahl: 1..*
-HauptKlasse: ?
-Gestartet: ?? Controller
-Beendet: ?? Controller
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Klasse}       & AWK-AppKit \\
+\textbf{Anzahl}       & 1..* \\
+\textbf{Gestartet}    & Durch Swing \\
+\textbf{Beendet}      & N/A
+\end{tabular}
 
-.Server: 
-..Threads:
-...Main-Thread
+% paragraph swing_threads (end)
+
+\subsubsection{Server Threads} % (fold)
+\label{ssub:server}
+
 Der Server ist für die Koordination der einzelnen Clients zuständig.
 
-Anzahl: 1
-Hauptklasse: BodesuriServer
-Gestartet: Wird bei Prozessbeginn gestartet
-Beendet: Wird bei Spielende oder bei schweren Fehler gestoppt
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Klasse}       & BodesuriServer \\
+\textbf{Anzahl}       & 1 \\
+\textbf{Gestartet}    & bei Prozessbeginn \\
+\textbf{Beendet}      & Bei Spielende oder bei schweren Fehler
+\end{tabular}
 
-...Daemon
+% subsubsection server (end)
+
+\paragraph{Daemon} % (fold)
+\label{ssub:daemon}
+
 Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen und meldet diese über das BriefkastenInterface (via EventQueue) an den Nutzer des Servers.
 
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Klasse}       & Daemon \\
+\textbf{Anzahl}       & 1 \\
+\textbf{Gestartet}    & Durch den Main-Thread (Klasse Server) gestartet \\
+\textbf{Beendet}      & Bei Programmende
+\end{tabular}
 
+% paragraph daemon (end)
 
+\paragraph{Empfänger Thread} % (fold)
+\label{ssub:empfänger_thread}
 
-...Empfänger (pro Verbindung/Client)
+Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
 
+\begin{tabular}{@{} l p{12.5cm}}
+\textbf{Klasse}       & Empfänger \\
+\textbf{Anzahl}       & 1..4 \\
+\textbf{Gestartet}    & Durch den Daemon bei eingehenden Verbindungen  \\
+\textbf{Beendet}      & Bei Verbindungsabbau durch den Main-Thread
+\end{tabular}
 
 % subsection prozesse_threads (end)
-
 
 \clearpage
 \section{Spielzustände \& Nachrichten} % (fold)
