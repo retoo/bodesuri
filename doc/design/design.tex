@@ -397,6 +397,17 @@ Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen
 \clearpage
 \section{Spielzustände \& Nachrichten} % (fold)
 \label{spielzustaende_nachrichten}
+\subsection{Zustände des Client} % (fold)
+\label{sub:zustände_des_client}
+Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{dienste_client}
+	\caption{Zustände des Client}
+	\label{fig:dienste_client}
+\end{figure}
+% subsection zustände_des_client (end)
+
 
 \clearpage
 \section{Dynamische Abläufe} % (fold)
@@ -414,7 +425,7 @@ Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
 
 \subsection{Serialiserung} % (fold)
 \label{sub:serialiserung}
-Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können. \textbf{FIXME: 1. Linie -> Erstellen eines serialisierbaren Objektes.}
+Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
@@ -433,18 +444,12 @@ Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden 
 	\label{fig:dienste_partner}
 \end{figure}
 
-Die Abildungen~\vref{fig:dienste_partnerschaft_normal_1} und~\vref{fig:dienste_partnerschaft_normal_2} zeigen Ablauf des bildens von Partnerschaften.
+Die Abildung~\vref{fig:dienste_partnerschaft_normal} zeigt Ablauf des Bildens von Partnerschaften.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_1}
-	\caption{Normale Partnerschaft - Teil 1 von 2}
-	\label{fig:dienste_partnerschaft_normal_1}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal_2}
-	\caption{Normale Partnerschaft - Teil 2 von 2}
-	\label{fig:dienste_partnerschaft_normal_2}
+	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal}
+	\caption{Normale Partnerschaft}
+	\label{fig:dienste_partnerschaft_normal}
 \end{figure}
 % subsection partnerschaften_bilden (end)
 
@@ -459,17 +464,6 @@ Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer n
 \end{figure}
 % subsection rundenstart (end)
 
-\subsection{Zustände des Client} % (fold)
-\label{sub:zustände_des_client}
-Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8 \textwidth]{dienste_client}
-	\caption{Zustände des Client}
-	\label{fig:dienste_client}
-\end{figure}
-% subsection zustände_des_client (end)
-
 \subsection{Nachrichtenaustausch zwischen Client und Server} % (fold)
 \label{sub:nachrichtenaustausch_zwischen_client_und_server}
 Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
@@ -480,6 +474,23 @@ Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen z
 	\label{fig:dienste_chat}
 \end{figure}
 % subsection nachrichtenaustausch_zwischen_client_und_server (end)
+
+\subsection{Nachrichtenfluss durch die Schichten} % (fold)
+\label{sub:nachrichtenfluss_durch_die_schichten}
+Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigten die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_client}
+	\caption{Verbindung erstellen - Client}
+	\label{fig:sd_verbindung_erstellen_client}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_server}
+	\caption{Verbindung erstellen - Server}
+	\label{fig:sd_verbindung_erstellen_server}
+\end{figure}
+% subsection nachrichtenfluss_durch_die_schichten (end)
 \clearpage
 
 \section{Externes Design} % (fold)
