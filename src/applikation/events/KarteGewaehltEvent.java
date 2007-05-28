@@ -7,6 +7,9 @@ import dienste.automat.Event;
  * Event der ausgelöst wird wenn der Benutzer eine Karte ausgewählt hat.
  */
 public class KarteGewaehltEvent extends Event {
+	/**
+	 * Die ausgewählte Karte
+	 */
 	public final Karte karte;
 
 	/**

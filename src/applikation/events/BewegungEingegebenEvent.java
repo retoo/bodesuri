@@ -5,9 +5,11 @@ import dienste.automat.Event;
 
 /**
  * Event der ausgelöst wird wenn der Benutzer eine Bewegung erfasst hat.
- *
  */
 public class BewegungEingegebenEvent extends Event {
+	/**
+	 * Die eingegebene Bewegung
+	 */
 	public final Bewegung bewegung;
 	
 	/**

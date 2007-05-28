@@ -6,8 +6,17 @@ import dienste.automat.Event;
  * Event der ausgelöst wird wenn der Benutzer eine Verbindung zum Server herstellen will.
  */
 public class VerbindeEvent extends Event {
+	/**
+	 * Der Hostname des Servers
+	 */
 	public final String hostname;
+	/**
+	 * Der Port des Servers
+	 */
 	public final Integer port;
+	/**
+	 * Der Name des Spielers
+	 */
 	public final String spielerName;
 
 	/**
