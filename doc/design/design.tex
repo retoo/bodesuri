@@ -205,7 +205,10 @@ Bahnen zwischen den Zuständen hin und her.
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden.
 
 \subparagraph{Schnittstellen}
-Um die Serialisierung zu Nutzen, müssen die beiden abstrakten Klassen CodierbaresObjekt und CodiertesObjekt implementiert werden. In beiden muss die Methode getCodierer() implementiert werden, die eine Instanz des verwendeten Codierers zurückgibt. In CodierbaresObjekt muss zusätzlich noch die Methode getCodiertesObjekt(String code) implementiert werden, die ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen sollte.
+\begin{itemize}
+	\item Die abstrakte Klasse CodierbaresObjekt muss vom Benutzer dieses Packages implementiert werden. Dabei müssen die Methoden getCodierer() und getCodiertesObjekt() überschrieben werden. getCodiertesObjekt() sollte ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen.
+	\item Die zweite abstrakte Klasse CodiertesObjekt muss auch implementiert werden. Dort muss nur getCodierer() überschrieben werden, welches den gleichen Codierer zurückgeben sollte, wie bei CodierbaresObjekt.
+\end{itemize}
 
 \begin{figure}[h]
 	\centering
