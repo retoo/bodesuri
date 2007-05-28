@@ -20,7 +20,10 @@ import java.util.Observable;
 import java.util.Observer;
 
 /**
- * Der ClientController dient zur Zustandsverwaltung des Clients.
+ * Der ClientController dient zur Zustandsverwaltung des Clients. Er handhabt
+ * die logischen Schritte, die in diesem Zustand ausgeführt werden.
+ * Für die grafische Darstellung ist die <code>ui</code>-Schicht zuständig. Dort
+ * sind ebenfalls Observer implementiert.
  * 
  */
 public class ClientController implements Observer {
@@ -28,6 +31,13 @@ public class ClientController implements Observer {
 		
 	}
 	
+	/**
+	 * Diese <code>main</code> Methode ist der Ersteinstiegspunkt der gesamten Applikation.
+	 * Wenn ein Client gestartet wird, werden alle initialien Schritte hier eingeleitet.
+	 * 
+	 * @param args
+	 * @throws VerbindungWegException
+	 */
 	public static void main(String[] args) throws VerbindungWegException {
 		Automat automat = new BodesuriClient( new EventQueue() );
 		// ClientController controller = new ClientController();
@@ -133,22 +143,48 @@ public class ClientController implements Observer {
 		
 	}
 	
+	/**
+	 * Ein schwerer Fehler ist aufgetreten. Eine entsprechende Darstellung des
+	 * Ausnahmezustandes kann hier durchgeführt werden.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(SchwererFehler aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Das spiel wurde gestartet.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(SpielStart aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Das Spiel befindet sich im Zustand, in dem die Verbindungsdaten erfasst werden.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(VerbindungErfassen aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Eine Verbindung wurde hergestellt. Der Client ist mit dem Server verbunden.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(VerbindungSteht aktuellerZustand) {
 		
 	}
 	
+	/**
+	 * Es wird ein Zug erfasst und ausgeführt.
+	 * 
+	 * @param aktuellerZustand
+	 */
 	public void handle(Ziehen aktuellerZustand) {
 		
 	}
