@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Mon May 28 21:46:01 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Mon May 28 22:23:17 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable/>
@@ -18652,7 +18652,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>33 76 10 58 3e 3f 5 6c 64 30 2f 1e c2 f 15 e0 f7 a a5 d4 a6 48 68 46 87 88 76 25 c4 da 31 d1 cb fe 85 fc 59 b1 ae 9f a0 da 91 b6 ee a4 7e 55 94 5c 62 b6 c7 6b b6 37 8 c6 8f 8a 2f 4e 35 ac c9 17 ab c7 96 60 </value>
+						<value>33 76 10 58 3e 3f 5 6c 64 30 2f 1e c2 f 15 e0 f7 a a5 d4 a6 48 68 45 87 8e 73 25 c5 dc 31 d1 cb fe 85 fc 59 b1 ae 9f a0 da 91 b6 ee a4 7e 55 94 5c 62 b6 c7 6b b6 37 8 c6 8f 8a 2f 4e 35 ac c9 17 ab c7 96 60 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
@@ -18665,7 +18665,7 @@
 					<mdElement elementClass='ChoiceProperty'>
 						<propertyID>RECENT_DIAGRAMS</propertyID>
 						<propertyDescriptionID>RECENT_DIAGRAMS_DESCRIPTION</propertyDescriptionID>
-						<choice xmi:value='_11_6_7fe0252_1179155343867_533943_279'/>
+						<choice xmi:value='_11_6_7fe0252_1180380021290_776059_818^_11_6_7fe0252_1179155343867_533943_279'/>
 						<index xmi:value='-1'/>
 					</mdElement>
 				</mdElement>
