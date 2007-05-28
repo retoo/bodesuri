@@ -199,16 +199,20 @@ Bahnen zwischen den Zuständen hin und her.
 % paragraph package_automat (end)
 
 \clearpage
-\subsubsection{Package dienste.serialisierung} % (fold)
-\label{ssub:package_dienste_serialisierung}
+\subsubsection{Package dienste.serialisierung}
+
 \subparagraph{Beschreibung}
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden.
 
-\subparagraph{Schnittstellen} % (fold)
-\label{ssub:schnittstellen}
+\subparagraph{Schnittstellen}
 Um die Serialisierung zu Nutzen, müssen die beiden abstrakten Klassen CodierbaresObjekt und CodiertesObjekt implementiert werden. In beiden muss die Methode getCodierer() implementiert werden, die eine Instanz des verwendeten Codierers zurückgibt. In CodierbaresObjekt muss zusätzlich noch die Methode getCodiertesObjekt(String code) implementiert werden, die ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen sollte.
-% subparagraph schnittstellen (end)
-% paragraph package_dienste_serialisierung (end)
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kd_dienste_serialisierung}
+	\caption{Klassendiagramm Serialisierung (in Dienste)}
+	\label{fig:kd_dienste_serialisierung}
+\end{figure}
 
 \clearpage
 \subsubsection{Package dienste.netzwerk} % (fold)
