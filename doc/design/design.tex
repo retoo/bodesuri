@@ -305,11 +305,89 @@ Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch 
 % subsection logische_architektur (end)
 
 \clearpage
-\subsection{Physikalische Sicht}
 
-\subsubsection{Prozesse \& Threads} % (fold)
+\subsection{Prozesse \& Threads} % (fold)
 \label{sub:prozesse_threads}
-Beschrieben, wie diese ablaufen, miteinander funktionieren, Daten austauschen, sich synchronisieren, etc...
+
+Ein reguläres Bodesuri Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Die Clients kommunizieren über je einen TCP Socket mit dem Server.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{prozesse_und_threads}
+	\caption{Prozesse \& Threads}
+	\label{fig:prozesse_und_threads}
+\end{figure}
+
+\subsubsection{Client Threads} % (fold)
+\label{ssub:client_threads}
+
+% subsubsection client_threads (end)
+
+\paragraph{Main-Thread} % (fold)
+\label{ssub:main_thread}
+
+Der Main Thread des Clienten ist für die geordnete Koordination zwischen dem User (via GUI) und den anderen Clienten (via Server) zuständig.
+
+\begin{description}
+	\item[Hauptklasse] BodesuriClient
+	\item[Anzahl] 1
+	\item[Gestartet] Wird bei Prozessbeginn gestartet
+	\item[Beendet] Wird initiiert durch das GUI initiiert
+\end{description}
+
+% paragraph main_thread (end)
+
+\paragraph{Empfänger Thread} % (fold)
+\label{ssub:empfänger_thread}
+
+Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangene Nachrichten über das Briefkasten Interface in der EventQueue.
+
+\begin{description}
+	\item[Hauptklasse] Empfänger
+	\item[Anzahl] 1
+	\item[Gestartet] Wird bei Verbindungsaufbau durch den MainThread (Klasse Endpunkt) gestartet 
+	\item[Beendet] Wird bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt) gestoppt
+\end{description}
+
+% paragraph empfänger_thread (end)
+
+
+...Timer(s)
+Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie werden bei Bedarf gestartet und lössen nach einer definierten Zeitspanne einen Event aus bzw. werden vom Anwender wieder gestoppt.
+
+Anzahl: 0..*
+HauptKlasse: Timer
+Gestartet: Durch den Main-Thread. Bei Bedarf.
+Beendet: Entweder durch sich selber wenn der Timer ablief oder auf Anweisung des Mainthreads wenn der Timer nicht mehr benötigt wird. 
+
+
+...Swing-Thread(s)
+Swing startet intern verschiedne Threads. Die genauen Abläufe und Struktur diese Threads sind für dieses Projekt nicht relevant.
+
+Anzahl: 1..*
+HauptKlasse: ?
+Gestartet: ?? Controller
+Beendet: ?? Controller
+
+.Server: 
+..Threads:
+...Main-Thread
+Der Server ist für die Koordination der einzelnen Clients zuständig.
+
+Anzahl: 1
+Hauptklasse: BodesuriServer
+Gestartet: Wird bei Prozessbeginn gestartet
+Beendet: Wird bei Spielende oder bei schweren Fehler gestoppt
+
+...Daemon
+Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen und meldet diese über das BriefkastenInterface (via EventQueue) an den Nutzer des Servers.
+
+
+
+
+...Empfänger (pro Verbindung/Client)
+
+
 % subsection prozesse_threads (end)
 
 
