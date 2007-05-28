@@ -25,21 +25,51 @@ import dienste.netzwerk.EndPunkt;
  * Version des Automaten für den Client
  */
 public class BodesuriClient extends Automat {
+	/**
+	 * EventQueue - Hier kommen neue Events rein.
+	 */
 	public EventQueue queue;
+	/**
+	 * EndPunkt - Verbindung zum Server
+	 */
 	public EndPunkt endpunkt;
 
+	/**
+	 * VerbindenView - Das Fenster zum sich zum Server zu verbinden
+	 */
 	public VerbindenView verbindenView;
+	/**
+	 * LobbyView - Das Fenster der Lobby
+	 */
 	public LobbyView lobbyView;
+	/**
+	 * BodesuriView - Das Spiel-Fenster
+	 */
 	public BodesuriView spielView;
 
+	/**
+	 * Das Spiel selbst
+	 */
 	public pd.Spiel spiel;
+	/**
+	 * Der Name des Spielers. Wir für gebraucht um spielerIch zu erstellen.
+	 */
 	public String spielerName;
+	/**
+	 * Repräsentiert den Spieler
+	 */
 	public Spieler spielerIch;
 
 	// TODO sollten eigentlich nicht hier sein.
 	// Sind zu fest vom Status abhängig. Müssen aber momentan so sein, da es
 	// nicht möglich ist Daten von Event zu Event zu übergeben.
+	/**
+	 * Die Karte die der Spieler gezogen hat.
+	 */
 	public Karte karte;
+	/**
+	 * Veweis auf die akutelle zugEntgegennahme
+	 */
 	public ZugEntgegennahme zugentgegennahme;
 
 	/**

@@ -8,6 +8,11 @@ import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.VerbindungWegException;
 
+/**
+ * Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein
+ * {@link BewegungEingegebenEvent} eintrifft wird der gesamte Zug validiert und
+ * der Zustand {@link NichtAmZug} aufgerufen.
+ */
 public class Ziehen extends AktiverClientZustand {
 	public void entry() {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);

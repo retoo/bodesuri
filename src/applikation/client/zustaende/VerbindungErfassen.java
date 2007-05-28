@@ -11,26 +11,32 @@ import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.VerbindungWegException;
 
+/**
+ * Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein
+ * {@link VerbindeEvent} eintrifft wir der Zustand {@link VerbindungSteht}
+ * aufgerufen.
+ */
 public class VerbindungErfassen extends AktiverClientZustand {
 	Zustand verbinden(VerbindeEvent ve) {
 
 		try {
-			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
-			
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(
+			                                                          automat.queue);
+
 			automat.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
 			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			automat.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			automat.endpunkt = null;
 			return this;
-		}  catch (VerbindungWegException e) {
+		} catch (VerbindungWegException e) {
 			automat.endpunkt = null;
 			return this;
 		} catch (IOException e) {
 			automat.endpunkt = null;
 			return this;
 		}
-		
+
 		return automat.getZustand(VerbindungSteht.class);
 	}
 }

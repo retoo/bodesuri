@@ -21,6 +21,10 @@ import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
 
+
+/**
+ * Spezifischer aktiver Client-Zustand
+ */
 public class AktiverClientZustand extends AktiverZustand {
 	protected BodesuriClient automat;
 
@@ -97,12 +101,12 @@ public class AktiverClientZustand extends AktiverZustand {
 
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		return keinUebergang();
-    }
-	
+	}
+
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
 		return keinUebergang();
 	}
-	
+
 	Zustand keinUebergang() {
 		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
 		                                 + this);
