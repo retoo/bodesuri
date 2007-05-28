@@ -9,14 +9,24 @@ import pd.zugsystem.Bewegung;
 import applikation.events.BewegungEingegebenEvent;
 import dienste.automat.EventQueue;
 
-//TODO: Sollte dies nun nicht eher BewegungsEntgegennahme heissen?
+// TODO: Sollte dies nun nicht eher BewegungsEntgegennahme heissen?
+/**
+ * Nimmt die vom Spieler gemachten Züge (Klicks auf Felder) entgegen und sendet
+ * die kompletten Züge an den Automaten zur Validierung.
+ */
 public class ZugEntgegennahme {
 	private ZugStatus zugStatus;
 	private Feld start;
 	private Feld ziel;
-	
+
 	private EventQueue queue;
 
+	/**
+	 * Eine neue Zugentgegennahme ermöglichen.
+	 * 
+	 * @param queue
+	 *            Queue an die die erfassten Züge gesendet werden.
+	 */
 	public ZugEntgegennahme(EventQueue queue) {
 		this.queue = queue;
 		zugStatus = new WartenAufStarteingabe();
@@ -26,6 +36,12 @@ public class ZugEntgegennahme {
 	 * Status-Handhabung für die Zugentgegennahme.
 	 */
 	private abstract class ZugStatus {
+		/**
+		 * Handle zum Reagieren auf einen Zug.
+		 * 
+		 * @param feld
+		 *            Das angeklickte Feld
+		 */
 		abstract public void handle(Feld feld);
 	}
 
@@ -43,9 +59,10 @@ public class ZugEntgegennahme {
 			zugBestaetigen(start, ziel);
 		}
 	}
-	
+
 	private class ZugErfasst extends ZugStatus {
-		public void handle(Feld feld) {}
+		public void handle(Feld feld) {
+		}
 	}
 
 	/**
