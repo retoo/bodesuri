@@ -26,7 +26,7 @@ public class ClientController implements Observer {
 	
 	public static void main(String[] args) throws VerbindungWegException {
 		Automat automat = new BodesuriClient( new EventQueue() );
-		ClientController controller = new ClientController();
+		// ClientController controller = new ClientController();
 
 		try {
 			automat.run();
