@@ -64,14 +64,7 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 \subsection{Logische Sicht} % (fold)
 \label{sub:logische_sicht}
 
-Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten, Tiers, Packages und Klassen. Abbildung~\vref{fig:legende_diagramme} zeigt die Legende für die dafür verwendeten Klassendiagramme.
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{legende_diagramme}
-	\caption{Legende der Diagrammfarben}
-	\label{fig:legende_diagramme}
-\end{figure}
+Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten, Tiers, Packages und Klassen. 
 
 \subsubsection{Schichtenarchitektur} % (fold)
 \label{sub:schichtenarchitektur}
@@ -227,7 +220,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \label{ssub:schnittstellen}
 \begin{itemize}
 	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
-	\item Die Kommunikation mit dem Netzewrk findet über die Bibliotheken java.net statt.
+	\item Die Kommunikation mit dem Netzwerk findet über die Bibliotheken java.net statt.
 \end{itemize}
 
 \begin{figure}[h]
@@ -469,7 +462,7 @@ Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen
 Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8 \textwidth]{dienste_client}
+	\includegraphics[width=\textwidth]{dienste_client}
 	\caption{Zustände des Client}
 	\label{fig:dienste_client}
 \end{figure}
@@ -490,6 +483,7 @@ Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
 \end{figure}
 % subsection validierung_von_spielzügen (end)
 
+\clearpage
 \subsection{Serialiserung} % (fold)
 \label{sub:serialiserung}
 Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können.
@@ -501,6 +495,7 @@ Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisier
 \end{figure}
 % subsection serialiserung (end)
 
+\clearpage
 \subsection{Partnerschaften bilden} % (fold)
 \label{sub:partnerschaften_bilden}
 Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden eines Partners.
