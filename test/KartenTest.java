@@ -8,6 +8,7 @@ import pd.karten.Sechs;
 public class KartenTest extends ProblemDomainTestCase {
 	public void testKarte() {
 		Karte sechs = new Sechs(KartenFarbe.Herz, 0);
+		assertEquals("Sechs", sechs.getName());
 		assertEquals(KartenFarbe.Herz, sechs.getKartenFarbe());
 		assertEquals("Herz Sechs", sechs.toString());
 	}
