@@ -5,7 +5,7 @@ import dienste.automat.zustaende.Zustand;
 
 /**
  * Zustand in welcher dem Automat beim Start ist. Öffnet den
- * {@link VerbindenView} und geht direkt in {@link Lobby} über.
+ * {@link VerbindenView} und geht direkt in den Zustand {@link Lobby} über.
  */
 public class ProgrammStart extends PassiverClientZustand {
 	public Zustand handle() {

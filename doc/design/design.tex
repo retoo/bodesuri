@@ -487,13 +487,83 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 \label{spielzustaende_nachrichten}
 \subsection{Zustände Client} % (fold)
 \label{sub:zustände_client}
-Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{dienste_client}
-	\caption{Zustände des Client}
-	\label{fig:dienste_client}
+	\includegraphics[width=\textwidth]{zd_applikation_bodesuriclient}
+	\caption{Zustandsdiagramm des Clients}
+	\label{fig:zd_applikation_bodesuriclient}
 \end{figure}
+
+\subsubsection{ProgrammStart} % (fold)
+\label{ssub:programmstart}
+Zustand in welcher dem Automat beim Start ist. Öffnet den VerbindenView und geht direkt in den Zustand VerbindungErfassen über.
+% subsubsection programmstart (end)
+
+\subsubsection{VerbindungErfassen} % (fold)
+\label{ssub:verbinungerfassen}
+Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein VerbindeEvent eintrifft wird der Zustand VerbindungSteht aufgerufen.
+% subsubsection verbinungerfassen (end)
+
+\subsubsection{VerbindungSteht} % (fold)
+\label{ssub:verbindungsteht}
+Zustand wenn der Client auf die BeitrittsBestaetigung vom Server wartet. Wenn sie eintrifft wir der Zustand LobbyStart aufgerufen.
+% subsubsection verbindungsteht (end)
+
+\subsubsection{LobbyStart} % (fold)
+\label{ssub:lobbystart}
+Zustand in welchem die Lobby (LobbyView) gestartet wird. Geht direkt in Lobby über.
+% subsubsection lobbystart (end)
+
+\subsubsection{Lobby} % (fold)
+\label{ssub:lobby}
+Zustand wennn der Spieler in der Lobby ist. Wenn eine SpielStartNachricht eintrifft wird der Zustand SpielStart aufgerufen.
+% subsubsection lobby (end)
+
+\subsubsection{SpielStart} % (fold)
+\label{ssub:spielstart}
+Zustand in welchem das Spiel (BodesuriView) gestartet wird. Geht direkt in StarteRunde über.
+% subsubsection spielstart (end)
+
+\subsubsection{StarteRunde} % (fold)
+\label{ssub:starterunde}
+Zustand in welchem eine neue Runde beginnt. Zeigt die Karten an und geht in den Zustand KarteTauschen über.
+% subsubsection starterunde (end)
+
+\subsubsection{KarteTauschen} % (fold)
+\label{ssub:kartetauschen}
+Zustand in welchem der Client wartet bis der Spieler gewählt hat welche Karte er seinem Mitspieler geben will und die Karte vom Mitspieler erhält. Geht in den Zustand NichtAmZug über.
+% subsubsection kartetauschen (end)
+
+\subsubsection{NichtAmZug} % (fold)
+\label{ssub:nichtamzug}
+Zustand wenn der Spieler nicht am Zug ist.
+\begin{itemize}
+	\item Wenn eine ZugAufforderung eintrifft wird der Zustand AmZug aufgerufen.
+	\item Wenn eine ZugInformation eintrifft wird der Zug ausgeführt, der Zustand aber nicht gewechselt.
+	\item Wenn ein RundeAbgeschlossenEvent eintrifft wird der Zustand StarteRunde aufgerufen.
+	\item Wenn eine SpielEnde eintrifft wird der Zustand SpielEnde aufgerufen.
+\end{itemize}
+% subsubsection nichtamzug (end)
+
+\subsubsection{AmZug} % (fold)
+\label{ssub:amzug}
+Zustand in welchem der Spieler dran kommt. Geht direkt in KarteWaehlen über.
+% subsubsection amzug (end)
+
+\subsubsection{KarteWaehlen} % (fold)
+\label{ssub:kartewaehlen}
+Zustand wenn der Spieler eine Karte auswählen muss. Wenn der KarteGewaehltEvent eintritt, wird der Zustand Ziehen aufgerufen.
+% subsubsection kartewaehlen (end)
+
+\subsubsection{Ziehen} % (fold)
+\label{ssub:ziehen}
+Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein BewegungEingegebenEvent eintrifft wird der gesamte Zug validiert und der Zustand NichtAmZug aufgerufen.
+% subsubsection ziehen (end)
+
+\subsubsection{SpielEnde} % (fold)
+\label{ssub:spielende}
+Der letzte Zustand des Automaten. Zeigt den Gewinner an und geht in den EndZustand über.
+% subsubsection spielende (end)
 
 \subsection{Zustände Server} % (fold)
 \label{sub:zustände_server}
