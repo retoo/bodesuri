@@ -112,7 +112,7 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{pd_kartengeber}
-	\caption{Kartengeber}
+	\caption{Klassendiagramm Kartengeber}
 	\label{fig:pd_kartengeber}
 \end{figure}
 
@@ -134,7 +134,7 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{pd_regelsystem}
-	\caption{Regelsystem}
+	\caption{Klassendiagramm Regelsystem}
 	\label{fig:pd_regelsystem}
 \end{figure}
 
@@ -155,7 +155,7 @@ Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion d
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{pd_brett}
-	\caption{Brett und Figuren}
+	\caption{Klassendiagramm Brett und Figuren}
 	\label{fig:pd_brett}
 \end{figure}
 
@@ -175,7 +175,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5 \textwidth]{kd_pd_serialisierung}
-	\caption{Klassendiagramm Serialisierung (in PD)}
+	\caption{Klassendiagramm Serialisierung in PD}
 	\label{fig:kd_pd_serialisierung}
 \end{figure}
 
@@ -197,7 +197,7 @@ Bahnen zwischen den Zuständen hin und her.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
-	\caption{Automat Klassendiagramm}
+	\caption{Klassendiagramm Automat}
 	\label{fig:dienste_serialisierung}
 \end{figure}
 
@@ -218,7 +218,7 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kd_dienste_serialisierung}
-	\caption{Klassendiagramm Serialisierung (in Dienste)}
+	\caption{Klassendiagramm Serialisierung in Dienste}
 	\label{fig:kd_dienste_serialisierung}
 \end{figure}
 
@@ -238,14 +238,14 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{dienste_netzwerk_client}
-	\caption{Klassendiagramm Client}
+	\caption{Klassendiagramm Client in Netzwerk}
 	\label{fig:dienste_netzwerk_client}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{dienste_netzwerk_server}
-	\caption{Klassendiagramm Server}
+	\caption{Klassendiagramm Server in Netzwerk}
 	\label{fig:dienste_netzwerk_server}
 \end{figure}
 
@@ -272,7 +272,7 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{ui_alle}
-	\caption{UI-Architektur}
+	\caption{Klassendiagramm UI}
 	\label{fig:ui_alle}
 \end{figure}
 
@@ -299,7 +299,7 @@ Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{applikation_zugentgegennahme}
-	\caption{ZugEntgegennahme}
+	\caption{Klassendiagramm Zugentgegennahme}
 	\label{fig:applikation_zugentgegennahme}
 \end{figure}
 
@@ -323,7 +323,7 @@ Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten A
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kd_applikation_client}
-	\caption{Klassendiagramm Client (in Applikation)}
+	\caption{Klassendiagramm Client in Applikation}
 	\label{fig:kd_applikation_client}
 \end{figure}
 % subsubsection package_applikation_client (end)
@@ -341,7 +341,7 @@ Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten A
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kd_applikation_server}
-	\caption{Klassendiagramm Server (in Applikation)}
+	\caption{Klassendiagramm Server in Applikation}
 	\label{fig:kd_applikation_server}
 \end{figure}
 
@@ -404,13 +404,13 @@ Der Main-Thread des Clients ist für die geordnete Koordination zwischen dem Spi
 
 % paragraph main_thread (end)
 
-\paragraph{Empfänger Thread} % (fold)
+\paragraph{Empfänger-Thread} % (fold)
 \label{ssub:empfänger_thread}
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
 
 \begin{tabular}{@{} l p{12.5cm}}
-\textbf{Klasse}       & Empfänger \\
+\textbf{Klasse}       & Empfaenger \\
 \textbf{Anzahl}       & 1 \\
 \textbf{Gestartet}    & Bei Verbindungsaufbau durch den Main-Thread (Klasse Endpunkt) \\
 \textbf{Beendet}      & Bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt)
@@ -497,7 +497,7 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{zd_applikation_bodesuriclient}
-	\caption{Zustandsdiagramm des Clients}
+	\caption{Zustandsdiagramm Client}
 	\label{fig:zd_applikation_bodesuriclient}
 \end{figure}
 
@@ -580,7 +580,7 @@ Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zuständ
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{zd_applikation_bodesuriserver}
-	\caption{Zustandsdiagramm des Servers}
+	\caption{Zustandsdiagramm Server}
 	\label{fig:zd_applikation_bodesuriserver}
 \end{figure}
 
@@ -683,20 +683,20 @@ Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbi
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_client}
-	\caption{Verbindung erstellen - Client}
+	\caption{Sequenzdiagramm Verbindung erstellen -- Client}
 	\label{fig:sd_verbindung_erstellen_client}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_server}
-	\caption{Verbindung erstellen - Server}
+	\caption{Sequenzdiagramm Verbindung erstellen -- Server}
 	\label{fig:sd_verbindung_erstellen_server}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_endpunkt}
-	\caption{Verbindung erstellen - EndPunkt}
+	\caption{Sequenzdiagramm Verbindung erstellen -- EndPunkt}
 	\label{fig:sd_verbindung_erstellen_endpunkt}
 \end{figure}
 
@@ -708,7 +708,7 @@ Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer n
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7 \textwidth]{dienste_rundenstart}
-	\caption{Rundenstart}
+	\caption{Sequenzdiagramm Rundenstart}
 	\label{fig:dienste_rundenstart}
 \end{figure}
 % subsection rundenstart (end)
@@ -720,7 +720,7 @@ Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{pd_validierung}
-	\caption{Validierung von Spielzügen}
+	\caption{Sequenzdiagramm Validierung von Spielzügen}
 	\label{fig:pd_validierung}
 \end{figure}
 % subsection validierung_von_spielzügen (end)
@@ -732,7 +732,7 @@ Abbildung~\vref{fig:dienste_serialisierung} zeigt den Ablauf bei der Serialisier
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
-	\caption{Serialisierung}
+	\caption{Sequenzdiagramm Serialisierung}
 	\label{fig:dienste_serialisierung}
 \end{figure}
 % subsection serialiserung (end)
@@ -773,15 +773,14 @@ Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Austausches von Nachrich
 \section{Externes Design} % (fold)
 \label{externes_design}
 
-\subsection{Verbindung zum Server} % (fold)
-\label{externes_design_verbindung}
+\subsection{Verbinden}
 
 Beim Starten des Spiels wird der Spieler aufgefordert, die Serverdaten zur Verbindung und seinen Spielernamen einzugeben.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7 \textwidth]{gui_verbindung}
-	\caption{Verbindung zum Server}
+	\caption{Design Verbinden}
 	\label{fig:gui_verbindung}
 \end{figure}
 
@@ -795,7 +794,7 @@ In der Lobby können die Spieler einen Partner für das Spiel auswählen. Der au
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{gui_lobby}
-	\caption{Lobby vor dem Spielbeginn}
+	\caption{Design Lobby}
 	\label{fig:gui_lobby}
 \end{figure}
 
@@ -815,7 +814,7 @@ Das Spiel besteht aus verschiedenen Views:
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{gui_spiel}
-	\caption{Spielbrett}
+	\caption{Design Spiel}
 	\label{fig:gui_spiel}
 \end{figure}
 
@@ -845,5 +844,7 @@ Aus diesen Gründen haben wir uns dazu entschlossen, für das GUI als einzige Te
 % subsection java_2d (end)
 
 % section eingetretene_risiken (end)
+
+\listoffigures
 
 \end{document}
