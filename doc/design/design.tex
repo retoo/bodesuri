@@ -532,9 +532,21 @@ Ein Zug wird gestartet. Der Server bestimmt welcher Spieler an der Reihe ist tei
 
 \subsubsection{WarteAufZug} % (fold)
 \label{ssub:warteaufzug}
-Der Server wartet auf die Erfassung des Zuges durch den Spieler. Sobald dieser mitgeteilt wurde prüft der Server diesen auf Richtigkeit und verteilt ihn anschliessend an alle Spieler.
-
+Der Server wartet auf die Erfassung des Zuges durch den Spieler. Sobald dieser mitgeteilt wurde wechselt der Server in den Zustand VersendeZug 
 % subsubsection warteaufzug (end)
+
+\subsubsection{SendeZug} % (fold)
+\label{ssub:sendezug}
+
+Der erfasste Zug wird auf Richtigkeit geprüft und anschliessend allen Spielern mitgeteilt.
+
+% subsubsection sendezug (end)
+
+\subsubsection{ZugAbschluss} % (fold)
+\label{ssub:zugabschluss}
+Server schliesst den Zug formell ab. Es wird geprüft ob gegebenenfalls das Spiel beziehungsweise die Runde abgeschlossen ist und wechselt in den Zustand SpielEnde respektive RundenStart. Ist weder Spiel noch Runde fertig wird in den Zustand StartZug gewechselt.
+
+% subsubsection zugabschluss (end)
 
 % subsection zustände_server (end)
 
