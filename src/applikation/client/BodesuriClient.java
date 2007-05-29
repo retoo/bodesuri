@@ -77,10 +77,8 @@ public class BodesuriClient extends Automat {
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
 	 *
-	 * @param queue
-	 *            Die Warteschlange für die Events
 	 */
-	public BodesuriClient(EventQueue queue) {
+	public BodesuriClient() {
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart());
 		registriere(new VerbindungErfassen());
@@ -95,9 +93,11 @@ public class BodesuriClient extends Automat {
 
 		setStart(ProgrammStart.class);
 
+		this.queue = new EventQueue();
+
 		setEventQuelle(queue);
 
-		this.queue = queue;
+
 	}
 
 	/* kommt mal in den controller oder geh ganz anders */
@@ -109,7 +109,7 @@ public class BodesuriClient extends Automat {
     }
 
 	public static void main(String[] args) {
-		Automat automat = new BodesuriClient( new EventQueue() );
+		Automat automat = new BodesuriClient();
 		// ClientController controller = new ClientController();
 
 		try {
