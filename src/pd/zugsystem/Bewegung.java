@@ -20,10 +20,6 @@ public class Bewegung implements Serializable {
 		this.ziel  = ziel;
 	}
 
-	/* FIXME: Robin bitter revieween */
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString() {
 		return "von " + start + " nach " + ziel;
 	}

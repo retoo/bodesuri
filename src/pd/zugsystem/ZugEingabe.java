@@ -71,12 +71,8 @@ public class ZugEingabe implements Serializable {
 		return bewegung;
 	}
 
-	/* FIXME: Robin bitter revieween */
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString() {
-		return "Zug: Spieler " + getSpieler() + " fährt mit der Karte "
-		       + getKarte() + " die Bewegung " + getBewegung();
+		return "Zug: " + getSpieler() + " fährt mit der Karte "
+		       + getKarte() + " " + getBewegung();
 	}
 }
