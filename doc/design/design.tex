@@ -78,6 +78,13 @@ Für die logische Strukturierung des Projektes wird eine vierschichtige Architek
 	\caption{Schichtenarchitektur}
 	\label{fig:architektur_schichten}
 \end{figure}
+\clearpage
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{architektur_partitions}
+	\caption{Partitionen in der Architektur}
+	\label{fig:architektur_partitions}
+\end{figure}
 % subsubsection schichtenarchitektur (end)
 
 \clearpage
@@ -343,20 +350,30 @@ Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten A
 	\label{fig:kd_applikation_server}
 \end{figure}
 
+\clearpage
 \subsubsection{Package applikation.events}
-\label{ssub:package_applikation_events} % (fold)
+\label{ssub:package_applikation_events}
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
 Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
-% subparagraph beschreibung (end)
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kd_applikation_events}
+	\caption{Klassendiagramm Events}
+	\label{fig:kd_applikation_events}
+\end{figure}
 
 \subsubsection{Package applikation.nachrichten}
-\label{ssub:package_applikation_nachrichten} % (fold)
+\label{ssub:package_applikation_nachrichten}
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
 Dieses Package beinhaltet alle Möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server dienen.
-
-
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{kd_applikation_nachricht}
+	\caption{Klassendiagramm Nachrichten}
+	\label{fig:kd_applikation_nachricht}
+\end{figure}
 \clearpage
 
 \subsection{Prozesse \& Threads} % (fold)
