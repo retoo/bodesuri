@@ -1,5 +1,7 @@
 package applikation.client;
 
+import javax.swing.JOptionPane;
+
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
@@ -97,6 +99,14 @@ public class BodesuriClient extends Automat {
 
 		this.queue = queue;
 	}
+
+	/* kommt mal in den controller oder geh ganz anders */
+	public void meldeFehler(String fehlermeldung) {
+	    // TODO Auto-generated method stub
+
+		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
+
+    }
 
 	public static void main(String[] args) {
 		Automat automat = new BodesuriClient( new EventQueue() );
