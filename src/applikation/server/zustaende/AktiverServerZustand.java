@@ -1,5 +1,6 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
 import applikation.server.BodesuriServer;
@@ -21,36 +22,42 @@ import dienste.netzwerk.VerbindungGeschlossen;
  */
 public abstract class AktiverServerZustand extends AktiverZustand {
 	protected BodesuriServer automat;
-	
+
 	/* (non-Javadoc)
 	 * @see dienste.automat.zustaende.AktiverZustand#handle(dienste.automat.Event)
 	 */
 	public Zustand handle(Event event) {
     	if (event instanceof NetzwerkEvent) {
     		NetzwerkEvent ne = (NetzwerkEvent) event;
-    
+
     		Brief brief = ne.brief;
     		Nachricht nachricht = brief.nachricht;
-    
+
     		if (nachricht instanceof SpielBeitreten)
     			return spielBeitreten(brief.absender,
     			                      (SpielBeitreten) nachricht);
-    		else if (nachricht instanceof ZugInformation) 
+    		else if (nachricht instanceof ZugInformation)
     			return zugInfo(brief.absender, (ZugInformation) nachricht);
     		else if (nachricht instanceof VerbindungGeschlossen)
     			return verbindungGeschlossen(brief.absender);
+    		else if (nachricht instanceof KartenTausch)
+				return kartenTausch(brief.absender, (KartenTausch) nachricht);
     		else
     			throw new RuntimeException("Unbekannte Nachricht");
-    	} 	/* Systemnachrichten */ 
+    	} 	/* Systemnachrichten */
     	else if (event instanceof NeueVerbindung)
     			return neueVerbindung((NeueVerbindung) event);
-    	
-    
+
+
     	return null;
     }
-	
+
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
-	
+
+	Zustand kartenTausch(EndPunkt absender, KartenTausch tausch) {
+		return keinUebergang();
+    }
+
 	Zustand verbindungGeschlossen(EndPunkt absender) {
     	return keinUebergang();
     }
@@ -72,7 +79,7 @@ public abstract class AktiverServerZustand extends AktiverZustand {
     	throw new KeinUebergangException("Kein Übergang definiert in state "
     	                                 + this);
     }
-	
+
 	/* (non-Javadoc)
 	 * @see dienste.automat.zustaende.Zustand#setAutomat(dienste.automat.Automat)
 	 */

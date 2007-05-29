@@ -13,19 +13,19 @@ import dienste.automat.zustaende.Zustand;
 public class StarteSpiel extends PassiverServerZustand {
     public Zustand handle() {
 		Spielerschaft spielerschaft = automat.spielerschaft;
-		
-		Spiel spiel = new Spiel();		
-		
+
+		Spiel spiel = new Spiel();
+
 		for (Spieler spieler : spielerschaft) {
 			spiel.fuegeHinzu(spieler.name);
 		}
 
 		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getStringArray());
-		
+
 		spielerschaft.broadcast(ssn);
-		
+
         spielerschaft.getAktuellerSpieler().endpunkt.sende(new ZugAufforderung());
 
-		return automat.getZustand(SpieleSpiel.class);
+		return automat.getZustand(StarteRunde.class);
 	}
 }
