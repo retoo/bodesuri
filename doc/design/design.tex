@@ -18,6 +18,8 @@ Bodesuri ist über mehrere Rechner verteilt. Es gibt vier Clients und einen Serv
 
 Die Grundbausteine der Kommunikation zwischen Client und Server sind Zug und Zuginformation. Der Server sendet dem Spieler, der am Zug ist, eine Zugaufforderung. Auf die antwortet der Spieler mit einem Zug, welcher den Spieler, die gezogene Karte und die Bewegung der Figuren enthält. Der Server verteilt dann diese Informationen als Zuginformation an alle Spieler, wie man in Abbildung~\vref{fig:client_server} sehen kann.
 
+\textbf{FIXME: nochamls ein Blick drauf werfen}
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7 \textwidth]{client_server}
@@ -25,7 +27,7 @@ Die Grundbausteine der Kommunikation zwischen Client und Server sind Zug und Zug
 	\label{fig:client_server}
 \end{figure}
 
-Die Validierung der gespielten Züge geschieht beim Client, der Server ist zuständig für den Spielablauf.
+Die Validierung der gespielten Züge geschieht auf dem Client, der Server ist zuständig für die Koordination des Spielablaufs und für die Kommunikation zwischen den Spielern.
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
@@ -34,6 +36,10 @@ Die Validierung der gespielten Züge geschieht beim Client, der Server ist zust�
 \label{ssub:zustandsautomat}
 Da unser Spiel einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite hat. Und der grösste Teil der Abläufe von Events im Userinterface oder über das Netzwerk eingetroffene Nachrichten ausgelöst werden. Haben wir uns entschlossen den Spielablauf in einem Zustandautomaten zu verpacken.
 Damit ist es möglich den Programmablauf, der sonst in komplexen nacheinander aufzurufenden Programmcode verpackt wäre in verschiedene Klassen auszulagern und den Gap zwischen dem Code und in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
+
+
+\textbf{FIXME: Kommasetzung ist falsch}
+
 % subparagraph zustandsautomat (end)
 
 \subparagraph{Layers} % (fold)
@@ -477,7 +483,7 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 % subsection prozesse_threads (end)
 
 \clearpage
-\section{Zustände} % (fold)
+\section{Spielablauf \& -Zustände} % (fold)
 \label{spielzustaende_nachrichten}
 \subsection{Zustände Client} % (fold)
 \label{sub:zustände_client}
@@ -492,13 +498,14 @@ Abbildung~\vref{fig:dienste_client} zeigt alle möglichen Zustände des Clients.
 \subsection{Zustände Server} % (fold)
 \label{sub:zustände_server}
 
+Abbildung~\vref{fig:dienste_server} zeigt den Ablauf der Zustände des Servers.
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{zd_applikation_bodesuriserver}
 	\caption{Zustandsdiagramm des Servers}
 	\label{fig:dienste_client}
 \end{figure}
-
 
 \subsubsection{ServerStart} % (fold)
 \label{ssub:serverStart}
@@ -528,7 +535,7 @@ Eine neue Runde wird gestartet und mit der Nachricht RundenStart den Spielern mi
 
 \subsubsection{KartenTauschen} % (fold)
 \label{ssub:kartentauschen}
-Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht TauscheKarte gemeldet haben. Anschliessend wird die getauschte Karte mit demselben Event dem Partner gemeldet.
+Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht KartenTausch gemeldet haben. Anschliessend wird die getauschte Karte mit demselben Event dem Partner gemeldet.
 
 % subsubsection kartentauschen (end)
 
@@ -554,13 +561,42 @@ Der erfasste Zug wird auf Richtigkeit geprüft und anschliessend allen Spielern 
 \label{ssub:zugabschluss}
 Server schliesst den Zug formell ab. Es wird geprüft ob gegebenenfalls das Spiel beziehungsweise die Runde abgeschlossen ist und wechselt in den Zustand SpielEnde respektive RundenStart. Ist weder Spiel noch Runde fertig wird in den Zustand StartZug gewechselt.
 
-% subsubsection zugabschluss (end)
+\subsubsection{Spielende} % (fold)
+\label{ssub:spielende}
 
-% subsection zustände_server (end)
+Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteilt. 
 
-% subsubsection subsubsection_name (end)
+\subsection{Nachrichten und Events} % (fold)
+\label{sub:nachrichten_und_events}
 
-% subsection zustände_client (end)
+
+\subsubsection{Events} % (fold)
+\label{ssub:events}
+
+\begin{itemize}
+	\item VerbindeEvent
+	\item KarteGewaehltEvent
+	\item BewegungEingegebenEvent
+	\item PartnerWahlEvent
+\end{itemize}
+
+% subsubsection events (end)
+
+\subsubsection{Nachrichten} % (fold)
+\label{ssub:nachrichten}
+
+\begin{itemize}
+	\item Spielbeitreten
+	\item Beitrittsbestätigung
+	\item SpielStartNachricht
+	\item SpielVollNachricht
+	\item ZugAuffoderung
+	\item ZugInformation
+	\item ChatNachricht
+	\item RundenStart
+	\item KartenTausch
+	\item SpielEnde
+\end{itemize}
 
 \clearpage
 \section{Dynamische Abläufe} % (fold)
