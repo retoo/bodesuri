@@ -36,8 +36,8 @@ public class Figur2d extends JLabel implements Observer {
      * OBSERVER-PATTERN: OBSERVER
      * überschreibt <code>update()</code> Methode des Observer.
      *
-     * @param observable Zu observierendes Objekt
-     * @param object Objekt
+     * @param o Zu observierendes Objekt
+     * @param arg Objekt
      */
 	public void update(Observable o, Object arg) {
 		if (arg instanceof Feld) {
