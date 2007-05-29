@@ -16,9 +16,7 @@
 
 Bodesuri ist über mehrere Rechner verteilt. Es gibt vier Clients und einen Server pro Spiel. Der Client und der Server sind getrennte Programme, welche aber eine gemeinsame Codebasis haben.
 
-Die Grundbausteine der Kommunikation zwischen Client und Server sind Zug und Zuginformation. Der Server sendet dem Spieler, der am Zug ist, eine Zugaufforderung. Auf die antwortet der Spieler mit einem Zug, welcher den Spieler, die gezogene Karte und die Bewegung der Figuren enthält. Der Server verteilt dann diese Informationen als Zuginformation an alle Spieler, wie man in Abbildung~\vref{fig:client_server} sehen kann.
-
-\textbf{FIXME: nochamls ein Blick drauf werfen}
+Zwischen Client und Server werden Nachrichten verschiedener Typen zur Synchronisation ausgetauscht. Ein Beispiel anhand der Züge: Der Server sendet dem Spieler, der am Zug ist, eine Zugaufforderung. Auf die antwortet der Spieler mit einem Zug, welcher den Spieler, die gezogene Karte und die Bewegung der Figuren enthält. Der Server verteilt dann diese Informationen als Zuginformation an alle Spieler, wie man in Abbildung~\vref{fig:client_server} sehen kann.
 
 \begin{figure}[h]
 	\centering
@@ -34,12 +32,8 @@ Die Validierung der gespielten Züge geschieht auf dem Client, der Server ist zu
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
 \subparagraph{Zustandsautomat} % (fold)
 \label{ssub:zustandsautomat}
-Da unser Spiel einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite hat. Und der grösste Teil der Abläufe von Events im Userinterface oder über das Netzwerk eingetroffene Nachrichten ausgelöst werden. Haben wir uns entschlossen den Spielablauf in einem Zustandautomaten zu verpacken.
+Da unser Spiel einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite hat, und der grösste Teil der Abläufe von Events im Userinterface oder über das Netzwerk eingetroffene Nachrichten ausgelöst werden, haben wir uns entschlossen den Spielablauf in einem Zustandautomaten zu verpacken.
 Damit ist es möglich den Programmablauf, der sonst in komplexen nacheinander aufzurufenden Programmcode verpackt wäre in verschiedene Klassen auszulagern und den Gap zwischen dem Code und in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
-
-
-\textbf{FIXME: Kommasetzung ist falsch}
-
 % subparagraph zustandsautomat (end)
 
 \subparagraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
