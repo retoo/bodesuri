@@ -16,6 +16,7 @@ public class EndPunkt {
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
+	/* FIXME: das muss kein feld sein */
 	private BriefKastenInterface briefkasten;
 
 	/**
