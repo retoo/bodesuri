@@ -42,22 +42,17 @@ Damit ist es möglich den Programmablauf, der sonst in komplexen nacheinander au
 
 % subparagraph zustandsautomat (end)
 
-\subparagraph{Layers} % (fold)
-\label{ssub:layers}
-\textbf{TODO!!!!}
-% subparagraph layers (end)
-
-
-\paragraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
+\subparagraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
-% paragraph multitier_architektur_des_servers (end)
-\paragraph{Applikationsschicht}\label{ssub:applikationsschicht} % (fold)
+% subparagraph multitier_architektur_des_servers (end)
+\subparagraph{Applikationsschicht}\label{ssub:applikationsschicht} % (fold)
 Die Applikationsschicht wurde eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (z.\,B. für Zustände) gibt. Sie hat folgende Hauptaufgaben:
 	\begin{itemize}
 		\item Zustandssynchronisation als erste Vorstufe der Netzwerkkommunikation. Spezifische Nachrichten werden eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann über das Netzwerk verteilt und empfangen zu werden.
 		\item Controller-Komponente des MVC-Konzeptes, welche die Ereignisse im UI abfängt und verarbeitet, sowie Änderungen in der Problem Domain an das UI weiterleitet.
 	\end{itemize}
-% paragraph applikationsschicht (end)
+% subparagraph applikationsschicht (end)
+
 % paragraph designentscheidungen (end)
 \paragraph{Verwendete Entwicklungswerkzeuge}\label{ssub:verwendete_entwicklungswerkzeuge} % (fold)
 Als Entwicklungswerkzeug wird MagicDraw UML verwendet. Es arbeitet Plattformunabhängig (Java), ist einfach handhabbar und hat sehr gute Funktionalitäten zur Code-Generierung. Die erzeugten Dateien lassen sich im XML-Format im SVN-Repository verwalten. Ein Nachteil ist, dass immer nur eine Person gleichzeitig an einem Projekt/Modul arbeiten kann, da MagicDraw UML keine SVN-Integration bietet und Konflikte nicht aufgelöst werden können.
@@ -73,8 +68,6 @@ Die Aufteilung des Teams ist aus den Arbeitspaketen in der Excel-Zeiterfassung e
 
 \subsection{Logische Sicht} % (fold)
 \label{sub:logische_sicht}
-
-%Die logische Sicht beschreibt die Unterteilung der Architektur in die Schichten, Tiers, Packages und Klassen. TODO: Hier fehlt doch Text!!!
 
 \subsubsection{Schichtenarchitektur} % (fold)
 \label{sub:schichtenarchitektur}
