@@ -12,17 +12,20 @@ import pd.spieler.Spieler;
  */
 public class ZugEingabe implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Spieler spieler;
 	private Karte karte;
 	private Bewegung bewegung;
-	
+
 	/**
 	 * Erstellt eine Zugeingabe.
-	 * 
-	 * @param spieler Spieler, der diesen Zug ausführt
-	 * @param karte Karte, mit der gespielt wird
-	 * @param bewegung Bewegung (Start, Ziel) des Zuges
+	 *
+	 * @param spieler
+	 *            Spieler, der diesen Zug ausführt
+	 * @param karte
+	 *            Karte, mit der gespielt wird
+	 * @param bewegung
+	 *            Bewegung (Start, Ziel) des Zuges
 	 */
 	public ZugEingabe(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this.spieler = spieler;
@@ -32,11 +35,12 @@ public class ZugEingabe implements Serializable {
 
 	/**
 	 * Validiert Zugeingabe.
-	 * 
+	 *
 	 * @see Regel#validiere(ZugEingabe)
-	 * 
+	 *
 	 * @return Zug, der ausgeführt werden kann
-	 * @throws RegelVerstoss Bei Regelwidrigkeit geworfen
+	 * @throws RegelVerstoss
+	 *             Bei Regelwidrigkeit geworfen
 	 */
 	public Zug validiere() throws RegelVerstoss {
 		Regel regel = karte.getRegel();
@@ -65,5 +69,14 @@ public class ZugEingabe implements Serializable {
 	 */
 	public Bewegung getBewegung() {
 		return bewegung;
+	}
+
+	/* FIXME: Robin bitter revieween */
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return "Zug: Spieler " + getSpieler() + " fährt mit der Karte "
+		       + getKarte() + " die Bewegung " + getBewegung();
 	}
 }
