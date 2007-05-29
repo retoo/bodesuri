@@ -409,7 +409,7 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 \paragraph{Timer(s)} % (fold)
 \label{ssub:timer_s_}
 
-Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie werden bei Bedarf gestartet und lössen nach einer definierten Zeitspanne einen Event aus bzw. werden vom Anwender wieder gestoppt.
+Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie werden bei Bedarf gestartet und lösen nach einer definierten Zeitspanne einen Event aus bzw. werden vom Anwender wieder gestoppt.
 
 \begin{tabular}{@{} l p{12.5cm}}
 \textbf{Klasse}       & Timer \\
@@ -508,14 +508,35 @@ Sobald alle Spieler komplett wird in den Zustand StarteSpiel gewechselt.
 
 \subsubsection{StarteSpiel} % (fold)
 \label{ssub:startespiel}
-Das Spiel wird gestartet, den Spielen wird 
-
-
+Den Spielern wird der Spielstart mit der SpielStart Nachricht angekündet. Die Partnerschaften werden, wie auf Abbildung~\vref{fig:dienste_partner} gezeigt, zwischen den Spielern ausgehandelt.
 
 % subsubsection startespiel (end)
 
-% subsection zustände_server (end)
+\subsubsection{StartRunde} % (fold)
+\label{ssub:startrunde}
+Eine neue Runde wird gestartet und mit der Nachricht RundenStart den Spielern mitgeteilt. Es werden allen Spielern Karten ausgeteilt.
 
+% subsubsection startrunde (end)
+
+\subsubsection{KartenTauschen} % (fold)
+\label{ssub:kartentauschen}
+Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht TauscheKarte gemeldet haben. Anschliessend wird die getauschte Karte mit demselben Event dem Partner gemeldet.
+
+% subsubsection kartentauschen (end)
+
+\subsubsection{StarteZug} % (fold)
+\label{ssub:startezug}
+Ein Zug wird gestartet. Der Server bestimmt welcher Spieler an der Reihe ist teilt diesem dies mit der Nachricht Zugaufforderung mit. 
+
+% subsubsection startezug (end)
+
+\subsubsection{WarteAufZug} % (fold)
+\label{ssub:warteaufzug}
+Der Server wartet auf die Erfassung des Zuges durch den Spieler. Sobald dieser mitgeteilt wurde prüft der Server diesen auf Richtigkeit und verteilt ihn anschliessend an alle Spieler.
+
+% subsubsection warteaufzug (end)
+
+% subsection zustände_server (end)
 
 % subsubsection subsubsection_name (end)
 
@@ -607,7 +628,7 @@ Die Abildung~\vref{fig:dienste_partnerschaft_normal} zeigt Ablauf des Bildens vo
 \clearpage
 \subsection{Chat} % (fold)
 \label{sub:nachrichtenaustausch_zwischen_client_und_server}
-Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Nachrichtenaustauschen zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
+Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Austausches von Nachrichten zwischen den Clients und dem Server am Beispiel einer Chat-Nachricht.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_chat}
