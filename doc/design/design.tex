@@ -32,18 +32,19 @@ Die Validierung der gespielten Züge geschieht auf dem Client, der Server ist zu
 \paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
 \subparagraph{Zustandsautomat} % (fold)
 \label{ssub:zustandsautomat}
-Da unser Spiel einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite hat, und der grösste Teil der Abläufe von Events im Userinterface oder über das Netzwerk eingetroffene Nachrichten ausgelöst werden, haben wir uns entschlossen den Spielablauf in einem Zustandautomaten zu verpacken.
-Damit ist es möglich den Programmablauf, der sonst in komplexen nacheinander aufzurufenden Programmcode verpackt wäre in verschiedene Klassen auszulagern und den Gap zwischen dem Code und in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
+Unser Spiel hat einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite. Der grösste Teil der Abläufe wird von Events im Userinterface oder von Netzwerk-Nachrichten ausgelöst. Darum haben wir uns entschlossen, den Spielablauf in einem Zustandsautomaten zu verpacken.
+
+Damit ist es möglich, den Programmablauf, der sonst in komplexem nacheinander aufzurufendem Programmcode verpackt wäre, in verschiedene Klassen auszulagern und den \emph{Gap} zwischen dem Code und den in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
 % subparagraph zustandsautomat (end)
 
-\subparagraph{Multitier Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
+\subparagraph{Multitier-Architektur des Servers}\label{ssub:multitier_architektur_des_servers} % (fold)
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
 % subparagraph multitier_architektur_des_servers (end)
 \subparagraph{Applikationsschicht}\label{ssub:applikationsschicht} % (fold)
 Die Applikationsschicht wurde eingeführt, weil es wegen der Netzwerkfähigkeit viel Synchronisationsarbeit (z.\,B. für Zustände) gibt. Sie hat folgende Hauptaufgaben:
 	\begin{itemize}
 		\item Zustandssynchronisation als erste Vorstufe der Netzwerkkommunikation. Spezifische Nachrichten werden eingepackt, an die darunterliegenden Schichten weitergeleitet, um dann über das Netzwerk verteilt und empfangen zu werden.
-		\item Controller-Komponente des MVC-Konzeptes, welche die Ereignisse im UI abfängt und verarbeitet, sowie Änderungen in der Problem Domain an das UI weiterleitet.
+		\item Controller-Komponente des MVC-Konzeptes, welche die Ereignisse im UI abfängt und verarbeitet, sowie Änderungen in der Problem-Domain an das UI weiterleitet.
 	\end{itemize}
 % subparagraph applikationsschicht (end)
 
@@ -121,7 +122,7 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 \subsubsection{Package pd.regelsystem, pd.zugsystem} % (fold)
 \label{ssub:package_pd_regelsystem}
 \subparagraph{Beschreibung}
-Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnet die daraus resultierenden Aktionen in der Problem Domain (Figur von Feld X auf Feld Y verschieben).
+Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnet die daraus resultierenden Aktionen in der Problem-Domain (Figur von Feld X auf Feld Y verschieben).
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -143,7 +144,7 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \subsubsection{Package pd.brett, pd.spieler} % (fold)
 \label{ssub:package_pd_brett}
 \subparagraph{Beschreibung}
-Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion des Bretts (welches die Felder enthält), der Figuren und des Spielers in der Problem Domain dar.
+Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion des Bretts (welches die Felder enthält), der Figuren und des Spielers in der Problem-Domain dar.
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
@@ -164,11 +165,11 @@ Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion d
 \subsubsection{Package pd.serialisierung}
 
 \subparagraph{Beschreibung}
-Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung von Klassen der Problem Domain zu ermöglichen.
+Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung von Klassen der Problem-Domain zu ermöglichen.
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
-	\item Bietet eine Basisklasse (BodesuriCodierbaresObjekt) für die Klassen der Problem Domain an, die serialisiert werden können.
+	\item Bietet eine Basisklasse (BodesuriCodierbaresObjekt) für die Klassen der Problem-Domain an, die serialisiert werden können.
 \end{itemize}
 
 \begin{figure}[h]
@@ -260,12 +261,12 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 
 \begin{description}
 	\item[ui.lobby] Ist für die Darstellung der Lobby verantwortlich.
-	\item[ui.ressourcen] Es beinhaltet die Resourcen, die für das Optische benötigt wird.
-	\item[ui.spiel] Wird verwendet um die Views des Spieles zusammen zu führen.
+	\item[ui.ressourcen] Es beinhaltet die Ressourcen, die für das Optische benötigt werden.
+	\item[ui.spiel] Wird verwendet um die Views des Spieles zusammenzuführen.
 	\item[ui.spiel.brett] Kümmert sich um die Darstellung des Brettes.
 	\item[ui.spiel.chat] Dient zur Kommunikation für die einzelnen Spieler untereinander.
-	\item[ui.spiel.info] Stellt das View dar, das die Spielerinfos beinhalett.
-	\item[ui.verbinden] Dient zur Herstellung der Verbindung mit dem Server.
+	\item[ui.spiel.info] Stellt die View dar, das die Spielerinfos beinhaltet.
+	\item[ui.verbinden] Dienst zur Erstellung der Verbindung mit dem Server.
 \end{description}
 
 \begin{figure}[h]
@@ -279,7 +280,7 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 \subsubsection{Package applikation} % (fold)
 \label{ssub:package_applikation}
 \subparagraph{Beschreibung}
-Die Applikationsschicht ist für die Zustandsynchronisation (Spielstände usw.) verantwortlich. 
+Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsubsection{Package applikation.zugentgegennahme} % (fold)
 \label{ssub:package_applikation_zugentgegennahme}
@@ -332,7 +333,7 @@ Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten A
 \label{ssub:package_applikation_server} % (fold)
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
-Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen um den Spielablauf zu steuern aus.
+Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
 % subparagraph beschreibung (end)
 
 % subsubsection package_applikation_server (end)
@@ -361,7 +362,7 @@ Dieses Package beinhaltet die Events, die eintreten können und um deren Behandl
 \label{ssub:package_applikation_nachrichten}
 \subparagraph{Beschreibung}
 \label{ssub:beschreibung}
-Dieses Package beinhaltet alle Möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server dienen.
+Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{kd_applikation_nachricht}
@@ -373,7 +374,7 @@ Dieses Package beinhaltet alle Möglichen Nachrichtentypen, die zur Kommunikatio
 \subsection{Prozesse \& Threads} % (fold)
 \label{sub:prozesse_threads}
 
-Ein reguläres Bodesuri Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Die Clients kommunizieren über je einen TCP Socket mit dem Server.
+Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Die Clients kommunizieren über je einen TCP-Socket mit dem Server.
 
 \begin{figure}[h]
 	\centering
@@ -391,7 +392,7 @@ Ein reguläres Bodesuri Spiel besteht aus fünf eigenständigen Komponenten. Die
 \paragraph{Main-Thread} % (fold)
 \label{ssub:main_thread}
 
-Der Main-Thread des Clienten ist für die geordnete Koordination zwischen dem User (via GUI) und den anderen Clienten (via Server) zuständig.
+Der Main-Thread des Clients ist für die geordnete Koordination zwischen dem Spieler (via GUI) und den anderen Clients (via Server) zuständig.
 
 
 \begin{tabular}{@{} l p{12.5cm}}
@@ -426,7 +427,7 @@ Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie 
 \textbf{Klasse}       & Timer \\
 \textbf{Anzahl}       & 0..* \\
 \textbf{Gestartet}    & Bei Bedarf durch den Main-Thread \\
-\textbf{Beendet}      & Entweder durch sich selber wenn der Timer ablief oder auf Anweisung des Mainthreads wenn der Timer nicht mehr benötigt wird. 
+\textbf{Beendet}      & Entweder durch sich selber wenn der Timer ablief oder auf Anweisung des Main-Threads wenn der Timer nicht mehr benötigt wird. 
 \end{tabular}
 
 % paragraph timer_s_ (end)
@@ -434,7 +435,7 @@ Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie 
 \paragraph{Swing-Threads} % (fold)
 \label{ssub:swing_threads}
 
-Swing startet intern verschiedne Threads. Die genauen Abläufe und Struktur diese Threads sind für dieses Projekt nicht relevant.
+Swing startet intern verschiedene Threads. Die genauen Abläufe und Struktur dieser Threads sind für dieses Projekt nicht relevant.
 
 \begin{tabular}{@{} l p{12.5cm}}
 \textbf{Klasse}       & AWK-AppKit \\
@@ -455,7 +456,7 @@ Der Server ist für die Koordination der einzelnen Clients zuständig.
 \textbf{Klasse}       & BodesuriServer \\
 \textbf{Anzahl}       & 1 \\
 \textbf{Gestartet}    & bei Prozessbeginn \\
-\textbf{Beendet}      & Bei Spielende oder bei schweren Fehler
+\textbf{Beendet}      & Bei Spielende oder bei schweren Fehlern
 \end{tabular}
 
 % subsubsection server (end)
@@ -474,7 +475,7 @@ Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen
 
 % paragraph daemon (end)
 
-\paragraph{Empfänger Thread} % (fold)
+\paragraph{Empfänger-Thread} % (fold)
 \label{ssub:empfänger_thread}
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
@@ -489,7 +490,7 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 % subsection prozesse_threads (end)
 
 \clearpage
-\section{Spielablauf \& -Zustände} % (fold)
+\section{Spielablauf \& -zustände} % (fold)
 \label{spielzustaende_nachrichten}
 \subsection{Zustände Client} % (fold)
 \label{sub:zustände_client}
@@ -502,7 +503,7 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 
 \subsubsection{ProgrammStart} % (fold)
 \label{ssub:programmstart}
-Zustand in welcher dem Automat beim Start ist. Öffnet den VerbindenView und geht direkt in den Zustand VerbindungErfassen über.
+Zustand in welchem der Automat beim Start ist. Öffnet den VerbindenView und geht direkt in den Zustand VerbindungErfassen über.
 % subsubsection programmstart (end)
 
 \subsubsection{VerbindungErfassen} % (fold)
@@ -522,7 +523,7 @@ Zustand in welchem die Lobby (LobbyView) gestartet wird. Geht direkt in Lobby ü
 
 \subsubsection{Lobby} % (fold)
 \label{ssub:lobby}
-Zustand wennn der Spieler in der Lobby ist. Wenn eine SpielStartNachricht eintrifft wird der Zustand SpielStart aufgerufen.
+Zustand wennn der Spieler in der Lobby ist. Wenn eine SpielStartNachricht eintrifft, wird der Zustand SpielStart aufgerufen.
 % subsubsection lobby (end)
 
 \subsubsection{SpielStart} % (fold)
@@ -537,7 +538,7 @@ Zustand in welchem eine neue Runde beginnt. Zeigt die Karten an und geht in den 
 
 \subsubsection{KarteTauschen} % (fold)
 \label{ssub:kartetauschen}
-Zustand in welchem der Client wartet bis der Spieler gewählt hat welche Karte er seinem Mitspieler geben will und die Karte vom Mitspieler erhält. Geht in den Zustand NichtAmZug über.
+Zustand in welchem der Client wartet bis der Spieler gewählt hat, welche Karte er seinem Mitspieler geben will und die Karte vom Mitspieler erhält. Geht in den Zustand NichtAmZug über.
 % subsubsection kartetauschen (end)
 
 \subsubsection{NichtAmZug} % (fold)
@@ -553,7 +554,7 @@ Zustand wenn der Spieler nicht am Zug ist.
 
 \subsubsection{AmZug} % (fold)
 \label{ssub:amzug}
-Zustand in welchem der Spieler dran kommt. Geht direkt in KarteWaehlen über.
+Zustand in welchem der Spieler zum Zug kommt. Geht direkt in KarteWaehlen über.
 % subsubsection amzug (end)
 
 \subsubsection{KarteWaehlen} % (fold)
@@ -585,21 +586,21 @@ Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zuständ
 
 \subsubsection{ServerStart} % (fold)
 \label{ssub:serverStart}
-Server wird gestartet. Der TCP Daemon wird initialisiert und es werden die notwenigen Vorbereitungen getroffen um Spieler zu akzeptieren.
+Server wird gestartet. Der TCP-Daemon wird initialisiert und es werden die notwenigen Vorbereitungen getroffen um Spieler zu akzeptieren.
 
 % subsubsection spielstart (end)
 
 \subsubsection{EmpfangeSpieler} % (fold)
 \label{ssub:empfangespieler}
-Neue Spieler können mittels der Nachricht SpielBeitreten dem Spiel beitreten. Den beigetretenen Spieler wird über die Nachricht BeitrittBestätigung der Beitritt bestätigt.
+Neue Spieler können mittels der Nachricht SpielBeitreten dem Spiel beitreten. Dem beigetretenen Spieler wird mit der Nachricht BeitrittBestätigung der Beitritt bestätigt.
 
-Sobald alle Spieler komplett wird in den Zustand StarteSpiel gewechselt.
+Sobald alle Spieler komplett sind, wird in den Zustand StarteSpiel gewechselt.
 
 % subsubsection empfangespieler (end)
 
 \subsubsection{StarteSpiel} % (fold)
 \label{ssub:startespiel}
-Den Spielern wird der Spielstart mit der SpielStart Nachricht angekündet. Die Partnerschaften werden, wie auf Abbildung~\vref{fig:dienste_partner} gezeigt, zwischen den Spielern ausgehandelt.
+Den Spielern wird der Spielstart mit der Nachricht SpielStart angekündet. Die Partnerschaften werden, wie auf Abbildung~\vref{fig:dienste_partner} gezeigt, zwischen den Spielern ausgehandelt.
 
 % subsubsection startespiel (end)
 
@@ -611,39 +612,37 @@ Eine neue Runde wird gestartet und mit der Nachricht RundenStart den Spielern mi
 
 \subsubsection{KartenTauschen} % (fold)
 \label{ssub:kartentauschen}
-Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht KartenTausch gemeldet haben. Anschliessend wird die getauschte Karte mit demselben Event dem Partner gemeldet.
+Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht KartenTausch gemeldet haben. Anschliessend wird die getauschte Karte mit derselben Nachricht dem Partner gemeldet.
 
 % subsubsection kartentauschen (end)
 
 \subsubsection{StarteZug} % (fold)
 \label{ssub:startezug}
-Ein Zug wird gestartet. Der Server bestimmt welcher Spieler an der Reihe ist teilt diesem dies mit der Nachricht Zugaufforderung mit. 
+Ein Zug wird gestartet. Der Server bestimmt welcher Spieler an der Reihe ist und teilt ihm dies mit der Nachricht Zugaufforderung mit. 
 
 % subsubsection startezug (end)
 
 \subsubsection{WarteAufZug} % (fold)
 \label{ssub:warteaufzug}
-Der Server wartet auf die Erfassung des Zuges durch den Spieler. Sobald dieser mitgeteilt wurde wechselt der Server in den Zustand VersendeZug 
+Der Server wartet, bis der Spieler seinen Zug erfasst hat. Sobald dieser mitgeteilt wurde, wechselt der Server in den Zustand VersendeZug.
 % subsubsection warteaufzug (end)
 
 \subsubsection{SendeZug} % (fold)
 \label{ssub:sendezug}
-
 Der erfasste Zug wird auf Richtigkeit geprüft und anschliessend allen Spielern mitgeteilt.
 
 % subsubsection sendezug (end)
 
 \subsubsection{ZugAbschluss} % (fold)
 \label{ssub:zugabschluss}
-Server schliesst den Zug formell ab. Es wird geprüft ob gegebenenfalls das Spiel beziehungsweise die Runde abgeschlossen ist und wechselt in den Zustand SpielEnde respektive RundenStart. Ist weder Spiel noch Runde fertig wird in den Zustand StartZug gewechselt.
+Server schliesst den Zug formell ab. Es wird geprüft, ob das Spiel beziehungsweise die Runde abgeschlossen ist und in den Zustand SpielEnde respektive RundenStart gewechselt. Ist weder das Spiel noch die Runde fertig wird in den Zustand StartZug gewechselt.
 
 \subsubsection{Spielende} % (fold)
 \label{ssub:spielende}
-
-Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteilt. 
+Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteilt.
 
 \clearpage
-\subsection{Nachrichten und Events} % (fold)
+\subsection{Nachrichten \& Events} % (fold)
 \label{sub:nachrichten_und_events}
 
 
@@ -663,8 +662,8 @@ Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteil
 \label{ssub:nachrichten}
 
 \begin{itemize}
-	\item Spielbeitreten
-	\item Beitrittsbestätigung
+	\item SpielBeitreten
+	\item BeitrittsBestaetigung
 	\item SpielStartNachricht
 	\item SpielVollNachricht
 	\item ZugAuffoderung
@@ -680,7 +679,7 @@ Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteil
 \label{dynamische_ablauefe}
 \subsection{Nachrichtenfluss durch die Schichten} % (fold)
 \label{sub:nachrichtenfluss_durch_die_schichten}
-Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigten die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
+Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigen die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{sd_verbindung_erstellen_client}
@@ -729,7 +728,7 @@ Abbildung~\vref{fig:pd_validierung} zeigt die Validierung der Spielzüge.
 \clearpage
 \subsection{Serialiserung} % (fold)
 \label{sub:serialiserung}
-Abbildung~\vref{fig:dienste_serialisierung} zeigt der Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können.
+Abbildung~\vref{fig:dienste_serialisierung} zeigt den Ablauf bei der Serialisierung von Objekten, damit sie über das Netzwerk übertragen werden können.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_serialisierung}
@@ -745,7 +744,7 @@ Abbildung~\vref{fig:dienste_partner} zeigt die möglichen Zustände beim Finden 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_partner}
-	\caption{Partner Verhalten}
+	\caption{Zustandsdiagramm Partnerschaften bilden}
 	\label{fig:dienste_partner}
 \end{figure}
 
@@ -753,7 +752,7 @@ Die Abildung~\vref{fig:dienste_partnerschaft_normal} zeigt Ablauf des Bildens vo
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_partnerschaft_normal}
-	\caption{Normale Partnerschaft}
+	\caption{Sequenzdiagramm Partnerschaften bilden}
 	\label{fig:dienste_partnerschaft_normal}
 \end{figure}
 % subsection partnerschaften_bilden (end)
@@ -765,7 +764,7 @@ Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Austausches von Nachrich
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_chat}
-	\caption{Chat Subsystem}
+	\caption{Sequenzdiagramm Chat}
 	\label{fig:dienste_chat}
 \end{figure}
 % subsection nachrichtenaustausch_zwischen_client_und_server (end)
@@ -777,7 +776,7 @@ Abbildung~\vref{fig:dienste_chat} zeigt den Verlauf des Austausches von Nachrich
 \subsection{Verbindung zum Server} % (fold)
 \label{externes_design_verbindung}
 
-Beim Starten des Spiels wird der Spieler aufgefordert, die Serverdaten zur Verbindung eizugeben, sowie seinen Spielernamen.
+Beim Starten des Spiels wird der Spieler aufgefordert, die Serverdaten zur Verbindung und seinen Spielernamen einzugeben.
 
 \begin{figure}[h]
 	\centering
@@ -791,7 +790,7 @@ Beim Starten des Spiels wird der Spieler aufgefordert, die Serverdaten zur Verbi
 \subsection{Lobby} % (fold)
 \label{externes_design_lobby}
 
-In der Lobby können die Spieler einen Partner für das Spiel auswählen. Man wählt den Partner aus und gibt einen Gruppennamen ein. Nun muss nur noch der ausgewählte Partner die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, dem Spiel beizutreten wählt er im Spielstatus das Häkchen "<bereit"> aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten (Priorität 3).
+In der Lobby können die Spieler einen Partner für das Spiel auswählen. Der ausgewählte Partner muss die Anfrage akzeptieren, um die Gruppe zu bilden. Sobald der Spieler bereit ist, das Spiel zu beginnen, wählt er im Spielstatus "<bereit"> aus. In der Zwischenzeit können sich die Spieler im Chat unterhalten.
 
 \begin{figure}[h]
 	\centering
@@ -805,7 +804,13 @@ In der Lobby können die Spieler einen Partner für das Spiel auswählen. Man w�
 \subsection{Spiel} % (fold)
 \label{externes_design_spielbrett}
 
-Das Spiel besteht aus verschiedenen Views. In der BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt. In der SpielerView werden die einzelnen Spieler mit Gruppenzugehörigkeit aufgelistet. Die KartenView beinhaltet die Karten des Spielers. In der ChatView können sich die Spieler unterhalten (Priorität 3).
+Das Spiel besteht aus verschiedenen Views:
+\begin{itemize}
+	\item In der BrettView wird das Spielbrett mit den Feldern und Spielfiguren dargestellt.
+	\item In der SpielerView werden die einzelnen Spieler mit Gruppenzugehörigkeit aufgelistet.
+	\item Die KartenView beinhaltet die Karten des Spielers.
+	\item In der ChatView können sich die Spieler unterhalten.
+\end{itemize}
 
 \begin{figure}[h]
 	\centering
