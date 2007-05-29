@@ -17,7 +17,7 @@ import applikation.events.VerbindeEvent;
 import dienste.automat.EventQueue;
 
 /**
- * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll, 
+ * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll,
  * sowie auch zur Erfassung der Spielerinformationen.
  */
 public class VerbindenView extends JFrame {
@@ -28,18 +28,18 @@ public class VerbindenView extends JFrame {
 	private JTextField spielerName;
 	private EventQueue queue;
 
-	public VerbindenView(EventQueue queue) {
+	public VerbindenView(EventQueue queue, String defaultName) {
 		this.queue = queue;
-		
+
 		setTitle("Bodesuri - Verbinden");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
-		
+
 		setLayout(new GridLayout(4, 2));
 		Dimension groesse = new Dimension(300, 150);
 		setPreferredSize(groesse);
-		
+
 		add(new JLabel("Server:"));
 		hostname = new JTextField("localhost");
 		add(hostname);
@@ -47,7 +47,7 @@ public class VerbindenView extends JFrame {
 		port = new JTextField("7788");
 		add(port);
 		add(new JLabel("Spieler:"));
-		spielerName = new JTextField("Spieler");
+		spielerName = new JTextField(defaultName);
 		add(spielerName);
 
 		JButton ok = new JButton("OK");
@@ -56,15 +56,15 @@ public class VerbindenView extends JFrame {
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
-				
+
 				VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
-				
+
 				VerbindenView.this.queue.enqueue(e);
             }
 		});
-		
+
 		add(ok);
-		
+
 		pack();
 	}
 

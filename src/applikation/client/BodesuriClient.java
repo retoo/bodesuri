@@ -74,11 +74,14 @@ public class BodesuriClient extends Automat {
 	 */
 	public ZugEntgegennahme zugentgegennahme;
 
+	public String defaultName;
+
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
+	 * @param defaultName
 	 *
 	 */
-	public BodesuriClient() {
+	public BodesuriClient(String defaultName) {
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart());
 		registriere(new VerbindungErfassen());
@@ -94,10 +97,13 @@ public class BodesuriClient extends Automat {
 		setStart(ProgrammStart.class);
 
 		this.queue = new EventQueue();
+		this.defaultName = defaultName;
 
 		setEventQuelle(queue);
+	}
 
-
+	public BodesuriClient() {
+		this("Spieler");
 	}
 
 	/* kommt mal in den controller oder geh ganz anders */
