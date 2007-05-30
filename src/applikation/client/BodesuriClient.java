@@ -73,6 +73,9 @@ public class BodesuriClient extends Automat {
 	 * Veweis auf die akutelle zugEntgegennahme
 	 */
 	public ZugEntgegennahme zugentgegennahme;
+	//Wenn wir aufgeben wollen
+	//wird im Subautomat schöner.
+	public Boolean aufgabe;
 
 	public String defaultName;
 

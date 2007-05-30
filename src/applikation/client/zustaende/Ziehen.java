@@ -16,12 +16,14 @@ import dienste.netzwerk.VerbindungWegException;
 public class Ziehen extends AktiverClientZustand {
 	public void entry() {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
+		automat.aufgabe = true;
 	}
 
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
 		//TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
 		//TODO Entry & exit besser nutzen.
 		automat.zugentgegennahme = null;
+		automat.aufgabe = false;
 
 		ZugEingabe zugEingabe = new ZugEingabe(automat.spielerIch,
 		                                       automat.karte, event.bewegung);

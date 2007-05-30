@@ -67,7 +67,7 @@ public class BodesuriView extends JFrame {
 
 		gbc.gridx = 1;
 		gbc.gridy = 1;
-		add(new DeckView(automat.queue), gbc);
+		add(new DeckView(automat), gbc);
 
 		pack();
 
