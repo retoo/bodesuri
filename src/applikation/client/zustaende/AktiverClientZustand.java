@@ -1,6 +1,7 @@
 package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
+import applikation.events.AufgegebenEvent;
 import applikation.events.BewegungEingegebenEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
@@ -68,10 +69,16 @@ public class AktiverClientZustand extends AktiverZustand {
 				return karteGewaehlt((KarteGewaehltEvent) event);
 			else if (event instanceof BewegungEingegebenEvent)
 				return bewegungEingegeben((BewegungEingegebenEvent) event);
+			else if (event instanceof AufgegebenEvent)
+				return  aufgegeben();
 		}
 
 		return super.handle(event);
 	}
+
+	Zustand aufgegeben() {
+		return keinUebergang();
+    }
 
 	Zustand verbinden(VerbindeEvent event) {
 		return keinUebergang();

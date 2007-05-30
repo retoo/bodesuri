@@ -1,6 +1,7 @@
 package applikation.client.zustaende;
 
 import applikation.events.KarteGewaehltEvent;
+import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ChatNachricht;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
@@ -19,5 +20,10 @@ public class KarteWaehlen extends AktiverClientZustand {
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		automat.karte = event.karte;
 		return automat.getZustand(Ziehen.class);
+	}
+	
+	Zustand aufgegeben() {
+		automat.endpunkt.sende(new Aufgabe());
+		return automat.getZustand(NichtAmZug.class);
 	}
 }
