@@ -15,10 +15,11 @@ public class Spielerschaft implements Iterable<Spieler> {
 	private final int anzahlSpieler;
 	private Vector<Spieler> spielers = new Vector<Spieler>();
 	private int aktuellerSpieler;
+	public Runde runde;
 
 	/**
 	 * Erstellt eine neue Spielerschaft.
-	 * 
+	 *
 	 * @param anzahlSpieler
 	 *            Anzahl der Spieler
 	 */
@@ -30,7 +31,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Fügt einen Spieler zur Spielerschaft hinzu
-	 * 
+	 *
 	 * @param spieler
 	 *            neuer Spieler
 	 */
@@ -40,7 +41,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Generiert einen Array der die Namen aller Spieler beinhaltet
-	 * 
+	 *
 	 * @return Array der die Namen aller Spieler beinhaltet
 	 */
 	public String[] getStringArray() {
@@ -54,7 +55,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Sendet die übergebene Nachricht an alle Spieler
-	 * 
+	 *
 	 * @param nachricht
 	 *            zu versendende Nachricht
 	 */
@@ -70,7 +71,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Sendet den übergebenen String als Chatnachricht an alle Spieler
-	 * 
+	 *
 	 * @param msg
 	 *            zu sendende Textmitteilung
 	 */
@@ -80,7 +81,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Anzahl der Spieler
-	 * 
+	 *
 	 * @return Anzahl der Spieler
 	 */
 	public int getAnzahlSpieler() {
@@ -89,16 +90,16 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Anzahl der offenen Spielposten
-	 * 
+	 *
 	 * @return Anzahl der noch offenen Spielslots
 	 */
 	public int getAnzahlOffen() {
 		return anzahlSpieler - getAnzahlSpieler();
 	}
-	
+
 	/**
 	 * Prüft ob Spiel komplett ist
-	 * 
+	 *
 	 * @return true falls Spiel komplett
 	 */
 	public boolean isKomplett() {
@@ -121,9 +122,9 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Iterator welcher ermöglicht über alle Spieler zu iterieren.
-	 * 
+	 *
 	 * @see java.lang.Iterable#iterator()
-	 * @return spieler-iterator
+	 * @return spielers-iterator
 	 */
 	public Iterator<Spieler> iterator() {
 		return spielers.iterator();
@@ -131,10 +132,18 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/**
 	 * Liefert aktuellen Spieler
-	 * 
+	 *
 	 * @return der zurzeit spielende Spieler
 	 */
 	public Spieler getAktuellerSpieler() {
 		return spielers.get(aktuellerSpieler);
 	}
+
+	public Runde starteRunde() {
+		runde = new Runde();
+
+		runde.spielers.addAll(spielers);
+
+	    return runde;
+    }
 }

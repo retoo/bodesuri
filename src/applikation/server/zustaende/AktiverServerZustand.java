@@ -1,5 +1,6 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
@@ -42,6 +43,8 @@ public abstract class AktiverServerZustand extends AktiverZustand {
     			return verbindungGeschlossen(brief.absender);
     		else if (nachricht instanceof KartenTausch)
 				return kartenTausch(brief.absender, (KartenTausch) nachricht);
+    		else if (nachricht instanceof Aufgabe)
+    			return aufgabe(brief.absender, (Aufgabe) nachricht);
     		else
     			throw new RuntimeException("Unbekannte Nachricht");
     	} 	/* Systemnachrichten */
@@ -53,6 +56,10 @@ public abstract class AktiverServerZustand extends AktiverZustand {
     }
 
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
+
+	Zustand aufgabe(EndPunkt absender, Aufgabe aufgabe) {
+	    return keinUebergang();
+    }
 
 	Zustand kartenTausch(EndPunkt absender, KartenTausch tausch) {
 		return keinUebergang();

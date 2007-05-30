@@ -37,10 +37,6 @@ public class BodesuriEntwickler {
 			}, "Spieler " + i); /* evil.. :P */
 
 			client.start();
-
 		}
-
-
 	}
-
 }

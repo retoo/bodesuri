@@ -2,7 +2,6 @@ package applikation.server.zustaende;
 
 import pd.Spiel;
 import applikation.nachrichten.SpielStartNachricht;
-import applikation.nachrichten.ZugAufforderung;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
 import dienste.automat.zustaende.Zustand;
@@ -11,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
  * Passiver Zustand der das Spiel initialisiert.
  */
 public class StarteSpiel extends PassiverServerZustand {
-    public Zustand handle() {
+	public Zustand handle() {
 		Spielerschaft spielerschaft = automat.spielerschaft;
 
 		Spiel spiel = new Spiel();
@@ -24,8 +23,6 @@ public class StarteSpiel extends PassiverServerZustand {
 
 		spielerschaft.broadcast(ssn);
 
-        spielerschaft.getAktuellerSpieler().endpunkt.sende(new ZugAufforderung());
-
-		return automat.getZustand(StarteRunde.class);
+		return automat.getZustand(StartRunde.class);
 	}
 }

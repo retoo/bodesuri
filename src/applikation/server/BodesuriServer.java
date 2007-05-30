@@ -4,7 +4,7 @@ import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;
 import applikation.server.zustaende.ServerStart;
 import applikation.server.zustaende.ServerEnde;
-import applikation.server.zustaende.StarteRunde;
+import applikation.server.zustaende.StartRunde;
 import applikation.server.zustaende.StarteSpiel;
 import applikation.server.zustaende.StarteZug;
 import applikation.server.zustaende.VersendeZug;
@@ -23,7 +23,7 @@ public class BodesuriServer extends Automat {
 	 *
 	 * TODO: muss das wirklich so ne Konstante sein.
 	 */
-	public static final int MAXSPIELER = 4;
+	public static final int MAXSPIELER = 1;
 	/**
 	 * Server
 	 */
@@ -45,7 +45,7 @@ public class BodesuriServer extends Automat {
 		registriere(new ServerStart());
 		registriere(new EmpfangeSpieler());
 		registriere(new StarteSpiel());
-		registriere(new StarteRunde());
+		registriere(new StartRunde());
 		registriere(new StarteZug());
 		registriere(new WarteAufZug());
 		registriere(new VersendeZug());

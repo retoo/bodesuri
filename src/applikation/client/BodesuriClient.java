@@ -24,6 +24,7 @@ import applikation.client.zustaende.Ziehen;
 import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
+import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
 /**
@@ -136,4 +137,8 @@ public class BodesuriClient extends Automat {
 			System.exit(99);
 		}
 	}
+
+	public boolean isZustand(Class<? extends Zustand> klass) {
+	    return getAktuellerZustand() ==getZustand(klass);
+    }
 }
