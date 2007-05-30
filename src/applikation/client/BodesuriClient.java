@@ -8,6 +8,8 @@ import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
 import applikation.client.zustaende.AmZug;
+import applikation.client.zustaende.KarteTauschenAuswaehlen;
+import applikation.client.zustaende.KarteTauschenBekommen;
 import applikation.client.zustaende.KarteWaehlen;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;
@@ -15,6 +17,7 @@ import applikation.client.zustaende.NichtAmZug;
 import applikation.client.zustaende.ProgrammStart;
 import applikation.client.zustaende.SchwererFehler;
 import applikation.client.zustaende.SpielStart;
+import applikation.client.zustaende.StarteRunde;
 import applikation.client.zustaende.VerbindungErfassen;
 import applikation.client.zustaende.VerbindungSteht;
 import applikation.client.zustaende.Ziehen;
@@ -96,6 +99,9 @@ public class BodesuriClient extends Automat {
 		registriere(new NichtAmZug());
 		registriere(new KarteWaehlen());
 		registriere(new Ziehen());
+		registriere(new StarteRunde());
+		registriere(new KarteTauschenAuswaehlen());
+		registriere(new KarteTauschenBekommen());
 
 		setStart(ProgrammStart.class);
 
