@@ -2,7 +2,6 @@ package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import applikation.nachrichten.ChatNachricht;
-import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
