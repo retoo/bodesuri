@@ -89,7 +89,9 @@ public class AktiverClientZustand extends AktiverZustand {
 	}
 
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		return keinUebergang();
+		System.out.println(nachricht.nachricht);
+
+		return this;
 	}
 
 	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
@@ -119,11 +121,11 @@ public class AktiverClientZustand extends AktiverZustand {
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
 		return keinUebergang();
 	}
-	
+
 	Zustand kartenTausch() {
 		return keinUebergang();
 	}
-	
+
 	Zustand rundenStart() {
 		return keinUebergang();
 	}
