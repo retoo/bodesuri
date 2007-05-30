@@ -2,11 +2,8 @@ package ui.spiel.info;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
@@ -19,7 +16,6 @@ import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 import pd.karten.Zehn;
 import applikation.client.BodesuriClient;
-import applikation.events.AufgegebenEvent;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet.
@@ -29,13 +25,9 @@ public class DeckView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private BodesuriClient automat;
-
 	Vector<Karte> karten = new Vector<Karte>();
 
 	public DeckView(BodesuriClient automat) {
-		this.automat = automat;
-
 		TitledBorder titel = new TitledBorder("Karten");
 		setBorder(titel);
 		setLayout(null);
@@ -54,18 +46,5 @@ public class DeckView extends JPanel {
 			Point p = new Point(20 + i * 20, 30 + i * 20);
 			this.add(new KarteView(p, karten.get(i), automat.queue, this));
 		}
-		
-		
-		//TODO Noch besser platzieren & schöner machen (kein Automat)
-		JButton aussetzen = new JButton("Aussetzen");
-		aussetzen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (DeckView.this.automat.aufgabe) {
-					DeckView.this.automat.queue.enqueue(new AufgegebenEvent());	
-				}
-            }
-			
-		});
-		add(aussetzen);
 	}
 }

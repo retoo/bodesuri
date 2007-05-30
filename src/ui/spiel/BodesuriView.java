@@ -15,7 +15,7 @@ import applikation.client.BodesuriClient;
 
 /**
  * Das GUI des Spieles...
- * 
+ *
  */
 public class BodesuriView extends JFrame {
 
@@ -34,7 +34,7 @@ public class BodesuriView extends JFrame {
 		setLayout(new GridBagLayout());
 
 		// Box links = Box.createVerticalBox();
-		// links.add(new BrettView(spiel, spieler, null));
+		// links.add(new BrettView(spiel, spielers, null));
 		// links.add(new ChatView());
 		//
 		// Box rechts = Box.createVerticalBox();
@@ -56,7 +56,7 @@ public class BodesuriView extends JFrame {
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.gridheight = 1;
-		add(new ChatView(), gbc);
+		add(new ChatView(automat), gbc);
 
 		gbc.gridx = 1;
 		gbc.gridy = 0;
