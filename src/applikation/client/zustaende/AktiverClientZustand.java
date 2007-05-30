@@ -6,6 +6,8 @@ import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.ChatNachricht;
+import applikation.nachrichten.KartenTausch;
+import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.nachrichten.SpielVollNachricht;
@@ -51,6 +53,10 @@ public class AktiverClientZustand extends AktiverZustand {
 				return zugWurdeGemacht((ZugInformation) nachricht);
 			else if (nachricht instanceof ZugAufforderung)
 				return zugAufforderung();
+			else if (nachricht instanceof KartenTausch)
+				return kartenTausch();
+			else if (nachricht instanceof RundenStart)
+				return rundenStart();
 			else
 				System.out.println("Nachricht " + nachricht.getClass()
 				                   + " ist (noch) nicht implementiert!");
@@ -104,6 +110,14 @@ public class AktiverClientZustand extends AktiverZustand {
 	}
 
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
+		return keinUebergang();
+	}
+	
+	Zustand kartenTausch() {
+		return keinUebergang();
+	}
+	
+	Zustand rundenStart() {
 		return keinUebergang();
 	}
 

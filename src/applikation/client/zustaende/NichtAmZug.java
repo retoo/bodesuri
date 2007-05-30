@@ -35,4 +35,8 @@ public class NichtAmZug extends AktiverClientZustand {
 		}
 		return this;
 	}
+	
+	Zustand rundenStart() {
+		return automat.getZustand(StarteRunde.class);
+	}
 }
