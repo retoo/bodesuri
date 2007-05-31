@@ -1,32 +1,19 @@
 package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
+import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.zustaende.SchwererFehler;
-import applikation.events.BewegungEingegebenEvent;
 import applikation.nachrichten.ZugInformation;
-import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.VerbindungWegException;
 
-/**
- * Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein
- * {@link BewegungEingegebenEvent} eintrifft wird der gesamte Zug validiert und
- * versendet. Der Automat wird dann beendet.
- */
-public class Ziehen extends AktiverZugZustand {
-	public void entry() {
-		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
-	}
-
-	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
-		// TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
-		// TODO Entry & exit besser nutzen.
-		automat.zugentgegennahme = null;
-
+public class ZugValidieren extends PassiverZugZustand {
+	public Zustand handle() {
+		Bewegung bewegung = new Bewegung(automat.start, automat.ziel);
 		ZugEingabe zugEingabe = new ZugEingabe(automat.spielerIch,
-		                                       automat.karte, event.bewegung);
+		                                       automat.karte, bewegung);
 		try {
 			zugEingabe.validiere();
 		} catch (RegelVerstoss e) {
@@ -38,7 +25,6 @@ public class Ziehen extends AktiverZugZustand {
 		} catch (VerbindungWegException e) {
 			return automat.getZustand(SchwererFehler.class);
 		}
-
 		return automat.getZustand(EndZustand.class);
 	}
 }

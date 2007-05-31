@@ -5,7 +5,7 @@ import java.util.Observer;
 
 import applikation.client.BodesuriClient;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
-import applikation.client.zugautomat.zustaende.Ziehen;
+import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;
@@ -72,8 +72,8 @@ public class ClientController implements Observer {
 			handle( (VerbindungErfassen)aktuellerZustand );
 		} else if (aktuellerZustand instanceof VerbindungSteht) {
 			handle( (VerbindungSteht)aktuellerZustand );
-		} else if (aktuellerZustand instanceof Ziehen) {
-			handle( (Ziehen)aktuellerZustand );
+		} else if (aktuellerZustand instanceof StartWaehlen) {
+			handle( (StartWaehlen)aktuellerZustand );
 		}
 
 	}
@@ -173,7 +173,7 @@ public class ClientController implements Observer {
 	 *
 	 * @param aktuellerZustand
 	 */
-	public void handle(Ziehen aktuellerZustand) {
+	public void handle(StartWaehlen aktuellerZustand) {
 
 	}
 }

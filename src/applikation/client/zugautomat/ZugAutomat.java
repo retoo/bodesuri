@@ -1,10 +1,12 @@
 package applikation.client.zugautomat;
 
+import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
+import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
-import applikation.client.zugautomat.zustaende.Ziehen;
-import applikation.zugentgegennahme.ZugEntgegennahme;
+import applikation.client.zugautomat.zustaende.StartWaehlen;
+import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 import dienste.automat.zustaende.Zustand;
@@ -17,14 +19,17 @@ public class ZugAutomat extends Automat {
 	public EndPunkt endpunkt;
 
 	public Karte karte;
-	public ZugEntgegennahme zugentgegennahme;
+	public Feld start;
+	public Feld ziel;
 
 	public ZugAutomat(Spieler spielerIch, EndPunkt endpunkt) {
 		this.spielerIch = spielerIch;
 		this.endpunkt = endpunkt;
 
 		registriere(new KarteWaehlen());
-		registriere(new Ziehen());
+		registriere(new StartWaehlen());
+		registriere(new EndeWaehlen());
+		registriere(new ZugValidieren());
 
 		setStart(KarteWaehlen.class);
 
