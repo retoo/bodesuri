@@ -3,9 +3,7 @@ package ui.spiel;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 
 import ui.spiel.info.InfoView;
 import applikation.client.BodesuriClient;
