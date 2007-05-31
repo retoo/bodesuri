@@ -1,7 +1,6 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
-import applikation.client.zugAutomat.zustaende.AmZug;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;

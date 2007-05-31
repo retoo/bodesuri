@@ -2,15 +2,14 @@ package applikation.client;
 
 import javax.swing.JOptionPane;
 
-import pd.karten.Karte;
 import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
+import applikation.client.zugAutomat.ZugAutomat;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
-import applikation.client.zustaende.KarteWaehlen;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;
 import applikation.client.zustaende.NichtAmZug;
@@ -20,8 +19,6 @@ import applikation.client.zustaende.SpielStart;
 import applikation.client.zustaende.StarteRunde;
 import applikation.client.zustaende.VerbindungErfassen;
 import applikation.client.zustaende.VerbindungSteht;
-import applikation.client.zustaende.Ziehen;
-import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 import dienste.automat.zustaende.Zustand;
@@ -42,16 +39,9 @@ public class BodesuriClient extends Automat {
 	public String spielerName;
 	public Spieler spielerIch;
 
-	// TODO sollten eigentlich nicht hier sein.
-	// Sind zu fest vom Status abhängig. Müssen aber momentan so sein, da es
-	// nicht möglich ist Daten von Event zu Event zu übergeben.
-	public Karte karte;
-	public ZugEntgegennahme zugentgegennahme;
-	//Wenn wir aufgeben wollen
-	//wird im Subautomat schöner.
-	public Boolean aufgabe;
-
 	public String defaultName;
+	
+	public ZugAutomat zugAutomat;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
@@ -68,8 +58,6 @@ public class BodesuriClient extends Automat {
 		registriere(new SpielStart());
 		registriere(new AmZug());
 		registriere(new NichtAmZug());
-		registriere(new KarteWaehlen());
-		registriere(new Ziehen());
 		registriere(new StarteRunde());
 		registriere(new KarteTauschenAuswaehlen());
 		registriere(new KarteTauschenBekommen());

@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import applikation.client.zugAutomat.ZugAutomat;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -8,7 +9,11 @@ import dienste.automat.zustaende.Zustand;
  */
 public class AmZug extends PassiverClientZustand {
 	public Zustand handle() {
-		return automat.getZustand(KarteWaehlen.class);
+		automat.zugAutomat = new ZugAutomat(automat.spielerIch, automat.endpunkt);
+		
+		automat.zugAutomat.run();
+		
+		return automat.getZustand(NichtAmZug.class);
 	}
 
 }

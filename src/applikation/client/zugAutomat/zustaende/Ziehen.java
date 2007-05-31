@@ -1,10 +1,12 @@
-package applikation.client.zustaende;
+package applikation.client.zugAutomat.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
+import applikation.client.zustaende.SchwererFehler;
 import applikation.events.BewegungEingegebenEvent;
 import applikation.nachrichten.ZugInformation;
 import applikation.zugentgegennahme.ZugEntgegennahme;
+import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.VerbindungWegException;
 
@@ -13,7 +15,7 @@ import dienste.netzwerk.VerbindungWegException;
  * {@link BewegungEingegebenEvent} eintrifft wird der gesamte Zug validiert und
  * der Zustand {@link NichtAmZug} aufgerufen.
  */
-public class Ziehen extends AktiverClientZustand {
+public class Ziehen extends AktiverZugZustand {
 	public void entry() {
 		automat.zugentgegennahme = new ZugEntgegennahme(automat.queue);
 		automat.aufgabe = true;
@@ -39,6 +41,6 @@ public class Ziehen extends AktiverClientZustand {
 			return automat.getZustand(SchwererFehler.class);
 		}
 
-		return automat.getZustand(NichtAmZug.class);
+		return automat.getZustand(EndZustand.class);
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import applikation.client.BodesuriClient;
+import applikation.client.zugAutomat.zustaende.Ziehen;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
@@ -23,8 +24,8 @@ class FeldMouseAdapter extends MouseAdapter {
 	 *            MouseEvent enthält die angeklickte Komponente
 	 */
 	public void mouseClicked(MouseEvent e) {
-		if (automat.zugentgegennahme != null) {
-			automat.zugentgegennahme.ziehen(((Feld2d) e.getComponent()).feld);
+		if (automat.zugAutomat.isZustand(Ziehen.class)) {
+			automat.zugAutomat.zugentgegennahme.ziehen(((Feld2d) e.getComponent()).feld);
 		}
 	}
 }

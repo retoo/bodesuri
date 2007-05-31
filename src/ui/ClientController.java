@@ -4,8 +4,9 @@ import java.util.Observable;
 import java.util.Observer;
 
 import applikation.client.BodesuriClient;
+import applikation.client.zugAutomat.zustaende.KarteWaehlen;
+import applikation.client.zugAutomat.zustaende.Ziehen;
 import applikation.client.zustaende.AmZug;
-import applikation.client.zustaende.KarteWaehlen;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;
 import applikation.client.zustaende.NichtAmZug;
@@ -14,7 +15,6 @@ import applikation.client.zustaende.SchwererFehler;
 import applikation.client.zustaende.SpielStart;
 import applikation.client.zustaende.VerbindungErfassen;
 import applikation.client.zustaende.VerbindungSteht;
-import applikation.client.zustaende.Ziehen;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.Zustand;
 

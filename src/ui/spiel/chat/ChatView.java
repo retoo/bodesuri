@@ -9,11 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import applikation.client.BodesuriClient;
-import applikation.client.zustaende.KarteWaehlen;
+import applikation.client.zugAutomat.zustaende.KarteWaehlen;
 import applikation.events.AufgegebenEvent;
 
 /**
- * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den einzelnen Clients dient.
+ * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den
+ * einzelnen Clients dient.
  */
 public class ChatView extends JPanel {
 
@@ -28,16 +29,18 @@ public class ChatView extends JPanel {
 
 		this.add(new JLabel("Hier käme der Chat hin... \n(Prio 3)"));
 
-		//TODO Noch besser platzieren & schöner machen (kein Automat)
+		// TODO Noch besser platzieren & schöner machen (kein Automat)
 		JButton aussetzen = new JButton("Aussetzen");
 		aussetzen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (ChatView.this.automat.isZustand(KarteWaehlen.class)) {
+				if (ChatView.this.automat.zugAutomat != null
+				    && ChatView.this.automat.zugAutomat.isZustand(KarteWaehlen.class)) {
 					ChatView.this.automat.queue.enqueue(new AufgegebenEvent());
 				} else {
-					System.out.println("Wir sind im falschen Zustand: " + ChatView.this.automat.getAktuellerZustand());
+					System.out.println("Wir sind im falschen Zustand: "
+					         + ChatView.this.automat.zugAutomat.getAktuellerZustand());
 				}
-            }
+			}
 
 		});
 		add(aussetzen);

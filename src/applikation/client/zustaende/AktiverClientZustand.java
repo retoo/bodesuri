@@ -2,8 +2,6 @@ package applikation.client.zustaende;
 
 import applikation.client.BodesuriClient;
 import applikation.events.AufgegebenEvent;
-import applikation.events.BewegungEingegebenEvent;
-import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.ChatNachricht;
@@ -65,10 +63,6 @@ public class AktiverClientZustand extends AktiverZustand {
 		} else {
 			if (event instanceof VerbindeEvent)
 				return verbinden((VerbindeEvent) event);
-			else if (event instanceof KarteGewaehltEvent)
-				return karteGewaehlt((KarteGewaehltEvent) event);
-			else if (event instanceof BewegungEingegebenEvent)
-				return bewegungEingegeben((BewegungEingegebenEvent) event);
 			else if (event instanceof AufgegebenEvent)
 				return  aufgegeben();
 		}
@@ -111,14 +105,6 @@ public class AktiverClientZustand extends AktiverZustand {
 	}
 
 	Zustand zugAufforderung() {
-		return keinUebergang();
-	}
-
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
-		return keinUebergang();
-	}
-
-	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
 		return keinUebergang();
 	}
 

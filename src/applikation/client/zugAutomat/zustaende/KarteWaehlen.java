@@ -1,5 +1,6 @@
-package applikation.client.zustaende;
+package applikation.client.zugAutomat.zustaende;
 
+import applikation.client.zustaende.NichtAmZug;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ChatNachricht;
@@ -11,7 +12,7 @@ import dienste.netzwerk.EndPunkt;
  * {@link KarteGewaehltEvent} eintritt, wird der Zustand {@link Ziehen}
  * aufgerufen.
  */
-public class KarteWaehlen extends AktiverClientZustand {
+public class KarteWaehlen extends AktiverZugZustand {
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;
