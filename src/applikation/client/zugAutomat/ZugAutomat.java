@@ -12,20 +12,17 @@ import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {
 	public EventQueue queue;
-	
-	//Vom BodesuriClient übernommen
+
 	public Spieler spielerIch;
 	public EndPunkt endpunkt;
-	
+
 	public Karte karte;
 	public ZugEntgegennahme zugentgegennahme;
-	//TODO schöner machen
-	public Boolean aufgabe;
 
-	public ZugAutomat(Spieler spielerIch,  EndPunkt endpunkt) {
+	public ZugAutomat(Spieler spielerIch, EndPunkt endpunkt) {
 		this.spielerIch = spielerIch;
 		this.endpunkt = endpunkt;
-		
+
 		registriere(new KarteWaehlen());
 		registriere(new Ziehen());
 
@@ -34,8 +31,8 @@ public class ZugAutomat extends Automat {
 		this.queue = new EventQueue();
 		setEventQuelle(queue);
 	}
-	
+
 	public boolean isZustand(Class<? extends Zustand> klass) {
-	    return getAktuellerZustand() ==getZustand(klass);
-    }
+		return getAktuellerZustand() == getZustand(klass);
+	}
 }
