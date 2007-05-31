@@ -4,8 +4,8 @@ import java.util.Observable;
 import java.util.Observer;
 
 import applikation.client.BodesuriClient;
-import applikation.client.zugAutomatAlt.zustaende.KarteWaehlen;
-import applikation.client.zugAutomatAlt.zustaende.Ziehen;
+import applikation.client.zugautomat.zustaende.KarteWaehlen;
+import applikation.client.zugautomat.zustaende.Ziehen;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.LobbyStart;

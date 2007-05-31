@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.client.zugAutomatAlt.ZugAutomat;
+import applikation.client.zugautomat.ZugAutomat;
 import dienste.automat.zustaende.Zustand;
 
 /**

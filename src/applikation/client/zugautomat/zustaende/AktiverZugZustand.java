@@ -1,6 +1,6 @@
-package applikation.client.zugAutomatAlt.zustaende;
+package applikation.client.zugautomat.zustaende;
 
-import applikation.client.zugAutomatAlt.ZugAutomat;
+import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.BewegungEingegebenEvent;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.Automat;

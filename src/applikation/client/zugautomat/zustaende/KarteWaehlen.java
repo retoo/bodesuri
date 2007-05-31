@@ -1,4 +1,4 @@
-package applikation.client.zugAutomatAlt.zustaende;
+package applikation.client.zugautomat.zustaende;
 
 import applikation.client.zustaende.NichtAmZug;
 import applikation.events.KarteGewaehltEvent;

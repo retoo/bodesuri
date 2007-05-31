@@ -1,4 +1,4 @@
-package applikation.client.zugAutomatAlt.zustaende;
+package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;

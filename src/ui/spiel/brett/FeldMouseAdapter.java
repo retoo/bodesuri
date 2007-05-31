@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import applikation.client.BodesuriClient;
-import applikation.client.zugAutomatAlt.zustaende.Ziehen;
+import applikation.client.zugautomat.zustaende.Ziehen;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
