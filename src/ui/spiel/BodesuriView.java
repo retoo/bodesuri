@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import ui.spiel.info.InfoView;
-import applikation.client.BodesuriClient;
+import applikation.client.ClientController;
 
 /**
  * Das GUI des Spieles...
@@ -16,8 +16,8 @@ public class BodesuriView extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public BodesuriView(BodesuriClient automat) {
-		setTitle("Bodesuri - Spiel (" + automat.spielerName + ")");
+	public BodesuriView(ClientController controller, String spielerName) {
+		setTitle("Bodesuri - Spiel (" + spielerName + ")");
 		setName("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -25,8 +25,8 @@ public class BodesuriView extends JFrame {
 		setLayout(new BorderLayout());
 		
 		// Layout aus den diversen JPanels zusammensetzen
-		SpielView spielView = new SpielView(automat);
-		InfoView infoView = new InfoView(automat);
+		SpielView spielView = new SpielView(controller);
+		InfoView infoView = new InfoView(controller);
 		getContentPane().add(spielView, BorderLayout.CENTER);
 		getContentPane().add(infoView, BorderLayout.EAST);
 		

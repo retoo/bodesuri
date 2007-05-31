@@ -1,7 +1,10 @@
 package applikation.client.zustaende;
 
+import pd.zugsystem.ZugEingabe;
 import applikation.client.BodesuriClient;
+import applikation.client.ClientController;
 import applikation.events.AufgegebenEvent;
+import applikation.events.GezogenEvent;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.ChatNachricht;
@@ -28,6 +31,7 @@ import dienste.netzwerk.NetzwerkEvent;
  */
 public class AktiverClientZustand extends AktiverZustand {
 	protected BodesuriClient automat;
+	protected ClientController controller;
 
 	public Zustand handle(Event event) {
 		// TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
@@ -66,9 +70,15 @@ public class AktiverClientZustand extends AktiverZustand {
 				return verbinden((VerbindeEvent) event);
 			else if (event instanceof AufgegebenEvent)
 				return  aufgegeben();
+			else if (event instanceof GezogenEvent)
+				return gezogen(((GezogenEvent) event).zugEingabe);
 		}
-
+		
 		return super.handle(event);
+	}
+
+	Zustand gezogen(ZugEingabe zugEingabe) {
+		return keinUebergang();
 	}
 
 	Zustand aufgegeben() {

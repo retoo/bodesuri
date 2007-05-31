@@ -1,6 +1,8 @@
 package applikation.client.zustaende;
 
-import applikation.client.zugautomat.ZugAutomat;
+import pd.zugsystem.ZugEingabe;
+import applikation.client.ClientController;
+import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -8,14 +10,17 @@ import dienste.automat.zustaende.Zustand;
  * um das erfassen, versenden & validieren eines Zuges kümmert. Geht danach in
  * {@link NichtAmZug} über.
  */
-public class AmZug extends PassiverClientZustand {
-	public Zustand handle() {
-		automat.zugAutomat = new ZugAutomat(automat.spielerIch,
-		                                    automat.endpunkt);
-
-		automat.zugAutomat.run();
-
+public class AmZug extends AktiverClientZustand {
+	public AmZug(ClientController controller) {
+		this.controller = controller;
+	}
+	
+	public void entry() {
+		controller.starteZugerfassung();
+	}
+	
+	Zustand gezogen(ZugEingabe zugEingabe) {
+		automat.endpunkt.sende(new ZugInformation(zugEingabe));
 		return automat.getZustand(NichtAmZug.class);
 	}
-
 }

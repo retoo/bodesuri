@@ -15,7 +15,7 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 import pd.karten.Zehn;
-import applikation.client.BodesuriClient;
+import applikation.client.ClientController;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
@@ -27,7 +27,7 @@ public class DeckView extends JPanel {
 	
 	Vector<Karte> karten = new Vector<Karte>();
 
-	public DeckView(BodesuriClient automat) {
+	public DeckView(ClientController controller) {
 		TitledBorder titel = new TitledBorder("Karten");
 		setBorder(titel);
 		setLayout(null);
@@ -42,7 +42,7 @@ public class DeckView extends JPanel {
 		karten.add(new Sechs(KartenFarbe.Herz, 1));
 		karten.add(new Acht(KartenFarbe.Karo, 1));
 		
-		KarteMouseAdapter karteMouseAdapter = new KarteMouseAdapter(automat);
+		KarteMouseAdapter karteMouseAdapter = new KarteMouseAdapter(controller);
 
 		for (int i = 5; i >= 0; i--) {
 			Point p = new Point(20 + i * 20, 30 + i * 20);

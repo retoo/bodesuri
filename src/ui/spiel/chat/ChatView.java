@@ -1,16 +1,11 @@
 package ui.spiel.chat;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import applikation.client.BodesuriClient;
-import applikation.client.zugautomat.zustaende.KarteWaehlen;
-import applikation.events.AufgegebenEvent;
+import applikation.client.ClientController;
 
 /**
  * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den
@@ -19,18 +14,19 @@ import applikation.events.AufgegebenEvent;
 public class ChatView extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private BodesuriClient automat;
+	@SuppressWarnings("unused")
+	private ClientController controller;
 
-	public ChatView(BodesuriClient automat) {
-		this.automat = automat;
+	public ChatView(ClientController controller) {
+		this.controller = controller;
 
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
 		setBackground(new Color(0, 0, 150));
 
 		this.add(new JLabel("Hier käme der Chat hin... \n(Prio 3)"));
 
-		// TODO Noch besser platzieren & schöner machen (kein Automat)
-		JButton aussetzen = new JButton("Aussetzen");
+		// TODO: In ClientController platzieren. Actionlistener soll von Controller verwaltet werden
+		/*JButton aussetzen = new JButton("Aussetzen");
 		aussetzen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (ChatView.this.automat.zugAutomat != null
@@ -43,6 +39,6 @@ public class ChatView extends JPanel {
 			}
 
 		});
-		add(aussetzen);
+		add(aussetzen);*/
 	}
 }

@@ -5,15 +5,15 @@ import javax.swing.JPanel;
 
 import ui.spiel.brett.BrettView;
 import ui.spiel.chat.ChatView;
-import applikation.client.BodesuriClient;
+import applikation.client.ClientController;
 
 public class SpielView extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 
-	public SpielView(BodesuriClient automat) {
+	public SpielView(ClientController controller) {
 		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		add(new BrettView(automat));
-		add(new ChatView(automat));
+		add(new BrettView(controller));
+		add(new ChatView(controller));
 	}
 }

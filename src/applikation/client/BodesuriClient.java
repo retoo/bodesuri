@@ -1,12 +1,5 @@
 package applikation.client;
 
-import javax.swing.JOptionPane;
-
-import pd.spieler.Spieler;
-import ui.lobby.LobbyView;
-import ui.spiel.BodesuriView;
-import ui.verbinden.VerbindenView;
-import applikation.client.zugautomat.ZugAutomat;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
@@ -30,33 +23,23 @@ import dienste.netzwerk.EndPunkt;
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
-
-	public VerbindenView verbindenView;
-	public LobbyView lobbyView;
-	public BodesuriView spielView;
-
-	public pd.Spiel spiel;
-	public String spielerName;
-	public Spieler spielerIch;
-
-	public String defaultName;
-	
-	public ZugAutomat zugAutomat;
+	private ClientController controller;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
-	 * @param defaultName
-	 *
+	 * 
+	 * @param queue
+	 * @param controller
 	 */
-	public BodesuriClient(String defaultName) {
+	public BodesuriClient(EventQueue queue, ClientController controller) {
 		registriere(new SchwererFehler());
-		registriere(new ProgrammStart());
-		registriere(new VerbindungErfassen());
+		registriere(new ProgrammStart(controller));
+		registriere(new VerbindungErfassen(controller));
 		registriere(new VerbindungSteht());
-		registriere(new LobbyStart());
-		registriere(new Lobby());
-		registriere(new SpielStart());
-		registriere(new AmZug());
+		registriere(new LobbyStart(controller));
+		registriere(new Lobby(controller));
+		registriere(new SpielStart(controller));
+		registriere(new AmZug(controller));
 		registriere(new NichtAmZug());
 		registriere(new StarteRunde());
 		registriere(new KarteTauschenAuswaehlen());
@@ -64,37 +47,16 @@ public class BodesuriClient extends Automat {
 
 		setStart(ProgrammStart.class);
 
-		this.queue = new EventQueue();
-		this.defaultName = defaultName;
+		this.queue = queue;
+		this.controller = controller;
 
 		setEventQuelle(queue);
 	}
 
-	public BodesuriClient() {
-		this("Spieler");
-	}
-
 	/* kommt mal in den controller oder geh ganz anders */
 	public void meldeFehler(String fehlermeldung) {
-	    // TODO Auto-generated method stub
-
-		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
-
+	    controller.zeigeFehlermeldung(fehlermeldung);
     }
-
-	public static void main(String[] args) {
-		Automat automat = new BodesuriClient();
-		// ClientController controller = new ClientController();
-
-		try {
-			automat.run();
-		} catch (Exception e) {
-			/* Applikation stoppen wenn ein Fehler auftritt */
-			e.printStackTrace();
-			System.out.println("Client: Exception in run()");
-			System.exit(99);
-		}
-	}
 
 	public boolean isZustand(Class<? extends Zustand> klass) {
 	    return getAktuellerZustand() ==getZustand(klass);

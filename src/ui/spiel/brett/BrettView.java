@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import ui.ressourcen.BrettLader;
-import applikation.client.BodesuriClient;
+import applikation.client.ClientController;
 
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
@@ -20,7 +20,7 @@ public class BrettView extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 
-	public BrettView(BodesuriClient automat) {
+	public BrettView(ClientController controller) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
 		setBackground(new Color(0, 150, 0));
 
@@ -30,14 +30,14 @@ public class BrettView extends JPanel {
 
 		Map<Integer, Point> koordinaten = null;
 		try {
-			koordinaten = BrettLader.ladeXML("src/ui/ressourcen/brett.xml");
+			koordinaten = BrettLader.ladeXML("bin/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
 			// Checked Exception in unchecked umwandeln
 			throw new RuntimeException(e);
 		}
 
-		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(automat);
-		for (Feld feld : automat.spiel.getBrett().getAlleFelder()) {
+		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(controller);
+		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 			if (feld instanceof BankFeld) {
 				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),

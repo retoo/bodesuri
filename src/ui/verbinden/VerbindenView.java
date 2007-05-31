@@ -12,9 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.events.VerbindeEvent;
-
-import dienste.automat.EventQueue;
+import applikation.client.ClientController;
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll,
@@ -26,10 +24,10 @@ public class VerbindenView extends JFrame {
 	private JTextField hostname;
 	private JTextField port;
 	private JTextField spielerName;
-	private EventQueue queue;
+	private ClientController controller;
 
-	public VerbindenView(EventQueue queue, String defaultName) {
-		this.queue = queue;
+	public VerbindenView(ClientController controller, String defaultName) {
+		this.controller = controller;
 
 		setTitle("Bodesuri - Verbinden");
 		setLocationByPlatform(true);
@@ -57,9 +55,7 @@ public class VerbindenView extends JFrame {
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
 
-				VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
-
-				VerbindenView.this.queue.enqueue(e);
+				VerbindenView.this.controller.verbinde(host, port_raw, spieler);
             }
 		});
 

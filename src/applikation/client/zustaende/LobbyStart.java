@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import applikation.client.ClientController;
 import ui.lobby.LobbyView;
 import dienste.automat.zustaende.Zustand;
 
@@ -8,12 +9,15 @@ import dienste.automat.zustaende.Zustand;
  * über.
  */
 public class LobbyStart extends PassiverClientZustand {
-	public Zustand handle() {
-		automat.verbindenView.setVisible(false);
-
-		automat.lobbyView = new LobbyView();
-		automat.lobbyView.setVisible(true);
-		
+	public LobbyStart(ClientController controller) {
+		/* TODO: 
+		 * super(automat, controller);
+		 */
+		this.controller = controller;
+	}
+	
+	public Zustand handle() {		
+		controller.zeigeLobbyStart();
 		return automat.getZustand(Lobby.class);
 	}
 }

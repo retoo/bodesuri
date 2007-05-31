@@ -1,5 +1,6 @@
 package applikation.client;
 
+import dienste.automat.EventQueue;
 import applikation.server.BodesuriServer;
 
 public class BodesuriEntwickler {
@@ -24,7 +25,9 @@ public class BodesuriEntwickler {
 		for (int i = 0; i < 4; i++) {
 			Thread client = new Thread(new Runnable() {
 				public void run() {
-					BodesuriClient client = new BodesuriClient(Thread.currentThread().getName());
+					EventQueue eventQueue = new EventQueue();
+					ClientController controller = new ClientController(eventQueue, Thread.currentThread().getName());
+					BodesuriClient client = new BodesuriClient(eventQueue, controller);
 
 					try {
 						client.run();

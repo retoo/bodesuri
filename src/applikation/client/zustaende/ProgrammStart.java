@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import applikation.client.ClientController;
 import ui.verbinden.VerbindenView;
 import dienste.automat.zustaende.Zustand;
 
@@ -8,9 +9,15 @@ import dienste.automat.zustaende.Zustand;
  * {@link VerbindenView} und geht direkt in den Zustand {@link Lobby} über.
  */
 public class ProgrammStart extends PassiverClientZustand {
+	public ProgrammStart(ClientController controller) {
+		/* TODO: 
+		 * super(automat, controller);
+		 */
+		this.controller = controller;
+	}
+	
 	public Zustand handle() {
-		automat.verbindenView = new VerbindenView(automat.queue, automat.defaultName);
-		automat.verbindenView.setVisible(true);
+		controller.zeigeProgrammStart();
 		return automat.getZustand(VerbindungErfassen.class);
 	}
 }

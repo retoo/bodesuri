@@ -3,6 +3,7 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
+import applikation.client.ClientController;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
@@ -16,14 +17,17 @@ import dienste.netzwerk.EndPunkt;
  * aufgerufen.
  */
 public class VerbindungErfassen extends AktiverClientZustand {
+	public VerbindungErfassen(ClientController controller) {
+		this.controller = controller;
+	}
+	
 	Zustand verbinden(VerbindeEvent ve) {
-
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
 
 			automat.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
 			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
-			automat.spielerName = ve.spielerName;
+			controller.setSpielerName( ve.spielerName );
 		} catch (UnknownHostException e) {
 			automat.meldeFehler("Unbekannter Hostname " + ve.hostname);
 			automat.endpunkt = null;

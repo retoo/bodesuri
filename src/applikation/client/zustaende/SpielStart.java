@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import applikation.client.ClientController;
 import ui.spiel.BodesuriView;
 import dienste.automat.zustaende.Zustand;
 
@@ -8,12 +9,15 @@ import dienste.automat.zustaende.Zustand;
  * direkt in {@link NichtAmZug} über.
  */
 public class SpielStart extends PassiverClientZustand {
+	public SpielStart(ClientController controller) {
+		/* TODO: 
+		 * super(automat, controller);
+		 */
+		this.controller = controller;
+	}
+	
 	public Zustand handle() {
-
-		automat.lobbyView.setVisible(false);
-
-		automat.spielView = new BodesuriView(automat);
-		automat.spielView.setVisible(true);
+		controller.zeigeSpielStart();
 		return automat.getZustand(NichtAmZug.class);
 	}
 }
