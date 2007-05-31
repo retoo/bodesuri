@@ -53,6 +53,6 @@ public class FeldTest extends ProblemDomainTestCase {
 	
 	public void testGetNummer() {
 		assertEquals(0, bankFeld1.getNummer());
-		assertEquals("Feld 0", bankFeld1.toString());
+		assertEquals("BankFeld 0", bankFeld1.toString());
 	}
 }
