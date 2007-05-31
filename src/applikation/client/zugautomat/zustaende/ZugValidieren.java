@@ -3,11 +3,9 @@ package applikation.client.zugautomat.zustaende;
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.zustaende.SchwererFehler;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.VerbindungWegException;
 
 public class ZugValidieren extends PassiverZugZustand {
 	public Zustand handle() {
@@ -20,11 +18,8 @@ public class ZugValidieren extends PassiverZugZustand {
 			System.out.println("Ungültiger Zug: " + e);
 			return automat.getZustand(KarteWaehlen.class);
 		}
-		try {
-			automat.endpunkt.sende(new ZugInformation(zugEingabe));
-		} catch (VerbindungWegException e) {
-			return automat.getZustand(SchwererFehler.class);
-		}
+		automat.endpunkt.sende(new ZugInformation(zugEingabe));
+
 		return automat.getZustand(EndZustand.class);
 	}
 }

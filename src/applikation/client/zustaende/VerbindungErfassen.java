@@ -9,7 +9,6 @@ import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
-import dienste.netzwerk.VerbindungWegException;
 
 /**
  * Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein
@@ -20,8 +19,7 @@ public class VerbindungErfassen extends AktiverClientZustand {
 	Zustand verbinden(VerbindeEvent ve) {
 
 		try {
-			BriefKastenInterface briefkasten = new BriefkastenAdapter(
-			                                                          automat.queue);
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
 
 			automat.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
 			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
@@ -30,12 +28,9 @@ public class VerbindungErfassen extends AktiverClientZustand {
 			automat.meldeFehler("Unbekannter Hostname " + ve.hostname);
 			automat.endpunkt = null;
 			return this;
-		} catch (VerbindungWegException e) {
-			automat.meldeFehler("Verbindung konnte nicht hergestellt werden: " + e.getMessage());
-			automat.endpunkt = null;
-			return this;
 		} catch (IOException e) {
-			automat.meldeFehler("Verbindung konnte nicht hergestellt werden: " + e.getMessage());
+			automat.meldeFehler("Verbindung konnte nicht hergestellt werden: "
+			                    + e.getMessage());
 			automat.endpunkt = null;
 			return this;
 		}
