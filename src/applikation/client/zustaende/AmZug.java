@@ -5,7 +5,7 @@ import dienste.automat.zustaende.Zustand;
 
 /**
  * Zustand in welchem der Spieler dran kommt. Bis auf weiteres ein passiver
- * Zustand, da hier nichts getan werden muss. Geht direkt in {@link KarteWaehlen} über.
+ * Zustand, da hier nichts getan werden muss. Geht direkt in {@link NichtAmZug} über.
  */
 public class AmZug extends PassiverClientZustand {
 	public Zustand handle() {

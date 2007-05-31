@@ -13,7 +13,7 @@ import dienste.netzwerk.VerbindungWegException;
 /**
  * Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein
  * {@link BewegungEingegebenEvent} eintrifft wird der gesamte Zug validiert und
- * der Zustand {@link NichtAmZug} aufgerufen.
+ * versendet. Der Automat wird dann beendet.
  */
 public class Ziehen extends AktiverZugZustand {
 	public void entry() {
@@ -22,8 +22,8 @@ public class Ziehen extends AktiverZugZustand {
 	}
 
 	Zustand bewegungEingegeben(BewegungEingegebenEvent event) {
-		//TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
-		//TODO Entry & exit besser nutzen.
+		// TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
+		// TODO Entry & exit besser nutzen.
 		automat.zugentgegennahme = null;
 		automat.aufgabe = false;
 
