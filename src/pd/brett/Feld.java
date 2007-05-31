@@ -150,7 +150,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 	 * Gibt Feld aus, zum Beispiel so: "Feld 47"
 	 */
 	public String toString() {
-		return "Feld " + nummer;
+		return this.getClass().getSimpleName() + " " + nummer;
 	}
 
 	/**
