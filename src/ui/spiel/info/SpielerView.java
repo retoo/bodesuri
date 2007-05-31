@@ -20,6 +20,7 @@ public class SpielerView extends JPanel {
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setOpaque(false);
 		
 		/**
 		 * @fixme: Funktioniert nur mit 4 Spielern. (Exception)

@@ -1,16 +1,13 @@
 package ui.spiel;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 
-import ui.spiel.brett.BrettView;
-import ui.spiel.chat.ChatView;
-import ui.spiel.info.DeckView;
-import ui.spiel.info.SpielerView;
+import ui.spiel.info.InfoView;
 import applikation.client.BodesuriClient;
 
 /**
@@ -23,53 +20,29 @@ public class BodesuriView extends JFrame {
 
 	public BodesuriView(BodesuriClient automat) {
 		setTitle("Bodesuri - Spiel (" + automat.spielerName + ")");
+		setName("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		((JPanel) getContentPane()).setBorder(new EmptyBorder(15, 15, 15, 15));
-
-		// Panels
-		// Box scheint das beste Layout zu sein.
-		// - Border geht nicht wegen dem Resize.
-		// - GridBag ist zu kompliziert, weil wir unabhängige Spalten haben.
-		setLayout(new GridBagLayout());
-
-		// Box links = Box.createVerticalBox();
-		// links.add(new BrettView(spiel, spielers, null));
-		// links.add(new ChatView());
-		//
-		// Box rechts = Box.createVerticalBox();
-		// rechts.add(new SpielerView());
-		// rechts.add(new DeckView());
-		// rechts.add(Box.createVerticalGlue());
-		//
-		// add(links);
-		// add(rechts);
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.BOTH;
-		gbc.weightx = 1;
-		gbc.weighty = 1;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		gbc.gridheight = 2;
-		add(new BrettView(automat), gbc);
-
-		gbc.gridx = 0;
-		gbc.gridy = 3;
-		gbc.gridheight = 1;
-		add(new ChatView(automat), gbc);
-
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		gbc.weightx = 0.1;
-		gbc.weighty = 0.1;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
-		add(new SpielerView(automat), gbc);
-
-		gbc.gridx = 1;
-		gbc.gridy = 1;
-		add(new DeckView(automat), gbc);
-
+		setNativeLookAndFeel();
+		setLayout(new BorderLayout());
+		
+		// Layout aus den diversen JPanels zusammensetzen
+		SpielView spielView = new SpielView(automat);
+		InfoView infoView = new InfoView(automat);
+		getContentPane().add(spielView, BorderLayout.CENTER);
+		getContentPane().add(infoView, BorderLayout.EAST);
+		
+		// GUI anzeigen
 		pack();
-
 	}
+	
+    /**
+     * Setzt den nativen Look & Feel fŸr das Windows Betriebssystem. Auf allen anderen wird
+     * eine Exception geworfen, die ignoriert wird.
+     */
+    private static void setNativeLookAndFeel() {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch( Exception e ) { }
+    }
 }
