@@ -3,7 +3,7 @@ package ui.spiel.info;
 import java.awt.event.MouseAdapter;
 
 import applikation.client.BodesuriClient;
-import applikation.client.zugAutomat.zustaende.KarteWaehlen;
+import applikation.client.zugAutomatAlt.zustaende.KarteWaehlen;
 import applikation.events.KarteGewaehltEvent;
 
 class KarteMouseAdapter extends MouseAdapter {

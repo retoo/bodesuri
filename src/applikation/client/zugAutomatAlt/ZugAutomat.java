@@ -1,9 +1,9 @@
-package applikation.client.zugAutomat;
+package applikation.client.zugAutomatAlt;
 
 import pd.karten.Karte;
 import pd.spieler.Spieler;
-import applikation.client.zugAutomat.zustaende.KarteWaehlen;
-import applikation.client.zugAutomat.zustaende.Ziehen;
+import applikation.client.zugAutomatAlt.zustaende.KarteWaehlen;
+import applikation.client.zugAutomatAlt.zustaende.Ziehen;
 import applikation.zugentgegennahme.ZugEntgegennahme;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;

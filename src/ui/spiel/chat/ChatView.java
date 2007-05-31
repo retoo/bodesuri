@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import applikation.client.BodesuriClient;
-import applikation.client.zugAutomat.zustaende.KarteWaehlen;
+import applikation.client.zugAutomatAlt.zustaende.KarteWaehlen;
 import applikation.events.AufgegebenEvent;
 
 /**

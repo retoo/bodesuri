@@ -6,7 +6,7 @@ import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
-import applikation.client.zugAutomat.ZugAutomat;
+import applikation.client.zugAutomatAlt.ZugAutomat;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
