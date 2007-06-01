@@ -32,7 +32,7 @@ public class ClientController extends Observable {
 	// Logik
 	private EventQueue eventQueue;
 	private ZugAutomatController zugAutomatController;
-	public ZugAutomat zugAutomat;
+	private ZugAutomat zugAutomat;
 	
 	// Views
 	private BodesuriView spielView;			
