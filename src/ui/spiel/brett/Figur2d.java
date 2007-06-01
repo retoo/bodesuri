@@ -30,6 +30,7 @@ public class Figur2d extends JLabel implements Observer {
 	public void setzeAuf(Feld2d ziel) {
 		setBounds(ziel.getX(), ziel.getY(), bildFigur.getIconWidth(),
 		          bildFigur.getIconHeight());
+		System.out.println("Figur Höhöe: " + bildFigur.getIconHeight());
 	}
 
 	/**

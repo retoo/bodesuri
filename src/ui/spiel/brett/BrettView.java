@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
@@ -22,7 +21,7 @@ public class BrettView extends JPanel {
 
 	public BrettView(ClientController controller) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
-		setBackground(new Color(0, 150, 0));
+		// setBackground(new Color(0, 150, 0));
 
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
@@ -41,10 +40,10 @@ public class BrettView extends JPanel {
 			Feld2d feld2d;
 			if (feld instanceof BankFeld) {
 				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
-				                        feld, mouseAdapter);
+						feld, mouseAdapter);
 			} else {
 				feld2d = new NormalesFeld2d(koordinaten.get(feld.getNummer()),
-				                            feld, mouseAdapter);
+						feld, mouseAdapter);
 			}
 			felder.put(feld, feld2d);
 			this.add(feld2d);
@@ -54,6 +53,8 @@ public class BrettView extends JPanel {
 				feld.getFigur().addObserver(figur2d);
 			}
 		}
+		add(new SpielBrett2d());
+
 	}
 
 	public Feld2d getFeld2d(Feld feld) {
