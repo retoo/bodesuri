@@ -1,4 +1,4 @@
-package ui.spiel;
+package ui.spiel.brett;
 
 import java.awt.BorderLayout;
 

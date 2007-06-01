@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import ui.spiel.brett.SpielView;
 import ui.spiel.info.InfoView;
 import applikation.client.ClientController;
 
