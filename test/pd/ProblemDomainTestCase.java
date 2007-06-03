@@ -1,3 +1,4 @@
+package pd;
 import junit.framework.TestCase;
 import pd.Spiel;
 import pd.brett.BankFeld;

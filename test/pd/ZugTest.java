@@ -1,3 +1,4 @@
+package pd;
 import pd.karten.Ass;
 import pd.karten.Karte;
 import pd.karten.KartenFarbe;

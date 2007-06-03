@@ -1,3 +1,4 @@
+import pd.ProblemDomainTestCase;
 import pd.brett.Feld;
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;

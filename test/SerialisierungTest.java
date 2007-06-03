@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import pd.ProblemDomainTestCase;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.serialisierung.BodesuriCodiertesObjekt;

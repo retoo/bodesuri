@@ -1,3 +1,4 @@
+package pd;
 
 public class BrettTest extends ProblemDomainTestCase {
 	protected void setUp() {
