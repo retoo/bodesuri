@@ -234,7 +234,7 @@ public class RegelTest extends ProblemDomainTestCase {
 		assertTrue(lagerFeld2.istBesetztVon(spieler2));
 	}
 	
-	public void testHeimSchicken() throws RegelVerstoss {
+	public void testVorwaertsHeimSchicken() throws RegelVerstoss {
 		start = bankFeld1;
 		ziel  = start.getNtesFeld(5);
 		lagerFeld1.versetzeFigurAuf(start);
