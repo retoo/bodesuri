@@ -16,7 +16,6 @@ import applikation.client.ClientController;
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
 public class BrettView extends JPanel {
-	private static final long serialVersionUID = 1L;
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 
 	public BrettView(ClientController controller) {

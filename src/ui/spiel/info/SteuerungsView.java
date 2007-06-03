@@ -9,14 +9,11 @@ import javax.swing.border.TitledBorder;
 import applikation.client.ClientController;
 
 public class SteuerungsView extends JPanel {
-
-	private static final long serialVersionUID = 1L;
-
 	ClientController controller;
-	
+
 	public SteuerungsView(ClientController controller) {
 		this.controller = controller;
-		
+
 		TitledBorder titel = new TitledBorder("Steuerung");
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -26,7 +23,7 @@ public class SteuerungsView extends JPanel {
 		JLabel spielAktion = new JLabel(" Karte auswählen.");
 		JButton zugAusfuehren = new JButton("Ausführen");
 		JButton aussetzen = new JButton("Aussetzen");
-		
+
 		add(spielZustand);
 		add(spielAktion);
 		add(zugAusfuehren);

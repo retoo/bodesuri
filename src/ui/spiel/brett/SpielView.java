@@ -9,9 +9,6 @@ import ui.spiel.chat.ChatView;
 import applikation.client.ClientController;
 
 public class SpielView extends JPanel {
-	
-	private static final long serialVersionUID = 1L;
-
 	public SpielView(ClientController controller) {
 		setLayout(new BorderLayout());
 		setBorder(new EmptyBorder(15, 15, 15, 15));

@@ -5,18 +5,17 @@ package pd.regelsystem;
  * Regel verstösst.
  */
 public class RegelVerstoss extends Exception {
-	private static final long serialVersionUID = 1L;
-
 	/**
-	 * @param grund Grund, warum der RegelVerstoss auftrat
+	 * @param grund
+	 *            Grund, warum der RegelVerstoss auftrat
 	 */
 	public RegelVerstoss(String grund) {
 		super(grund);
 	}
-	
+
 	/**
-	 * Sieht zum Beispiel so aus:
-	 * "RegelVerstoss: Zug muss mit Figur begonnen werden."
+	 * Sieht zum Beispiel so aus: "RegelVerstoss: Zug muss mit Figur begonnen
+	 * werden."
 	 */
 	public String toString() {
 		return "Regelverstoss: " + getMessage();

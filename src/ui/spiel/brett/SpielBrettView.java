@@ -9,8 +9,6 @@ import javax.swing.border.TitledBorder;
 import applikation.client.ClientController;
 
 public class SpielBrettView extends JPanel {
-	private static final long serialVersionUID = 1L;
-
 	public SpielBrettView(ClientController controller) {
 		GridBagLayout gbl = new GridBagLayout();
 

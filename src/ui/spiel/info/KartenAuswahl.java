@@ -9,13 +9,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class KartenAuswahl extends JLabel{
-
-	private static final long serialVersionUID = 1L;
-
 	public KartenAuswahl(Point p){
 		removeAll();
 	}
-	
+
 	public void setPosition(Point p){
 		String pfad = "/ui/ressourcen/karten_auswahl.png";
 		System.out.println(pfad);

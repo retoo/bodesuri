@@ -12,8 +12,6 @@ import applikation.client.ClientController;
  * einzelnen Clients dient.
  */
 public class ChatView extends JPanel {
-
-	private static final long serialVersionUID = 1L;
 	@SuppressWarnings("unused")
 	private ClientController controller;
 

@@ -5,12 +5,11 @@ package pd.brett;
  * meisten vorkommt.
  */
 public class NormalesFeld extends Feld {
-	private static final long serialVersionUID = 1L;
-
 	/**
 	 * Erstellt ein normales Feld.
-	 * 
-	 * @param nummer Feldnummer, siehe {@link Feld#Feld(int)}
+	 *
+	 * @param nummer
+	 *            Feldnummer, siehe {@link Feld#Feld(int)}
 	 */
 	public NormalesFeld(int nummer) {
 		super(nummer);

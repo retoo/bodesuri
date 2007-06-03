@@ -13,8 +13,6 @@ import pd.spieler.Spieler;
  * Enthält Eingaben für Validierung und anschliessende Erstellung des Zuges.
  */
 public class ZugEingabe implements Serializable {
-	private static final long serialVersionUID = 1L;
-
 	private Spieler spieler;
 	private Karte karte;
 	private List<Bewegung> bewegungen;
@@ -23,7 +21,7 @@ public class ZugEingabe implements Serializable {
 		this.spieler = spieler;
 		this.karte = karte;
 	}
-	
+
 	/**
 	 * Erstellt eine Zugeingabe.
 	 *
@@ -39,7 +37,7 @@ public class ZugEingabe implements Serializable {
 		this.bewegungen = new Vector<Bewegung>();
 		this.bewegungen.add(bewegung);
 	}
-	
+
 	public ZugEingabe(Spieler spieler, Karte karte, List<Bewegung> bewegungen) {
 		this(spieler, karte);
 		this.bewegungen = bewegungen;
@@ -82,17 +80,17 @@ public class ZugEingabe implements Serializable {
 	public Bewegung getBewegung() {
 		return bewegungen.get(0);
 	}
-	
+
 	public List<Bewegung> getBewegungen() {
 		return bewegungen;
 	}
-	
+
 	public int getAnzahlBewegungen() {
 		return bewegungen.size();
 	}
 
 	public String toString() {
-		return "ZugEingabe: " + getSpieler() + " mit "
-		       + getKarte() + " " + getBewegung();
+		return "ZugEingabe: " + getSpieler() + " mit " + getKarte() + " "
+		       + getBewegung();
 	}
 }

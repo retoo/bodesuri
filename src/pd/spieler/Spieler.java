@@ -11,20 +11,20 @@ import pd.serialisierung.BodesuriCodierbaresObjekt;
  * hat.
  */
 public class Spieler extends BodesuriCodierbaresObjekt {
-	private static final long serialVersionUID = 1L;
-	
 	private int nummer;
 	private String name;
-	
+
 	private Spiel spiel;
-	
+
 	private Vector<Figur> figuren = new Vector<Figur>();
-	
+
 	/**
 	 * Erstellt einen Spieler.
-	 * 
-	 * @param nummer Eindeutige Spielernummer
-	 * @param spiel Spiel, bei dem der Spieler mitspielt
+	 *
+	 * @param nummer
+	 *            Eindeutige Spielernummer
+	 * @param spiel
+	 *            Spiel, bei dem der Spieler mitspielt
 	 */
 	public Spieler(int nummer, Spiel spiel) {
 		super("Spieler " + nummer);
@@ -46,11 +46,12 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 * @return Name des Spielers
 	 */
 	public String getName() {
-    	return name;
-    }
+		return name;
+	}
 
 	/**
-	 * @param name Name des Spielers
+	 * @param name
+	 *            Name des Spielers
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -60,15 +61,15 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 * @return Figuren, mit denen der Spieler spielt
 	 */
 	public List<Figur> getFiguren() {
-    	return figuren;
-    }
+		return figuren;
+	}
 
 	/**
 	 * @return Spielernummer
 	 */
 	public int getNummer() {
-    	return nummer;
-    }
+		return nummer;
+	}
 
 	/**
 	 * @return Spiel, bei dem der Spieler mitspielt

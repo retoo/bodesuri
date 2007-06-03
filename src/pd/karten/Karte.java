@@ -4,8 +4,6 @@ import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 
 public class Karte extends BodesuriCodierbaresObjekt {
-	private static final long serialVersionUID = 1L;
-	
 	private KartenFarbe farbe;
 	private Regel regel;
 	private String name;
@@ -15,7 +13,7 @@ public class Karte extends BodesuriCodierbaresObjekt {
 		this.farbe = farbe;
 		this.name = name;
 	}
-	
+
 	public String toString() {
 		return getKartenFarbe() + " " + getClass().getSimpleName();
 	}
@@ -31,8 +29,8 @@ public class Karte extends BodesuriCodierbaresObjekt {
 	protected void setRegel(Regel regel) {
 		this.regel = regel;
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
 }

@@ -12,16 +12,13 @@ import applikation.client.ClientController;
  */
 
 public class SpielerView extends JPanel {
-
-	private static final long serialVersionUID = 1L;
-
 	public SpielerView(ClientController controller) {
 		TitledBorder titel = new TitledBorder("Spieler");
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
-		
+
 		/**
 		 * @fixme: Funktioniert nur mit 4 Spielern. (Exception)
 		 */

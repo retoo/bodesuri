@@ -7,12 +7,11 @@ import java.io.ObjectStreamException;
  * Code kein Objekt zugeordnet ist.
  */
 public class UnbekannterCodeException extends ObjectStreamException {
-	private static final long serialVersionUID = 1L;
-	
 	/**
 	 * Erstellt eine UnbekannterCodeException.
-	 * 
-	 * @param code Code, der unbekannt ist
+	 *
+	 * @param code
+	 *            Code, der unbekannt ist
 	 */
 	public UnbekannterCodeException(String code) {
 		super("'" + code + "' unbekannt");

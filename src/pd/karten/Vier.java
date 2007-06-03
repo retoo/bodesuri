@@ -5,8 +5,6 @@ import pd.regelsystem.RueckwaertsRegel;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Vier extends Karte {
-	private static final long serialVersionUID = 1L;
-
 	public Vier(KartenFarbe farbe, int deck) {
 		super("Vier", farbe, deck);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();

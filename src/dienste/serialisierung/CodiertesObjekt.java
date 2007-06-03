@@ -5,30 +5,29 @@ import java.io.Serializable;
 
 /**
  * Objekt, das einen Code enthält und serialisiert werden kann.
- * 
+ *
  * Dieses Objekt wird serialisiert und über das Netzwerk geschickt. Am anderen
  * Ende wird das Objekt deserialisiert und der ObjectInputStream ruft
  * readResolve() auf.
  */
 public abstract class CodiertesObjekt implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
 	private String code;
-	
+
 	/**
 	 * Erstellt ein CodiertesObjekt.
-	 * 
-	 * @param code Code, der dem codierten Objekt zugeordnet ist
+	 *
+	 * @param code
+	 *            Code, der dem codierten Objekt zugeordnet ist
 	 */
 	public CodiertesObjekt(String code) {
 		this.code = code;
 	}
-	
+
 	/*
 	 * Wird von ObjectInputStream aufgerufen, um herauszufinden, welches Objekt
 	 * diesem codierten Objekt zugeordnet ist. Dies wird über den Codierer des
 	 * aktuellen Spiels herausgefunden.
-	 * 
+	 *
 	 * Wenn der Codierer den Code nicht kennt, ihm also kein Objekt zugeordnet
 	 * worden ist, wird eine UnbekannterCodeException geworfen.
 	 */
@@ -40,6 +39,6 @@ public abstract class CodiertesObjekt implements Serializable {
 		}
 		return obj;
 	}
-	
+
 	protected abstract Codierer getCodierer();
 }

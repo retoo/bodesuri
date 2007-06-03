@@ -12,7 +12,6 @@ import pd.brett.Feld;
  * JLabel, wird zur Darstellung der Spielfiguren verwendet.
  */
 public class Figur2d extends JLabel implements Observer {
-	private static final long serialVersionUID = 1L;
 	static final private ImageIcon bildFigur = new ImageIcon(Feld2d.class.getResource("/ui/ressourcen/figur.png"));
 	private BrettView brett;
 
@@ -24,7 +23,7 @@ public class Figur2d extends JLabel implements Observer {
 
 	/**
 	 * Die Spielfigur wird auf das ausgewählte Feld gesetzt.
-	 * 
+	 *
 	 * @param ziel Zielfeld
 	 */
 	public void setzeAuf(Feld2d ziel) {

@@ -19,15 +19,9 @@ import pd.karten.Karte;
  * werden.
  */
 public class KarteView extends JLabel {
-
-	private static final long serialVersionUID = 1L;
-
 	final Karte karte;
-
 	private Point point;
-
 	private String pfad;
-	
 	private boolean gedrueckt = false;
 
 	public KarteView(Point p, Karte karte, KarteMouseAdapter mouseAdapter, DeckView view) {
@@ -48,19 +42,19 @@ public class KarteView extends JLabel {
 		setMinimumSize(new Dimension(100, 125));
 		addMouseListener(mouseAdapter);
 	}
-	
+
 	public Point getKoordinaten(){
 		return this.point;
 	}
-	
+
 	public void setPfad(String pfad){
 		this.pfad = pfad;
 	}
-	
+
 	public void setGedrueckt(){
 		this.gedrueckt = true;
 	}
-	
+
 	public boolean getGedrueckt(){
 		return this.gedrueckt;
 	}

@@ -19,8 +19,6 @@ import applikation.client.ClientController;
  * sowie auch zur Erfassung der Spielerinformationen.
  */
 public class VerbindenView extends JFrame {
-
-	private static final long serialVersionUID = 1L;
 	private JTextField hostname;
 	private JTextField port;
 	private JTextField spielerName;

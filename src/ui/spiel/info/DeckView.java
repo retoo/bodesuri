@@ -21,10 +21,7 @@ import applikation.client.ClientController;
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
  * die Karten der Spieler verwaltet und dargestellt.
  */
-public class DeckView extends JPanel{
-
-	private static final long serialVersionUID = 1L;
-	
+public class DeckView extends JPanel {
 	Vector<Karte> karten = new Vector<Karte>();
 
 	public DeckView(ClientController controller) {
@@ -41,9 +38,11 @@ public class DeckView extends JPanel{
 		karten.add(new Zehn(KartenFarbe.Pik, 1));
 		karten.add(new Sechs(KartenFarbe.Herz, 1));
 		karten.add(new Acht(KartenFarbe.Karo, 1));
-		
-		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());		
-		KarteMouseAdapter karteMouseAdapter = new KarteMouseAdapter(controller, this, kartenAuswahl);
+
+		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());
+		KarteMouseAdapter karteMouseAdapter = new KarteMouseAdapter(controller,
+		                                                            this,
+		                                                            kartenAuswahl);
 		for (int i = 5; i >= 0; i--) {
 			Point p = new Point(20 + i * 20, 30 + i * 20);
 			this.add(new KarteView(p, karten.get(i), karteMouseAdapter, this));

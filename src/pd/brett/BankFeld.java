@@ -7,8 +7,6 @@ import pd.spieler.Spieler;
  * verlässt.
  */
 public class BankFeld extends SpielerFeld {
-	private static final long serialVersionUID = 1L;
-	
 	private HimmelFeld himmelFeld;
 
 	/**
@@ -17,27 +15,28 @@ public class BankFeld extends SpielerFeld {
 	public BankFeld(int nummer, Spieler spieler) {
 		super(nummer, spieler);
 	}
-	
+
 	/**
 	 * @return true, wenn Bankfeld von ihrem Besitzer besetzt ist
 	 */
 	public boolean istBesetztVonBesitzer() {
 		return istBesetztVon(getSpieler());
 	}
-	
+
 	/**
 	 * Gibt das erste Feld des Himmels zurück.
-	 * 
+	 *
 	 * @return Erstes Himmelfeld, das nach Bankfeld kommt
 	 */
 	public HimmelFeld getHimmel() {
 		return himmelFeld;
 	}
-	
+
 	/**
 	 * Setzt das erste Himmelfeld.
-	 * 
-	 * @param himmelFeld Erstes Himmelfeld
+	 *
+	 * @param himmelFeld
+	 *            Erstes Himmelfeld
 	 */
 	public void setHimmel(HimmelFeld himmelFeld) {
 		this.himmelFeld = himmelFeld;

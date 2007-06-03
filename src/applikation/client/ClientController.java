@@ -23,9 +23,9 @@ import dienste.automat.EventQueue;
 
 /**
  * Der ClientController dient zur Zustandsverwaltung des Clients. Er handhabt
- * die logischen Schritte, die in diesem Zustand ausgeführt werden.
- * Für die grafische Darstellung ist die <code>ui</code>-Schicht zuständig. Dort
- * sind ebenfalls Observer implementiert.
+ * die logischen Schritte, die in diesem Zustand ausgeführt werden. Für die
+ * grafische Darstellung ist die <code>ui</code>-Schicht zuständig. Dort sind
+ * ebenfalls Observer implementiert.
  *
  */
 public class ClientController extends Observable {
@@ -44,7 +44,6 @@ public class ClientController extends Observable {
 	private String defaultName;
 	private String spielerName;
 	private Spieler spielerIch;
-
 
 	public ClientController(EventQueue eventQueue, String defaultName) {
 		this.eventQueue = eventQueue;
@@ -73,7 +72,7 @@ public class ClientController extends Observable {
 			public void run() {
 				zugAutomat = new ZugAutomat(spielerIch, eventQueue);
 				zugAutomat.run();
-            }
+			}
 		});
 
 		zugErfassungThread.start();
@@ -142,19 +141,23 @@ public class ClientController extends Observable {
 	 */
 	public void zeigeSpielStart() {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, defaultName);	// TODO: richtiger Spielername übergeben
+		spielView = new BodesuriView(this, defaultName); // TODO: richtiger
+															// Spielername
+															// übergeben
 		spielView.setVisible(true);
 	}
 
 	/**
-	 * Das Spiel befindet sich im Zustand, in dem die Verbindungsdaten erfasst werden.
+	 * Das Spiel befindet sich im Zustand, in dem die Verbindungsdaten erfasst
+	 * werden.
 	 */
 	public void zeigeVerbindungErfassen() {
 		// noch nichts (ausser Fehlermeldungen)
 	}
 
 	/**
-	 * Eine Verbindung wurde hergestellt. Der Client ist mit dem Server verbunden.
+	 * Eine Verbindung wurde hergestellt. Der Client ist mit dem Server
+	 * verbunden.
 	 */
 	public void zeigeVerbindungSteht() {
 		// noch nichts
@@ -168,8 +171,11 @@ public class ClientController extends Observable {
 	}
 
 	/**
-	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller gereicht werden.
-	 * @param fehlermeldung auszugebene Fehlermeldung
+	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller
+	 * gereicht werden.
+	 *
+	 * @param fehlermeldung
+	 *            auszugebene Fehlermeldung
 	 */
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
@@ -198,7 +204,6 @@ public class ClientController extends Observable {
 	public Spiel getSpiel() {
 		return spiel;
 	}
-
 
 	public String getSpielerName() {
 		return spielerName;
