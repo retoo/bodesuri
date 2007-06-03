@@ -33,24 +33,24 @@ public class ClientController extends Observable {
 	private EventQueue eventQueue;
 	private ZugAutomatController zugAutomatController;
 	private ZugAutomat zugAutomat;
-	
+
 	// Views
-	private BodesuriView spielView;			
+	private BodesuriView spielView;
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
-	
+
 	// Spiel
 	private Spiel spiel;
-	private String defaultName;				
+	private String defaultName;
 	private String spielerName;
 	private Spieler spielerIch;
-	
-	
+
+
 	public ClientController(EventQueue eventQueue, String defaultName) {
 		this.eventQueue = eventQueue;
 		this.defaultName = defaultName;
 	}
-	
+
 	public static void main(String[] args) {
 		EventQueue queue = new EventQueue();
 		ClientController controller = new ClientController(queue, "Spieler");
@@ -65,10 +65,10 @@ public class ClientController extends Observable {
 			System.exit(99);
 		}
 	}
-	
+
 	public void starteZugerfassung() {
 		zugAutomatController = new ZugAutomatController();
-		
+
 		Thread zugErfassungThread = new Thread(new Runnable() {
 			public void run() {
 				zugAutomat = new ZugAutomat(spielerIch, eventQueue);
@@ -83,7 +83,7 @@ public class ClientController extends Observable {
 		VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
 		eventQueue.enqueue(e);
 	}
-	
+
 	/**
 	 * Programm wurde gestartet.
 	 */
@@ -91,7 +91,7 @@ public class ClientController extends Observable {
 		verbindenView = new VerbindenView(this, defaultName);
 		verbindenView.setVisible(true);
 	}
-	
+
 	/**
 	 * Definition wer am Zug ist.
 	 */
@@ -166,14 +166,15 @@ public class ClientController extends Observable {
 	public void zeigeStartWaehlen() {
 		// aktiver Zustand
 	}
-	
+
 	/**
 	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller gereicht werden.
+	 * @param fehlermeldung auszugebene Fehlermeldung
 	 */
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
 	}
-	
+
 	public void klickKarte(Karte geklickteKarte) {
 		if (zugAutomat.isZustand(KarteWaehlen.class)
 		    || zugAutomat.isZustand(StartWaehlen.class)
@@ -182,35 +183,35 @@ public class ClientController extends Observable {
 			zugAutomat.queue.enqueue(kge);
 		}
 	}
-	
+
 	public void klickFeld(Feld geklicktesFeld) {
 		if (zugAutomat.isZustand(StartWaehlen.class)
 		    || zugAutomat.isZustand(EndeWaehlen.class)) {
 			zugAutomat.queue.enqueue(new FeldGewaehltEvent(geklicktesFeld));
 		}
 	}
-	
+
 	public void setSpiel(Spiel spiel) {
 		this.spiel = spiel;
 	}
-	
+
 	public Spiel getSpiel() {
 		return spiel;
-	}	
+	}
 
-	
+
 	public String getSpielerName() {
 		return spielerName;
 	}
-	
+
 	public void setSpielerName(String spielerName) {
 		this.spielerName = spielerName;
 	}
-	
+
 	public void setSpielerIch(Spieler spielerIch) {
 		this.spielerIch = spielerIch;
 	}
-	
+
 	public boolean isZugAutomatControllerVorhanden() {
 		return (zugAutomatController != null) ? true : false;
 	}
