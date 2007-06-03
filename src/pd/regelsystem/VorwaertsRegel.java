@@ -32,6 +32,10 @@ public class VorwaertsRegel extends Regel {
 	 * Figur besetzt ist, wird diese heimgeschickt.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
+		if (zugEingabe.getAnzahlBewegungen() != 1) {
+			throw new RegelVerstoss("Nur eine Bewegung möglich.");
+		}
+		
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;

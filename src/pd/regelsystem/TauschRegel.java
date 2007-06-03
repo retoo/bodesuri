@@ -15,6 +15,10 @@ public class TauschRegel extends Regel {
 	 * anderen Spielers gemacht werden.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
+		if (zugEingabe.getAnzahlBewegungen() != 1) {
+			throw new RegelVerstoss("Nur eine Bewegung möglich.");
+		}
+		
 		Spieler spieler = zugEingabe.getSpieler();
 		Feld start = zugEingabe.getBewegung().start;
 		Feld ziel  = zugEingabe.getBewegung().ziel;

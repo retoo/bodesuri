@@ -1,6 +1,8 @@
 package pd.zugsystem;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Vector;
 
 import pd.karten.Karte;
 import pd.regelsystem.Regel;
@@ -15,8 +17,13 @@ public class ZugEingabe implements Serializable {
 
 	private Spieler spieler;
 	private Karte karte;
-	private Bewegung bewegung;
+	private List<Bewegung> bewegungen;
 
+	private ZugEingabe(Spieler spieler, Karte karte) {
+		this.spieler = spieler;
+		this.karte = karte;
+	}
+	
 	/**
 	 * Erstellt eine Zugeingabe.
 	 *
@@ -28,9 +35,14 @@ public class ZugEingabe implements Serializable {
 	 *            Bewegung (Start, Ziel) des Zuges
 	 */
 	public ZugEingabe(Spieler spieler, Karte karte, Bewegung bewegung) {
-		this.spieler = spieler;
-		this.karte = karte;
-		this.bewegung = bewegung;
+		this(spieler, karte);
+		this.bewegungen = new Vector<Bewegung>();
+		this.bewegungen.add(bewegung);
+	}
+	
+	public ZugEingabe(Spieler spieler, Karte karte, List<Bewegung> bewegungen) {
+		this(spieler, karte);
+		this.bewegungen = bewegungen;
 	}
 
 	/**
@@ -68,7 +80,15 @@ public class ZugEingabe implements Serializable {
 	 * @return Bewegung (Start, Ziel) des Zuges
 	 */
 	public Bewegung getBewegung() {
-		return bewegung;
+		return bewegungen.get(0);
+	}
+	
+	public List<Bewegung> getBewegungen() {
+		return bewegungen;
+	}
+	
+	public int getAnzahlBewegungen() {
+		return bewegungen.size();
 	}
 
 	public String toString() {
