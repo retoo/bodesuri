@@ -1,5 +1,8 @@
 package pd.regelsystem;
 
+import java.util.List;
+import java.util.Vector;
+
 import pd.ProblemDomainTestCase;
 import pd.brett.Feld;
 import pd.spieler.Spieler;
@@ -23,8 +26,7 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	}
 	
 	protected void sollteValidieren(Regel regel) throws RegelVerstoss {
-		Bewegung bewegung = new Bewegung(start, ziel);
-		ZugEingabe ze = new ZugEingabe(spieler, null, bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
 		Zug zug = regel.validiere(ze);
 		zug.ausfuehren();
     }
@@ -34,13 +36,18 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	}
 	
 	protected void sollteVerstossGeben(Regel regel) {
-		Bewegung bewegung = new Bewegung(start, ziel);
-		ZugEingabe ze = new ZugEingabe(spieler, null, bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
         try {
 	        regel.validiere(ze);
 	        fail("Sollte RegelVerstoss geben.");
         } catch (RegelVerstoss rv) {
         	assertNotNull(rv);
         }
+	}
+	
+	protected List<Bewegung> getBewegungen() {
+		Vector<Bewegung> bewegungen = new Vector<Bewegung>();
+		bewegungen.add(new Bewegung(start, ziel));
+		return bewegungen;
 	}
 }

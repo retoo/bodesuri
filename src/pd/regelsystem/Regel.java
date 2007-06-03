@@ -7,6 +7,8 @@ import pd.zugsystem.Aktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
+// TODO: Gründe für RegelVerstoss vereinheitlichen.
+
 /**
  * Basisklasse für Regeln. 
  */
