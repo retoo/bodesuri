@@ -44,4 +44,10 @@ public class Figur2d extends JLabel implements Observer {
 			setzeAuf(brett.getFeld2d((Feld)arg));
 		}
 	}
+
+	public void setzeAusgewaehlt() {
+		ImageIcon bildFigur = new ImageIcon(Feld2d.class.getResource("/ui/ressourcen/figur_schatten.png"));
+		setIcon(bildFigur);
+		
+	}
 }

@@ -50,6 +50,7 @@ public class BrettView extends JPanel {
 				Figur2d figur2d = new Figur2d(feld2d, this);
 				this.setComponentZOrder(figur2d, 0);
 				feld.getFigur().addObserver(figur2d);
+				mouseAdapter.addFigur(feld2d, figur2d);
 			}
 		}
 		add(new SpielBrett2d());
