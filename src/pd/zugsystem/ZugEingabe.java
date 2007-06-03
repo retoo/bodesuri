@@ -15,11 +15,13 @@ import pd.spieler.Spieler;
 public class ZugEingabe implements Serializable {
 	private Spieler spieler;
 	private Karte karte;
+	private Karte konkreteKarte;
 	private List<Bewegung> bewegungen;
 
 	private ZugEingabe(Spieler spieler, Karte karte) {
 		this.spieler = spieler;
 		this.karte = karte;
+		this.konkreteKarte = karte;
 	}
 
 	/**
@@ -53,11 +55,18 @@ public class ZugEingabe implements Serializable {
 	 *             Bei Regelwidrigkeit geworfen
 	 */
 	public Zug validiere() throws RegelVerstoss {
-		Regel regel = karte.getRegel();
+		Regel regel = konkreteKarte.getRegel();
 		if (regel == null) {
 			throw new RegelVerstoss("Karte ist noch nicht spielbar.");
 		}
 		return regel.validiere(this);
+	}
+
+	/*
+	 * Ist nur beim Joker nötig.
+	 */
+	public void setKonkreteKarte(Karte konkreteKarte) {
+		this.konkreteKarte = konkreteKarte;
 	}
 
 	/**
@@ -72,6 +81,10 @@ public class ZugEingabe implements Serializable {
 	 */
 	public Karte getKarte() {
 		return karte;
+	}
+	
+	public Karte getKonkreteKarte() {
+		return konkreteKarte;
 	}
 
 	/**
