@@ -15,14 +15,8 @@ public class WarteAufZug extends AktiverServerZustand {
 
 	Zustand zugInfo(EndPunkt absender, ZugInformation zugInfo) {
 		Spielerschaft spielers = automat.spielerschaft;
-		Spieler aktuellerSpieler = spielers.getAktuellerSpieler();
 
-		if (absender != aktuellerSpieler.endpunkt) {
-			spielers.broadcast("HAH.. huere michi, de " + absender
-			          + " wott voll bschisse");
-			throw new RuntimeException("beschiss von " + absender + " an "
-			                           + aktuellerSpieler);
-		}
+		spielers.sicherStellenIstAktuellerSpieler(absender);
 
 		spielers.broadcast(zugInfo);
 		System.out.println("Ausgeführter Zug: " + zugInfo.zug);
@@ -31,16 +25,10 @@ public class WarteAufZug extends AktiverServerZustand {
 	}
 
 	Zustand aufgabe(EndPunkt absender, Aufgabe aufgabe) {
-		Spieler aktuellerSpieler = automat.spielerschaft.getAktuellerSpieler();
+		Spielerschaft spielers = automat.spielerschaft;
+		Spieler aktuellerSpieler = spielers.getAktuellerSpieler();
 
-
-		/* Fixme: besser versorgen */
-		if (absender != aktuellerSpieler.endpunkt) {
-			automat.spielerschaft.broadcast("HAH.. huere michi, de " + absender
-			          + " wott voll bschisse");
-			throw new RuntimeException("beschiss von " + absender + " an "
-			                           + aktuellerSpieler);
-		}
+		spielers.sicherStellenIstAktuellerSpieler(absender);
 
 		automat.spielerschaft.runde.entferneSpieler(aktuellerSpieler);
 

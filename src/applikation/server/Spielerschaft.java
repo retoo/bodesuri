@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import applikation.nachrichten.ChatNachricht;
+import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 
@@ -62,7 +63,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 	public void broadcast(Nachricht nachricht) {
 		for (Spieler spieler : spielers) {
 			try {
-				spieler.endpunkt.sende(nachricht);
+				spieler.sende(nachricht);
 			} catch (VerbindungWegException e) {
 				throw new RuntimeException(e);
 			}
@@ -144,6 +145,20 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 		runde.spielers.addAll(spielers);
 
-	    return runde;
-    }
+		return runde;
+	}
+
+	private boolean isAktuellerSpieler(EndPunkt endpunkt) {
+		return getAktuellerSpieler().benutztEndPunkt(endpunkt);
+	}
+
+	/* TODO: Kann schöner gemacht werden */
+	public void sicherStellenIstAktuellerSpieler(EndPunkt absender) {
+		if (isAktuellerSpieler(absender)) {
+			broadcast("HAH.. huere michi, de " + absender
+			          + " wott voll bschisse");
+			throw new RuntimeException("beschiss von " + absender + " an "
+			                           + aktuellerSpieler);
+		}
+	}
 }
