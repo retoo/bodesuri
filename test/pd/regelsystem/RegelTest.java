@@ -1,3 +1,4 @@
+package pd.regelsystem;
 import pd.ProblemDomainTestCase;
 import pd.brett.Feld;
 import pd.karten.KartenFarbe;
