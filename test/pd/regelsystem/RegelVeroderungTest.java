@@ -12,39 +12,39 @@ public class RegelVeroderungTest extends RegelTestCase {
 	}
 	
 	public void testVier() throws RegelVerstoss {
-		start = bankFeld1;
+		start = bank(0);
 		ziel  = start.getNtesFeld(4);
-		lagerFeld1.versetzeFigurAuf(start);
+		lager(0).versetzeFigurAuf(start);
 		sollteValidieren(viererRegel);
 		
 		assertTrue(start.istFrei());
-		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istBesetztVon(spieler(0)));
 	}
 	
 	public void testVierFalsch() {
-		start = bankFeld1;
+		start = bank(0);
 		ziel  = start.getNtesFeld(3);
-		lagerFeld1.versetzeFigurAuf(start);
+		lager(0).versetzeFigurAuf(start);
 		sollteVerstossGeben(viererRegel);
 		
-		start = lagerFeld1;
+		start = lager(0);
 		sollteVerstossGeben(viererRegel);
 	}
 
 	public void testVierRueckwaerts() throws RegelVerstoss {
-		start = bankFeld1.getNtesFeld(4);
-		ziel  = bankFeld1;
-		lagerFeld1.versetzeFigurAuf(start);
+		start = bank(0).getNtesFeld(4);
+		ziel  = bank(0);
+		lager(0).versetzeFigurAuf(start);
 		sollteValidieren(viererRegel);
 		
 		assertTrue(start.istFrei());
-		assertTrue(ziel.istBesetztVon(spieler1));
+		assertTrue(ziel.istBesetztVon(spieler(0)));
 	}
 	
 	public void testVierRueckwaertsFalsch() {
-		start = bankFeld1.getNtesFeld(3);
-		ziel  = bankFeld1;
-		lagerFeld1.versetzeFigurAuf(start);
+		start = bank(0).getNtesFeld(3);
+		ziel  = bank(0);
+		lager(0).versetzeFigurAuf(start);
 		sollteVerstossGeben(viererRegel);
 	}
 }

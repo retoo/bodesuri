@@ -11,12 +11,12 @@ public class BrettTest extends ProblemDomainTestCase {
 	
 	public void testGetFreiesLagerFeldVon() {
 		try {
-			brett.getFreiesLagerFeldVon(spieler1);
+			brett.getFreiesLagerFeldVon(spieler(0));
 			fail("Sollte RuntimeException geben");
 		} catch (RuntimeException e) {
 			assertNotNull(e);
 		}
-		lagerFeld1.versetzeFigurAuf(bankFeld1);
-		assertEquals(lagerFeld1, brett.getFreiesLagerFeldVon(spieler1));
+		lager(0).versetzeFigurAuf(bank(0));
+		assertEquals(lager(0), brett.getFreiesLagerFeldVon(spieler(0)));
 	}
 }

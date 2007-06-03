@@ -18,9 +18,9 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	
 	protected void setUp() {
 		super.setUp();
-		feld1 = bankFeld1;
+		feld1 = bank(0);
 		feld2 = feld1.getNaechstes();
-		lagerFeld1.versetzeFigurAuf(feld1);
+		lager(0).versetzeFigurAuf(feld1);
 	}
 	
 	public void testFeldSerialisieren()
@@ -40,7 +40,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	public void testZugEingabeSerialisieren()
 			throws IOException, ClassNotFoundException {
 		Bewegung bewegung = new Bewegung(feld1, feld2);
-		ZugEingabe ze = new ZugEingabe(spieler1, kartenGeber.getKarte(), bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler(0), kartenGeber.getKarte(), bewegung);
 		
 		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
 		assertEquals(ze.getSpieler(), ze2.getSpieler());

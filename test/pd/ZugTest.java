@@ -9,11 +9,11 @@ import pd.zugsystem.ZugEingabe;
 
 public class ZugTest extends ProblemDomainTestCase {
 	public void testZugEingabe() throws RegelVerstoss {
-		Bewegung bewegung = new Bewegung(lagerFeld1, bankFeld1);
+		Bewegung bewegung = new Bewegung(lager(0), bank(0));
 		Ass ass = new Ass(KartenFarbe.Herz, 0);
-		ZugEingabe ze = new ZugEingabe(spieler1, ass, bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler(0), ass, bewegung);
 		
-		assertEquals(spieler1, ze.getSpieler());
+		assertEquals(spieler(0), ze.getSpieler());
 		assertEquals(ass, ze.getKarte());
 		assertEquals(bewegung, ze.getBewegung());
 		
@@ -21,9 +21,9 @@ public class ZugTest extends ProblemDomainTestCase {
 	}
 	
 	public void testKarteOhneRegel() {
-		Bewegung bewegung = new Bewegung(lagerFeld1, bankFeld1);
+		Bewegung bewegung = new Bewegung(lager(0), bank(0));
 		Karte karte = new Karte("Ass", KartenFarbe.Herz, 0);
-		ZugEingabe ze = new ZugEingabe(spieler1, karte, bewegung);
+		ZugEingabe ze = new ZugEingabe(spieler(0), karte, bewegung);
         try {
 	        ze.validiere();
 	        fail("Sollte RegelVerstoss geben.");
@@ -33,7 +33,7 @@ public class ZugTest extends ProblemDomainTestCase {
 	}
 	
 	public void testAktionAufBesetztesFeld() {
-		Aktion aktion = new Aktion(lagerFeld1, lagerFeld2);
+		Aktion aktion = new Aktion(lager(0), lager(1));
 		try {
 			aktion.ausfuehren();
 			fail("Sollte RuntimeException geben.");

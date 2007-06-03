@@ -1,4 +1,5 @@
 package pd;
+
 import junit.framework.TestCase;
 import pd.Spiel;
 import pd.brett.BankFeld;
@@ -11,14 +12,6 @@ import pd.spieler.Spieler;
 public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spiel spiel;
 	protected Brett brett;
-	protected Spieler spieler1;
-	protected Spieler spieler2;
-	protected BankFeld bankFeld1;
-	protected BankFeld bankFeld2;
-	protected LagerFeld lagerFeld1;
-	protected LagerFeld lagerFeld2;
-	protected HimmelFeld himmelFeld1;
-	protected HimmelFeld himmelFeld2;
 	protected KartenGeber kartenGeber;
 	
 	protected void setUp() {
@@ -29,17 +22,30 @@ public abstract class ProblemDomainTestCase extends TestCase {
 			spiel.fuegeHinzu("Spieler" + i);
 		}
 		
-		spieler1 = spiel.getSpieler().get(0);
-		bankFeld1 = brett.getBankFeldVon(spieler1);
-		lagerFeld1 = brett.getLagerFelderVon(spieler1).get(0);
-		himmelFeld1 = brett.getHimmelFelderVon(spieler1).get(0);
-		
-		spieler2 = spiel.getSpieler().get(1);
-		bankFeld2 = brett.getBankFeldVon(spieler2);
-		lagerFeld2 = brett.getLagerFelderVon(spieler2).get(0);
-		himmelFeld2 = brett.getHimmelFelderVon(spieler2).get(0);
-		
 		kartenGeber = spiel.getKartenGeber();
 	}
-
+	
+	protected Spieler spieler(int nummer) {
+		return spiel.getSpieler().get(nummer);
+	}
+	
+	protected BankFeld bank(int spieler) {
+		return brett.getBankFeldVon(spiel.getSpieler().get(spieler));
+	}
+	
+	protected LagerFeld lager(int spieler) {
+		return lager(spieler, 0);
+	}
+	
+	protected LagerFeld lager(int spieler, int feld) {
+		return brett.getLagerFelderVon(spiel.getSpieler().get(spieler)).get(feld);
+	}
+	
+	protected HimmelFeld himmel(int spieler) {
+		return himmel(spieler, 0);
+	}
+	
+	protected HimmelFeld himmel(int spieler, int feld) {
+		return brett.getHimmelFelderVon(spiel.getSpieler().get(spieler)).get(feld);
+	}
 }

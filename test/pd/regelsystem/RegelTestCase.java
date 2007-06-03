@@ -14,7 +14,7 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	
 	protected void setUp() {
 		super.setUp();
-		spieler = spieler1;
+		spieler = spieler(0);
 	}
 	
 	protected void sollteValidieren(Regel regel) throws RegelVerstoss {

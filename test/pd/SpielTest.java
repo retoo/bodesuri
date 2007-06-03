@@ -1,6 +1,6 @@
 package pd;
+
 import pd.Spiel;
-import pd.spieler.Spieler;
 
 public class SpielTest extends ProblemDomainTestCase {
 	protected void setUp() {
@@ -15,9 +15,8 @@ public class SpielTest extends ProblemDomainTestCase {
 		spiel.fuegeHinzu("Spieler 3");
 		assertEquals(4, spiel.getSpieler().size());
 		
-		Spieler spieler0 = spiel.getSpieler().get(0);
-		assertEquals(0, spieler0.getNummer());
-		assertEquals("Spieler 0", spieler0.getName());
-		assertEquals("Spieler Spieler 0", spieler0.toString());
+		assertEquals(0, spieler(0).getNummer());
+		assertEquals("Spieler 0", spieler(0).getName());
+		assertEquals("Spieler Spieler 0", spieler(0).toString());
 	}
 }

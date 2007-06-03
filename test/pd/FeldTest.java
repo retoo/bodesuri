@@ -7,9 +7,9 @@ public class FeldTest extends ProblemDomainTestCase {
 	
 	protected void setUp() {
 		super.setUp();
-		feld1 = bankFeld1;
+		feld1 = bank(0);
 		feld2 = feld1.getNaechstes();
-		lagerFeld1.versetzeFigurAuf(feld1);
+		lager(0).versetzeFigurAuf(feld1);
 	}
 
 	public void testNaechstesVorheriges() {
@@ -30,30 +30,30 @@ public class FeldTest extends ProblemDomainTestCase {
 
 	public void testIstBesetzt() {
 		assertTrue(feld1.istBesetzt());
-		assertTrue(feld1.istBesetztVon(spieler1));
+		assertTrue(feld1.istBesetztVon(spieler(0)));
 		assertFalse(feld2.istBesetzt());
-		assertFalse(feld2.istBesetztVon(spieler1));
+		assertFalse(feld2.istBesetztVon(spieler(0)));
 	}
 	
 	public void testVersetzeFigurAuf() {
 		feld1.versetzeFigurAuf(feld2);
 		assertTrue(feld1.istFrei());
-		assertTrue(feld2.istBesetztVon(spieler1));
+		assertTrue(feld2.istBesetztVon(spieler(0)));
 	}
 	
 	public void testGetHimmel() {
-		assertEquals(brett.getHimmelFelderVon(spieler1).get(0),
-		             bankFeld1.getHimmel());
+		assertEquals(brett.getHimmelFelderVon(spieler(0)).get(0),
+		             bank(0).getHimmel());
 	}
 	
 	public void testGetSpieler() {
-		assertEquals(spieler1, lagerFeld1.getSpieler());
-		assertEquals(spieler1, bankFeld1.getSpieler());
-		assertEquals(spieler1, bankFeld1.getHimmel().getSpieler());
+		assertEquals(spieler(0), lager(0).getSpieler());
+		assertEquals(spieler(0), bank(0).getSpieler());
+		assertEquals(spieler(0), bank(0).getHimmel().getSpieler());
 	}
 	
 	public void testGetNummer() {
-		assertEquals(0, bankFeld1.getNummer());
-		assertEquals("BankFeld 0", bankFeld1.toString());
+		assertEquals(0, bank(0).getNummer());
+		assertEquals("BankFeld 0", bank(0).toString());
 	}
 }
