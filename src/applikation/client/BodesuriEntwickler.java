@@ -1,5 +1,6 @@
 package applikation.client;
 
+import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 import applikation.server.BodesuriServer;
 
@@ -27,7 +28,7 @@ public class BodesuriEntwickler {
 				public void run() {
 					EventQueue eventQueue = new EventQueue();
 					ClientController controller = new ClientController(eventQueue, Thread.currentThread().getName());
-					BodesuriClient client = new BodesuriClient(eventQueue, controller);
+					Automat client = new BodesuriClient(eventQueue, controller);
 
 					try {
 						client.run();

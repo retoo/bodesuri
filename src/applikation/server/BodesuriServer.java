@@ -23,7 +23,7 @@ public class BodesuriServer extends Automat {
 	 *
 	 * TODO: muss das wirklich so ne Konstante sein.
 	 */
-	public static final int MAXSPIELER = 1;
+	public static final int MAXSPIELER = 4;
 	/**
 	 * Server
 	 */

@@ -9,7 +9,6 @@ import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
-import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {
@@ -36,9 +35,5 @@ public class ZugAutomat extends Automat {
 
 		this.queue = new EventQueue();
 		setEventQuelle(queue);
-	}
-
-	public boolean isZustand(Class<? extends Zustand> klass) {
-		return getAktuellerZustand() == getZustand(klass);
 	}
 }

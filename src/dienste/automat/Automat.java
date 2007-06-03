@@ -180,4 +180,8 @@ public class Automat extends Observable {
 
 		return zustand;
 	}
+
+	public boolean isZustand(Class<? extends Zustand> klass) {
+        return getAktuellerZustand() ==getZustand(klass);
+    }
 }
