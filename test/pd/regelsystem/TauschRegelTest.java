@@ -1,12 +1,17 @@
 package pd.regelsystem;
 
 public class TauschRegelTest extends RegelTestCase {
+	protected void setUp() {
+		super.setUp();
+		regel = new TauschRegel();
+	}
+	
 	public void testTauschen() throws RegelVerstoss {
 		start = bank(0).getNtesFeld(2);
 		ziel  = bank(0).getNtesFeld(5);
 		lager(0).versetzeFigurAuf(start);
 		lager(1).versetzeFigurAuf(ziel);
-		sollteValidieren(new TauschRegel());
+		sollteValidieren();
 		
 		assertTrue(start.istBesetztVon(spieler(1)));
 		assertTrue(ziel.istBesetztVon(spieler(0)));
@@ -17,7 +22,7 @@ public class TauschRegelTest extends RegelTestCase {
 		ziel  = bank(0).getNtesFeld(5);
 		lager(0, 0).versetzeFigurAuf(start);
 		lager(0, 1).versetzeFigurAuf(ziel);
-		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testTauschenZweiFremde() {
@@ -25,17 +30,17 @@ public class TauschRegelTest extends RegelTestCase {
 		ziel  = bank(0).getNtesFeld(5);
 		lager(1, 0).versetzeFigurAuf(start);
 		lager(1, 1).versetzeFigurAuf(ziel);
-		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testTauschenMitEinerFigur() {
 		start = bank(0);
 		ziel  = bank(0).getNaechstes();
 		lager(0).versetzeFigurAuf(start);
-		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben();
 		
 		start.versetzeFigurAuf(ziel);
-		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testTauschenGeschuetzt() throws RegelVerstoss {
@@ -50,6 +55,6 @@ public class TauschRegelTest extends RegelTestCase {
 		start = bank(0);
 		ziel  = bank(0).getNtesFeld(7);
 		lager(1).versetzeFigurAuf(ziel);
-		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben();
 	}
 }

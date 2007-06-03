@@ -1,10 +1,15 @@
 package pd.regelsystem;
 
 public class StartRegelTest extends RegelTestCase {
+	protected void setUp() {
+		super.setUp();
+		regel = new StartRegel();
+	}
+	
 	public void testStart() throws RegelVerstoss {
 		start = lager(0);
 		ziel  = bank(0);
-		sollteValidieren(new StartRegel());
+		sollteValidieren();
 		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler(0)));
@@ -21,35 +26,35 @@ public class StartRegelTest extends RegelTestCase {
 	public void testStartNichtVonLagerFeldAus() {
 		start = bank(0);
 		ziel  = bank(0).getNaechstes();
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testStartKeineFigurAufLagerFeld() {
 		start = lager(0);
 		ziel  = bank(0);
 		start.versetzeFigurAuf(ziel);
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testStartNichtAufBankFeld() {
 		start = lager(0);
 		ziel  = bank(0).getNaechstes();
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 		
 		ziel  = bank(1);
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testStartAndererSpieler() {
 		start = lager(1);
 		ziel  = bank(1);
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testStartGeschuetzt() throws RegelVerstoss {
 		start = lager(0);
 		ziel  = bank(0);
-		sollteValidieren(new StartRegel());
+		sollteValidieren();
 		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler(0)));
@@ -57,14 +62,14 @@ public class StartRegelTest extends RegelTestCase {
 		
 		start = lager(0, 1);
 		ziel  = bank(0);
-		sollteVerstossGeben(new StartRegel());
+		sollteVerstossGeben();
 	}
 	
 	public void testStartHeimSchicken() throws RegelVerstoss {
 		start = lager(0);
 		ziel  = bank(0);
 		lager(1).versetzeFigurAuf(ziel);
-		sollteValidieren(new StartRegel());
+		sollteValidieren();
 		
 		assertTrue(start.istFrei());
 		assertTrue(ziel.istBesetztVon(spieler(0)));
