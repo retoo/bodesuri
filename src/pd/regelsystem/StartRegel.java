@@ -49,10 +49,7 @@ public class StartRegel extends Regel {
 		if (ziel.istGeschuetzt()) {
 			throw new RegelVerstoss("Bankfeld ist geschützt.");
 		} else if (ziel.istBesetzt()) {
-			Spieler sp = ziel.getFigur().getSpieler();
-			// TODO: Gefällt mir noch nicht, vielleicht ne Methode in Spieler?
-			LagerFeld lf = sp.getSpiel().getBrett().getFreiesLagerFeldVon(sp);
-			zug.fuegeHinzu(new Aktion(ziel, lf));
+			zug.fuegeHinzu(heimschickAktion(ziel, ziel.getFigur().getSpieler()));
 		}
 		
 		zug.fuegeHinzu(new Aktion(start, ziel));

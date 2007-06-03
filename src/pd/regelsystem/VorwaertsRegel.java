@@ -84,10 +84,7 @@ public class VorwaertsRegel extends Regel {
 		Zug zug = new Zug();
 		
 		if (ziel.istBesetzt()) {
-			Spieler sp = ziel.getFigur().getSpieler();
-			// TODO: Gefällt mir noch nicht, vielleicht ne Methode in Spieler?
-			LagerFeld lf = sp.getSpiel().getBrett().getFreiesLagerFeldVon(sp);
-			zug.fuegeHinzu(new Aktion(ziel, lf));
+			zug.fuegeHinzu(heimschickAktion(ziel, ziel.getFigur().getSpieler()));
 		}
 		
 		zug.fuegeHinzu(new Aktion(start, ziel));
