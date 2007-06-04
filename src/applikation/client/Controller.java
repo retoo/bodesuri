@@ -1,7 +1,5 @@
 package applikation.client;
 
-import java.util.Observable;
-
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
@@ -15,7 +13,7 @@ import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import dienste.automat.EventQueue;
 
-public abstract class Controller extends Observable {
+public abstract class Controller {
 	// Logik
 	protected EventQueue eventQueue;
 	protected ZugAutomatController zugAutomatController;
