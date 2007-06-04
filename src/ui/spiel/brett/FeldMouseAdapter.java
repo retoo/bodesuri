@@ -29,7 +29,9 @@ class FeldMouseAdapter extends MouseAdapter {
 			controller.klickFeld(((Feld2d) e.getComponent()).feld);
 			//FIXME: Unterscheidung zwischen 1. und 2. Feld irgendwie noch nicht möglich
 			Figur2d figur = getFigur2d(((Feld2d) e.getComponent()));
-			figur.setzeAusgewaehlt();
+			if (figur != null) {
+				figur.setzeAusgewaehlt();	
+			}
 		} 
 	}
 
