@@ -5,11 +5,9 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import applikation.client.Controller;
-
-import ui.ressourcen.Icons;
 import ui.spiel.brett.SpielView;
 import ui.spiel.info.InfoView;
+import applikation.client.Controller;
 
 /**
  * Das GUI des Spiels.
@@ -28,7 +26,6 @@ public class BodesuriView extends JFrame {
 		InfoView infoView = new InfoView(controller);
 		getContentPane().add(spielView, BorderLayout.CENTER);
 		getContentPane().add(infoView, BorderLayout.EAST);
-		new Icons();
 
 		// GUI anzeigen
 		pack();

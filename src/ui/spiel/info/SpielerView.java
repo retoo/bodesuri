@@ -22,11 +22,15 @@ public class SpielerView extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 
-		/**
-		 * @fixme: Funktioniert nur mit 4 Spielern. (Exception)
-		 */
+//		System.out.println(FigurenFarbe.values());
+//		Enumeration<FigurenFarbe> iter = (Enumeration<FigurenFarbe>) FigurenFarbe.BLAU.iterator();
+//		System.out.println(iter.hasMoreElements());
+		
+		JLabel spielerName;
 		for (Spieler spieler : controller.getSpiel().getSpieler()) {
-			this.add(new JLabel(spieler.getName()));
+			spielerName = new JLabel(spieler.getName());
+			//spielerName.setForeground(FigurenFarbe.farben.get(1).getColor());
+			this.add(spielerName);
 		}
 	}
 }
