@@ -10,17 +10,10 @@ import applikation.client.Controller;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
 
-/**
- * Der ClientController dient zur Zustandsverwaltung des Clients. Er handhabt
- * die logischen Schritte, die in diesem Zustand ausgeführt werden. Für die
- * grafische Darstellung ist die <code>ui</code>-Schicht zuständig. Dort sind
- * ebenfalls Observer implementiert.
- *
- */
 public class GUIController extends Controller {
-	private BodesuriView spielView;
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
+	private BodesuriView spielView;
 
 	public GUIController(EventQueue eventQueue, String spielerName) {
 		super(eventQueue, spielerName);
@@ -59,6 +52,7 @@ public class GUIController extends Controller {
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
+		//TODO das soll in mit allen Views funktionieren.
 		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
 	}
 }

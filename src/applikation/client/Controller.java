@@ -13,9 +13,15 @@ import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import dienste.automat.EventQueue;
 
+/**
+ * Der Controller dient zum Kanalisieren der Zugriffe zwischen der UI- und
+ * Applikationsschicht. Er bietet dem UI Methoden Ereignisse an den Automaten
+ * weiterzuleiten und dem Automaten die Möglichkeit UI-Ereignisse unabhängig von
+ * der Implementation des UIs auszulösen.
+ */
 public abstract class Controller {
-	// Logik
 	protected EventQueue eventQueue;
+
 	protected ZugAutomatController zugAutomatController;
 	protected ZugAutomat zugAutomat;
 
@@ -31,23 +37,23 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Programm wurde gestartet. Verbindungsdaten erfragen.
+	 * Die Verbindungsdaten zu erfragen.
 	 */
 	public abstract void zeigeVerbinden();
 
 	/**
-	 * Die Verbinung wurde erstellt. Die Lobby anzeigen.
+	 * Die Lobby anzeigen.
 	 */
 	public abstract void zeigeLobby();
 
 	/**
-	 * Das Spiel wurde gestartet. Das Spielbrett anzeigen.
+	 * Das Spielbrett anzeigen.
 	 */
 	public abstract void zeigeSpiel();
 
 	/**
-	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller
-	 * gereicht werden.
+	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden
+	 * darstellen.
 	 * 
 	 * @param fehlermeldung
 	 *            auszugebene Fehlermeldung
@@ -55,9 +61,8 @@ public abstract class Controller {
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 
 	/**
-	 * Mit dem erfassen eines neuen Zuges beginnen. Startet einen eigenen
+	 * Mit dem Erfassen eines neuen Zuges beginnen. Startet einen eigenen
 	 * Automaten für die Zugerfassung.
-	 * 
 	 */
 	public void starteZugerfassung() {
 		zugAutomatController = new ZugAutomatController();
@@ -73,7 +78,7 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Verdindung zum Server aufbauen.
+	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
 	 * 
 	 * @param host
 	 *            Hostname des Servers
@@ -88,7 +93,7 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Der Benutzer hat eine Karte ausgewählt.
+	 * Dem Automaten mitteilen welche Karte der Benutzer gewählt hat.
 	 * 
 	 * @param gewaehlteKarte
 	 */
@@ -102,7 +107,7 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Der Benutzer hat ein Feld ausgewählt.
+	 * Dem Automaten mitteilen welches Feld der Benutzer gewählt hat.
 	 * 
 	 * @param gewaehltesFeld
 	 */
