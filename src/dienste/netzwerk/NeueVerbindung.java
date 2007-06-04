@@ -1,11 +1,12 @@
 package dienste.netzwerk;
 
 import dienste.automat.Event;
+import dienste.netzwerk.Empfaenger;
 
 /**
  * Meldet eine neue Verbindung. Wird durch den {@link Empfaenger} bei
  * Verbindungsaufbau erstellt. Da nur der Server neue Verbindungen zulässt ist
- * dieser Event nur für den Server relevant.		
+ * dieser Event nur für den Server relevant.
  */
 public class NeueVerbindung extends Event {
 	/**
@@ -15,7 +16,7 @@ public class NeueVerbindung extends Event {
 
 	/**
 	 * Erstellt Nachricht
-	 * * @param client 
+	 * * @param client
 	 */
 	public NeueVerbindung(EndPunkt client) {
 		this.endpunkt = client;
