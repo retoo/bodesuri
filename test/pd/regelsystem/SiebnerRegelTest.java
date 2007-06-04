@@ -19,6 +19,16 @@ public class SiebnerRegelTest extends RegelTestCase {
 		ziel  = new Feld[7];
 	}
 	
+	public void testAndereMitMehrerenBewegungen() {
+		start[0] = bank(0);
+		ziel[0]  = start[0].getNtesFeld(3);
+		lager(0).versetzeFigurAuf(start[0]);
+		start[1] = ziel[0].getNaechstes();
+		ziel[1]  = start[1].getNaechstes();
+		lager(0, 1).versetzeFigurAuf(start[1]);
+		sollteVerstossGeben(new VorwaertsRegel(4));
+	}
+	
 	public void testSiebner() throws RegelVerstoss {
 		start[0] = bank(0).getNaechstes();
 		ziel[0]  = start[0].getNtesFeld(7);
