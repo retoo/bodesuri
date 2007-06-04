@@ -34,7 +34,6 @@ public class AktiverClientZustand extends AktiverZustand {
 	protected Controller controller;
 
 	public Zustand handle(Event event) {
-		// TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.
 		if (event instanceof NetzwerkEvent) {
 			NetzwerkEvent be = (NetzwerkEvent) event;
 
