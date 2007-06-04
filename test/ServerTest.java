@@ -1,7 +1,6 @@
 import java.util.Vector;
 
 import junit.framework.TestCase;
-import applikation.client.zustaende.SpielStart;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.server.BodesuriServer;
