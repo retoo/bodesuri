@@ -2,6 +2,7 @@ package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import applikation.nachrichten.ChatNachricht;
+import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
@@ -37,7 +38,12 @@ public class NichtAmZug extends AktiverClientZustand {
 		return this;
 	}
 
-	Zustand rundenStart() {
+	Zustand rundenStart(RundenStart rundenStart) {
+		
+		// TODO: rundenStart.neueKarten in Spieler speichern.
+		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
+		// keinen rundenStart.) Robin
+		
 		return automat.getZustand(StarteRunde.class);
 	}
 }

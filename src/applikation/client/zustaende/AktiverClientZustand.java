@@ -60,7 +60,7 @@ public class AktiverClientZustand extends AktiverZustand {
 			else if (nachricht instanceof KartenTausch)
 				return kartenTausch();
 			else if (nachricht instanceof RundenStart)
-				return rundenStart();
+				return rundenStart((RundenStart) nachricht);
 			else
 				System.out.println("Nachricht " + nachricht.getClass()
 				                   + " ist (noch) nicht implementiert!");
@@ -123,7 +123,7 @@ public class AktiverClientZustand extends AktiverZustand {
 		return keinUebergang();
 	}
 
-	Zustand rundenStart() {
+	Zustand rundenStart(RundenStart rundenStart) {
 		return keinUebergang();
 	}
 

@@ -1,9 +1,10 @@
 package applikation.server;
 
+import pd.Spiel;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;
-import applikation.server.zustaende.ServerStart;
 import applikation.server.zustaende.ServerEnde;
+import applikation.server.zustaende.ServerStart;
 import applikation.server.zustaende.StartRunde;
 import applikation.server.zustaende.StarteSpiel;
 import applikation.server.zustaende.StarteZug;
@@ -36,6 +37,8 @@ public class BodesuriServer extends Automat {
 	 * Spielerschaft
 	 */
 	public Spielerschaft spielerschaft;
+	
+	public Spiel spiel;
 
 
 	/**

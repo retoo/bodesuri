@@ -22,6 +22,12 @@ public class Lobby extends AktiverClientZustand {
 	}
 
 	Zustand spielStarten(SpielStartNachricht startNachricht) {
+		// TODO: Neues Spiel muss schon früher erstellt werden, damit der
+		// Codierer schon verfügbar ist. Der wird beim Deserialisieren der
+		// RundenStart-Nachricht gebraucht (wegen Karte). Da dieser Code hier
+		// und das Deserialisieren in "Empfaenger" in unterschiedlichen Threads
+		// laufen, kann es sein, dass die Nachricht deserialisiert wird, bevor
+		// das Spiel erstellt wurde... bäng! Robin
 		controller.setSpiel(new pd.Spiel());
 
 		for (int i = 0; i < startNachricht.spieler.length; i++) {

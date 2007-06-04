@@ -141,7 +141,11 @@ public class Spielerschaft implements Iterable<Spieler> {
 	}
 
 	public Runde starteRunde() {
-		runde = new Runde();
+		if (runde == null) {
+			runde = new Runde(0);
+		} else {
+			runde = new Runde(runde.nummer + 1);
+		}
 
 		runde.spielers.addAll(spielers);
 

@@ -2,9 +2,9 @@ package applikation.server.zustaende;
 
 import java.io.IOException;
 
+import pd.Spiel;
 import applikation.server.BodesuriServer;
 import applikation.server.Spielerschaft;
-
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.server.Server;
 
@@ -22,6 +22,8 @@ public class ServerStart extends PassiverServerZustand {
 		}
 		
 		automat.spielerschaft = new Spielerschaft(BodesuriServer.MAXSPIELER);
+		
+		automat.spiel = new Spiel();
 
 		return automat.getZustand(EmpfangeSpieler.class);
 	}
