@@ -30,7 +30,6 @@ public class KarteView extends JLabel {
 
 		pfad = "/ui/ressourcen/" + karte.getName() + "_"
 		              + karte.getKartenFarbe() + ".png";
-		System.out.println(pfad);
 		URL resource1 = KarteView.class.getResource(pfad);
 		final Icon bildFigur = new ImageIcon(resource1);
 		setIcon(bildFigur);
