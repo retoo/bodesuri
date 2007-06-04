@@ -2,6 +2,7 @@ import java.util.Vector;
 
 import junit.framework.TestCase;
 import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.server.BodesuriServer;
 import applikation.server.TestSpieler;
@@ -47,7 +48,15 @@ public class ServerTest extends TestCase {
 		for (TestSpieler ts : spielers) {
 			Nachricht beitrittBestaetigung = ts.getNachricht();
 			assertTrue("Prüfen ob brief vom Typ Beitrittsbestätigung: " + beitrittBestaetigung, beitrittBestaetigung instanceof BeitrittsBestaetigung);
-			Nachricht spielstart = ts.getNachricht();
+
+			/* FIXME: hässlich reto, mach das besser !!*/
+			Nachricht spielstart;
+			while( true ) {
+				 spielstart = ts.getNachricht();
+
+				 if (!(spielstart instanceof ChatNachricht))
+					 break;
+			}
 			assertTrue("Prüfen ob brief vom Typ Spielstart: " + spielstart, spielstart instanceof SpielStartNachricht);
 
 
