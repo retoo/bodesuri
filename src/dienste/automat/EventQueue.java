@@ -6,7 +6,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 /**
  * Die EventQueue ermöglicht die Zwischenspeicherung von zu berabeitenden
  * Events. Die Queue ist Thread-Safe und arbeitet nach dem FIFO prinzip.
- * 
+ *
  */
 public class EventQueue implements EventQuelle {
 	private BlockingQueue<Event> queue;
@@ -21,7 +21,7 @@ public class EventQueue implements EventQuelle {
 	/**
 	 * Enqueued einen neuen Event. Falls die Queue voll ist blockiert der Aufruf
 	 * bis der Event hinzugefügt werden kann
-	 * 
+	 *
 	 * @param event
 	 *            Event der hinzugefügt werden soll
 	 */
@@ -36,7 +36,7 @@ public class EventQueue implements EventQuelle {
 	/**
 	 * Entfernt den ältesten Event aus der EventQueue. Falls die Queue leer ist
 	 * blockiert der Aufruf bis ein Event eintrifft.
-	 * 
+	 *
 	 * @return älteste anstehende Event
 	 */
 	public Event dequeue() {
@@ -47,9 +47,17 @@ public class EventQueue implements EventQuelle {
 		}
 	}
 
+	/**
+	 * Prüft ob die EventQueue leer ist. Warnung, ist nich Thread-Safe
+	 * @return ob Queue leer ist
+	 */
+	public boolean isLeer() {
+		return queue.isEmpty();
+	}
+
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see dienste.automat.EventQuelle#getEvent()
 	 */
 	public Event getEvent() {
