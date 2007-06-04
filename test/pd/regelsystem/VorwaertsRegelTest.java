@@ -111,4 +111,18 @@ public class VorwaertsRegelTest extends RegelTestCase {
 		lager(0).versetzeFigurAuf(start);
 		sollteValidieren(new VorwaertsRegel(2));
 	}
+	
+	public void testVorwaertsAufLagerFeld() {
+		start = bank(0);
+		ziel  = lager(0);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(1));
+	}
+	
+	public void testVorwaertsAusHimmelRaus() {
+		start = himmel(0);
+		ziel  = bank(0);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(1));
+	}
 }

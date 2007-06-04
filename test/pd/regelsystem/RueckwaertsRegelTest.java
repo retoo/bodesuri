@@ -1,6 +1,13 @@
 package pd.regelsystem;
 
 public class RueckwaertsRegelTest extends RegelTestCase {
+	public void testRueckwaertsImHimmel() {
+		start = himmel(0, 3);
+		ziel  = himmel(0, 1);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new RueckwaertsRegel(2));
+	}
+	
 	public void testRueckwaertsAusHimmel() {
 		start = himmel(0).getNaechstes();
 		ziel  = bank(0);
