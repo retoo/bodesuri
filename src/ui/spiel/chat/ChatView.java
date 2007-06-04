@@ -5,7 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 /**
  * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den

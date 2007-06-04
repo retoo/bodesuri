@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll,

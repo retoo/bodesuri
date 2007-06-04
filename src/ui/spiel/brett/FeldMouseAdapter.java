@@ -4,7 +4,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.

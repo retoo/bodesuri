@@ -2,7 +2,8 @@ package ui.spiel.info;
 
 import java.awt.event.MouseAdapter;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 class KarteMouseAdapter extends MouseAdapter {
 	private ClientController controller;

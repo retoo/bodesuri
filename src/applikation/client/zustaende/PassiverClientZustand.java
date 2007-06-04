@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
+import ui.ClientController;
 import applikation.client.BodesuriClient;
-import applikation.client.ClientController;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.PassiverZustand;
 

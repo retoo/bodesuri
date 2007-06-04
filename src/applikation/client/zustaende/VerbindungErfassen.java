@@ -3,7 +3,8 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;

@@ -6,7 +6,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 public class SpielBrettView extends JPanel {
 	public SpielBrettView(ClientController controller) {

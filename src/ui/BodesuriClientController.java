@@ -1,4 +1,4 @@
-package applikation.client;
+package ui;
 
 import java.util.Observable;
 
@@ -11,6 +11,8 @@ import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
+import applikation.client.BodesuriClient;
+import applikation.client.ZugAutomatController;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
@@ -28,7 +30,7 @@ import dienste.automat.EventQueue;
  * ebenfalls Observer implementiert.
  *
  */
-public class ClientController extends Observable {
+public class BodesuriClientController extends Observable implements ClientController {
 	// Logik
 	private EventQueue eventQueue;
 	private ZugAutomatController zugAutomatController;
@@ -45,7 +47,7 @@ public class ClientController extends Observable {
 	private String spielerName;
 	private Spieler spielerIch;
 
-	public ClientController(EventQueue eventQueue, String defaultName) {
+	public BodesuriClientController(EventQueue eventQueue, String defaultName) {
 		this.eventQueue = eventQueue;
 		this.defaultName = defaultName;
 		this.spiel = new Spiel();
@@ -53,7 +55,7 @@ public class ClientController extends Observable {
 
 	public static void main(String[] args) {
 		EventQueue queue = new EventQueue();
-		ClientController controller = new ClientController(queue, "Spieler");
+		ClientController controller = new BodesuriClientController(queue, "Spieler");
 		Automat automat = new BodesuriClient(queue, controller);
 
 		try {
@@ -66,6 +68,9 @@ public class ClientController extends Observable {
 		}
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#starteZugerfassung()
+     */
 	public void starteZugerfassung() {
 		zugAutomatController = new ZugAutomatController();
 
@@ -79,67 +84,69 @@ public class ClientController extends Observable {
 		zugErfassungThread.start();
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#verbinde(java.lang.String, int, java.lang.String)
+     */
 	public void verbinde(String host, int port_raw, String spieler) {
 		VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
 		eventQueue.enqueue(e);
 	}
 
-	/**
-	 * Programm wurde gestartet.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeProgrammStart()
+     */
 	public void zeigeProgrammStart() {
 		verbindenView = new VerbindenView(this, defaultName);
 		verbindenView.setVisible(true);
 	}
 
-	/**
-	 * Definition wer am Zug ist.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeAktuellenZug()
+     */
 	public void zeigeAktuellenZug() {
 		// noch nichts
 	}
 
-	/**
-	 * Der Spieler kann eine Karte auswählen.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeKarteWahelen()
+     */
 	public void zeigeKarteWahelen() {
 		// aktiver Zustand
 	}
 
-	/**
-	 * Der Spieler befindet sich in der Lobby.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeLobby()
+     */
 	public void zeigeLobby() {
 		// aktiver Zustand
 	}
 
-	/**
-	 * Zeigt die Lobby an.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeLobbyStart()
+     */
 	public void zeigeLobbyStart() {
 		verbindenView.setVisible(false);
 		lobbyView = new LobbyView();
 		lobbyView.setVisible(true);
 	}
 
-	/**
-	 * Der Spieler ist nicht am Zug.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeNichtAmZug()
+     */
 	public void zeigeNichtAmZug() {
 		// aktiver Zustand
 	}
 
-	/**
-	 * Ein schwerer Fehler ist aufgetreten. Eine entsprechende Darstellung des
-	 * Ausnahmezustandes kann hier durchgeführt werden.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeSchwerenFehler()
+     */
 	public void zeigeSchwerenFehler() {
 		// noch nichts
 	}
 
-	/**
-	 * Das spiel wurde gestartet.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeSpielStart()
+     */
 	public void zeigeSpielStart() {
 		lobbyView.setVisible(false);
 		spielView = new BodesuriView(this, defaultName); // TODO: richtiger
@@ -148,40 +155,37 @@ public class ClientController extends Observable {
 		spielView.setVisible(true);
 	}
 
-	/**
-	 * Das Spiel befindet sich im Zustand, in dem die Verbindungsdaten erfasst
-	 * werden.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeVerbindungErfassen()
+     */
 	public void zeigeVerbindungErfassen() {
 		// noch nichts (ausser Fehlermeldungen)
 	}
 
-	/**
-	 * Eine Verbindung wurde hergestellt. Der Client ist mit dem Server
-	 * verbunden.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeVerbindungSteht()
+     */
 	public void zeigeVerbindungSteht() {
 		// noch nichts
 	}
 
-	/**
-	 * Es wird ein Zug erfasst und ausgeführt.
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeStartWaehlen()
+     */
 	public void zeigeStartWaehlen() {
 		// aktiver Zustand
 	}
 
-	/**
-	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller
-	 * gereicht werden.
-	 *
-	 * @param fehlermeldung
-	 *            auszugebene Fehlermeldung
-	 */
+	/* (non-Javadoc)
+     * @see ui.ClientController#zeigeFehlermeldung(java.lang.String)
+     */
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#klickKarte(pd.karten.Karte)
+     */
 	public void klickKarte(Karte geklickteKarte) {
 		if (zugAutomat.isZustand(KarteWaehlen.class)
 		    || zugAutomat.isZustand(StartWaehlen.class)
@@ -191,6 +195,9 @@ public class ClientController extends Observable {
 		}
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#klickFeld(pd.brett.Feld)
+     */
 	public void klickFeld(Feld geklicktesFeld) {
 		if (zugAutomat.isZustand(StartWaehlen.class)
 		    || zugAutomat.isZustand(EndeWaehlen.class)) {
@@ -198,22 +205,37 @@ public class ClientController extends Observable {
 		}
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#getSpiel()
+     */
 	public Spiel getSpiel() {
 		return spiel;
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#getSpielerName()
+     */
 	public String getSpielerName() {
 		return spielerName;
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#setSpielerName(java.lang.String)
+     */
 	public void setSpielerName(String spielerName) {
 		this.spielerName = spielerName;
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#setSpielerIch(pd.spieler.Spieler)
+     */
 	public void setSpielerIch(Spieler spielerIch) {
 		this.spielerIch = spielerIch;
 	}
 
+	/* (non-Javadoc)
+     * @see ui.ClientController#isZugAutomatControllerVorhanden()
+     */
 	public boolean isZugAutomatControllerVorhanden() {
 		return (zugAutomatController != null) ? true : false;
 	}

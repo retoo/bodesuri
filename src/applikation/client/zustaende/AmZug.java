@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
 import pd.zugsystem.ZugEingabe;
-import applikation.client.ClientController;
+import ui.ClientController;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 

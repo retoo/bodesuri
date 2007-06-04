@@ -6,7 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.ClientController;
+import ui.ClientController;
+
 
 public class InfoView extends JPanel {
 	JPanel northPanel = new JPanel();

@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.client.ClientController;
+import ui.ClientController;
 import ui.lobby.LobbyView;
 import dienste.automat.zustaende.Zustand;
 

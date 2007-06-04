@@ -1,5 +1,6 @@
 package applikation.client;
 
+import ui.ClientController;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;

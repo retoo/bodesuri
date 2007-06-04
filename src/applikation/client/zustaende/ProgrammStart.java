@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.client.ClientController;
+import ui.ClientController;
 import ui.verbinden.VerbindenView;
 import dienste.automat.zustaende.Zustand;
 
