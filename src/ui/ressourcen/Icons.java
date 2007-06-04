@@ -14,7 +14,7 @@ final public class Icons {
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 
 	/**
-	 * Ladet die oben definierten Icons.
+	 * Lädt das angegeben Icon.
 	 * 
 	 * @param pfad Pfad des zu ladenden Icons.
 	 * @return icon

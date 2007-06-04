@@ -12,6 +12,6 @@ import ui.ressourcen.Icons;
 public class BankFeld2d extends Feld2d {
 
 	public BankFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter) {
-		super(p, feld, mouseAdapter, Icons.FELD_NORMAL);
+		super(p, feld, mouseAdapter, Icons.FELD_BANK);
 	}
 }
