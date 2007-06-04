@@ -1,95 +1,137 @@
 package applikation.client;
 
+import java.util.Observable;
+
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
+import applikation.client.zugautomat.ZugAutomat;
+import applikation.client.zugautomat.zustaende.EndeWaehlen;
+import applikation.client.zugautomat.zustaende.KarteWaehlen;
+import applikation.client.zugautomat.zustaende.StartWaehlen;
+import applikation.events.FeldGewaehltEvent;
+import applikation.events.KarteGewaehltEvent;
+import applikation.events.VerbindeEvent;
+import dienste.automat.EventQueue;
 
-public interface Controller {
+public abstract class Controller extends Observable {
+	// Logik
+	protected EventQueue eventQueue;
+	protected ZugAutomatController zugAutomatController;
+	protected ZugAutomat zugAutomat;
 
-	public abstract void starteZugerfassung();
+	// Spiel
+	protected Spiel spiel;
+	protected String spielerName;
+	protected Spieler spielerIch;
 
-	public abstract void verbinde(String host, int port_raw, String spieler);
+	public Controller(EventQueue eventQueue, String spielerName) {
+		this.eventQueue = eventQueue;
+		this.spielerName = spielerName;
+		this.spiel = new Spiel();
+	}
 
 	/**
-	 * Programm wurde gestartet.
+	 * Programm wurde gestartet. Verbindungsdaten erfragen.
 	 */
-	public abstract void zeigeProgrammStart();
+	public abstract void zeigeVerbinden();
 
 	/**
-	 * Definition wer am Zug ist.
-	 */
-	public abstract void zeigeAktuellenZug();
-
-	/**
-	 * Der Spieler kann eine Karte auswählen.
-	 */
-	public abstract void zeigeKarteWahelen();
-
-	/**
-	 * Der Spieler befindet sich in der Lobby.
+	 * Die Verbinung wurde erstellt. Die Lobby anzeigen.
 	 */
 	public abstract void zeigeLobby();
 
 	/**
-	 * Zeigt die Lobby an.
+	 * Das Spiel wurde gestartet. Das Spielbrett anzeigen.
 	 */
-	public abstract void zeigeLobbyStart();
-
-	/**
-	 * Der Spieler ist nicht am Zug.
-	 */
-	public abstract void zeigeNichtAmZug();
-
-	/**
-	 * Ein schwerer Fehler ist aufgetreten. Eine entsprechende Darstellung des
-	 * Ausnahmezustandes kann hier durchgeführt werden.
-	 */
-	public abstract void zeigeSchwerenFehler();
-
-	/**
-	 * Das spiel wurde gestartet.
-	 */
-	public abstract void zeigeSpielStart();
-
-	/**
-	 * Das Spiel befindet sich im Zustand, in dem die Verbindungsdaten erfasst
-	 * werden.
-	 */
-	public abstract void zeigeVerbindungErfassen();
-
-	/**
-	 * Eine Verbindung wurde hergestellt. Der Client ist mit dem Server
-	 * verbunden.
-	 */
-	public abstract void zeigeVerbindungSteht();
-
-	/**
-	 * Es wird ein Zug erfasst und ausgeführt.
-	 */
-	public abstract void zeigeStartWaehlen();
+	public abstract void zeigeSpiel();
 
 	/**
 	 * Reaktion auf Fehlermeldungen, die vom Automaten an den Controller
 	 * gereicht werden.
-	 *
+	 * 
 	 * @param fehlermeldung
 	 *            auszugebene Fehlermeldung
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 
-	public abstract void klickKarte(Karte geklickteKarte);
+	/**
+	 * Mit dem erfassen eines neuen Zuges beginnen. Startet einen eigenen
+	 * Automaten für die Zugerfassung.
+	 * 
+	 */
+	public void starteZugerfassung() {
+		zugAutomatController = new ZugAutomatController();
 
-	public abstract void klickFeld(Feld geklicktesFeld);
+		Thread zugErfassungThread = new Thread(new Runnable() {
+			public void run() {
+				zugAutomat = new ZugAutomat(spielerIch, eventQueue);
+				zugAutomat.run();
+			}
+		});
 
-	public abstract Spiel getSpiel();
+		zugErfassungThread.start();
+	}
 
-	public abstract String getSpielerName();
+	/**
+	 * Verdindung zum Server aufbauen.
+	 * 
+	 * @param host
+	 *            Hostname des Servers
+	 * @param port_raw
+	 *            Port des Servers
+	 * @param spieler
+	 *            Name des Spielers
+	 */
+	public void verbinde(String host, int port_raw, String spieler) {
+		VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
+		eventQueue.enqueue(e);
+	}
 
-	public abstract void setSpielerName(String spielerName);
+	/**
+	 * Der Benutzer hat eine Karte ausgewählt.
+	 * 
+	 * @param gewaehlteKarte
+	 */
+	public void karteGewaehlt(Karte gewaehlteKarte) {
+		if (zugAutomat.isZustand(KarteWaehlen.class)
+		    || zugAutomat.isZustand(StartWaehlen.class)
+		    || zugAutomat.isZustand(EndeWaehlen.class)) {
+			KarteGewaehltEvent kge = new KarteGewaehltEvent(gewaehlteKarte);
+			zugAutomat.queue.enqueue(kge);
+		}
+	}
 
-	public abstract void setSpielerIch(Spieler spielerIch);
+	/**
+	 * Der Benutzer hat ein Feld ausgewählt.
+	 * 
+	 * @param gewaehltesFeld
+	 */
+	public void feldGewaehlt(Feld gewaehltesFeld) {
+		if (zugAutomat.isZustand(StartWaehlen.class)
+		    || zugAutomat.isZustand(EndeWaehlen.class)) {
+			zugAutomat.queue.enqueue(new FeldGewaehltEvent(gewaehltesFeld));
+		}
+	}
 
-	public abstract boolean isZugAutomatControllerVorhanden();
+	public Spiel getSpiel() {
+		return spiel;
+	}
 
+	public String getSpielerName() {
+		return spielerName;
+	}
+
+	public void setSpielerName(String spielerName) {
+		this.spielerName = spielerName;
+	}
+
+	public void setSpielerIch(Spieler spielerIch) {
+		this.spielerIch = spielerIch;
+	}
+
+	public boolean isZugAutomatControllerVorhanden() {
+		return (zugAutomatController != null) ? true : false;
+	}
 }

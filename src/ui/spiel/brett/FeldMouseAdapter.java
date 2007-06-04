@@ -28,7 +28,7 @@ class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		if (controller.isZugAutomatControllerVorhanden()) {
-			controller.klickFeld(((Feld2d) e.getComponent()).feld);
+			controller.feldGewaehlt(((Feld2d) e.getComponent()).feld);
 			//FIXME: Unterscheidung zwischen 1. und 2. Feld irgendwie noch nicht möglich
 			Figur2d figur = getFigur2d(((Feld2d) e.getComponent()));
 			if (figur != null) {

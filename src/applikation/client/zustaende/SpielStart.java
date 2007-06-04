@@ -17,7 +17,7 @@ public class SpielStart extends PassiverClientZustand {
 	}
 	
 	public Zustand handle() {
-		controller.zeigeSpielStart();
+		controller.zeigeSpiel();
 		return automat.getZustand(NichtAmZug.class);
 	}
 }

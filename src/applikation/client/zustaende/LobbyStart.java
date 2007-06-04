@@ -17,7 +17,7 @@ public class LobbyStart extends PassiverClientZustand {
 	}
 	
 	public Zustand handle() {		
-		controller.zeigeLobbyStart();
+		controller.zeigeLobby();
 		return automat.getZustand(Lobby.class);
 	}
 }

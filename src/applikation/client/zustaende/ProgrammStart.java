@@ -17,7 +17,7 @@ public class ProgrammStart extends PassiverClientZustand {
 	}
 	
 	public Zustand handle() {
-		controller.zeigeProgrammStart();
+		controller.zeigeVerbinden();
 		return automat.getZustand(VerbindungErfassen.class);
 	}
 }
