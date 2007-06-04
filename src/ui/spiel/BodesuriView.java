@@ -12,8 +12,7 @@ import ui.spiel.brett.SpielView;
 import ui.spiel.info.InfoView;
 
 /**
- * Das GUI des Spieles...
- *
+ * Das GUI des Spiels.
  */
 public class BodesuriView extends JFrame {
 	public BodesuriView(Controller controller, String spielerName) {
@@ -35,13 +34,14 @@ public class BodesuriView extends JFrame {
 		pack();
 	}
 
-    /**
-     * Setzt den nativen Look & Feel fŸr das Windows Betriebssystem. Auf allen anderen wird
-     * eine Exception geworfen, die ignoriert wird.
-     */
-    private static void setNativeLookAndFeel() {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch( Exception e ) { }
-    }
+	/**
+	 * Setzt den nativen Look & Feel für Windows. Auf allen anderen Plattformen
+	 * wird eine Exception geworfen, die ignoriert wird.
+	 */
+	private static void setNativeLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Exception e) {
+		}
+	}
 }
