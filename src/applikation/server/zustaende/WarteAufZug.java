@@ -16,7 +16,7 @@ public class WarteAufZug extends AktiverServerZustand {
 	Zustand zugInfo(EndPunkt absender, ZugInformation zugInfo) {
 		Spielerschaft spielers = automat.spielerschaft;
 
-		spielers.sicherStellenIstAktuellerSpieler(absender);
+//		spielers.sicherStellenIstAktuellerSpieler(absender);
 
 		spielers.broadcast(zugInfo);
 		System.out.println("Ausgeführter Zug: " + zugInfo.zug);
