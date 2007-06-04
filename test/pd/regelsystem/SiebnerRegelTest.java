@@ -27,6 +27,8 @@ public class SiebnerRegelTest extends RegelTestCase {
 		ziel[1]  = start[1].getNaechstes();
 		lager(0, 1).versetzeFigurAuf(start[1]);
 		sollteVerstossGeben(new VorwaertsRegel(4));
+		sollteVerstossGeben(new TauschRegel());
+		sollteVerstossGeben(new StartRegel());
 	}
 	
 	public void testSiebner() throws RegelVerstoss {
