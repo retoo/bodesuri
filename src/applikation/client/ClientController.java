@@ -48,6 +48,7 @@ public class ClientController extends Observable {
 	public ClientController(EventQueue eventQueue, String defaultName) {
 		this.eventQueue = eventQueue;
 		this.defaultName = defaultName;
+		this.spiel = new Spiel();
 	}
 
 	public static void main(String[] args) {
@@ -195,10 +196,6 @@ public class ClientController extends Observable {
 		    || zugAutomat.isZustand(EndeWaehlen.class)) {
 			zugAutomat.queue.enqueue(new FeldGewaehltEvent(geklicktesFeld));
 		}
-	}
-
-	public void setSpiel(Spiel spiel) {
-		this.spiel = spiel;
 	}
 
 	public Spiel getSpiel() {
