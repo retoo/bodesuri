@@ -158,7 +158,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	/* TODO: Kann schöner gemacht werden */
 	public void sicherStellenIstAktuellerSpieler(EndPunkt absender) {
-		if (isAktuellerSpieler(absender)) {
+		if (!isAktuellerSpieler(absender)) {
 			broadcast("HAH.. huere michi, de " + absender
 			          + " wott voll bschisse");
 			throw new RuntimeException("beschiss von " + absender + " an "
