@@ -45,7 +45,6 @@ public class BrettLader {
 		return map;
 	}
 	
-	// TODO: Unit-Test draus machen
 	public static void main(String[] args)
 			throws ParserConfigurationException, SAXException, IOException {
 		String datei = "src/spielplatz/brett.xml";

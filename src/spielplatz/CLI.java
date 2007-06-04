@@ -128,7 +128,6 @@ public class CLI {
 			try {
 				return Integer.parseInt(liesStringEin());
 			} catch (NumberFormatException e) {
-				/* TODO: prüfen ob das so okay ist */
 				System.out.print("Ungültige Zahl, bitte erneut versuchen: ");
 			}
 		}
