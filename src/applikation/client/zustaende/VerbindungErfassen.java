@@ -30,11 +30,11 @@ public class VerbindungErfassen extends AktiverClientZustand {
 			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			controller.setSpielerName( ve.spielerName );
 		} catch (UnknownHostException e) {
-			automat.meldeFehler("Unbekannter Hostname " + ve.hostname);
+			controller.zeigeFehlermeldung("Unbekannter Hostname: " + ve.hostname);
 			automat.endpunkt = null;
 			return this;
 		} catch (IOException e) {
-			automat.meldeFehler("Verbindung konnte nicht hergestellt werden: "
+			controller.zeigeFehlermeldung("Verbindung konnte nicht hergestellt werden: "
 			                    + e.getMessage());
 			automat.endpunkt = null;
 			return this;

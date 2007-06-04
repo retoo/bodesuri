@@ -52,7 +52,6 @@ public class GUIController extends Controller {
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
-		//TODO das soll in mit allen Views funktionieren.
-		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
+		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
 }

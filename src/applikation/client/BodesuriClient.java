@@ -22,7 +22,6 @@ import dienste.netzwerk.EndPunkt;
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
-	private Controller controller;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
@@ -47,13 +46,7 @@ public class BodesuriClient extends Automat {
 		setStart(ProgrammStart.class);
 
 		this.queue = queue;
-		this.controller = controller;
 
 		setEventQuelle(queue);
 	}
-
-	/* kommt mal in den controller oder geh ganz anders */
-	public void meldeFehler(String fehlermeldung) {
-	    controller.zeigeFehlermeldung(fehlermeldung);
-    }
 }
