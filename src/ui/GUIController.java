@@ -69,9 +69,6 @@ public class GUIController extends Observable implements Controller {
 		}
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#starteZugerfassung()
-     */
 	public void starteZugerfassung() {
 		zugAutomatController = new ZugAutomatController();
 
@@ -85,69 +82,42 @@ public class GUIController extends Observable implements Controller {
 		zugErfassungThread.start();
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#verbinde(java.lang.String, int, java.lang.String)
-     */
 	public void verbinde(String host, int port_raw, String spieler) {
 		VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
 		eventQueue.enqueue(e);
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeProgrammStart()
-     */
 	public void zeigeProgrammStart() {
 		verbindenView = new VerbindenView(this, defaultName);
 		verbindenView.setVisible(true);
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeAktuellenZug()
-     */
 	public void zeigeAktuellenZug() {
 		// noch nichts
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeKarteWahelen()
-     */
 	public void zeigeKarteWahelen() {
 		// aktiver Zustand
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeLobby()
-     */
 	public void zeigeLobby() {
 		// aktiver Zustand
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeLobbyStart()
-     */
 	public void zeigeLobbyStart() {
 		verbindenView.setVisible(false);
 		lobbyView = new LobbyView();
 		lobbyView.setVisible(true);
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeNichtAmZug()
-     */
 	public void zeigeNichtAmZug() {
 		// aktiver Zustand
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeSchwerenFehler()
-     */
 	public void zeigeSchwerenFehler() {
 		// noch nichts
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeSpielStart()
-     */
 	public void zeigeSpielStart() {
 		lobbyView.setVisible(false);
 		spielView = new BodesuriView(this, defaultName); // TODO: richtiger
@@ -156,37 +126,22 @@ public class GUIController extends Observable implements Controller {
 		spielView.setVisible(true);
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeVerbindungErfassen()
-     */
 	public void zeigeVerbindungErfassen() {
 		// noch nichts (ausser Fehlermeldungen)
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeVerbindungSteht()
-     */
 	public void zeigeVerbindungSteht() {
 		// noch nichts
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeStartWaehlen()
-     */
 	public void zeigeStartWaehlen() {
 		// aktiver Zustand
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#zeigeFehlermeldung(java.lang.String)
-     */
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(verbindenView, fehlermeldung);
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#klickKarte(pd.karten.Karte)
-     */
 	public void klickKarte(Karte geklickteKarte) {
 		if (zugAutomat.isZustand(KarteWaehlen.class)
 		    || zugAutomat.isZustand(StartWaehlen.class)
@@ -196,9 +151,6 @@ public class GUIController extends Observable implements Controller {
 		}
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#klickFeld(pd.brett.Feld)
-     */
 	public void klickFeld(Feld geklicktesFeld) {
 		if (zugAutomat.isZustand(StartWaehlen.class)
 		    || zugAutomat.isZustand(EndeWaehlen.class)) {
@@ -206,37 +158,22 @@ public class GUIController extends Observable implements Controller {
 		}
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#getSpiel()
-     */
 	public Spiel getSpiel() {
 		return spiel;
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#getSpielerName()
-     */
 	public String getSpielerName() {
 		return spielerName;
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#setSpielerName(java.lang.String)
-     */
 	public void setSpielerName(String spielerName) {
 		this.spielerName = spielerName;
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#setSpielerIch(pd.spieler.Spieler)
-     */
 	public void setSpielerIch(Spieler spielerIch) {
 		this.spielerIch = spielerIch;
 	}
 
-	/* (non-Javadoc)
-     * @see ui.ClientController#isZugAutomatControllerVorhanden()
-     */
 	public boolean isZugAutomatControllerVorhanden() {
 		return (zugAutomatController != null) ? true : false;
 	}
