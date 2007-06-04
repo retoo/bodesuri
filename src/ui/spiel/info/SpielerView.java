@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import pd.spieler.Spieler;
 import applikation.client.Controller;
 
 
@@ -24,8 +25,8 @@ public class SpielerView extends JPanel {
 		/**
 		 * @fixme: Funktioniert nur mit 4 Spielern. (Exception)
 		 */
-		for(int i = 0; i < controller.getSpiel().getSpieler().size(); i++){
-			this.add(new JLabel(controller.getSpiel().getSpieler().get(i).getName()));
+		for (Spieler spieler : controller.getSpiel().getSpieler()) {
+			this.add(new JLabel(spieler.getName()));
 		}
 	}
 }
