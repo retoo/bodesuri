@@ -3,20 +3,20 @@ package ui.spiel.brett;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import pd.brett.Feld;
+import ui.ressourcen.Icons;
 
 /**
  * JLabel, wird zur Darstellung der Spielfiguren verwendet.
  */
 public class Figur2d extends JLabel implements Observer {
-	static final private ImageIcon bildFigur = new ImageIcon(Feld2d.class.getResource("/ui/ressourcen/figur.png"));
 	private BrettView brett;
 
 	public Figur2d(Feld2d feld, BrettView brett) {
-		super(bildFigur);
+		super(Icons.FIGUR_BLAU);
 		setzeAuf(feld);
 		this.brett = brett;
 	}
@@ -27,9 +27,9 @@ public class Figur2d extends JLabel implements Observer {
 	 * @param ziel Zielfeld
 	 */
 	public void setzeAuf(Feld2d ziel) {
-		setBounds(ziel.getX(), ziel.getY(), bildFigur.getIconWidth(),
-		          bildFigur.getIconHeight());
-		System.out.println("Figur Höhöe: " + bildFigur.getIconHeight());
+		setBounds(ziel.getX(), ziel.getY(), Icons.FIGUR_BLAU.getIconWidth(),
+				Icons.FIGUR_BLAU.getIconHeight());
+		System.out.println("Figur Höhöe: " + Icons.FIGUR_BLAU.getIconHeight());
 	}
 
 	/**
@@ -42,12 +42,19 @@ public class Figur2d extends JLabel implements Observer {
 	public void update(Observable o, Object arg) {
 		if (arg instanceof Feld) {
 			setzeAuf(brett.getFeld2d((Feld)arg));
+			setzeNichtAusgewaehlt();
 		}
 	}
 
 	public void setzeAusgewaehlt() {
-		ImageIcon bildFigur = new ImageIcon(Feld2d.class.getResource("/ui/ressourcen/figur_schatten.png"));
+		Icon bildFigur = Icons.FIGUR_BLAU_AUSWAHL;
 		setIcon(bildFigur);
-		
+		updateUI();
+	}
+	
+	public void setzeNichtAusgewaehlt(){
+		Icon bildFigur = Icons.FIGUR_BLAU;
+		setIcon(bildFigur);
+		updateUI();
 	}
 }

@@ -24,9 +24,8 @@ public class SpielerView extends JPanel {
 		/**
 		 * @fixme: Funktioniert nur mit 4 Spielern. (Exception)
 		 */
-		this.add(new JLabel(controller.getSpiel().getSpieler().get(0).getName()));
-		this.add(new JLabel(controller.getSpiel().getSpieler().get(1).getName()));
-		this.add(new JLabel(controller.getSpiel().getSpieler().get(2).getName()));
-		this.add(new JLabel(controller.getSpiel().getSpieler().get(3).getName()));
+		for(int i = 0; i < controller.getSpiel().getSpieler().size(); i++){
+			this.add(new JLabel(controller.getSpiel().getSpieler().get(i).getName()));
+		}
 	}
 }

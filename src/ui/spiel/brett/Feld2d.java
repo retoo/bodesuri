@@ -2,7 +2,7 @@ package ui.spiel.brett;
 
 import java.awt.Point;
 
-import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 import pd.brett.Feld;
 
@@ -15,7 +15,7 @@ public class Feld2d extends javax.swing.JLabel {
 	final Feld feld;
 
 	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter,
-	        ImageIcon icon) {
+	        Icon icon) {
 		super(icon);
 		this.position = p;
 		this.feld = feld;
