@@ -1,11 +1,11 @@
-package ui;
+package applikation.client;
 
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 
-public interface ClientController {
+public interface Controller {
 
 	public abstract void starteZugerfassung();
 

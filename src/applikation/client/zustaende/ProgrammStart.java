@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import ui.ClientController;
+import applikation.client.Controller;
 import ui.verbinden.VerbindenView;
 import dienste.automat.zustaende.Zustand;
 
@@ -9,7 +9,7 @@ import dienste.automat.zustaende.Zustand;
  * {@link VerbindenView} und geht direkt in den Zustand {@link Lobby} über.
  */
 public class ProgrammStart extends PassiverClientZustand {
-	public ProgrammStart(ClientController controller) {
+	public ProgrammStart(Controller controller) {
 		/* TODO: 
 		 * super(automat, controller);
 		 */

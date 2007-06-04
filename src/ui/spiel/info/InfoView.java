@@ -6,13 +6,14 @@ import java.awt.Dimension;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 public class InfoView extends JPanel {
 	JPanel northPanel = new JPanel();
 
-	public InfoView(ClientController controller) {
+	public InfoView(Controller controller) {
 		setLayout(new BorderLayout());
 		setMinimumSize(new Dimension(260, 440));
 		setPreferredSize(new Dimension(260, 440));

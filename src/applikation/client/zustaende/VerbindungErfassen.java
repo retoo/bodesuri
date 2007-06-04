@@ -3,8 +3,8 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-import ui.ClientController;
 
+import applikation.client.Controller;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
@@ -18,7 +18,7 @@ import dienste.netzwerk.EndPunkt;
  * aufgerufen.
  */
 public class VerbindungErfassen extends AktiverClientZustand {
-	public VerbindungErfassen(ClientController controller) {
+	public VerbindungErfassen(Controller controller) {
 		this.controller = controller;
 	}
 	

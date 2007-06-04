@@ -12,6 +12,7 @@ import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
 import applikation.client.BodesuriClient;
+import applikation.client.Controller;
 import applikation.client.ZugAutomatController;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
@@ -30,7 +31,7 @@ import dienste.automat.EventQueue;
  * ebenfalls Observer implementiert.
  *
  */
-public class BodesuriClientController extends Observable implements ClientController {
+public class GUIController extends Observable implements Controller {
 	// Logik
 	private EventQueue eventQueue;
 	private ZugAutomatController zugAutomatController;
@@ -47,7 +48,7 @@ public class BodesuriClientController extends Observable implements ClientContro
 	private String spielerName;
 	private Spieler spielerIch;
 
-	public BodesuriClientController(EventQueue eventQueue, String defaultName) {
+	public GUIController(EventQueue eventQueue, String defaultName) {
 		this.eventQueue = eventQueue;
 		this.defaultName = defaultName;
 		this.spiel = new Spiel();
@@ -55,7 +56,7 @@ public class BodesuriClientController extends Observable implements ClientContro
 
 	public static void main(String[] args) {
 		EventQueue queue = new EventQueue();
-		ClientController controller = new BodesuriClientController(queue, "Spieler");
+		Controller controller = new GUIController(queue, "Spieler");
 		Automat automat = new BodesuriClient(queue, controller);
 
 		try {

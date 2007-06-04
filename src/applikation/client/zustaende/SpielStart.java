@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import ui.ClientController;
+import applikation.client.Controller;
 import ui.spiel.BodesuriView;
 import dienste.automat.zustaende.Zustand;
 
@@ -9,7 +9,7 @@ import dienste.automat.zustaende.Zustand;
  * direkt in {@link NichtAmZug} über.
  */
 public class SpielStart extends PassiverClientZustand {
-	public SpielStart(ClientController controller) {
+	public SpielStart(Controller controller) {
 		/* TODO: 
 		 * super(automat, controller);
 		 */

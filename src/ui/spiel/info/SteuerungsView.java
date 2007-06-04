@@ -6,13 +6,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 public class SteuerungsView extends JPanel {
-	ClientController controller;
+	Controller controller;
 
-	public SteuerungsView(ClientController controller) {
+	public SteuerungsView(Controller controller) {
 		this.controller = controller;
 
 		TitledBorder titel = new TitledBorder("Steuerung");

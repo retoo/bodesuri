@@ -7,6 +7,8 @@ import java.util.Vector;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
+import applikation.client.Controller;
+
 import pd.karten.Acht;
 import pd.karten.Ass;
 import pd.karten.Drei;
@@ -15,7 +17,6 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 import pd.karten.Zehn;
-import ui.ClientController;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
@@ -24,7 +25,7 @@ import ui.ClientController;
 public class DeckView extends JPanel {
 	Vector<Karte> karten = new Vector<Karte>();
 
-	public DeckView(ClientController controller) {
+	public DeckView(Controller controller) {
 		TitledBorder titel = new TitledBorder("Karten");
 		setBorder(titel);
 		setLayout(null);

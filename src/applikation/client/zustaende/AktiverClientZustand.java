@@ -1,8 +1,8 @@
 package applikation.client.zustaende;
 
 import pd.zugsystem.ZugEingabe;
-import ui.ClientController;
 import applikation.client.BodesuriClient;
+import applikation.client.Controller;
 import applikation.events.AufgegebenEvent;
 import applikation.events.GezogenEvent;
 import applikation.events.VerbindeEvent;
@@ -31,7 +31,7 @@ import dienste.netzwerk.NetzwerkEvent;
  */
 public class AktiverClientZustand extends AktiverZustand {
 	protected BodesuriClient automat;
-	protected ClientController controller;
+	protected Controller controller;
 
 	public Zustand handle(Event event) {
 		// TODO Mouse-Handler bereits der UI(MouseAdapter) deaktivieren.

@@ -4,17 +4,18 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
  */
 class FeldMouseAdapter extends MouseAdapter {
-	ClientController controller;
+	Controller controller;
 	private HashMap<Feld2d, Figur2d> felder = new HashMap<Feld2d, Figur2d>();
 
-	public FeldMouseAdapter(ClientController controller) {
+	public FeldMouseAdapter(Controller controller) {
 		this.controller = controller;
 	}
 

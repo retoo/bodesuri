@@ -5,7 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 /**
@@ -14,9 +15,9 @@ import ui.ClientController;
  */
 public class ChatView extends JPanel {
 	@SuppressWarnings("unused")
-	private ClientController controller;
+	private Controller controller;
 
-	public ChatView(ClientController controller) {
+	public ChatView(Controller controller) {
 		this.controller = controller;
 
 		TitledBorder titel = new TitledBorder("Chat");

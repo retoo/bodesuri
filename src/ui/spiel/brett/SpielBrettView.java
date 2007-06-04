@@ -6,11 +6,12 @@ import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 public class SpielBrettView extends JPanel {
-	public SpielBrettView(ClientController controller) {
+	public SpielBrettView(Controller controller) {
 		GridBagLayout gbl = new GridBagLayout();
 
 		TitledBorder titel = new TitledBorder("Spiel");

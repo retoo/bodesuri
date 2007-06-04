@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
-import ui.ClientController;
 import applikation.client.BodesuriClient;
+import applikation.client.Controller;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.PassiverZustand;
 
@@ -10,7 +10,7 @@ import dienste.automat.zustaende.PassiverZustand;
  */
 public abstract class PassiverClientZustand extends PassiverZustand {
 	protected BodesuriClient automat;
-	protected ClientController controller;
+	protected Controller controller;
 
 	/* TODO:
 	 * public PassiverClientZustand(Automat automat, ClientController controller) {

@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import ui.ClientController;
+import applikation.client.Controller;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -12,7 +12,7 @@ import dienste.netzwerk.EndPunkt;
  * aufgerufen.
  */
 public class Lobby extends AktiverClientZustand {
-	public Lobby(ClientController controller) {
+	public Lobby(Controller controller) {
 		this.controller = controller;
 	}
 	

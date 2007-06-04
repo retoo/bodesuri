@@ -1,6 +1,5 @@
 package applikation.client;
 
-import ui.ClientController;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
@@ -23,7 +22,7 @@ import dienste.netzwerk.EndPunkt;
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
-	private ClientController controller;
+	private Controller controller;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
@@ -31,7 +30,7 @@ public class BodesuriClient extends Automat {
 	 * @param queue
 	 * @param controller
 	 */
-	public BodesuriClient(EventQueue queue, ClientController controller) {
+	public BodesuriClient(EventQueue queue, Controller controller) {
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart(controller));
 		registriere(new VerbindungErfassen(controller));

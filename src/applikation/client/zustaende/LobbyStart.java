@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import ui.ClientController;
+import applikation.client.Controller;
 import ui.lobby.LobbyView;
 import dienste.automat.zustaende.Zustand;
 
@@ -9,7 +9,7 @@ import dienste.automat.zustaende.Zustand;
  * über.
  */
 public class LobbyStart extends PassiverClientZustand {
-	public LobbyStart(ClientController controller) {
+	public LobbyStart(Controller controller) {
 		/* TODO: 
 		 * super(automat, controller);
 		 */

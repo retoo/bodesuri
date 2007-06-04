@@ -2,16 +2,17 @@ package ui.spiel.info;
 
 import java.awt.event.MouseAdapter;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 class KarteMouseAdapter extends MouseAdapter {
-	private ClientController controller;
+	private Controller controller;
 
 	private DeckView deckView;
 	private KartenAuswahl kartenAuswahl;
 
-	public KarteMouseAdapter(ClientController controller, DeckView view, KartenAuswahl kartenAuswahl) {
+	public KarteMouseAdapter(Controller controller, DeckView view, KartenAuswahl kartenAuswahl) {
 		this.controller = controller;
 		this.deckView = view;
 		this.kartenAuswahl = kartenAuswahl;

@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import ui.ClientController;
+import applikation.client.Controller;
+
 
 
 /**
@@ -23,9 +24,9 @@ public class VerbindenView extends JFrame {
 	private JTextField hostname;
 	private JTextField port;
 	private JTextField spielerName;
-	private ClientController controller;
+	private Controller controller;
 
-	public VerbindenView(ClientController controller, String defaultName) {
+	public VerbindenView(Controller controller, String defaultName) {
 		this.controller = controller;
 
 		setTitle("Bodesuri - Verbinden");

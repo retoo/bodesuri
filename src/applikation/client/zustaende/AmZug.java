@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
 import pd.zugsystem.ZugEingabe;
-import ui.ClientController;
+import applikation.client.Controller;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 
@@ -11,7 +11,7 @@ import dienste.automat.zustaende.Zustand;
  * {@link NichtAmZug} über.
  */
 public class AmZug extends AktiverClientZustand {
-	public AmZug(ClientController controller) {
+	public AmZug(Controller controller) {
 		this.controller = controller;
 	}
 	
