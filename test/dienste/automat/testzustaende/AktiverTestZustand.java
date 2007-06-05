@@ -2,7 +2,6 @@ package dienste.automat.testzustaende;
 
 import dienste.automat.Automat;
 import dienste.automat.Event;
-import dienste.automat.KeinUebergangException;
 import dienste.automat.TestAutomat;
 import dienste.automat.events.TestEventA;
 import dienste.automat.events.TestEventB;
@@ -46,10 +45,5 @@ public class AktiverTestZustand extends AktiverZustand {
 
 	Zustand b() {
 		return keinUebergang();
-	}
-
-	Zustand keinUebergang() {
-		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
-		                                 + this);
 	}
 }

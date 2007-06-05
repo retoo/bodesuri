@@ -19,7 +19,6 @@ import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.Automat;
 import dienste.automat.Event;
-import dienste.automat.KeinUebergangException;
 import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
@@ -129,19 +128,13 @@ public class AktiverClientZustand extends AktiverZustand {
 	Zustand rundenStart(RundenStart rundenStart) {
 		return keinUebergang();
 	}
-	
+
 	Zustand feldGewaehlt(FeldGewaehltEvent event) {
 		return keinUebergang();
 	}
-	
+
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		return keinUebergang();
-	}
-
-	//TODO: Könnte das nicht bereits im AktivenZustand implementiert werden?
-	Zustand keinUebergang() {
-		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
-		                                 + this);
 	}
 
 	public void setAutomat(Automat automat) {

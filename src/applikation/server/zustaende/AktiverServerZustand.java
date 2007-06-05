@@ -7,7 +7,6 @@ import applikation.nachrichten.ZugInformation;
 import applikation.server.BodesuriServer;
 import dienste.automat.Automat;
 import dienste.automat.Event;
-import dienste.automat.KeinUebergangException;
 import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
@@ -80,11 +79,6 @@ public abstract class AktiverServerZustand extends AktiverZustand {
 
 	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
     	return keinUebergang();
-    }
-
-	Zustand keinUebergang() {
-    	throw new KeinUebergangException("Kein Übergang definiert in state "
-    	                                 + this);
     }
 
 	/* (non-Javadoc)

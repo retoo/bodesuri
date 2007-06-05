@@ -1,6 +1,7 @@
 package dienste.automat.zustaende;
 
 import dienste.automat.Event;
+import dienste.automat.KeinUebergangException;
 import dienste.automat.UnbekannterEventException;
 
 /**
@@ -31,4 +32,9 @@ public abstract class AktiverZustand extends Zustand {
 		             + event;
 		throw new UnbekannterEventException(msg);
 	}
+
+	protected Zustand keinUebergang() {
+    	throw new KeinUebergangException("Kein Übergang definiert in Zustand "
+    	                                 + this);
+    }
 }
