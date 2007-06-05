@@ -4,10 +4,6 @@ import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
-import applikation.client.zugautomat.ZugAutomat;
-import applikation.client.zugautomat.zustaende.EndeWaehlen;
-import applikation.client.zugautomat.zustaende.KarteWaehlen;
-import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
@@ -22,9 +18,6 @@ import dienste.automat.EventQueue;
 public abstract class Controller {
 	protected EventQueue eventQueue;
 
-	protected ZugAutomatController zugAutomatController;
-	protected ZugAutomat zugAutomat;
-
 	// Spiel
 	protected Spiel spiel;
 	protected String spielerName;
@@ -37,7 +30,7 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Die Verbindungsdaten zu erfragen.
+	 * Die Verbindungsdaten erfragen.
 	 */
 	public abstract void zeigeVerbinden();
 
@@ -61,23 +54,6 @@ public abstract class Controller {
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 
 	/**
-	 * Mit dem Erfassen eines neuen Zuges beginnen. Startet einen eigenen
-	 * Automaten für die Zugerfassung.
-	 */
-	public void starteZugerfassung() {
-		zugAutomatController = new ZugAutomatController();
-
-		Thread zugErfassungThread = new Thread(new Runnable() {
-			public void run() {
-				zugAutomat = new ZugAutomat(spielerIch, eventQueue);
-				zugAutomat.run();
-			}
-		});
-
-		zugErfassungThread.start();
-	}
-
-	/**
 	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
 	 * 
 	 * @param host
@@ -98,12 +74,8 @@ public abstract class Controller {
 	 * @param gewaehlteKarte
 	 */
 	public void karteGewaehlt(Karte gewaehlteKarte) {
-		if (zugAutomat.isZustand(KarteWaehlen.class)
-		    || zugAutomat.isZustand(StartWaehlen.class)
-		    || zugAutomat.isZustand(EndeWaehlen.class)) {
-			KarteGewaehltEvent kge = new KarteGewaehltEvent(gewaehlteKarte);
-			zugAutomat.queue.enqueue(kge);
-		}
+		KarteGewaehltEvent kge = new KarteGewaehltEvent(gewaehlteKarte);
+		eventQueue.enqueue(kge);
 	}
 
 	/**
@@ -112,10 +84,8 @@ public abstract class Controller {
 	 * @param gewaehltesFeld
 	 */
 	public void feldGewaehlt(Feld gewaehltesFeld) {
-		if (zugAutomat.isZustand(StartWaehlen.class)
-		    || zugAutomat.isZustand(EndeWaehlen.class)) {
-			zugAutomat.queue.enqueue(new FeldGewaehltEvent(gewaehltesFeld));
-		}
+		FeldGewaehltEvent fge = new FeldGewaehltEvent(gewaehltesFeld);
+		eventQueue.enqueue(fge);
 	}
 
 	public Spiel getSpiel() {
@@ -132,5 +102,9 @@ public abstract class Controller {
 
 	public void setSpielerIch(Spieler spielerIch) {
 		this.spielerIch = spielerIch;
+	}
+
+	public Spieler getSpielerIch() {
+		return spielerIch;
 	}
 }

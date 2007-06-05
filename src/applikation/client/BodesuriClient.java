@@ -1,5 +1,6 @@
 package applikation.client;
 
+import applikation.client.zugautomat.ZugAutomat;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
@@ -22,6 +23,8 @@ import dienste.netzwerk.EndPunkt;
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
+	
+	public ZugAutomat zugAutomat;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
@@ -37,8 +40,8 @@ public class BodesuriClient extends Automat {
 		registriere(new LobbyStart(controller));
 		registriere(new Lobby(controller));
 		registriere(new SpielStart(controller));
-		registriere(new AmZug(controller));
-		registriere(new NichtAmZug());
+		registriere(new AmZug());
+		registriere(new NichtAmZug(controller));
 		registriere(new StarteRunde());
 		registriere(new KarteTauschenAuswaehlen());
 		registriere(new KarteTauschenBekommen());

@@ -12,7 +12,6 @@ import dienste.automat.EventQueue;
 import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {
-	public EventQueue queue;
 	public EventQueue eventQueueBodesuriClient;
 	
 	public Spieler spielerIch;
@@ -32,8 +31,5 @@ public class ZugAutomat extends Automat {
 		registriere(new ZugValidieren());
 
 		setStart(KarteWaehlen.class);
-
-		this.queue = new EventQueue();
-		setEventQuelle(queue);
 	}
 }

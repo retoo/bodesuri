@@ -1,6 +1,8 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
+import applikation.client.Controller;
+import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
@@ -18,12 +20,17 @@ import dienste.netzwerk.EndPunkt;
  * </ul>
  */
 public class NichtAmZug extends AktiverClientZustand {
+	public NichtAmZug(Controller controller) {
+		this.controller = controller;
+	}
+	
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;
 	}
 
 	Zustand zugAufforderung() {
+		automat.zugAutomat = new ZugAutomat(controller.getSpielerIch(), automat.queue);
 		return automat.getZustand(AmZug.class);
 	}
 
@@ -43,6 +50,7 @@ public class NichtAmZug extends AktiverClientZustand {
 		// TODO: rundenStart.neueKarten in Spieler speichern.
 		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
 		// keinen rundenStart.) Robin
+		// Nein, das kommt schon hierhin. --Philippe
 		
 		return automat.getZustand(StarteRunde.class);
 	}

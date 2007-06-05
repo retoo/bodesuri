@@ -4,7 +4,9 @@ import pd.zugsystem.ZugEingabe;
 import applikation.client.BodesuriClient;
 import applikation.client.Controller;
 import applikation.events.AufgegebenEvent;
+import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
+import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.ChatNachricht;
@@ -24,7 +26,6 @@ import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
-
 
 /**
  * Spezifischer aktiver Client-Zustand
@@ -67,11 +68,15 @@ public class AktiverClientZustand extends AktiverZustand {
 			if (event instanceof VerbindeEvent)
 				return verbinden((VerbindeEvent) event);
 			else if (event instanceof AufgegebenEvent)
-				return  aufgegeben();
+				return aufgegeben();
 			else if (event instanceof GezogenEvent)
 				return gezogen(((GezogenEvent) event).zugEingabe);
+			else if (event instanceof KarteGewaehltEvent)
+				return karteGewaehlt((KarteGewaehltEvent) event);
+			else if (event instanceof FeldGewaehltEvent)
+				return feldGewaehlt((FeldGewaehltEvent) event);
 		}
-		
+
 		return super.handle(event);
 	}
 
@@ -81,7 +86,7 @@ public class AktiverClientZustand extends AktiverZustand {
 
 	Zustand aufgegeben() {
 		return keinUebergang();
-    }
+	}
 
 	Zustand verbinden(VerbindeEvent event) {
 		return keinUebergang();
@@ -124,7 +129,16 @@ public class AktiverClientZustand extends AktiverZustand {
 	Zustand rundenStart(RundenStart rundenStart) {
 		return keinUebergang();
 	}
+	
+	Zustand feldGewaehlt(FeldGewaehltEvent event) {
+		return keinUebergang();
+	}
+	
+	Zustand karteGewaehlt(KarteGewaehltEvent event) {
+		return keinUebergang();
+	}
 
+	//TODO: Könnte das nicht bereits im AktivenZustand implementiert werden?
 	Zustand keinUebergang() {
 		throw new KeinUebergangException("Kein Übergang definiert in Zustand "
 		                                 + this);
