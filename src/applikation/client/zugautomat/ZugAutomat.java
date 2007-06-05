@@ -13,7 +13,7 @@ import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {
 	public EventQueue eventQueueBodesuriClient;
-	
+
 	public Spieler spielerIch;
 	public EndPunkt endpunkt;
 
@@ -31,5 +31,9 @@ public class ZugAutomat extends Automat {
 		registriere(new ZugValidieren());
 
 		setStart(KarteWaehlen.class);
+	}
+
+	public String toString() {
+		return "Zug-Automat";
 	}
 }

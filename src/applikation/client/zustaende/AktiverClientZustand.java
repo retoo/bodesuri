@@ -21,11 +21,13 @@ import applikation.nachrichten.ZugInformation;
 import dienste.automat.Automat;
 import dienste.automat.Event;
 import dienste.automat.zustaende.AktiverZustand;
+import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
+import dienste.netzwerk.VerbindungGeschlossen;
 
 /**
  * Spezifischer aktiver Client-Zustand
@@ -60,6 +62,8 @@ public class AktiverClientZustand extends AktiverZustand {
 				return kartenTausch(((KartenTausch) nachricht).karte);
 			else if (nachricht instanceof RundenStart)
 				return rundenStart((RundenStart) nachricht);
+			else if (nachricht instanceof VerbindungGeschlossen)
+				return verbindungGeschlossen(brief.absender);
 			else
 				System.out.println("Nachricht " + nachricht.getClass()
 				                   + " ist (noch) nicht implementiert!");
@@ -80,7 +84,7 @@ public class AktiverClientZustand extends AktiverZustand {
 		return super.handle(event);
 	}
 
-	Zustand aufgegeben() {
+	Zustand gezogen(ZugEingabe zugEingabe) {
 		return keinUebergang();
 	}
 
@@ -137,6 +141,13 @@ public class AktiverClientZustand extends AktiverZustand {
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		return keinUebergang();
 	}
+
+	Zustand verbindungGeschlossen(EndPunkt endpunkt) {
+		/* FIXME: controller existiert u.U. zu diesem Zeitpunkt noch gar nicht */
+		controller.zeigeFehlermeldung("Verbindung zu Server " + endpunkt +
+		                  " wurde unerwartet beendet. Client wird beendet.");
+    	return automat.getZustand(EndZustand.class);
+    }
 
 	public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;

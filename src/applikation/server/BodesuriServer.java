@@ -37,7 +37,7 @@ public class BodesuriServer extends Automat {
 	 * Spielerschaft
 	 */
 	public Spielerschaft spielerschaft;
-	
+
 	public Spiel spiel;
 
 
@@ -62,5 +62,9 @@ public class BodesuriServer extends Automat {
 		this.queue = new EventQueue();
 
 		setEventQuelle(queue);
+	}
+
+	public String toString() {
+		return "Server-Automat";
 	}
 }

@@ -8,6 +8,7 @@ import applikation.server.BodesuriServer;
 import dienste.automat.Automat;
 import dienste.automat.Event;
 import dienste.automat.zustaende.AktiverZustand;
+import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunkt;
@@ -65,7 +66,9 @@ public abstract class AktiverServerZustand extends AktiverZustand {
     }
 
 	Zustand verbindungGeschlossen(EndPunkt absender) {
-    	return keinUebergang();
+		System.out.println("Verbindung zu Client " + absender +
+		                  " wurde unerwartet beendet. Server wird beendet.");
+    	return automat.getZustand(EndZustand.class);
     }
 
 	Zustand zugInfo(EndPunkt absender, ZugInformation information) {

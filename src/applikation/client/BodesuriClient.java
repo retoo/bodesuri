@@ -23,12 +23,12 @@ import dienste.netzwerk.EndPunkt;
 public class BodesuriClient extends Automat {
 	public EventQueue queue;
 	public EndPunkt endpunkt;
-	
+
 	public ZugAutomat zugAutomat;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
-	 * 
+	 *
 	 * @param queue
 	 * @param controller
 	 */
@@ -51,5 +51,9 @@ public class BodesuriClient extends Automat {
 		this.queue = queue;
 
 		setEventQuelle(queue);
+	}
+
+	public String toString() {
+		return "Client-Automat";
 	}
 }

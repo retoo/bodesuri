@@ -4,7 +4,7 @@ import applikation.server.BodesuriServer;
 public class ServerStart {
 
 	/**
-	 * Applikationsstart des Servers. Benötigte Instanzen werden erstellt, 
+	 * Applikationsstart des Servers. Benötigte Instanzen werden erstellt,
 	 * Server wird initialisiert und gestartet.
 	 * @param args	Wird nicht genutzt
 	 */
@@ -18,6 +18,8 @@ public class ServerStart {
 			System.out.println("Server: Exception in run()");
 			System.exit(99);
 		}
+
+		System.exit(0);
 	}
 
 }
