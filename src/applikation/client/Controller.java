@@ -133,8 +133,4 @@ public abstract class Controller {
 	public void setSpielerIch(Spieler spielerIch) {
 		this.spielerIch = spielerIch;
 	}
-
-	public boolean isZugAutomatControllerVorhanden() {
-		return (zugAutomatController != null) ? true : false;
-	}
 }
