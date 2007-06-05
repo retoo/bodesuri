@@ -23,14 +23,15 @@ public class NichtAmZug extends AktiverClientZustand {
 	public NichtAmZug(Controller controller) {
 		this.controller = controller;
 	}
-	
+
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;
 	}
 
 	Zustand zugAufforderung() {
-		automat.zugAutomat = new ZugAutomat(controller.getSpielerIch(), automat.queue);
+		automat.zugAutomat = new ZugAutomat(controller.getSpielerIch(),
+		                                    automat.queue);
 		return automat.getZustand(AmZug.class);
 	}
 
@@ -38,20 +39,20 @@ public class NichtAmZug extends AktiverClientZustand {
 		try {
 			information.zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
-			System.out.println("Ungültigen Zug (" + e
-			                   + ") vom Server erhalten!");
+			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
+						                   + ") vom Server erhalten!");
 			return automat.getZustand(SchwererFehler.class);
 		}
 		return this;
 	}
 
 	Zustand rundenStart(RundenStart rundenStart) {
-		
+
 		// TODO: rundenStart.neueKarten in Spieler speichern.
 		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
 		// keinen rundenStart.) Robin
 		// Nein, das kommt schon hierhin. --Philippe
-		
+
 		return automat.getZustand(StarteRunde.class);
 	}
 }

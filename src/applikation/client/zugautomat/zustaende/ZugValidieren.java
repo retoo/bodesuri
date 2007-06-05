@@ -9,7 +9,6 @@ import dienste.automat.zustaende.Zustand;
 
 public class ZugValidieren extends PassiverZugZustand {
 	public Zustand handle() {
-		System.out.println("Start: " + automat.start + automat.ziel);
 		Bewegung bewegung = new Bewegung(automat.start, automat.ziel);
 		ZugEingabe zugEingabe = new ZugEingabe(automat.spielerIch,
 		                                       automat.karte, bewegung);
