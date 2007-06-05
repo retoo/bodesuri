@@ -3,9 +3,9 @@ package ui.spiel.karten;
 import javax.swing.JPanel;
 import applikation.client.Controller;
 
-public class KarteGezogenView extends JPanel{
+public class KarteGewaehltView extends JPanel{
 
-	public KarteGezogenView(Controller controller) {
+	public KarteGewaehltView(Controller controller) {
 		// TODO Auto-generated constructor stub
 	}
 

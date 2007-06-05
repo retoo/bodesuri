@@ -4,18 +4,18 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import applikation.client.Controller;
 
-public class KartenInfoView extends JPanel{
-	public KartenInfoView(Controller controller) {
+public class KartenAuswahlView extends JPanel{
+	public KartenAuswahlView(Controller controller) {
 		// Layout setzen
 		setLayout(new BorderLayout());
 		
 		// Views
-		KarteGezogenView karteGezogenView = new KarteGezogenView(controller);
+		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(controller);
 		DeckView deckView = new DeckView(controller);
 		SteuerungsView steuerungsView = new SteuerungsView(controller);
 		
 		// Layout zusammenstellen
-		add(karteGezogenView, BorderLayout.NORTH);
+		add(karteGewaehltView, BorderLayout.NORTH);
 		add(deckView, BorderLayout.CENTER);
 		add(steuerungsView, BorderLayout.SOUTH);
 	}

@@ -4,7 +4,7 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import ui.spiel.karten.KartenInfoView;
+import ui.spiel.karten.KartenAuswahlView;
 
 import applikation.client.Controller;
 
@@ -15,10 +15,10 @@ public class SpielView extends JPanel {
 
 		// Views
 		SpielBrettView spielBrettView = new SpielBrettView(controller);
-		KartenInfoView kartenInfoView = new KartenInfoView(controller);
+		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(controller);
 
 		// Layout zusammenstellen
 		add(spielBrettView, BorderLayout.CENTER);
-		add(kartenInfoView, BorderLayout.EAST);
+		add(kartenAuswahlView, BorderLayout.EAST);
 	}
 }
