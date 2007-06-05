@@ -1,8 +1,10 @@
-package applikation.client;
+package spielplatz;
 
 import ui.GUIController;
 import dienste.automat.Automat;
 import dienste.automat.EventQueue;
+import applikation.client.BodesuriClient;
+import applikation.client.Controller;
 import applikation.server.BodesuriServer;
 
 public class BodesuriEntwickler {
