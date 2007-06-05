@@ -6,7 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 final public class Icons {
-	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/wasser/spielbrett.png");
+	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
 	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur.png");
 	public static final Icon FIGUR_BLAU_AUSWAHL = ladeBild("/ui/ressourcen/figur_schatten.png");
 	public static final Icon FELD_NORMAL  = ladeBild("/ui/ressourcen/feld.png");
