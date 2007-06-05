@@ -27,6 +27,8 @@ public class EmpfangeSpieler extends AktiverServerZustand {
 		System.out.println("Neuer Spieler: " + spieler);
 
 		if (spielers.isKomplett()) {
+			spielers.partnerschaftenBilden();
+
 			return automat.getZustand(StarteSpiel.class);
 		}
 

@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import pd.karten.Karte;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.BodesuriClient;
 import applikation.client.Controller;
@@ -56,7 +57,7 @@ public class AktiverClientZustand extends AktiverZustand {
 			else if (nachricht instanceof ZugAufforderung)
 				return zugAufforderung();
 			else if (nachricht instanceof KartenTausch)
-				return kartenTausch();
+				return kartenTausch(((KartenTausch) nachricht).karte);
 			else if (nachricht instanceof RundenStart)
 				return rundenStart((RundenStart) nachricht);
 			else
@@ -79,7 +80,7 @@ public class AktiverClientZustand extends AktiverZustand {
 		return super.handle(event);
 	}
 
-	Zustand gezogen(ZugEingabe zugEingabe) {
+	Zustand aufgegeben() {
 		return keinUebergang();
 	}
 
@@ -121,11 +122,11 @@ public class AktiverClientZustand extends AktiverZustand {
 		return keinUebergang();
 	}
 
-	Zustand kartenTausch() {
+	Zustand kartenTausch(Karte karte) {
 		return keinUebergang();
 	}
 
-	Zustand rundenStart(RundenStart rundenStart) {
+	Zustand rundenStart(RundenStart rundenstart) {
 		return keinUebergang();
 	}
 

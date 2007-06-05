@@ -1,5 +1,6 @@
 package applikation.server;
 
+import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -16,7 +17,10 @@ public class Spielerschaft implements Iterable<Spieler> {
 	private final int anzahlSpieler;
 	private Vector<Spieler> spielers = new Vector<Spieler>();
 	private int aktuellerSpieler;
+	private IdentityHashMap<EndPunkt, Spieler> endpunktZuSpieler;
+
 	public Runde runde;
+
 
 	/**
 	 * Erstellt eine neue Spielerschaft.
@@ -26,8 +30,30 @@ public class Spielerschaft implements Iterable<Spieler> {
 	 */
 	public Spielerschaft(int anzahlSpieler) {
 		this.anzahlSpieler = anzahlSpieler;
-		spielers = new Vector<Spieler>();
+		this.spielers = new Vector<Spieler>();
+		this.endpunktZuSpieler = new IdentityHashMap<EndPunkt, Spieler>();
+
 		aktuellerSpieler = 0;
+	}
+
+
+	public void partnerschaftenBilden() {
+		if (anzahlSpieler != spielers.size())
+			throw new RuntimeException("partnerschaftBilden zu früh aufgerufen");
+
+		if (anzahlSpieler == 1) {
+			/* Entwickler Betrieb */
+			Spieler einzelgaenger = spielers.get(0);
+
+			einzelgaenger.partner = einzelgaenger;
+		} else if (anzahlSpieler == 4) {
+			/* Normaler Betrieb */
+			spielers.get(0).partner = spielers.get(2);
+			spielers.get(2).partner = spielers.get(0);
+
+			spielers.get(1).partner = spielers.get(3);
+			spielers.get(1).partner = spielers.get(1);
+		}
 	}
 
 	/**
@@ -37,6 +63,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 	 *            neuer Spieler
 	 */
 	public void add(Spieler spieler) {
+		endpunktZuSpieler.put(spieler.getEndPunkt(), spieler);
 		spielers.add(spieler);
 	}
 
@@ -142,27 +169,31 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	public Runde starteRunde() {
 		if (runde == null) {
-			runde = new Runde(0);
+			runde = new Runde(0, spielers);
 		} else {
-			runde = new Runde(runde.nummer + 1);
+			runde = new Runde(runde.nummer + 1, spielers);
 		}
-
-		runde.spielers.addAll(spielers);
 
 		return runde;
 	}
 
-	private boolean isAktuellerSpieler(EndPunkt endpunkt) {
-		return getAktuellerSpieler().benutztEndPunkt(endpunkt);
+	public void sicherStellenIstAktuellerSpieler(EndPunkt endpunkt) {
+		if (getAktuellerSpieler() != getSpieler(endpunkt)) {
+
+			broadcast("HAH.. huere michi, de " + endpunkt
+			          + " wott voll bschisse");
+			new RuntimeException("beschiss von " + endpunkt + " an "
+			                     + getAktuellerSpieler());
+		}
 	}
 
-	/* TODO: Kann schöner gemacht werden */
-	public void sicherStellenIstAktuellerSpieler(EndPunkt absender) {
-		if (!isAktuellerSpieler(absender)) {
-			broadcast("HAH.. huere michi, de " + absender
-			          + " wott voll bschisse");
-			throw new RuntimeException("beschiss von " + absender + " an "
-			                           + aktuellerSpieler);
-		}
+
+	public Spieler getSpieler(EndPunkt endpunkt) {
+		Spieler spieler = endpunktZuSpieler.get(endpunkt);
+
+		if (spieler == null)
+			throw new RuntimeException("Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes " + endpunkt + " auflösen");
+
+		return spieler;
 	}
 }
