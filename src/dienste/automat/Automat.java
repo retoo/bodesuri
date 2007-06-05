@@ -11,7 +11,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere abarbeiten eines
  * Zustandsautomaten anhand eingehender Events.
- *
+ * 
  * Die Erstellung eines Automaten besteht aus folgenden Schritten:
  * <ul>
  * <il>Situationsabhänige aktive Zustandsklasse erstellen</li>
@@ -25,7 +25,7 @@ import dienste.automat.zustaende.Zustand;
  * verwendet werden.</li>
  * <il>Automat mit run() starten</li>
  * </ul>
- *
+ * 
  */
 public class Automat {
 	private Zustand start;
@@ -44,7 +44,7 @@ public class Automat {
 
 	/**
 	 * Registriert einen neuen Zustand
-	 *
+	 * 
 	 * @param zustand
 	 *            hinzuzufügende Zustand
 	 */
@@ -55,7 +55,7 @@ public class Automat {
 
 	/**
 	 * Setzt den übergebenen Zustand als Startzustand
-	 *
+	 * 
 	 * @param zustandsKlasse
 	 *            Klasse des Zustandes der als Startzustand verwendet werden
 	 *            soll
@@ -68,7 +68,7 @@ public class Automat {
 
 	/**
 	 * Setzt die zu verwendende EventQuelle
-	 *
+	 * 
 	 * @param quelle
 	 *            Zum lesen der Eventes verwendete Quelle
 	 */
@@ -96,21 +96,21 @@ public class Automat {
 	 * Verarbeitet einen einzigen Zustand. Bei Aktiven Zuständen bedeutet dies,
 	 * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
 	 * ausgeführt.
-	 *
+	 * 
 	 * Endzustände beenden den Zustandsautomaten.
-	 *
+	 * 
 	 * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
 	 * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
 	 * werden
-	 *
+	 * 
 	 * @see AktiverZustand
 	 * @see PassiverZustand
 	 * @see EndZustand
-	 *
+	 * 
 	 * @return true wenn es sich beim verarbeiteten Zustand nicht um einen
 	 *         Endzustand handelte.
 	 */
-    public boolean step() {
+	public boolean step() {
 		Zustand neuerZustand;
 
 		aktuellerZustand.entry();
@@ -135,6 +135,33 @@ public class Automat {
 		return true;
 	}
 
+	//TODO: Reto passt noch an und dokumentiert,
+	public boolean step(Event event) {
+		if (aktuellerZustand instanceof AktiverZustand) {
+			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
+			zustand.entry();
+			aktuellerZustand = zustand.handle(event);
+			zustand.exit();
+			verarbeitePassiveZustaende();
+		} else {
+			throw new RuntimeException("step(event) in einem passiven Zustande aufgerufen." +
+					                   " Zustand: " + aktuellerZustand);
+		}
+
+		System.out.println("Uebergang nach: " + aktuellerZustand);
+
+		return true;
+	}
+
+	private void verarbeitePassiveZustaende() {
+		while (aktuellerZustand instanceof PassiverZustand) {
+			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
+			zustand.entry();
+			aktuellerZustand = zustand.handle();
+			zustand.exit();
+		}
+	}
+
 	/**
 	 * Prüft den Automaten auf Fehler
 	 */
@@ -152,7 +179,7 @@ public class Automat {
 	/**
 	 * Meldete den Zustand in welchem sich der Zustandsautomaten zurzeit
 	 * befindet.
-	 *
+	 * 
 	 * @return Aktueller Zustand
 	 */
 	public Zustand getAktuellerZustand() {
@@ -162,7 +189,7 @@ public class Automat {
 	/**
 	 * Such die Instanz des Zustandes der der übergebener Klasse angehört und an
 	 * diesen Automaten gebunden ist.
-	 *
+	 * 
 	 * @param klasse
 	 *            Klasse des gesuchten Zustandes
 	 * @return Instanz eines Zustandes
@@ -177,6 +204,6 @@ public class Automat {
 	}
 
 	public boolean isZustand(Class<? extends Zustand> klass) {
-        return getAktuellerZustand() ==getZustand(klass);
-    }
+		return getAktuellerZustand() == getZustand(klass);
+	}
 }
