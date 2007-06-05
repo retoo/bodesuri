@@ -27,6 +27,7 @@ class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		controller.feldGewaehlt(((Feld2d) e.getComponent()).feld);
+		
 		// TODO: Falls die Figur schon gewählt ist, wieder ent-wählen
 		Figur2d figur = getFigur2d(((Feld2d) e.getComponent()));
 		if (figur != null) {
