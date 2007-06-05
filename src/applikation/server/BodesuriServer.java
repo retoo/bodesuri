@@ -63,23 +63,4 @@ public class BodesuriServer extends Automat {
 
 		setEventQuelle(queue);
 	}
-
-
-	/**
-	 * Startet den Server.
-	 *
-	 * @param args
-	 *            Wird nicht genutzt.
-	 */
-	public static void main(String[] args) {
-		BodesuriServer server = new BodesuriServer();
-
-		try {
-				server.run();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Server: Exception in run()");
-			System.exit(99);
-		}
-	}
 }
