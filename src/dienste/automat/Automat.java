@@ -2,7 +2,6 @@ package dienste.automat;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.Observable;
 
 import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
@@ -28,7 +27,7 @@ import dienste.automat.zustaende.Zustand;
  * </ul>
  *
  */
-public class Automat extends Observable {
+public class Automat {
 	private Zustand start;
 	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
@@ -132,10 +131,6 @@ public class Automat extends Observable {
 
 		aktuellerZustand = neuerZustand;
 		System.out.println("Uebergang nach: " + aktuellerZustand);
-
-		// Observer benachrichtigen
-		setChanged();
-		notifyObservers();
 
 		return true;
 	}
