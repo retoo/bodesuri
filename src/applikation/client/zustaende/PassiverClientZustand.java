@@ -11,12 +11,6 @@ import dienste.automat.zustaende.PassiverZustand;
 public abstract class PassiverClientZustand extends PassiverZustand {
 	protected BodesuriClient automat;
 	protected Controller controller;
-
-	/* TODO:
-	 * public PassiverClientZustand(Automat automat, ClientController controller) {
-		this.automat = (BodesuriClient) automat;
-		this.controller = ClientController;
-	}*/
 	
 	public void setAutomat(Automat automat) {
 		this.automat = (BodesuriClient) automat;

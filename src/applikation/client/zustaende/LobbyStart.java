@@ -10,9 +10,6 @@ import dienste.automat.zustaende.Zustand;
  */
 public class LobbyStart extends PassiverClientZustand {
 	public LobbyStart(Controller controller) {
-		/* TODO: 
-		 * super(automat, controller);
-		 */
 		this.controller = controller;
 	}
 	

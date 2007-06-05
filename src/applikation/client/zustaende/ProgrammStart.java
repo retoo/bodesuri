@@ -10,9 +10,6 @@ import dienste.automat.zustaende.Zustand;
  */
 public class ProgrammStart extends PassiverClientZustand {
 	public ProgrammStart(Controller controller) {
-		/* TODO: 
-		 * super(automat, controller);
-		 */
 		this.controller = controller;
 	}
 	
