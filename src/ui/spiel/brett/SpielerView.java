@@ -1,4 +1,4 @@
-package ui.spiel.info;
+package ui.spiel.brett;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

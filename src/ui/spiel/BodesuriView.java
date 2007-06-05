@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 
 import ui.spiel.brett.SpielView;
-import ui.spiel.info.InfoView;
+import ui.spiel.chat.ChatView;
 import applikation.client.Controller;
 
 /**
@@ -14,6 +14,7 @@ import applikation.client.Controller;
  */
 public class BodesuriView extends JFrame {
 	public BodesuriView(Controller controller, String spielerName) {
+		// Layout setzen
 		setTitle("Bodesuri - Spiel (" + spielerName + ")");
 		setName("Bodesuri");
 		setLocationByPlatform(true);
@@ -21,11 +22,13 @@ public class BodesuriView extends JFrame {
 		setNativeLookAndFeel();
 		setLayout(new BorderLayout());
 
-		// Layout aus den diversen JPanels zusammensetzen
+		// Views
 		SpielView spielView = new SpielView(controller);
-		InfoView infoView = new InfoView(controller);
-		getContentPane().add(spielView, BorderLayout.CENTER);
-		getContentPane().add(infoView, BorderLayout.EAST);
+		ChatView chatView = new ChatView(controller);
+		
+		// Layout zusammenstellen
+		getContentPane().add(spielView, BorderLayout.NORTH);
+		getContentPane().add(chatView, BorderLayout.CENTER);
 
 		// GUI anzeigen
 		pack();

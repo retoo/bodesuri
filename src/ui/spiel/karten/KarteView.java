@@ -2,7 +2,7 @@
  * @(#) KarteView.java
  */
 
-package ui.spiel.info;
+package ui.spiel.karten;
 
 import java.awt.Dimension;
 import java.awt.Point;

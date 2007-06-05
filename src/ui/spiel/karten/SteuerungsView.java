@@ -1,4 +1,4 @@
-package ui.spiel.info;
+package ui.spiel.karten;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
