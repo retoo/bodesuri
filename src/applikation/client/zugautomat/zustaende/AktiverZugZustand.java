@@ -1,5 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
+import applikation.client.Controller;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -10,6 +11,7 @@ import dienste.automat.zustaende.Zustand;
 
 public class AktiverZugZustand extends AktiverZustand {
 	protected ZugAutomat automat;
+	protected Controller controller;
 
 	public Zustand handle(Event event) {
 		if (event instanceof KarteGewaehltEvent)

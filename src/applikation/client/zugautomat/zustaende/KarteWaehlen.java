@@ -1,5 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
+import applikation.client.Controller;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.ChatNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -11,6 +12,14 @@ import dienste.netzwerk.EndPunkt;
  * aufgerufen.
  */
 public class KarteWaehlen extends AktiverZugZustand {
+	public KarteWaehlen(Controller controller) {
+		this.controller = controller;
+    }
+
+	public void entry() {
+		controller.kartenAuswahl(true);
+	}
+	
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;

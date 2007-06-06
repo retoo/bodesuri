@@ -13,6 +13,7 @@ public class StartWaehlen extends AktiverZugZustand {
 	public void entry() {
 		automat.start = null;
 		automat.ziel = null;
+		controller.feldAuswahl(true);
 	}
 
 	Zustand feldGewaehlt(FeldGewaehltEvent event) {
@@ -23,6 +24,7 @@ public class StartWaehlen extends AktiverZugZustand {
 	
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		automat.karte = event.karte;
+		
 		return automat.getZustand(StartWaehlen.class);
 	}
 }

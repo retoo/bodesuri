@@ -14,7 +14,6 @@ import dienste.netzwerk.EndPunkt;
 public class ZugAutomat extends Automat {
 	public EventQueue eventQueueBodesuriClient;
 
-	public Controller controller;
 	public EndPunkt endpunkt;
 
 	public Karte karte;
@@ -22,13 +21,12 @@ public class ZugAutomat extends Automat {
 	public Feld ziel;
 
 	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient) {
-		this.controller = controller;
 		this.eventQueueBodesuriClient = eventQueueBodesuriClient;
 
-		registriere(new KarteWaehlen());
+		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen());
 		registriere(new EndeWaehlen());
-		registriere(new ZugValidieren());
+		registriere(new ZugValidieren(controller));
 
 		setStart(KarteWaehlen.class);
 	}
