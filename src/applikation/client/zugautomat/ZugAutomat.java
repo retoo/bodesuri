@@ -24,8 +24,8 @@ public class ZugAutomat extends Automat {
 		this.eventQueueBodesuriClient = eventQueueBodesuriClient;
 
 		registriere(new KarteWaehlen(controller));
-		registriere(new StartWaehlen());
-		registriere(new EndeWaehlen());
+		registriere(new StartWaehlen(controller));
+		registriere(new EndeWaehlen(controller));
 		registriere(new ZugValidieren(controller));
 
 		setStart(KarteWaehlen.class);

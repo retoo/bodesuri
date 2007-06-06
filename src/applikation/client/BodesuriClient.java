@@ -43,7 +43,7 @@ public class BodesuriClient extends Automat {
 		registriere(new AmZug());
 		registriere(new NichtAmZug(controller));
 		registriere(new StarteRunde());
-		registriere(new KarteTauschenAuswaehlen());
+		registriere(new KarteTauschenAuswaehlen(controller));
 		registriere(new KarteTauschenBekommen());
 
 		setStart(ProgrammStart.class);

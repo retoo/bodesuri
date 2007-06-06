@@ -1,5 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
+import applikation.client.Controller;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;
@@ -10,6 +11,10 @@ import dienste.automat.zustaende.Zustand;
  * versendet. Der Automat wird dann beendet.
  */
 public class StartWaehlen extends AktiverZugZustand {
+	public StartWaehlen(Controller controller) {
+		this.controller = controller;
+    }
+
 	public void entry() {
 		automat.start = null;
 		automat.ziel = null;
@@ -21,10 +26,10 @@ public class StartWaehlen extends AktiverZugZustand {
 
 		return automat.getZustand(EndeWaehlen.class);
 	}
-	
+
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		automat.karte = event.karte;
-		
+
 		return automat.getZustand(StartWaehlen.class);
 	}
 }
