@@ -30,8 +30,7 @@ public class NichtAmZug extends AktiverClientZustand {
 	}
 
 	Zustand zugAufforderung() {
-		automat.zugAutomat = new ZugAutomat(controller.getSpielerIch(),
-		                                    automat.queue);
+		automat.zugAutomat = new ZugAutomat(controller, automat.queue);
 		return automat.getZustand(AmZug.class);
 	}
 
@@ -40,7 +39,7 @@ public class NichtAmZug extends AktiverClientZustand {
 			information.zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
-						                   + ") vom Server erhalten!");
+			                              + ") vom Server erhalten!");
 			return automat.getZustand(SchwererFehler.class);
 		}
 		return this;
