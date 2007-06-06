@@ -37,4 +37,12 @@ public class GUIController extends Controller {
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
+
+    public void feldAuswahl(Boolean aktiv) {
+	    // TODO Die Auwahl von Feldern (MouseListener) an-/ausschalten.
+    }
+
+    public void kartenAuswahl(Boolean aktiv) {
+	    // TODO Die Auwahl von Karten (MouseListener) an-/ausschalten.
+    }
 }

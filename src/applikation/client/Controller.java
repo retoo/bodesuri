@@ -54,6 +54,20 @@ public abstract class Controller {
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 
 	/**
+	 * Die Auswahl von Feldern (de-)aktivieren.
+	 * 
+	 * @param aktiv
+	 */
+	public abstract void feldAuswahl(Boolean aktiv);
+
+	/**
+	 * Die Auswahl von Karten (de-)aktivieren.
+	 * 
+	 * @param aktiv
+	 */
+	public abstract void kartenAuswahl(Boolean aktiv);
+
+	/**
 	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
 	 * 
 	 * @param host
