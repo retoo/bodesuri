@@ -13,7 +13,7 @@ import dienste.netzwerk.server.Server;
  */
 public class ServerStart extends PassiverServerZustand {
 	public Zustand handle() {
-		System.out.println("Initialiere Server");
+		System.out.println("Initialisiere Server");
 
 		try {
 			automat.server = new Server(automat.queue);
