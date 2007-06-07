@@ -78,8 +78,13 @@
       <classpath refid="classpath.test-compile"/>
     </javac>
   </target>
+  <target name="copy-ressources" depends="compile">
+    <copy todir="${obj-dir}/ui/ressourcen">
+      <fileset dir="${src-dir}/ui/ressourcen" />
+    </copy>
+  </target>
 <!-- conserve -->
-  <target name="jar" depends="compile">
+  <target name="jar" depends="copy-ressources,compile">
     <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}"/>
   </target>
 <!-- instrumentations -->
