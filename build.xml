@@ -85,7 +85,11 @@
   </target>
 <!-- conserve -->
   <target name="jar" depends="copy-ressources,compile">
-    <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}"/>
+    <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}">
+    	<manifest>
+    		<attribute name="Main-Class" value="ClientStart"/>
+    	</manifest>
+   	</jar>
   </target>
 <!-- instrumentations -->
   <target name="generate-instrument" depends="clean-cobertura">
