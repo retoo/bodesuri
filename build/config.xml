@@ -46,7 +46,7 @@
 	</email>
 	<artifactspublisher
        dir="checkout/bodesuri/lib/"
-	        dest="artifacts/bodesri"/>
+	        dest="artifacts/bodesuri"/>
     </publishers>
   </project>
 </cruisecontrol>
