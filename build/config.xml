@@ -44,6 +44,9 @@
 	       spamwhilebroken="true">
 		<always address="se2p-commit@pfadi-st-anton.ch"/>
 	</email>
+	<artifactspublisher
+       dir="checkout/bodesuri/lib/"
+	        dest="artifacts/bodesri"/>
     </publishers>
   </project>
 </cruisecontrol>
