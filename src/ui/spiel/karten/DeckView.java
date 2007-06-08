@@ -14,7 +14,7 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 import pd.karten.Zehn;
-import ui.GUIController;
+import ui.spiel.GUIController;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden

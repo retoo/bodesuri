@@ -1,4 +1,4 @@
-import ui.GUIController;
+import ui.spiel.GUIController;
 import applikation.client.BodesuriClient;
 import applikation.client.controller.Controller;
 

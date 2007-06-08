@@ -1,9 +1,8 @@
-package ui;
+package ui.spiel;
 
 import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
-import ui.spiel.BodesuriView;
 import ui.spiel.brett.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
