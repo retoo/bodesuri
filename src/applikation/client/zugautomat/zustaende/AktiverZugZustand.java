@@ -1,36 +1,37 @@
 package applikation.client.zugautomat.zustaende;
 
 import applikation.client.controller.Controller;
-import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
-import dienste.automat.Automat;
-import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
-public class AktiverZugZustand extends AktiverZustand {
-	protected ZugAutomat automat;
+public class AktiverZugZustand extends Zustand {
+	protected SpielDaten spielDaten;
 	protected Controller controller;
 
-	public Zustand handle(Event event) {
+	public Class<? extends Zustand> handle(Event event) {
 		if (event instanceof KarteGewaehltEvent)
 			return karteGewaehlt((KarteGewaehltEvent) event);
 		else if (event instanceof FeldGewaehltEvent)
 			return feldGewaehlt((FeldGewaehltEvent) event);
-		
+
 		return super.handle(event);
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		return keinUebergang();
 	}
 
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return keinUebergang();
 	}
 
-	public void setAutomat(Automat automat) {
-		this.automat = (ZugAutomat) automat;
-	}
+	public void setController(Controller controller) {
+		this.controller = controller;
+    }
+
+	public void setspielDaten(SpielDaten spielDaten) {
+	    this.spielDaten = spielDaten;
+    }
 }

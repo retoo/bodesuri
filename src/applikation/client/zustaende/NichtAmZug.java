@@ -1,7 +1,6 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
-import applikation.client.controller.Controller;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;
@@ -19,40 +18,36 @@ import dienste.netzwerk.EndPunkt;
  * Zustand aber nicht gewechselt.</li>
  * </ul>
  */
-public class NichtAmZug extends AktiverClientZustand {
-	public NichtAmZug(Controller controller) {
-		this.controller = controller;
-	}
-
-	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+public class NichtAmZug extends ClientZustand {
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
-		return this;
+		return this.getClass();
 	}
 
-	Zustand zugAufforderung() {
-		automat.zugAutomat = new ZugAutomat(controller, automat.queue);
+	Class<? extends Zustand> zugAufforderung() {
+		spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue);
 		//Nur vorübergehend -> siehe KarteWaehlen.
 		controller.kartenAuswahl(true);
-		return automat.getZustand(AmZug.class);
+		return AmZug.class;
 	}
 
-	Zustand zugWurdeGemacht(ZugInformation information) {
+	Class<? extends Zustand> zugWurdeGemacht(ZugInformation information) {
 		try {
 			information.zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
 			                              + ") vom Server erhalten!");
-			return automat.getZustand(SchwererFehler.class);
+			return SchwererFehler.class;
 		}
-		return this;
+		return this.getClass();
 	}
 
-	Zustand rundenStart(RundenStart rundenStart) {
+	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		// TODO: rundenStart.neueKarten in Spieler speichern.
 		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
 		// keinen rundenStart.) Robin
 		// Nein, das kommt schon hierhin. --Philippe
 
-		return automat.getZustand(StarteRunde.class);
+		return StarteRunde.class;
 	}
 }

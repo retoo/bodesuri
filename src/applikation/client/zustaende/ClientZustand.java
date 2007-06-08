@@ -2,7 +2,7 @@ package applikation.client.zustaende;
 
 import pd.karten.Karte;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.BodesuriClient;
+import applikation.client.SpielDaten;
 import applikation.client.controller.Controller;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldGewaehltEvent;
@@ -18,8 +18,6 @@ import applikation.nachrichten.SpielStartNachricht;
 import applikation.nachrichten.SpielVollNachricht;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
-import dienste.automat.Automat;
-import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
@@ -32,11 +30,11 @@ import dienste.netzwerk.VerbindungGeschlossen;
 /**
  * Spezifischer aktiver Client-Zustand
  */
-public class AktiverClientZustand extends AktiverZustand {
-	protected BodesuriClient automat;
+public class ClientZustand extends Zustand {
 	protected Controller controller;
+	protected SpielDaten spielDaten;
 
-	public Zustand handle(Event event) {
+	public Class<? extends Zustand> handle(Event event) {
 		if (event instanceof NetzwerkEvent) {
 			NetzwerkEvent be = (NetzwerkEvent) event;
 
@@ -84,72 +82,76 @@ public class AktiverClientZustand extends AktiverZustand {
 		return super.handle(event);
 	}
 
-	Zustand gezogen(ZugEingabe zugEingabe) {
+	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
 		return keinUebergang();
 	}
 
-	Zustand aufgegeben() {
+	Class<? extends Zustand> aufgegeben() {
 		return keinUebergang();
 	}
 
-	Zustand verbinden(VerbindeEvent event) {
+	Class<? extends Zustand> verbinden(VerbindeEvent event) {
 		return keinUebergang();
 	}
 
-	Zustand spielVoll(EndPunkt absender, SpielVollNachricht nachricht) {
+	Class<? extends Zustand> spielVoll(EndPunkt absender, SpielVollNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println(nachricht.nachricht);
 
-		return this;
+		return this.getClass();
 	}
 
-	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+	Class<? extends Zustand> spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
 		return keinUebergang();
 	}
 
-	Zustand beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
 		return keinUebergang();
 	}
 
-	Zustand spielStarten(SpielStartNachricht nachricht) {
+	Class<? extends Zustand> spielStarten(SpielStartNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	Zustand zugWurdeGemacht(ZugInformation information) {
+	Class<? extends Zustand> zugWurdeGemacht(ZugInformation information) {
 		return keinUebergang();
 	}
 
-	Zustand zugAufforderung() {
+	Class<? extends Zustand> zugAufforderung() {
 		return keinUebergang();
 	}
 
-	Zustand kartenTausch(Karte karte) {
+	Class<? extends Zustand> kartenTausch(Karte karte) {
 		return keinUebergang();
 	}
 
-	Zustand rundenStart(RundenStart rundenstart) {
+	Class<? extends Zustand> rundenStart(RundenStart rundenstart) {
 		return keinUebergang();
 	}
 
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return keinUebergang();
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		return keinUebergang();
 	}
 
-	Zustand verbindungGeschlossen(EndPunkt endpunkt) {
+	Class<? extends Zustand> verbindungGeschlossen(EndPunkt endpunkt) {
 		/* FIXME: controller existiert u.U. zu diesem Zeitpunkt noch gar nicht */
 		controller.zeigeFehlermeldung("Verbindung zu Server " + endpunkt +
 		                  " wurde unerwartet beendet. Client wird beendet.");
-    	return automat.getZustand(EndZustand.class);
+    	return EndZustand.class;
     }
 
-	public void setAutomat(Automat automat) {
-		this.automat = (BodesuriClient) automat;
-	}
+	public void setController(Controller controller) {
+	    this.controller = controller;
+    }
+
+	public void setSpielDaten(SpielDaten spielDaten) {
+		this.spielDaten = spielDaten;
+    }
 }

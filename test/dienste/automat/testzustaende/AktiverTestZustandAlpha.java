@@ -4,11 +4,11 @@ import dienste.automat.zustaende.Zustand;
 
 
 public class AktiverTestZustandAlpha extends AktiverTestZustand {
-	Zustand a() {
-		return this;
+	Class<? extends Zustand> a() {
+		return AktiverTestZustandAlpha.class;
     }
-	
-	Zustand b() {
-		return automat.getZustand(AktiverTestZustandBeta.class);
+
+	Class<? extends Zustand> b() {
+		return AktiverTestZustandBeta.class;
     }
 }

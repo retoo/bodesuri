@@ -11,22 +11,22 @@ import dienste.netzwerk.EndPunkt;
  * {@link SpielStartNachricht} eintrifft wird der Zustand {@link SpielStart}
  * aufgerufen.
  */
-public class Lobby extends AktiverClientZustand {
+public class Lobby extends ClientZustand {
 	public Lobby(Controller controller) {
 		this.controller = controller;
 	}
-	
-	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
-		return this;
+		return this.getClass();
 	}
 
-	Zustand spielStarten(SpielStartNachricht startNachricht) {
+	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
 		for (int i = 0; i < startNachricht.spieler.length; i++) {
 			String name = startNachricht.spieler[i];
 			controller.fuegeSpielerHinzu(name);
 		}
 
-		return automat.getZustand(SpielStart.class);
+		return SpielStart.class;
 	}
 }

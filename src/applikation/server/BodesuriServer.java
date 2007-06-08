@@ -1,6 +1,6 @@
 package applikation.server;
 
-import pd.Spiel;
+import applikation.server.zustaende.ServerZustand;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;
 import applikation.server.zustaende.ServerEnde;
@@ -14,38 +14,22 @@ import applikation.server.zustaende.ZugAbschluss;
 import dienste.automat.Automat;
 import dienste.automat.EventQuelleAdapter;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.server.Server;
 
 /**
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class BodesuriServer extends Automat {
-	/**
-	 * Maximale Anzahl Spieler
-	 *
-	 * TODO: muss das wirklich so ne Konstante sein.
-	 */
-	public static final int MAXSPIELER = 1;
-	/**
-	 * Server
-	 */
-	public Server server;
-	/**
-	 * EventQueue
-	 */
-	public EventQueue queue;
-	/**
-	 * Spielerschaft
-	 */
-	public Spielerschaft spielerschaft;
-
-	public Spiel spiel;
-
+	private SpielDaten spielDaten;
 
 	/**
 	 * Initialisiert den Server-Automaten
 	 */
 	public BodesuriServer() {
+		EventQueue queue = new EventQueue();
+		spielDaten = new SpielDaten();
+
+		spielDaten.queue = queue;
+
 		registriere(new ServerStart());
 		registriere(new EmpfangeSpieler());
 		registriere(new StarteSpiel());
@@ -60,9 +44,13 @@ public class BodesuriServer extends Automat {
 
 		setStart(ServerStart.class);
 
-		this.queue = new EventQueue();
-
 		setEventQuelle(new EventQuelleAdapter(queue));
+	}
+
+	public void registriere(ServerZustand zustand) {
+		zustand.setSpielDaten(spielDaten);
+
+		super.registriere(zustand);
 	}
 
 	public void run() {

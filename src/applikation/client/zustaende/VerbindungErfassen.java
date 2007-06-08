@@ -3,8 +3,6 @@ package applikation.client.zustaende;
 import java.io.IOException;
 import java.net.UnknownHostException;
 
-
-import applikation.client.controller.Controller;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
@@ -17,29 +15,25 @@ import dienste.netzwerk.EndPunkt;
  * {@link VerbindeEvent} eintrifft wir der Zustand {@link VerbindungSteht}
  * aufgerufen.
  */
-public class VerbindungErfassen extends AktiverClientZustand {
-	public VerbindungErfassen(Controller controller) {
-		this.controller = controller;
-	}
-	
-	Zustand verbinden(VerbindeEvent ve) {
+public class VerbindungErfassen extends ClientZustand {
+	Class<? extends Zustand> verbinden(VerbindeEvent ve) {
 		try {
-			BriefKastenInterface briefkasten = new BriefkastenAdapter(automat.queue);
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(spielDaten.queue);
 
-			automat.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
-			automat.endpunkt.sende(new SpielBeitreten(ve.spielerName));
+			spielDaten.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
+			spielDaten.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			controller.setSpielerName( ve.spielerName );
 		} catch (UnknownHostException e) {
 			controller.zeigeFehlermeldung("Unbekannter Hostname: " + ve.hostname);
-			automat.endpunkt = null;
-			return this;
+			spielDaten.endpunkt = null;
+			return VerbindungErfassen.class;
 		} catch (IOException e) {
 			controller.zeigeFehlermeldung("Verbindung konnte nicht hergestellt werden: "
 			                    + e.getMessage());
-			automat.endpunkt = null;
-			return this;
+			spielDaten.endpunkt = null;
+			return VerbindungErfassen.class;
 		}
 
-		return automat.getZustand(VerbindungSteht.class);
+		return VerbindungSteht.class;
 	}
 }

@@ -11,27 +11,26 @@ import dienste.netzwerk.EndPunkt;
  * Zustand während des Spieles. Eingende ZugInformationen werden an
  * alle Spieler verteilt.
  */
-public class WarteAufZug extends AktiverServerZustand {
-
-	Zustand zugInfo(EndPunkt absender, ZugInformation zugInfo) {
-		Spielerschaft spielers = automat.spielerschaft;
+public class WarteAufZug extends ServerZustand {
+	Class<? extends Zustand> zugInfo(EndPunkt absender, ZugInformation zugInfo) {
+		Spielerschaft spielers = spielDaten.spielerschaft;
 
 		spielers.sicherStellenIstAktuellerSpieler(absender);
 
 		spielers.broadcast(zugInfo);
 		System.out.println("Ausgeführter Zug: " + zugInfo.zug);
 
-		return automat.getZustand(VersendeZug.class);
+		return VersendeZug.class;
 	}
 
-	Zustand aufgabe(EndPunkt absender, Aufgabe aufgabe) {
-		Spielerschaft spielers = automat.spielerschaft;
+	Class<? extends Zustand> aufgabe(EndPunkt absender, Aufgabe aufgabe) {
+		Spielerschaft spielers = spielDaten.spielerschaft;
 		Spieler aktuellerSpieler = spielers.getAktuellerSpieler();
 
 		spielers.sicherStellenIstAktuellerSpieler(absender);
 
-		automat.spielerschaft.runde.entferneSpieler(aktuellerSpieler);
+		spielDaten.spielerschaft.runde.entferneSpieler(aktuellerSpieler);
 
-		return automat.getZustand(VersendeZug.class);
+		return VersendeZug.class;
 	}
 }

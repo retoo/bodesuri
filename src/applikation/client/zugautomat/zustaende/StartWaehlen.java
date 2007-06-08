@@ -16,20 +16,20 @@ public class StartWaehlen extends AktiverZugZustand {
     }
 
 	public void entry() {
-		automat.start = null;
-		automat.ziel = null;
+		spielDaten.start = null;
+		spielDaten.ziel = null;
 		controller.feldAuswahl(true);
 	}
 
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
-		automat.start = event.feld;
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
+		spielDaten.start = event.feld;
 
-		return automat.getZustand(EndeWaehlen.class);
+		return EndeWaehlen.class;
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
-		automat.karte = event.karte;
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		spielDaten.karte = event.karte;
 
-		return automat.getZustand(StartWaehlen.class);
+		return StartWaehlen.class;
 	}
 }

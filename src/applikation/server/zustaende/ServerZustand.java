@@ -1,12 +1,10 @@
-package applikation.server.zustaende;
+	package applikation.server.zustaende;
 
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
-import applikation.server.BodesuriServer;
-import dienste.automat.Automat;
-import dienste.automat.zustaende.AktiverZustand;
+import applikation.server.SpielDaten;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
@@ -21,13 +19,13 @@ import dienste.netzwerk.VerbindungGeschlossen;
 /**
  * Spezifischer aktiver Server-Zustand
  */
-public abstract class AktiverServerZustand extends AktiverZustand {
-	protected BodesuriServer automat;
+public abstract class ServerZustand extends Zustand {
+	protected SpielDaten spielDaten;
 
 	/* (non-Javadoc)
 	 * @see dienste.automat.zustaende.AktiverZustand#handle(dienste.automat.Event)
 	 */
-	public Zustand handle(Event event) {
+	public Class<? extends Zustand> handle(Event event) {
     	if (event instanceof NetzwerkEvent) {
     		NetzwerkEvent ne = (NetzwerkEvent) event;
 
@@ -57,37 +55,34 @@ public abstract class AktiverServerZustand extends AktiverZustand {
 
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
 
-	Zustand aufgabe(EndPunkt absender, Aufgabe aufgabe) {
+	Class<? extends Zustand> aufgabe(EndPunkt absender, Aufgabe aufgabe) {
 	    return keinUebergang();
     }
 
-	Zustand kartenTausch(EndPunkt absender, KartenTausch tausch) {
+	Class<? extends Zustand> kartenTausch(EndPunkt absender, KartenTausch tausch) {
 		return keinUebergang();
     }
 
-	Zustand verbindungGeschlossen(EndPunkt absender) {
+	Class<? extends Zustand> verbindungGeschlossen(EndPunkt absender) {
 		System.out.println("Verbindung zu Client " + absender +
 		                  " wurde unerwartet beendet. Server wird beendet.");
-    	return automat.getZustand(EndZustand.class);
+    	return EndZustand.class;
     }
 
-	Zustand zugInfo(EndPunkt absender, ZugInformation information) {
+	Class<? extends Zustand> zugInfo(EndPunkt absender, ZugInformation information) {
     	return keinUebergang();
     }
 
-	Zustand neueVerbindung(NeueVerbindung verbindung) {
+	Class<? extends Zustand> neueVerbindung(NeueVerbindung verbindung) {
 		System.out.println("Neue Verbindung von " + verbindung.endpunkt);
-    	return this;
+    	return this.getClass();
     }
 
-	Zustand spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+	Class<? extends Zustand> spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
     	return keinUebergang();
     }
 
-	/* (non-Javadoc)
-	 * @see dienste.automat.zustaende.Zustand#setAutomat(dienste.automat.Automat)
-	 */
-    public void setAutomat(Automat automat) {
-		this.automat = (BodesuriServer) automat;
+	public void setSpielDaten(SpielDaten spielDaten) {
+	    this.spielDaten = spielDaten;
     }
 }

@@ -13,19 +13,19 @@ import dienste.automat.zustaende.Zustand;
  * sendet eine {@link ZugEingabe} wenn er fertig ist. Diese wird versandt und
  * der Automat geht nach {@link NichtAmZug} über.
  */
-public class AmZug extends AktiverClientZustand {
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
-		automat.zugAutomat.step(event);
-		return this;
+public class AmZug extends ClientZustand {
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
+		spielDaten.zugAutomat.step(event);
+		return this.getClass();
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
-		automat.zugAutomat.step(event);
-		return this;
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		spielDaten.zugAutomat.step(event);
+		return this.getClass();
 	}
 
-	Zustand gezogen(ZugEingabe zugEingabe) {
-		automat.endpunkt.sende(new ZugInformation(zugEingabe));
-		return automat.getZustand(NichtAmZug.class);
+	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
+		spielDaten.endpunkt.sende(new ZugInformation(zugEingabe));
+		return NichtAmZug.class;
 	}
 }

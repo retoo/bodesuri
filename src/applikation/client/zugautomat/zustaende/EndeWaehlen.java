@@ -15,17 +15,17 @@ public class EndeWaehlen extends AktiverZugZustand {
 		this.controller = controller;
     }
 
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
-		if (automat.start == event.feld) {
-			return automat.getZustand(StartWaehlen.class);
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
+		if (spielDaten.start == event.feld) {
+			return StartWaehlen.class;
 		} else {
-			automat.ziel = event.feld;
-			return automat.getZustand(ZugValidieren.class);
+			spielDaten.ziel = event.feld;
+			return ZugValidieren.class;
 		}
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
-		automat.karte = event.karte;
-		return automat.getZustand(StartWaehlen.class);
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		spielDaten.karte = event.karte;
+		return StartWaehlen.class;
 	}
 }

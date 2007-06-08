@@ -5,24 +5,22 @@ import dienste.automat.TestAutomat;
 import dienste.automat.events.TestEventA;
 import dienste.automat.events.TestEventB;
 import dienste.automat.events.TestExitEvent;
-import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
-public class AktiverTestZustand extends AktiverZustand {
+public class AktiverTestZustand extends Zustand {
 	protected TestAutomat automat;
 
-	@Override
 	public void setAutomat(Automat automat) {
 		if (automat instanceof TestAutomat) {
 			this.automat = (TestAutomat) automat;
 		} else {
-			throw new RuntimeException("Ups, automat ist " + automat.getClass());
+			throw new RuntimeException("Ups, spielDaten ist " + automat.getClass());
 		}
 	}
 
-	public Zustand handle(Event event) {
+	public Class<? extends Zustand> handle(Event event) {
 
 		if (event instanceof TestEventA)
 			return a();
@@ -35,15 +33,15 @@ public class AktiverTestZustand extends AktiverZustand {
 		return super.handle(event);
 	}
 
-	Zustand exitEvent(TestExitEvent event) {
-	    return automat.getZustand(EndZustand.class);
+	Class<? extends Zustand> exitEvent(TestExitEvent event) {
+	    return EndZustand.class;
     }
 
-	Zustand a() {
+	Class<? extends Zustand> a() {
 		return keinUebergang();
 	}
 
-	Zustand b() {
+	Class<? extends Zustand> b() {
 		return keinUebergang();
 	}
 }

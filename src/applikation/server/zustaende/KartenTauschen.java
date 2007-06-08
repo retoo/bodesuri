@@ -7,9 +7,9 @@ import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
 /* Wird bald aktiv */
-public class KartenTauschen extends AktiverServerZustand {
-	Zustand kartenTausch(EndPunkt absender, KartenTausch tausch) {
-		Spielerschaft spielers = automat.spielerschaft;
+public class KartenTauschen extends ServerZustand {
+	Class<? extends Zustand> kartenTausch(EndPunkt absender, KartenTausch tausch) {
+		Spielerschaft spielers = spielDaten.spielerschaft;
 
 		Spieler spieler = spielers.getSpieler(absender);
 
@@ -23,9 +23,9 @@ public class KartenTauschen extends AktiverServerZustand {
 
 
 		if (spielers.runde.isFertigGetauscht()) {
-			return automat.getZustand(StarteZug.class);
+			return StarteZug.class;
 		}
 
-		return this;
+		return KartenTauschen.class;
 	}
 }

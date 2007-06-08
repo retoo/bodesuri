@@ -1,27 +1,23 @@
 package applikation.client.zugautomat;
 
-import pd.brett.Feld;
-import pd.karten.Karte;
 import applikation.client.controller.Controller;
+import applikation.client.zugautomat.zustaende.AktiverZugZustand;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
+import applikation.client.zugautomat.zustaende.SpielDaten;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {
-	public EventQueue eventQueueBodesuriClient;
-
-	public EndPunkt endpunkt;
-
-	public Karte karte;
-	public Feld start;
-	public Feld ziel;
+	private Controller controller;
+	private SpielDaten spielDaten;
 
 	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient) {
-		this.eventQueueBodesuriClient = eventQueueBodesuriClient;
+		this.controller = controller;
+		spielDaten = new SpielDaten();
+		spielDaten.eventQueueBodesuriClient = eventQueueBodesuriClient;
 
 		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen(controller));
@@ -29,6 +25,12 @@ public class ZugAutomat extends Automat {
 		registriere(new ZugValidieren(controller));
 
 		setStart(KarteWaehlen.class);
+	}
+
+	public void registriere(AktiverZugZustand zustand) {
+		zustand.setController(controller);
+		zustand.setspielDaten(spielDaten);
+	    super.registriere(zustand);
 	}
 
 	public String toString() {

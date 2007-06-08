@@ -3,9 +3,7 @@ package dienste.automat;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
-import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
@@ -50,7 +48,6 @@ public class Automat {
 	 *            hinzuzufügende Zustand
 	 */
 	public void registriere(Zustand zustand) {
-		zustand.setAutomat(this);
 		zustaende.put(zustand.getClass(), zustand);
 	}
 
@@ -104,7 +101,7 @@ public class Automat {
 	 * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
 	 * werden
 	 *
-	 * @see AktiverZustand
+	 * @see Zustand
 	 * @see PassiverZustand
 	 * @see EndZustand
 	 *
@@ -116,16 +113,18 @@ public class Automat {
 
 		aktuellerZustand.entry();
 
-		if (aktuellerZustand instanceof AktiverZustand) {
-			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
-			Event event = eventQuelle.getEvent();
-			neuerZustand = zustand.handle(event);
-		} else if (aktuellerZustand instanceof PassiverZustand) {
+		if (aktuellerZustand instanceof PassiverZustand) {
 			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-			neuerZustand = zustand.handle();
-		} else { /* kann nur endzustand sein */
+			neuerZustand = getZustand(zustand.handle());
+		} else if (aktuellerZustand instanceof EndZustand) {
 			System.out.println("Erreiche Endzustand");
 			return false;
+		} else { /* kann nur endzustand sein */
+			Zustand zustand = aktuellerZustand;
+			Event event = eventQuelle.getEvent();
+			neuerZustand = getZustand(zustand.handle(event));
+
+
 		}
 
 		aktuellerZustand.exit();
@@ -136,19 +135,22 @@ public class Automat {
 		return true;
 	}
 
-	//TODO: Reto passt noch an und dokumentiert,
+	// TODO: Reto passt noch an und dokumentiert,
 	public boolean step(Event event) {
-		if (aktuellerZustand instanceof AktiverZustand) {
-			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
-			//TODO: (von Philippe) Die entry-Methoden sollten nicht nur bei Übergängen ausgeführt werden
+		if (!(aktuellerZustand instanceof PassiverZustand)) {
+			Zustand zustand = aktuellerZustand;
+			// TODO: (von Philippe) Die entry-Methoden sollten nicht nur bei
+			// Übergängen ausgeführt werden
 			// entry vom 1. Zustand wird erst aufgerufen wenn wir ihn verlassen.
 			zustand.entry();
-			aktuellerZustand = zustand.handle(event);
+			aktuellerZustand = getZustand(zustand.handle(event));
 			zustand.exit();
 			verarbeitePassiveZustaende();
 		} else {
-			throw new RuntimeException("step(event) in einem passiven Zustande aufgerufen." +
-					                   " Zustand: " + aktuellerZustand);
+			throw new RuntimeException(
+			                           "step(event) in einem passiven Zustande aufgerufen."
+			                                   + " Zustand: "
+			                                   + aktuellerZustand);
 		}
 
 		System.out.println(this.toString() + ": " + aktuellerZustand);
@@ -160,7 +162,7 @@ public class Automat {
 		while (aktuellerZustand instanceof PassiverZustand) {
 			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 			zustand.entry();
-			aktuellerZustand = zustand.handle();
+			aktuellerZustand = getZustand(zustand.handle());
 			zustand.exit();
 		}
 	}

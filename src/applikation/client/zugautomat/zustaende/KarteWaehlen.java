@@ -23,18 +23,18 @@ public class KarteWaehlen extends AktiverZugZustand {
 		// controller.kartenAuswahl(true);
 	}
 
-	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
-		return this;
+		return this.getClass();
 	}
 
-	Zustand karteGewaehlt(KarteGewaehltEvent event) {
-		automat.karte = event.karte;
-		return automat.getZustand(StartWaehlen.class);
+	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		spielDaten.karte = event.karte;
+		return StartWaehlen.class;
 	}
 
-	Zustand feldGewaehlt(FeldGewaehltEvent event) {
+	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		controller.zeigeFehlermeldung("Hobla, jetzt musst du zuerst eine Karte wählen, versuchs nochmals!");
-		return this;
+		return this.getClass();
 	}
 }

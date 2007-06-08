@@ -4,14 +4,15 @@ import pd.Spiel;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
+import dienste.automat.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
  * Passiver Zustand der das Spiel initialisiert.
  */
-public class StarteSpiel extends PassiverServerZustand {
-	public Zustand handle() {
-		Spielerschaft spielerschaft = automat.spielerschaft;
+public class StarteSpiel extends ServerZustand implements PassiverZustand {
+	public Class<? extends Zustand> handle() {
+		Spielerschaft spielerschaft = spielDaten.spielerschaft;
 
 		Spiel spiel = new Spiel();
 
@@ -23,6 +24,6 @@ public class StarteSpiel extends PassiverServerZustand {
 
 		spielerschaft.broadcast(ssn);
 
-		return automat.getZustand(StartRunde.class);
+		return StartRunde.class;
 	}
 }

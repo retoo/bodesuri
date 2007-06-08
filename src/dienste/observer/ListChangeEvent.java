@@ -3,14 +3,14 @@ package dienste.observer;
 /**
  * This class encapsulates the event information for the communication between
  * the ObservableList and different adapters like the TableModel.
- * 
+ *
  * Note: Getters and setters have been intentionally omitted as this class is a
  * struct-like data structure.
  */
 public class ListChangeEvent {
 	/**
-	 * Type of the change. This can be ADDED, REMOVED, CHANGED or EVERYTHING. 
-	 * 
+	 * Type of the change. This can be ADDED, REMOVED, CHANGED or EVERYTHING.
+	 *
 	 *  @see ListChangeEvent.ListChangeType
 	 */
 	public ListChangeType changeType;
@@ -26,29 +26,29 @@ public class ListChangeEvent {
 	 * Changed object.
 	 */
 	public Object changedObject;
-	
-	public enum ListChangeType { 
+
+	public enum ListChangeType {
 	/**
 	 * A new object has been added.
 	 */
-	ADDED, 
+	ADDED,
 	/**
 	 * An object was removed.
 	 */
-	REMOVED, 
+	REMOVED,
 	/**
 	 * A given object has been changed or replaced.
 	 */
-	CHANGED, 
+	CHANGED,
 	/**
 	 * The whole list may have been changed.
 	 */
-	EVERYTHING};
+	EVERYTHING}
 
 	/**
 	 * Creates a new ListChangeEvent which reports about a partial change of a
 	 * list. All relevant data has to be passed to the constructor.
-	 * 
+	 *
 	 * @param changingObject
 	 *            The affected list
 	 * @param changeType
@@ -69,7 +69,7 @@ public class ListChangeEvent {
 	/**
 	 * Creates a ListChangeEvent which announces a full change (all rows are
 	 * effected).
-	 * 
+	 *
 	 * @param changingObject
 	 *            Affected list
 	 */

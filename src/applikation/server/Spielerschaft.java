@@ -14,22 +14,27 @@ import dienste.netzwerk.VerbindungWegException;
  * mitspielen.
  */
 public class Spielerschaft implements Iterable<Spieler> {
-	private final int anzahlSpieler;
+	/**
+	 * Maximale Anzahl Spieler
+	 *
+	 * TODO: muss das wirklich so ne Konstante sein.
+	 */
+	public static final int MAXSPIELER = 1;
+
 	private Vector<Spieler> spielers = new Vector<Spieler>();
 	private int aktuellerSpieler;
 	private IdentityHashMap<EndPunkt, Spieler> endpunktZuSpieler;
 
 	public Runde runde;
 
+	private int anzahlSpieler;
+
 
 	/**
 	 * Erstellt eine neue Spielerschaft.
-	 *
-	 * @param anzahlSpieler
-	 *            Anzahl der Spieler
 	 */
-	public Spielerschaft(int anzahlSpieler) {
-		this.anzahlSpieler = anzahlSpieler;
+	public Spielerschaft() {
+		this.anzahlSpieler = MAXSPIELER;
 		this.spielers = new Vector<Spieler>();
 		this.endpunktZuSpieler = new IdentityHashMap<EndPunkt, Spieler>();
 

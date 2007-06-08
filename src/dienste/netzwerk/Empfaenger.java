@@ -7,7 +7,7 @@ import java.net.Socket;
 
 
 class Empfaenger implements Runnable {
-	private BriefKastenInterface nachrichtenQueue;
+	private BriefKastenInterface briefkasten;
 	private ObjectInputStream inputStream;
 	private EndPunkt endpunkt;
 
@@ -15,7 +15,11 @@ class Empfaenger implements Runnable {
 	        BriefKastenInterface briefkasten) throws IOException {
 		inputStream = new ObjectInputStream(socket.getInputStream());
 		this.endpunkt = endpunkt;
-		this.nachrichtenQueue = briefkasten;
+		this.briefkasten = briefkasten;
+
+		if (endpunkt == null) {
+			throw new RuntimeException("Remove me later, FIXME");
+		}
 	}
 
 	public void run() {
@@ -30,13 +34,13 @@ class Empfaenger implements Runnable {
 				Nachricht nachricht = (Nachricht) obj;
 				Brief brief = new Brief(endpunkt, nachricht);
 
-				nachrichtenQueue.einwerfen(brief);
+				briefkasten.einwerfen(brief);
 			}
 		} catch (EOFException eof) {
 			/* TODO: Nicht sicher ob das so gut */
 
 			Brief brief = new Brief(endpunkt, new VerbindungGeschlossen());
-			nachrichtenQueue.einwerfen(brief);
+			briefkasten.einwerfen(brief);
 			return;
 		} catch (IOException e) {
 			/*

@@ -5,22 +5,22 @@ import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
 public class AktiverTestZustandBeta extends AktiverTestZustand {
-	public Zustand handle(Event e) {
-		if (e instanceof TestEventC) 
+	public Class<? extends Zustand> handle(Event e) {
+		if (e instanceof TestEventC)
 			c();
-		
+
 		return super.handle(e);
 	}
-	
-	Zustand a() {
-		return automat.getZustand(AktiverTestZustandBeta.class);
+
+	Class<? extends Zustand> a() {
+		return AktiverTestZustandBeta.class;
     }
-	
-	Zustand b() {
-		return this;
+
+	Class<? extends Zustand> b() {
+		return AktiverTestZustandBeta.class;
     }
-	
-	Zustand c() {
+
+	Class<? extends Zustand> c() {
 		return keinUebergang();
 	}
 }

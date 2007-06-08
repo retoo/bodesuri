@@ -1,7 +1,7 @@
 package applikation.client;
 
 import applikation.client.controller.Controller;
-import applikation.client.zugautomat.ZugAutomat;
+import applikation.client.zustaende.ClientZustand;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
@@ -17,16 +17,13 @@ import applikation.client.zustaende.VerbindungSteht;
 import dienste.automat.Automat;
 import dienste.automat.EventQuelleAdapter;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.EndPunkt;
 
 /**
  * Version des Automaten für den Client
  */
 public class BodesuriClient extends Automat {
-	public EventQueue queue;
-	public EndPunkt endpunkt;
-
-	public ZugAutomat zugAutomat;
+	private Controller controller;
+	private SpielDaten spielDaten;
 
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
@@ -34,24 +31,36 @@ public class BodesuriClient extends Automat {
 	 * @param controller
 	 */
 	public BodesuriClient(Controller controller) {
+		this.controller = controller;
+		this.spielDaten = new SpielDaten();
+
+		EventQueue queue = new EventQueue();
+		controller.setEventQueue(queue);
+		spielDaten.queue = queue;
+
 		registriere(new SchwererFehler());
-		registriere(new ProgrammStart(controller));
-		registriere(new VerbindungErfassen(controller));
+		registriere(new ProgrammStart());
+		registriere(new VerbindungErfassen());
 		registriere(new VerbindungSteht());
-		registriere(new LobbyStart(controller));
+		registriere(new LobbyStart());
 		registriere(new Lobby(controller));
-		registriere(new SpielStart(controller));
+		registriere(new SpielStart());
 		registriere(new AmZug());
-		registriere(new NichtAmZug(controller));
+		registriere(new NichtAmZug());
 		registriere(new StarteRunde());
-		registriere(new KarteTauschenAuswaehlen(controller));
+		registriere(new KarteTauschenAuswaehlen());
 		registriere(new KarteTauschenBekommen());
 
 		setStart(ProgrammStart.class);
 
-		this.queue = new EventQueue();
-		controller.setEventQueue(queue);
 		setEventQuelle(new EventQuelleAdapter(queue));
+	}
+
+	public void registriere(ClientZustand zustand) {
+		zustand.setController(controller);
+		zustand.setSpielDaten(spielDaten);
+
+		super.registriere(zustand);
 	}
 
 	public void run() {
