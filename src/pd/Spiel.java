@@ -40,13 +40,17 @@ public class Spiel {
 	}
 	
 	/**
-	 * Gebe dem nächsten Spieler einen Namen. 
+	 * Gebe dem nächsten Spieler einen Namen.
 	 * 
-	 * @param spielerName Spielername
+	 * @param spielerName
+	 *            Spielername
+	 * @return Der neu erstellte Spieler.
 	 */
-	public void fuegeHinzu(String spielerName) {
-		spieler.get(beigetreteneSpieler).setName(spielerName);
+	public Spieler fuegeHinzu(String spielerName) {
+		Spieler neuerSpieler = spieler.get(beigetreteneSpieler);
+		neuerSpieler.setName(spielerName);
 		++beigetreteneSpieler;
+		return neuerSpieler;
 	}
 
 	/**

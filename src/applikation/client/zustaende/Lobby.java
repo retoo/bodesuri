@@ -24,11 +24,7 @@ public class Lobby extends AktiverClientZustand {
 	Zustand spielStarten(SpielStartNachricht startNachricht) {
 		for (int i = 0; i < startNachricht.spieler.length; i++) {
 			String name = startNachricht.spieler[i];
-
-			controller.getSpiel().fuegeHinzu(name);
-			if (name.equals(controller.getSpielerName())) {
-				controller.setSpielerIch(controller.getSpiel().getSpieler().get(i));	// TODO: Ich glaube das geht auch einfacher ;-)
-			}
+			controller.fuegeSpielerHinzu(name);
 		}
 
 		return automat.getZustand(SpielStart.class);

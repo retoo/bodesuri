@@ -1,5 +1,8 @@
 package applikation.client;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
@@ -22,6 +25,8 @@ public abstract class Controller {
 	protected Spiel spiel;
 	protected String spielerName;
 	protected Spieler spielerIch;
+	protected Map<Spieler, applikation.client.Spieler> spielers = new HashMap<Spieler, applikation.client.Spieler>();
+	protected applikation.client.Spieler aktuellerSpieler;
 
 	public Controller(EventQueue eventQueue, String spielerName) {
 		this.eventQueue = eventQueue;
@@ -102,6 +107,37 @@ public abstract class Controller {
 		eventQueue.enqueue(fge);
 	}
 
+	/**
+	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
+	 * noch mit einem clientspezifischen
+	 * {@link applikation.client.Spieler Spieler} assoziiert um zu speichern wer
+	 * am Zug ist.
+	 * 
+	 * @param name
+	 *            Spielername
+	 */
+	public void fuegeSpielerHinzu(String name) {
+		Spieler neuerSpieler = spiel.fuegeHinzu(name);
+		if (name.equals(spielerName)) {
+			spielerIch = neuerSpieler;
+		}
+
+		spielers.put(neuerSpieler, new applikation.client.Spieler());
+	}
+
+	/**
+	 * Den Spieler der am Zug ist ändern.
+	 * 
+	 * @param spieler
+	 *            Neuer Spieler der am Zug ist.
+	 */
+	public void amZug(Spieler spieler) {
+		applikation.client.Spieler neuerSpieler = spielers.get(spieler);
+		aktuellerSpieler.setAmZug(false);
+		neuerSpieler.setAmZug(true);
+		aktuellerSpieler = neuerSpieler;
+	}
+
 	public Spiel getSpiel() {
 		return spiel;
 	}
@@ -114,11 +150,11 @@ public abstract class Controller {
 		this.spielerName = spielerName;
 	}
 
-	public void setSpielerIch(Spieler spielerIch) {
-		this.spielerIch = spielerIch;
-	}
-
 	public Spieler getSpielerIch() {
 		return spielerIch;
+	}
+	
+	public applikation.client.Spieler getSpieler(Spieler spieler) {
+		return spielers.get(spieler);
 	}
 }
