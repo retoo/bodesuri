@@ -84,9 +84,9 @@ public class Automat {
 		pruefeAutomat();
 
 		while (true) {
-			boolean cont = step();
+			boolean weiter = step();
 
-			if (!cont) {
+			if (!weiter) {
 				return;
 			}
 		}
@@ -139,6 +139,8 @@ public class Automat {
 	public boolean step(Event event) {
 		if (aktuellerZustand instanceof AktiverZustand) {
 			AktiverZustand zustand = (AktiverZustand) aktuellerZustand;
+			//TODO: (von Philippe) Die entry-Methoden sollten nicht nur bei Übergängen ausgeführt werden
+			// entry vom 1. Zustand wird erst aufgerufen wenn wir ihn verlassen.
 			zustand.entry();
 			aktuellerZustand = zustand.handle(event);
 			zustand.exit();

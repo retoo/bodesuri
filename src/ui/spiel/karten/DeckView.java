@@ -14,7 +14,7 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 import pd.karten.Zehn;
-import applikation.client.Controller;
+import ui.GUIController;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
@@ -23,7 +23,7 @@ import applikation.client.Controller;
 public class DeckView extends JPanel {
 	Vector<Karte> karten = new Vector<Karte>();
 
-	public DeckView(Controller controller) {
+	public DeckView(GUIController controller) {
 		// Layout setzen
 		setLayout(null);
 		setPreferredSize(new Dimension(230, 280));

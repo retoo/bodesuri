@@ -14,12 +14,14 @@ import dienste.netzwerk.EndPunkt;
 public class KarteWaehlen extends AktiverZugZustand {
 	public KarteWaehlen(Controller controller) {
 		this.controller = controller;
-    }
+	}
 
 	public void entry() {
-		controller.kartenAuswahl(true);
+		// TODO: Wird erst ausgeführt wenn wir das das nächste Ereignis erhalten
+		// und den Automaten mit Step brauchen. -> Bis auf weiteres verschoben nach NichtAmZug
+		// controller.kartenAuswahl(true);
 	}
-	
+
 	Zustand chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this;

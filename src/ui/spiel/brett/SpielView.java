@@ -4,12 +4,11 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import ui.GUIController;
 import ui.spiel.karten.KartenAuswahlView;
 
-import applikation.client.Controller;
-
 public class SpielView extends JPanel {
-	public SpielView(Controller controller) {
+	public SpielView(GUIController controller) {
 		// Layout setzen
 		setLayout(new BorderLayout());
 

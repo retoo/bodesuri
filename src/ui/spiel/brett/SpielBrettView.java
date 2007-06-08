@@ -5,10 +5,10 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
-import applikation.client.Controller;
+import ui.GUIController;
 
 public class SpielBrettView extends JPanel {
-	public SpielBrettView(Controller controller) {
+	public SpielBrettView(GUIController controller) {
 		// Layout
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);

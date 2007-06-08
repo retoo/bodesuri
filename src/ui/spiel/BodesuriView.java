@@ -5,15 +5,15 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import ui.GUIController;
 import ui.spiel.brett.SpielView;
 import ui.spiel.chat.ChatView;
-import applikation.client.Controller;
 
 /**
  * Das GUI des Spiels.
  */
 public class BodesuriView extends JFrame {
-	public BodesuriView(Controller controller, String spielerName) {
+	public BodesuriView(GUIController controller, String spielerName) {
 		// Layout setzen
 		setTitle("Bodesuri - Spiel (" + spielerName + ")");
 		setName("Bodesuri");

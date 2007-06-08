@@ -31,6 +31,8 @@ public class NichtAmZug extends AktiverClientZustand {
 
 	Zustand zugAufforderung() {
 		automat.zugAutomat = new ZugAutomat(controller, automat.queue);
+		//Nur vorübergehend -> siehe KarteWaehlen.
+		controller.kartenAuswahl(true);
 		return automat.getZustand(AmZug.class);
 	}
 
@@ -46,7 +48,6 @@ public class NichtAmZug extends AktiverClientZustand {
 	}
 
 	Zustand rundenStart(RundenStart rundenStart) {
-
 		// TODO: rundenStart.neueKarten in Spieler speichern.
 		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
 		// keinen rundenStart.) Robin

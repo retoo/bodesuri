@@ -7,10 +7,9 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
-import applikation.client.Controller;
-
 import pd.brett.BankFeld;
 import pd.brett.Feld;
+import ui.GUIController;
 import ui.ressourcen.BrettLader;
 
 /**
@@ -19,7 +18,7 @@ import ui.ressourcen.BrettLader;
 public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 
-	public BrettView(Controller controller) {
+	public BrettView(GUIController controller) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
 		// setBackground(new Color(0, 150, 0));
 

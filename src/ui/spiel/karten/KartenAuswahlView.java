@@ -1,11 +1,13 @@
 package ui.spiel.karten;
 
 import java.awt.BorderLayout;
+
 import javax.swing.JPanel;
-import applikation.client.Controller;
+
+import ui.GUIController;
 
 public class KartenAuswahlView extends JPanel{
-	public KartenAuswahlView(Controller controller) {
+	public KartenAuswahlView(GUIController controller) {
 		// Layout setzen
 		setLayout(new BorderLayout());
 		
