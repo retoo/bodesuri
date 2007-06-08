@@ -8,7 +8,7 @@ import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunkt;
 
 public class ZugAutomat extends Automat {

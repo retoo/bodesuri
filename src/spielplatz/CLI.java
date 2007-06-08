@@ -24,7 +24,7 @@ import applikation.nachrichten.SpielStartNachricht;
 import applikation.nachrichten.SpielVollNachricht;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;

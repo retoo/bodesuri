@@ -1,5 +1,5 @@
 package dienste.automat.events;
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 
 
 public class TestExitEvent extends Event {

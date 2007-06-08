@@ -3,7 +3,7 @@ package dienste.netzwerk.server;
 import java.io.IOException;
 
 
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.Daemon;

@@ -1,6 +1,7 @@
 package dienste.netzwerk;
 
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
+
 
 /**
  * Implementation des Interfaces {@link BriefKastenInterface} welcher den Einwruf

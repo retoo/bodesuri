@@ -1,8 +1,8 @@
 package dienste.automat.zustaende;
 
-import dienste.automat.Event;
 import dienste.automat.KeinUebergangException;
 import dienste.automat.UnbekannterEventException;
+import dienste.eventqueue.Event;
 
 /**
  * Aktiver Zustand. Ein aktiver Zustand ist einer der Events verarbeitet.

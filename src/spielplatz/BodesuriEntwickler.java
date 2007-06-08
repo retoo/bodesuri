@@ -1,11 +1,10 @@
 package spielplatz;
 
 import ui.GUIController;
-import dienste.automat.Automat;
-import dienste.automat.EventQueue;
 import applikation.client.BodesuriClient;
 import applikation.client.Controller;
 import applikation.server.BodesuriServer;
+import dienste.automat.Automat;
 
 public class BodesuriEntwickler {
 
@@ -29,9 +28,9 @@ public class BodesuriEntwickler {
 		for (int i = 0; i < 4; i++) {
 			Thread client = new Thread(new Runnable() {
 				public void run() {
-					EventQueue eventQueue = new EventQueue();
-					Controller controller = new GUIController(eventQueue, Thread.currentThread().getName());
-					Automat client = new BodesuriClient(eventQueue, controller);
+					//EventQueue eventQueue = new EventQueue();
+					Controller controller = new GUIController(Thread.currentThread().getName());
+					Automat client = new BodesuriClient(controller);
 
 					try {
 						client.run();

@@ -1,6 +1,6 @@
 package dienste.netzwerk;
 
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 import dienste.netzwerk.Empfaenger;
 
 /**

@@ -7,6 +7,7 @@ import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
+import dienste.eventqueue.Event;
 
 /**
  * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere abarbeiten eines

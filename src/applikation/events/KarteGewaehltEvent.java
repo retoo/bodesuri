@@ -1,7 +1,7 @@
 package applikation.events;
 
 import pd.karten.Karte;
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 
 /**
  * Event der ausgelöst wird wenn der Benutzer eine Karte ausgewählt hat.

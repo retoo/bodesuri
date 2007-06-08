@@ -12,7 +12,7 @@ public class ServerStart {
 		BodesuriServer server = new BodesuriServer();
 
 		try {
-				server.run();
+			server.run();
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("Server: Exception in run()");

@@ -1,4 +1,4 @@
-package dienste.automat;
+package dienste.eventqueue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -8,7 +8,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Events. Die Queue ist Thread-Safe und arbeitet nach dem FIFO prinzip.
  *
  */
-public class EventQueue implements EventQuelle {
+public class EventQueue {
 	private BlockingQueue<Event> queue;
 
 	/**
@@ -53,14 +53,5 @@ public class EventQueue implements EventQuelle {
 	 */
 	public boolean isLeer() {
 		return queue.isEmpty();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see dienste.automat.EventQuelle#getEvent()
-	 */
-	public Event getEvent() {
-		return dequeue();
 	}
 }

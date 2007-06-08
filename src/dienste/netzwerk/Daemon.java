@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
+
+
 
 /**
  * Netzwerkdämon der neue Netzwerk-Verbindungen akzeptiert und diese den

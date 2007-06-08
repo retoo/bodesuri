@@ -1,7 +1,7 @@
 package applikation.server;
 
 import applikation.nachrichten.SpielBeitreten;
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;

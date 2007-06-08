@@ -1,6 +1,6 @@
 package dienste.netzwerk;
 
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 
 /**
  * Event der ausgelöst wird wenn eine Netzwerknachricht eintrifft.

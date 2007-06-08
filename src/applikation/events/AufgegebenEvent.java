@@ -1,6 +1,6 @@
 package applikation.events;
 
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 
 //TODO: Noch schön einbinden.
 public class AufgegebenEvent extends Event {

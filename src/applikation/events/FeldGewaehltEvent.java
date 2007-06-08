@@ -1,7 +1,7 @@
 package applikation.events;
 
 import pd.brett.Feld;
-import dienste.automat.Event;
+import dienste.eventqueue.Event;
 
 public class FeldGewaehltEvent extends Event {
 	public final Feld feld;

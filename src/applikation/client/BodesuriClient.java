@@ -14,7 +14,8 @@ import applikation.client.zustaende.StarteRunde;
 import applikation.client.zustaende.VerbindungErfassen;
 import applikation.client.zustaende.VerbindungSteht;
 import dienste.automat.Automat;
-import dienste.automat.EventQueue;
+import dienste.automat.EventQuelleAdapter;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunkt;
 
 /**
@@ -29,10 +30,9 @@ public class BodesuriClient extends Automat {
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
 	 *
-	 * @param queue
 	 * @param controller
 	 */
-	public BodesuriClient(EventQueue queue, Controller controller) {
+	public BodesuriClient(Controller controller) {
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart(controller));
 		registriere(new VerbindungErfassen(controller));
@@ -48,10 +48,15 @@ public class BodesuriClient extends Automat {
 
 		setStart(ProgrammStart.class);
 
-		this.queue = queue;
-
-		setEventQuelle(queue);
+		this.queue = new EventQueue();
+		controller.setEventQueue(queue);
+		setEventQuelle(new EventQuelleAdapter(queue));
 	}
+
+	public void run() {
+		super.run();
+	}
+
 
 	public String toString() {
 		return "Client-Automat";

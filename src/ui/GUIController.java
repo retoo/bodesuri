@@ -8,7 +8,6 @@ import ui.spiel.brett.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.Controller;
-import dienste.automat.EventQueue;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
@@ -18,8 +17,8 @@ public class GUIController extends Controller {
 	private FeldMouseAdapter feldMouseAdapter;
 	private KarteMouseAdapter karteMouseAdapter;
 
-	public GUIController(EventQueue eventQueue, String spielerName) {
-		super(eventQueue, spielerName);
+	public GUIController(String spielerName) {
+		super(spielerName);
 	}
 
 	public void zeigeVerbinden() {
@@ -54,7 +53,7 @@ public class GUIController extends Controller {
 	/**
 	 * Einen {@link FeldMouseAdapter} beim Controller registrieren. Dieser wird
 	 * vom Automaten über feldAuswahl() je nach Zustand (de-)aktiviert.
-	 * 
+	 *
 	 * @param feldMouseAdapter
 	 */
 	public void registriereFeldMouseAdapter(FeldMouseAdapter feldMouseAdapter) {
@@ -64,7 +63,7 @@ public class GUIController extends Controller {
 	/**
 	 * Einen {@link KarteMouseAdapter} beim Controller registrieren. Dieser wird
 	 * vom Automaten über kartenAuswahl() je nach Zustand (de-)aktiviert.
-	 * 
+	 *
 	 * @param karteMouseAdapter
 	 */
 	public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {

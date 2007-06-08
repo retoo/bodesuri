@@ -5,9 +5,9 @@ import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.Automat;
-import dienste.automat.Event;
 import dienste.automat.zustaende.AktiverZustand;
 import dienste.automat.zustaende.Zustand;
+import dienste.eventqueue.Event;
 
 public class AktiverZugZustand extends AktiverZustand {
 	protected ZugAutomat automat;

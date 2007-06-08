@@ -12,7 +12,8 @@ import applikation.server.zustaende.VersendeZug;
 import applikation.server.zustaende.WarteAufZug;
 import applikation.server.zustaende.ZugAbschluss;
 import dienste.automat.Automat;
-import dienste.automat.EventQueue;
+import dienste.automat.EventQuelleAdapter;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.server.Server;
 
 /**
@@ -61,7 +62,11 @@ public class BodesuriServer extends Automat {
 
 		this.queue = new EventQueue();
 
-		setEventQuelle(queue);
+		setEventQuelle(new EventQuelleAdapter(queue));
+	}
+
+	public void run() {
+		super.run();
 	}
 
 	public String toString() {

@@ -10,7 +10,7 @@ import pd.spieler.Spieler;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
-import dienste.automat.EventQueue;
+import dienste.eventqueue.EventQueue;
 
 /**
  * Der Controller dient zum Kanalisieren der Zugriffe zwischen der UI- und
@@ -28,8 +28,7 @@ public abstract class Controller {
 	protected Map<Spieler, applikation.client.Spieler> spielers = new HashMap<Spieler, applikation.client.Spieler>();
 	protected applikation.client.Spieler aktuellerSpieler;
 
-	public Controller(EventQueue eventQueue, String spielerName) {
-		this.eventQueue = eventQueue;
+	public Controller(String spielerName) {
 		this.spielerName = spielerName;
 		this.spiel = new Spiel();
 	}
@@ -52,7 +51,7 @@ public abstract class Controller {
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden
 	 * darstellen.
-	 * 
+	 *
 	 * @param fehlermeldung
 	 *            auszugebene Fehlermeldung
 	 */
@@ -60,21 +59,21 @@ public abstract class Controller {
 
 	/**
 	 * Die Auswahl von Feldern (de-)aktivieren.
-	 * 
+	 *
 	 * @param aktiv
 	 */
 	public abstract void feldAuswahl(Boolean aktiv);
 
 	/**
 	 * Die Auswahl von Karten (de-)aktivieren.
-	 * 
+	 *
 	 * @param aktiv
 	 */
 	public abstract void kartenAuswahl(Boolean aktiv);
 
 	/**
 	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
-	 * 
+	 *
 	 * @param host
 	 *            Hostname des Servers
 	 * @param port_raw
@@ -89,7 +88,7 @@ public abstract class Controller {
 
 	/**
 	 * Dem Automaten mitteilen welche Karte der Benutzer gewählt hat.
-	 * 
+	 *
 	 * @param gewaehlteKarte
 	 */
 	public void karteGewaehlt(Karte gewaehlteKarte) {
@@ -99,7 +98,7 @@ public abstract class Controller {
 
 	/**
 	 * Dem Automaten mitteilen welches Feld der Benutzer gewählt hat.
-	 * 
+	 *
 	 * @param gewaehltesFeld
 	 */
 	public void feldGewaehlt(Feld gewaehltesFeld) {
@@ -112,7 +111,7 @@ public abstract class Controller {
 	 * noch mit einem clientspezifischen
 	 * {@link applikation.client.Spieler Spieler} assoziiert um zu speichern wer
 	 * am Zug ist.
-	 * 
+	 *
 	 * @param name
 	 *            Spielername
 	 */
@@ -127,7 +126,7 @@ public abstract class Controller {
 
 	/**
 	 * Den Spieler der am Zug ist ändern.
-	 * 
+	 *
 	 * @param spieler
 	 *            Neuer Spieler der am Zug ist.
 	 */
@@ -153,7 +152,11 @@ public abstract class Controller {
 	public Spieler getSpielerIch() {
 		return spielerIch;
 	}
-	
+
+	public void setEventQueue(EventQueue queue) {
+		this.eventQueue = queue;
+    }
+
 	public applikation.client.Spieler getSpieler(Spieler spieler) {
 		return spielers.get(spieler);
 	}

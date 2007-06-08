@@ -1,4 +1,4 @@
-package dienste.automat;
+package dienste.eventqueue;
 
 /**
  * Basis Klasse für alle Events

@@ -1,5 +1,7 @@
 package dienste.automat;
 
+import dienste.eventqueue.Event;
+
 /**
  * Beschreibt eine Quelle für Events für den Zustandsautomaten. Die zu verwendende Eventqueue muss 
  * mittels folgendem Interface ansprechbar sein.
