@@ -25,7 +25,7 @@ import dienste.observer.ListChangeEvent.ListChangeType;
  * @param <E>
  *            Class of the contained objects
  */
-public abstract class ObservableList<E extends Observable>
+public class ObservableList<E>
 		extends Observable implements Observer, Serializable, Iterable<E> {
 	/**
 	 * The actual data storage 
@@ -48,7 +48,9 @@ public abstract class ObservableList<E extends Observable>
 	 * @param object object which was added
 	 */
 	private void announceAdded(int index, E object) {
-		object.addObserver(this);
+		if (object instanceof Observable) {
+			((Observable) object).addObserver(this);
+		}
 		setChanged();
 		notifyObservers(new ListChangeEvent(this, ListChangeType.ADDED,
 		                                    index, object));
@@ -61,7 +63,9 @@ public abstract class ObservableList<E extends Observable>
 	 * @param object object which has been removed
 	 */
 	private void announceRemoved(int index, E object) {
-		object.deleteObserver(this);
+		if (object instanceof Observable) {
+			((Observable) object).deleteObserver(this);
+		}
 		setChanged();
 		notifyObservers(new ListChangeEvent(this, ListChangeType.REMOVED,
 		                                    index, object));
@@ -120,8 +124,10 @@ public abstract class ObservableList<E extends Observable>
 	 * Internal helper method which tears down all observers
 	 */
 	private void teardownObservers() {
-		for (Observable o : list) {
-			o.deleteObserver(this);
+		for (Object o : list) {
+			if (o instanceof Observable) {
+				((Observable) o).deleteObserver(this);
+			}
 		}
 	}
 
