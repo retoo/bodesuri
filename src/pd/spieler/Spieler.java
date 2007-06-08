@@ -3,7 +3,10 @@ package pd.spieler;
 import java.util.List;
 import java.util.Vector;
 
+import dienste.observer.ObservableList;
+
 import pd.Spiel;
+import pd.karten.Karte;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 
 /**
@@ -17,6 +20,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	private Spiel spiel;
 
 	private Vector<Figur> figuren = new Vector<Figur>();
+	
+	private ObservableList<Karte> karten = new ObservableList<Karte>();
 
 	/**
 	 * Erstellt einen Spieler.
@@ -76,5 +81,9 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 */
 	public Spiel getSpiel() {
 		return spiel;
+	}
+	
+	public ObservableList<Karte> getKarten() {
+		return karten;
 	}
 }
