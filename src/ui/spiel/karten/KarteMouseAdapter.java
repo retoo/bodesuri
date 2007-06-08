@@ -19,7 +19,7 @@ public class KarteMouseAdapter extends MouseAdapter {
 		this.deckView = view;
 		this.kartenAuswahl = kartenAuswahl;
 
-		controller.registerKarteMouseAdapter(this);
+		controller.registriereKarteMouseAdapter(this);
 		aktiv = false;
 	}
 

@@ -17,7 +17,7 @@ public class FeldMouseAdapter extends MouseAdapter {
 
 	public FeldMouseAdapter(GUIController controller) {
 		this.controller = controller;
-		controller.registerFeldMouseAdapter(this);
+		controller.registriereFeldMouseAdapter(this);
 		aktiv = false;
 	}
 

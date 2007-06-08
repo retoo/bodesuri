@@ -51,11 +51,23 @@ public class GUIController extends Controller {
 		karteMouseAdapter.aktiv(zustand);
 	}
 
-	public void registerFeldMouseAdapter(FeldMouseAdapter feldMouseAdapter) {
+	/**
+	 * Einen {@link FeldMouseAdapter} beim Controller registrieren. Dieser wird
+	 * vom Automaten über feldAuswahl() je nach Zustand (de-)aktiviert.
+	 * 
+	 * @param feldMouseAdapter
+	 */
+	public void registriereFeldMouseAdapter(FeldMouseAdapter feldMouseAdapter) {
 		this.feldMouseAdapter = feldMouseAdapter;
 	}
 
-	public void registerKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
+	/**
+	 * Einen {@link KarteMouseAdapter} beim Controller registrieren. Dieser wird
+	 * vom Automaten über kartenAuswahl() je nach Zustand (de-)aktiviert.
+	 * 
+	 * @param karteMouseAdapter
+	 */
+	public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
 		this.karteMouseAdapter = karteMouseAdapter;
 	}
 }
