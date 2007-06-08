@@ -3,7 +3,7 @@ package applikation.client.zugautomat.zustaende;
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.events.GezogenEvent;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;

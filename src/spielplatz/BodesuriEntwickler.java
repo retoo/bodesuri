@@ -2,7 +2,7 @@ package spielplatz;
 
 import ui.GUIController;
 import applikation.client.BodesuriClient;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.server.BodesuriServer;
 import dienste.automat.Automat;
 

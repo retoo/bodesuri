@@ -1,4 +1,4 @@
-package applikation.client;
+package applikation.client.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +25,8 @@ public abstract class Controller {
 	protected Spiel spiel;
 	protected String spielerName;
 	protected Spieler spielerIch;
-	protected Map<Spieler, applikation.client.Spieler> spielers = new HashMap<Spieler, applikation.client.Spieler>();
-	protected applikation.client.Spieler aktuellerSpieler;
+	protected Map<Spieler, applikation.client.controller.Spieler> spielers = new HashMap<Spieler, applikation.client.controller.Spieler>();
+	protected applikation.client.controller.Spieler aktuellerSpieler;
 
 	public Controller(String spielerName) {
 		this.spielerName = spielerName;
@@ -109,7 +109,7 @@ public abstract class Controller {
 	/**
 	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
 	 * noch mit einem clientspezifischen
-	 * {@link applikation.client.Spieler Spieler} assoziiert um zu speichern wer
+	 * {@link applikation.client.controller.Spieler Spieler} assoziiert um zu speichern wer
 	 * am Zug ist.
 	 *
 	 * @param name
@@ -121,7 +121,7 @@ public abstract class Controller {
 			spielerIch = neuerSpieler;
 		}
 
-		spielers.put(neuerSpieler, new applikation.client.Spieler());
+		spielers.put(neuerSpieler, new applikation.client.controller.Spieler());
 	}
 
 	/**
@@ -131,7 +131,7 @@ public abstract class Controller {
 	 *            Neuer Spieler der am Zug ist.
 	 */
 	public void amZug(Spieler spieler) {
-		applikation.client.Spieler neuerSpieler = spielers.get(spieler);
+		applikation.client.controller.Spieler neuerSpieler = spielers.get(spieler);
 		aktuellerSpieler.setAmZug(false);
 		neuerSpieler.setAmZug(true);
 		aktuellerSpieler = neuerSpieler;
@@ -157,7 +157,7 @@ public abstract class Controller {
 		this.eventQueue = queue;
     }
 
-	public applikation.client.Spieler getSpieler(Spieler spieler) {
+	public applikation.client.controller.Spieler getSpieler(Spieler spieler) {
 		return spielers.get(spieler);
 	}
 }

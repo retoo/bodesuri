@@ -1,6 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.ChatNachricht;

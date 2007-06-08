@@ -3,7 +3,7 @@ package applikation.client.zustaende;
 import pd.karten.Karte;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.BodesuriClient;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;

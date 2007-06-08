@@ -1,7 +1,8 @@
 package ui.spiel.karten;
 
 import javax.swing.JPanel;
-import applikation.client.Controller;
+
+import applikation.client.controller.Controller;
 
 public class KarteGewaehltView extends JPanel{
 

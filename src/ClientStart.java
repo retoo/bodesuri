@@ -1,6 +1,6 @@
 import ui.GUIController;
 import applikation.client.BodesuriClient;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 
 
 public class ClientStart {

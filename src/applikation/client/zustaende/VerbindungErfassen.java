@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.UnknownHostException;
 
 
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;

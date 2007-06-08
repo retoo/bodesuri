@@ -1,5 +1,6 @@
 package applikation.client;
 
+import applikation.client.controller.Controller;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;

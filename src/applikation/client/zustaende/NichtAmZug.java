@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;

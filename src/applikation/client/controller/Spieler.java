@@ -1,4 +1,4 @@
-package applikation.client;
+package applikation.client.controller;
 
 import java.util.Observable;
 

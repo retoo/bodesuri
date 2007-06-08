@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import pd.spieler.Spieler;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 
 
 

@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 import ui.GUIController;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.

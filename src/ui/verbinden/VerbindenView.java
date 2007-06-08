@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 
 
 

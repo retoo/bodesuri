@@ -2,7 +2,7 @@ package applikation.client.zugautomat;
 
 import pd.brett.Feld;
 import pd.karten.Karte;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;

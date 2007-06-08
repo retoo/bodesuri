@@ -7,7 +7,7 @@ import ui.spiel.BodesuriView;
 import ui.spiel.brett.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;

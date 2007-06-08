@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;

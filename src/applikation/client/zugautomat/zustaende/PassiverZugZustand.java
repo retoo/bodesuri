@@ -1,6 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
-import applikation.client.Controller;
+import applikation.client.controller.Controller;
 import applikation.client.zugautomat.ZugAutomat;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.PassiverZustand;
