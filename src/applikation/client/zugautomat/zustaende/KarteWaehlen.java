@@ -1,6 +1,7 @@
 package applikation.client.zugautomat.zustaende;
 
 import applikation.client.Controller;
+import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.ChatNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -30,5 +31,10 @@ public class KarteWaehlen extends AktiverZugZustand {
 	Zustand karteGewaehlt(KarteGewaehltEvent event) {
 		automat.karte = event.karte;
 		return automat.getZustand(StartWaehlen.class);
+	}
+
+	Zustand feldGewaehlt(FeldGewaehltEvent event) {
+		controller.zeigeFehlermeldung("Hobla, jetzt musst du zuerst eine Karte wählen, versuchs nochmals!");
+		return this;
 	}
 }
