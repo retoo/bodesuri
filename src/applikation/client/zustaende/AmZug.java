@@ -4,6 +4,7 @@ import pd.zugsystem.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
+import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 
@@ -27,6 +28,11 @@ public class AmZug extends ClientZustand {
 	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
 		controller.getSpielerIch().getKarten().remove(zugEingabe.getKarte());
 		spielDaten.endpunkt.sende(new ZugInformation(zugEingabe));
+		return NichtAmZug.class;
+	}
+	
+	Class<? extends Zustand> aufgegeben() {
+		spielDaten.endpunkt.sende(new Aufgabe());
 		return NichtAmZug.class;
 	}
 }

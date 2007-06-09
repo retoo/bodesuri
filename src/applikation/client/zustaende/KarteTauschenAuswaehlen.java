@@ -19,7 +19,7 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 		spielDaten.endpunkt.sende(new KartenTausch(event.karte));
 		return KarteTauschenBekommen.class;
 	}
-
+	
 	public void exit() {
 		controller.kartenAuswahl(false);
 	}

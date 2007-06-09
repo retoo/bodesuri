@@ -7,6 +7,7 @@ import pd.Spiel;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
+import applikation.events.AufgegebenEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
@@ -137,6 +138,15 @@ public abstract class Controller {
 		aktuellerSpieler.setAmZug(false);
 		neuerSpieler.setAmZug(true);
 		aktuellerSpieler = neuerSpieler;
+	}
+	
+	/**
+	 * Wenn man keine Karten mehr spielen kann. Noch nicht sicher ob dies auch
+	 * im definitven Spiel drin ist...
+	 */
+	public void aufgeben() {
+		AufgegebenEvent age = new AufgegebenEvent();
+		eventQueue.enqueue(age);
 	}
 
 	public Spiel getSpiel() {
