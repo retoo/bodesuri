@@ -1,6 +1,7 @@
 package ui.spiel.karten;
 
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import ui.GUIController;
 import applikation.client.controller.Controller;
@@ -23,7 +24,7 @@ public class KarteMouseAdapter extends MouseAdapter {
 		aktiv = false;
 	}
 
-	public void mouseClicked(java.awt.event.MouseEvent evt) {
+	public void mouseClicked(MouseEvent evt) {
 		if (aktiv) {
 			KarteView karteView = (KarteView) evt.getComponent();
 			kartenAuswahl.setPosition(karteView.getPosition());
@@ -35,5 +36,9 @@ public class KarteMouseAdapter extends MouseAdapter {
 
 	public void aktiv(Boolean aktiv) {
 		this.aktiv = aktiv;
+		if (!aktiv) {
+			deckView.remove(kartenAuswahl);
+			deckView.updateUI();
+		}
 	}
 }
