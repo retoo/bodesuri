@@ -19,7 +19,12 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 		spielDaten.endpunkt.sende(new KartenTausch(event.karte));
 		return KarteTauschenBekommen.class;
 	}
-	
+
+	Class<? extends Zustand> aufgegeben() {
+		controller.zeigeFehlermeldung("Bitte tausche zuerst die Karte mit deinem Partner bevor du aufgibst!");
+		return this.getClass();
+	}
+
 	public void exit() {
 		controller.kartenAuswahl(false);
 	}
