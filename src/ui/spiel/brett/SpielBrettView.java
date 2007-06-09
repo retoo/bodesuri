@@ -5,7 +5,7 @@ import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
-import ui.spiel.GUIController;
+import ui.GUIController;
 
 public class SpielBrettView extends JPanel {
 	public SpielBrettView(GUIController controller) {

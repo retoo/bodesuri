@@ -2,7 +2,7 @@ package ui.spiel.karten;
 
 import java.awt.event.MouseAdapter;
 
-import ui.spiel.GUIController;
+import ui.GUIController;
 import applikation.client.controller.Controller;
 
 public class KarteMouseAdapter extends MouseAdapter {

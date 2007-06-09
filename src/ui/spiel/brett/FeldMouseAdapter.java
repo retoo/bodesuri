@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
-import ui.spiel.GUIController;
+import ui.GUIController;
 import applikation.client.controller.Controller;
 
 /**

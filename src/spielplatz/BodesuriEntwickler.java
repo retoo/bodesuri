@@ -1,6 +1,6 @@
 package spielplatz;
 
-import ui.spiel.GUIController;
+import ui.GUIController;
 import applikation.client.BodesuriClient;
 import applikation.client.controller.Controller;
 import applikation.server.BodesuriServer;

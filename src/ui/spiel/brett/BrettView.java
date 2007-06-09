@@ -9,8 +9,8 @@ import javax.swing.JPanel;
 
 import pd.brett.BankFeld;
 import pd.brett.Feld;
+import ui.GUIController;
 import ui.ressourcen.BrettLader;
-import ui.spiel.GUIController;
 
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
