@@ -1,6 +1,7 @@
 package applikation.client.zugautomat.zustaende;
 
 import applikation.client.controller.Controller;
+import applikation.client.zugautomat.SpielDaten;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;

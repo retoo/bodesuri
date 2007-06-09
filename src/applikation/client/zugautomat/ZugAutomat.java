@@ -4,7 +4,6 @@ import applikation.client.controller.Controller;
 import applikation.client.zugautomat.zustaende.AktiverZugZustand;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
-import applikation.client.zugautomat.zustaende.SpielDaten;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
