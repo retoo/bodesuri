@@ -53,7 +53,7 @@ public class ClientZustand extends Zustand {
 			else if (nachricht instanceof SpielStartNachricht)
 				return spielStarten((SpielStartNachricht) nachricht);
 			else if (nachricht instanceof ZugInformation)
-				return zugWurdeGemacht((ZugInformation) nachricht);
+				return zugWurdeGemacht(((ZugInformation) nachricht).zug);
 			else if (nachricht instanceof ZugAufforderung)
 				return zugAufforderung();
 			else if (nachricht instanceof KartenTausch)
@@ -116,7 +116,7 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> zugWurdeGemacht(ZugInformation information) {
+	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		return keinUebergang();
 	}
 

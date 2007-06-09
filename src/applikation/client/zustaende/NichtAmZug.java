@@ -1,7 +1,8 @@
 package applikation.client.zustaende;
 
-import pd.regelsystem.RegelVerstoss;
 import pd.karten.Karte;
+import pd.regelsystem.RegelVerstoss;
+import pd.zugsystem.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;
@@ -32,9 +33,9 @@ public class NichtAmZug extends ClientZustand {
 		return AmZug.class;
 	}
 
-	Class<? extends Zustand> zugWurdeGemacht(ZugInformation information) {
+	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		try {
-			information.zug.validiere().ausfuehren();
+			zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
 			                              + ") vom Server erhalten!");
