@@ -11,7 +11,8 @@ import dienste.netzwerk.EndPunkt;
  * ist wird der Zustand {@link StarteSpiel} aufgerufen.
  */
 public class EmpfangeSpieler extends ServerZustand {
-		Class<? extends Zustand> spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+	Class<? extends Zustand> spielBeitreten(EndPunkt absender,
+	                                        SpielBeitreten beitreten) {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
 		Spieler spieler = new Spieler(absender, beitreten.spielerName);
