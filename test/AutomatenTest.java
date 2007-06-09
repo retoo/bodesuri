@@ -14,6 +14,7 @@ import dienste.automat.testzustaende.DummyZustand;
 import dienste.automat.testzustaende.PassiverTestZustandAlpha;
 import dienste.automat.testzustaende.PassiverTestZustandBeta;
 import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;
 
 public class AutomatenTest extends TestCase {
@@ -35,8 +36,7 @@ public class AutomatenTest extends TestCase {
 		boolean res = automat.step();
 		assertFalse("Letzter Schritt Schritt", res);
 
-		assertEquals(automat.getZustand(EndZustand.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, EndZustand.class);
 	}
 
 	public void testKeineZustaende() {
@@ -109,22 +109,19 @@ public class AutomatenTest extends TestCase {
 
 		assertTrue(automat.step());
 
-		assertEquals(automat.getZustand(AktiverTestZustandAlpha.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, AktiverTestZustandAlpha.class);
 
 		input.enqueue(new TestEventB());
 
 		assertTrue(automat.step());
 
-		assertEquals(automat.getZustand(AktiverTestZustandBeta.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, AktiverTestZustandBeta.class);
 
 		input.enqueue(new TestEventB());
 
 		assertTrue(automat.step());
 
-		assertEquals(automat.getZustand(AktiverTestZustandBeta.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, AktiverTestZustandBeta.class);
 	}
 
 	public void testUnbekannterEvent() {
@@ -166,8 +163,7 @@ public class AutomatenTest extends TestCase {
 
 		automat.run();
 
-		assertEquals(automat.getZustand(EndZustand.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, EndZustand.class);
 	}
 
 	public void testRun() {
@@ -179,7 +175,11 @@ public class AutomatenTest extends TestCase {
 
 		automat.run();
 
-		assertEquals(automat.getZustand(EndZustand.class),
-		             automat.getAktuellerZustand());
+		assertIstInZustand(automat, EndZustand.class);
 	}
+
+	private void assertIstInZustand(Automat automat, Class<? extends Zustand> zustand) {
+		assertTrue("Prüfen ob sich der Automat " + automat + " "
+		         + "im Zustand " + zustand + " befindet.", automat.isZustand(zustand));
+    }
 }

@@ -31,6 +31,7 @@ public class Automat {
 	private EventQuelle eventQuelle;
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
 	private Zustand aktuellerZustand;
+	private final EndZustand endzustand;
 
 	/**
 	 * Erstellt einen neuen Automaten
@@ -38,7 +39,8 @@ public class Automat {
 	public Automat() {
 		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 
-		registriere(new EndZustand());
+		endzustand = new EndZustand();
+		registriere(endzustand);
 	}
 
 	/**
@@ -81,12 +83,9 @@ public class Automat {
 	public void run() {
 		pruefeAutomat();
 
-		while (true) {
-			boolean weiter = step();
-
-			if (!weiter) {
-				return;
-			}
+		boolean isFertig = aktuellerZustand == endzustand;
+		while (!isFertig) {
+			isFertig = !step();
 		}
 	}
 
@@ -95,7 +94,6 @@ public class Automat {
 	 * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
 	 * ausgeführt.
 	 *
-	 * Endzustände beenden den Zustandsautomaten.
 	 *
 	 * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
 	 * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
@@ -105,69 +103,96 @@ public class Automat {
 	 * @see PassiverZustand
 	 * @see EndZustand
 	 *
-	 * @return true wenn es sich beim verarbeiteten Zustand nicht um einen
-	 *         Endzustand handelte.
+	 * @return true falls sich der Automat im Endzustand befindet
 	 */
 	public boolean step() {
-		Zustand neuerZustand;
-
-		aktuellerZustand.entry();
-
 		if (aktuellerZustand instanceof PassiverZustand) {
-			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-			neuerZustand = getZustand(zustand.handle());
+			return stepPassiv();
 		} else if (aktuellerZustand instanceof EndZustand) {
-			System.out.println("Erreiche Endzustand");
 			return false;
-		} else { /* kann nur endzustand sein */
-			Zustand zustand = aktuellerZustand;
-			Event event = eventQuelle.getEvent();
-			neuerZustand = getZustand(zustand.handle(event));
-
-
-		}
-
-		aktuellerZustand.exit();
-
-		aktuellerZustand = neuerZustand;
-		System.out.println(this.toString() + ": " + aktuellerZustand);
-
-		return true;
-	}
-
-	// TODO: Reto passt noch an und dokumentiert,
-	public boolean step(Event event) {
-		if (!(aktuellerZustand instanceof PassiverZustand)) {
-			Zustand zustand = aktuellerZustand;
-			// TODO: (von Philippe) Die entry-Methoden sollten nicht nur bei
-			// Übergängen ausgeführt werden
-			// entry vom 1. Zustand wird erst aufgerufen wenn wir ihn verlassen.
-			zustand.entry();
-			aktuellerZustand = getZustand(zustand.handle(event));
-			zustand.exit();
-			verarbeitePassiveZustaende();
 		} else {
-			throw new RuntimeException(
-			                           "step(event) in einem passiven Zustande aufgerufen."
-			                                   + " Zustand: "
-			                                   + aktuellerZustand);
-		}
-
-		System.out.println(this.toString() + ": " + aktuellerZustand);
-
-		return true;
-	}
-
-	private void verarbeitePassiveZustaende() {
-		while (aktuellerZustand instanceof PassiverZustand) {
-			PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
-			zustand.entry();
-			aktuellerZustand = getZustand(zustand.handle());
-			zustand.exit();
+			Event event = eventQuelle.getEvent();
+			return stepAktiv(event);
 		}
 	}
 
 	/**
+	 * Ermöglicht das verarbeiten von Zuständen mit extern eingelesenen Events.
+	 * Kann z.B. für Unterautomaten verwendet werden
+	 *
+	 * @param event
+	 *            Zu verarbeitender Event
+	 * @return true falls sich der Automat im Endzustand befindet
+	 */
+	public boolean step(Event event) {
+		if (aktuellerZustand instanceof PassiverZustand) {
+			throw new RuntimeException(
+			                           "step(event) in einem passiven Zustande aufgerufen."
+			                           + " Zustand: "
+			                           + aktuellerZustand);
+		}
+
+		boolean res = stepAktiv(event);
+
+		/* Wir brechen hier ab falls wir uns im Endzustand befinden */
+		if (!res)
+			return false;
+
+		return verarbeitePassiveZustaende();
+	}
+
+	/**
+	 * Verarbeitet einen 'Aktiven' Zustand.
+	 *
+	 * @param event
+	 *            Zu verarbeitende event
+	 * @return t ob sich der Automat im Endzustand befindet
+	 */
+	private boolean stepAktiv(Event event) {
+		aktuellerZustand.exit();
+		Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
+		naechsterZustand.entry();
+
+		aktuellerZustand = naechsterZustand;
+
+		return aktuellerZustand != endzustand;
+	}
+
+	/**
+	 * Verarbeitet einen einzelnen Passiven Zustand
+	 *
+	 * @return true falls sich der Automat im Endzustand befindet
+	 */
+	private boolean stepPassiv() {
+		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
+
+		zustand.exit();
+		Zustand naechsterZustand = getZustand(zustand.handle());
+		naechsterZustand.entry();
+
+		aktuellerZustand = naechsterZustand;
+
+		return aktuellerZustand != endzustand;
+	}
+
+	/**
+	 * Verarbeitet alle anstehenden passiven Zustnde
+	 *
+	 * @return true falls sich der Automat im Endzustand befindet
+	 */
+	private boolean verarbeitePassiveZustaende() {
+		while (aktuellerZustand instanceof PassiverZustand) {
+			boolean res = stepPassiv();
+
+			if (!res)
+				return false;
+		}
+
+		return aktuellerZustand != endzustand;
+	}
+
+	/**
+	 *
 	 * Prüft den Automaten auf Fehler
 	 */
 	private void pruefeAutomat() {
@@ -182,16 +207,6 @@ public class Automat {
 	}
 
 	/**
-	 * Meldete den Zustand in welchem sich der Zustandsautomaten zurzeit
-	 * befindet.
-	 *
-	 * @return Aktueller Zustand
-	 */
-	public Zustand getAktuellerZustand() {
-		return aktuellerZustand;
-	}
-
-	/**
 	 * Such die Instanz des Zustandes der der übergebener Klasse angehört und an
 	 * diesen Automaten gebunden ist.
 	 *
@@ -199,7 +214,7 @@ public class Automat {
 	 *            Klasse des gesuchten Zustandes
 	 * @return Instanz eines Zustandes
 	 */
-	public Zustand getZustand(Class<? extends Zustand> klasse) {
+	private Zustand getZustand(Class<? extends Zustand> klasse) {
 		Zustand zustand = zustaende.get(klasse);
 
 		if (zustand == null)
@@ -208,8 +223,15 @@ public class Automat {
 		return zustand;
 	}
 
-	public boolean isZustand(Class<? extends Zustand> klass) {
-		return getAktuellerZustand() == getZustand(klass);
+	/**
+	 * Prüft ob sich der Automat in dem übergebenen Zustand befindet. Diese
+	 * Methode sollte nur für Tests verwendet werden.
+	 *
+	 * @param zustand zu prüfender Zustand
+	 * @return true falls sich der Automat zurzeit in diesem Zustand befindet
+	 */
+	public boolean isZustand(Class<? extends Zustand> zustand) {
+		return aktuellerZustand.getClass() == zustand;
 	}
 
 	public String toString() {

@@ -18,6 +18,7 @@ public class TestAutomat extends Automat {
 	    this.output = output;
     }
 
-	public TestAutomat() {
-    }
+	public String toString() {
+	    return "Test-Automat";
+	}
 }

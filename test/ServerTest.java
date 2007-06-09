@@ -66,8 +66,8 @@ public class ServerTest extends TestCase {
 		}
 	}
 
-	private void assertIstInZustand(Automat automat, Class<? extends Zustand> name) {
-		assertEquals(automat.getZustand(name), automat.getAktuellerZustand());
-
+	private void assertIstInZustand(Automat automat, Class<? extends Zustand> zustand) {
+		assertTrue("Prüfen ob sich der Automat " + automat + " "
+		         + "im Zustand " + zustand + " befindet.", automat.isZustand(zustand));
     }
 }
