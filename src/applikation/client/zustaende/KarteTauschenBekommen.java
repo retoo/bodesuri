@@ -9,9 +9,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenBekommen extends ClientZustand {
 	Class<? extends Zustand> kartenTausch(Karte karte) {
-		//Vorübergehend:
-		System.out.println(karte);
-		// TODO: Erhaltene Karte dem Stapel des Spielers hinzufügen.
+		controller.getSpielerIch().getKarten().add(karte);
 		return NichtAmZug.class;
 	}
 }

@@ -25,6 +25,7 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
+		controller.getSpielerIch().getKarten().remove(zugEingabe.getKarte());
 		spielDaten.endpunkt.sende(new ZugInformation(zugEingabe));
 		return NichtAmZug.class;
 	}

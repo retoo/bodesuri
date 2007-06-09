@@ -1,6 +1,7 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
+import pd.karten.Karte;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;
@@ -43,11 +44,9 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		// TODO: rundenStart.neueKarten in Spieler speichern.
-		// Oder muss das in StarteRunde gemacht werden? (Der hätte dann aber
-		// keinen rundenStart.) Robin
-		// Nein, das kommt schon hierhin. --Philippe
-
+		for (Karte karte : rundenStart.neueKarten) {
+			controller.getSpielerIch().getKarten().add(karte);	
+		}
 		return StarteRunde.class;
 	}
 }
