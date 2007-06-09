@@ -1,7 +1,7 @@
 import applikation.server.ServerAutomat;
 
 
-public class ServerStart {
+public class BodesuriServer {
 
 	/**
 	 * Applikationsstart des Servers. Benötigte Instanzen werden erstellt,

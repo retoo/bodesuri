@@ -3,7 +3,7 @@ import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
 
 
-public class ClientStart {
+public class Bodesuri {
 
 	/**
 	 * Applikationsstart des Clients. Benötigte Instanzen werden erstellt,
