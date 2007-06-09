@@ -67,6 +67,9 @@ public class DeckView extends JPanel implements Observer {
 					}
 				}
 			} else if (change.changeType == ListChangeType.EVERYTHING) {
+				for (KarteView karteView : karteViews) {
+					karteView.setKarte(null);
+				}
 				for (int i = 0; i < karten.size(); ++i) {
 					karteViews.get(i).setKarte(karten.get(i));
 				}
