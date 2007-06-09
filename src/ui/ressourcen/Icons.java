@@ -1,9 +1,14 @@
 package ui.ressourcen;
 
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import pd.karten.Joker;
+import pd.karten.Karte;
 
 final public class Icons {
 	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
@@ -13,6 +18,8 @@ final public class Icons {
 	public static final Icon FELD_BANK = ladeBild("/ui/ressourcen/bankfeld.png");
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 
+	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
+	
 	/**
 	 * Lädt das angegeben Icon.
 	 * 
@@ -27,5 +34,27 @@ final public class Icons {
 		} else {
 			throw new RuntimeException("Unable to load icon " + pfad);
 		}
+	}
+	
+	public static Icon getIcon(Karte karte) {
+		String name;
+		if (karte instanceof Joker) {
+			name = "joker";
+		} else {
+			name = karte.getName() + "_" + karte.getKartenFarbe();
+			name = name.toLowerCase();
+		}
+		
+		Icon icon = kartenIcons.get(name);
+		if (icon == null) {
+			String pfad = "/ui/ressourcen/karten/" + name + ".png";
+			URL url = Icons.class.getResource(pfad);
+			if (url == null) {
+				throw new RuntimeException("Bild " + pfad + " nicht gefunden.");
+			}
+			icon = new ImageIcon(url);
+			kartenIcons.put(name, icon);
+		}
+		return icon;
 	}
 }

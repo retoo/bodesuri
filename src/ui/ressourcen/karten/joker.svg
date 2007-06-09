@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200"
+   height="250"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docbase="/home/robin/bodesuri/src/ui/ressourcen/karten"
+   sodipodi:docname="joker.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="41.734049"
+     inkscape:cy="31.328811"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:grid-points="true"
+     gridspacingx="1px"
+     gridspacingy="1px"
+     inkscape:window-width="1272"
+     inkscape:window-height="962"
+     inkscape:window-x="0"
+     inkscape:window-y="31"
+     width="200px"
+     height="250px"
+     showguides="true"
+     inkscape:guide-bbox="true">
+    <sodipodi:guide
+       orientation="vertical"
+       position="100.40916"
+       id="guide2608" />
+    <sodipodi:guide
+       orientation="horizontal"
+       position="124.75"
+       id="guide2610" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="M 199,10 C 199,5 195,1 190,1 L 10,1 C 5,1 1,5 1,10 L 1,240 C 1,245 5,249 10,249 L 190,249 C 195,249 199,245 199,240 L 199,10 z "
+       id="path3229"
+       sodipodi:nodetypes="ccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Nimbus Roman No9 L"
+       x="46.65625"
+       y="40"
+       id="text3225"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3227"
+         x="46.65625"
+         y="40"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;font-family:Nimbus Roman No9 L">Joker</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Nimbus Roman No9 L"
+       x="-151.9847"
+       y="-213.752"
+       id="text3633"
+       sodipodi:linespacing="125%"
+       transform="scale(-1,-1)"><tspan
+         sodipodi:role="line"
+         id="tspan3635"
+         x="-151.9847"
+         y="-213.752"
+         style="font-size:32px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;font-family:Nimbus Roman No9 L">Joker</tspan></text>
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.83973312px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 78.040945,93.264079 C 78.040945,91.129062 74.236261,86.859018 70.431575,86.859018 C 66.626891,86.859018 62.822208,89.705713 62.822208,94.68743 C 62.822208,102.51584 74.997198,115.32597 78.040945,118.88434 C 81.084692,115.32597 93.25968,102.51584 93.25968,94.68743 C 93.25968,89.705713 89.454996,86.859018 85.650312,86.859018 C 81.826643,86.859018 78.040945,91.129062 78.040945,93.264079 z "
+       id="path3316"
+       sodipodi:nodetypes="csscssc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#ff0000;stroke-width:1.83973312px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 137.60201,147.57776 L 123.90514,131.92093 L 110.20829,146.8661 L 123.90514,163.94627 L 137.60201,147.57776 z "
+       id="path4418" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.83973312px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 74.616723,145.79858 C 70.0511,143.66356 67.768295,132.27677 78.421407,132.27677 C 89.074519,132.27677 86.791714,143.66356 82.226091,145.79858 C 85.269835,143.66356 95.162021,140.81686 95.162021,150.7803 C 95.162021,160.74373 81.465151,160.03206 80.704225,152.20364 L 79.182346,152.20364 C 79.182346,152.20364 79.943285,160.03206 82.226091,163.59043 L 74.616723,163.59043 C 76.899541,160.03206 77.660468,152.20364 77.660468,152.20364 L 76.138602,152.20364 C 75.377662,160.03206 60.919867,160.74373 60.919867,150.7803 C 60.919867,142.24021 71.572979,143.66356 74.616723,145.79858 z "
+       id="path4943"
+       sodipodi:nodetypes="cscsccccccsc" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1.83973312px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 124.28561,86.50318 C 130.37312,95.043269 138.36295,100.02498 138.36295,107.14172 C 138.36295,113.54678 134.55827,114.97014 132.27545,114.97014 C 129.23171,114.97014 126.94889,113.54678 126.94889,108.56508 C 126.94889,107.14172 125.42702,107.14172 125.42702,108.56508 C 125.42702,115.68181 126.94889,115.68181 128.47077,119.24018 L 120.10046,119.24018 C 121.62234,115.68181 123.14421,115.68181 123.14421,108.56508 C 123.14421,107.14172 121.62234,107.14172 121.62234,108.56508 C 121.62234,114.25846 119.33952,114.97014 116.29578,114.97014 C 114.01297,114.97014 109.44735,113.54678 109.44735,107.14172 C 109.44735,99.932175 118.19813,95.043269 124.28561,86.50318 z "
+       id="path3237"
+       sodipodi:nodetypes="cssccccccssc" />
+  </g>
+</svg>
