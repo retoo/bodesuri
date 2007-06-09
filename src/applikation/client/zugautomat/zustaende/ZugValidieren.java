@@ -21,7 +21,7 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		try {
 			zugEingabe.validiere();
 		} catch (RegelVerstoss e) {
-			System.out.println("Ungültiger Zug: " + e);
+			controller.zeigeFehlermeldung("Ungültiger Zug: " + e.getMessage());
 			return KarteWaehlen.class;
 		}
 		spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
