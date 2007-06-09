@@ -1,8 +1,13 @@
 package applikation.client.zugautomat.zustaende;
 
+import pd.regelsystem.RegelVerstoss;
+import pd.zugsystem.Bewegung;
+import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Controller;
 import applikation.events.FeldGewaehltEvent;
+import applikation.events.GezogenEvent;
 import applikation.events.KarteGewaehltEvent;
+import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -13,16 +18,34 @@ import dienste.automat.zustaende.Zustand;
 public class EndeWaehlen extends ClientZugZustand {
 	public EndeWaehlen(Controller controller) {
 		this.controller = controller;
-    }
+	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		if (spielDaten.start == event.feld) {
 			return StartWaehlen.class;
 		} else {
 			spielDaten.ziel = event.feld;
-			return ZugValidieren.class;
+
+			/* Kann in eine seperate Methode oder in die Klasse SpielDaten verschoben werden */
+			Bewegung bewegung = new Bewegung(spielDaten.start, spielDaten.ziel);
+			ZugEingabe zugEingabe = new ZugEingabe(controller.getSpielerIch(),
+			                                       spielDaten.karte, bewegung);
+			try {
+				zugEingabe.validiere();
+			} catch (RegelVerstoss e) {
+				controller.zeigeFehlermeldung("Ungültiger Zug: " + e.getMessage());
+				return this.getClass();
+			}
+
+			spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
+
+			controller.kartenAuswahl(false);
+			controller.feldAuswahl(false);
+
+			return EndZustand.class;
 		}
 	}
+
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.karte = event.karte;

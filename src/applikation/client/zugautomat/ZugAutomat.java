@@ -5,7 +5,6 @@ import applikation.client.zugautomat.zustaende.ClientZugZustand;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
-import applikation.client.zugautomat.zustaende.ZugValidieren;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
 
@@ -21,7 +20,6 @@ public class ZugAutomat extends Automat {
 		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen(controller));
 		registriere(new EndeWaehlen(controller));
-		registriere(new ZugValidieren(controller));
 
 		setStart(KarteWaehlen.class);
 	}
