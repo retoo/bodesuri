@@ -25,11 +25,11 @@ public class KarteMouseAdapter extends MouseAdapter {
 
 	public void mouseClicked(java.awt.event.MouseEvent evt) {
 		if (aktiv) {
-			controller.karteGewaehlt(((KarteView) evt.getComponent()).karte);
-			
-			kartenAuswahl.setPosition(((KarteView) evt.getComponent()).getKoordinaten());
+			KarteView karteView = (KarteView) evt.getComponent();
+			kartenAuswahl.setPosition(karteView.getPosition());
 			deckView.add(kartenAuswahl);
 			deckView.updateUI();
+			controller.karteGewaehlt(karteView.getKarte());
 		}
 	}
 

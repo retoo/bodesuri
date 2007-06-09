@@ -2,51 +2,74 @@ package ui.spiel.karten;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.JPanel;
 
-import pd.karten.Acht;
-import pd.karten.Ass;
-import pd.karten.Drei;
-import pd.karten.Fuenf;
 import pd.karten.Karte;
-import pd.karten.KartenFarbe;
-import pd.karten.Sechs;
-import pd.karten.Zehn;
 import ui.GUIController;
+import dienste.observer.ListChangeEvent;
+import dienste.observer.ListChangeEvent.ListChangeType;
+import dienste.observer.ObservableList;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
  * die Karten der Spieler verwaltet und dargestellt.
  */
-public class DeckView extends JPanel {
-	Vector<Karte> karten = new Vector<Karte>();
+public class DeckView extends JPanel implements Observer {
+	private ObservableList<Karte> karten;
+	private Vector<KarteView> karteViews;
 
 	public DeckView(GUIController controller) {
-		// Layout setzen
 		setLayout(null);
-		setPreferredSize(new Dimension(230, 280));
-		setMaximumSize(new Dimension(230, 280));
-		setMinimumSize(new Dimension(230, 280));
+		
+		Dimension groesse = new Dimension(190, 340);
+		setPreferredSize(groesse);
+		setMaximumSize(groesse);
+		setMinimumSize(groesse);
 
-		// "Deck"
-		karten.add(new Ass(KartenFarbe.Kreuz, 1));
-		karten.add(new Drei(KartenFarbe.Karo, 1));
-		karten.add(new Fuenf(KartenFarbe.Kreuz, 1));
-		karten.add(new Zehn(KartenFarbe.Pik, 1));
-		karten.add(new Sechs(KartenFarbe.Herz, 1));
-		karten.add(new Acht(KartenFarbe.Karo, 1));
-		
 		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());
-		KarteMouseAdapter karteMouseAdapter = new KarteMouseAdapter(controller,
-		                                                            this,
-		                                                            kartenAuswahl);
+		KarteMouseAdapter karteMouseAdapter =
+			new KarteMouseAdapter(controller, this, kartenAuswahl);
 		
-		// Darstellen der Karten
-		for (int i = 5; i >= 0; i--) {
-			Point p = new Point(20 + i * 20, 30 + i * 20);
-			this.add(new KarteView(p, karten.get(i), karteMouseAdapter, this));
+		karteViews = new Vector<KarteView>();
+		for (int i = 0; i < 6; ++i) {
+			int x = i % 2;
+			int y = i / 2;
+			Point position = new Point(10 + x*90, 10 + y*110);
+			KarteView kv = new KarteView(position, karteMouseAdapter);
+			karteViews.add(kv);
+			add(kv);
 		}
+		
+		karten = controller.getSpielerIch().getKarten();
+		karten.addObserver(this);
 	}
+	
+	public void update(Observable o, Object arg) {
+		if (arg instanceof ListChangeEvent) {
+			ListChangeEvent change = (ListChangeEvent) arg;
+			if (change.changeType == ListChangeType.ADDED) {
+				for (KarteView kv : karteViews) {
+					if (kv.getKarte() == null) {
+						kv.setKarte((Karte) change.changedObject);
+						break;
+					}
+				}
+			} else if (change.changeType == ListChangeType.REMOVED) {
+				for (KarteView kv : karteViews) {
+					if (kv.getKarte() == change.changedObject) {
+						kv.setKarte(null);
+						break;
+					}
+				}
+			} else if (change.changeType == ListChangeType.EVERYTHING) {
+				for (int i = 0; i < karteViews.size(); ++i) {
+					karteViews.get(i).setKarte(karten.get(i));
+				}
+			}
+		}
+    }
 }
