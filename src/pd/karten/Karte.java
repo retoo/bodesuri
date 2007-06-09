@@ -15,7 +15,7 @@ public abstract class Karte extends BodesuriCodierbaresObjekt {
 	}
 
 	public String toString() {
-		return getKartenFarbe() + " " + getClass().getSimpleName();
+		return getKartenFarbe() + " " + getName();
 	}
 
 	public KartenFarbe getKartenFarbe() {

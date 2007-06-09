@@ -35,7 +35,7 @@ public class KarteGewaehltView extends JPanel {
 	}
 	
 	public void zeigeKarte(Karte karte) {
-		name.setText(karte.getKartenFarbe().toString() + " " + karte.getName());
+		name.setText(karte.toString());
 		beschreibung.setText(karte.getRegelBeschreibung());
 	}
 	

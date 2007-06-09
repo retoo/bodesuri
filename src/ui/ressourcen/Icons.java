@@ -41,7 +41,7 @@ final public class Icons {
 		if (karte instanceof Joker) {
 			name = "joker";
 		} else {
-			name = karte.getName() + "_" + karte.getKartenFarbe();
+			name = karte.getClass().getSimpleName() + "_" + karte.getKartenFarbe();
 			name = name.toLowerCase();
 		}
 		
