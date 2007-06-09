@@ -145,6 +145,7 @@ public abstract class Controller {
 	 * im definitven Spiel drin ist...
 	 */
 	public void aufgeben() {
+		kartenAuswahl(false);
 		AufgegebenEvent age = new AufgegebenEvent();
 		eventQueue.enqueue(age);
 	}
