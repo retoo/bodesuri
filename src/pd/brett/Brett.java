@@ -75,6 +75,7 @@ public class Brett {
 	    for (int i = 0; i < 4; ++i) {
 	    	LagerFeld lf = new LagerFeld(feldNummer++, sp);
 	    	lf.setFigur(sp.getFiguren().get(i));
+	    	lf.setGeschuetzt(true);
 	    	lf.setNaechstes(bf);
 	    	lager.add(lf);
 	    }

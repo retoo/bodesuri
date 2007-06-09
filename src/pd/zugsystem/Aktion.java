@@ -28,7 +28,7 @@ public class Aktion {
 		start.setGeschuetzt(false);
 		if (start instanceof LagerFeld && ziel instanceof BankFeld) {
 			ziel.setGeschuetzt(true);
-		} else if (ziel instanceof HimmelFeld) {
+		} else if (ziel instanceof HimmelFeld || ziel instanceof LagerFeld) {
 			ziel.setGeschuetzt(true);
 		}
 	}

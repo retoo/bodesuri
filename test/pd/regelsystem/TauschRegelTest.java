@@ -57,4 +57,11 @@ public class TauschRegelTest extends RegelTestCase {
 		lager(1).versetzeFigurAuf(ziel);
 		sollteVerstossGeben();
 	}
+	
+	public void testTauschenMitLagerFeld() {
+		start = lager(0);
+		ziel  = bank(0).getNaechstes();
+		lager(1).versetzeFigurAuf(ziel);
+		sollteVerstossGeben();
+	}
 }
