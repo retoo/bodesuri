@@ -14,6 +14,7 @@ import pd.zugsystem.ZugEingabe;
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
 	    super(0); // Schritte nicht benötigt, da validiere() überschrieben
+	    setBeschreibung("7 vorwärts, auf beliebige Figuren aufgeteilt");
     }
 
 	// TODO: Hat Review nötig :).

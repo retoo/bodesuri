@@ -14,6 +14,7 @@ import pd.zugsystem.Bewegung;
 public class RueckwaertsRegel extends VorwaertsRegel {
 	public RueckwaertsRegel(int schritte) {
 		super(schritte);
+		setBeschreibung(schritte + " rückwärts");
 	}
 	
 	protected List<Feld> getWeg(Bewegung bewegung) throws RegelVerstoss {

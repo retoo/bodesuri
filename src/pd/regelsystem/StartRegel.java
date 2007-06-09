@@ -13,6 +13,11 @@ import pd.zugsystem.ZugEingabe;
  * {@link BankFeld}.
  */
 public class StartRegel extends Regel {
+	public StartRegel() {
+		super();
+		setBeschreibung("Starten");
+	}
+
 	/**
 	 * Validiere ZugEingabe. Der Zug muss von einem Lagerfeld des Spielers auf
 	 * sein Bankfeld gehen. Geht nicht, wenn das Bankfeld geschützt ist.

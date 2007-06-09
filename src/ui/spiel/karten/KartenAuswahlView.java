@@ -6,19 +6,30 @@ import javax.swing.JPanel;
 
 import ui.GUIController;
 
-public class KartenAuswahlView extends JPanel{
+public class KartenAuswahlView extends JPanel {
+	private KarteGewaehltView karteGewaehltView;
+	private DeckView deckView;
+	
 	public KartenAuswahlView(GUIController controller) {
 		// Layout setzen
 		setLayout(new BorderLayout());
 		
 		// Views
-		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(controller);
-		DeckView deckView = new DeckView(controller);
+		deckView = new DeckView(controller, this);
+		karteGewaehltView = new KarteGewaehltView(controller);
 		SteuerungsView steuerungsView = new SteuerungsView(controller);
 		
 		// Layout zusammenstellen
-		add(karteGewaehltView, BorderLayout.NORTH);
-		add(deckView, BorderLayout.CENTER);
+		add(deckView, BorderLayout.NORTH);
+		add(karteGewaehltView, BorderLayout.CENTER);
 		add(steuerungsView, BorderLayout.SOUTH);
 	}
+
+	public DeckView getDeckView() {
+    	return deckView;
+    }
+
+	public KarteGewaehltView getKarteGewaehltView() {
+    	return karteGewaehltView;
+    }
 }

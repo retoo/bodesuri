@@ -10,6 +10,11 @@ import pd.zugsystem.ZugEingabe;
  * Regel für das Tauschen zweier Figuren.
  */
 public class TauschRegel extends Regel {
+	public TauschRegel() {
+		super();
+		setBeschreibung("Figuren tauschen");
+	}
+
 	/**
 	 * Validiere Zugeingabe. Der Zug muss mit einer eigenen Figur und der eines
 	 * anderen Spielers gemacht werden.

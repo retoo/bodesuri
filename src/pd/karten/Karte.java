@@ -3,7 +3,7 @@ package pd.karten;
 import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 
-public class Karte extends BodesuriCodierbaresObjekt {
+public abstract class Karte extends BodesuriCodierbaresObjekt {
 	private KartenFarbe farbe;
 	private Regel regel;
 	private String name;
@@ -32,5 +32,9 @@ public class Karte extends BodesuriCodierbaresObjekt {
 
 	public String getName() {
 		return name;
+	}
+	
+	public String getRegelBeschreibung() {
+		return getRegel().getBeschreibung();
 	}
 }

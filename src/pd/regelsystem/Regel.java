@@ -13,6 +13,8 @@ import pd.zugsystem.ZugEingabe;
  * Basisklasse für Regeln. 
  */
 public abstract class Regel {
+	private String beschreibung;
+	
 	/**
 	 * Validiert eine Zugeingabe. Bei einer gültigen Eingabe wird ein Zug
 	 * zurückgegeben und sonst wird eine RegelVerstoss-Exception geworfen.
@@ -22,9 +24,17 @@ public abstract class Regel {
 	 * @throws RegelVerstoss Tritt bei Regelwidrigkeit auf und enthält Grund
 	 */
 	public abstract Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss;
-	
+
+	public String getBeschreibung() {
+		return beschreibung;
+	}
+
 	protected Aktion heimschickAktion(Feld feld, Spieler spieler) {
 		LagerFeld lf = spieler.getSpiel().getBrett().getFreiesLagerFeldVon(spieler);
 		return new Aktion(feld, lf);
+	}
+
+	protected void setBeschreibung(String beschreibung) {
+		this.beschreibung = beschreibung;
 	}
 }

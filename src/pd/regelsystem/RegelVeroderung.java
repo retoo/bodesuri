@@ -35,4 +35,17 @@ public class RegelVeroderung extends Regel {
 		}
 		throw new RegelVerstoss(s.toString());
 	}
+	
+	public String getBeschreibung() {
+		StringBuilder s = new StringBuilder();
+		for (int i = 0; i < regeln.size(); ++i) {
+			s.append(regeln.get(i).getBeschreibung());
+			if (i < regeln.size() - 2) {
+				s.append(", ");
+			} else if (i == regeln.size() - 2) {
+				s.append(" oder ");
+			}
+		}
+		return s.toString();
+	}
 }

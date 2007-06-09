@@ -24,6 +24,7 @@ public class VorwaertsRegel extends Regel {
 	 */
 	public VorwaertsRegel(int schritte) {
 		this.schritte = schritte;
+		setBeschreibung(schritte + " vorwärts");
 	}
 	
 	/**

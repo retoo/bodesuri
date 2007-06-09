@@ -22,7 +22,8 @@ public class DeckView extends JPanel implements Observer {
 	private ObservableList<Karte> karten;
 	private Vector<KarteView> karteViews;
 
-	public DeckView(GUIController controller) {
+	public DeckView(GUIController controller,
+	                KartenAuswahlView kartenAuswahlView) {
 		setLayout(null);
 		
 		Dimension groesse = new Dimension(190, 340);
@@ -32,7 +33,7 @@ public class DeckView extends JPanel implements Observer {
 
 		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());
 		KarteMouseAdapter karteMouseAdapter =
-			new KarteMouseAdapter(controller, this, kartenAuswahl);
+			new KarteMouseAdapter(controller, kartenAuswahlView, kartenAuswahl);
 		
 		karteViews = new Vector<KarteView>();
 		for (int i = 0; i < 6; ++i) {
