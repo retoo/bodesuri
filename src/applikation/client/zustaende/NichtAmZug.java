@@ -45,6 +45,8 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
+		//TODO: Geht nicht mit dem View zusammen.
+		//controller.getSpielerIch().getKarten().clear();
 		for (Karte karte : rundenStart.neueKarten) {
 			controller.getSpielerIch().getKarten().add(karte);	
 		}
