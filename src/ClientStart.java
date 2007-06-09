@@ -1,5 +1,5 @@
 import ui.GUIController;
-import applikation.client.BodesuriClient;
+import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
 
 
@@ -12,7 +12,7 @@ public class ClientStart {
 	 */
 	public static void main(String[] args) {
 		Controller controller = new GUIController("Spieler");
-		BodesuriClient automat = new BodesuriClient(controller);
+		ClientAutomat automat = new ClientAutomat(controller);
 
 		try {
 			automat.run();

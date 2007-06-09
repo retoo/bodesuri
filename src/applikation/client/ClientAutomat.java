@@ -21,7 +21,7 @@ import dienste.eventqueue.EventQueue;
 /**
  * Version des Automaten für den Client
  */
-public class BodesuriClient extends Automat {
+public class ClientAutomat extends Automat {
 	private Controller controller;
 	private SpielDaten spielDaten;
 
@@ -30,7 +30,7 @@ public class BodesuriClient extends Automat {
 	 *
 	 * @param controller
 	 */
-	public BodesuriClient(Controller controller) {
+	public ClientAutomat(Controller controller) {
 		this.controller = controller;
 		this.spielDaten = new SpielDaten();
 

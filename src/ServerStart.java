@@ -1,4 +1,4 @@
-import applikation.server.BodesuriServer;
+import applikation.server.ServerAutomat;
 
 
 public class ServerStart {
@@ -9,7 +9,7 @@ public class ServerStart {
 	 * @param args	Wird nicht genutzt
 	 */
 	public static void main(String[] args) {
-		BodesuriServer server = new BodesuriServer();
+		ServerAutomat server = new ServerAutomat();
 
 		try {
 			server.run();

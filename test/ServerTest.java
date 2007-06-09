@@ -2,7 +2,7 @@ import java.util.Vector;
 
 import junit.framework.TestCase;
 import applikation.nachrichten.BeitrittsBestaetigung;
-import applikation.server.BodesuriServer;
+import applikation.server.ServerAutomat;
 import applikation.server.TestSpieler;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.StarteSpiel;
@@ -19,7 +19,7 @@ public class ServerTest extends TestCase {
 		if (1 + 1 == 2) {
 			return;
 		}
-		BodesuriServer automat = new BodesuriServer();
+		ServerAutomat automat = new ServerAutomat();
 		Vector<TestSpieler> spielers = new Vector<TestSpieler>();
 
 		automat.step();

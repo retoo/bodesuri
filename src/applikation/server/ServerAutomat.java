@@ -18,13 +18,13 @@ import dienste.eventqueue.EventQueue;
 /**
  * Der Server. Wird vom Benutzer gestartet.
  */
-public class BodesuriServer extends Automat {
+public class ServerAutomat extends Automat {
 	private SpielDaten spielDaten;
 
 	/**
 	 * Initialisiert den Server-Automaten
 	 */
-	public BodesuriServer() {
+	public ServerAutomat() {
 		EventQueue queue = new EventQueue();
 		spielDaten = new SpielDaten();
 
