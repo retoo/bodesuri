@@ -12,7 +12,7 @@ import dienste.netzwerk.EndPunkt;
  * {@link KarteGewaehltEvent} eintritt, wird der Zustand {@link StartWaehlen}
  * aufgerufen.
  */
-public class KarteWaehlen extends AktiverZugZustand {
+public class KarteWaehlen extends ClientZugZustand {
 	public KarteWaehlen(Controller controller) {
 		this.controller = controller;
 	}

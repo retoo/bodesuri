@@ -1,7 +1,7 @@
 package applikation.client.zugautomat;
 
 import applikation.client.controller.Controller;
-import applikation.client.zugautomat.zustaende.AktiverZugZustand;
+import applikation.client.zugautomat.zustaende.ClientZugZustand;
 import applikation.client.zugautomat.zustaende.EndeWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
@@ -26,7 +26,7 @@ public class ZugAutomat extends Automat {
 		setStart(KarteWaehlen.class);
 	}
 
-	public void registriere(AktiverZugZustand zustand) {
+	public void registriere(ClientZugZustand zustand) {
 		zustand.setController(controller);
 		zustand.setspielDaten(spielDaten);
 	    super.registriere(zustand);

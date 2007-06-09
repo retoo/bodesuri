@@ -9,7 +9,7 @@ import dienste.automat.PassiverZustand;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
-public class ZugValidieren extends AktiverZugZustand implements PassiverZustand {
+public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 	public ZugValidieren(Controller controller) {
 		this.controller = controller;
     }

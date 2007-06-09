@@ -7,7 +7,7 @@ import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
-public class AktiverZugZustand extends Zustand {
+public class ClientZugZustand extends Zustand {
 	protected SpielDaten spielDaten;
 	protected Controller controller;
 
