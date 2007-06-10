@@ -54,4 +54,11 @@ public abstract class Zustand implements ZustandsInterface {
     	throw new KeinUebergangException("Kein Übergang definiert in Zustand "
     	                                 + this);
     }
+
+	protected Class<? extends Zustand> ignoriereEvent(String event) {
+		if (event != null)
+			System.out.println("Ignoriere Event: " + event);
+
+		return this.getClass();
+    }
 }

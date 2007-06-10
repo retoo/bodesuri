@@ -22,6 +22,13 @@ public class FeldMouseAdapter extends MouseAdapter {
 		aktiv = false;
 	}
 
+	public void mouseEntered(MouseEvent e) {
+		/* TODO: Falls wir wirklich sowas machen gehörte sowas doch wirklich nur in den GUIController.. nicht?
+		 * wieso verwenden wir hier als klasse Controller? (-reto)
+		 */
+		controller.zielHover(((Feld2d) e.getComponent()).feld);
+	}
+
 	/**
 	 * Das {@link Feld2d} auf das geklickt wird an den Controller weiterleiten
 	 * und falls eine {@link Figur2d} auf dem Feld ist, diese als ausgewählt

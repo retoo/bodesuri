@@ -9,6 +9,7 @@ import pd.karten.Karte;
 import pd.spieler.Spieler;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldGewaehltEvent;
+import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
 import dienste.eventqueue.EventQueue;
@@ -106,13 +107,13 @@ public abstract class Controller {
 		FeldGewaehltEvent fge = new FeldGewaehltEvent(gewaehltesFeld);
 		eventQueue.enqueue(fge);
 	}
-	
+
 	/**
 	 * Darstellen des abgewählten Feldes.
 	 * @param abgewaehltesFeld
 	 */
 	public abstract void feldAbwaehlen(Feld abgewaehltesFeld);
-	
+
 	/**
 	 * Darstellung des gewählten Feldes.
 	 * @param gewaehltesFeld
@@ -151,7 +152,7 @@ public abstract class Controller {
 		neuerSpieler.setAmZug(true);
 		aktuellerSpieler = neuerSpieler;
 	}
-	
+
 	/**
 	 * Wenn man keine Karten mehr spielen kann. Noch nicht sicher ob dies auch
 	 * im definitven Spiel drin ist...
@@ -190,4 +191,9 @@ public abstract class Controller {
 	public applikation.client.controller.Spieler getSpieler(Spieler spieler) {
 		return spielers.get(spieler);
 	}
+
+	public void zielHover(Feld feld) {
+		HoverStartEvent hve = new HoverStartEvent(feld);
+		eventQueue.enqueue(hve);
+    }
 }

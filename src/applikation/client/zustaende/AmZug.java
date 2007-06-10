@@ -3,6 +3,7 @@ package applikation.client.zustaende;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldGewaehltEvent;
+import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ZugInformation;
@@ -25,12 +26,17 @@ public class AmZug extends ClientZustand {
 		return this.getClass();
 	}
 
+	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
+		spielDaten.zugAutomat.step(event);
+		return this.getClass();
+	}
+
 	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
 		controller.getSpielerIch().getKarten().remove(zugEingabe.getKarte());
 		spielDaten.endpunkt.sende(new ZugInformation(zugEingabe));
 		return NichtAmZug.class;
 	}
-	
+
 	Class<? extends Zustand> aufgegeben() {
 		spielDaten.endpunkt.sende(new Aufgabe());
 		return NichtAmZug.class;
