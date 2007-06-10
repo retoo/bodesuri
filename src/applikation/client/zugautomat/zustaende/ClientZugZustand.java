@@ -24,7 +24,7 @@ public class ClientZugZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		return keinUebergang();
+		return ignoriereEvent("hoverStart");
     }
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
