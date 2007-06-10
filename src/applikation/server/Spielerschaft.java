@@ -57,7 +57,9 @@ public class Spielerschaft implements Iterable<Spieler> {
 			spielers.get(2).partner = spielers.get(0);
 
 			spielers.get(1).partner = spielers.get(3);
-			spielers.get(1).partner = spielers.get(1);
+			spielers.get(3).partner = spielers.get(1);
+		} else {
+			throw new RuntimeException("Hups, so viele sieler sind nicht unterstüzt");
 		}
 	}
 
