@@ -23,10 +23,20 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 		
-		if (start instanceof HimmelFeld || start instanceof LagerFeld) {
-			throw new RegelVerstoss("Ungültiges Startfeld.");
-		} else if (ziel instanceof HimmelFeld || ziel instanceof LagerFeld) {
-			throw new RegelVerstoss("Ungültiges Zielfeld.");
+		if (start instanceof LagerFeld && ziel instanceof LagerFeld) {
+			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
+		} else if (start instanceof LagerFeld) {
+			throw new RegelVerstoss("Es kann nicht rückwärts aus dem Lager " +
+			                        "gefahren werden.");
+		} else if (ziel instanceof LagerFeld) {
+			throw new RegelVerstoss("Es gibt nur eine Art, ins Lager " +
+			                        "zurückzukehren...");
+		} else if (start instanceof HimmelFeld) {
+				throw new RegelVerstoss("Im Himmel kann nicht mehr rückwärts " +
+				                        "gefahren werden.");
+		} else if (ziel instanceof HimmelFeld) {
+			throw new RegelVerstoss("Es kann nicht rückwärts in den Himmel " +
+			                        "gefahren werden.");
 		}
 		
 		Feld feld = start;

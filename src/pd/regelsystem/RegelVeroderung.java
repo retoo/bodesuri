@@ -1,5 +1,7 @@
 package pd.regelsystem;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import pd.zugsystem.Zug;
@@ -24,14 +26,18 @@ public class RegelVeroderung extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		StringBuilder s = new StringBuilder();
-		s.append("Keine Regel war gültig");
+		s.append("Keine Regel war gültig:");
+		Set<String> verstoesse = new HashSet<String>();
 		for (Regel regel : regeln) {
 			try {
 				Zug resultat = regel.validiere(zugEingabe);
 				return resultat;
 			} catch (RegelVerstoss rv) {
-				s.append("\n - " + rv.getMessage());
+				verstoesse.add(rv.getMessage());
 			}
+		}
+		for (String verstoss : verstoesse) {
+			s.append("\n - " + verstoss);
 		}
 		throw new RegelVerstoss(s.toString());
 	}

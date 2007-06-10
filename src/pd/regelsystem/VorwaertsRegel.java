@@ -7,6 +7,7 @@ import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
 import pd.brett.LagerFeld;
+import pd.brett.SpielerFeld;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
@@ -48,10 +49,10 @@ public class VorwaertsRegel extends Regel {
 		}
 
 		List<Feld> weg = getWeg(bewegung);
-
-		if (weg.size() != schritte + 1) {
+		int wegLaenge = weg.size() - 1;
+		if (wegLaenge != schritte) {
 			throw new RegelVerstoss("Zug muss über " + schritte +
-			                        " und nicht " + weg.size() + " Felder gehen.");
+			                        " und nicht " + wegLaenge + " Felder gehen.");
 		}
 
 		if (start instanceof BankFeld && ziel instanceof HimmelFeld &&
@@ -102,6 +103,8 @@ public class VorwaertsRegel extends Regel {
 		if (start instanceof HimmelFeld && !(ziel instanceof HimmelFeld)) {
 			throw new RegelVerstoss(
 				"Im Himmel kann nur noch vorwärts gefahren werden.");
+		} else if (start instanceof LagerFeld && ziel instanceof LagerFeld) {
+			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
 		} else if (start instanceof LagerFeld) {
 			throw new RegelVerstoss(
 				"Es darf nur mit dem König oder dem Ass gestartet werden.");
@@ -113,7 +116,10 @@ public class VorwaertsRegel extends Regel {
 		Feld feld = start;
 		while (feld != ziel) {
 			weg.add(feld);
-			if (feld instanceof BankFeld && ziel instanceof HimmelFeld) {
+			if (feld instanceof BankFeld && ziel instanceof HimmelFeld 
+				&& ((SpielerFeld) feld).getSpieler() ==
+				   ((SpielerFeld) ziel).getSpieler())
+			{
 				feld = ((BankFeld) feld).getHimmel();
 			} else {
 				feld = feld.getNaechstes();
