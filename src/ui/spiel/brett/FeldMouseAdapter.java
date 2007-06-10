@@ -5,14 +5,13 @@ import java.awt.event.MouseEvent;
 
 import pd.brett.Feld;
 import ui.GUIController;
-import applikation.client.controller.Controller;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
  */
 public class FeldMouseAdapter extends MouseAdapter {
 	private BrettView brettView;
-	private Controller controller;
+	private GUIController controller;
 	private Boolean aktiv;
 
 	public FeldMouseAdapter(BrettView brettView, GUIController controller) {
@@ -23,9 +22,6 @@ public class FeldMouseAdapter extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		/* TODO: Falls wir wirklich sowas machen gehörte sowas doch wirklich nur in den GUIController.. nicht?
-		 * wieso verwenden wir hier als klasse Controller? (-reto)
-		 */
 		controller.zielHover(((Feld2d) e.getComponent()).feld);
 	}
 

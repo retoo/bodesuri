@@ -12,21 +12,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import applikation.client.controller.Controller;
-
-
+import ui.GUIController;
 
 /**
- * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet werden soll,
- * sowie auch zur Erfassung der Spielerinformationen.
+ * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet
+ * werden soll, sowie auch zur Erfassung der Spielerinformationen.
  */
 public class VerbindenView extends JFrame {
 	private JTextField hostname;
 	private JTextField port;
 	private JTextField spielerName;
-	private Controller controller;
+	private GUIController controller;
 
-	public VerbindenView(Controller controller, String defaultName) {
+	public VerbindenView(GUIController controller, String defaultName) {
 		this.controller = controller;
 
 		setTitle("Bodesuri - Verbinden");
@@ -56,13 +54,12 @@ public class VerbindenView extends JFrame {
 				Integer port_raw = Integer.valueOf(port.getText());
 
 				VerbindenView.this.controller.verbinde(host, port_raw, spieler);
-            }
+			}
 		});
 
 		add(ok);
 
 		pack();
 	}
-
 
 }

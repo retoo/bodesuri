@@ -4,10 +4,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import ui.GUIController;
-import applikation.client.controller.Controller;
 
 public class KarteMouseAdapter extends MouseAdapter {
-	private Controller controller;
+	private GUIController controller;
 
 	private Boolean aktiv;
 

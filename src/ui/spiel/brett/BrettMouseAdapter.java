@@ -3,13 +3,13 @@ package ui.spiel.brett;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import applikation.client.controller.Controller;
+import ui.GUIController;
 
 public class BrettMouseAdapter extends MouseAdapter {
 //	private BrettView brettView;
 //	private Controller controller;
 	
-	public BrettMouseAdapter(BrettView brettView, Controller controller) {
+	public BrettMouseAdapter(BrettView brettView, GUIController controller) {
 //		this.brettView = brettView;
 //		this.controller = controller;
 	}

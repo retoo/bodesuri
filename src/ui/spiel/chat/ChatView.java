@@ -6,14 +6,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import applikation.client.controller.Controller;
+import ui.GUIController;
 
 /**
  * Implementierung des Chat-Client, der zur Text-Kommunikation zwischen den
  * einzelnen Clients dient.
  */
 public class ChatView extends JPanel {
-	public ChatView(Controller controller) {
+	public ChatView(GUIController controller) {
 		// Layout setzen
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setBackground(Color.darkGray);

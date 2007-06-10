@@ -6,16 +6,14 @@ import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
 import pd.spieler.Spieler;
-import applikation.client.controller.Controller;
-
-
+import ui.GUIController;
 
 /**
  * JPanel, dient zur auflistung der einzelnen Spieler.
  */
 
 public class SpielerView extends JPanel {
-	public SpielerView(Controller controller) {
+	public SpielerView(GUIController controller) {
 		TitledBorder titel = new TitledBorder("Spieler");
 		// titel.setTitleFont(titel.getTitleFont().deriveFont(Font.BOLD));
 		setBorder(titel);

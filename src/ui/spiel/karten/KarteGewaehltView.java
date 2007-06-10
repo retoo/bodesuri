@@ -9,13 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import pd.karten.Karte;
-import applikation.client.controller.Controller;
+import ui.GUIController;
 
 public class KarteGewaehltView extends JPanel {
 	private JLabel name;
 	private JTextArea beschreibung;
 	
-	public KarteGewaehltView(Controller controller) {
+	public KarteGewaehltView(GUIController controller) {
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
