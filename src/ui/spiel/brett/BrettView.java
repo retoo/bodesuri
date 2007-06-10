@@ -7,7 +7,6 @@ import java.util.Map;
 
 import javax.swing.JPanel;
 
-import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import ui.GUIController;
@@ -40,7 +39,7 @@ public class BrettView extends JPanel {
 		
 		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
 			Feld2d feld2d;
-			if (feld instanceof BankFeld) {
+			if (feld.istBank()) {
 				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			} else {

@@ -6,7 +6,6 @@ import java.util.Vector;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
-import pd.brett.LagerFeld;
 import pd.brett.SpielerFeld;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
@@ -55,12 +54,12 @@ public class VorwaertsRegel extends Regel {
 			                        " und nicht " + wegLaenge + " Felder gehen.");
 		}
 
-		if (start instanceof BankFeld && ziel instanceof HimmelFeld &&
+		if (start.istBank() && ziel.istHimmel() &&
 		    start.istGeschuetzt()) {
 			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
 		}
 
-		if (ziel instanceof HimmelFeld) {
+		if (ziel.istHimmel()) {
 			HimmelFeld himmel = (HimmelFeld) ziel;
 			if (himmel.getSpieler() != spieler) {
 				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
@@ -71,7 +70,7 @@ public class VorwaertsRegel extends Regel {
 		for (Feld feld : weg) {
 			if (feld == start) continue;
 
-			if (feld instanceof BankFeld && feld != ziel &&
+			if (feld.istBank() && feld != ziel &&
 			    ((BankFeld)feld).istBesetztVonBesitzer()) {
 				throw new RegelVerstoss("Es kann nicht über eine Figur " +
 				                        "auf ihrem Bankfeld gezogen werden.");
@@ -100,15 +99,15 @@ public class VorwaertsRegel extends Regel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 
-		if (start instanceof HimmelFeld && !(ziel instanceof HimmelFeld)) {
+		if (start.istHimmel() && !(ziel.istHimmel())) {
 			throw new RegelVerstoss(
 				"Im Himmel kann nur noch vorwärts gefahren werden.");
-		} else if (start instanceof LagerFeld && ziel instanceof LagerFeld) {
+		} else if (start.istLager() && ziel.istLager()) {
 			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
-		} else if (start instanceof LagerFeld) {
+		} else if (start.istLager()) {
 			throw new RegelVerstoss(
 				"Es darf nur mit dem König oder dem Ass gestartet werden.");
-		} else if (ziel instanceof LagerFeld) {
+		} else if (ziel.istLager()) {
 			throw new RegelVerstoss(
 				"Es gibt nur eine Art, ins Lager zurückzukehren...");
 		}
@@ -116,7 +115,7 @@ public class VorwaertsRegel extends Regel {
 		Feld feld = start;
 		while (feld != ziel) {
 			weg.add(feld);
-			if (feld instanceof BankFeld && ziel instanceof HimmelFeld 
+			if (feld.istBank() && ziel.istHimmel() 
 				&& ((SpielerFeld) feld).getSpieler() ==
 				   ((SpielerFeld) ziel).getSpieler())
 			{

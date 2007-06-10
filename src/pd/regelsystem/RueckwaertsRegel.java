@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.brett.Feld;
-import pd.brett.HimmelFeld;
-import pd.brett.LagerFeld;
 import pd.zugsystem.Bewegung;
 
 /**
@@ -23,18 +21,18 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 		
-		if (start instanceof LagerFeld && ziel instanceof LagerFeld) {
+		if (start.istLager() && ziel.istLager()) {
 			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
-		} else if (start instanceof LagerFeld) {
+		} else if (start.istLager()) {
 			throw new RegelVerstoss("Es kann nicht rückwärts aus dem Lager " +
 			                        "gefahren werden.");
-		} else if (ziel instanceof LagerFeld) {
+		} else if (ziel.istLager()) {
 			throw new RegelVerstoss("Es gibt nur eine Art, ins Lager " +
 			                        "zurückzukehren...");
-		} else if (start instanceof HimmelFeld) {
+		} else if (start.istHimmel()) {
 				throw new RegelVerstoss("Im Himmel kann nicht mehr rückwärts " +
 				                        "gefahren werden.");
-		} else if (ziel instanceof HimmelFeld) {
+		} else if (ziel.istHimmel()) {
 			throw new RegelVerstoss("Es kann nicht rückwärts in den Himmel " +
 			                        "gefahren werden.");
 		}

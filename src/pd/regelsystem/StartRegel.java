@@ -31,7 +31,7 @@ public class StartRegel extends Regel {
 		Feld start = zugEingabe.getBewegung().start;
 		Feld ziel  = zugEingabe.getBewegung().ziel;
 		
-		if (!(start instanceof LagerFeld)) {
+		if (!(start.istLager())) {
 			throw new RegelVerstoss("Der Start muss ein Lagerfeld sein.");
 		}
 		LagerFeld lager = (LagerFeld)start;
@@ -40,7 +40,7 @@ public class StartRegel extends Regel {
 			throw new RegelVerstoss("Auf Lagerfeld muss Figur stehen.");
 		}
 		
-		if (!(ziel instanceof BankFeld)) {
+		if (!(ziel.istBank())) {
 			throw new RegelVerstoss("Das Ziel muss das Bankfeld sein.");
 		}
 		BankFeld bank = (BankFeld)ziel;

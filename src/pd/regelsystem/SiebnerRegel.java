@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import pd.brett.Feld;
-import pd.brett.HimmelFeld;
 import pd.spieler.Figur;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
@@ -54,7 +53,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 				}
 
 				if (feld.istGeschuetzt() ||
-				    (figur != null && feld instanceof HimmelFeld)) {
+				    (figur != null && feld.istHimmel())) {
 					throw new RegelVerstoss("Weg beinhaltet geschütztes Feld.");
 				}
 				

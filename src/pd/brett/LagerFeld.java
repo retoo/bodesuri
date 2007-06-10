@@ -14,4 +14,8 @@ public class LagerFeld extends SpielerFeld {
 	public LagerFeld(int nummer, Spieler spieler) {
 		super(nummer, spieler);
 	}
+	
+	public boolean istLager() {
+		return true;
+	}
 }

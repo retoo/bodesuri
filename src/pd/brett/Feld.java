@@ -86,6 +86,18 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 		return geschuetzt;
 	}
 	
+	public boolean istLager() {
+		return false;
+	}
+	
+	public boolean istBank() {
+		return false;
+	}
+	
+	public boolean istHimmel() {
+		return false;
+	}
+	
 	/**
 	 * @param geschuetzt Soll Feld geschuetzt sein?
 	 */
