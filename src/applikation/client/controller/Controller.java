@@ -114,6 +114,12 @@ public abstract class Controller {
 	public abstract void feldAbwaehlen(Feld abgewaehltesFeld);
 	
 	/**
+	 * Darstellung des gewählten Feldes.
+	 * @param gewaehltesFeld
+	 */
+	public abstract void feldWaehlen(Feld gewaehltesFeld);
+	
+	/**
 	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
 	 * noch mit einem clientspezifischen
 	 * {@link applikation.client.controller.Spieler Spieler} assoziiert um zu speichern wer

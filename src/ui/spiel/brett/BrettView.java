@@ -57,7 +57,8 @@ public class BrettView extends JPanel {
 			}
 		}
 		
-		add(new SpielBrett2d());
+		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
+		add(new SpielBrett2d( brettAdapter ));
 	}
 
 	public Feld2d getFeld2d(Feld feld) {

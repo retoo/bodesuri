@@ -23,7 +23,7 @@ public class StartWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		spielDaten.start = event.feld;
-
+		controller.feldWaehlen(event.feld);
 		return EndeWaehlen.class;
 	}
 

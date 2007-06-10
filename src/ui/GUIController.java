@@ -49,7 +49,11 @@ public class GUIController extends Controller {
 	}
 	
 	public void feldAbwaehlen(Feld feld) {
-		feldMouseAdapter.feldAbwaehlen(feld);
+		feldMouseAdapter.setzeFigurAusgewaehltStatus(true, feld);
+	}
+	
+	public void feldWaehlen(Feld feld) {
+		feldMouseAdapter.setzeFigurAusgewaehltStatus(false, feld);
 	}
 
 	public void kartenAuswahl(Boolean zustand) {

@@ -31,27 +31,8 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 *            MouseEvent der das angeklickte Feld enthält
 	 */
 	public void mouseClicked(MouseEvent e) {
-		if (aktiv) {
-			Feld feld = ((Feld2d) e.getComponent()).feld;
-			controller.feldGewaehlt(feld);
-			
-			// TODO: Das ganze soll auch funktionieren, wenn man nur auf das BrettView klickt
-			
-			setzeFigurAusgewaehlt(true, feld);
-		}
-	}
-	
-	/**
-	 * Die Figur, die im {@link Feld2d} steht, auf das erneut geklickt wurde, wird wieder
-	 * abgewählt.
-	 * 
-	 * @param feld
-	 * 				Erneut angeklicktes Feld
-	 */
-	public void feldAbwaehlen(Feld feld) {
-		if (aktiv) {
-			setzeFigurAusgewaehlt(false, feld);
-		}
+		Feld feld = ((Feld2d) e.getComponent()).feld;
+		controller.feldGewaehlt(feld);
 	}
 	
 	/**
@@ -62,13 +43,15 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 * @param feld
 	 * 				Angeklicktes Feld
 	 */
-	private void setzeFigurAusgewaehlt(boolean istAusgewaehlt, Feld feld) {
-		Figur2d figur = brettView.getFigur2d(feld.getFigur());
-		if (figur != null) {
-			if (istAusgewaehlt) {
-				figur.setzeAusgewaehlt();
-			} else {
-				figur.setzeNichtAusgewaehlt();
+	public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
+		if (aktiv) {
+			Figur2d figur = brettView.getFigur2d(feld.getFigur());
+			if (figur != null) {
+				if (istAusgewaehlt) {
+					figur.setzeAusgewaehlt();
+				} else {
+					figur.setzeNichtAusgewaehlt();
+				}
 			}
 		}
 	}
