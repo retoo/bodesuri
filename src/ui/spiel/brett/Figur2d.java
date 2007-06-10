@@ -30,7 +30,7 @@ public class Figur2d extends JLabel implements Observer {
 	 * @param ziel Zielfeld
 	 */
 	public void setzeAuf(Feld2d ziel) {
-		setBounds(ziel.getX(), ziel.getY(), Icons.FIGUR_BLAU.getIconWidth(),
+		setBounds(getPosX(ziel), getPosY(ziel), Icons.FIGUR_BLAU.getIconWidth(),
 				Icons.FIGUR_BLAU.getIconHeight());
 	}
 
@@ -49,5 +49,13 @@ public class Figur2d extends JLabel implements Observer {
 		Icon bildFigur = Icons.FIGUR_BLAU;
 		setIcon(bildFigur);
 		updateUI();
+	}
+	
+	public int getPosX(Feld2d ziel){
+		return ziel.getPointX() - (Icons.FIGUR_BLAU.getIconWidth() / 2);
+	}
+	
+	public int getPosY(Feld2d ziel){
+		return ziel.getPointY() - (Icons.FIGUR_BLAU.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight()/2));
 	}
 }

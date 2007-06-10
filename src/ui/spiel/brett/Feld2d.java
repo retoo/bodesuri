@@ -1,9 +1,7 @@
 package ui.spiel.brett;
 
 import java.awt.Point;
-
 import javax.swing.Icon;
-
 import pd.brett.Feld;
 
 /**
@@ -13,24 +11,34 @@ import pd.brett.Feld;
 public class Feld2d extends javax.swing.JLabel {
 	private Point position;
 	final Feld feld;
+	private Icon icon;
 
-	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter,
-	        Icon icon) {
+	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, Icon icon) {
 		super(icon);
+		this.icon = icon;
 		this.position = p;
 		this.feld = feld;
 
-		setBounds((int) p.getX(), (int) p.getY(), icon.getIconWidth(),
-		          icon.getIconHeight());
+		setBounds(getPosX(), getPosY(), icon.getIconWidth(), icon.getIconHeight());
 		addMouseListener(mouseAdapter);
 	}
 
-	public int getX() {
-		return (int) position.getX();
+	public int getPointX() {
+		return (int) this.position.getX();
 	}
 
-	public int getY() {
-		return (int) position.getY();
+	public int getPointY() {
+		return (int) this.position.getY();
+	}
+
+	public int getPosX() {
+		int pos = (int) position.getX() - (this.icon.getIconWidth() / 2);
+		return pos;
+	}
+
+	public int getPosY() {
+		int pos = (int) position.getY() - (this.icon.getIconHeight() / 2);
+		return pos;
 	}
 
 	public Feld getFeld() {
