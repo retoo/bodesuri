@@ -20,9 +20,6 @@ public class BrettView extends JPanel {
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
 
 	public BrettView(GUIController controller) {
-		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
-		// setBackground(new Color(0, 150, 0));
-
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
