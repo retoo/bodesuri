@@ -34,7 +34,7 @@ public class Server {
 	 * Erstellt einen neuen Server.
 	 *
 	 * @param queue EventQueue in welche die eingehenden {@link NetzwerkEvent} gelegt werden
-	 * @param sk Serialisierungskotext
+	 * @param sk Serialisierungskontext
 	 * @throws IOException Bei Problemen mit dem Socket wird eine IOExpceiton geworfen
 	 */
 	public Server(EventQueue queue, SerialisierungsKontext sk) throws IOException {
