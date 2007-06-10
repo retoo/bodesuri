@@ -157,15 +157,10 @@ public abstract class Controller {
 	 * im definitven Spiel drin ist...
 	 */
 	public void aufgeben() {
-		for (Karte karte : spielerIch.getKarten()) {
-			if (karte.getRegel() == null) {
-				continue;
-			}
-			if (karte.getRegel().kannZiehen(spielerIch)) {
-				zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
-				                   "da es noch möglich ist zu ziehen.");
-				return;
-			}
+		if (spielerIch.kannZiehen()) {
+			zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
+                               "da es noch möglich ist zu ziehen.");
+			return;
 		}
 		kartenAuswahl(false);
 		AufgegebenEvent age = new AufgegebenEvent();

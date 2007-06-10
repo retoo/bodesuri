@@ -86,4 +86,16 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public ObservableList<Karte> getKarten() {
 		return karten;
 	}
+	
+	/**
+	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
+	 */
+	public boolean kannZiehen() {
+		for (Karte karte : getKarten()) {
+			if (karte.getRegel() != null && karte.getRegel().kannZiehen(this)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
