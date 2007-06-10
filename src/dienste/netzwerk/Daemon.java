@@ -6,12 +6,10 @@ import java.net.Socket;
 
 import dienste.eventqueue.EventQueue;
 
-
-
 /**
  * Netzwerkdämon der neue Netzwerk-Verbindungen akzeptiert und diese den
  * dazugehörigen Server meldet.
- * 
+ *
  */
 public class Daemon implements Runnable {
 	private BriefKastenInterface briefkasten;
@@ -20,11 +18,16 @@ public class Daemon implements Runnable {
 
 	/**
 	 * Erstellt einen neuen Dämon.
-	 * 
-	 * @param port TCP-Port auf welchem gelauscht werden soll
-	 * @param briefkasten Briefkasten in welchen Nachrichten der Verbindungen abgelegt werden soll
-	 * @param queue Queue über welche die neue Verbindung angekündet wird 
-	 * @throws IOException Bei Netzwerkproblemen
+	 *
+	 * @param port
+	 *            TCP-Port auf welchem gelauscht werden soll
+	 * @param briefkasten
+	 *            Briefkasten in welchen Nachrichten der Verbindungen abgelegt
+	 *            werden soll
+	 * @param queue
+	 *            Queue über welche die neue Verbindung angekündet wird
+	 * @throws IOException
+	 *             Bei Netzwerkproblemen
 	 */
 	public Daemon(int port, BriefKastenInterface briefkasten, EventQueue queue)
 	        throws IOException {
@@ -33,7 +36,9 @@ public class Daemon implements Runnable {
 		this.queue = queue;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see java.lang.Runnable#run()
 	 */
 	public void run() {
@@ -44,11 +49,17 @@ public class Daemon implements Runnable {
 
 				queue.enqueue(new NeueVerbindung(client));
 			}
-		} catch (IOException e) {
-			/* FIXME: nicer */
-			System.out.println("IOException im Daemon");
-			e.printStackTrace();
-			System.exit(99);
+		} catch (Exception e) {
+			try {
+				/* Fehler dem HauptThread melden und abbrechen */
+				queue.enqueue(new SchwererDaemonFehler(e));
+			} catch (Exception e_nested) {
+				/* sogar das Fehler-Melden geht nicht mehr */
+				System.out.println("Doppel-Fehler");
+				e.printStackTrace();
+				e_nested.printStackTrace();
+				System.exit(99);
+			}
 		}
 	}
 }
