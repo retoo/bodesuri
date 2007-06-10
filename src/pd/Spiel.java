@@ -15,27 +15,27 @@ public class Spiel {
 	private static final int ANZAHL_SPIELER = 4;
 	
 	private Brett brett;
-	private Vector<Spieler> spieler = new Vector<Spieler>();
-	private Codierer codierer = new Codierer();
+	private Vector<Spieler> spieler;
+	private Codierer codierer;
 	private int beigetreteneSpieler = 0;
 	private KartenGeber kartenGeber;
-	
-	/**
-	 * Aktuelles Spiel. Wird für {@link Codierer} benötigt.
-	 */
-	public static Spiel aktuelles;
 	
 	/**
 	 * Erstellt ein Spiel. Das Brett wird erstellt und die Spieler. Später
 	 * werden den Spielern noch Namen gegeben, dann kann das Spiel beginnen!
 	 */
 	public Spiel() {
-		Spiel.aktuelles = this;
-		kartenGeber = new KartenGeber();
+		codierer = new Codierer();
+		SpielThreads.registriere(Thread.currentThread(), this);
+		
+		spieler = new Vector<Spieler>();
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
 			Spieler sp = new Spieler(i, this);
 			spieler.add(sp);
 		}
+		
+		kartenGeber = new KartenGeber();
+		
 		brett = new Brett(this);
 	}
 	

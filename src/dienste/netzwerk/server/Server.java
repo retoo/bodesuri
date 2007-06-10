@@ -8,6 +8,7 @@ import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.Daemon;
 import dienste.netzwerk.NetzwerkEvent;
+import dienste.serialisierung.SerialisierungsKontext;
 
 /**
  * Server welcher die Kommunikation mit mehreren Clients ermöglicht. Beim Start
@@ -35,11 +36,11 @@ public class Server {
 	 * @param queue EventQueue in welche die eingehenden {@link NetzwerkEvent} gelegt werden
 	 * @throws IOException Bei Problemen mit dem Socket wird eine IOExpceiton geworfen
 	 */
-	public Server(EventQueue queue) throws IOException {
+	public Server(EventQueue queue, SerialisierungsKontext sk) throws IOException {
 		this.queue = queue;
 		serverBriefkasten = new BriefkastenAdapter(queue);
 
-		daemon = new Daemon(PORT, serverBriefkasten, queue);
+		daemon = new Daemon(PORT, serverBriefkasten, queue, sk);
 
 		Thread t = new Thread(daemon);
 		t.start();

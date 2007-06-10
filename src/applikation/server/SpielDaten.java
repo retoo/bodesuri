@@ -1,10 +1,12 @@
 package applikation.server;
 
 import pd.Spiel;
+import pd.SpielThreads;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.server.Server;
+import dienste.serialisierung.SerialisierungsKontext;
 
-public class SpielDaten{
+public class SpielDaten implements SerialisierungsKontext {
 	/**
 	 * Server
 	 */
@@ -19,4 +21,8 @@ public class SpielDaten{
 	public Spielerschaft spielerschaft;
 
 	public Spiel spiel;
+	
+	public void registriere(Thread thread) {
+		SpielThreads.registriere(thread, spiel);
+	}
 }

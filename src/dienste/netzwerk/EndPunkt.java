@@ -6,6 +6,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+import dienste.serialisierung.SerialisierungsKontext;
+
 /**
  * Dient dem Server und dem Client zur Kommunikation mit dem jewiligen
  * Kommunikationspartner.
@@ -16,6 +18,7 @@ public class EndPunkt {
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
+	private SerialisierungsKontext serialisierungsKontext;
 
 	/**
 	 * Startet die Kommunkation mit dem übergebenen Socket. Dieser Konstrutkur
@@ -30,9 +33,11 @@ public class EndPunkt {
 	 *            Briefkasten in welchem die Nachrichten abgelegt werden können
 	 * @throws IOException
 	 */
-	public EndPunkt(Socket socket, BriefKastenInterface briefkasten)
+	public EndPunkt(Socket socket, BriefKastenInterface briefkasten,
+	                SerialisierungsKontext sk)
 	        throws IOException {
 		this.socket = socket;
+		this.serialisierungsKontext = sk;
 
 		startVerhandlung(briefkasten);
 	}
@@ -52,10 +57,12 @@ public class EndPunkt {
 	 * @throws UnknownHostException
 	 * @throws IOException
 	 */
-	public EndPunkt(String hostname, int port, BriefKastenInterface briefkasten)
+	public EndPunkt(String hostname, int port, BriefKastenInterface briefkasten,
+	                SerialisierungsKontext sk)
 	        throws UnknownHostException, IOException {
 		System.out.println("Verbinde zu " + hostname + ":" + port);
 
+		serialisierungsKontext = sk;
 		socket = new Socket(hostname, port);
 
 		startVerhandlung(briefkasten);
@@ -73,6 +80,7 @@ public class EndPunkt {
 		 */
 		empfaenger = new Empfaenger(this, socket, briefkasten);
 		empfaengerThread = new Thread(empfaenger);
+		serialisierungsKontext.registriere(empfaengerThread);
 		empfaengerThread.start();
 	}
 

@@ -12,6 +12,7 @@ import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
+import dienste.serialisierung.SerialisierungsKontext;
 
 public class ServerTest extends TestCase {
 	public void testServer() {
@@ -25,13 +26,20 @@ public class ServerTest extends TestCase {
 		automat.step();
 
 		assertIstInZustand(automat, EmpfangeSpieler.class);
+		
+		SerialisierungsKontext kontext = new SerialisierungsKontext() {
+			public void registriere(Thread thread) {
+				// Ich passe.
+			}
+		};
 
 		for (int i = 0; i < 4; i++) {
 			EventQueue eventQueue = new EventQueue();
 			EndPunkt client;
 			try {
 				client = new EndPunkt("localhost", 7788,
-				                      new BriefkastenAdapter(eventQueue));
+				                      new BriefkastenAdapter(eventQueue),
+				                      kontext);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}

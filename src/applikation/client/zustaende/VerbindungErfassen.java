@@ -20,7 +20,7 @@ public class VerbindungErfassen extends ClientZustand {
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(spielDaten.queue);
 
-			spielDaten.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten);
+			spielDaten.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten, spielDaten);
 			spielDaten.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			controller.setSpielerName( ve.spielerName );
 		} catch (UnknownHostException e) {

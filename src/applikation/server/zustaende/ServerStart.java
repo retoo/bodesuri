@@ -15,15 +15,15 @@ public class ServerStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
 		System.out.println("Initialisiere Server");
 
+		spielDaten.spiel = new Spiel();
+
 		try {
-			spielDaten.server = new Server(spielDaten.queue);
+			spielDaten.server = new Server(spielDaten.queue, spielDaten);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
 
 		spielDaten.spielerschaft = new Spielerschaft();
-
-		spielDaten.spiel = new Spiel();
 
 		return EmpfangeSpieler.class;
 	}

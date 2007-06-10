@@ -5,6 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import dienste.eventqueue.EventQueue;
+import dienste.serialisierung.SerialisierungsKontext;
 
 /**
  * Netzwerkdämon der neue Netzwerk-Verbindungen akzeptiert und diese den
@@ -15,6 +16,7 @@ public class Daemon implements Runnable {
 	private BriefKastenInterface briefkasten;
 	private ServerSocket serverSock;
 	private EventQueue queue;
+	private SerialisierungsKontext serialisierungsKontext;
 
 	/**
 	 * Erstellt einen neuen Dämon.
@@ -29,11 +31,13 @@ public class Daemon implements Runnable {
 	 * @throws IOException
 	 *             Bei Netzwerkproblemen
 	 */
-	public Daemon(int port, BriefKastenInterface briefkasten, EventQueue queue)
+	public Daemon(int port, BriefKastenInterface briefkasten, EventQueue queue,
+	              SerialisierungsKontext sk)
 	        throws IOException {
 		this.serverSock = new ServerSocket(port);
 		this.briefkasten = briefkasten;
 		this.queue = queue;
+		this.serialisierungsKontext = sk;
 	}
 
 	/*
@@ -45,7 +49,8 @@ public class Daemon implements Runnable {
 		try {
 			while (true) {
 				Socket clientSocket = serverSock.accept();
-				EndPunkt client = new EndPunkt(clientSocket, briefkasten);
+				EndPunkt client = new EndPunkt(clientSocket, briefkasten,
+				                               serialisierungsKontext);
 
 				queue.enqueue(new NeueVerbindung(client));
 			}
