@@ -8,7 +8,7 @@ import java.net.UnknownHostException;
 
 /**
  * Dient dem Server und dem Client zur Kommunikation mit dem jewiligen
- * Kommunikationspartner. 
+ * Kommunikationspartner.
  *
  */
 public class EndPunkt {
@@ -16,16 +16,14 @@ public class EndPunkt {
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
-	/* FIXME: das muss kein feld sein */
-	private BriefKastenInterface briefkasten;
 
 	/**
 	 * Startet die Kommunkation mit dem übergebenen Socket. Dieser Konstrutkur
 	 * wird vom Server verwendet.
-	 * 
+	 *
 	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
 	 * verwenden sollte
-	 * 
+	 *
 	 * @param socket
 	 *            zu verwendendender Socket
 	 * @param briefkasten
@@ -34,19 +32,18 @@ public class EndPunkt {
 	 */
 	public EndPunkt(Socket socket, BriefKastenInterface briefkasten)
 	        throws IOException {
-		this.briefkasten = briefkasten;
 		this.socket = socket;
 
-		startVerhandlung();
+		startVerhandlung(briefkasten);
 	}
 
 	/**
 	 * Startet die Kommunikation mit dem übergebenen System (Hostname & Port).
 	 * Dieser Konstrutkur wird vom Client verwendet.
-	 * 
+	 *
 	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
 	 * verwenden sollte
-	 * 
+	 *
 	 * @param hostname
 	 *            Hostname des zu verbindenen Systems
 	 * @param port
@@ -61,15 +58,12 @@ public class EndPunkt {
 
 		socket = new Socket(hostname, port);
 
-		/* Buffer für eingehende Nachrichten */
-		this.briefkasten = briefkasten;
-
-		startVerhandlung();
+		startVerhandlung(briefkasten);
 
 		System.out.println("Verbindungsaufbau erfolgreich");
 	}
 
-	private void startVerhandlung() throws IOException {
+	private void startVerhandlung(BriefKastenInterface briefkasten) throws IOException {
 		outputStream = new ObjectOutputStream(socket.getOutputStream());
 
 		/*
@@ -85,7 +79,7 @@ public class EndPunkt {
 	/**
 	 * Sende die angegebene Nachricht an den Host auf der anderen Seite des
 	 * Kommunikationkanals.
-	 * 
+	 *
 	 * @param nachricht
 	 *            zu übertragende Nachricht
 	 */
@@ -99,7 +93,7 @@ public class EndPunkt {
 
 	/**
 	 * Beendet die Verbindung
-	 * 
+	 *
 	 * @throws IOException
 	 */
 	public void ausschalten() throws IOException {
