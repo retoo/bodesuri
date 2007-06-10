@@ -4,11 +4,13 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import javax.swing.JPanel;
 
 import pd.brett.Feld;
 import pd.spieler.Figur;
+import pd.spieler.Spieler;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
 
@@ -33,7 +35,7 @@ public class BrettView extends JPanel {
 		}
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(this, controller);
-		
+
 		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 			if (feld.istBank()) {
@@ -45,7 +47,7 @@ public class BrettView extends JPanel {
 			}
 			felder.put(feld, feld2d);
 			this.add(feld2d);
-			
+
 			if (feld.istBesetzt()) {
 				Figur figur = feld.getFigur();
 				Figur2d figur2d = new Figur2d(figur, this);
@@ -54,6 +56,16 @@ public class BrettView extends JPanel {
 			}
 		}
 		
+		Vector<Point> spielerViewPos = new Vector<Point>();
+		spielerViewPos.add(new Point(460, 20));
+		spielerViewPos.add(new Point(60, 20));
+		spielerViewPos.add(new Point(60, 560));
+		spielerViewPos.add(new Point(460, 560));
+		
+		for (Spieler spieler : controller.getSpiel().getSpieler()) {
+			add(new SpielerView(controller, spieler.getName(), controller
+					.getSpieler(spieler).getFarbe(), spielerViewPos.get(spieler.getNummer())));
+		}
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
 		add(new SpielBrett2d( brettAdapter ));
 	}
@@ -61,7 +73,7 @@ public class BrettView extends JPanel {
 	public Feld2d getFeld2d(Feld feld) {
 		return felder.get(feld);
 	}
-	
+
 	public Figur2d getFigur2d(Figur figur) {
 		return figuren.get(figur);
 	}
