@@ -133,12 +133,12 @@ public class VorwaertsRegel extends Regel {
 			Feld start = figur.getFeld();
 			
 			Feld ziel = getZiel(start, schritte, false);
-			if (istZugMoeglich(spieler, start, ziel)) {
+			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
 				return true;
 			}
 			
 			ziel = getZiel(start, schritte, true);
-			if (istZugMoeglich(spieler, start, ziel)) {
+			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
 				return true;
 			}
 		}
@@ -163,6 +163,9 @@ public class VorwaertsRegel extends Regel {
 				feld = ((BankFeld) feld).getHimmel();
 			} else {
 				feld = feld.getNaechstes();
+			}
+			if (feld == null) {
+				return null;
 			}
 		}
 		return feld;

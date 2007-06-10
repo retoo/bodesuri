@@ -52,6 +52,10 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld start = figur.getFeld();
 			
+			if (start.istLager() || start.istHimmel()) {
+				continue;
+			}
+			
 			Feld ziel = getZiel(start, schritte);
 			if (istZugMoeglich(spieler, start, ziel)) {
 				return true;

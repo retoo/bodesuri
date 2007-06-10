@@ -24,7 +24,7 @@ public class SteuerungsView extends JPanel {
 
 		JLabel spielZustand = new JLabel("Zustand");
 		JLabel spielAktion = new JLabel(" XXX");
-		JButton aussetzen = new JButton("Aussetzen");
+		JButton aussetzen = new JButton("Aufgeben");
 		aussetzen.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
             	SteuerungsView.this.controller.aufgeben();
