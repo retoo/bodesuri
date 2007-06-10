@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import pd.Spiel;
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
 
 /**
@@ -74,7 +75,9 @@ public class Brett {
 	    Vector<LagerFeld> lager = new Vector<LagerFeld>();
 	    for (int i = 0; i < 4; ++i) {
 	    	LagerFeld lf = new LagerFeld(feldNummer++, sp);
-	    	lf.setFigur(sp.getFiguren().get(i));
+	    	Figur figur = sp.getFiguren().get(i);
+	    	lf.setFigur(figur);
+	    	figur.versetzeAuf(lf);
 	    	lf.setGeschuetzt(true);
 	    	lf.setNaechstes(bf);
 	    	lager.add(lf);

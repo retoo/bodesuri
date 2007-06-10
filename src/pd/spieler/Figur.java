@@ -10,6 +10,7 @@ import pd.brett.Feld;
  */
 public class Figur extends Observable {
 	private Spieler spieler;
+	private Feld feld;
 
 	/**
 	 * @param spieler Spieler, dem die Figur gehört
@@ -24,14 +25,19 @@ public class Figur extends Observable {
 	public Spieler getSpieler() {
 		return spieler;
 	}
+	
+	public Feld getFeld() {
+		return feld;
+	}
 
 	/**
 	 * Figur benachrichtigen, dass sie auf ein neues Feld bewegt wurde.
 	 * 
 	 * @param ziel Feld, auf dem sie neu steht
 	 */
-	public void wurdeBewegt(Feld ziel) {
+	public void versetzeAuf(Feld ziel) {
+		this.feld = ziel;
 		setChanged();
-		notifyObservers(ziel);
+		notifyObservers();
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Observer;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-import pd.brett.Feld;
+import pd.spieler.Figur;
 import ui.ressourcen.Icons;
 
 /**
@@ -39,8 +39,9 @@ public class Figur2d extends JLabel implements Observer {
      * @param arg Objekt
      */
 	public void update(Observable o, Object arg) {
-		if (arg instanceof Feld) {
-			setzeAuf(brett.getFeld2d((Feld)arg));
+		if (o instanceof Figur) {
+			Figur figur = (Figur) o;
+			setzeAuf(brett.getFeld2d(figur.getFeld()));
 			setzeNichtAusgewaehlt();
 		}
 	}

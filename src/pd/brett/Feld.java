@@ -142,7 +142,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 	public void setFigur(Figur figur) {
 		this.figur = figur;
 		if (figur != null) {
-			figur.wurdeBewegt(this);
+			figur.versetzeAuf(this);
 		}
 	}
 	
