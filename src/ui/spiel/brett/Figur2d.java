@@ -34,13 +34,6 @@ public class Figur2d extends JLabel implements Observer {
 				Icons.FIGUR_BLAU.getIconHeight());
 	}
 
-	/**
-     * OBSERVER-PATTERN: OBSERVER
-     * überschreibt <code>update()</code> Methode des Observer.
-     *
-     * @param o Zu observierendes Objekt
-     * @param arg Objekt
-     */
 	public void update(Observable o, Object arg) {
 		setzeAuf(brett.getFeld2d(figur.getFeld()));
 		setzeNichtAusgewaehlt();
