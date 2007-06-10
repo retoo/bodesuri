@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.JOptionPane;
 
+import pd.brett.Feld;
+
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.spiel.brett.FeldMouseAdapter;
@@ -44,6 +46,10 @@ public class GUIController extends Controller {
 
 	public void feldAuswahl(Boolean zustand) {
 		feldMouseAdapter.aktiv(zustand);
+	}
+	
+	public void feldAbwaehlen(Feld feld) {
+		feldMouseAdapter.feldAbwaehlen(feld);
 	}
 
 	public void kartenAuswahl(Boolean zustand) {

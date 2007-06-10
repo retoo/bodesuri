@@ -22,6 +22,7 @@ public class EndeWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		if (spielDaten.start == event.feld) {
+			controller.feldAbwaehlen(event.feld);
 			return StartWaehlen.class;
 		} else {
 			spielDaten.ziel = event.feld;

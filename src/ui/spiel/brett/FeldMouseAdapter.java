@@ -34,12 +34,26 @@ public class FeldMouseAdapter extends MouseAdapter {
 		if (aktiv) {
 			Feld feld = ((Feld2d) e.getComponent()).feld;
 			controller.feldGewaehlt(feld);
-
-			// TODO: Falls die Figur schon gewählt ist, wieder ent-wählen
-			// TODO: sollten solche Logik nicht im automaten passieren? (-reto)
-			Figur2d figur = brettView.getFigur2d(feld.getFigur());
-			if (figur != null) {
+			
+			// TODO: Das ganze soll auch funktionieren, wenn man nur auf das BrettView klickt
+			
+			setzeFigurAusgewaehlt(true, feld);
+		}
+	}
+	
+	public void feldAbwaehlen(Feld feld) {
+		if (aktiv) {
+			setzeFigurAusgewaehlt(false, feld);
+		}
+	}
+	
+	private void setzeFigurAusgewaehlt(boolean istAusgewaehlt, Feld feld) {
+		Figur2d figur = brettView.getFigur2d(feld.getFigur());
+		if (figur != null) {
+			if (istAusgewaehlt) {
 				figur.setzeAusgewaehlt();
+			} else {
+				figur.setzeNichtAusgewaehlt();
 			}
 		}
 	}

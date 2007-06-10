@@ -106,7 +106,9 @@ public abstract class Controller {
 		FeldGewaehltEvent fge = new FeldGewaehltEvent(gewaehltesFeld);
 		eventQueue.enqueue(fge);
 	}
-
+	
+	public abstract void feldAbwaehlen(Feld abgewaehltesFeld);
+	
 	/**
 	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
 	 * noch mit einem clientspezifischen
