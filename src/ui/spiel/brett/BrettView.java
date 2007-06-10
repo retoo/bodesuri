@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -17,9 +19,10 @@ import ui.ressourcen.BrettLader;
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
-public class BrettView extends JPanel {
+public class BrettView extends JPanel implements Observer{
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
+	private Vector<SpielerView> spielerViews;
 
 	public BrettView(GUIController controller) {
 		setLayout(null);
@@ -62,9 +65,13 @@ public class BrettView extends JPanel {
 		spielerViewPos.add(new Point(60, 560));
 		spielerViewPos.add(new Point(460, 560));
 		
+		spielerViews = new Vector<SpielerView>();
+		
 		for (Spieler spieler : controller.getSpiel().getSpieler()) {
-			add(new SpielerView(controller, spieler.getName(), controller
-					.getSpieler(spieler).getFarbe(), spielerViewPos.get(spieler.getNummer())));
+			SpielerView sv = new SpielerView(controller, spieler.getName(), controller
+					.getSpieler(spieler).getFarbe(), spielerViewPos.get(spieler.getNummer()));
+			spielerViews.add(sv);
+			add(sv);
 		}
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
 		add(new SpielBrett2d( brettAdapter ));
@@ -76,5 +83,15 @@ public class BrettView extends JPanel {
 
 	public Figur2d getFigur2d(Figur figur) {
 		return figuren.get(figur);
+	}
+
+	public void update(Observable arg0, Object arg) {
+		// TODO Beim Controller noch einfügen
+		for(SpielerView sv : spielerViews){
+			if (sv == (SpielerView)arg){
+				sv.setFont(new java.awt.Font("Tahoma", 1, 11));
+			}
+		}
+		
 	}
 }

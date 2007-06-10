@@ -21,6 +21,7 @@ public class SpielerView extends JPanel {
 
 		JLabel name = new JLabel(spielerName);
 		name.setForeground(new Color(farbe.getRed(), farbe.getGreen(), farbe.getBlue()));
+		name.setFont(new java.awt.Font("Tahoma", 0, 11));
 		this.add(name);
 		setBounds((int)point.getX(), (int)point.getY(), 150, 40);
 	}
