@@ -54,8 +54,7 @@ public class VorwaertsRegel extends Regel {
 			                        " und nicht " + wegLaenge + " Felder gehen.");
 		}
 
-		if (start.istBank() && ziel.istHimmel() &&
-		    start.istGeschuetzt()) {
+		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
 			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
 		}
 
@@ -99,7 +98,7 @@ public class VorwaertsRegel extends Regel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 
-		if (start.istHimmel() && !(ziel.istHimmel())) {
+		if (start.istHimmel() && !ziel.istHimmel()) {
 			throw new RegelVerstoss(
 				"Im Himmel kann nur noch vorwärts gefahren werden.");
 		} else if (start.istLager() && ziel.istLager()) {
