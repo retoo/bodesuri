@@ -18,9 +18,7 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	public void entry() {
-		// TODO: Wird erst ausgeführt wenn wir das das nächste Ereignis erhalten
-		// und den Automaten mit Step brauchen. -> Bis auf weiteres verschoben nach NichtAmZug
-		// controller.kartenAuswahl(true);
+		controller.kartenAuswahl(true);
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {

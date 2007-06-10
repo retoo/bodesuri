@@ -28,8 +28,6 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugAufforderung() {
 		spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue);
-		// TODO: Nur vorübergehend -> siehe KarteWaehlen.
-		controller.kartenAuswahl(true);
 		return AmZug.class;
 	}
 
