@@ -107,6 +107,10 @@ public abstract class Controller {
 		eventQueue.enqueue(fge);
 	}
 	
+	/**
+	 * Darstellen des abgewählten Feldes.
+	 * @param abgewaehltesFeld
+	 */
 	public abstract void feldAbwaehlen(Feld abgewaehltesFeld);
 	
 	/**

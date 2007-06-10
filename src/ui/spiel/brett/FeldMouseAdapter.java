@@ -41,12 +41,27 @@ public class FeldMouseAdapter extends MouseAdapter {
 		}
 	}
 	
+	/**
+	 * Die Figur, die im {@link Feld2d} steht, auf das erneut geklickt wurde, wird wieder
+	 * abgewählt.
+	 * 
+	 * @param feld
+	 * 				Erneut angeklicktes Feld
+	 */
 	public void feldAbwaehlen(Feld feld) {
 		if (aktiv) {
 			setzeFigurAusgewaehlt(false, feld);
 		}
 	}
 	
+	/**
+	 * Hilfsmethode welche eine Figur als ausgewählt oder nicht-ausgewählt darstellt.
+	 * 
+	 * @param istAusgewaehlt
+	 * 				Zur Unterscheidung, ob Figur ausgewählt oder nicht-ausgewählt erscheinen soll
+	 * @param feld
+	 * 				Angeklicktes Feld
+	 */
 	private void setzeFigurAusgewaehlt(boolean istAusgewaehlt, Feld feld) {
 		Figur2d figur = brettView.getFigur2d(feld.getFigur());
 		if (figur != null) {
