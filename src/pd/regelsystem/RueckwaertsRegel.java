@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.brett.Feld;
+import pd.spieler.Figur;
+import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 
 /**
@@ -44,5 +46,30 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		}
 		weg.add(feld);
 		return weg;
+	}
+
+	public boolean kannZiehen(Spieler spieler) {
+		for (Figur figur : spieler.getFiguren()) {
+			Feld start = figur.getFeld();
+			
+			Feld ziel = getZiel(start, schritte);
+			if (istZugMoeglich(spieler, start, ziel)) {
+				return true;
+			}
+			
+			ziel = getZiel(start, schritte);
+			if (istZugMoeglich(spieler, start, ziel)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private Feld getZiel(Feld start, int schritte) {
+		Feld feld = start;
+		for (int i = 0; i < schritte; ++i) {
+			feld = feld.getVorheriges();
+		}
+		return feld;
 	}
 }

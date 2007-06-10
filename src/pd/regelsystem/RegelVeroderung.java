@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
+import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
@@ -40,6 +41,15 @@ public class RegelVeroderung extends Regel {
 			s.append("\n - " + verstoss);
 		}
 		throw new RegelVerstoss(s.toString());
+	}
+	
+	public boolean kannZiehen(Spieler spieler) {
+		for (Regel regel : regeln) {
+			if (regel.kannZiehen(spieler)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public String getBeschreibung() {

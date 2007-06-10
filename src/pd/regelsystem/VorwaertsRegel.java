@@ -7,6 +7,7 @@ import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
 import pd.brett.SpielerFeld;
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
@@ -17,7 +18,7 @@ import pd.zugsystem.ZugEingabe;
  * Regel für normales Vorwärtsfahren, mit Heimschicken von Figur auf Zielfeld.
  */
 public class VorwaertsRegel extends Regel {
-	private int schritte;
+	protected int schritte;
 
 	/**
 	 * @param schritte Anzahl Schritte, die die Regel überprüfen soll
@@ -125,5 +126,45 @@ public class VorwaertsRegel extends Regel {
 		}
 		weg.add(feld);
 		return weg;
+	}
+
+	public boolean kannZiehen(Spieler spieler) {
+		for (Figur figur : spieler.getFiguren()) {
+			Feld start = figur.getFeld();
+			
+			Feld ziel = getZiel(start, schritte, false);
+			if (istZugMoeglich(spieler, start, ziel)) {
+				return true;
+			}
+			
+			ziel = getZiel(start, schritte, true);
+			if (istZugMoeglich(spieler, start, ziel)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
+		try {
+			Bewegung b = new Bewegung(start, ziel);
+			ZugEingabe ze = new ZugEingabe(spieler, null, b);
+			validiere(ze);
+			return true;
+		} catch (RegelVerstoss rv) {
+			return false;
+		}
+	}
+
+	private Feld getZiel(Feld start, int schritte, boolean mitHimmel) {
+		Feld feld = start;
+		for (int i = 0; i < schritte; ++i) {
+			if (mitHimmel && feld instanceof BankFeld) {
+				feld = ((BankFeld) feld).getHimmel();
+			} else {
+				feld = feld.getNaechstes();
+			}
+		}
+		return feld;
 	}
 }

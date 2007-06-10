@@ -1,6 +1,7 @@
 package pd.regelsystem;
 
 import pd.brett.Feld;
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.TauschAktion;
 import pd.zugsystem.Zug;
@@ -45,5 +46,23 @@ public class TauschRegel extends Regel {
 		Zug zug = new Zug();
 		zug.fuegeHinzu(new TauschAktion(start, ziel));
 		return zug;
+	}
+
+	public boolean kannZiehen(Spieler spieler) {
+		for (Figur figur : spieler.getFiguren()) {
+			if (!figur.getFeld().istGeschuetzt()) {
+				for (Spieler spieler2 : spieler.getSpiel().getSpieler()) {
+					if (spieler == spieler2) {
+						continue;
+					}
+					for (Figur figur2 : spieler2.getFiguren()) {
+						if (!figur2.getFeld().istGeschuetzt()) {
+							return true;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 }

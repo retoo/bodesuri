@@ -5,6 +5,7 @@ import java.util.List;
 
 import pd.brett.Feld;
 import pd.spieler.Figur;
+import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
@@ -71,5 +72,10 @@ public class SiebnerRegel extends VorwaertsRegel {
 		}
 		
 		return zug;
+	}
+	
+	// TODO: SiebnerRegel.kannZiehen implementieren (Kombinatorik).
+	public boolean kannZiehen(Spieler spieler) {
+		return false;
 	}
 }

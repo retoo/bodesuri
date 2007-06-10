@@ -1,8 +1,10 @@
 package pd.regelsystem;
 
 import pd.brett.BankFeld;
+import pd.brett.Brett;
 import pd.brett.Feld;
 import pd.brett.LagerFeld;
+import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Zug;
@@ -60,5 +62,17 @@ public class StartRegel extends Regel {
 		zug.fuegeHinzu(new Aktion(start, ziel));
 		
 		return zug;
+	}
+
+	public boolean kannZiehen(Spieler spieler) {
+		Brett brett = spieler.getSpiel().getBrett();
+		for (Figur figur : spieler.getFiguren()) {
+			if (figur.getFeld().istLager()) {
+				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 }
