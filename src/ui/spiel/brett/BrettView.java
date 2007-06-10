@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import pd.brett.BankFeld;
 import pd.brett.Feld;
+import pd.spieler.Figur;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
 
@@ -17,6 +18,7 @@ import ui.ressourcen.BrettLader;
  */
 public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
+	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
 
 	public BrettView(GUIController controller) {
 		// Nur vorübergehend, damit man sehen kann wie gross das Panel ist...
@@ -34,7 +36,8 @@ public class BrettView extends JPanel {
 			throw new RuntimeException(e);
 		}
 
-		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(controller);
+		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(this, controller);
+		
 		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 			if (feld instanceof BankFeld) {
@@ -46,18 +49,23 @@ public class BrettView extends JPanel {
 			}
 			felder.put(feld, feld2d);
 			this.add(feld2d);
+			
 			if (feld.istBesetzt()) {
-				Figur2d figur2d = new Figur2d(feld2d, this);
+				Figur figur = feld.getFigur();
+				Figur2d figur2d = new Figur2d(figur, this);
 				this.setComponentZOrder(figur2d, 0);
-				feld.getFigur().addObserver(figur2d);
-				mouseAdapter.addFigur(feld2d, figur2d);
+				figuren.put(figur, figur2d);
 			}
 		}
+		
 		add(new SpielBrett2d());
-
 	}
 
 	public Feld2d getFeld2d(Feld feld) {
 		return felder.get(feld);
+	}
+	
+	public Figur2d getFigur2d(Figur figur) {
+		return figuren.get(figur);
 	}
 }
