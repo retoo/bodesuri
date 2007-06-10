@@ -28,11 +28,11 @@ public class ClientZugZustand extends Zustand {
     }
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		return keinUebergang();
+		return ignoriereEvent("karteGewaehlt");
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		return keinUebergang();
+		return ignoriereEvent("feldGewaehlt");
 	}
 
 	public void setController(Controller controller) {
