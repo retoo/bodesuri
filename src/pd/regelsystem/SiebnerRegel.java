@@ -41,9 +41,10 @@ public class SiebnerRegel extends VorwaertsRegel {
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			for (Feld feld : getWeg(bewegung)) {
 				Figur figur = figuren.get(feld);
+				boolean hatFigur = (figur != null);
 				
 				if (feld == bewegung.start) {
-					if (figur == null) {
+					if (!hatFigur) {
 						throw new RegelVerstoss("Startfeld hat keine Figur " +
 						                        "zum Ziehen.");
 					} else if (figur.getSpieler() != zugEingabe.getSpieler()) {
@@ -52,12 +53,11 @@ public class SiebnerRegel extends VorwaertsRegel {
 					continue;
 				}
 
-				if (feld.istGeschuetzt() ||
-				    (figur != null && feld.istHimmel())) {
+				if (feld.istGeschuetzt() || (hatFigur && feld.istHimmel())) {
 					throw new RegelVerstoss("Weg beinhaltet geschütztes Feld.");
 				}
 				
-				if (figur != null) {
+				if (hatFigur) {
 					zug.fuegeHinzu(heimschickAktion(feld, figur.getSpieler()));
 					figuren.put(feld, null);
 				}
