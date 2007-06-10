@@ -15,15 +15,15 @@ import dienste.serialisierung.SerialisierungsKontext;
  * wird ein Socket an den TCP Port 7788 gebunden welcher eingehende Verbindungen
  * akzeptiert. Eingehende Nachrichten könnnen über eine zu übergebende Queue
  * empfangne werden.
- * 
- * Neue Verbindungen werden über 
- * 
+ *
+ * Neue Verbindungen werden über
+ *
  */
 public class Server {
 	private static final int PORT = 7788;
 	private BriefKastenInterface serverBriefkasten;
 	private Daemon daemon;
-	
+
 	/**
 	 * Queue für eingehende Events
 	 */
@@ -32,8 +32,9 @@ public class Server {
 
 	/**
 	 * Erstellt einen neuen Server.
-	 * 
+	 *
 	 * @param queue EventQueue in welche die eingehenden {@link NetzwerkEvent} gelegt werden
+	 * @param sk Serialisierungskotext
 	 * @throws IOException Bei Problemen mit dem Socket wird eine IOExpceiton geworfen
 	 */
 	public Server(EventQueue queue, SerialisierungsKontext sk) throws IOException {

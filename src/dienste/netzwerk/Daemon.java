@@ -28,6 +28,7 @@ public class Daemon implements Runnable {
 	 *            werden soll
 	 * @param queue
 	 *            Queue über welche die neue Verbindung angekündet wird
+	 * @param sk Serialisierungskontext
 	 * @throws IOException
 	 *             Bei Netzwerkproblemen
 	 */

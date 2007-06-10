@@ -31,6 +31,7 @@ public class EndPunkt {
 	 *            zu verwendendender Socket
 	 * @param briefkasten
 	 *            Briefkasten in welchem die Nachrichten abgelegt werden können
+	 * @param sk Serialisierungskonext
 	 * @throws IOException
 	 */
 	public EndPunkt(Socket socket, BriefKastenInterface briefkasten,
@@ -53,7 +54,8 @@ public class EndPunkt {
 	 *            Hostname des zu verbindenen Systems
 	 * @param port
 	 *            Port des zu verbinden Systems
-	 * @param briefkasten
+	 * @param briefkasten Briefkasten in welchem die Nachrichten abgelegt werden können
+	 * @param sk Serialisierungskonext
 	 * @throws UnknownHostException
 	 * @throws IOException
 	 */
