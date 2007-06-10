@@ -150,6 +150,7 @@ public class Automat {
 	 */
 	private boolean stepAktiv(Event event) {
 		aktuellerZustand.exit();
+		System.out.println(this.toString() + ": " + aktuellerZustand + " " + event);
 		Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
 		naechsterZustand.entry();
 
@@ -167,6 +168,7 @@ public class Automat {
 		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 
 		zustand.exit();
+		System.out.println(this.toString() + ": " + zustand);
 		Zustand naechsterZustand = getZustand(zustand.handle());
 		naechsterZustand.entry();
 
