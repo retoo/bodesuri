@@ -21,7 +21,12 @@ public class SpielDaten implements SerialisierungsKontext {
 	public Spielerschaft spielerschaft;
 
 	public Spiel spiel;
-	
+	public int anzSpieler;
+
+	public SpielDaten(int anzSpieler) {
+		this.anzSpieler = anzSpieler;
+	}
+
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, spiel);
 	}

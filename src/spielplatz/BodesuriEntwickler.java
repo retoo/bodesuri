@@ -11,7 +11,7 @@ public class BodesuriEntwickler {
 	public static void main(String[] args) {
 		Thread server = new Thread(new Runnable() {
 			public void run() {
-				ServerAutomat server = new ServerAutomat();
+				ServerAutomat server = new ServerAutomat(2);
 
 				try {
 					server.run();
@@ -25,7 +25,7 @@ public class BodesuriEntwickler {
 
 		server.start();
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 2; i++) {
 			Thread client = new Thread(new Runnable() {
 				public void run() {
 					//EventQueue eventQueue = new EventQueue();

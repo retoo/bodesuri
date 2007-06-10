@@ -17,6 +17,7 @@ public class Spieler {
 	public Spieler partner;
 	private EndPunkt endpunkt;
 	public boolean hatGetauscht;
+	private KartenTausch tausch;
 
 	/**
 	 * Erstellt einen neune Spieler
@@ -41,8 +42,17 @@ public class Spieler {
 	}
 
 
-	public void sendeKartenTausch(KartenTausch tausch) {
-	    sende(tausch);
+	/**
+	 * Zu tauschende Kart
+	 * @param tausch Tausch-Nachricht
+	 */
+	public void getauschteKarte(KartenTausch tausch) {
+	    this.tausch = tausch;
+    }
+
+	public void sendeTauschKarte() {
+	   sende(tausch);
+	   tausch = null;
     }
 
 	public void sende(Nachricht nachricht) {

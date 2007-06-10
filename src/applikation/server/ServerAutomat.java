@@ -19,14 +19,21 @@ import dienste.eventqueue.EventQueue;
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class ServerAutomat extends Automat {
+	private static final int ANZ_SPIELER = 1;
 	private SpielDaten spielDaten;
+
+	public ServerAutomat() {
+		this(ANZ_SPIELER);
+	}
 
 	/**
 	 * Initialisiert den Server-Automaten
+	 *
+	 * @param anzSpieler Anzahl der Spieler
 	 */
-	public ServerAutomat() {
+	public ServerAutomat(int anzSpieler) {
 		EventQueue queue = new EventQueue();
-		spielDaten = new SpielDaten();
+		spielDaten = new SpielDaten(anzSpieler);
 
 		spielDaten.queue = queue;
 

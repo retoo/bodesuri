@@ -17,12 +17,15 @@ public class KartenTauschen extends ServerZustand {
 			throw new RuntimeException("Spieler " + spieler + "versucht ein zweites mal zu tauschen");
 
 		/* Transferiere Karte zum Partner */
-		spieler.partner.sendeKartenTausch(tausch);
+		spieler.partner.getauschteKarte(tausch);
 
 		spieler.hatGetauscht = true;
 
-
 		if (spielers.runde.isFertigGetauscht()) {
+			for (Spieler s : spielers.runde.spielers) {
+				s.sendeTauschKarte();
+			}
+
 			return StarteZug.class;
 		}
 

@@ -23,7 +23,7 @@ public class ServerStart extends ServerZustand implements PassiverZustand {
 			throw new RuntimeException(e);
 		}
 
-		spielDaten.spielerschaft = new Spielerschaft();
+		spielDaten.spielerschaft = new Spielerschaft(spielDaten.anzSpieler);
 
 		return EmpfangeSpieler.class;
 	}
