@@ -68,6 +68,9 @@ public class BrettView extends JPanel implements Observer{
 		spielerViews = new Vector<SpielerView>();
 		
 		for (Spieler spieler : controller.getSpiel().getSpieler()) {
+			//TODO: Besser machen!!! Nur ein schneller Fix damit das Spiel geht!
+			if (spieler.getName() == null)
+				continue;
 			SpielerView sv = new SpielerView(controller, spieler.getName(), controller
 					.getSpieler(spieler).getFarbe(), spielerViewPos.get(spieler.getNummer()));
 			spielerViews.add(sv);
@@ -89,6 +92,7 @@ public class BrettView extends JPanel implements Observer{
 		// TODO Beim Controller noch einfügen
 		for(SpielerView sv : spielerViews){
 			if (sv == (SpielerView)arg){
+				//TODO nötig?
 				sv.setFont(new java.awt.Font("Tahoma", 1, 11));
 			}
 		}
