@@ -39,6 +39,7 @@ public class AmZug extends ClientZustand {
 
 	Class<? extends Zustand> aufgegeben() {
 		spielDaten.endpunkt.sende(new Aufgabe());
+		controller.getSpielerIch().getKarten().clear();
 		return NichtAmZug.class;
 	}
 }

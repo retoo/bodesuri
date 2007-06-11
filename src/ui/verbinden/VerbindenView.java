@@ -58,6 +58,8 @@ public class VerbindenView extends JFrame {
 		});
 
 		add(ok);
+		
+		getRootPane().setDefaultButton(ok);
 
 		pack();
 	}
