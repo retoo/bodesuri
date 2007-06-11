@@ -149,7 +149,9 @@ public abstract class Controller {
 	 */
 	public void amZug(Spieler spieler) {
 		applikation.client.controller.Spieler neuerSpieler = spielers.get(spieler);
-		aktuellerSpieler.setAmZug(false);
+		if (aktuellerSpieler != null) {
+			aktuellerSpieler.setAmZug(false);	
+		}
 		neuerSpieler.setAmZug(true);
 		aktuellerSpieler = neuerSpieler;
 	}
