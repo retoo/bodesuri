@@ -36,7 +36,7 @@ public class GUIController extends Controller {
 
 	public void zeigeSpiel() {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, this.getSpielerName());
+		spielView = new BodesuriView(this, this.getSpielerIch().getName());
 		spielView.setVisible(true);
 	}
 

@@ -18,7 +18,7 @@ public class Lobby extends ClientZustand {
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht);
+		System.out.println("Nachricht von " + absender + ": " + nachricht.nachricht);
 		return this.getClass();
 	}
 	

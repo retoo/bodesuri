@@ -22,7 +22,7 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht);
+		System.out.println("Nachricht von " + absender + ": " + nachricht.nachricht);
 		return this.getClass();
 	}
 

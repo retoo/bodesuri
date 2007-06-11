@@ -22,7 +22,7 @@ public class SpielerView extends JPanel implements Observer {
 		spieler.addObserver(this);
 
 		JLabel name = new JLabel(spieler.getSpieler().getName());
-		// name.setForeground(new Color());
+		// name.setForeground(new Color()); spieler.getFarbe();
 		name.setFont(name.getFont().deriveFont(0)); // Fett
 		this.add(name);
 		setBounds((int) point.getX(), (int) point.getY(), 150, 40);
