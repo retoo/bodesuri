@@ -22,6 +22,7 @@ public class Bodesuri {
 			System.out.println("Client: Exception in run()");
 			System.exit(99);
 		}
+		System.exit(0);
 	}
 
 }

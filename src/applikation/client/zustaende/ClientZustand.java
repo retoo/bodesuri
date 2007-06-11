@@ -117,8 +117,6 @@ public class ClientZustand extends Zustand {
 		controller.zeigeFehlermeldung("Verbindung zu Server " + endpunkt +
 		                  " wurde unerwartet beendet. Client wird beendet.");
     	return EndZustand.class;
-
-    	/* FIXME GUI Wird nicht beeendet! */
     }
 
 
