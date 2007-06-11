@@ -84,7 +84,7 @@ public class AutomatenTest extends TestCase {
 			automat.run();
 		} catch (Exception e) {
 			fehlerAufgetreten = true;
-			assertEquals("Keine EventQuelle definiertt", e.getMessage());
+			assertEquals("Keine EventQuelle definiert", e.getMessage());
 		}
 
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);

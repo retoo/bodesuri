@@ -80,7 +80,7 @@ public class Automat {
 	}
 
 	public void init() {
-		pruefeAutomat();
+		pruefeAutomat(false);
 		start.entry();
 		isInit = true;
 	}
@@ -90,7 +90,7 @@ public class Automat {
 	 * {@link EndZustand} eintritt.
 	 */
 	public void run() {
-		pruefeAutomat();
+		pruefeAutomat(true);
 		isInit = true;
 
 		boolean isFertig = aktuellerZustand == endzustand;
@@ -216,15 +216,15 @@ public class Automat {
 	 *
 	 * Prüft den Automaten auf Fehler
 	 */
-	private void pruefeAutomat() {
+	private void pruefeAutomat(boolean hatQuelle) {
 		if (zustaende.size() <= 1)
 			throw new RuntimeException("Keine Zustände registriert");
 
 		if (start == null)
 			throw new RuntimeException("Kein Startzustand gesetzt");
 
-		if (eventQuelle == null)
-			throw new RuntimeException("Keine EventQuelle definiertt");
+		if (hatQuelle && eventQuelle == null)
+			throw new RuntimeException("Keine EventQuelle definiert");
 	}
 
 	/**
