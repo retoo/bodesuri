@@ -30,6 +30,6 @@ public class StartWaehlen extends ClientZugZustand {
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.karte = event.karte;
 
-		return StartWaehlen.class;
+		return this.getClass();
 	}
 }
