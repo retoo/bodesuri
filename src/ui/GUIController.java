@@ -24,7 +24,7 @@ public class GUIController extends Controller {
 	}
 
 	public void zeigeVerbinden() {
-		verbindenView = new VerbindenView(this, spielerName);
+		verbindenView = new VerbindenView(this, this.getSpielerName());
 		verbindenView.setVisible(true);
 	}
 
@@ -36,7 +36,7 @@ public class GUIController extends Controller {
 
 	public void zeigeSpiel() {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, spielerName);
+		spielView = new BodesuriView(this, this.getSpielerName());
 		spielView.setVisible(true);
 	}
 

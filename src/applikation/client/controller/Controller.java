@@ -24,11 +24,12 @@ public abstract class Controller {
 	protected EventQueue eventQueue;
 
 	// Spiel
-	protected Spiel spiel;
-	protected String spielerName;
-	protected Spieler spielerIch;
-	protected Map<Spieler, applikation.client.controller.Spieler> spielers = new HashMap<Spieler, applikation.client.controller.Spieler>();
-	protected applikation.client.controller.Spieler aktuellerSpieler;
+	private Spiel spiel;
+	private String spielerName;
+	private Spieler spielerIch;
+	private Map<Spieler, applikation.client.controller.Spieler> spielers =
+		new HashMap<Spieler, applikation.client.controller.Spieler>();
+	private applikation.client.controller.Spieler aktuellerSpieler;
 
 	public Controller(String spielerName) {
 		this.spielerName = spielerName;
