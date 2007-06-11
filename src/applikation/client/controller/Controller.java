@@ -137,7 +137,7 @@ public abstract class Controller {
 
 		//TODO: Festimmen der Farbe des Spielers.
 		//Kommt die vom Server? (Dann wären sie überall gleich)
-		spielers.put(neuerSpieler, new applikation.client.controller.Spieler(0,0,0));
+		spielers.put(neuerSpieler, new applikation.client.controller.Spieler());
 	}
 
 	/**

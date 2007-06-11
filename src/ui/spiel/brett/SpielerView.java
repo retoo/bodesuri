@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-import java.awt.Color;
 import java.awt.Point;
 
 import javax.swing.BoxLayout;
@@ -20,7 +19,7 @@ public class SpielerView extends JPanel {
 		setOpaque(false);
 
 		JLabel name = new JLabel(spielerName);
-		name.setForeground(new Color(farbe.getRed(), farbe.getGreen(), farbe.getBlue()));
+//		name.setForeground(new Color(farbe.getRed(), farbe.getGreen(), farbe.getBlue()));
 		name.setFont(new java.awt.Font("Tahoma", 0, 11));
 		this.add(name);
 		setBounds((int)point.getX(), (int)point.getY(), 150, 40);

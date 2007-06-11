@@ -6,9 +6,9 @@ public class Spieler extends Observable {
 	private Boolean amZug;
 	private SpielerFarbe farbe;
 
-	public Spieler(float rot, float gruen, float blau) {
+	public Spieler() {
 		this.amZug = false;
-		this.farbe = new SpielerFarbe(rot, gruen, blau);
+		this.farbe = SpielerFarbe.rot;
 	}
 
 	public Boolean getAmZug() {
