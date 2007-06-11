@@ -13,7 +13,7 @@ import pd.zugsystem.ZugEingabe;
 
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
-	    super(0); // Schritte nicht benötigt, da validiere() überschrieben
+	    super(7); // Für kannZiehen gebraucht.
 	    setBeschreibung("7 vorwärts, auf beliebige Figuren aufgeteilt");
     }
 
@@ -77,6 +77,6 @@ public class SiebnerRegel extends VorwaertsRegel {
 	
 	// TODO: SiebnerRegel.kannZiehen implementieren (Kombinatorik).
 	public boolean kannZiehen(Spieler spieler) {
-		return false;
+		return super.kannZiehen(spieler);
 	}
 }
