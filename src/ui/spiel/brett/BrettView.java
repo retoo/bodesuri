@@ -59,6 +59,7 @@ public class BrettView extends JPanel implements Observer{
 			}
 		}
 		
+		//TODO: Sollten diese Postionen nicht auch ins XML?
 		Vector<Point> spielerViewPos = new Vector<Point>();
 		spielerViewPos.add(new Point(460, 20));
 		spielerViewPos.add(new Point(60, 20));
