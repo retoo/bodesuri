@@ -5,10 +5,12 @@ import java.util.Observable;
 public class Spieler extends Observable {
 	private Boolean amZug;
 	private SpielerFarbe farbe;
+	private pd.spieler.Spieler spieler;
 
-	public Spieler() {
+	public Spieler(pd.spieler.Spieler spieler, SpielerFarbe farbe) {
+		this.farbe = farbe;
+		this.spieler = spieler;
 		this.amZug = false;
-		this.farbe = SpielerFarbe.rot;
 	}
 
 	public Boolean getAmZug() {
@@ -18,10 +20,14 @@ public class Spieler extends Observable {
 	public void setAmZug(Boolean amZug) {
 		this.amZug = amZug;
 		setChanged();
-		notify();
+		notifyObservers(amZug);
 	}
 
 	public SpielerFarbe getFarbe() {
     	return farbe;
+    }
+
+	public pd.spieler.Spieler getSpieler() {
+    	return spieler;
     }
 }

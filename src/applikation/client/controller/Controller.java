@@ -1,5 +1,6 @@
 package applikation.client.controller;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -136,9 +137,8 @@ public abstract class Controller {
 			spielerIch = neuerSpieler;
 		}
 
-		//TODO: Festimmen der Farbe des Spielers.
-		//Kommt die vom Server? (Dann wären sie überall gleich)
-		spielers.put(neuerSpieler, new applikation.client.controller.Spieler());
+		//TODO: Bestimmen der Farbe des Spielers (wird vom Server kommen).
+		spielers.put(neuerSpieler, new applikation.client.controller.Spieler(neuerSpieler, SpielerFarbe.rot));
 	}
 
 	/**
@@ -196,5 +196,9 @@ public abstract class Controller {
 	public void zielHover(Feld feld) {
 		HoverStartEvent hve = new HoverStartEvent(feld);
 		eventQueue.enqueue(hve);
+    }
+
+	public Collection<applikation.client.controller.Spieler> getSpielers() {
+    	return spielers.values();
     }
 }

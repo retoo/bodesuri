@@ -4,8 +4,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Vector;
 
 import javax.swing.JPanel;
@@ -15,17 +13,16 @@ import pd.brett.Feld;
 import pd.brett.HimmelFeld;
 import pd.brett.LagerFeld;
 import pd.spieler.Figur;
-import pd.spieler.Spieler;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
+import applikation.client.controller.Spieler;
 
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
-public class BrettView extends JPanel implements Observer{
+public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
-	private Vector<SpielerView> spielerViews;
 
 	public BrettView(GUIController controller) {
 		setLayout(null);
@@ -71,25 +68,19 @@ public class BrettView extends JPanel implements Observer{
 			}
 		}
 		
-		//TODO: Sollten diese Postionen nicht auch ins XML?
+		//TODO: Das muss ins XML!
 		Vector<Point> spielerViewPos = new Vector<Point>();
 		spielerViewPos.add(new Point(460, 20));
 		spielerViewPos.add(new Point(60, 20));
 		spielerViewPos.add(new Point(60, 560));
 		spielerViewPos.add(new Point(460, 560));
+		int i = 0;
 		
-		spielerViews = new Vector<SpielerView>();
-		
-		for (Spieler spieler : controller.getSpiel().getSpieler()) {
-			// Wenn es keine 4 Spieler gibt (Entwicklermodus), die leeren
-			// Spieler überspringen.
-			if (spieler.getName() == null)
-				continue;
-			SpielerView sv = new SpielerView(controller, spieler.getName(), controller
-					.getSpieler(spieler).getFarbe(), spielerViewPos.get(spieler.getNummer()));
-			spielerViews.add(sv);
-			add(sv);
+		for (Spieler spieler : controller.getSpielers()) {
+			add(new SpielerView(spieler, spielerViewPos.get(i)));
+			i++;
 		}
+		
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
 		add(new SpielBrett2d( brettAdapter ));
 	}
@@ -100,16 +91,5 @@ public class BrettView extends JPanel implements Observer{
 
 	public Figur2d getFigur2d(Figur figur) {
 		return figuren.get(figur);
-	}
-
-	public void update(Observable arg0, Object arg) {
-		// TODO Beim Controller noch einfügen
-		for(SpielerView sv : spielerViews){
-			if (sv == (SpielerView)arg){
-				//TODO nötig?
-				sv.setFont(new java.awt.Font("Tahoma", 1, 11));
-			}
-		}
-		
 	}
 }
