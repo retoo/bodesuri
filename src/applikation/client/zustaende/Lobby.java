@@ -2,7 +2,6 @@ package applikation.client.zustaende;
 
 import applikation.client.controller.Controller;
 import applikation.nachrichten.BeitrittsBestaetigung;
-import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
@@ -17,8 +16,8 @@ public class Lobby extends ClientZustand {
 		this.controller = controller;
 	}
 
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht.nachricht);
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, String nachricht) {
+		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}
 	

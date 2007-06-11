@@ -42,7 +42,7 @@ public class ClientZustand extends Zustand {
 			Nachricht nachricht = brief.nachricht;
 
 			if (nachricht instanceof ChatNachricht)
-				return chatNachricht(brief.absender, (ChatNachricht) nachricht);
+				return chatNachricht(brief.absender, ((ChatNachricht) nachricht).nachricht);
 			else if (nachricht instanceof SpielVollNachricht)
 				return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
 			else if (nachricht instanceof BeitrittsBestaetigung)
@@ -126,8 +126,8 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println(nachricht.nachricht);
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, String nachricht) {
+		System.out.println(nachricht);
 
 		return this.getClass();
 	}

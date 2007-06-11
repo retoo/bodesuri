@@ -3,9 +3,7 @@ package applikation.client.zugautomat.zustaende;
 import applikation.client.controller.Controller;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
-import applikation.nachrichten.ChatNachricht;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.EndPunkt;
 
 /**
  * Zustand wenn der Spieler eine Karte auswählen muss. Wenn der
@@ -19,11 +17,6 @@ public class KarteWaehlen extends ClientZugZustand {
 
 	public void entry() {
 		controller.kartenAuswahl(true);
-	}
-
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht.nachricht);
-		return this.getClass();
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

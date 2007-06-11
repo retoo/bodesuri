@@ -4,7 +4,6 @@ import pd.karten.Karte;
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
-import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
@@ -21,8 +20,8 @@ import dienste.netzwerk.EndPunkt;
  * </ul>
  */
 public class NichtAmZug extends ClientZustand {
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, ChatNachricht nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht.nachricht);
+	Class<? extends Zustand> chatNachricht(EndPunkt absender, String nachricht) {
+		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}
 
