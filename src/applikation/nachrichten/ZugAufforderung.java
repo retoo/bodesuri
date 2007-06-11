@@ -1,5 +1,6 @@
 package applikation.nachrichten;
 
+import pd.spieler.Spieler;
 import dienste.netzwerk.Nachricht;
 
 /**
@@ -7,4 +8,8 @@ import dienste.netzwerk.Nachricht;
  *
  */
 public class ZugAufforderung extends Nachricht {
+	public final Spieler spieler;
+	public ZugAufforderung(Spieler spieler) {
+		this.spieler = spieler;
+	}
 }

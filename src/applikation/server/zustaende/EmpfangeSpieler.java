@@ -16,7 +16,10 @@ public class EmpfangeSpieler extends ServerZustand {
 	                                        SpielBeitreten beitreten) {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
-		Spieler spieler = new Spieler(absender, beitreten.spielerName);
+
+		pd.spieler.Spieler neuerSpieler = spielDaten.spiel.fuegeHinzu(beitreten.spielerName);
+
+		Spieler spieler = new Spieler(absender, beitreten.spielerName, neuerSpieler);
 		spielers.add(spieler);
 
 		spielers.broadcast(new BeitrittsBestaetigung(spielers.getStringArray()));

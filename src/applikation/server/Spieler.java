@@ -2,7 +2,6 @@ package applikation.server;
 
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.KartenTausch;
-import applikation.nachrichten.ZugAufforderung;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
 
@@ -18,6 +17,7 @@ public class Spieler {
 	private EndPunkt endpunkt;
 	public boolean hatGetauscht;
 	private KartenTausch tausch;
+	public pd.spieler.Spieler spieler;
 
 	/**
 	 * Erstellt einen neune Spieler
@@ -26,21 +26,19 @@ public class Spieler {
 	 *            Endpunkt des Spielers
 	 * @param name
 	 *            Name des Spielers
+	 * @param spieler
+	 * 		      Spieler-Objekt aus der PD
 	 */
-	public Spieler(EndPunkt endpunkt, String name) {
+	public Spieler(EndPunkt endpunkt, String name, pd.spieler.Spieler spieler) {
 		this.name = name;
 		this.endpunkt = endpunkt;
 		this.hatGetauscht = false;
+		this.spieler = spieler;
 	}
 
 	public void sendeBeitrittsBestaetigung(Spielerschaft spielers) {
 		sende(new BeitrittsBestaetigung(spielers.getStringArray()));
 	}
-
-	public void sendeZugAuffoderung() {
-		sende(new ZugAufforderung());
-	}
-
 
 	/**
 	 * Zu tauschende Kart

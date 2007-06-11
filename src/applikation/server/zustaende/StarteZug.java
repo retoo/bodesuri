@@ -1,5 +1,6 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.ZugAufforderung;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
 import dienste.automat.PassiverZustand;
@@ -16,7 +17,10 @@ public class StarteZug extends ServerZustand implements PassiverZustand {
 		spielers.rotiereSpieler();
 		Spieler naechsterSpieler = spielers.getAktuellerSpieler();
 		spielers.broadcast("Nächster Spieler ist " + naechsterSpieler + ".");
-		naechsterSpieler.sendeZugAuffoderung();
+
+		ZugAufforderung aufforderung =new ZugAufforderung(naechsterSpieler.spieler);
+
+		spielers.broadcast(aufforderung);
 
 		return WarteAufZug.class;
 	}
