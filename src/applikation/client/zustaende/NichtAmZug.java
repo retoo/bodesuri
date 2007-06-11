@@ -27,12 +27,12 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
+		controller.amZug(zugAufforderung.spieler);
 		if (zugAufforderung.spieler == controller.getSpielerIch()) {
 			spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue);
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
-			System.out.println("Ich bin nicht am zug: " + zugAufforderung.spieler + " - " + controller.getSpielerIch());
 			return this.getClass();
 		}
 	}
