@@ -68,7 +68,8 @@ public class BrettView extends JPanel implements Observer{
 		spielerViews = new Vector<SpielerView>();
 		
 		for (Spieler spieler : controller.getSpiel().getSpieler()) {
-			//TODO: Besser machen!!! Nur ein schneller Fix damit das Spiel geht!
+			// Wenn es keine 4 Spieler gibt (Entwicklermodus), die leeren
+			// Spieler überspringen.
 			if (spieler.getName() == null)
 				continue;
 			SpielerView sv = new SpielerView(controller, spieler.getName(), controller
