@@ -32,6 +32,7 @@ public class Automat {
 	private Map<Class<? extends Zustand>, Zustand> zustaende;
 	private Zustand aktuellerZustand;
 	private final EndZustand endzustand;
+	private boolean isInit;
 
 	/**
 	 * Erstellt einen neuen Automaten
@@ -41,6 +42,8 @@ public class Automat {
 
 		endzustand = new EndZustand();
 		registriere(endzustand);
+
+		isInit = false;
 	}
 
 	/**
@@ -76,12 +79,19 @@ public class Automat {
 		eventQuelle = quelle;
 	}
 
+	public void init() {
+		pruefeAutomat();
+		start.entry();
+		isInit = true;
+	}
+
 	/**
 	 * Startet den Zustandsautomaten und führt ihn so lange bis ein
 	 * {@link EndZustand} eintritt.
 	 */
 	public void run() {
 		pruefeAutomat();
+		isInit = true;
 
 		boolean isFertig = aktuellerZustand == endzustand;
 		while (!isFertig) {
@@ -106,12 +116,16 @@ public class Automat {
 	 * @return true falls sich der Automat im Endzustand befindet
 	 */
 	public boolean step() {
+		if (!isInit)
+			throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
+
 		if (aktuellerZustand instanceof PassiverZustand) {
 			return stepPassiv();
 		} else if (aktuellerZustand instanceof EndZustand) {
 			return false;
 		} else {
 			Event event = eventQuelle.getEvent();
+			System.out.println(this + ": Event - " + event);
 			return stepAktiv(event);
 		}
 	}
@@ -125,6 +139,11 @@ public class Automat {
 	 * @return true falls sich der Automat im Endzustand befindet
 	 */
 	public boolean step(Event event) {
+		if (!isInit)
+			throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
+
+		System.out.println(this + ": Event - " + event);
+
 		if (aktuellerZustand instanceof PassiverZustand) {
 			throw new RuntimeException(
 			                           "step(event) in einem passiven Zustande aufgerufen."
@@ -150,11 +169,11 @@ public class Automat {
 	 */
 	private boolean stepAktiv(Event event) {
 		aktuellerZustand.exit();
-		System.out.println(this.toString() + ": " + aktuellerZustand + " " + event);
 		Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
 		naechsterZustand.entry();
 
 		aktuellerZustand = naechsterZustand;
+		System.out.println(this.toString() + ": " + aktuellerZustand);
 
 		return aktuellerZustand != endzustand;
 	}
@@ -168,11 +187,11 @@ public class Automat {
 		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 
 		zustand.exit();
-		System.out.println(this.toString() + ": " + zustand);
 		Zustand naechsterZustand = getZustand(zustand.handle());
 		naechsterZustand.entry();
 
 		aktuellerZustand = naechsterZustand;
+		System.out.println(this.toString() + ": " + aktuellerZustand);
 
 		return aktuellerZustand != endzustand;
 	}

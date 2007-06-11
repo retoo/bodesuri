@@ -17,8 +17,4 @@ public class ChatNachricht extends Nachricht {
 	public ChatNachricht(String nachricht) {
 		this.nachricht = nachricht;
 	}
-
-	public String toString() {
-		return nachricht;
-	}
 }

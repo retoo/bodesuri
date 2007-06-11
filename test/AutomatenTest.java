@@ -27,6 +27,7 @@ public class AutomatenTest extends TestCase {
 		output = new EventQueue();
 
 		automat = new TestAutomat(input, output);
+		automat.init();
 	}
 
 	public void testStop() {

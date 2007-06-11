@@ -28,6 +28,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugAufforderung() {
 		spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue);
+		spielDaten.zugAutomat.init();
 		return AmZug.class;
 	}
 
@@ -45,7 +46,7 @@ public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		controller.getSpielerIch().getKarten().clear();
 		for (Karte karte : rundenStart.neueKarten) {
-			controller.getSpielerIch().getKarten().add(karte);	
+			controller.getSpielerIch().getKarten().add(karte);
 		}
 		return StarteRunde.class;
 	}

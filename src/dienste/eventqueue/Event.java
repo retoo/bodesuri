@@ -8,10 +8,10 @@ public abstract class Event {
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		return getClass().toString();
+		return getClass().getSimpleName().toString();
 	}
 }
