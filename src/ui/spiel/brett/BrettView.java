@@ -10,7 +10,10 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import pd.brett.BankFeld;
 import pd.brett.Feld;
+import pd.brett.HimmelFeld;
+import pd.brett.LagerFeld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import ui.GUIController;
@@ -41,7 +44,16 @@ public class BrettView extends JPanel implements Observer{
 
 		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
 			Feld2d feld2d;
-			if (feld.istBank()) {
+			// TODO: Die unterscheidung der Felder funktioniert noch nicht richtig ...
+			if (feld instanceof LagerFeld){
+				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+						feld, mouseAdapter);
+			}
+			else if(feld instanceof HimmelFeld){
+				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+						feld, mouseAdapter);
+			}
+			else if (feld instanceof BankFeld) {
 				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			} else {

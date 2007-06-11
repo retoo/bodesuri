@@ -16,6 +16,11 @@ public class SpielView extends JPanel {
 		SpielBrettView spielBrettView = new SpielBrettView(controller);
 		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(controller);
 
+		// Filztextur wird hinzugefügt
+		// TODO: hm... Irgendwie überdeckt es das ganze Spiel ( am richtigen Ort
+		// einfügen )
+		//add(new FilzView());
+
 		// Layout zusammenstellen
 		add(spielBrettView, BorderLayout.CENTER);
 		add(kartenAuswahlView, BorderLayout.EAST);

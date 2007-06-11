@@ -52,10 +52,10 @@ public class Figur2d extends JLabel implements Observer {
 	}
 	
 	public int getPosX(Feld2d ziel){
-		return ziel.getPointX() - (Icons.FIGUR_BLAU.getIconWidth() / 2);
+		return ziel.getPointX() - (Icons.FIGUR_BLAU.getIconWidth() / 2) + 2;
 	}
 	
 	public int getPosY(Feld2d ziel){
-		return ziel.getPointY() - (Icons.FIGUR_BLAU.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight()/2));
+		return ziel.getPointY() - (Icons.FIGUR_BLAU.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight()/2)) + 8;
 	}
 }

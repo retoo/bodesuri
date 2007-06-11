@@ -16,27 +16,35 @@
 		</koordinaten>
 	</feld>
 	<feld nummer="1">
-		<koordinaten>
-			<x>530</x>
-			<y>130</y>
-		</koordinaten>
-	</feld>
-	<feld nummer="2">
-		<koordinaten>
-			<x>510</x>
-			<y>110</y>
-		</koordinaten>
-	</feld>
-	<feld nummer="3">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
 			<x>490</x>
 			<y>90</y>
 		</koordinaten>
 	</feld>
-	<feld nummer="4">
+	<feld nummer="2">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>470</x>
-			<y>70</y>
+			<x>530</x>
+			<y>90</y>
+		</koordinaten>
+	</feld>
+	<feld nummer="3">
+		<typ name="lager">
+		</typ>
+		<koordinaten>
+			<x>490</x>
+			<y>130</y>
+		</koordinaten>
+	</feld>
+	<feld nummer="4">
+		<typ name="lager">
+		</typ>
+		<koordinaten>
+			<x>530</x>
+			<y>130</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="5">
@@ -160,26 +168,34 @@
 		</koordinaten>
 	</feld>
 	<feld nummer="25">
+		<typ name="lager">
+		</typ>	
 		<koordinaten>
-			<x>130</x>
-			<y>70</y>
+			<x>70</x>
+			<y>90</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="26">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
 			<x>110</x>
 			<y>90</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="27">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>90</x>
-			<y>110</y>
+			<x>70</x>
+			<y>130</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="28">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>70</x>
+			<x>110</x>
 			<y>130</y>
 		</koordinaten>
 	</feld>
@@ -304,27 +320,35 @@
 		</koordinaten>
 	</feld>
 	<feld nummer="49">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
 			<x>70</x>
 			<y>470</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="50">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>90</x>
-			<y>490</y>
+			<x>110</x>
+			<y>470</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="51">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>110</x>
+			<x>70</x>
 			<y>510</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="52">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>130</x>
-			<y>530</y>
+			<x>110</x>
+			<y>510</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="53">
@@ -448,27 +472,35 @@
 		</koordinaten>
 	</feld>
 	<feld nummer="73">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
-			<x>470</x>
-			<y>530</y>
+			<x>490</x>
+			<y>470</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="74">
+		<typ name="lager">
+		</typ>
+		<koordinaten>
+			<x>530</x>
+			<y>470</y>
+		</koordinaten>
+	</feld>
+	<feld nummer="75">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
 			<x>490</x>
 			<y>510</y>
 		</koordinaten>
 	</feld>
-	<feld nummer="75">
-		<koordinaten>
-			<x>510</x>
-			<y>490</y>
-		</koordinaten>
-	</feld>
 	<feld nummer="76">
+		<typ name="lager">
+		</typ>
 		<koordinaten>
 			<x>530</x>
-			<y>470</y>
+			<y>510</y>
 		</koordinaten>
 	</feld>
 	<feld nummer="77">

@@ -19,7 +19,7 @@ import dienste.eventqueue.EventQueue;
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class ServerAutomat extends Automat {
-	private static final int ANZ_SPIELER = 1;
+	private static final int ANZ_SPIELER = 4;
 	private SpielDaten spielDaten;
 
 	public ServerAutomat() {
