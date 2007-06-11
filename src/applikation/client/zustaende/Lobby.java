@@ -1,6 +1,7 @@
 package applikation.client.zustaende;
 
 import applikation.client.controller.Controller;
+import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -20,6 +21,11 @@ public class Lobby extends ClientZustand {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}
+	
+    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+    	//TODO: Controller(Lobby) über neuen Spieler benachrichtigen.
+	    return this.getClass();
+    }
 
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
 		for (int i = 0; i < startNachricht.spieler.length; i++) {

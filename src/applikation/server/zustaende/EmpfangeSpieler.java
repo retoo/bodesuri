@@ -1,5 +1,6 @@
 package applikation.server.zustaende;
 
+import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
@@ -18,12 +19,7 @@ public class EmpfangeSpieler extends ServerZustand {
 		Spieler spieler = new Spieler(absender, beitreten.spielerName);
 		spielers.add(spieler);
 
-		spieler.sendeBeitrittsBestaetigung(spielers);
-
-		String msg = "Neuer Spieler " + spieler.name + ". Noch "
-		             + spielers.getAnzahlOffen() + " Spieler nötig.";
-
-		spielers.broadcast(msg);
+		spielers.broadcast(new BeitrittsBestaetigung(spielers.getStringArray()));
 
 		System.out.println("Neuer Spieler: " + spieler);
 
