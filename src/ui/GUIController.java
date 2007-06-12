@@ -2,6 +2,7 @@ package ui;
 
 import java.util.Map;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import pd.Spiel;
@@ -21,6 +22,7 @@ public class GUIController extends Controller {
 
 	private FeldMouseAdapter feldMouseAdapter;
 	private KarteMouseAdapter karteMouseAdapter;
+	private JLabel hinweisFeld;
 
 	public void zeigeVerbinden(String spielerName) {
 		verbindenView = new VerbindenView(this, spielerName);
@@ -42,18 +44,29 @@ public class GUIController extends Controller {
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
+	
+	public void zeigeHinweis(String hinweis) {
+		if (hinweisFeld != null) {
+			hinweisFeld.setText(hinweis);
+		}
+	}
 
-	//TODO Nicht mehr nötig.
 	public void aktiviereFeld(Boolean zustand) {
-		feldMouseAdapter.aktiv(zustand);
+		if (feldMouseAdapter != null) {
+			feldMouseAdapter.aktiv(zustand);
+		}
 	}
 	
 	public void zeigeFeldauswahl(Feld feld, boolean status) {
-		feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
+		if (feldMouseAdapter != null) {
+			feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
+		}
 	}
 
 	public void aktiviereKarte(Boolean zustand) {
-		karteMouseAdapter.aktiv(zustand);
+		if (karteMouseAdapter != null) {
+			karteMouseAdapter.aktiv(zustand);
+		}
 	}
 
 	/**
@@ -74,5 +87,9 @@ public class GUIController extends Controller {
 	 */
 	public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
 		this.karteMouseAdapter = karteMouseAdapter;
+	}
+	
+	public void registriereHinweisFeld(JLabel hinweisFeld){
+		this.hinweisFeld = hinweisFeld;
 	}
 }

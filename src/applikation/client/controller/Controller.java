@@ -45,11 +45,20 @@ public abstract class Controller {
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden
 	 * darstellen.
-	 *
+	 * 
 	 * @param fehlermeldung
-	 *            auszugebene Fehlermeldung
+	 *            anzuzeigende Fehlermeldung
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
+	
+	/**
+	 * Hinweise, die vom Automaten an den Controller gereicht werden darstellen
+	 * um dem Spieler zu führen.
+	 * 
+	 * @param hinweis
+	 *            anzuzeigender Hinweis
+	 */
+	public abstract void zeigeHinweis(String hinweis);
 	
 	/**
 	 * Darstellen des gewählten bzw. abgewählten Feldes.
