@@ -38,10 +38,10 @@ public class FeldMouseAdapter extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		// TODO: Prüfen, ob Figur auch vom eigenen Spieler ist
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-		Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
-		if (figur2d != null) {
+//		Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
+//		if (figur2d != null) {
 			controller.feldAuswaehlen(feld);
-		}
+//		}
 	}
 	
 	/**
