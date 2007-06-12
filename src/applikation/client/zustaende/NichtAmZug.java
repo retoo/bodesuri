@@ -27,19 +27,22 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
 		applikation.client.Spieler neuerSpieler = spielDaten.spielers.get(zugAufforderung.spieler);
-        if (spielDaten.aktuellerSpieler != null) {
-        	spielDaten.aktuellerSpieler.setAmZug(false);
-        }
-        neuerSpieler.setAmZug(true);
-        spielDaten.aktuellerSpieler = neuerSpieler;
-        
+		if (spielDaten.aktuellerSpieler != null) {
+			spielDaten.aktuellerSpieler.setAmZug(false);
+		}
+		neuerSpieler.setAmZug(true);
+		spielDaten.aktuellerSpieler = neuerSpieler;
+
 		if (zugAufforderung.spieler == spielDaten.spielerIch) {
-			controller.zeigeHinweis("Du bist am Zug.");
-			spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue, spielDaten.spielerIch);
+			spielDaten.zugAutomat = new ZugAutomat(controller,
+			                                       spielDaten.queue,
+			                                       spielDaten.spielerIch);
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
-			controller.zeigeHinweis("Spieler " + zugAufforderung.spieler + " ist am Zug.");
+			controller.zeigeHinweis("Spieler "
+			                        + zugAufforderung.spieler.getName()
+			                        + " ist am Zug.");
 			return this.getClass();
 		}
 	}

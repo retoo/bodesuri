@@ -89,7 +89,7 @@ public class BrettView extends JPanel {
 		
 		JLabel hinweis = new JLabel();
 		//TODO: Position muss auch ins XML!
-		hinweis.setBounds(200, 280, 300, 30);
+		hinweis.setBounds(200, 280, 400, 30);
 		controller.registriereHinweisFeld(hinweis);
 		add(hinweis);
 		
