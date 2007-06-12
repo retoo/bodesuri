@@ -1,4 +1,4 @@
-package dienste.automat;
+package dienste.automat.zustaende;
 
 /**
  * Exception die geworfen wird wenn der Zustandsautomat für einen bestimmten

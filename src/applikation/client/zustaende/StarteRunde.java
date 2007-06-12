@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class StarteRunde extends ClientZustand implements PassiverZustand {

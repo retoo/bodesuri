@@ -1,6 +1,6 @@
 package applikation.server.zustaende;
 
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class ZugAbschluss extends ServerZustand implements PassiverZustand {

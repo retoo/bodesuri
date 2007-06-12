@@ -1,8 +1,6 @@
 package dienste.automat.zustaende;
 
 import dienste.automat.KeinUebergangException;
-import dienste.automat.PassiverZustand;
-import dienste.automat.UnbekannterEventException;
 import dienste.eventqueue.Event;
 
 /**

@@ -2,7 +2,7 @@ package applikation.server.zustaende;
 
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.server.Spielerschaft;
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**

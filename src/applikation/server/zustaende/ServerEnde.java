@@ -1,7 +1,7 @@
 package applikation.server.zustaende;
 
-import dienste.automat.PassiverZustand;
 import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class ServerEnde extends ServerZustand implements PassiverZustand {

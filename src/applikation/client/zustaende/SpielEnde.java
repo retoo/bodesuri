@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
-import dienste.automat.PassiverZustand;
 import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class SpielEnde extends ClientZustand implements PassiverZustand {

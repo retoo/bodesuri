@@ -4,6 +4,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 
 import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
@@ -82,6 +83,7 @@ public class Automat {
 	public void init() {
 		pruefeAutomat(false);
 		start.entry();
+		/* TODO: nachdenken wann handle() (sofern passiv) vom startzustand ausgeführt wird */
 		isInit = true;
 	}
 
@@ -93,9 +95,9 @@ public class Automat {
 		pruefeAutomat(true);
 		isInit = true;
 
-		boolean isFertig = aktuellerZustand == endzustand;
-		while (!isFertig) {
-			isFertig = !step();
+		boolean isNichtFertig = (aktuellerZustand == endzustand);
+		while (isNichtFertig) {
+			isNichtFertig = step();
 		}
 	}
 
@@ -113,7 +115,7 @@ public class Automat {
 	 * @see PassiverZustand
 	 * @see EndZustand
 	 *
-	 * @return true falls sich der Automat im Endzustand befindet
+	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	public boolean step() {
 		if (!isInit)
@@ -165,7 +167,7 @@ public class Automat {
 	 *
 	 * @param event
 	 *            Zu verarbeitende event
-	 * @return t ob sich der Automat im Endzustand befindet
+	 * @return ob sich der Automat im Endzustand befindet
 	 */
 	private boolean stepAktiv(Event event) {
 		aktuellerZustand.exit();
@@ -181,7 +183,7 @@ public class Automat {
 	/**
 	 * Verarbeitet einen einzelnen Passiven Zustand
 	 *
-	 * @return true falls sich der Automat im Endzustand befindet
+	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	private boolean stepPassiv() {
 		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
@@ -199,14 +201,11 @@ public class Automat {
 	/**
 	 * Verarbeitet alle anstehenden passiven Zustnde
 	 *
-	 * @return true falls sich der Automat im Endzustand befindet
+	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	private boolean verarbeitePassiveZustaende() {
 		while (aktuellerZustand instanceof PassiverZustand) {
-			boolean res = stepPassiv();
-
-			if (!res)
-				return false;
+			stepPassiv();
 		}
 
 		return aktuellerZustand != endzustand;

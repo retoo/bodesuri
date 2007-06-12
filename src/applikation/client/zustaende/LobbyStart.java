@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
 import ui.lobby.LobbyView;
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**

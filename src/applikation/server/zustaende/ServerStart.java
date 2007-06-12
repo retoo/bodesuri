@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import pd.Spiel;
 import applikation.server.Spielerschaft;
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.server.Server;
 

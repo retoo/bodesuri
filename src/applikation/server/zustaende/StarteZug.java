@@ -3,7 +3,7 @@ package applikation.server.zustaende;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.server.Spieler;
 import applikation.server.Spielerschaft;
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class StarteZug extends ServerZustand implements PassiverZustand {

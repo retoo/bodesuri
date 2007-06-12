@@ -8,7 +8,7 @@ import pd.karten.KartenGeber;
 import applikation.nachrichten.RundenStart;
 import applikation.server.Runde;
 import applikation.server.Spieler;
-import dienste.automat.PassiverZustand;
+import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 public class StartRunde extends ServerZustand implements PassiverZustand {
