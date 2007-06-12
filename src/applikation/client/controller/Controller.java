@@ -28,6 +28,7 @@ public abstract class Controller {
 	private Spiel spiel;
 	private String spielerName;
 	private Spieler spielerIch;
+	//FIXME: HashMap ist nicht gut. Reihenfolge ist nicht garantiert.
 	private Map<Spieler, applikation.client.controller.Spieler> spielers =
 		new HashMap<Spieler, applikation.client.controller.Spieler>();
 	private applikation.client.controller.Spieler aktuellerSpieler;
@@ -190,10 +191,6 @@ public abstract class Controller {
 	public void setEventQueue(EventQueue queue) {
 		this.eventQueue = queue;
     }
-
-	public applikation.client.controller.Spieler getSpieler(Spieler spieler) {
-		return spielers.get(spieler);
-	}
 
 	public void zielHover(Feld feld) {
 		HoverStartEvent hve = new HoverStartEvent(feld);
