@@ -2,6 +2,7 @@ package applikation.client.zugautomat.zustaende;
 
 import applikation.client.controller.Controller;
 import applikation.client.zugautomat.SpielDaten;
+import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -17,6 +18,8 @@ public class ClientZugZustand extends Zustand {
 			return karteGewaehlt((KarteGewaehltEvent) event);
 		else if (event instanceof FeldGewaehltEvent)
 			return feldGewaehlt((FeldGewaehltEvent) event);
+		else if (event instanceof FeldAbgewaehltEvent)
+			return feldAbgewaehlt((FeldAbgewaehltEvent) event);
 		else if (event instanceof HoverStartEvent)
 			return hoverStart((HoverStartEvent) event);
 
@@ -33,6 +36,10 @@ public class ClientZugZustand extends Zustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return ignoriereEvent("feldGewaehlt");
+	}
+	
+	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
+		return ignoriereEvent("feldAbgewaehlt");
 	}
 
 	public void setController(Controller controller) {

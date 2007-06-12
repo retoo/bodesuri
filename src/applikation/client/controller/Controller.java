@@ -9,6 +9,7 @@ import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import applikation.events.AufgegebenEvent;
+import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -67,14 +68,14 @@ public abstract class Controller {
 	 *
 	 * @param aktiv
 	 */
-	public abstract void feldAuswahl(Boolean aktiv);
+	public abstract void aktiviereFeld(Boolean aktiv);
 
 	/**
 	 * Die Auswahl von Karten (de-)aktivieren.
 	 *
 	 * @param aktiv
 	 */
-	public abstract void kartenAuswahl(Boolean aktiv);
+	public abstract void aktiviereKarte(Boolean aktiv);
 
 	/**
 	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
@@ -96,7 +97,7 @@ public abstract class Controller {
 	 *
 	 * @param gewaehlteKarte
 	 */
-	public void karteGewaehlt(Karte gewaehlteKarte) {
+	public void karteAuswaehlen(Karte gewaehlteKarte) {
 		KarteGewaehltEvent kge = new KarteGewaehltEvent(gewaehlteKarte);
 		eventQueue.enqueue(kge);
 	}
@@ -106,22 +107,27 @@ public abstract class Controller {
 	 *
 	 * @param gewaehltesFeld
 	 */
-	public void feldGewaehlt(Feld gewaehltesFeld) {
+	public void feldAuswaehlen(Feld gewaehltesFeld) {
 		FeldGewaehltEvent fge = new FeldGewaehltEvent(gewaehltesFeld);
 		eventQueue.enqueue(fge);
 	}
+	
+	/**
+	 * Dem Automaten mitteilen, dass das ausgewählte Feld wieder abgewählt
+	 * werden soll.
+	 *
+	 */
+	public void feldAbwaehlen() {
+		FeldAbgewaehltEvent fage = new FeldAbgewaehltEvent();
+		eventQueue.enqueue(fage);
+	}
 
 	/**
-	 * Darstellen des abgewählten Feldes.
+	 * Darstellen des gewählten bzw. abgewählten Feldes.
 	 * @param abgewaehltesFeld
+	 * @param status
 	 */
-	public abstract void feldAbwaehlen(Feld abgewaehltesFeld);
-
-	/**
-	 * Darstellung des gewählten Feldes.
-	 * @param gewaehltesFeld
-	 */
-	public abstract void feldWaehlen(Feld gewaehltesFeld);
+	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
 	
 	/**
 	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
@@ -167,7 +173,7 @@ public abstract class Controller {
                                "da es noch möglich ist zu ziehen.");
 			return;
 		}
-		kartenAuswahl(false);
+		aktiviereKarte(false);
 		AufgegebenEvent age = new AufgegebenEvent();
 		eventQueue.enqueue(age);
 	}

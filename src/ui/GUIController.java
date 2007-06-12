@@ -3,7 +3,6 @@ package ui;
 import javax.swing.JOptionPane;
 
 import pd.brett.Feld;
-
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.spiel.brett.FeldMouseAdapter;
@@ -44,19 +43,15 @@ public class GUIController extends Controller {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
 
-	public void feldAuswahl(Boolean zustand) {
+	public void aktiviereFeld(Boolean zustand) {
 		feldMouseAdapter.aktiv(zustand);
 	}
 	
-	public void feldAbwaehlen(Feld feld) {
-		feldMouseAdapter.setzeFigurAusgewaehltStatus(true, feld);
-	}
-	
-	public void feldWaehlen(Feld feld) {
-		feldMouseAdapter.setzeFigurAusgewaehltStatus(false, feld);
+	public void zeigeFeldauswahl(Feld feld, boolean status) {
+		feldMouseAdapter.setzeFeldAusgewaehltStatus(status, feld);
 	}
 
-	public void kartenAuswahl(Boolean zustand) {
+	public void aktiviereKarte(Boolean zustand) {
 		karteMouseAdapter.aktiv(zustand);
 	}
 

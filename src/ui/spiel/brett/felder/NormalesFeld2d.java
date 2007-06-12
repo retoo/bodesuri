@@ -15,4 +15,16 @@ public class NormalesFeld2d extends Feld2d {
 		super(p, feld, mouseAdapter, Icons.FELD_NORMAL);
 	}
 
+	@Override
+	public void setAusgewaehlt(boolean istAusgewaehlt) {
+		if (istAusgewaehlt) {
+			icon = Icons.FELD_AUSWAHL;
+			setIcon(icon);
+		} else {
+			icon = Icons.FELD_NORMAL;
+			setIcon(icon);
+		}
+		setBounds(getPosX(), getPosY(), icon.getIconWidth(), icon.getIconHeight());
+		updateUI();
+	}
 }

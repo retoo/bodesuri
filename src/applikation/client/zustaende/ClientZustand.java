@@ -5,6 +5,7 @@ import pd.zugsystem.ZugEingabe;
 import applikation.client.SpielDaten;
 import applikation.client.controller.Controller;
 import applikation.events.AufgegebenEvent;
+import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
 import applikation.events.HoverStartEvent;
@@ -74,6 +75,8 @@ public class ClientZustand extends Zustand {
 				return karteGewaehlt((KarteGewaehltEvent) event);
 			else if (event instanceof FeldGewaehltEvent)
 				return feldGewaehlt((FeldGewaehltEvent) event);
+			else if (event instanceof FeldAbgewaehltEvent)
+				return feldAbgewaehlt((FeldAbgewaehltEvent) event);
 			else if (event instanceof HoverStartEvent)
 				return hoverStart((HoverStartEvent) event);
 		}
@@ -103,6 +106,10 @@ public class ClientZustand extends Zustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return ignoriereEvent("feldG");
+	}
+	
+	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
+		return ignoriereEvent("feldAbgewaehlt");
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

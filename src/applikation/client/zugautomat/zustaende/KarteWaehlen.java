@@ -16,7 +16,7 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	public void entry() {
-		controller.kartenAuswahl(true);
+		controller.aktiviereKarte(true);
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

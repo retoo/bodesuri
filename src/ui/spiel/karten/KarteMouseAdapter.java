@@ -34,7 +34,7 @@ public class KarteMouseAdapter extends MouseAdapter {
 			
 			kartenAuswahlView.getKarteGewaehltView().zeigeKarte(karteView.getKarte());
 			
-			controller.karteGewaehlt(karteView.getKarte());
+			controller.karteAuswaehlen(karteView.getKarte());
 		}
 	}
 

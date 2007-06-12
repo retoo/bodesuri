@@ -11,7 +11,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenAuswaehlen extends ClientZustand {
 	public void entry() {
-		controller.kartenAuswahl(true);
+		controller.aktiviereKarte(true);
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
@@ -26,6 +26,6 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 	}
 
 	public void exit() {
-		controller.kartenAuswahl(false);
+		controller.aktiviereKarte(false);
 	}
 }

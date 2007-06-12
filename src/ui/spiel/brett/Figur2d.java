@@ -3,7 +3,6 @@ package ui.spiel.brett;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import pd.spieler.Figur;
@@ -37,19 +36,7 @@ public class Figur2d extends JLabel implements Observer {
 
 	public void update(Observable o, Object arg) {
 		setzeAuf(brett.getFeld2d(figur.getFeld()));
-		setzeNichtAusgewaehlt();
-	}
-
-	public void setzeAusgewaehlt() {
-		Icon bildFigur = Icons.FIGUR_BLAU_AUSWAHL;
-		setIcon(bildFigur);
-		updateUI();
-	}
-	
-	public void setzeNichtAusgewaehlt(){
-		Icon bildFigur = Icons.FIGUR_BLAU;
-		setIcon(bildFigur);
-		updateUI();
+//		brett.getFeld2d(figur.getFeld()).setAusgewaehlt(false);
 	}
 	
 	public int getPosX(Feld2d ziel){

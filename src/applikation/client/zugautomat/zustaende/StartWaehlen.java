@@ -18,12 +18,12 @@ public class StartWaehlen extends ClientZugZustand {
 	public void entry() {
 		spielDaten.start = null;
 		spielDaten.ziel = null;
-		controller.feldAuswahl(true);
+		controller.aktiviereFeld(true);
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		spielDaten.start = event.feld;
-		controller.feldWaehlen(event.feld);
+		controller.zeigeFeldauswahl(event.feld, true);
 		return EndeWaehlen.class;
 	}
 

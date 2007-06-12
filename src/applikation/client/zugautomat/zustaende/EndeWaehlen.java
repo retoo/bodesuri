@@ -4,6 +4,7 @@ import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Controller;
+import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -22,7 +23,7 @@ public class EndeWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		if (spielDaten.start == event.feld) {
-			controller.feldAbwaehlen(event.feld);
+			controller.zeigeFeldauswahl(event.feld, false);
 			return StartWaehlen.class;
 		} else {
 			spielDaten.ziel = event.feld;
@@ -40,13 +41,18 @@ public class EndeWaehlen extends ClientZugZustand {
 
 			spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
 
-			controller.kartenAuswahl(false);
-			controller.feldAuswahl(false);
+			controller.zeigeFeldauswahl(spielDaten.start, false);
+			controller.aktiviereKarte(false);
+			controller.aktiviereFeld(false);
 
 			return EndZustand.class;
 		}
 	}
-
+	
+	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
+		controller.zeigeFeldauswahl(spielDaten.start, false);	// TODO: ersten Parameter entfernen und Feld anstatt Figur updaten
+		return StartWaehlen.class;
+	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.karte = event.karte;

@@ -2,6 +2,7 @@ package applikation.client.zustaende;
 
 import pd.zugsystem.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
+import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -27,6 +28,11 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
+		spielDaten.zugAutomat.step(event);
+		return this.getClass();
+	}
+	
+	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		spielDaten.zugAutomat.step(event);
 		return this.getClass();
 	}
