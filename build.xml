@@ -135,31 +135,31 @@
   </target>
 <!-- cleanup -->
   <target name="clean-init">
-    <delete dir="${tmp-dir}"/>
-    <delete dir="${lib-dir}"/>
-    <delete dir="${rep-dir}"/>
+    <delete quiet="true" dir="${tmp-dir}"/>
+    <delete quiet="true" dir="${lib-dir}"/>
+    <delete quiet="true" dir="${rep-dir}"/>
   </target>
   <target name="clean-compile">
-    <delete>
+    <delete quiet="true">
       <fileset dir="${obj-dir}" includes="**/*.class"/>
     </delete>
   </target>
   <target name="clean-compile-test">
-    <delete>
+    <delete quiet="true">
       <fileset dir="${obt-dir}" includes="**/*.class"/>
     </delete>
   </target>
   <target name="clean-cobertura">
-    <delete file="${tmp-dir}/cobertura.ser"/>
-    <delete>
+    <delete file="${tmp-dir}/cobertura.ser" quiet="true"/>
+    <delete quiet="true">
       <fileset dir="${ins-dir}" includes="**/*.class"/>
     </delete>
   </target>
   <target name="clean-jar">
-    <delete file="${lib-dir}/bodesuri.jar"/>
+    <delete file="${lib-dir}/bodesuri.jar" quiet="true"/>
   </target>
   <target name="clean-test-results" depends="init">
-    <delete>
+    <delete quiet="true">
       <fileset dir="${res-dir}" includes="**/*.xml"/>
     </delete>
   </target>
