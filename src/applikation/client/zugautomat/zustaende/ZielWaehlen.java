@@ -54,12 +54,13 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 	
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
-		controller.zeigeFeldauswahl(spielDaten.start, false);	// TODO: ersten Parameter entfernen und Feld anstatt Figur updaten
+		controller.zeigeFeldauswahl(spielDaten.start, false);
 		return StartWaehlen.class;
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.karte = event.karte;
+		controller.zeigeFeldauswahl(spielDaten.start, false);
 		return StartWaehlen.class;
 	}
 }

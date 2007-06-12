@@ -36,15 +36,8 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 *            MouseEvent der das angeklickte Feld enthält
 	 */
 	public void mouseClicked(MouseEvent e) {
-		// TODO: Prüfen, ob Figur auch vom eigenen Spieler ist
-		// TODO: If gibt False wenn gar keine Figur auf dem Feld ist.
-		//       Wäre das nicht eher eine Aufgabe für den Automaten?
-		//       Ins GUI sollte meiner Meinungso wenig Intelligenz wie möglich.
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-//		Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
-//		if (figur2d != null) {
-			controller.feldAuswaehlen(feld);
-//		}
+		controller.feldAuswaehlen(feld);
 	}
 	
 	/**
@@ -57,10 +50,8 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
 		if (aktiv) {
-			// TODO: Prüfen, ob Figur auch vom eigenen Spieler ist
-			Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
 			Feld2d feld2d = brettView.getFeld2d(feld);  
-			if (istAusgewaehlt && figur2d != null) {
+			if (istAusgewaehlt) {
 				feld2d.setAusgewaehlt(true, feld);
 			} else {
 				feld2d.setAusgewaehlt(false, feld);

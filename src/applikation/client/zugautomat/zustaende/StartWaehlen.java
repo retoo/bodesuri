@@ -1,5 +1,8 @@
 package applikation.client.zugautomat.zustaende;
 
+import java.util.List;
+
+import pd.spieler.Figur;
 import applikation.client.controller.Controller;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
@@ -23,9 +26,16 @@ public class StartWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
+		// Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich ist
 		spielDaten.start = event.feld;
-		controller.zeigeFeldauswahl(event.feld, true);
-		return ZielWaehlen.class;
+		Figur figur = event.feld.getFigur();
+		List<Figur> figuren = spielDaten.spielerIch.getFiguren();
+		if (figur != null && figuren.contains(figur)) {
+			controller.zeigeFeldauswahl(event.feld, true);
+			return ZielWaehlen.class;
+		} else {
+			return StartWaehlen.class;
+		}
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
