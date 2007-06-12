@@ -107,7 +107,7 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return ignoriereEvent("feldG");
 	}
-	
+
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
 	}

@@ -18,11 +18,12 @@ public class SiebnerRegel extends VorwaertsRegel {
     }
 
 	// TODO: Hat Review nötig :).
-	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
+	@SuppressWarnings("null")
+    public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {
 			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
 		}
-		
+
 		int schritte = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
@@ -32,19 +33,19 @@ public class SiebnerRegel extends VorwaertsRegel {
 				figuren.put(feld, feld.getFigur());
 			}
 		}
-		
+
 		if (schritte != 7) {
 			throw new RegelVerstoss("Zug muss über " + 7 +
                                     " und nicht " + schritte + " Felder gehen.");
 		}
-		
+
 		Zug zug = new Zug();
-		
+
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			for (Feld feld : getWeg(bewegung)) {
 				Figur figur = figuren.get(feld);
 				boolean hatFigur = (figur != null);
-				
+
 				if (feld == bewegung.start) {
 					if (!hatFigur) {
 						throw new RegelVerstoss("Startfeld hat keine Figur " +
@@ -58,23 +59,23 @@ public class SiebnerRegel extends VorwaertsRegel {
 				if (feld.istGeschuetzt() || (hatFigur && feld.istHimmel())) {
 					throw new RegelVerstoss("Weg beinhaltet geschütztes Feld.");
 				}
-				
+
 				if (hatFigur) {
 					zug.fuegeHinzu(heimschickAktion(feld, figur.getSpieler()));
 					figuren.put(feld, null);
 				}
 			}
-			
+
 			Figur figur = figuren.get(bewegung.start);
 			figuren.put(bewegung.start, null);
 			figuren.put(bewegung.ziel, figur);
-			
+
 			zug.fuegeHinzu(new Aktion(bewegung.start, bewegung.ziel));
 		}
-		
+
 		return zug;
 	}
-	
+
 	// TODO: SiebnerRegel.kannZiehen implementieren (Kombinatorik).
 	public boolean kannZiehen(Spieler spieler) {
 		return super.kannZiehen(spieler);

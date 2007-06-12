@@ -3,6 +3,7 @@ package applikation.client.zustaende;
 import applikation.client.controller.Controller;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielStartNachricht;
+import applikation.server.pd.SpielerInfo;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunkt;
 
@@ -20,16 +21,17 @@ public class Lobby extends ClientZustand {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}
-	
+
     Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
     	//TODO: Controller(Lobby) über neuen Spieler benachrichtigen.
 	    return this.getClass();
     }
 
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
-		for (int i = 0; i < startNachricht.spieler.length; i++) {
-			String name = startNachricht.spieler[i];
-			controller.fuegeSpielerHinzu(name);
+
+		for (SpielerInfo si : startNachricht.spielInfo.spielers) {
+			/* TODO: inline me */
+			controller.fuegeSpielerHinzu(si.name);
 		}
 
 		return SpielStart.class;

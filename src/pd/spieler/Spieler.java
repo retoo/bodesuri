@@ -16,11 +16,12 @@ import pd.serialisierung.BodesuriCodierbaresObjekt;
 public class Spieler extends BodesuriCodierbaresObjekt {
 	private int nummer;
 	private String name;
+	private SpielerFarbe farbe;
 
 	private Spiel spiel;
 
 	private Vector<Figur> figuren = new Vector<Figur>();
-	
+
 	private ObservableList<Karte> karten = new ObservableList<Karte>();
 
 	/**
@@ -30,11 +31,13 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 *            Eindeutige Spielernummer
 	 * @param spiel
 	 *            Spiel, bei dem der Spieler mitspielt
+	 * @param farbe
 	 */
-	public Spieler(int nummer, Spiel spiel) {
+	public Spieler(int nummer, Spiel spiel, SpielerFarbe farbe) {
 		super("Spieler " + nummer);
 		this.nummer = nummer;
 		this.spiel = spiel;
+		this.farbe = farbe;
 		for (int i = 0; i < 4; ++i) {
 			figuren.add(new Figur(this));
 		}
@@ -53,6 +56,13 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public String getName() {
 		return name;
 	}
+
+	/**
+     * @return die farbe
+     */
+    public SpielerFarbe getFarbe() {
+    	return farbe;
+    }
 
 	/**
 	 * @param name
@@ -82,11 +92,11 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public Spiel getSpiel() {
 		return spiel;
 	}
-	
+
 	public ObservableList<Karte> getKarten() {
 		return karten;
 	}
-	
+
 	/**
 	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
 	 */

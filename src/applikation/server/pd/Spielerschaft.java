@@ -4,6 +4,8 @@ import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.Vector;
 
+import pd.spieler.SpielerFarbe;
+
 import applikation.nachrichten.ChatNachricht;
 import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.Nachricht;
@@ -66,19 +68,11 @@ public class Spielerschaft implements Iterable<Spieler> {
 		spielers.add(spieler);
 	}
 
-	/**
-	 * Generiert einen Array der die Namen aller Spieler beinhaltet
-	 *
-	 * @return Array der die Namen aller Spieler beinhaltet
-	 */
-	public String[] getStringArray() {
-		String[] spielers_str = new String[spielers.size()];
+	public SpielerFarbe naechsteFarbe() {
 
-		for (int i = 0; i < spielers.size(); i++)
-			spielers_str[i] = spielers.get(i).name;
+	    return null;
+    }
 
-		return spielers_str;
-	}
 
 	/**
 	 * Sendet die übergebene Nachricht an alle Spieler
@@ -162,4 +156,15 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 		return spieler;
 	}
+
+	public SpielInfo getSpielInfo() {
+		Vector<SpielerInfo> spielers = new Vector<SpielerInfo>();
+
+		for (Spieler spieler : this) {
+			SpielerInfo si = spieler.getSpielerInfo();
+			spielers.add(si);
+		}
+
+	    return new SpielInfo(spielers);
+    }
 }

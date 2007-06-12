@@ -1,5 +1,6 @@
 package applikation.nachrichten;
 
+import applikation.server.pd.SpielInfo;
 import dienste.netzwerk.Nachricht;
 
 /**
@@ -9,9 +10,9 @@ public class SpielStartNachricht extends Nachricht {
 	/**
 	 * Namen aller teilnehmenden Spieler
 	 */
-	final public String[] spieler;
+	public final SpielInfo spielInfo;
 
-	public SpielStartNachricht(String[] spieler) {
-		this.spieler = spieler;
+	public SpielStartNachricht(SpielInfo info) {
+		this.spielInfo = info;
 	}
 }

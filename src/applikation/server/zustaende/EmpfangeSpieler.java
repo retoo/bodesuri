@@ -17,12 +17,13 @@ public class EmpfangeSpieler extends ServerZustand {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
 
+		/* PD Spieler erstelle n*/
 		pd.spieler.Spieler neuerSpieler = spielDaten.spiel.fuegeHinzu(beitreten.spielerName);
 
-		Spieler spieler = new Spieler(absender, beitreten.spielerName, neuerSpieler);
+		Spieler spieler = new Spieler(absender, neuerSpieler);
 		spielers.add(spieler);
 
-		spielers.broadcast(new BeitrittsBestaetigung(spielers.getStringArray()));
+		spielers.broadcast(new BeitrittsBestaetigung(spielers.getSpielInfo()));
 
 		System.out.println("Neuer Spieler: " + spieler);
 

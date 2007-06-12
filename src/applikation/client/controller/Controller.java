@@ -111,7 +111,7 @@ public abstract class Controller {
 		FeldGewaehltEvent fge = new FeldGewaehltEvent(gewaehltesFeld);
 		eventQueue.enqueue(fge);
 	}
-	
+
 	/**
 	 * Dem Automaten mitteilen, dass das ausgewählte Feld wieder abgewählt
 	 * werden soll.
@@ -128,7 +128,7 @@ public abstract class Controller {
 	 * @param status
 	 */
 	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
-	
+
 	/**
 	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
 	 * noch mit einem clientspezifischen
@@ -145,7 +145,7 @@ public abstract class Controller {
 		}
 
 		//TODO: Bestimmen der Farbe des Spielers (wird vom Server kommen).
-		spielers.put(neuerSpieler, new applikation.client.controller.Spieler(neuerSpieler, SpielerFarbe.rot));
+		spielers.put(neuerSpieler, new applikation.client.controller.Spieler(neuerSpieler));
 	}
 
 	/**
@@ -157,7 +157,7 @@ public abstract class Controller {
 	public void amZug(Spieler spieler) {
 		applikation.client.controller.Spieler neuerSpieler = spielers.get(spieler);
 		if (aktuellerSpieler != null) {
-			aktuellerSpieler.setAmZug(false);	
+			aktuellerSpieler.setAmZug(false);
 		}
 		neuerSpieler.setAmZug(true);
 		aktuellerSpieler = neuerSpieler;
@@ -168,7 +168,8 @@ public abstract class Controller {
 	 * im definitven Spiel drin ist...
 	 */
 	public void aufgeben() {
-		if (spielerIch.kannZiehen()) {
+		/* TODO: temporär auskommentiert */
+		if (false &&  spielerIch.kannZiehen()) {
 			zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
                                "da es noch möglich ist zu ziehen.");
 			return;

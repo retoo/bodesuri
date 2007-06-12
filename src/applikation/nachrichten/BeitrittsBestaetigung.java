@@ -1,5 +1,6 @@
 package applikation.nachrichten;
 
+import applikation.server.pd.SpielInfo;
 import dienste.netzwerk.Nachricht;
 
 /**
@@ -9,12 +10,12 @@ public class BeitrittsBestaetigung extends Nachricht {
 	/**
 	 * Name der bereits
 	 */
-	public final String[] spielerNamen;
+	public final SpielInfo spielInfo;
 
 	/**
-	 * @param spielerNamen
+	 * @param spielInfo
 	 */
-	public BeitrittsBestaetigung(String[] spielerNamen) {
-		this.spielerNamen = spielerNamen;
+	public BeitrittsBestaetigung(SpielInfo spielInfo) {
+		this.spielInfo = spielInfo;
 	}
 }

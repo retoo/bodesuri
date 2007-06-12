@@ -2,13 +2,12 @@ package applikation.client.controller;
 
 import java.util.Observable;
 
+
 public class Spieler extends Observable {
 	private Boolean amZug;
-	private SpielerFarbe farbe;
-	private pd.spieler.Spieler spieler;
+	public pd.spieler.Spieler spieler;
 
-	public Spieler(pd.spieler.Spieler spieler, SpielerFarbe farbe) {
-		this.farbe = farbe;
+	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.amZug = false;
 	}
@@ -22,10 +21,6 @@ public class Spieler extends Observable {
 		setChanged();
 		notifyObservers(amZug);
 	}
-
-	public SpielerFarbe getFarbe() {
-    	return farbe;
-    }
 
 	public pd.spieler.Spieler getSpieler() {
     	return spieler;

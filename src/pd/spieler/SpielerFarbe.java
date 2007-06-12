@@ -1,4 +1,4 @@
-package applikation.client.controller;
+package pd.spieler;
 
 public enum SpielerFarbe {
 	rot, gruen, blau, gelb
