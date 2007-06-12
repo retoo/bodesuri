@@ -12,7 +12,7 @@ import pd.spieler.Spieler;
 import ui.GUIController;
 
 public class SpielBrettView extends JPanel {
-	public SpielBrettView(GUIController controller, Spiel spiel, Map<Spieler, applikation.client.controller.Spieler> spielers) {
+	public SpielBrettView(GUIController controller, Spiel spiel, Map<Spieler, applikation.client.Spieler> spielers) {
 		setOpaque(false);
 		// Layout
 		GridBagLayout gbl = new GridBagLayout();

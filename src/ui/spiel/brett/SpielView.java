@@ -17,7 +17,7 @@ import ui.spiel.karten.KartenAuswahlView;
 
 public class SpielView extends JPanel {
 	Image filz;
-	public SpielView(GUIController controller, Spiel spiel, Map<Spieler, applikation.client.controller.Spieler> spielers, Spieler spielerIch) {
+	public SpielView(GUIController controller, Spiel spiel, Map<Spieler, applikation.client.Spieler> spielers, Spieler spielerIch) {
 		ImageIcon icon = (ImageIcon) Icons.FILZ;
 		filz = icon.getImage();
 		

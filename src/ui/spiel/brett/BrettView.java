@@ -20,7 +20,7 @@ import ui.spiel.brett.felder.Feld2d;
 import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.brett.felder.NormalesFeld2d;
 import ui.spiel.brett.felder.SpielerFeld2d;
-import applikation.client.controller.Spieler;
+import applikation.client.Spieler;
 
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.

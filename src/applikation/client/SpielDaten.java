@@ -18,9 +18,9 @@ public class SpielDaten implements SerialisierungsKontext {
 	public Spiel spiel = new Spiel();
 	public String spielerName;
 	public Spieler spielerIch;
-	public Map<Spieler, applikation.client.controller.Spieler> spielers =
-		new HashMap<Spieler, applikation.client.controller.Spieler>();
-	public applikation.client.controller.Spieler aktuellerSpieler;
+	public Map<Spieler, applikation.client.Spieler> spielers =
+		new HashMap<Spieler, applikation.client.Spieler>();
+	public applikation.client.Spieler aktuellerSpieler;
 
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, spiel);
