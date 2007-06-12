@@ -15,7 +15,7 @@ public class NormalesFeld2d extends Feld2d {
 	}
 
 	@Override
-	public void setAusgewaehlt(boolean istAusgewaehlt) {
+	public void setAusgewaehlt(boolean istAusgewaehlt, Feld feld) {
 		if (istAusgewaehlt) {
 			icon = Icons.FELD_AUSWAHL;
 			setIcon(icon);

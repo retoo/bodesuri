@@ -12,14 +12,24 @@ import pd.karten.Karte;
 
 final public class Icons {
 	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
-	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_gelb.png");
-	public static final Icon FIGUR_BLAU_AUSWAHL = ladeBild("/ui/ressourcen/figur_schatten.png");
-	public static final Icon FELD_NORMAL  = ladeBild("/ui/ressourcen/feld.png");
-	public static final Icon FELD_BANK = ladeBild("/ui/ressourcen/feld_blau.png");
+	
+	// Felder
+	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_blau.png");
+	public static final Icon FIGUR_GRUEN = ladeBild("/ui/ressourcen/figur_gruen.png");
+	public static final Icon FIGUR_ROT = ladeBild("/ui/ressourcen/figur_rot.png");
+	public static final Icon FIGUR_GELB = ladeBild("/ui/ressourcen/figur_gelb.png");
+	
+	// Figuren
+	public static final Icon FELD_BLAU = ladeBild("/ui/ressourcen/feld_blau.png");
+	public static final Icon FELD_GRUEN = ladeBild("/ui/ressourcen/feld_gruen.png");
+	public static final Icon FELD_ROT = ladeBild("/ui/ressourcen/feld_rot.png");
+	public static final Icon FELD_GELB = ladeBild("/ui/ressourcen/feld_gelb.png");
+	public static final Icon FELD_NORMAL = ladeBild("/ui/ressourcen/feld.png");
 	public static final Icon FELD_AUSWAHL = ladeBild("/ui/ressourcen/feld_weiss.png");
+	
+	// Deck
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
-
 	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
 	
 	/**

@@ -58,9 +58,9 @@ public class FeldMouseAdapter extends MouseAdapter {
 			Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
 			Feld2d feld2d = brettView.getFeld2d(feld);  
 			if (istAusgewaehlt && figur2d != null) {
-				feld2d.setAusgewaehlt(true);
+				feld2d.setAusgewaehlt(true, feld);
 			} else {
-				feld2d.setAusgewaehlt(false);
+				feld2d.setAusgewaehlt(false, feld);
 			}
 		}
 	}

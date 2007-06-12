@@ -1,8 +1,13 @@
 package ui.spiel.brett.felder;
 
 import java.awt.Point;
+import java.util.IdentityHashMap;
+
+import javax.swing.Icon;
 
 import pd.brett.Feld;
+import pd.brett.SpielerFeld;
+import pd.spieler.SpielerFarbe;
 import ui.ressourcen.Icons;
 
 /**
@@ -11,17 +16,20 @@ import ui.ressourcen.Icons;
  */
 public class SpielerFeld2d extends Feld2d {
 
-	public SpielerFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter) {
-		super(p, feld, mouseAdapter, Icons.FELD_BANK);
+	private IdentityHashMap<SpielerFarbe, Icon> farbeMap;
+
+	public SpielerFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, IdentityHashMap<SpielerFarbe, Icon> farbeMap) {
+		super(p, feld, mouseAdapter, farbeMap.get(((SpielerFeld) feld).getSpieler().getFarbe()));
+		this.farbeMap = farbeMap;
 	}
 	
 	@Override
-	public void setAusgewaehlt(boolean istAusgewaehlt) {
+	public void setAusgewaehlt(boolean istAusgewaehlt, Feld feld) {
 		if (istAusgewaehlt) {
 			icon = Icons.FELD_AUSWAHL;
 			setIcon(icon);
 		} else {
-			icon = Icons.FELD_BANK;
+			icon = farbeMap.get(((SpielerFeld)feld).getSpieler().getFarbe());
 			setIcon(icon);
 		}
 		updateUI();

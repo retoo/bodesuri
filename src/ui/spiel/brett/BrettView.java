@@ -3,18 +3,24 @@ package ui.spiel.brett;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+
+
 import pd.Spiel;
 import pd.brett.Feld;
-import pd.brett.SpielerFeld;
+import pd.brett.NormalesFeld;
 import pd.spieler.Figur;
+import pd.spieler.SpielerFarbe;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
+import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
 import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.brett.felder.NormalesFeld2d;
@@ -26,9 +32,11 @@ import applikation.client.pd.Spieler;
  */
 public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
+
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
 
-	public BrettView(GUIController controller, Spiel spiel, Map<pd.spieler.Spieler, Spieler> spielers) {
+	public BrettView(GUIController controller, Spiel spiel,
+			Map<pd.spieler.Spieler, Spieler> spielers) {
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
@@ -43,48 +51,59 @@ public class BrettView extends JPanel {
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(this, controller);
 
+		IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
+		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
+		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
+		farbeFeldMap.put(SpielerFarbe.values()[2], Icons.FELD_BLAU);
+		farbeFeldMap.put(SpielerFarbe.values()[3], Icons.FELD_GELB);
+		
+		IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
+		farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
+		farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
+		farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
+		farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
+
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
-			if (feld instanceof SpielerFeld){
-				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
-						feld, mouseAdapter);
-			} else {
+			if (feld instanceof NormalesFeld) {
 				feld2d = new NormalesFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
+			} else {
+				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
+						feld, mouseAdapter, farbeFeldMap);
 			}
 			felder.put(feld, feld2d);
 			this.add(feld2d);
 
 			if (feld.istBesetzt()) {
 				Figur figur = feld.getFigur();
-				Figur2d figur2d = new Figur2d(figur, this);
+				Figur2d figur2d = new Figur2d(figur, farbeFigurMap, this);
 				this.setComponentZOrder(figur2d, 0);
 				figuren.put(figur, figur2d);
 			}
 		}
-		
-		//TODO: Das muss ins XML!
+
+		// TODO: Das muss ins XML!
 		Vector<Point> spielerViewPos = new Vector<Point>();
 		spielerViewPos.add(new Point(460, 20));
 		spielerViewPos.add(new Point(60, 20));
 		spielerViewPos.add(new Point(60, 560));
 		spielerViewPos.add(new Point(460, 560));
 		int i = 0;
-		
+
 		for (Spieler spieler : spielers.values()) {
 			add(new SpielerView(spieler, spielerViewPos.get(i)));
 			i++;
 		}
-		
+
 		JLabel hinweis = new JLabel();
-		//TODO: Position muss auch ins XML!
+		// TODO: Position muss auch ins XML!
 		hinweis.setBounds(200, 280, 400, 30);
 		controller.registriereHinweisFeld(hinweis);
 		add(hinweis);
-		
-		
+
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
-		add(new SpielBrett2d( brettAdapter ));
+		add(new SpielBrett2d(brettAdapter));
 	}
 
 	public Feld2d getFeld2d(Feld feld) {

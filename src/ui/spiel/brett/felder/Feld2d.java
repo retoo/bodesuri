@@ -47,5 +47,5 @@ public abstract class Feld2d extends javax.swing.JLabel {
 		return feld;
 	}
 	
-	public abstract void setAusgewaehlt(boolean istAusgewaehlt);
+	public abstract void setAusgewaehlt(boolean istAusgewaehlt, Feld feld2);
 }
