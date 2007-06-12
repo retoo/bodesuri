@@ -15,10 +15,6 @@ public class ListChangeEvent {
 	 */
 	public ListChangeType changeType;
 	/**
-	 * List which created the change event.
-	 */
-	public ObservableList changingObject;
-	/**
 	 * Index of the changed object.
 	 */
 	public int changedIndex;
@@ -48,9 +44,6 @@ public class ListChangeEvent {
 	/**
 	 * Creates a new ListChangeEvent which reports about a partial change of a
 	 * list. All relevant data has to be passed to the constructor.
-	 *
-	 * @param changingObject
-	 *            The affected list
 	 * @param changeType
 	 *            Kind of change, like ADDED or CHANGED
 	 * @param changedIndex
@@ -58,10 +51,9 @@ public class ListChangeEvent {
 	 * @param changedObject
 	 *            Object which was changed
 	 */
-	public ListChangeEvent(ObservableList changingObject,
-			ListChangeType changeType, int changedIndex, Object changedObject) {
+	public ListChangeEvent(ListChangeType changeType,
+			int changedIndex, Object changedObject) {
 		this.changeType = changeType;
-		this.changingObject = changingObject;
 		this.changedIndex = changedIndex;
 		this.changedObject = changedObject;
 	}
@@ -69,19 +61,14 @@ public class ListChangeEvent {
 	/**
 	 * Creates a ListChangeEvent which announces a full change (all rows are
 	 * effected).
-	 *
-	 * @param changingObject
-	 *            Affected list
 	 */
-	public ListChangeEvent(ObservableList changingObject) {
+	public ListChangeEvent() {
 		changeType = ListChangeType.EVERYTHING;
-		this.changingObject = changingObject;
 		changedIndex = 0;
 		changedObject = null;
 	}
 
 	public String toString() {
-		return "" + changeType + " #" + changedIndex + " " + changedObject
-		       + " (Source: " + changingObject;
+		return "" + changeType + " #" + changedIndex + " " + changedObject;
 	}
 }

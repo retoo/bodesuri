@@ -52,8 +52,8 @@ public class ObservableList<E>
 			((Observable) object).addObserver(this);
 		}
 		setChanged();
-		notifyObservers(new ListChangeEvent(this, ListChangeType.ADDED,
-		                                    index, object));
+		notifyObservers(new ListChangeEvent(ListChangeType.ADDED, index,
+		                                    object));
 	}
 
 	/**
@@ -67,8 +67,8 @@ public class ObservableList<E>
 			((Observable) object).deleteObserver(this);
 		}
 		setChanged();
-		notifyObservers(new ListChangeEvent(this, ListChangeType.REMOVED,
-		                                    index, object));
+		notifyObservers(new ListChangeEvent(ListChangeType.REMOVED, index,
+		                                    object));
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class ObservableList<E>
 	 */
 	private void announcedChanged(int index, E object) {
 		setChanged();
-		notifyObservers(new ListChangeEvent(this, ListChangeType.CHANGED,
-		                                    index, object));
+		notifyObservers(new ListChangeEvent(ListChangeType.CHANGED, index,
+		                                    object));
 	}	
 
 	/** 
@@ -88,7 +88,7 @@ public class ObservableList<E>
 	 */
 	private void announceChanged() {
 		setChanged();
-		notifyObservers(new ListChangeEvent(this));
+		notifyObservers(new ListChangeEvent());
 	}
 
 
@@ -116,8 +116,8 @@ public class ObservableList<E>
 		}
 
 		setChanged();
-		notifyObservers(new ListChangeEvent(this, ListChangeType.CHANGED,
-		                                    index, o));
+		notifyObservers(new ListChangeEvent(ListChangeType.CHANGED, index,
+		                                    o));
 	}
 
 	/** 
