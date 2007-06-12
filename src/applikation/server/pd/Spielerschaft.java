@@ -140,12 +140,22 @@ public class Spielerschaft implements Iterable<Spieler> {
 
 	public Runde starteRunde() {
 		if (runde == null) {
-			runde = new Runde(0, this);
+			runde = new Runde(0, spielers);
 		} else {
-			runde = new Runde(runde.nummer + 1, this);
+			runde = new Runde(runde.nummer + 1, spielers);
 		}
 
 		return runde;
+	}
+
+	public void sicherStellenIstAktuellerSpieler(EndPunkt endpunkt) {
+		if (runde.getAktuellerSpieler() != getSpieler(endpunkt)) {
+
+			broadcast("HAH.. huere michi, de " + endpunkt
+			          + " wott voll bschisse");
+			new RuntimeException("beschiss von " + endpunkt + " an "
+			                     + runde.getAktuellerSpieler());
+		}
 	}
 
 	public Spieler getSpieler(EndPunkt endpunkt) {

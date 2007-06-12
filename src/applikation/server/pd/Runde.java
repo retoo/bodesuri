@@ -1,22 +1,18 @@
 package applikation.server.pd;
 
+import java.util.List;
 import java.util.Vector;
-
-import dienste.netzwerk.EndPunkt;
 
 public class Runde {
 	public Vector<Spieler> spielers;
 	public final int nummer;
 	private int aktuellerSpieler;
-	private Spielerschaft spielerschaft;
 
-	public Runde(int nummer, Spielerschaft spielerschaft) {
+	public Runde(int nummer, List<Spieler> spielers) {
 		this.nummer = nummer;
-		this.spielerschaft = spielerschaft;
-		this.spielers = new Vector<Spieler>();
-		this.spielers.addAll(spielerschaft.spielers);
+		this.spielers = new Vector<Spieler>(spielers);
 
-		for (Spieler s : spielerschaft) {
+		for (Spieler s : spielers) {
 			s.hatGetauscht = false;
 		}
 	}
@@ -57,17 +53,6 @@ public class Runde {
 	public Spieler getAktuellerSpieler() {
 		return spielers.get(aktuellerSpieler);
 	}
-
-	public void sicherStellenIstAktuellerSpieler(EndPunkt endpunkt) {
-		if (getAktuellerSpieler() != spielerschaft.getSpieler(endpunkt)) {
-
-			spielerschaft.broadcast("HAH.. huere michi, de " + endpunkt
-			          + " wott voll bschisse");
-			new RuntimeException("beschiss von " + endpunkt + " an "
-			                     + getAktuellerSpieler());
-		}
-	}
-
 
 	/*
 	 * Anzahl Karten mit aufsteigender Rundennummer: 6, 5, 4, 3, 2, 6, 5, ...

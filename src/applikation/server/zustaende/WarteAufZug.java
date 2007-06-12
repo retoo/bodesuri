@@ -16,7 +16,7 @@ public class WarteAufZug extends ServerZustand {
 	Class<? extends Zustand> zugInfo(EndPunkt absender, ZugInformation zugInfo) {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
-		spielers.runde.sicherStellenIstAktuellerSpieler(absender);
+		spielers.sicherStellenIstAktuellerSpieler(absender);
 
 		spielers.broadcast(zugInfo);
 		System.out.println("Ausgeführter Zug: " + zugInfo.zug);
@@ -29,7 +29,7 @@ public class WarteAufZug extends ServerZustand {
 
 		Spieler aktuellerSpieler = runde.getAktuellerSpieler();
 
-		runde.sicherStellenIstAktuellerSpieler(absender);
+		spielDaten.spielerschaft.sicherStellenIstAktuellerSpieler(absender);
 		runde.entferneSpieler(aktuellerSpieler);
 
 		return VersendeZug.class;
