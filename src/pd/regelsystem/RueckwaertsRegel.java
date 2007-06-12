@@ -1,12 +1,10 @@
 package pd.regelsystem;
 
-import java.util.List;
-import java.util.Vector;
-
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Weg;
 
 /**
  * Gleich wie {@link VorwaertsRegel}, aber Zugrichtung ist rückwärts.
@@ -17,9 +15,7 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		setBeschreibung(schritte + " rückwärts");
 	}
 	
-	protected List<Feld> getWeg(Bewegung bewegung) throws RegelVerstoss {
-		Vector<Feld> weg = new Vector<Feld>();
-		
+	protected void pruefeBewegung(Bewegung bewegung, Spieler spieler) throws RegelVerstoss {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 		
@@ -38,14 +34,13 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 			throw new RegelVerstoss("Es kann nicht rückwärts in den Himmel " +
 			                        "gefahren werden.");
 		}
-		
-		Feld feld = start;
-		while (feld != ziel) {
-			weg.add(feld);
-			feld = feld.getVorheriges();
+	}
+	
+	protected void pruefeWeg(Weg weg) throws RegelVerstoss {
+		super.pruefeWeg(weg);
+		if (!weg.istRueckwaerts()) {
+			throw new RegelVerstoss("Es muss rückwärts gefahren werden.");
 		}
-		weg.add(feld);
-		return weg;
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
@@ -57,11 +52,6 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 			}
 			
 			Feld ziel = getZiel(start, schritte);
-			if (istZugMoeglich(spieler, start, ziel)) {
-				return true;
-			}
-			
-			ziel = getZiel(start, schritte);
 			if (istZugMoeglich(spieler, start, ziel)) {
 				return true;
 			}

@@ -1,13 +1,13 @@
 package pd.regelsystem;
 
 import java.util.HashMap;
-import java.util.List;
 
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
@@ -24,25 +24,27 @@ public class SiebnerRegel extends VorwaertsRegel {
 			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
 		}
 
-		int schritte = 0;
+		int wegLaenge = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
-			List<Feld> weg = getWeg(bewegung);
-			schritte += weg.size() - 1;
+			Weg weg = bewegung.getWeg();
+			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {
 				figuren.put(feld, feld.getFigur());
 			}
 		}
 
-		if (schritte != 7) {
+		if (wegLaenge != 7) {
 			throw new RegelVerstoss("Zug muss über " + 7 +
-                                    " und nicht " + schritte + " Felder gehen.");
+                                    " und nicht " + wegLaenge + " Felder gehen.");
 		}
 
+		Spieler spieler = zugEingabe.getSpieler();
 		Zug zug = new Zug();
 
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
-			for (Feld feld : getWeg(bewegung)) {
+			pruefeBewegung(bewegung, spieler);
+			for (Feld feld : bewegung.getWeg()) {
 				Figur figur = figuren.get(feld);
 				boolean hatFigur = (figur != null);
 

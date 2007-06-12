@@ -17,6 +17,8 @@ import pd.spieler.Spieler;
  * @see Feld
  */
 public class Brett {
+	public static final int ANZAHL_FELDER = 96; 
+
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
 	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;

@@ -1,16 +1,13 @@
 package pd.regelsystem;
 
-import java.util.List;
-import java.util.Vector;
-
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
-import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
@@ -47,25 +44,11 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
 			                        "werden.");
 		}
-
-		List<Feld> weg = getWeg(bewegung);
-		int wegLaenge = weg.size() - 1;
-		if (wegLaenge != schritte) {
-			throw new RegelVerstoss("Zug muss über " + schritte +
-			                        " und nicht " + wegLaenge + " Felder gehen.");
-		}
-
-		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
-			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
-		}
-
-		if (ziel.istHimmel()) {
-			HimmelFeld himmel = (HimmelFeld) ziel;
-			if (himmel.getSpieler() != spieler) {
-				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
-				                        "gezogen werden.");
-			}
-		}
+		
+		pruefeBewegung(bewegung, spieler);
+		
+		Weg weg = bewegung.getWeg();
+		pruefeWeg(weg);
 
 		for (Feld feld : weg) {
 			if (feld == start) continue;
@@ -92,13 +75,11 @@ public class VorwaertsRegel extends Regel {
 
 		return zug;
 	}
-
-	protected List<Feld> getWeg(Bewegung bewegung) throws RegelVerstoss {
-		Vector<Feld> weg = new Vector<Feld>();
-
+	
+	protected void pruefeBewegung(Bewegung bewegung, Spieler spieler) throws RegelVerstoss {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
-
+		
 		if (start.istHimmel() && !ziel.istHimmel()) {
 			throw new RegelVerstoss(
 				"Im Himmel kann nur noch vorwärts gefahren werden.");
@@ -111,21 +92,26 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss(
 				"Es gibt nur eine Art, ins Lager zurückzukehren...");
 		}
-
-		Feld feld = start;
-		while (feld != ziel) {
-			weg.add(feld);
-			if (feld.istBank() && ziel.istHimmel() 
-				&& ((SpielerFeld) feld).getSpieler() ==
-				   ((SpielerFeld) ziel).getSpieler())
-			{
-				feld = ((BankFeld) feld).getHimmel();
-			} else {
-				feld = feld.getNaechstes();
+		
+		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
+			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
+		}
+		
+		if (ziel.istHimmel()) {
+			HimmelFeld himmel = (HimmelFeld) ziel;
+			if (himmel.getSpieler() != spieler) {
+				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
+				                        "gezogen werden.");
 			}
 		}
-		weg.add(feld);
-		return weg;
+	}
+	
+	protected void pruefeWeg(Weg weg) throws RegelVerstoss {
+		int wegLaenge = weg.size() - 1;
+		if (wegLaenge != schritte) {
+			throw new RegelVerstoss("Zug muss über " + schritte +
+			                        " und nicht " + wegLaenge + " Felder gehen.");
+		}
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
