@@ -37,7 +37,7 @@ public class GUIController extends Controller {
 		lobbyView.setVisible(true);
 	}
 
-	public void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.Spieler> spielers) {
+	public void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers) {
 		lobbyView.setVisible(false);
 		spielView = new BodesuriView(this, spiel, spielerIch, spielers);
 		spielView.setVisible(true);

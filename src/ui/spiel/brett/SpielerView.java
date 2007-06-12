@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 
 import pd.spieler.SpielerFarbe;
 
-import applikation.client.Spieler;
+import applikation.client.pd.Spieler;
 
 /**
  * JPanel mit den Namen der Spieler.

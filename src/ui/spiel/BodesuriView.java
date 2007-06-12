@@ -16,7 +16,7 @@ import ui.spiel.chat.ChatView;
  * Das GUI des Spiels.
  */
 public class BodesuriView extends JFrame {
-	public BodesuriView(GUIController controller, Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.Spieler> spielers) {
+	public BodesuriView(GUIController controller, Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers) {
 		// Layout setzen
 		setTitle("Bodesuri - Spiel (" + spielerIch.getName() + ")");
 		setName("Bodesuri");

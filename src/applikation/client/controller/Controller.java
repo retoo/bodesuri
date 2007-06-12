@@ -44,7 +44,7 @@ public abstract class Controller {
 	 * @param spielerIch 
 	 * @param spielers 
 	 */
-	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.Spieler> spielers);
+	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers);
 
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,

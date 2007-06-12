@@ -2,8 +2,8 @@ package applikation.client.zustaende;
 
 import pd.karten.Karte;
 import pd.zugsystem.ZugEingabe;
-import applikation.client.SpielDaten;
 import applikation.client.controller.Controller;
+import applikation.client.pd.SpielDaten;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;

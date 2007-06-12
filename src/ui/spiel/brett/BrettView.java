@@ -10,10 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pd.Spiel;
-import pd.brett.BankFeld;
 import pd.brett.Feld;
-import pd.brett.HimmelFeld;
-import pd.brett.LagerFeld;
+import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
@@ -21,7 +19,7 @@ import ui.spiel.brett.felder.Feld2d;
 import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.brett.felder.NormalesFeld2d;
 import ui.spiel.brett.felder.SpielerFeld2d;
-import applikation.client.Spieler;
+import applikation.client.pd.Spieler;
 
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
@@ -47,16 +45,7 @@ public class BrettView extends JPanel {
 
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
-			// TODO: Die unterscheidung der Felder funktioniert noch nicht richtig ...
-			if (feld instanceof LagerFeld){
-				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
-						feld, mouseAdapter);
-			}
-			else if(feld instanceof HimmelFeld){
-				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
-						feld, mouseAdapter);
-			}
-			else if (feld instanceof BankFeld) {
+			if (feld instanceof SpielerFeld){
 				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			} else {

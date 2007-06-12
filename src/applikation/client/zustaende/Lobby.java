@@ -37,7 +37,7 @@ public class Lobby extends ClientZustand {
             	spielDaten.spielerIch = neuerSpieler;
             }
             
-            spielDaten.spielers.put(neuerSpieler, new applikation.client.Spieler(neuerSpieler));
+            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));
 		}
 
 		return SpielStart.class;

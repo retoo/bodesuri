@@ -1,6 +1,7 @@
 package applikation.client;
 
 import applikation.client.controller.Controller;
+import applikation.client.pd.SpielDaten;
 import applikation.client.zustaende.ClientZustand;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
