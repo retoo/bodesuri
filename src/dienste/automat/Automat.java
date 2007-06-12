@@ -95,7 +95,7 @@ public class Automat {
 		pruefeAutomat(true);
 		isInit = true;
 
-		boolean isNichtFertig = (aktuellerZustand == endzustand);
+		boolean isNichtFertig = (aktuellerZustand != endzustand);
 		while (isNichtFertig) {
 			isNichtFertig = step();
 		}
@@ -138,7 +138,7 @@ public class Automat {
 	 *
 	 * @param event
 	 *            Zu verarbeitender Event
-	 * @return true falls sich der Automat im Endzustand befindet
+	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	public boolean step(Event event) {
 		if (!isInit)
@@ -153,10 +153,10 @@ public class Automat {
 			                           + aktuellerZustand);
 		}
 
-		boolean res = stepAktiv(event);
+		boolean isIstNichtFertig = stepAktiv(event);
 
 		/* Wir brechen hier ab falls wir uns im Endzustand befinden */
-		if (!res)
+		if (!isIstNichtFertig)
 			return false;
 
 		return verarbeitePassiveZustaende();
@@ -167,7 +167,7 @@ public class Automat {
 	 *
 	 * @param event
 	 *            Zu verarbeitende event
-	 * @return ob sich der Automat im Endzustand befindet
+	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	private boolean stepAktiv(Event event) {
 		aktuellerZustand.exit();
@@ -208,7 +208,7 @@ public class Automat {
 			stepPassiv();
 		}
 
-		return aktuellerZustand != endzustand;
+		return aktuellerZustand == endzustand;
 	}
 
 	/**
