@@ -1,6 +1,5 @@
 package applikation.client.zustaende;
 
-import applikation.nachrichten.Aufgabe;
 import pd.karten.Karte;
 import dienste.automat.zustaende.Zustand;
 
@@ -15,7 +14,7 @@ public class KarteTauschenBekommen extends ClientZustand {
 	}
 	
 	Class<? extends Zustand> aufgegeben() {
-		spielDaten.endpunkt.sende(new Aufgabe());
-		return NichtAmZug.class;
+		controller.zeigeFehlermeldung("Bitte schau zuerst was du für eine Karte bekommst bevor du aufgibst!");
+		return this.getClass();
 	}
 }

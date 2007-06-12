@@ -44,8 +44,15 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-		spielDaten.endpunkt.sende(new Aufgabe());
-		spielDaten.spielerIch.getKarten().clear();
-		return NichtAmZug.class;
+		if (spielDaten.spielerIch.kannZiehen()) {
+			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
+                               "da es noch möglich ist zu ziehen.");
+			return this.getClass();
+		} else {
+			controller.aktiviereKarte(false);
+			spielDaten.endpunkt.sende(new Aufgabe());
+			spielDaten.spielerIch.getKarten().clear();
+			return NichtAmZug.class;			
+		}
 	}
 }

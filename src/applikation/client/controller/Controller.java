@@ -50,6 +50,13 @@ public abstract class Controller {
 	 *            auszugebene Fehlermeldung
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
+	
+	/**
+	 * Darstellen des gewählten bzw. abgewählten Feldes.
+	 * @param abgewaehltesFeld
+	 * @param status
+	 */
+	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
 
 	/**
 	 * Die Auswahl von Feldern (de-)aktivieren.
@@ -76,8 +83,8 @@ public abstract class Controller {
 	 *            Name des Spielers
 	 */
 	public void verbinde(String host, int port_raw, String spieler) {
-		VerbindeEvent e = new VerbindeEvent(host, port_raw, spieler);
-		eventQueue.enqueue(e);
+		VerbindeEvent ve = new VerbindeEvent(host, port_raw, spieler);
+		eventQueue.enqueue(ve);
 	}
 
 	/**
@@ -111,35 +118,21 @@ public abstract class Controller {
 	}
 
 	/**
-	 * Darstellen des gewählten bzw. abgewählten Feldes.
-	 * @param abgewaehltesFeld
-	 * @param status
-	 */
-	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
-
-	/**
 	 * Wenn man keine Karten mehr spielen kann. Noch nicht sicher ob dies auch
 	 * im definitven Spiel drin ist...
 	 */
 	public void aufgeben() {
-		/* TODO: temporär auskommentiert */
-//		if (false &&  spielerIch.kannZiehen()) {
-//			zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
-//                               "da es noch möglich ist zu ziehen.");
-//			return;
-//		}
-		aktiviereKarte(false);
 		AufgegebenEvent age = new AufgegebenEvent();
 		eventQueue.enqueue(age);
+	}
+	
+	public void zielHover(Feld feld) {
+		HoverStartEvent hse = new HoverStartEvent(feld);
+		eventQueue.enqueue(hse);
 	}
 
 	public void setEventQueue(EventQueue queue) {
 		this.eventQueue = queue;
-    }
-
-	public void zielHover(Feld feld) {
-		HoverStartEvent hve = new HoverStartEvent(feld);
-		eventQueue.enqueue(hve);
     }
 
 }
