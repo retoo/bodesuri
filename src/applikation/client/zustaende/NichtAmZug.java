@@ -34,10 +34,12 @@ public class NichtAmZug extends ClientZustand {
         spielDaten.aktuellerSpieler = neuerSpieler;
         
 		if (zugAufforderung.spieler == spielDaten.spielerIch) {
+			controller.zeigeHinweis("Du bist am Zug.");
 			spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue, spielDaten.spielerIch);
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
+			controller.zeigeHinweis("Spieler " + zugAufforderung.spieler + " ist am Zug.");
 			return this.getClass();
 		}
 	}

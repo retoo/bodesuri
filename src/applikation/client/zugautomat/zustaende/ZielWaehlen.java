@@ -20,6 +20,10 @@ public class ZielWaehlen extends ClientZugZustand {
 	public ZielWaehlen(Controller controller) {
 		this.controller = controller;
 	}
+	
+	public void entry() {
+		controller.zeigeHinweis("Wähle das Zielfeld");
+	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		if (spielDaten.start == event.feld) {

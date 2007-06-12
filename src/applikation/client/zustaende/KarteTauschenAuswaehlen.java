@@ -11,6 +11,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenAuswaehlen extends ClientZustand {
 	public void entry() {
+		controller.zeigeHinweis("Wähle eine Karte zum tauschen aus.");
 		controller.aktiviereKarte(true);
 	}
 

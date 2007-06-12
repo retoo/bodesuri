@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pd.Spiel;
@@ -85,6 +86,13 @@ public class BrettView extends JPanel {
 			add(new SpielerView(spieler, spielerViewPos.get(i)));
 			i++;
 		}
+		
+		JLabel hinweis = new JLabel();
+		//TODO: Position muss auch ins XML!
+		hinweis.setBounds(200, 280, 300, 30);
+		controller.registriereHinweisFeld(hinweis);
+		add(hinweis);
+		
 		
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
 		add(new SpielBrett2d( brettAdapter ));

@@ -8,6 +8,10 @@ import dienste.automat.zustaende.Zustand;
  * warten. Wenn sie eintrifft wird der Zustand {@link NichtAmZug} aufgerufen.
  */
 public class KarteTauschenBekommen extends ClientZustand {
+	public void entry() {
+		controller.zeigeHinweis("Warte auf die Karte deines Partners.");
+	}
+	
 	Class<? extends Zustand> kartenTausch(Karte karte) {
 		spielDaten.spielerIch.getKarten().add(karte);
 		return NichtAmZug.class;
