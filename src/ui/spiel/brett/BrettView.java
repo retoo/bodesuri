@@ -5,13 +5,10 @@ import java.awt.Point;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-
 
 import pd.Spiel;
 import pd.brett.Feld;
