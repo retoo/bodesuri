@@ -28,9 +28,9 @@ public class BodesuriEntwickler {
 		for (int i = 0; i < 2; i++) {
 			Thread client = new Thread(new Runnable() {
 				public void run() {
-					//EventQueue eventQueue = new EventQueue();
 					Controller controller = new GUIController(Thread.currentThread().getName());
 					Automat client = new ClientAutomat(controller);
+					controller.verbinde("localhost", 7788, Thread.currentThread().getName());
 
 					try {
 						client.run();
