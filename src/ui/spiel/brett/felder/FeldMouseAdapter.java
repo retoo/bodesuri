@@ -37,6 +37,9 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		// TODO: Prüfen, ob Figur auch vom eigenen Spieler ist
+		// TODO: If gibt False wenn gar keine Figur auf dem Feld ist.
+		//       Wäre das nicht eher eine Aufgabe für den Automaten?
+		//       Ins GUI sollte meiner Meinungso wenig Intelligenz wie möglich.
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
 //		Figur2d figur2d = brettView.getFigur2d(feld.getFigur());
 //		if (figur2d != null) {
