@@ -12,8 +12,6 @@ public class SpielDaten implements SerialisierungsKontext {
 	public EndPunkt endpunkt;
 	public ZugAutomat zugAutomat;
 	public Spiel spiel;
-	//TODO: Wird nirgends gebraucht???
-	public int anzSpieler;
 
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, spiel);
