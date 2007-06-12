@@ -14,8 +14,7 @@ import dienste.netzwerk.VerbindungWegException;
  * mitspielen.
  */
 public class Spielerschaft implements Iterable<Spieler> {
-	private Vector<Spieler> spielers = new Vector<Spieler>();
-	private int aktuellerSpieler;
+	Vector<Spieler> spielers = new Vector<Spieler>();
 	private IdentityHashMap<EndPunkt, Spieler> endpunktZuSpieler;
 
 	public Runde runde;
@@ -30,10 +29,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 		this.anzahlSpieler = anzSpieler;
 		this.spielers = new Vector<Spieler>();
 		this.endpunktZuSpieler = new IdentityHashMap<EndPunkt, Spieler>();
-
-		aktuellerSpieler = 0;
 	}
-
 
 	public void partnerschaftenBilden() {
 		if (anzahlSpieler != spielers.size())
@@ -138,20 +134,6 @@ public class Spielerschaft implements Iterable<Spieler> {
 	}
 
 	/**
-	 * Markiert den nächsten Spieler als 'aktuellerSpieler'. Methode darf erst
-	 * aufgerufen ewrden nachdem mindestens ein Spieler hinzugefügt wurde.
-	 */
-	public void rotiereSpieler() {
-		int anzahlSpieler = spielers.size();
-
-		if (anzahlSpieler > 0)
-			aktuellerSpieler = (aktuellerSpieler + 1) % anzahlSpieler;
-		else
-			throw new RuntimeException(
-			                           "Kann nicht rotieren, es gibt ja noch gar keine Spieler");
-	}
-
-	/**
 	 * Iterator welcher ermöglicht über alle Spieler zu iterieren.
 	 *
 	 * @see java.lang.Iterable#iterator()
@@ -161,35 +143,16 @@ public class Spielerschaft implements Iterable<Spieler> {
 		return spielers.iterator();
 	}
 
-	/**
-	 * Liefert aktuellen Spieler
-	 *
-	 * @return der zurzeit spielende Spieler
-	 */
-	public Spieler getAktuellerSpieler() {
-		return spielers.get(aktuellerSpieler);
-	}
 
 	public Runde starteRunde() {
 		if (runde == null) {
-			runde = new Runde(0, spielers);
+			runde = new Runde(0, this);
 		} else {
-			runde = new Runde(runde.nummer + 1, spielers);
+			runde = new Runde(runde.nummer + 1, this);
 		}
 
 		return runde;
 	}
-
-	public void sicherStellenIstAktuellerSpieler(EndPunkt endpunkt) {
-		if (getAktuellerSpieler() != getSpieler(endpunkt)) {
-
-			broadcast("HAH.. huere michi, de " + endpunkt
-			          + " wott voll bschisse");
-			new RuntimeException("beschiss von " + endpunkt + " an "
-			                     + getAktuellerSpieler());
-		}
-	}
-
 
 	public Spieler getSpieler(EndPunkt endpunkt) {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
