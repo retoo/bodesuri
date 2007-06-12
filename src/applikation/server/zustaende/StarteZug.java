@@ -1,8 +1,8 @@
 package applikation.server.zustaende;
 
 import applikation.nachrichten.ZugAufforderung;
-import applikation.server.Spieler;
-import applikation.server.Spielerschaft;
+import applikation.server.pd.Spieler;
+import applikation.server.pd.Spielerschaft;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 

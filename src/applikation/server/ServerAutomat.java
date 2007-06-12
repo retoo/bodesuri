@@ -1,5 +1,6 @@
 package applikation.server;
 
+import applikation.server.pd.SpielDaten;
 import applikation.server.zustaende.ServerZustand;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;

@@ -6,8 +6,8 @@ import pd.karten.Karte;
 import pd.karten.KartenGeber;
 
 import applikation.nachrichten.RundenStart;
-import applikation.server.Runde;
-import applikation.server.Spieler;
+import applikation.server.pd.Runde;
+import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 

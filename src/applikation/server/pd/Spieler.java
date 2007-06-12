@@ -1,4 +1,4 @@
-package applikation.server;
+package applikation.server.pd;
 
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.KartenTausch;

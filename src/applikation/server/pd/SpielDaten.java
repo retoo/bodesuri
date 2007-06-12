@@ -1,4 +1,4 @@
-package applikation.server;
+package applikation.server.pd;
 
 import pd.Spiel;
 import pd.SpielThreads;

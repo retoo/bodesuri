@@ -4,7 +4,7 @@ import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
-import applikation.server.SpielDaten;
+import applikation.server.pd.SpielDaten;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
