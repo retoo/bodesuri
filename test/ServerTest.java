@@ -5,7 +5,7 @@ import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.server.ServerAutomat;
 import applikation.server.TestSpieler;
 import applikation.server.zustaende.EmpfangeSpieler;
-import applikation.server.zustaende.StarteSpiel;
+import applikation.server.zustaende.SpielStart;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;
@@ -51,7 +51,7 @@ public class ServerTest extends TestCase {
 			spielers.add(ts);
 		}
 
-		while (!automat.isZustand(StarteSpiel.class)) {
+		while (!automat.isZustand(SpielStart.class)) {
 			automat.step();
 		}
 
