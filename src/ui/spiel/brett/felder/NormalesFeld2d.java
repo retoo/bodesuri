@@ -1,9 +1,10 @@
-package ui.spiel.brett;
+package ui.spiel.brett.felder;
 
 import java.awt.Point;
 
 import pd.brett.Feld;
 import ui.ressourcen.Icons;
+import ui.spiel.brett.FeldMouseAdapter;
 
 /**
  * JLabel, wird zur Darstellung der normalen Felder verwendet.

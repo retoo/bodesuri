@@ -15,6 +15,9 @@ import pd.brett.LagerFeld;
 import pd.spieler.Figur;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
+import ui.spiel.brett.felder.Feld2d;
+import ui.spiel.brett.felder.NormalesFeld2d;
+import ui.spiel.brett.felder.SpielerFeld2d;
 import applikation.client.controller.Spieler;
 
 /**
@@ -43,15 +46,15 @@ public class BrettView extends JPanel {
 			Feld2d feld2d;
 			// TODO: Die unterscheidung der Felder funktioniert noch nicht richtig ...
 			if (feld instanceof LagerFeld){
-				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			}
 			else if(feld instanceof HimmelFeld){
-				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			}
 			else if (feld instanceof BankFeld) {
-				feld2d = new BankFeld2d(koordinaten.get(feld.getNummer()),
+				feld2d = new SpielerFeld2d(koordinaten.get(feld.getNummer()),
 						feld, mouseAdapter);
 			} else {
 				feld2d = new NormalesFeld2d(koordinaten.get(feld.getNummer()),

@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 
 import pd.spieler.Figur;
 import ui.ressourcen.Icons;
+import ui.spiel.brett.felder.Feld2d;
 
 /**
  * JLabel, wird zur Darstellung der Spielfiguren verwendet.

@@ -1,8 +1,9 @@
-package ui.spiel.brett;
+package ui.spiel.brett.felder;
 
 import java.awt.Point;
 import javax.swing.Icon;
 import pd.brett.Feld;
+import ui.spiel.brett.FeldMouseAdapter;
 
 /**
  * JLabel, ist die Oberklase aller Felder. Von dieser Klasse leiten alle
@@ -10,7 +11,7 @@ import pd.brett.Feld;
  */
 public class Feld2d extends javax.swing.JLabel {
 	private Point position;
-	final Feld feld;
+	public final Feld feld;
 	private Icon icon;
 
 	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, Icon icon) {

@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 
 import pd.brett.Feld;
 import ui.GUIController;
+import ui.spiel.brett.felder.Feld2d;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
