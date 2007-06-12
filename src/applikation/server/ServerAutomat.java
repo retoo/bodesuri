@@ -7,7 +7,7 @@ import applikation.server.zustaende.KartenTauschen;
 import applikation.server.zustaende.ServerEnde;
 import applikation.server.zustaende.ServerStart;
 import applikation.server.zustaende.StartRunde;
-import applikation.server.zustaende.StarteSpiel;
+import applikation.server.zustaende.SpielStart;
 import applikation.server.zustaende.StarteZug;
 import applikation.server.zustaende.VersendeZug;
 import applikation.server.zustaende.WarteAufZug;
@@ -40,7 +40,7 @@ public class ServerAutomat extends Automat {
 
 		registriere(new ServerStart());
 		registriere(new EmpfangeSpieler());
-		registriere(new StarteSpiel());
+		registriere(new SpielStart());
 		registriere(new StartRunde());
 		registriere(new StarteZug());
 		registriere(new WarteAufZug());

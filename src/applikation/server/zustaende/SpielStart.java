@@ -8,7 +8,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Passiver Zustand der das Spiel initialisiert.
  */
-public class StarteSpiel extends ServerZustand implements PassiverZustand {
+public class SpielStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
 		Spielerschaft spielerschaft = spielDaten.spielerschaft;
 

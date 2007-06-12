@@ -9,7 +9,7 @@ import dienste.netzwerk.EndPunkt;
 
 /**
  * Zustand in welchem neue Spieler empfangen werden. Sobald das Spiel komplett
- * ist wird der Zustand {@link StarteSpiel} aufgerufen.
+ * ist wird der Zustand {@link SpielStart} aufgerufen.
  */
 public class EmpfangeSpieler extends ServerZustand {
 	Class<? extends Zustand> spielBeitreten(EndPunkt absender,
@@ -29,7 +29,7 @@ public class EmpfangeSpieler extends ServerZustand {
 		if (spielers.isKomplett()) {
 			spielers.partnerschaftenBilden();
 
-			return StarteSpiel.class;
+			return SpielStart.class;
 		}
 
 		return EmpfangeSpieler.class;
