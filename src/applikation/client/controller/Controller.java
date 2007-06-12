@@ -1,5 +1,6 @@
 package applikation.client.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import pd.Spiel;
@@ -31,8 +32,11 @@ public abstract class Controller {
 
 	/**
 	 * Die Lobby anzeigen.
+	 * 
+	 * @param spieler
+	 *            Liste der Spieler
 	 */
-	public abstract void zeigeLobby();
+	public abstract void zeigeLobby(List<Spieler> spieler);
 
 	/**
 	 * Das Spielbrett anzeigen.

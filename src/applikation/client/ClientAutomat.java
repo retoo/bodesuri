@@ -34,9 +34,6 @@ public class ClientAutomat extends Automat {
 	public ClientAutomat(Controller controller, String spielerName) {
 		this.controller = controller;
 		this.spielDaten = new SpielDaten();
-		// TODO: Sollte das Spiel nicht primär in den SpielDaten gespeichert
-		// sein, und diese werden dem Controller übergeben? (Im Server gibt es
-		// auch spielDaten.spiel.) --Robin
 		this.spielDaten.spiel = spielDaten.spiel;
 
 		EventQueue queue = new EventQueue();

@@ -1,5 +1,6 @@
 package ui;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JLabel;
@@ -30,9 +31,9 @@ public class GUIController extends Controller {
 		verbindenView.setVisible(true);
 	}
 
-	public void zeigeLobby() {
+	public void zeigeLobby(List<Spieler> spieler) {
 		verbindenView.setVisible(false);
-		lobbyView = new LobbyView();
+		lobbyView = new LobbyView(spieler);
 		lobbyView.setVisible(true);
 	}
 

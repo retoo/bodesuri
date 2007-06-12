@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class LobbyStart extends ClientZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		controller.zeigeLobby();
+		controller.zeigeLobby(spielDaten.spiel.getSpieler());
 		return Lobby.class;
 	}
 }
