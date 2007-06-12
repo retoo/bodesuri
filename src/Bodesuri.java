@@ -11,8 +11,8 @@ public class Bodesuri {
 	 * @param args	Wird nicht genutzt
 	 */
 	public static void main(String[] args) {
-		Controller controller = new GUIController("Spieler");
-		ClientAutomat automat = new ClientAutomat(controller);
+		Controller controller = new GUIController();
+		ClientAutomat automat = new ClientAutomat(controller, "Spieler");
 
 		try {
 			automat.run();

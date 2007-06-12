@@ -1,7 +1,5 @@
 package applikation.client.controller;
 
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 import pd.Spiel;
@@ -25,24 +23,11 @@ import dienste.eventqueue.EventQueue;
 public abstract class Controller {
 	protected EventQueue eventQueue;
 
-	// Spiel
-	private Spiel spiel;
-	private String spielerName;
-	private Spieler spielerIch;
-	//FIXME: HashMap ist nicht gut. Reihenfolge ist nicht garantiert.
-	private Map<Spieler, applikation.client.controller.Spieler> spielers =
-		new HashMap<Spieler, applikation.client.controller.Spieler>();
-	private applikation.client.controller.Spieler aktuellerSpieler;
-
-	public Controller(String spielerName) {
-		this.spielerName = spielerName;
-		this.spiel = new Spiel();
-	}
-
 	/**
 	 * Die Verbindungsdaten erfragen.
+	 * @param spielerName 
 	 */
-	public abstract void zeigeVerbinden();
+	public abstract void zeigeVerbinden(String spielerName);
 
 	/**
 	 * Die Lobby anzeigen.
@@ -51,8 +36,11 @@ public abstract class Controller {
 
 	/**
 	 * Das Spielbrett anzeigen.
+	 * @param spiel 
+	 * @param spielerIch 
+	 * @param spielers 
 	 */
-	public abstract void zeigeSpiel();
+	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.controller.Spieler> spielers);
 
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden
@@ -130,69 +118,19 @@ public abstract class Controller {
 	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
 
 	/**
-	 * Einen Spieler dem {@link Spiel} hinzufügen. Ausserdem wird der Spieler
-	 * noch mit einem clientspezifischen
-	 * {@link applikation.client.controller.Spieler Spieler} assoziiert um zu speichern wer
-	 * am Zug ist.
-	 *
-	 * @param name
-	 *            Spielername
-	 */
-	public void fuegeSpielerHinzu(String name) {
-		Spieler neuerSpieler = spiel.fuegeHinzu(name);
-		if (name.equals(spielerName)) {
-			spielerIch = neuerSpieler;
-		}
-
-		//TODO: Bestimmen der Farbe des Spielers (wird vom Server kommen).
-		spielers.put(neuerSpieler, new applikation.client.controller.Spieler(neuerSpieler));
-	}
-
-	/**
-	 * Den Spieler der am Zug ist ändern.
-	 *
-	 * @param spieler
-	 *            Neuer Spieler der am Zug ist.
-	 */
-	public void amZug(Spieler spieler) {
-		applikation.client.controller.Spieler neuerSpieler = spielers.get(spieler);
-		if (aktuellerSpieler != null) {
-			aktuellerSpieler.setAmZug(false);
-		}
-		neuerSpieler.setAmZug(true);
-		aktuellerSpieler = neuerSpieler;
-	}
-
-	/**
 	 * Wenn man keine Karten mehr spielen kann. Noch nicht sicher ob dies auch
 	 * im definitven Spiel drin ist...
 	 */
 	public void aufgeben() {
 		/* TODO: temporär auskommentiert */
-		if (false &&  spielerIch.kannZiehen()) {
-			zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
-                               "da es noch möglich ist zu ziehen.");
-			return;
-		}
+//		if (false &&  spielerIch.kannZiehen()) {
+//			zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
+//                               "da es noch möglich ist zu ziehen.");
+//			return;
+//		}
 		aktiviereKarte(false);
 		AufgegebenEvent age = new AufgegebenEvent();
 		eventQueue.enqueue(age);
-	}
-
-	public Spiel getSpiel() {
-		return spiel;
-	}
-
-	public String getSpielerName() {
-		return spielerName;
-	}
-
-	public void setSpielerName(String spielerName) {
-		this.spielerName = spielerName;
-	}
-
-	public Spieler getSpielerIch() {
-		return spielerIch;
 	}
 
 	public void setEventQueue(EventQueue queue) {
@@ -204,7 +142,4 @@ public abstract class Controller {
 		eventQueue.enqueue(hve);
     }
 
-	public Collection<applikation.client.controller.Spieler> getSpielers() {
-    	return spielers.values();
-    }
 }

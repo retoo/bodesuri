@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenBekommen extends ClientZustand {
 	Class<? extends Zustand> kartenTausch(Karte karte) {
-		controller.getSpielerIch().getKarten().add(karte);
+		spielDaten.spielerIch.getKarten().add(karte);
 		return NichtAmZug.class;
 	}
 	

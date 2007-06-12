@@ -29,18 +29,20 @@ public class ClientAutomat extends Automat {
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
 	 *
 	 * @param controller
+	 * @param spielerName Standard-Wert für den Spielernamen
 	 */
-	public ClientAutomat(Controller controller) {
+	public ClientAutomat(Controller controller, String spielerName) {
 		this.controller = controller;
 		this.spielDaten = new SpielDaten();
 		// TODO: Sollte das Spiel nicht primär in den SpielDaten gespeichert
 		// sein, und diese werden dem Controller übergeben? (Im Server gibt es
 		// auch spielDaten.spiel.) --Robin
-		this.spielDaten.spiel = controller.getSpiel();
+		this.spielDaten.spiel = spielDaten.spiel;
 
 		EventQueue queue = new EventQueue();
 		controller.setEventQueue(queue);
 		spielDaten.queue = queue;
+		spielDaten.spielerName = spielerName;
 
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart());

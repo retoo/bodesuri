@@ -4,18 +4,19 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
+import pd.spieler.Spieler;
 import ui.GUIController;
 
 public class KartenAuswahlView extends JPanel {
 	private KarteGewaehltView karteGewaehltView;
 	private DeckView deckView;
 	
-	public KartenAuswahlView(GUIController controller) {
+	public KartenAuswahlView(GUIController controller, Spieler spielerIch) {
 		setOpaque(false);
 		setLayout(new BorderLayout());
 		
 		// Views
-		deckView = new DeckView(controller, this);
+		deckView = new DeckView(controller, this, spielerIch);
 		karteGewaehltView = new KarteGewaehltView(controller);
 		SteuerungsView steuerungsView = new SteuerungsView(controller);
 		

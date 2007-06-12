@@ -26,9 +26,15 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
-		controller.amZug(zugAufforderung.spieler);
-		if (zugAufforderung.spieler == controller.getSpielerIch()) {
-			spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue);
+		applikation.client.controller.Spieler neuerSpieler = spielDaten.spielers.get(zugAufforderung.spieler);
+        if (spielDaten.aktuellerSpieler != null) {
+        	spielDaten.aktuellerSpieler.setAmZug(false);
+        }
+        neuerSpieler.setAmZug(true);
+        spielDaten.aktuellerSpieler = neuerSpieler;
+        
+		if (zugAufforderung.spieler == spielDaten.spielerIch) {
+			spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue, spielDaten.spielerIch);
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
@@ -48,9 +54,9 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		controller.getSpielerIch().getKarten().clear();
+		spielDaten.spielerIch.getKarten().clear();
 		for (Karte karte : rundenStart.neueKarten) {
-			controller.getSpielerIch().getKarten().add(karte);
+			spielDaten.spielerIch.getKarten().add(karte);
 		}
 		return StarteRunde.class;
 	}

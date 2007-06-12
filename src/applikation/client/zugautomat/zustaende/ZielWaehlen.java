@@ -30,7 +30,7 @@ public class ZielWaehlen extends ClientZugZustand {
 
 			/* Kann in eine seperate Methode oder in die Klasse SpielDaten verschoben werden */
 			Bewegung bewegung = new Bewegung(spielDaten.start, spielDaten.ziel);
-			ZugEingabe zugEingabe = new ZugEingabe(controller.getSpielerIch(),
+			ZugEingabe zugEingabe = new ZugEingabe(spielDaten.spielerIch,
 			                                       spielDaten.karte, bewegung);
 			try {
 				zugEingabe.validiere();

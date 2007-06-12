@@ -1,10 +1,13 @@
 package ui.spiel;
 
 import java.awt.BorderLayout;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
+import pd.Spiel;
+import pd.spieler.Spieler;
 import ui.GUIController;
 import ui.spiel.brett.SpielView;
 import ui.spiel.chat.ChatView;
@@ -13,9 +16,9 @@ import ui.spiel.chat.ChatView;
  * Das GUI des Spiels.
  */
 public class BodesuriView extends JFrame {
-	public BodesuriView(GUIController controller, String spielerName) {
+	public BodesuriView(GUIController controller, Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.controller.Spieler> spielers) {
 		// Layout setzen
-		setTitle("Bodesuri - Spiel (" + spielerName + ")");
+		setTitle("Bodesuri - Spiel (" + spielerIch.getName() + ")");
 		setName("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -23,7 +26,7 @@ public class BodesuriView extends JFrame {
 		setLayout(new BorderLayout());
 
 		// Views
-		SpielView spielView = new SpielView(controller);
+		SpielView spielView = new SpielView(controller, spiel, spielers, spielerIch);
 		ChatView chatView = new ChatView(controller);
 		
 		// Layout zusammenstellen

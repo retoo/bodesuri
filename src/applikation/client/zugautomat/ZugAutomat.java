@@ -1,5 +1,6 @@
 package applikation.client.zugautomat;
 
+import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
 import applikation.client.zugautomat.zustaende.ClientZugZustand;
 import applikation.client.zugautomat.zustaende.ZielWaehlen;
@@ -12,9 +13,10 @@ public class ZugAutomat extends Automat {
 	private Controller controller;
 	private SpielDaten spielDaten;
 
-	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient) {
+	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient, Spieler spielerIch) {
 		this.controller = controller;
 		spielDaten = new SpielDaten();
+		spielDaten.spielerIch = spielerIch;
 		spielDaten.eventQueueBodesuriClient = eventQueueBodesuriClient;
 
 		registriere(new KarteWaehlen(controller));

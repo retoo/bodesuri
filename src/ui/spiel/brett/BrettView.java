@@ -8,6 +8,7 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import pd.Spiel;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
@@ -28,7 +29,7 @@ public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
 
-	public BrettView(GUIController controller) {
+	public BrettView(GUIController controller, Spiel spiel, Map<pd.spieler.Spieler, Spieler> spielers) {
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
@@ -43,7 +44,7 @@ public class BrettView extends JPanel {
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(this, controller);
 
-		for (Feld feld : controller.getSpiel().getBrett().getAlleFelder()) {
+		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 			// TODO: Die unterscheidung der Felder funktioniert noch nicht richtig ...
 			if (feld instanceof LagerFeld){
@@ -80,7 +81,7 @@ public class BrettView extends JPanel {
 		spielerViewPos.add(new Point(460, 560));
 		int i = 0;
 		
-		for (Spieler spieler : controller.getSpielers()) {
+		for (Spieler spieler : spielers.values()) {
 			add(new SpielerView(spieler, spielerViewPos.get(i)));
 			i++;
 		}

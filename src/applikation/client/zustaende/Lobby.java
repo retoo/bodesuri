@@ -1,5 +1,6 @@
 package applikation.client.zustaende;
 
+import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielStartNachricht;
@@ -28,10 +29,14 @@ public class Lobby extends ClientZustand {
     }
 
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
-
 		for (SpielerInfo si : startNachricht.spielInfo.spielers) {
-			/* TODO: inline me */
-			controller.fuegeSpielerHinzu(si.name);
+			String name = si.name;
+			Spieler neuerSpieler = spielDaten.spiel.fuegeHinzu(name);
+            if (name.equals(spielDaten.spielerName)) {
+            	spielDaten.spielerIch = neuerSpieler;
+            }
+            
+            spielDaten.spielers.put(neuerSpieler, new applikation.client.controller.Spieler(neuerSpieler));
 		}
 
 		return SpielStart.class;

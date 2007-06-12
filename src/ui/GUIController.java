@@ -1,8 +1,12 @@
 package ui;
 
+import java.util.Map;
+
 import javax.swing.JOptionPane;
 
+import pd.Spiel;
 import pd.brett.Feld;
+import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.spiel.brett.felder.FeldMouseAdapter;
@@ -18,12 +22,8 @@ public class GUIController extends Controller {
 	private FeldMouseAdapter feldMouseAdapter;
 	private KarteMouseAdapter karteMouseAdapter;
 
-	public GUIController(String spielerName) {
-		super(spielerName);
-	}
-
-	public void zeigeVerbinden() {
-		verbindenView = new VerbindenView(this, this.getSpielerName());
+	public void zeigeVerbinden(String spielerName) {
+		verbindenView = new VerbindenView(this, spielerName);
 		verbindenView.setVisible(true);
 	}
 
@@ -33,9 +33,9 @@ public class GUIController extends Controller {
 		lobbyView.setVisible(true);
 	}
 
-	public void zeigeSpiel() {
+	public void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.controller.Spieler> spielers) {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, this.getSpielerIch().getName());
+		spielView = new BodesuriView(this, spiel, spielerIch, spielers);
 		spielView.setVisible(true);
 	}
 
@@ -43,6 +43,7 @@ public class GUIController extends Controller {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
 
+	//TODO Nicht mehr nötig.
 	public void aktiviereFeld(Boolean zustand) {
 		feldMouseAdapter.aktiv(zustand);
 	}

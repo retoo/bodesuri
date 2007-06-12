@@ -9,10 +9,11 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 import pd.karten.Karte;
+import pd.spieler.Spieler;
 import ui.GUIController;
 import dienste.observer.ListChangeEvent;
-import dienste.observer.ListChangeEvent.ListChangeType;
 import dienste.observer.ObservableList;
+import dienste.observer.ListChangeEvent.ListChangeType;
 
 /**
  * JPanel, das DeckView wird zur Darstellung der Karten verwendet. Hier werden
@@ -23,7 +24,7 @@ public class DeckView extends JPanel implements Observer {
 	private Vector<KarteView> karteViews;
 
 	public DeckView(GUIController controller,
-	                KartenAuswahlView kartenAuswahlView) {
+	                KartenAuswahlView kartenAuswahlView, Spieler spielerIch) {
 		setLayout(null);
 		setOpaque(false);
 		
@@ -46,8 +47,8 @@ public class DeckView extends JPanel implements Observer {
 			add(kv);
 		}
 		
-		karten = controller.getSpielerIch().getKarten();
-		karten.addObserver(this);
+		this.karten = spielerIch.getKarten();
+		this.karten.addObserver(this);
 	}
 	
 	public void update(Observable o, Object arg) {

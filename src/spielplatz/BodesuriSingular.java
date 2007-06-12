@@ -27,8 +27,8 @@ public class BodesuriSingular {
 
 
 		//EventQueue eventQueue = new EventQueue();
-		Controller controller = new GUIController("Singular");
-		Automat client = new ClientAutomat(controller);
+		Controller controller = new GUIController();
+		Automat client = new ClientAutomat(controller, "Singular");
 
 		controller. verbinde("localhost", 7788, "Singular");
 

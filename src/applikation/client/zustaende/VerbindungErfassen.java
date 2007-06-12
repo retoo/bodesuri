@@ -22,7 +22,7 @@ public class VerbindungErfassen extends ClientZustand {
 
 			spielDaten.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten, spielDaten);
 			spielDaten.endpunkt.sende(new SpielBeitreten(ve.spielerName));
-			controller.setSpielerName( ve.spielerName );
+			spielDaten.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			controller.zeigeFehlermeldung("Unbekannter Hostname: " + ve.hostname);
 			spielDaten.endpunkt = null;
