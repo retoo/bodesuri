@@ -9,9 +9,9 @@ import java.net.Socket;
 class Empfaenger implements Runnable {
 	private BriefKastenInterface briefkasten;
 	private ObjectInputStream inputStream;
-	private EndPunkt endpunkt;
+	private EndPunktInterface endpunkt;
 
-	protected Empfaenger(EndPunkt endpunkt, Socket socket,
+	protected Empfaenger(EndPunktInterface endpunkt, Socket socket,
 	        BriefKastenInterface briefkasten) throws IOException {
 		inputStream = new ObjectInputStream(socket.getInputStream());
 		this.endpunkt = endpunkt;

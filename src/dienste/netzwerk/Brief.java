@@ -1,13 +1,13 @@
 package dienste.netzwerk;
 
 /**
- * Repräsentiert eine Netzwek-Nachricht. 
+ * Repräsentiert eine Netzwek-Nachricht.
  */
 public class Brief {
 	/**
 	 * Absender der Nachricht
 	 */
-	public EndPunkt absender;
+	public EndPunktInterface absender;
 	/**
 	 * Im Brief enhaltende Nachricht
 	 */
@@ -15,11 +15,11 @@ public class Brief {
 
 	/**
 	 * Erstellt einen neuen Brief.sollte nur intern verwendet.
-	 * 
+	 *
 	 * @param absender Absender
 	 * @param nachricht Nachricht
 	 */
-	protected Brief(EndPunkt absender, Nachricht nachricht) {
+	protected Brief(EndPunktInterface absender, Nachricht nachricht) {
 		this.absender = absender;
 		this.nachricht = nachricht;
 	}

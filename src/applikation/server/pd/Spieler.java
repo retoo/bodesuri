@@ -2,7 +2,7 @@ package applikation.server.pd;
 
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.KartenTausch;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 
 /**
@@ -13,7 +13,7 @@ public class Spieler {
 	 * Name des Spielers
 	 */
 	public Spieler partner;
-	private EndPunkt endpunkt;
+	private EndPunktInterface endpunkt;
 	public boolean hatGetauscht;
 	private KartenTausch tausch;
 	public pd.spieler.Spieler spieler;
@@ -21,13 +21,13 @@ public class Spieler {
 	/**
 	 * Erstellt einen neune Spieler
 	 *
-	 * @param endpunkt
+	 * @param absender
 	 *            Endpunkt des Spielers
 	 * @param spieler
 	 *            Spieler-Objekt aus der PD
 	 */
-	public Spieler(EndPunkt endpunkt, pd.spieler.Spieler spieler) {
-		this.endpunkt = endpunkt;
+	public Spieler(EndPunktInterface absender, pd.spieler.Spieler spieler) {
+		this.endpunkt = absender;
 		this.spieler = spieler;
 		this.hatGetauscht = false;
 	}
@@ -59,7 +59,7 @@ public class Spieler {
 		return spieler.getName() + " (" + endpunkt + ")";
 	}
 
-	public EndPunkt getEndPunkt() {
+	public EndPunktInterface getEndPunkt() {
 		return endpunkt;
 	}
 

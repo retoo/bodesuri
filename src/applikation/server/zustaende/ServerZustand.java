@@ -9,7 +9,7 @@ import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 import dienste.netzwerk.Brief;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
 import dienste.netzwerk.NeueVerbindung;
@@ -55,21 +55,21 @@ public abstract class ServerZustand extends Zustand {
 
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
 
-	Class<? extends Zustand> aufgabe(EndPunkt absender, Aufgabe aufgabe) {
+	Class<? extends Zustand> aufgabe(EndPunktInterface absender, Aufgabe aufgabe) {
 	    return keinUebergang();
     }
 
-	Class<? extends Zustand> kartenTausch(EndPunkt absender, KartenTausch tausch) {
+	Class<? extends Zustand> kartenTausch(EndPunktInterface absender, KartenTausch tausch) {
 		return keinUebergang();
     }
 
-	Class<? extends Zustand> verbindungGeschlossen(EndPunkt absender) {
+	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
 		System.out.println("Verbindung zu Client " + absender +
 		                  " wurde unerwartet beendet. Server wird beendet.");
     	return EndZustand.class;
     }
 
-	Class<? extends Zustand> zugInfo(EndPunkt absender, ZugInformation information) {
+	Class<? extends Zustand> zugInfo(EndPunktInterface absender, ZugInformation information) {
     	return keinUebergang();
     }
 
@@ -78,7 +78,7 @@ public abstract class ServerZustand extends Zustand {
     	return this.getClass();
     }
 
-	Class<? extends Zustand> spielBeitreten(EndPunkt absender, SpielBeitreten beitreten) {
+	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender, SpielBeitreten beitreten) {
     	return keinUebergang();
     }
 

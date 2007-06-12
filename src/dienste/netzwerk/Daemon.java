@@ -50,7 +50,7 @@ public class Daemon implements Runnable {
 		try {
 			while (true) {
 				Socket clientSocket = serverSock.accept();
-				EndPunkt client = new EndPunkt(clientSocket, briefkasten,
+				EndPunktInterface client = new EndPunkt(clientSocket, briefkasten,
 				                               serialisierungsKontext);
 
 				queue.enqueue(new NeueVerbindung(client));

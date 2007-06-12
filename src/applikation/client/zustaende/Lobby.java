@@ -6,7 +6,7 @@ import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.server.pd.SpielerInfo;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 
 /**
  * Zustand wennn der Spieler in der Lobby ist. Wenn eine
@@ -18,7 +18,7 @@ public class Lobby extends ClientZustand {
 		this.controller = controller;
 	}
 
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, String nachricht) {
+	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}

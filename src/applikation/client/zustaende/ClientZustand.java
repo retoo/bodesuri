@@ -23,7 +23,7 @@ import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 import dienste.netzwerk.Brief;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
 import dienste.netzwerk.VerbindungGeschlossen;
@@ -120,7 +120,7 @@ public class ClientZustand extends Zustand {
 		return ignoriereEvent("hoverStart");
     }
 
-	Class<? extends Zustand> verbindungGeschlossen(EndPunkt endpunkt) {
+	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface endpunkt) {
 		controller.zeigeFehlermeldung("Verbindung zu Server " + endpunkt +
 		                  " wurde unerwartet beendet. Client wird beendet.");
     	return EndZustand.class;
@@ -129,11 +129,11 @@ public class ClientZustand extends Zustand {
 
 	/* Netzwerk Handler */
 
-	Class<? extends Zustand> spielVoll(EndPunkt absender, SpielVollNachricht nachricht) {
+	Class<? extends Zustand> spielVoll(EndPunktInterface absender, SpielVollNachricht nachricht) {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> chatNachricht(EndPunkt absender, String nachricht) {
+	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
 		System.out.println(nachricht);
 
 		return this.getClass();

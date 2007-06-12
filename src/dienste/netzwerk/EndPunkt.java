@@ -13,7 +13,7 @@ import dienste.serialisierung.SerialisierungsKontext;
  * Kommunikationspartner.
  *
  */
-public class EndPunkt {
+public class EndPunkt implements EndPunktInterface {
 	private Socket socket;
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
@@ -86,13 +86,9 @@ public class EndPunkt {
 		empfaengerThread.start();
 	}
 
-	/**
-	 * Sende die angegebene Nachricht an den Host auf der anderen Seite des
-	 * Kommunikationkanals.
-	 *
-	 * @param nachricht
-	 *            zu übertragende Nachricht
-	 */
+	/* (non-Javadoc)
+     * @see dienste.netzwerk.EndPunktInterface#sende(dienste.netzwerk.Nachricht)
+     */
 	public void sende(Nachricht nachricht) {
 		try {
 			outputStream.writeObject(nachricht);
@@ -101,11 +97,9 @@ public class EndPunkt {
 		}
 	}
 
-	/**
-	 * Beendet die Verbindung
-	 *
-	 * @throws IOException
-	 */
+	/* (non-Javadoc)
+     * @see dienste.netzwerk.EndPunktInterface#ausschalten()
+     */
 	public void ausschalten() throws IOException {
 		socket.shutdownInput();
 		socket.shutdownOutput();

@@ -8,12 +8,12 @@ import pd.SpielThreads;
 import pd.spieler.Spieler;
 import applikation.client.zugautomat.ZugAutomat;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.serialisierung.SerialisierungsKontext;
 
 public class SpielDaten implements SerialisierungsKontext {
 	public EventQueue queue;
-	public EndPunkt endpunkt;
+	public EndPunktInterface endpunkt;
 	public ZugAutomat zugAutomat;
 	
 	public Spiel spiel = new Spiel();

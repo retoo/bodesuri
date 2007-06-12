@@ -6,14 +6,14 @@ import applikation.server.pd.Runde;
 import applikation.server.pd.Spieler;
 import applikation.server.pd.Spielerschaft;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 
 /**
  * Zustand während des Spieles. Eingende ZugInformationen werden an
  * alle Spieler verteilt.
  */
 public class WarteAufZug extends ServerZustand {
-	Class<? extends Zustand> zugInfo(EndPunkt absender, ZugInformation zugInfo) {
+	Class<? extends Zustand> zugInfo(EndPunktInterface absender, ZugInformation zugInfo) {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
 		spielers.sicherStellenIstAktuellerSpieler(absender);
@@ -24,7 +24,7 @@ public class WarteAufZug extends ServerZustand {
 		return VersendeZug.class;
 	}
 
-	Class<? extends Zustand> aufgabe(EndPunkt absender, Aufgabe aufgabe) {
+	Class<? extends Zustand> aufgabe(EndPunktInterface absender, Aufgabe aufgabe) {
 		Runde runde = spielDaten.spielerschaft.runde;
 
 		Spieler aktuellerSpieler = runde.getAktuellerSpieler();

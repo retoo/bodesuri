@@ -5,9 +5,8 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import pd.spieler.SpielerFarbe;
-
 import applikation.nachrichten.ChatNachricht;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 
@@ -17,7 +16,7 @@ import dienste.netzwerk.VerbindungWegException;
  */
 public class Spielerschaft implements Iterable<Spieler> {
 	Vector<Spieler> spielers = new Vector<Spieler>();
-	private IdentityHashMap<EndPunkt, Spieler> endpunktZuSpieler;
+	private IdentityHashMap<EndPunktInterface, Spieler> endpunktZuSpieler;
 
 	public Runde runde;
 
@@ -30,7 +29,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 	public Spielerschaft(int anzSpieler) {
 		this.anzahlSpieler = anzSpieler;
 		this.spielers = new Vector<Spieler>();
-		this.endpunktZuSpieler = new IdentityHashMap<EndPunkt, Spieler>();
+		this.endpunktZuSpieler = new IdentityHashMap<EndPunktInterface, Spieler>();
 	}
 
 	public void partnerschaftenBilden() {
@@ -148,7 +147,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 		return runde;
 	}
 
-	public void sicherStellenIstAktuellerSpieler(EndPunkt endpunkt) {
+	public void sicherStellenIstAktuellerSpieler(EndPunktInterface endpunkt) {
 		if (runde.getAktuellerSpieler() != getSpieler(endpunkt)) {
 
 			broadcast("HAH.. huere michi, de " + endpunkt
@@ -158,7 +157,7 @@ public class Spielerschaft implements Iterable<Spieler> {
 		}
 	}
 
-	public Spieler getSpieler(EndPunkt endpunkt) {
+	public Spieler getSpieler(EndPunktInterface endpunkt) {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
 
 		if (spieler == null)

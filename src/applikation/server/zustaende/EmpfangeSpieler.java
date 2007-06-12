@@ -5,14 +5,14 @@ import applikation.nachrichten.SpielBeitreten;
 import applikation.server.pd.Spieler;
 import applikation.server.pd.Spielerschaft;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 
 /**
  * Zustand in welchem neue Spieler empfangen werden. Sobald das Spiel komplett
  * ist wird der Zustand {@link SpielStart} aufgerufen.
  */
 public class EmpfangeSpieler extends ServerZustand {
-	Class<? extends Zustand> spielBeitreten(EndPunkt absender,
+	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,
 	                                        SpielBeitreten beitreten) {
 		Spielerschaft spielers = spielDaten.spielerschaft;
 
