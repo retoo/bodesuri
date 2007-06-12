@@ -164,6 +164,6 @@
     </delete>
   </target>
   <target name="build-everything" depends="compile,test"/>
-  <target name="all" depends="build-everything,cobertura-report,javadoc"/>
+  <target name="all" depends="clean,build-everything,cobertura-report,javadoc"/>
   <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>
