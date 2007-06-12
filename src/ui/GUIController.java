@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import pd.brett.Feld;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
-import ui.spiel.brett.FeldMouseAdapter;
+import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;

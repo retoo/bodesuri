@@ -16,6 +16,7 @@ import pd.spieler.Figur;
 import ui.GUIController;
 import ui.ressourcen.BrettLader;
 import ui.spiel.brett.felder.Feld2d;
+import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.brett.felder.NormalesFeld2d;
 import ui.spiel.brett.felder.SpielerFeld2d;
 import applikation.client.controller.Spieler;

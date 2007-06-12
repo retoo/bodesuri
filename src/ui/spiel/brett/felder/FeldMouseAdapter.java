@@ -1,11 +1,12 @@
-package ui.spiel.brett;
+package ui.spiel.brett.felder;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import pd.brett.Feld;
 import ui.GUIController;
-import ui.spiel.brett.felder.Feld2d;
+import ui.spiel.brett.BrettView;
+import ui.spiel.brett.Figur2d;
 
 /**
  * MouseEventListener, der auf die Klicks der Felder achtet.
@@ -23,7 +24,7 @@ public class FeldMouseAdapter extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		controller.zielHover(((Feld2d) e.getComponent()).feld);
+		controller.zielHover(((Feld2d) e.getComponent()).getFeld());
 	}
 
 	/**
@@ -35,8 +36,8 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 *            MouseEvent der das angeklickte Feld enthält
 	 */
 	public void mouseClicked(MouseEvent e) {
-		Feld feld = ((Feld2d) e.getComponent()).feld;
-		controller.feldAuswaehlen(feld);
+		Feld feld = ((Feld2d) e.getComponent()).getFeld();
+		controller.feldGewaehlt(feld);
 	}
 	
 	/**
@@ -47,13 +48,15 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 * @param feld
 	 * 				Angeklicktes Feld
 	 */
-	public void setzeFeldAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
+	public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
 		if (aktiv) {
-			Feld2d feld2d = brettView.getFeld2d(feld);
-			if (istAusgewaehlt) {
-				feld2d.setAusgewaehlt(true);
-			} else {
-				feld2d.setAusgewaehlt(false);
+			Figur2d figur = brettView.getFigur2d(feld.getFigur());
+			if (figur != null) {
+				if (istAusgewaehlt) {
+					figur.setzeAusgewaehlt();
+				} else {
+					figur.setzeNichtAusgewaehlt();
+				}
 			}
 		}
 	}

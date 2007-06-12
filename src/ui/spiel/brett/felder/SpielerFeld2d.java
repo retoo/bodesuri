@@ -4,7 +4,6 @@ import java.awt.Point;
 
 import pd.brett.Feld;
 import ui.ressourcen.Icons;
-import ui.spiel.brett.FeldMouseAdapter;
 
 /**
  * Feld Bank, welches jede Spielfigur am Anfang besucht haben muss,
