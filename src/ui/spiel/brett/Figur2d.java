@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-import java.util.IdentityHashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -8,7 +7,6 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import pd.spieler.Figur;
-import pd.spieler.SpielerFarbe;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
 
@@ -18,14 +16,13 @@ import ui.spiel.brett.felder.Feld2d;
 public class Figur2d extends JLabel implements Observer {
 	private Figur figur;
 	private BrettView brett;
-	private IdentityHashMap<SpielerFarbe, Icon> farbeMap;
+	private Icon icon;
 
-	public Figur2d(Figur figur, IdentityHashMap<SpielerFarbe, Icon> farbeMap,
-			BrettView brett) {
-		super(farbeMap.get(figur.getSpieler().getFarbe()));
+	public Figur2d(Figur figur, Icon icon, BrettView brett) {
+		super(icon);
 		this.figur = figur;
 		this.brett = brett;
-		this.farbeMap = farbeMap;
+		this.icon = icon;
 		setzeAuf(brett.getFeld2d(figur.getFeld()));
 		figur.addObserver(this);
 	}
@@ -37,9 +34,7 @@ public class Figur2d extends JLabel implements Observer {
 	 *            Zielfeld
 	 */
 	public void setzeAuf(Feld2d ziel) {
-		setBounds(getPosX(ziel), getPosY(ziel), farbeMap.get(
-				figur.getSpieler().getFarbe()).getIconWidth(), farbeMap.get(
-				figur.getSpieler().getFarbe()).getIconHeight());
+		setBounds(getPosX(ziel), getPosY(ziel), icon.getIconWidth(), icon.getIconHeight());
 	}
 
 	public void update(Observable o, Object arg) {
@@ -48,12 +43,12 @@ public class Figur2d extends JLabel implements Observer {
 	}
 
 	public int getPosX(Feld2d ziel) {
-		return ziel.getPointX() - (Icons.FIGUR_BLAU.getIconWidth() / 2) + 2;
+		return ziel.getPointX() - (icon.getIconWidth() / 2) + 2;
 	}
 
 	public int getPosY(Feld2d ziel) {
 		return ziel.getPointY()
-				- (Icons.FIGUR_BLAU.getIconHeight() - (Icons.FELD_NORMAL
+				- (icon.getIconHeight() - (Icons.FELD_NORMAL
 						.getIconHeight() / 2)) + 7;
 	}
 }

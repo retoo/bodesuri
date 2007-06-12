@@ -17,39 +17,60 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class BrettLader {
-	public static Map<Integer, Point> ladeXML(String datei)
+
+	public static Map<Integer, Point> felderMap;
+	public static Map<Integer, Point> spielerViewMap;
+	private static HashMap<Integer, Point> hinweisMap;
+
+	static DocumentBuilderFactory factory = DocumentBuilderFactory
+			.newInstance();
+	static DocumentBuilder builder;
+	
+	public static Map<Integer, Point> ladeFelder(String datei)
 			throws ParserConfigurationException, SAXException, IOException {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder builder = factory.newDocumentBuilder();
-		
-		Map<Integer, Point> map = new HashMap<Integer, Point>();
-		
+		builder = factory.newDocumentBuilder();
+		felderMap = new HashMap<Integer, Point>();
 		Document document = builder.parse(new File(datei));
 		Element brett = document.getDocumentElement();
-		
-		NodeList felder = brett.getElementsByTagName("feld");
+		mapFuellen("feld", felderMap, brett);
+		return felderMap;
+	}
+
+	public static Map<Integer, Point> ladeSpielerView(String datei)
+			throws ParserConfigurationException, SAXException, IOException {
+		builder = factory.newDocumentBuilder();
+		spielerViewMap = new HashMap<Integer, Point>();
+		Document document = builder.parse(new File(datei));
+		Element brett = document.getDocumentElement();
+		mapFuellen("spielerView", spielerViewMap, brett);
+		return spielerViewMap;
+	}
+
+	public static Map<Integer, Point> ladeHinweis(String datei)
+			throws ParserConfigurationException, SAXException, IOException {
+		builder = factory.newDocumentBuilder();
+		hinweisMap = new HashMap<Integer, Point>();
+		Document document = builder.parse(new File(datei));
+		Element brett = document.getDocumentElement();
+		mapFuellen("hinweis", hinweisMap, brett);
+		return hinweisMap;
+	}
+
+	private static void mapFuellen(String element, Map<Integer, Point> map,
+			Element brett) {
+		NodeList felder = brett.getElementsByTagName(element);
 		for (int i = 0; i < felder.getLength(); ++i) {
-			Element feld = (Element)felder.item(i);
-			
+			Element feld = (Element) felder.item(i);
+
 			Integer nummer = Integer.valueOf(feld.getAttribute("nummer"));
-			
+
 			Point point = new Point();
 			Node x = feld.getElementsByTagName("x").item(0);
 			Node y = feld.getElementsByTagName("y").item(0);
 			point.x = Integer.valueOf(x.getTextContent());
 			point.y = Integer.valueOf(y.getTextContent());
-			
+
 			map.put(nummer, point);
 		}
-		
-		return map;
-	}
-	
-	public static void main(String[] args)
-			throws ParserConfigurationException, SAXException, IOException {
-		String datei = "src/spielplatz/brett.xml";
-		Map<Integer, Point> felder = BrettLader.ladeXML(datei);
-		System.out.println(felder.size());
-		System.out.println(felder);
 	}
 }

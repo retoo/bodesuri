@@ -617,4 +617,35 @@
 			<y>270</y>
 		</koordinaten>
 	</feld>
+	<spielerView nummer="0">
+		<koordinaten>
+			<x>460</x>
+			<y>20</y>
+		</koordinaten>
+	</spielerView>
+	<spielerView nummer="1">
+		<koordinaten>
+			<x>60</x>
+			<y>20</y>
+		</koordinaten>
+	</spielerView>
+	<spielerView nummer="2">
+
+		<koordinaten>
+			<x>60</x>
+			<y>560</y>
+		</koordinaten>
+	</spielerView>
+	<spielerView nummer="3">
+		<koordinaten>
+			<x>460</x>
+			<y>560</y>
+		</koordinaten>
+	</spielerView>
+	<hinweis nummer="0">
+		<koordinaten>
+			<x>200</x>
+			<y>280</y>
+		</koordinaten>
+	</hinweis>
 </brett>
