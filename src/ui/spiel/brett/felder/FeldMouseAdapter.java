@@ -37,7 +37,7 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-		controller.feldGewaehlt(feld);
+		controller.feldAuswaehlen(feld);
 	}
 	
 	/**
@@ -50,13 +50,11 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
 		if (aktiv) {
-			Figur2d figur = brettView.getFigur2d(feld.getFigur());
-			if (figur != null) {
-				if (istAusgewaehlt) {
-					figur.setzeAusgewaehlt();
-				} else {
-					figur.setzeNichtAusgewaehlt();
-				}
+			Feld2d feld2d = brettView.getFeld2d(feld);  
+			if (istAusgewaehlt) {
+				feld2d.setAusgewaehlt(true);
+			} else {
+				feld2d.setAusgewaehlt(false);
 			}
 		}
 	}

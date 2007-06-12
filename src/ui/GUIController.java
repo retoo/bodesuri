@@ -48,7 +48,7 @@ public class GUIController extends Controller {
 	}
 	
 	public void zeigeFeldauswahl(Feld feld, boolean status) {
-		feldMouseAdapter.setzeFeldAusgewaehltStatus(status, feld);
+		feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
 	}
 
 	public void aktiviereKarte(Boolean zustand) {
