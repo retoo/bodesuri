@@ -14,4 +14,8 @@ public class NormalesFeld extends Feld {
 	public NormalesFeld(int nummer) {
 		super(nummer);
 	}
+	
+	public boolean istRing() {
+		return true;
+	}
 }

@@ -98,6 +98,10 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 		return false;
 	}
 	
+	public boolean istRing() {
+		return false;
+	}
+	
 	/**
 	 * @param geschuetzt Soll Feld geschuetzt sein?
 	 */

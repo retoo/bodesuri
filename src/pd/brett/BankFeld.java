@@ -26,6 +26,10 @@ public class BankFeld extends SpielerFeld {
 	public boolean istBank() {
 		return true;
 	}
+	
+	public boolean istRing() {
+		return true;
+	}
 
 	/**
 	 * Gibt das erste Feld des Himmels zurück.
