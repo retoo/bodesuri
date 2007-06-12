@@ -25,6 +25,7 @@ public class DeckView extends JPanel implements Observer {
 	public DeckView(GUIController controller,
 	                KartenAuswahlView kartenAuswahlView) {
 		setLayout(null);
+		setOpaque(false);
 		
 		Dimension groesse = new Dimension(190, 340);
 		setPreferredSize(groesse);

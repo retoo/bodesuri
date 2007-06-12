@@ -11,7 +11,7 @@ public class KartenAuswahlView extends JPanel {
 	private DeckView deckView;
 	
 	public KartenAuswahlView(GUIController controller) {
-		// Layout setzen
+		setOpaque(false);
 		setLayout(new BorderLayout());
 		
 		// Views

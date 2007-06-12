@@ -9,6 +9,7 @@ import ui.GUIController;
 
 public class SpielBrettView extends JPanel {
 	public SpielBrettView(GUIController controller) {
+		setOpaque(false);
 		// Layout
 		GridBagLayout gbl = new GridBagLayout();
 		setLayout(gbl);

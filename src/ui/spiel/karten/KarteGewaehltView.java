@@ -18,6 +18,7 @@ public class KarteGewaehltView extends JPanel {
 	public KarteGewaehltView(GUIController controller) {
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		setOpaque(false);
 		
 		name = new JLabel();
 		Font nameFont = name.getFont().deriveFont(Font.BOLD, 16);
