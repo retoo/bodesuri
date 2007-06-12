@@ -23,6 +23,7 @@ public class GUIController extends Controller {
 	private FeldMouseAdapter feldMouseAdapter;
 	private KarteMouseAdapter karteMouseAdapter;
 	private JLabel hinweisFeld;
+	private JLabel gespielteKarteFeld;
 
 	public void zeigeVerbinden(String spielerName) {
 		verbindenView = new VerbindenView(this, spielerName);
@@ -48,6 +49,12 @@ public class GUIController extends Controller {
 	public void zeigeHinweis(String hinweis) {
 		if (hinweisFeld != null) {
 			hinweisFeld.setText(hinweis);
+		}
+	}
+	
+	public void zeigeGespielteKarte(String gespielteKarte) {
+		if (gespielteKarteFeld != null) {
+			gespielteKarteFeld.setText(gespielteKarte);
 		}
 	}
 
@@ -89,7 +96,23 @@ public class GUIController extends Controller {
 		this.karteMouseAdapter = karteMouseAdapter;
 	}
 	
-	public void registriereHinweisFeld(JLabel hinweisFeld){
+	/**
+	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
+	 * zeigeHinweis() mit Nachrichten gefüttert.
+	 * 
+	 * @param hinweisFeld
+	 */
+	public void registriereHinweisFeld(JLabel hinweisFeld) {
 		this.hinweisFeld = hinweisFeld;
+	}
+
+	/**
+	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
+	 * zeigeGespielteKarte() mit den gespielten Karten gefüttert.
+	 * 
+	 * @param gespielteKarteFeld
+	 */
+	public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
+		this.gespielteKarteFeld = gespielteKarteFeld;
 	}
 }

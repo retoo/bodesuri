@@ -22,8 +22,8 @@ public class SteuerungsView extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 
-		JLabel spielZustand = new JLabel("Zustand");
-		JLabel spielAktion = new JLabel(" XXX");
+		JLabel gespielteKarte = new JLabel();
+		controller.registriereGespielteKarten(gespielteKarte);
 		JButton aussetzen = new JButton("Aufgeben");
 		aussetzen.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
@@ -31,8 +31,7 @@ public class SteuerungsView extends JPanel {
             }
 		});
 
-		add(spielZustand);
-		add(spielAktion);
+		add(gespielteKarte);
 		add(aussetzen);
 	}
 

@@ -49,6 +49,8 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		try {
+			controller.zeigeGespielteKarte(zug.getKarte() + " gespielt von "
+			                               + zug.getSpieler().getName());
 			zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e

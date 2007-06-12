@@ -43,7 +43,7 @@ public abstract class Controller {
 	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.Spieler> spielers);
 
 	/**
-	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden
+	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,
 	 * darstellen.
 	 * 
 	 * @param fehlermeldung
@@ -52,13 +52,22 @@ public abstract class Controller {
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 	
 	/**
-	 * Hinweise, die vom Automaten an den Controller gereicht werden darstellen
+	 * Hinweise, die vom Automaten an den Controller gereicht werden, darstellen
 	 * um dem Spieler zu führen.
 	 * 
 	 * @param hinweis
 	 *            anzuzeigender Hinweis
 	 */
 	public abstract void zeigeHinweis(String hinweis);
+	
+	/**
+	 * Die gespielte Karte, die vom Automaten an den Controller gereicht wird,
+	 * darstellen.
+	 * 
+	 * @param karte
+	 *            gespielte Karte
+	 */
+	public abstract void zeigeGespielteKarte(String karte);
 	
 	/**
 	 * Darstellen des gewählten bzw. abgewählten Feldes.
