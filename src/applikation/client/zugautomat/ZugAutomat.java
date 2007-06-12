@@ -2,7 +2,7 @@ package applikation.client.zugautomat;
 
 import applikation.client.controller.Controller;
 import applikation.client.zugautomat.zustaende.ClientZugZustand;
-import applikation.client.zugautomat.zustaende.EndeWaehlen;
+import applikation.client.zugautomat.zustaende.ZielWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
 import dienste.automat.Automat;
@@ -19,7 +19,7 @@ public class ZugAutomat extends Automat {
 
 		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen(controller));
-		registriere(new EndeWaehlen(controller));
+		registriere(new ZielWaehlen(controller));
 
 		setStart(KarteWaehlen.class);
 	}

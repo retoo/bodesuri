@@ -24,7 +24,7 @@ public class StartWaehlen extends ClientZugZustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		spielDaten.start = event.feld;
 		controller.zeigeFeldauswahl(event.feld, true);
-		return EndeWaehlen.class;
+		return ZielWaehlen.class;
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

@@ -16,8 +16,8 @@ import dienste.automat.zustaende.Zustand;
  * {@link FeldGewaehltEvent} eintrifft wird der gesamte Zug validiert und
  * versendet. Der Automat wird dann beendet.
  */
-public class EndeWaehlen extends ClientZugZustand {
-	public EndeWaehlen(Controller controller) {
+public class ZielWaehlen extends ClientZugZustand {
+	public ZielWaehlen(Controller controller) {
 		this.controller = controller;
 	}
 
