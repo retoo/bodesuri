@@ -24,9 +24,12 @@ public class SiebnerRegel extends VorwaertsRegel {
 			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
 		}
 
+		Spieler spieler = zugEingabe.getSpieler();
+		
 		int wegLaenge = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
+			pruefeBewegung(bewegung, spieler);
 			Weg weg = bewegung.getWeg();
 			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {
@@ -39,11 +42,9 @@ public class SiebnerRegel extends VorwaertsRegel {
                                     " und nicht " + wegLaenge + " Felder gehen.");
 		}
 
-		Spieler spieler = zugEingabe.getSpieler();
 		Zug zug = new Zug();
 
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
-			pruefeBewegung(bewegung, spieler);
 			for (Feld feld : bewegung.getWeg()) {
 				Figur figur = figuren.get(feld);
 				boolean hatFigur = (figur != null);
