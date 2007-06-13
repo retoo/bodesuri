@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.Vector;
 
 import pd.spieler.SpielerFarbe;
+import applikation.geteiltes.SpielInfo;
+import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.ChatNachricht;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;

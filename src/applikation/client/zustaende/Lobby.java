@@ -2,9 +2,9 @@ package applikation.client.zustaende;
 
 import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
+import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.SpielStartNachricht;
-import applikation.server.pd.SpielerInfo;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 

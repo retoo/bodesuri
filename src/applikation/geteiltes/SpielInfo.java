@@ -1,4 +1,4 @@
-package applikation.server.pd;
+package applikation.geteiltes;
 
 import java.io.Serializable;
 import java.util.Vector;

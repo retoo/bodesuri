@@ -1,5 +1,7 @@
 package applikation.server.pd;
 
+import applikation.geteiltes.SpielInfo;
+import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.BeitrittsBestaetigung;
 import applikation.nachrichten.KartenTausch;
 import dienste.netzwerk.EndPunktInterface;

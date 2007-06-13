@@ -1,6 +1,6 @@
 package applikation.nachrichten;
 
-import applikation.server.pd.SpielInfo;
+import applikation.geteiltes.SpielInfo;
 import dienste.netzwerk.Nachricht;
 
 /**
