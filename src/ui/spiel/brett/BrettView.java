@@ -1,6 +1,8 @@
 package ui.spiel.brett;
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -31,14 +33,14 @@ import applikation.client.pd.Spieler;
 public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
+	private BrettXML brettXML;
 
 	public BrettView(GUIController controller, Spiel spiel,
 			Map<pd.spieler.Spieler, Spieler> spielers) {
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
-
-		BrettXML brettXML;
+		
  		try {
  			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
@@ -88,10 +90,10 @@ public class BrettView extends JPanel {
 			i++;
 		}
 
-		JLabel hinweis = new JLabel();
+		// Hinweis darstellen
 		Point hinweisPos = brettXML.getHinweis();
-		hinweis.setBounds(hinweisPos.x, hinweisPos.y, 400, 30);
-		controller.registriereHinweisFeld(hinweis);
+		JPanel hinweis = zeichneHinweis(controller);
+		hinweis.setBounds(hinweisPos.x, hinweisPos.y, 170, 40);
 		add(hinweis);
 
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
@@ -104,5 +106,27 @@ public class BrettView extends JPanel {
 
 	public Figur2d getFigur2d(Figur figur) {
 		return figuren.get(figur);
+	}
+	
+	public JPanel zeichneHinweis(GUIController controller){
+		// JLabel
+		JLabel hinweisLabel = new JLabel();
+		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
+		controller.registriereHinweisFeld(hinweisLabel);
+		
+		//	Views
+		JPanel hinweisView = new JPanel();
+		hinweisView.setOpaque(false);
+		
+		GridBagLayout gbl = new GridBagLayout();
+		hinweisView.setLayout(gbl);
+		
+		// Spezielles Verfahren, um ein JPanel zu zentrieren
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.anchor = GridBagConstraints.CENTER;		
+		gbl.setConstraints(hinweisLabel, gbc);
+		hinweisView.add(hinweisLabel);
+		
+		return hinweisView;
 	}
 }

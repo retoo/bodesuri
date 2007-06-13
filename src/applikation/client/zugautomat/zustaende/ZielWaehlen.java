@@ -22,7 +22,7 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 	
 	public void onEntry() {
-		controller.zeigeHinweis("Wähle das Zielfeld");
+		controller.zeigeHinweis("Wähle das Zielfeld.");
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
