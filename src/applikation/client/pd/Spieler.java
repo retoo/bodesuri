@@ -2,6 +2,8 @@ package applikation.client.pd;
 
 import java.util.Observable;
 
+import pd.karten.Karte;
+
 import dienste.observer.ObservableList;
 
 public class Spieler extends Observable {
