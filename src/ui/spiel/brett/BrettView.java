@@ -140,7 +140,7 @@ public class BrettView extends JPanel {
 		hinweisView.add(hinweisLabel);
 		
 		Point hinweisPos = brettXML.getHinweis();
-		hinweisView.setBounds(hinweisPos.x, hinweisPos.y, 170, 40);
+		hinweisView.setBounds(hinweisPos.x, hinweisPos.y, 211, 40);
 		add(hinweisView);
 		
 	}
