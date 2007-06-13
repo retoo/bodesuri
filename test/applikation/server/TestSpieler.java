@@ -2,16 +2,16 @@ package applikation.server;
 
 import applikation.nachrichten.SpielBeitreten;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
 
 public class TestSpieler {
-	public EndPunkt endpunkt;
+	public EndPunktInterface endpunkt;
 	public EventQueue eventQueue;
 	public String name;
 
-	public TestSpieler(String name, EndPunkt client, EventQueue eventQueue) {
+	public TestSpieler(String name, EndPunktInterface client, EventQueue eventQueue) {
 		this.name = name;
 		this.endpunkt = client;
 		this.eventQueue = eventQueue;

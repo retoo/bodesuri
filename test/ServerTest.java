@@ -11,6 +11,7 @@ import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefkastenAdapter;
 import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.serialisierung.SerialisierungsKontext;
 
@@ -35,7 +36,7 @@ public class ServerTest extends TestCase {
 
 		for (int i = 0; i < 4; i++) {
 			EventQueue eventQueue = new EventQueue();
-			EndPunkt client;
+			EndPunktInterface client;
 			try {
 				client = new EndPunkt("localhost", 7788,
 				                      new BriefkastenAdapter(eventQueue),
