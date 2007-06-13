@@ -46,12 +46,12 @@ public class GUIController extends Controller {
 		spielView = new BodesuriView(this, spiel, spielerIch, spielers);
 		spielView.setVisible(true);
 	}
-	
+
 	public void zeigeSpielerAmZug(String spielerName){
 		if(this.spielerAmZug != null){
 			if(this.spielerAmZug.equals(spielerName)){
 				spielerNamen.get(this.spielerAmZug).setForeground(Color.BLACK);
-			}			
+			}
 		}
 		this.spielerAmZug = spielerName;
 		spielerNamen.get(spielerName).setForeground(Color.WHITE);
@@ -60,13 +60,13 @@ public class GUIController extends Controller {
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
-	
+
 	public void zeigeHinweis(String hinweis) {
 		if (hinweisFeld != null) {
 			hinweisFeld.setText(hinweis);
 		}
 	}
-	
+
 	public void zeigeGespielteKarte(String gespielteKarte) {
 		if (gespielteKarteFeld != null) {
 			gespielteKarteFeld.setText(gespielteKarte);
@@ -78,7 +78,7 @@ public class GUIController extends Controller {
 			feldMouseAdapter.aktiv(zustand);
 		}
 	}
-	
+
 	public void zeigeFeldauswahl(Feld feld, boolean status) {
 		if (feldMouseAdapter != null) {
 			feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
@@ -110,11 +110,11 @@ public class GUIController extends Controller {
 	public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
 		this.karteMouseAdapter = karteMouseAdapter;
 	}
-	
+
 	/**
 	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
 	 * zeigeHinweis() mit Nachrichten gefüttert.
-	 * 
+	 *
 	 * @param hinweisFeld
 	 */
 	public void registriereHinweisFeld(JLabel hinweisFeld) {
@@ -124,18 +124,17 @@ public class GUIController extends Controller {
 	/**
 	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
 	 * zeigeGespielteKarte() mit den gespielten Karten gefüttert.
-	 * 
+	 *
 	 * @param gespielteKarteFeld
 	 */
 	public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
 		this.gespielteKarteFeld = gespielteKarteFeld;
 	}
-	
+
 	/**
 	 * Mehrere JLabels beim Controller registrieren. Diese werden vom Automaten über
 	 * zeigeSpielerAmZug() wer an der Reihe ist.
-	 * 
-	 * @param spielerAmZug;
+	 * @param spielerAmZug
 	 */
 	public void registriereSpielerAmZug(JLabel spielerAmZug){
 		if(this.spielerNamen == null){
