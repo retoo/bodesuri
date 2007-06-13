@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.Color;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +27,8 @@ public class GUIController extends Controller {
 	private KarteMouseAdapter karteMouseAdapter;
 	private JLabel hinweisFeld;
 	private JLabel gespielteKarteFeld;
+	private String spielerAmZug;
+	private IdentityHashMap<String, JLabel> spielerNamen;
 
 	public void zeigeVerbinden(String spielerName) {
 		verbindenView = new VerbindenView(this, spielerName);
@@ -41,6 +45,16 @@ public class GUIController extends Controller {
 		lobbyView.setVisible(false);
 		spielView = new BodesuriView(this, spiel, spielerIch, spielers);
 		spielView.setVisible(true);
+	}
+	
+	public void zeigeSpielerAmZug(String spielerName){
+		if(this.spielerAmZug != null){
+			if(this.spielerAmZug.equals(spielerName)){
+				spielerNamen.get(this.spielerAmZug).setForeground(Color.BLACK);
+			}			
+		}
+		this.spielerAmZug = spielerName;
+		spielerNamen.get(spielerName).setForeground(Color.WHITE);
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
@@ -115,5 +129,18 @@ public class GUIController extends Controller {
 	 */
 	public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
 		this.gespielteKarteFeld = gespielteKarteFeld;
+	}
+	
+	/**
+	 * Mehrere JLabels beim Controller registrieren. Diese werden vom Automaten über
+	 * zeigeSpielerAmZug() wer an der Reihe ist.
+	 * 
+	 * @param spielerAmZug;
+	 */
+	public void registriereSpielerAmZug(JLabel spielerAmZug){
+		if(this.spielerNamen == null){
+			this.spielerNamen = new IdentityHashMap<String, JLabel>();
+		}
+		this.spielerNamen.put(spielerAmZug.getText(), spielerAmZug);
 	}
 }

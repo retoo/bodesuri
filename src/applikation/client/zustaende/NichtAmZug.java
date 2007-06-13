@@ -42,6 +42,7 @@ public class NichtAmZug extends ClientZustand {
 		} else {
 			controller.zeigeHinweis(zugAufforderung.spieler.getName()
 			                        + " ist am Zug.");
+			controller.zeigeSpielerAmZug(zugAufforderung.spieler.getName());
 			return this.getClass();
 		}
 	}
