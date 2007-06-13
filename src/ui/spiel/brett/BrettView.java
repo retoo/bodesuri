@@ -17,7 +17,7 @@ import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 import ui.GUIController;
-import ui.ressourcen.BrettLader;
+import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
 import ui.spiel.brett.felder.FeldMouseAdapter;
@@ -39,15 +39,9 @@ public class BrettView extends JPanel {
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
 
-		String pfad = "bin/ui/ressourcen/brett.xml";
-		Map<Integer, Point> felderPos = null;
-		Map<Integer, Point> spielerViewPos = null;
-		Map<Integer, Point> hinweisPos = null;
-		
+		BrettXML brettXML;
  		try {
-			felderPos = BrettLader.ladeFelder(pfad);
-			spielerViewPos = BrettLader.ladeSpielerView(pfad);
-			hinweisPos = BrettLader.ladeHinweis(pfad);
+ 			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
 			// Checked Exception in unchecked umwandeln
 			throw new RuntimeException(e);
@@ -69,13 +63,12 @@ public class BrettView extends JPanel {
 
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
+			Point position = brettXML.getFelder().get(feld.getNummer());
 			if (feld instanceof NormalesFeld) {
-				feld2d = new NormalesFeld2d(felderPos.get(feld.getNummer()),
-						feld, mouseAdapter);
+				feld2d = new NormalesFeld2d(position, feld, mouseAdapter);
 			} else {
 				Icon icon = farbeFeldMap.get(((SpielerFeld) feld).getSpieler().getFarbe());
-				feld2d = new SpielerFeld2d(felderPos.get(feld.getNummer()),
-						feld, mouseAdapter, icon);
+				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon);
 			}
 			felder.put(feld, feld2d);
 			this.add(feld2d);
@@ -91,13 +84,13 @@ public class BrettView extends JPanel {
 
 		int i = 0;
 		for (Spieler spieler : spielers.values()) {
-			add(new SpielerView(spieler, spielerViewPos.get(i)));
+			add(new SpielerView(spieler, brettXML.getSpielerViews().get(i)));
 			i++;
 		}
 
 		JLabel hinweis = new JLabel();
-		// TODO: Position muss auch ins XML!
-		hinweis.setBounds((int)hinweisPos.get(0).getX(), (int)hinweisPos.get(0).getY(), 400, 30);
+		Point hinweisPos = brettXML.getHinweis();
+		hinweis.setBounds(hinweisPos.x, hinweisPos.y, 400, 30);
 		controller.registriereHinweisFeld(hinweis);
 		add(hinweis);
 

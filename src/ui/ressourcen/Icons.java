@@ -39,7 +39,7 @@ final public class Icons {
 	 * @return icon
 	 */
 	private static Icon ladeBild(String pfad) {
-		URL imageURL = BrettLader.class.getResource(pfad);
+		URL imageURL = Icons.class.getResource(pfad);
 
 		if (imageURL != null) {
 			return new ImageIcon(imageURL);
