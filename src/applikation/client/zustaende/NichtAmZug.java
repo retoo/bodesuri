@@ -40,8 +40,7 @@ public class NichtAmZug extends ClientZustand {
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
-			controller.zeigeHinweis("Spieler "
-			                        + zugAufforderung.spieler.getName()
+			controller.zeigeHinweis(zugAufforderung.spieler.getName()
 			                        + " ist am Zug.");
 			return this.getClass();
 		}
@@ -62,6 +61,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		spielDaten.spielerIch.getKarten().clear();
+		controller.zeigeGespielteKarte("");
 		for (Karte karte : rundenStart.neueKarten) {
 			spielDaten.spielerIch.getKarten().add(karte);
 		}
