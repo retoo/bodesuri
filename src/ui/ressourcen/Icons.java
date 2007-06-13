@@ -36,6 +36,8 @@ final public class Icons {
 	// Deck
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
+	public static final Icon KARTEN_PLATZHALTER = ladeBild("/ui/ressourcen/karten/karte_platzhalter.png");
+	
 	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
 	
 	/**

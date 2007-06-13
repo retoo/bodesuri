@@ -37,7 +37,7 @@ public class KarteView extends JLabel {
 			addMouseListener(mouseListener);
 		} else {
 			removeMouseListener(mouseListener);
-			setIcon(null);
+			setIcon(Icons.KARTEN_PLATZHALTER);
 		}
 	}
 
