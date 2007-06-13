@@ -1,7 +1,6 @@
 import junit.framework.TestCase;
 
 import dienste.automat.Automat;
-import dienste.automat.KeinUebergangException;
 import dienste.automat.TestAutomat;
 import dienste.automat.events.TestEventA;
 import dienste.automat.events.TestEventB;
@@ -13,6 +12,7 @@ import dienste.automat.testzustaende.DummyZustand;
 import dienste.automat.testzustaende.PassiverTestZustandAlpha;
 import dienste.automat.testzustaende.PassiverTestZustandBeta;
 import dienste.automat.zustaende.EndZustand;
+import dienste.automat.zustaende.KeinUebergangException;
 import dienste.automat.zustaende.UnbekannterEventException;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;

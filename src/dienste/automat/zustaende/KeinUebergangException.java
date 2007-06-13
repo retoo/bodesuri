@@ -1,4 +1,4 @@
-package dienste.automat;
+package dienste.automat.zustaende;
 
 /**
  * Exception die meldet, dass der zu varbeitende Event zwar bekannt ist aber der

@@ -1,6 +1,5 @@
 package dienste.automat.zustaende;
 
-import dienste.automat.KeinUebergangException;
 import dienste.eventqueue.Event;
 
 /**
