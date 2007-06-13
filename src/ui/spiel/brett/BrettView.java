@@ -85,7 +85,7 @@ public class BrettView extends JPanel {
 		}
 
 		// SpielerViews darstellen
-		zeichneSpielerView(spielers);
+		zeichneSpielerView(controller, spielers);
 
 		// Hinweis darstellen
 		zeichneHinweis(controller);
@@ -94,11 +94,11 @@ public class BrettView extends JPanel {
 		add(new SpielBrett2d(brettAdapter));
 	}
 
-	private void zeichneSpielerView(Map<pd.spieler.Spieler, Spieler> spielers) {
+	private void zeichneSpielerView( GUIController controller, Map<pd.spieler.Spieler, Spieler> spielers) {
 		int i = 0;
 		for (Spieler spieler : spielers.values()) {
 			
-			JPanel spielerView = new SpielerView(spieler);
+			JPanel spielerView = new SpielerView(controller, spieler);
 			
 			//	Views
 			JPanel hinweisView = new JPanel();
@@ -140,8 +140,13 @@ public class BrettView extends JPanel {
 		hinweisView.add(hinweisLabel);
 		
 		Point hinweisPos = brettXML.getHinweis();
+		
 		hinweisView.setBounds(hinweisPos.x, hinweisPos.y, 211, 40);
 		add(hinweisView);
+		
+		JLabel hinweisVertiefung = new JLabel(Icons.HINWEIS);
+		hinweisVertiefung.setBounds(hinweisPos.x - 6, hinweisPos.y, 222, 41);
+		add(hinweisVertiefung);
 		
 	}
 	
