@@ -84,31 +84,43 @@ public class BrettView extends JPanel {
 			}
 		}
 
-		int i = 0;
-		for (Spieler spieler : spielers.values()) {
-			add(new SpielerView(spieler, brettXML.getSpielerViews().get(i)));
-			i++;
-		}
+		// SpielerViews darstellen
+		zeichneSpielerView(spielers);
 
 		// Hinweis darstellen
-		Point hinweisPos = brettXML.getHinweis();
-		JPanel hinweis = zeichneHinweis(controller);
-		hinweis.setBounds(hinweisPos.x, hinweisPos.y, 170, 40);
-		add(hinweis);
+		zeichneHinweis(controller);
 
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
 		add(new SpielBrett2d(brettAdapter));
 	}
 
-	public Feld2d getFeld2d(Feld feld) {
-		return felder.get(feld);
-	}
-
-	public Figur2d getFigur2d(Figur figur) {
-		return figuren.get(figur);
+	private void zeichneSpielerView(Map<pd.spieler.Spieler, Spieler> spielers) {
+		int i = 0;
+		for (Spieler spieler : spielers.values()) {
+			
+			JPanel spielerView = new SpielerView(spieler);
+			
+			//	Views
+			JPanel hinweisView = new JPanel();
+			hinweisView.setOpaque(false);
+			
+			GridBagLayout gbl = new GridBagLayout();
+			hinweisView.setLayout(gbl);
+			
+			// Spezielles Verfahren, um ein JPanel zu zentrieren
+			GridBagConstraints gbc = new GridBagConstraints();
+			gbc.anchor = GridBagConstraints.CENTER;		
+			gbl.setConstraints(spielerView, gbc);
+			hinweisView.add(spielerView);
+			hinweisView.setBounds((int) brettXML.getSpielerViews().get(i).getX(), (int) brettXML.getSpielerViews().get(i).getY(), 170, 30);
+			add(hinweisView);
+			
+			//add(new SpielerView(spieler, brettXML.getSpielerViews().get(i)));
+			i++;
+		}
 	}
 	
-	public JPanel zeichneHinweis(GUIController controller){
+	private void zeichneHinweis(GUIController controller){
 		// JLabel
 		JLabel hinweisLabel = new JLabel();
 		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
@@ -127,6 +139,18 @@ public class BrettView extends JPanel {
 		gbl.setConstraints(hinweisLabel, gbc);
 		hinweisView.add(hinweisLabel);
 		
-		return hinweisView;
+		Point hinweisPos = brettXML.getHinweis();
+		hinweisView.setBounds(hinweisPos.x, hinweisPos.y, 170, 40);
+		add(hinweisView);
+		
+	}
+	
+
+	public Feld2d getFeld2d(Feld feld) {
+		return felder.get(feld);
+	}
+
+	public Figur2d getFigur2d(Figur figur) {
+		return figuren.get(figur);
 	}
 }

@@ -619,27 +619,27 @@
 	</feld>
 	<spielerView nummer="0">
 		<koordinaten>
-			<x>460</x>
-			<y>20</y>
+			<x>427</x>
+			<y>35</y>
 		</koordinaten>
 	</spielerView>
 	<spielerView nummer="1">
 		<koordinaten>
-			<x>60</x>
-			<y>20</y>
+			<x>5</x>
+			<y>35</y>
 		</koordinaten>
 	</spielerView>
 	<spielerView nummer="2">
 
 		<koordinaten>
-			<x>60</x>
-			<y>560</y>
+			<x>5</x>
+			<y>565</y>
 		</koordinaten>
 	</spielerView>
 	<spielerView nummer="3">
 		<koordinaten>
-			<x>460</x>
-			<y>560</y>
+			<x>427</x>
+			<y>565</y>
 		</koordinaten>
 	</spielerView>
 	<hinweis nummer="0">

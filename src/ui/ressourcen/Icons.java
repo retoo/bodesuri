@@ -27,6 +27,12 @@ final public class Icons {
 	public static final Icon FELD_NORMAL = ladeBild("/ui/ressourcen/feld.png");
 	public static final Icon FELD_AUSWAHL = ladeBild("/ui/ressourcen/feld_weiss.png");
 	
+	// Spielerfarbe
+	public static final Icon SPIELER_BLAU = ladeBild("/ui/ressourcen/spieler_blau.png");
+	public static final Icon SPIELER_GRUEN = ladeBild("/ui/ressourcen/spieler_gruen.png");
+	public static final Icon SPIELER_ROT = ladeBild("/ui/ressourcen/spieler_rot.png");
+	public static final Icon SPIELER_GELB = ladeBild("/ui/ressourcen/spieler_gelb.png");
+	
 	// Deck
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
