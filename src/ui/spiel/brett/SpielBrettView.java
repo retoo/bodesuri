@@ -1,14 +1,15 @@
 package ui.spiel.brett;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.Map;
 
+import javax.swing.Box;
 import javax.swing.JPanel;
 
 import pd.Spiel;
 import pd.spieler.Spieler;
-
 import ui.GUIController;
 
 public class SpielBrettView extends JPanel {
@@ -25,6 +26,8 @@ public class SpielBrettView extends JPanel {
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.CENTER;		
 		gbl.setConstraints(brettView, gbc);
+		add(Box.createRigidArea(new Dimension(10,620)));
 		add(brettView);
+		add(Box.createRigidArea(new Dimension(10,620)));
 	}
 }

@@ -7,7 +7,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.TitledBorder;
 
 import ui.GUIController;
 
@@ -16,9 +15,6 @@ public class SteuerungsView extends JPanel {
 
 	public SteuerungsView(GUIController controller) {
 		this.controller = controller;
-
-		TitledBorder titel = new TitledBorder("Steuerung");
-		setBorder(titel);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 

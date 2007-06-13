@@ -30,7 +30,6 @@ import applikation.client.pd.Spieler;
  */
 public class BrettView extends JPanel {
 	private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
-
 	private Map<Figur, Figur2d> figuren = new HashMap<Figur, Figur2d>();
 
 	public BrettView(GUIController controller, Spiel spiel,
