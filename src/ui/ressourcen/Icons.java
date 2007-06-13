@@ -12,6 +12,7 @@ import pd.karten.Karte;
 
 final public class Icons {
 	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
+	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
 	
 	// Felder
 	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_blau.png");
