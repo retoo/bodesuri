@@ -21,7 +21,7 @@ import dienste.eventqueue.EventQueue;
  */
 public class ServerAutomat extends Automat {
 	private static final int ANZ_SPIELER = 4;
-	private Spiel spielDaten;
+	private Spiel spiel;
 
 	public ServerAutomat() {
 		this(ANZ_SPIELER);
@@ -34,9 +34,8 @@ public class ServerAutomat extends Automat {
 	 */
 	public ServerAutomat(int anzSpieler) {
 		EventQueue queue = new EventQueue();
-		spielDaten = new Spiel(anzSpieler);
-
-		spielDaten.queue = queue;
+		spiel = new Spiel(anzSpieler);
+		spiel.queue = queue;
 
 		registriere(new ServerStart());
 		registriere(new EmpfangeSpieler());
@@ -56,7 +55,7 @@ public class ServerAutomat extends Automat {
 	}
 
 	public void registriere(ServerZustand zustand) {
-		zustand.setSpielDaten(spielDaten);
+		zustand.setSpielDaten(spiel);
 
 		super.registriere(zustand);
 	}
