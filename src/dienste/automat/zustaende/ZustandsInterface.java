@@ -2,12 +2,12 @@ package dienste.automat.zustaende;
 
 public interface ZustandsInterface {
 	/**
-	 * Die entry() Methode wird augefrufen bevor die Events verarbeitet werden.
+	 * onEntry wird augefrufen bevor die Events verarbeitet werden.
 	 */
-	public void entry();
+	public void onEntry();
 
 	/**
-	 * Die exit() Methode wird nach der Verarbeitung der Events aufgerufen
+	 * onExit wird nach der Verarbeitung der Events aufgerufen.
 	 */
-	public void exit();
+	public void onExit();
 }

@@ -15,7 +15,7 @@ public class KarteWaehlen extends ClientZugZustand {
 		this.controller = controller;
 	}
 
-	public void entry() {
+	public void onEntry() {
 		controller.zeigeHinweis("Wähle eine Karte.");
 		controller.aktiviereKarte(true);
 	}

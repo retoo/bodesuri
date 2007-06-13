@@ -21,7 +21,7 @@ public class ZielWaehlen extends ClientZugZustand {
 		this.controller = controller;
 	}
 	
-	public void entry() {
+	public void onEntry() {
 		controller.zeigeHinweis("Wähle das Zielfeld");
 	}
 

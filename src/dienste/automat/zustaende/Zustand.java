@@ -11,16 +11,10 @@ import dienste.eventqueue.Event;
  * die Klassen {@link Zustand} und {@link PassiverZustand} erweitert werden.
  */
 public abstract class Zustand implements ZustandsInterface {
-	/**
-	 * Die entry() Methode wird augefrufen bevor die Events verarbeitet werden.
-	 */
-	public void entry() {
+	public void onEntry() {
 	}
 
-	/**
-	 * Die exit() Methode wird nach der Verarbeitung der Events aufgerufen
-	 */
-	public void exit() {
+	public void onExit() {
 	}
 
 	/*

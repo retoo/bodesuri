@@ -18,7 +18,7 @@ public class StartWaehlen extends ClientZugZustand {
 		this.controller = controller;
     }
 
-	public void entry() {
+	public void onEntry() {
 		spielDaten.start = null;
 		spielDaten.ziel = null;
 		controller.zeigeHinweis("Wähle das Startfeld");

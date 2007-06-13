@@ -82,7 +82,7 @@ public class Automat {
 
 	public void init() {
 		pruefeAutomat(false);
-		start.entry();
+		start.onEntry();
 		/* TODO: nachdenken wann handle() (sofern passiv) vom startzustand ausgeführt wird */
 		isInit = true;
 	}
@@ -170,9 +170,9 @@ public class Automat {
 	 * @return false falls sich der Automat im Endzustand befindet
 	 */
 	private boolean stepAktiv(Event event) {
-		aktuellerZustand.exit();
+		aktuellerZustand.onExit();
 		Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
-		naechsterZustand.entry();
+		naechsterZustand.onEntry();
 
 		aktuellerZustand = naechsterZustand;
 		System.out.println(this.toString() + ": " + aktuellerZustand);
@@ -188,9 +188,9 @@ public class Automat {
 	private boolean stepPassiv() {
 		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 
-		zustand.exit();
+		zustand.onExit();
 		Zustand naechsterZustand = getZustand(zustand.handle());
-		naechsterZustand.entry();
+		naechsterZustand.onEntry();
 
 		aktuellerZustand = naechsterZustand;
 		System.out.println(this.toString() + ": " + aktuellerZustand);
