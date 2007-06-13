@@ -1,7 +1,7 @@
 package applikation.server.zustaende;
 
 import applikation.nachrichten.SpielStartNachricht;
-import applikation.server.pd.Spielerschaft;
+import applikation.server.pd.Spiel;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class SpielStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		Spielerschaft spielerschaft = spielDaten.spielerschaft;
+		Spiel spielerschaft = spiel;
 
 		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getSpielInfo());
 

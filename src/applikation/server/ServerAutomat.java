@@ -1,6 +1,6 @@
 package applikation.server;
 
-import applikation.server.pd.SpielDaten;
+import applikation.server.pd.Spiel;
 import applikation.server.zustaende.ServerZustand;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;
@@ -21,7 +21,7 @@ import dienste.eventqueue.EventQueue;
  */
 public class ServerAutomat extends Automat {
 	private static final int ANZ_SPIELER = 4;
-	private SpielDaten spielDaten;
+	private Spiel spielDaten;
 
 	public ServerAutomat() {
 		this(ANZ_SPIELER);
@@ -34,7 +34,7 @@ public class ServerAutomat extends Automat {
 	 */
 	public ServerAutomat(int anzSpieler) {
 		EventQueue queue = new EventQueue();
-		spielDaten = new SpielDaten(anzSpieler);
+		spielDaten = new Spiel(anzSpieler);
 
 		spielDaten.queue = queue;
 

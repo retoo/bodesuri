@@ -4,7 +4,7 @@ import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
-import applikation.server.pd.SpielDaten;
+import applikation.server.pd.Spiel;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
@@ -20,7 +20,7 @@ import dienste.netzwerk.VerbindungGeschlossen;
  * Spezifischer aktiver Server-Zustand
  */
 public abstract class ServerZustand extends Zustand {
-	protected SpielDaten spielDaten;
+	protected Spiel spiel;
 
 	/* (non-Javadoc)
 	 * @see dienste.automat.zustaende.AktiverZustand#handle(dienste.automat.Event)
@@ -82,7 +82,7 @@ public abstract class ServerZustand extends Zustand {
     	return keinUebergang();
     }
 
-	public void setSpielDaten(SpielDaten spielDaten) {
-	    this.spielDaten = spielDaten;
+	public void setSpielDaten(Spiel spielDaten) {
+	    this.spiel = spielDaten;
     }
 }

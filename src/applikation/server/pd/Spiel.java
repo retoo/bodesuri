@@ -1,34 +1,46 @@
 package applikation.server.pd;
 
 import java.util.IdentityHashMap;
-import java.util.Iterator;
 import java.util.Vector;
 
-import pd.spieler.SpielerFarbe;
+import pd.SpielThreads;
+import pd.karten.KartenGeber;
 import applikation.geteiltes.SpielInfo;
 import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.ChatNachricht;
+import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
+import dienste.netzwerk.server.Server;
+import dienste.serialisierung.SerialisierungsKontext;
 
 /**
  * Repräsentiert eine Gruppe von Spieler die in einem Spiel auf dem Server
  * mitspielen.
  */
-public class Spielerschaft implements Iterable<Spieler> {
-	Vector<Spieler> spielers = new Vector<Spieler>();
+public class Spiel implements SerialisierungsKontext {
 	private IdentityHashMap<EndPunktInterface, Spieler> endpunktZuSpieler;
-
-	public Runde runde;
-
 	private int anzahlSpieler;
+	private pd.Spiel spiel;
+
+	public Server server;
+	public EventQueue queue;
+	public Runde runde;
+	public Vector<Spieler> spielers = new Vector<Spieler>();
+
+	public void registriere(Thread thread) {
+		SpielThreads.registriere(thread, this.spiel);
+	}
 
 	/**
 	 * Erstellt eine neue Spielerschaft.
-	 * @param anzSpieler Anzahl der Speielr
+	 *
+	 * @param anzSpieler
+	 *            Anzahl der Speielr
 	 */
-	public Spielerschaft(int anzSpieler) {
+	public Spiel(int anzSpieler) {
+		this.spiel = new pd.Spiel();
 		this.anzahlSpieler = anzSpieler;
 		this.spielers = new Vector<Spieler>();
 		this.endpunktZuSpieler = new IdentityHashMap<EndPunktInterface, Spieler>();
@@ -54,26 +66,10 @@ public class Spielerschaft implements Iterable<Spieler> {
 			spielers.get(1).partner = spielers.get(3);
 			spielers.get(3).partner = spielers.get(1);
 		} else {
-			throw new RuntimeException("Hups, so viele sieler sind nicht unterstüzt");
+			throw new RuntimeException(
+			                           "Hups, so viele sieler sind nicht unterstüzt");
 		}
 	}
-
-	/**
-	 * Fügt einen Spieler zur Spielerschaft hinzu
-	 *
-	 * @param spieler
-	 *            neuer Spieler
-	 */
-	public void add(Spieler spieler) {
-		endpunktZuSpieler.put(spieler.getEndPunkt(), spieler);
-		spielers.add(spieler);
-	}
-
-	public SpielerFarbe naechsteFarbe() {
-
-	    return null;
-    }
-
 
 	/**
 	 * Sendet die übergebene Nachricht an alle Spieler
@@ -128,17 +124,6 @@ public class Spielerschaft implements Iterable<Spieler> {
 		return getAnzahlSpieler() == anzahlSpieler;
 	}
 
-	/**
-	 * Iterator welcher ermöglicht über alle Spieler zu iterieren.
-	 *
-	 * @see java.lang.Iterable#iterator()
-	 * @return spielers-iterator
-	 */
-	public Iterator<Spieler> iterator() {
-		return spielers.iterator();
-	}
-
-
 	public Runde starteRunde() {
 		if (runde == null) {
 			runde = new Runde(0, spielers);
@@ -163,7 +148,9 @@ public class Spielerschaft implements Iterable<Spieler> {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
 
 		if (spieler == null)
-			throw new RuntimeException("Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes " + endpunkt + " auflösen");
+			throw new RuntimeException(
+			                           "Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes "
+			                                   + endpunkt + " auflösen");
 
 		return spieler;
 	}
@@ -171,11 +158,47 @@ public class Spielerschaft implements Iterable<Spieler> {
 	public SpielInfo getSpielInfo() {
 		Vector<SpielerInfo> spielers = new Vector<SpielerInfo>();
 
-		for (Spieler spieler : this) {
+		for (Spieler spieler : this.spielers) {
 			SpielerInfo si = spieler.getSpielerInfo();
 			spielers.add(si);
 		}
 
-	    return new SpielInfo(spielers);
+		return new SpielInfo(spielers);
+	}
+
+
+	/*
+	 * Façade für pd.Spiel
+	 */
+
+
+	/**
+	 * Erstellt einen neuen Spieler und registriert diesen beim Spiel
+	 *
+	 * @param spielerName Name des Spielers
+	 * @param endpunkt Endpunkt des Spielers
+	 * @return Spieler Objekt
+	 */
+	public Spieler neuerSpieler(String spielerName, EndPunktInterface endpunkt) {
+		/* PD Spieler erstellen */
+		pd.spieler.Spieler pdSpieler = spiel.fuegeHinzu(spielerName);
+
+		/* Mini PD Spieler erstellen */
+		Spieler spieler = new Spieler(endpunkt, pdSpieler);
+
+
+		endpunktZuSpieler.put(spieler.getEndPunkt(), spieler);
+
+		spielers.add(spieler);
+
+		return spieler;
+	}
+
+	/**
+	 * Liefert den Kartengeber des Spiels. Siehe {@link pd.Spiel#getKartenGeber()}
+	 * @return Den {@link KartenGeber}
+	 */
+	public KartenGeber getKartenGeber() {
+	    return spiel.getKartenGeber();
     }
 }

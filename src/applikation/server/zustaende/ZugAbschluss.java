@@ -8,7 +8,7 @@ public class ZugAbschluss extends ServerZustand implements PassiverZustand {
 
 		if (1 == 2 /* SpielFertig */) {
 			return ServerEnde.class;
-		} else if (spielDaten.spielerschaft.runde.isFertig()) {
+		} else if (spiel.runde.isFertig()) {
 			/* wie erkennen wir das ne runde fertig ist?
 			 * ich würd sagen der client meldet seine 'Aufgabe'
 			 * sobald er die Aufgabe bekommt. Der Server trackt

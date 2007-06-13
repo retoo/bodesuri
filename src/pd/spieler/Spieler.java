@@ -17,11 +17,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	private int nummer;
 	private String name;
 	private SpielerFarbe farbe;
-
 	private Spiel spiel;
-
 	private Vector<Figur> figuren = new Vector<Figur>();
-
 	private ObservableList<Karte> karten = new ObservableList<Karte>();
 
 	/**

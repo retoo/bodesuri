@@ -2,14 +2,14 @@ package applikation.server.zustaende;
 
 import applikation.nachrichten.KartenTausch;
 import applikation.server.pd.Spieler;
-import applikation.server.pd.Spielerschaft;
+import applikation.server.pd.Spiel;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 
 /* Wird bald aktiv */
 public class KartenTauschen extends ServerZustand {
 	Class<? extends Zustand> kartenTausch(EndPunktInterface absender, KartenTausch tausch) {
-		Spielerschaft spielers = spielDaten.spielerschaft;
+		Spiel spielers = spiel;
 
 		Spieler spieler = spielers.getSpieler(absender);
 

@@ -13,11 +13,11 @@ import dienste.automat.zustaende.Zustand;
 
 public class StartRunde extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		Runde runde = spielDaten.spielerschaft.starteRunde();
+		Runde runde = spiel.starteRunde();
 
 		int anzahlKarten = runde.getAnzahlKartenProSpieler();
-		KartenGeber kartenGeber = spielDaten.spiel.getKartenGeber();
-		for (Spieler spieler : spielDaten.spielerschaft) {
+		KartenGeber kartenGeber = spiel.getKartenGeber();
+		for (Spieler spieler : spiel.spielers) {
 			List<Karte> karten = kartenGeber.getKarten(anzahlKarten);
 			RundenStart rundenStart = new RundenStart(karten);
 			spieler.sende(rundenStart);
