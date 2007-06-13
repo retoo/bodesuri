@@ -49,6 +49,7 @@ public class BrettView extends JPanel {
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(this, controller);
 
+		// TODO: In ressourcen.Icons lösen (ähnlich wie bei Karten)
 		IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
 		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
 		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
