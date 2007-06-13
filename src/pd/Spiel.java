@@ -8,6 +8,7 @@ import pd.karten.KartenGeber;
 import pd.spieler.Spieler;
 import pd.spieler.SpielerFarbe;
 import dienste.serialisierung.Codierer;
+import dienste.serialisierung.CodiererInterface;
 
 /**
  * Spiel, welches ein Brett, einen Kartengeber und 4 Spieler umfasst.
@@ -17,7 +18,7 @@ public class Spiel {
 
 	private Brett brett;
 	private Vector<Spieler> spieler;
-	private Codierer codierer;
+	private CodiererInterface codierer;
 	private int beigetreteneSpieler = 0;
 	private KartenGeber kartenGeber;
 
@@ -64,7 +65,7 @@ public class Spiel {
 	/**
 	 * @return Codierer, der die Objekte dieses Spiels kodiert
 	 */
-	public Codierer getCodierer() {
+	public CodiererInterface getCodierer() {
 		return codierer;
 	}
 

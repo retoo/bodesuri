@@ -40,5 +40,5 @@ public abstract class CodiertesObjekt implements Serializable {
 		return obj;
 	}
 
-	protected abstract Codierer getCodierer();
+	protected abstract CodiererInterface getCodierer();
 }

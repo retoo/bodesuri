@@ -18,7 +18,7 @@ import java.util.Map;
  * Das urprünglich versendete Objekt entspricht dem auf dem Empfänger, da die
  * Tabelle gleich aufgebaut wurde.
  */
-public class Codierer {
+public class Codierer implements CodiererInterface {
 	private Map<String, CodierbaresObjekt> objekte;
 	
 	/**
@@ -28,22 +28,16 @@ public class Codierer {
 		objekte = new HashMap<String, CodierbaresObjekt>();
 	}
 	
-	/**
-	 * Speichert einen Code und das zugehörige codierbare Objekt.
-	 * 
-	 * @param code Eindeutiger Code des Objekts
-	 * @param objekt Zugehöriges Objekt, welches codierbar ist
-	 */
+	/* (non-Javadoc)
+     * @see dienste.serialisierung.CodiererInterface#speichere(java.lang.String, dienste.serialisierung.CodierbaresObjekt)
+     */
 	public void speichere(String code, CodierbaresObjekt objekt) {
 		objekte.put(code, objekt);
 	}
 	
-	/**
-	 * Gibt von einem Code das zugehörige Objekt zurück.
-	 * 
-	 * @param code Code des Objekts
-	 * @return Objekt, das mit dem Code gespeicher wurde
-	 */
+	/* (non-Javadoc)
+     * @see dienste.serialisierung.CodiererInterface#get(java.lang.String)
+     */
 	public CodierbaresObjekt get(String code) {
 		return objekte.get(code);
 	}

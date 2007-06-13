@@ -30,7 +30,7 @@ public abstract class CodierbaresObjekt implements Serializable {
 		return getCodiertesObjekt(code);
 	}
 	
-	protected abstract Codierer getCodierer();
+	protected abstract CodiererInterface getCodierer();
 	
 	protected abstract CodiertesObjekt getCodiertesObjekt(String code);
 }
