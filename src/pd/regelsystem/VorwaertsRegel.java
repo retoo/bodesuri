@@ -145,7 +145,7 @@ public class VorwaertsRegel extends Regel {
 	private Feld getZiel(Feld start, int schritte, boolean mitHimmel) {
 		Feld feld = start;
 		for (int i = 0; i < schritte; ++i) {
-			if (mitHimmel && feld instanceof BankFeld) {
+			if (mitHimmel && feld.istBank()) {
 				feld = ((BankFeld) feld).getHimmel();
 			} else {
 				feld = feld.getNaechstes();
