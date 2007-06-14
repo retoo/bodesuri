@@ -14,13 +14,11 @@ import ui.spiel.brett.Figur2d;
 public class FeldMouseAdapter extends MouseAdapter {
 	private BrettView brettView;
 	private GUIController controller;
-	private Boolean aktiv;
 
 	public FeldMouseAdapter(BrettView brettView, GUIController controller) {
 		this.brettView = brettView;
 		this.controller = controller;
 		controller.registriereFeldMouseAdapter(this);
-		aktiv = false;
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -49,17 +47,6 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 * 				Angeklicktes Feld
 	 */
 	public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
-		if (aktiv) {
-			Feld2d feld2d = brettView.getFeld2d(feld);  
-			if (istAusgewaehlt) {
-				feld2d.setAusgewaehlt(true, feld);
-			} else {
-				feld2d.setAusgewaehlt(false, feld);
-			}
-		}
+		( brettView.getFeld2d(feld) ).setAusgewaehlt(istAusgewaehlt, feld);
 	}
-
-	public void aktiv(Boolean aktiv) {
-		this.aktiv = aktiv;
-    }
 }

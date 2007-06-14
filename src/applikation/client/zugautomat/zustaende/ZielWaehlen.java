@@ -47,7 +47,6 @@ public class ZielWaehlen extends ClientZugZustand {
 
 			controller.zeigeFeldauswahl(spielDaten.start, false);
 			controller.aktiviereKarte(false);
-			controller.aktiviereFeld(false);
 
 			return EndZustand.class;
 		}

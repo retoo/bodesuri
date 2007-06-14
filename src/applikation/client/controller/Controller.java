@@ -81,13 +81,6 @@ public abstract class Controller {
 	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
 
 	/**
-	 * Die Auswahl von Feldern (de-)aktivieren.
-	 *
-	 * @param aktiv
-	 */
-	public abstract void aktiviereFeld(Boolean aktiv);
-
-	/**
 	 * Die Auswahl von Karten (de-)aktivieren.
 	 *
 	 * @param aktiv

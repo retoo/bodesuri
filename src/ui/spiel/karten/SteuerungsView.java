@@ -1,7 +1,7 @@
 package ui.spiel.karten;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -21,8 +21,8 @@ public class SteuerungsView extends JPanel {
 		JLabel gespielteKarte = new JLabel();
 		controller.registriereGespielteKarten(gespielteKarte);
 		JButton aussetzen = new JButton("Aufgeben");
-		aussetzen.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
+		aussetzen.addActionListener( new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
             	SteuerungsView.this.controller.aufgeben();
             }
 		});
