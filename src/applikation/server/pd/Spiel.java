@@ -126,9 +126,9 @@ public class Spiel implements SerialisierungsKontext {
 
 	public Runde starteRunde() {
 		if (runde == null) {
-			runde = new Runde(0, spielers);
+			runde = new Runde(0, spielers, spiel.getKartenGeber());
 		} else {
-			runde = new Runde(runde.nummer + 1, spielers);
+			runde = new Runde(runde.nummer + 1, spielers, spiel.getKartenGeber());
 		}
 
 		return runde;

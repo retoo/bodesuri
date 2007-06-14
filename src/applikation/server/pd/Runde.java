@@ -1,30 +1,42 @@
 package applikation.server.pd;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
+import pd.karten.Karte;
+import pd.karten.KartenGeber;
+import applikation.nachrichten.KartenTausch;
+
 public class Runde {
-	public Vector<Spieler> spielers;
-	public final int nummer;
+	private HashMap<Spieler, RundenTeilnahme> teilnahmen;
+	private Vector<Spieler> spieler;
 	private int aktuellerSpieler;
+	public final int nummer;
 
-	public Runde(int nummer, List<Spieler> spielers) {
+	public Runde(int nummer, List<Spieler> spielers, KartenGeber kartenGeber) {
+		this.teilnahmen = new HashMap<Spieler, RundenTeilnahme>();
 		this.nummer = nummer;
-		this.spielers = new Vector<Spieler>(spielers);
+		this.spieler = new Vector<Spieler>(spielers);
 
-		for (Spieler s : spielers) {
-			s.hatGetauscht = false;
+		int anzahlKarten = getAnzahlKartenProSpieler();
+
+		for (Spieler spieler : spielers) {
+			List<Karte> karten = kartenGeber.getKarten(anzahlKarten);
+			RundenTeilnahme rt = new RundenTeilnahme(spieler, karten);
+			teilnahmen.put(spieler, rt);
 		}
 	}
 
 	public void entferneSpieler(Spieler aktuellerSpieler) {
-	    this.spielers.remove(aktuellerSpieler);
-    }
+		this.teilnahmen.remove(aktuellerSpieler);
+	}
 
 	public boolean isFertigGetauscht() {
 		/* Pruefen ob irgend ein Spieler noch nicht getauscht hat */
-		for (Spieler s : spielers) {
-			if (!s.hatGetauscht) {
+		for (RundenTeilnahme teilname : teilnahmen.values()) {
+			if (!teilname.hatGetauscht()) {
 				return false;
 			}
 		}
@@ -37,7 +49,7 @@ public class Runde {
 	 * aufgerufen ewrden nachdem mindestens ein Spieler hinzugefügt wurde.
 	 */
 	public void rotiereSpieler() {
-		int anzahlSpieler = spielers.size();
+		int anzahlSpieler = teilnahmen.size();
 
 		if (anzahlSpieler > 0)
 			aktuellerSpieler = (aktuellerSpieler + 1) % anzahlSpieler;
@@ -51,7 +63,7 @@ public class Runde {
 	 * @return der zurzeit spielende Spieler
 	 */
 	public Spieler getAktuellerSpieler() {
-		return spielers.get(aktuellerSpieler);
+		return spieler.get(aktuellerSpieler);
 	}
 
 	/*
@@ -62,6 +74,35 @@ public class Runde {
 	}
 
 	public boolean isFertig() {
-		return spielers.isEmpty();
+		return teilnahmen.isEmpty();
+	}
+
+	public Collection<RundenTeilnahme> getTeilnamhmen() {
+		return teilnahmen.values();
+	}
+
+	public void tausche(Spieler spieler, KartenTausch tausch) {
+		RundenTeilnahme rt_spieler = teilnahmen.get(spieler);
+		RundenTeilnahme rt_partner = teilnahmen.get(spieler.partner);
+
+		if (rt_spieler.hatGetauscht())
+			throw new RuntimeException("Spieler " + spieler
+			                           + "versucht ein zweites mal zu tauschen");
+
+		rt_spieler.nimmWeg(tausch.karte);
+		rt_spieler.setHatGetauscht();
+		/* Transferiere Karte zum Partner */
+		rt_partner.setKarteVomPartner(tausch.karte);
+
+	}
+
+	public void tauscheKarten() {
+		for (RundenTeilnahme rt : teilnahmen.values()) {
+			rt.tasuchteKarte();
+		}
+	}
+
+	public RundenTeilnahme getTeilname(Spieler spieler) {
+		return teilnahmen.get(spieler);
 	}
 }
