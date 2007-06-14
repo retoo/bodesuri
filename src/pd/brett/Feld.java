@@ -6,25 +6,25 @@ import pd.spieler.Spieler;
 
 /**
  * Basisklasse der Felder, die auf dem Spielbrett liegen.
- * 
+ *
  * Jedes Feld ist mit seinem Nächsten und Vorherigen verkettet, damit man von
  * einem Feld aus auf alle anderen Felder gelangen kann.
- * 
+ *
  * @see Brett
  */
 public abstract class Feld extends BodesuriCodierbaresObjekt {
 	private int nummer;
-	
+
 	private Feld naechstes;
 	private Feld vorheriges;
 
 	private Figur figur;
-	
+
 	private boolean geschuetzt;
 
 	/**
 	 * Erstellt ein Feld.
-	 * 
+	 *
 	 * @param nummer Eindeutige Nummer (wird für Serialisierung verwendet)
 	 */
 	public Feld(int nummer) {
@@ -34,7 +34,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Gibt das Feld zurück, das nach n Schritten kommt.
-	 * 
+	 *
 	 * @param n Anzahl Schritte zum Feld
 	 * @return Feld
 	 */
@@ -49,7 +49,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Versetze Figur von diesem Feld auf das Zielfeld.
-	 * 
+	 *
 	 * @param ziel Zielfeld
 	 */
 	public void versetzeFigurAuf(Feld ziel) {
@@ -78,30 +78,34 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 	public boolean istBesetztVon(Spieler spieler) {
 		return istBesetzt() && getFigur().getSpieler() == spieler;
 	}
-	
+
 	/**
 	 * @return true, wenn Feld geschuetzt ist (nicht darauf gezogen werden kann)
 	 */
 	public boolean istGeschuetzt() {
 		return geschuetzt;
 	}
-	
+
 	public boolean istLager() {
 		return false;
 	}
-	
+
 	public boolean istBank() {
 		return false;
 	}
-	
+
 	public boolean istHimmel() {
 		return false;
 	}
-	
+
 	public boolean istRing() {
 		return false;
 	}
-	
+
+	public boolean istNormal() {
+		return false;
+	}
+
 	/**
 	 * @param geschuetzt Soll Feld geschuetzt sein?
 	 */
@@ -111,7 +115,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Gibt das nächste Feld zurück, das mit diesem verbunden ist.
-	 * 
+	 *
 	 * @return nächstes Feld
 	 */
 	public Feld getNaechstes() {
@@ -120,7 +124,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Verkettet dieses Feld mit seinem nächsten Feld.
-	 * 
+	 *
 	 * @param naechstesFeld Nächstes Feld, mit dem verbunden werden soll
 	 */
 	public void setNaechstes(Feld naechstesFeld) {
@@ -129,7 +133,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Gibt das vorherige Feld zurück, das mit diesem verbunden ist.
-	 * 
+	 *
 	 * @return vorheriges Feld
 	 */
 	public Feld getVorheriges() {
@@ -138,7 +142,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 
 	/**
 	 * Verkettet dieses Feld mit seinem vorherigen Feld.
-	 * 
+	 *
 	 * @param vorherigesFeld Vorheriges Feld, mit dem verbunden werden soll
 	 */
 	public void setVorheriges(Feld vorherigesFeld) {
@@ -161,7 +165,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 			figur.versetzeAuf(this);
 		}
 	}
-	
+
 	/**
 	 * Gibt Feld aus, zum Beispiel so: "Feld 47"
 	 */
