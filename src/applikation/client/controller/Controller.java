@@ -45,13 +45,6 @@ public abstract class Controller {
 	 * @param spielers 
 	 */
 	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers);
-
-	/**
-	 * Hervorhebung des Spielers, der an der Reihe ist.
-	 * 
-	 * @param spielerName zu markierender Spieler
-	 */
-	public abstract void zeigeSpielerAmZug(String spielerName);
 	
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,

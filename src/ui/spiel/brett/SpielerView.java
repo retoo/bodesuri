@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import pd.spieler.SpielerFarbe;
-import ui.GUIController;
 import ui.ressourcen.Icons;
 import applikation.client.pd.Spieler;
 
@@ -21,7 +20,7 @@ import applikation.client.pd.Spieler;
 public class SpielerView extends JPanel implements Observer {
 	IdentityHashMap<SpielerFarbe, Icon> farbeMap;
 
-	public SpielerView(GUIController controller, Spieler spieler) {
+	public SpielerView(Spieler spieler) {
 		farbeMap = new IdentityHashMap<SpielerFarbe, Icon>();
 		farbeMap.put(SpielerFarbe.blau, Icons.SPIELER_BLAU);
 		farbeMap.put(SpielerFarbe.gelb, Icons.SPIELER_GELB);
@@ -36,7 +35,6 @@ public class SpielerView extends JPanel implements Observer {
 		JLabel name = new JLabel(spieler.getSpieler().getName());
 		name.setIcon(farbeMap.get(spieler.getSpieler().getFarbe()));
 		name.setFont(name.getFont().deriveFont(1)); // Fett
-		controller.registriereSpielerAmZug(name);
 		add(name);
 	}
 
