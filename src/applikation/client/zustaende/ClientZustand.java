@@ -11,7 +11,7 @@ import applikation.events.GezogenEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
-import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.RundenStart;
@@ -46,8 +46,8 @@ public class ClientZustand extends Zustand {
 				return chatNachricht(brief.absender, ((ChatNachricht) nachricht).nachricht);
 			else if (nachricht instanceof SpielVollNachricht)
 				return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
-			else if (nachricht instanceof BeitrittsBestaetigung)
-				return beitrittsBestaetitigung((BeitrittsBestaetigung) nachricht);
+			else if (nachricht instanceof BeitrittsInformation)
+				return beitrittsBestaetitigung((BeitrittsInformation) nachricht);
 			else if (nachricht instanceof SpielStartNachricht)
 				return spielStarten((SpielStartNachricht) nachricht);
 			else if (nachricht instanceof ZugInformation)
@@ -139,7 +139,7 @@ public class ClientZustand extends Zustand {
 		return this.getClass();
 	}
 
-	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetitigung) {
 		return keinUebergang();
 	}
 

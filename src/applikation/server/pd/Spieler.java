@@ -2,7 +2,7 @@ package applikation.server.pd;
 
 import applikation.geteiltes.SpielInfo;
 import applikation.geteiltes.SpielerInfo;
-import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.BeitrittsInformation;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 
@@ -32,7 +32,7 @@ public class Spieler {
 	}
 
 	public void sendeBeitrittsBestaetigung(SpielInfo spielInfo) {
-		sende(new BeitrittsBestaetigung(spielInfo));
+		sende(new BeitrittsInformation(spielInfo));
 	}
 
 

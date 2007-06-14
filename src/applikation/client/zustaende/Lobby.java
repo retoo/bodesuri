@@ -3,7 +3,7 @@ package applikation.client.zustaende;
 import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
 import applikation.geteiltes.SpielerInfo;
-import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
@@ -23,7 +23,7 @@ public class Lobby extends ClientZustand {
 		return this.getClass();
 	}
 
-    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsBestaetigung bestaetitigung) {
+    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetitigung) {
     	//TODO: Controller(Lobby) über neuen Spieler benachrichtigen.
     	// Soll die SpielerListe auch Observerable sein?
 	    return this.getClass();

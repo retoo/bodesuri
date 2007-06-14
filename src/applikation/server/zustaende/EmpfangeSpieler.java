@@ -1,6 +1,6 @@
 package applikation.server.zustaende;
 
-import applikation.nachrichten.BeitrittsBestaetigung;
+import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.Zustand;
@@ -18,7 +18,7 @@ public class EmpfangeSpieler extends ServerZustand {
 		Spieler spieler = spiel.neuerSpieler(beitreten.spielerName, absender);
 
 
-		spiel.broadcast(new BeitrittsBestaetigung(spiel.getSpielInfo()));
+		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
 
 		System.out.println("Neuer Spieler: " + spieler);
 

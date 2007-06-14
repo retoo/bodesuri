@@ -6,7 +6,7 @@ import dienste.netzwerk.Nachricht;
 /**
  * Nachricht die dem Spieler den Beitritt zum Spiel bestätigt.
  */
-public class BeitrittsBestaetigung extends Nachricht {
+public class BeitrittsInformation extends Nachricht {
 	/**
 	 * Name der bereits
 	 */
@@ -15,7 +15,7 @@ public class BeitrittsBestaetigung extends Nachricht {
 	/**
 	 * @param spielInfo
 	 */
-	public BeitrittsBestaetigung(SpielInfo spielInfo) {
+	public BeitrittsInformation(SpielInfo spielInfo) {
 		this.spielInfo = spielInfo;
 	}
 }
