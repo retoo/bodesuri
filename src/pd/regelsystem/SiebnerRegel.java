@@ -1,6 +1,8 @@
 package pd.regelsystem;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import pd.brett.Feld;
 import pd.spieler.Figur;
@@ -28,8 +30,12 @@ public class SiebnerRegel extends VorwaertsRegel {
 		
 		int wegLaenge = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
+		Set<Feld> geschuetzt = new HashSet<Feld>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			pruefeBewegung(bewegung, spieler);
+			if (bewegung.start.istGeschuetzt()) {
+				geschuetzt.add(bewegung.start);
+			}
 			Weg weg = bewegung.getWeg();
 			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {
@@ -59,7 +65,8 @@ public class SiebnerRegel extends VorwaertsRegel {
 					continue;
 				}
 
-				if (feld.istGeschuetzt() || (hatFigur && feld.istHimmel())) {
+				if (geschuetzt.contains(feld) ||
+				    (hatFigur && feld.istHimmel())) {
 					throw new RegelVerstoss("Weg beinhaltet geschütztes Feld.");
 				}
 
@@ -72,6 +79,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			Figur figur = figuren.get(bewegung.start);
 			figuren.put(bewegung.start, null);
 			figuren.put(bewegung.ziel, figur);
+			geschuetzt.remove(bewegung.start);
 
 			zug.fuegeHinzu(new Aktion(bewegung.start, bewegung.ziel));
 		}

@@ -160,6 +160,36 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[1].istBesetztVon(spieler(0)));
 	}
 	
+	public void testSiebnerMitGeschuetztem() throws RegelVerstoss {
+		start[0] = bank(0);
+		ziel[0]  = bank(0).getNtesFeld(5);
+		lager(0).versetzeFigurAuf(start[0]);
+		start[0].setGeschuetzt(true);
+		start[1] = bank(0).getVorheriges();
+		ziel[1]  = bank(0).getNaechstes();
+		lager(0, 1).versetzeFigurAuf(start[1]);
+		sollteValidieren();
+		
+		assertTrue(start[0].istFrei());
+		assertTrue(ziel[0].istBesetztVon(spieler(0)));
+		assertTrue(start[1].istFrei());
+		assertTrue(ziel[1].istBesetztVon(spieler(0)));
+	}
+	
+	public void testSiebnerMitGeschuetztemVerzwickt() throws RegelVerstoss {
+		start[0] = bank(0);
+		ziel[0]  = bank(0).getNtesFeld(3);
+		lager(0).versetzeFigurAuf(start[0]);
+		start[0].setGeschuetzt(true);
+		start[1] = bank(0).getVorheriges();
+		ziel[1]  = bank(0);
+		lager(0, 1).versetzeFigurAuf(start[1]);
+		start[2] = bank(0).getVorheriges().getVorheriges();
+		ziel[2]  = bank(0).getNaechstes();
+		lager(0, 2).versetzeFigurAuf(start[2]);
+		sollteValidieren();
+	}
+	
 	public void testSiebnerMitFremdem() {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(7);
