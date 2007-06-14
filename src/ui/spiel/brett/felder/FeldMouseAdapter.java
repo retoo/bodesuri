@@ -14,6 +14,7 @@ import ui.spiel.brett.Figur2d;
 public class FeldMouseAdapter extends MouseAdapter {
 	private BrettView brettView;
 	private GUIController controller;
+	private boolean pressed;
 
 	public FeldMouseAdapter(BrettView brettView, GUIController controller) {
 		this.brettView = brettView;
@@ -24,7 +25,7 @@ public class FeldMouseAdapter extends MouseAdapter {
 	public void mouseEntered(MouseEvent e) {
 		controller.zielHover(((Feld2d) e.getComponent()).getFeld());
 	}
-
+	
 	/**
 	 * Das {@link Feld2d} auf das geklickt wird an den Controller weiterleiten
 	 * und falls eine {@link Figur2d} auf dem Feld ist, diese als ausgewählt
@@ -33,9 +34,22 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 * @param e
 	 *            MouseEvent der das angeklickte Feld enthält
 	 */
-	public void mouseClicked(MouseEvent e) {
-		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-		controller.feldAuswaehlen(feld);
+	public void mousePressed(MouseEvent e) {
+		pressed = true;
+	}
+	
+	public void mouseReleased(MouseEvent e) {
+		if (pressed) {
+			pressed = false;
+			Feld feld = ((Feld2d) e.getComponent()).getFeld();
+			controller.feldAuswaehlen(feld);
+		}
+	}
+	
+	public void mouseExited(MouseEvent e) {
+		if (pressed) {
+			pressed = false;
+		}
 	}
 	
 	/**
