@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 import pd.Spiel;
 import pd.brett.Feld;
@@ -125,29 +126,16 @@ public class BrettView extends JPanel {
 		JLabel hinweisLabel = new JLabel();
 		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
 		controller.registriereHinweisFeld(hinweisLabel);
-		
-		//	Views
-		JPanel hinweisView = new JPanel();
-		hinweisView.setOpaque(false);
-		
-		GridBagLayout gbl = new GridBagLayout();
-		hinweisView.setLayout(gbl);
-		
-		// Spezielles Verfahren, um ein JPanel zu zentrieren
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.CENTER;		
-		gbl.setConstraints(hinweisLabel, gbc);
-		hinweisView.add(hinweisLabel);
-		
+		hinweisLabel.setHorizontalAlignment(SwingConstants.CENTER);
+				
 		Point hinweisPos = brettXML.getHinweis();
-		
-		hinweisView.setBounds(hinweisPos.x, hinweisPos.y, 211, 40);
-		add(hinweisView);
+
+		hinweisLabel.setBounds(hinweisPos.x, hinweisPos.y, 211, 40);
+		add(hinweisLabel);
 		
 		JLabel hinweisVertiefung = new JLabel(Icons.HINWEIS);
 		hinweisVertiefung.setBounds(hinweisPos.x - 6, hinweisPos.y, 222, 41);
 		add(hinweisVertiefung);
-		
 	}
 	
 

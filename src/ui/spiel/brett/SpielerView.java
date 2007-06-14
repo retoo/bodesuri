@@ -1,5 +1,6 @@
 package ui.spiel.brett;
 
+import java.awt.Color;
 import java.util.IdentityHashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -18,8 +19,9 @@ import applikation.client.pd.Spieler;
  */
 
 public class SpielerView extends JPanel implements Observer {
-	IdentityHashMap<SpielerFarbe, Icon> farbeMap;
-
+	private IdentityHashMap<SpielerFarbe, Icon> farbeMap;
+	private JLabel name;
+	
 	public SpielerView(Spieler spieler) {
 		farbeMap = new IdentityHashMap<SpielerFarbe, Icon>();
 		farbeMap.put(SpielerFarbe.blau, Icons.SPIELER_BLAU);
@@ -32,18 +34,17 @@ public class SpielerView extends JPanel implements Observer {
 
 		spieler.addObserver(this);
 		
-		JLabel name = new JLabel(spieler.getSpieler().getName());
+		this.name = new JLabel(spieler.getSpieler().getName());
 		name.setIcon(farbeMap.get(spieler.getSpieler().getFarbe()));
 		name.setFont(name.getFont().deriveFont(1)); // Fett
 		add(name);
 	}
 
 	public void update(Observable arg0, Object arg) {
-		// TODO Änderungen wenn der Spieler am Zug ist oder nicht...
 		if ((Boolean) arg) {
-			// Am Zug.
+			this.name.setForeground(Color.WHITE);
 		} else {
-			// Nicht mehr am Zug.
+			this.name.setForeground(Color.BLACK);
 		}
 	}
 }
