@@ -105,4 +105,14 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		}
 		return false;
 	}
+
+	public boolean istFertig() {
+		for (Figur figur : figuren) {
+			if (!figur.getFeld().istHimmel()) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 }
