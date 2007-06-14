@@ -1,5 +1,8 @@
 package pd.regelsystem;
 
+import java.util.List;
+import java.util.Vector;
+
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
@@ -132,9 +135,14 @@ public class VorwaertsRegel extends Regel {
 	}
 
 	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
+		List<Bewegung> bewegungen = new Vector<Bewegung>();
+		bewegungen.add(new Bewegung(start, ziel));
+		return istZugMoeglich(spieler, bewegungen);
+	}
+	
+	protected boolean istZugMoeglich(Spieler spieler, List<Bewegung> bewegungen) {
 		try {
-			Bewegung b = new Bewegung(start, ziel);
-			ZugEingabe ze = new ZugEingabe(spieler, null, b);
+			ZugEingabe ze = new ZugEingabe(spieler, null, bewegungen);
 			validiere(ze);
 			return true;
 		} catch (RegelVerstoss rv) {

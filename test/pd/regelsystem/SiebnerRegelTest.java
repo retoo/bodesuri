@@ -197,6 +197,29 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	public void testSiebnerMitLeerenBewegungen() throws RegelVerstoss {
+		start[0] = bank(0);
+		ziel[0]  = bank(0).getNtesFeld(7);
+		lager(0).versetzeFigurAuf(start[0]);
+		start[1] = bank(0).getVorheriges();
+		ziel[1]  = bank(0).getVorheriges();
+		lager(0, 1).versetzeFigurAuf(start[1]);
+		sollteValidieren();
+	}
+	
+	public void testSiebnerKannZiehen() {
+		assertFalse(regel.kannZiehen(spieler(0)));
+		
+		lager(0, 0).versetzeFigurAuf(himmel(0, 0));
+		lager(0, 1).versetzeFigurAuf(himmel(0, 1));
+		lager(0, 2).versetzeFigurAuf(himmel(0, 2));
+		lager(0, 3).versetzeFigurAuf(himmel(0, 3));
+		assertFalse(regel.kannZiehen(spieler(0)));
+		
+		himmel(0, 0).versetzeFigurAuf(bank(0));
+		assertTrue(regel.kannZiehen(spieler(0)));
+	}
+	
 	// TODO: Mehr und kompliziertere Tests schreiben, z. B. mit Himmel.
 	
 	protected List<Bewegung> getBewegungen() {

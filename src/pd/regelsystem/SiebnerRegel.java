@@ -2,8 +2,13 @@ package pd.regelsystem;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
+import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
@@ -75,6 +80,10 @@ public class SiebnerRegel extends VorwaertsRegel {
 					figuren.put(feld, null);
 				}
 			}
+			
+			if (bewegung.start == bewegung.ziel) {
+				continue;
+			}
 
 			Figur figur = figuren.get(bewegung.start);
 			figuren.put(bewegung.start, null);
@@ -86,9 +95,66 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 		return zug;
 	}
-
-	// TODO: SiebnerRegel.kannZiehen implementieren (Kombinatorik).
+	
 	public boolean kannZiehen(Spieler spieler) {
-		return super.kannZiehen(spieler);
+		Map<Figur, Feld> positionen = new IdentityHashMap<Figur, Feld>();
+		for (Figur figur : spieler.getFiguren()) {
+			positionen.put(figur, figur.getFeld());
+		}
+		List<Figur> reihenfolge = new Vector<Figur>();
+		return sucheZug(spieler, positionen, reihenfolge, 7);
+	}
+	
+	private boolean sucheZug(Spieler spieler, Map<Figur, Feld> positionen,
+	                         List<Figur> reihenfolge, int schritte) {
+		if (schritte == 0) {
+			return istZugMoeglich(spieler, positionen, reihenfolge);
+		}
+		
+		for (Figur figur : spieler.getFiguren()) {
+			Feld feld = positionen.get(figur);
+			
+			if (feld.istLager()) {
+				continue;
+			}
+			
+			Feld feldNeu;
+			List<Feld> kandidaten = new Vector<Feld>();
+			if (feld.istBank() && ((BankFeld) feld).getSpieler() == spieler) {
+				feldNeu = ((BankFeld) feld).getHimmel();
+				kandidaten.add(feldNeu);
+			}
+			feldNeu = feld.getNaechstes();
+			if (feldNeu != null) {
+				kandidaten.add(feldNeu);
+			}
+			
+			if (!reihenfolge.contains(figur)) {
+				reihenfolge.add(figur);
+			}
+			for (Feld kandidat : kandidaten) {
+				positionen.put(figur, kandidat);
+				if (sucheZug(spieler, positionen, reihenfolge, schritte - 1)) {
+					return true;
+				}
+				positionen.put(figur, feld);
+			}
+			reihenfolge.remove(figur);
+		}
+		
+		return false;
+	}
+	
+	private boolean istZugMoeglich(Spieler spieler, Map<Figur, Feld> positionen,
+	                               List<Figur> reihenfolge) {
+		List<Bewegung> bewegungen = new Vector<Bewegung>();
+		for (Figur figur : reihenfolge) {
+			Feld start = figur.getFeld();
+			Feld ziel  = positionen.get(figur);
+			if (start != ziel) {
+				bewegungen.add(new Bewegung(start, ziel));
+			}
+		}
+		return istZugMoeglich(spieler, bewegungen);
 	}
 }
