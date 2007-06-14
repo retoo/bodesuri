@@ -59,12 +59,6 @@ public class GUIController extends Controller {
 		}
 	}
 
-	public void aktiviereFeld(Boolean zustand) {
-		if (feldMouseAdapter != null) {
-			feldMouseAdapter.aktiv(zustand);
-		}
-	}
-
 	public void zeigeFeldauswahl(Feld feld, boolean status) {
 		if (feldMouseAdapter != null) {
 			feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
