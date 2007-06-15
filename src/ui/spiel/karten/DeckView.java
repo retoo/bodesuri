@@ -8,7 +8,7 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spieler;

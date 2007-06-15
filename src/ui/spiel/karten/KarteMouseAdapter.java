@@ -3,7 +3,7 @@ package ui.spiel.karten;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 
 public class KarteMouseAdapter extends MouseAdapter {
 	private Steuerung steuerung;

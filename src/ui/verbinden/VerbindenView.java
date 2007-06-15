@@ -24,8 +24,8 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-import ui.Steuerung;
 import ui.ressourcen.Icons;
+import applikation.client.controller.Steuerung;
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet

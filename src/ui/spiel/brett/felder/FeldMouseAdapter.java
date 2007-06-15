@@ -3,8 +3,8 @@ package ui.spiel.brett.felder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.Steuerung;
 import ui.spiel.brett.Figur2d;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Feld;
 
 /**

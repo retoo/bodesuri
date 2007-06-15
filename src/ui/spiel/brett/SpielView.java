@@ -7,9 +7,9 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import ui.Steuerung;
 import ui.ressourcen.Icons;
 import ui.spiel.karten.KartenAuswahlView;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 

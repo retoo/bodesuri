@@ -3,16 +3,16 @@ package ui.spiel.brett;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 
 public class BrettMouseAdapter extends MouseAdapter {
-	private Steuerung controller;
+	private Steuerung steuerung;
 
 	public BrettMouseAdapter(Steuerung steuerung) {
-		this.controller = steuerung;
+		this.steuerung = steuerung;
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		controller.feldAbwaehlen();
+		steuerung.feldAbwaehlen();
 	}
 }

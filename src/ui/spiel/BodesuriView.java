@@ -5,9 +5,9 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import ui.Steuerung;
 import ui.spiel.brett.SpielView;
 import ui.spiel.chat.ChatView;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 

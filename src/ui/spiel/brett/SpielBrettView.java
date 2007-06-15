@@ -7,7 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.Box;
 import javax.swing.JPanel;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
 public class SpielBrettView extends JPanel {

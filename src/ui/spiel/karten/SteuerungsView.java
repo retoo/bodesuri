@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 
 public class SteuerungsView extends JPanel {
 	Steuerung steuerung;

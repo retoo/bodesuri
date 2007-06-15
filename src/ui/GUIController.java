@@ -2,7 +2,6 @@ package ui;
 
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
@@ -17,15 +16,13 @@ public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private BodesuriView spielView;
-	private JLabel hinweisFeld;
-	private Steuerung steuerung;
 
 	public GUIController(EventQueue eventQueue) {
-		steuerung = new Steuerung(eventQueue);
+		this.eventQueue = eventQueue;
 	}
 
 	public void zeigeVerbinden(String spielerName) {
-		verbindenView = new VerbindenView(steuerung, spielerName);
+		verbindenView = new VerbindenView(this, spielerName);
 		verbindenView.setVisible(true);
 	}
 
@@ -37,69 +34,11 @@ public class GUIController extends Controller {
 
 	public void zeigeSpiel(Spiel spiel, Spieler spielerIch) {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(steuerung, spiel, spielerIch);
+		spielView = new BodesuriView(this, spiel, spielerIch);
 		spielView.setVisible(true);
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
-	}
-
-	public void zeigeHinweis(String hinweis) {
-		if (hinweisFeld != null) {
-			hinweisFeld.setText(hinweis);
-		}
-	}
-
-//	FIXME: Reto
-//
-//	public void zeigeGespielteKarte(String gespielteKarte) {
-//		if (gespielteKarteFeld != null) {
-//			gespielteKarteFeld.setText(gespielteKarte);
-//		}
-//	}
-//
-//	public void aktiviereKarte(Boolean zustand) {
-//		if (karteMouseAdapter != null) {
-//			karteMouseAdapter.aktiv(zustand);
-//		}
-//	}
-
-	/**
-	 * Einen {@link KarteMouseAdapter} beim Controller registrieren. Dieser wird
-	 * vom Automaten über kartenAuswahl() je nach Zustand (de-)aktiviert.
-	 *
-	 * @param karteMouseAdapter
-	 */
-	/*public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
-		this.karteMouseAdapter = karteMouseAdapter;
-	}*/
-
-	/**
-	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
-	 * zeigeHinweis() mit Nachrichten gefüttert.
-	 *
-	 * @param hinweisFeld
-	 */
-	public void registriereHinweisFeld(JLabel hinweisFeld) {
-		this.hinweisFeld = hinweisFeld;
-	}
-
-	/**
-	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
-	 * zeigeGespielteKarte() mit den gespielten Karten gefüttert.
-	 *
-
-	 */
-	// FIXME
-	/* public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
-		this.gespielteKarteFeld = gespielteKarteFeld;
-	}*/
-
-	/**
-	 * @return Steuerungs objekt
-	 */
-	public Steuerung getSteuerung() {
-		return steuerung;
 	}
 }

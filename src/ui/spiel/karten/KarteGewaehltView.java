@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import ui.Steuerung;
+import applikation.client.controller.Steuerung;
 import applikation.client.pd.Karte;
 
 public class KarteGewaehltView extends JPanel {
