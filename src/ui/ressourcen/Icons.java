@@ -61,7 +61,7 @@ final public class Icons {
 	}
 
 	public static Icon getIcon(Karte karte) {
-		String name = karte.getName();
+		String name = karte.getIconName();
 
 		Icon icon = kartenIcons.get(name);
 		if (icon == null) {

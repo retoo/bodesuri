@@ -35,8 +35,7 @@ public class Karte extends Observable {
 		return karte;
 	}
 
-	public String getName() {
-		/* TODO: könnte man noch sauberer in die pd schieben (-reto) */
+	public String getIconName() {
 		if (karte instanceof Joker) {
 			return "joker";
 		} else {
