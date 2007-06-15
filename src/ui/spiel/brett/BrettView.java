@@ -30,9 +30,6 @@ import applikation.client.pd.Spieler;
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
 public class BrettView extends JPanel {
-	// private Map<Feld, Feld2d> felder = new HashMap<Feld, Feld2d>();
-	// TODO: reto ganz entfernen private Map<Figur, Figur2d> figuren = new
-	// HashMap<Figur, Figur2d>();
 	private BrettXML brettXML;
 
 	private FigurenManager figurenManager;
@@ -50,17 +47,15 @@ public class BrettView extends JPanel {
 		}
 
 		/* Figuren bereitstellen */
+		IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
+		farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
+		farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
+		farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
+		farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
 
 		figurenManager = new FigurenManager();
-
-		IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
-        farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
-        farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
-        farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
-        farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
-
 		for (Spieler spieler : spiel.getSpieler()) {
-			for (Figur figur : spieler.getFiguren()){
+			for (Figur figur : spieler.getFiguren()) {
 				Icon icon = farbeFigurMap.get(spieler.getFarbe());
 				Figur2d figur2d = new Figur2d(figur, icon);
 				this.setComponentZOrder(figur2d, 0);
@@ -70,7 +65,6 @@ public class BrettView extends JPanel {
 		}
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(controller);
-
 
 		// TODO: In ressourcen.Icons lösen (ähnlich wie bei Karten)
 		IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
@@ -96,22 +90,6 @@ public class BrettView extends JPanel {
 			}
 
 			this.add(feld2d);
-
-			// FIXME ganz entfernen (reto)
-			// if (feld.istBesetzt()) {
-			// Figur figur = feld.getFigur();
-			// //TODO Ohne Cast möglich? --Philippe
-			// /* TODO: Kann man hier nicht einfach über alle figuren iterieren
-			// (-reto)
-			// * TODO: figur.getSpieler sollte doch auch gehen, wieso gehen wir
-			// da über das feld? (-reto)
-			// */
-			// Icon icon = farbeFigurMap.get(((SpielerFeld)
-			// feld.getFeld()).getSpieler().getFarbe());
-			// Figur2d figur2d = new Figur2d(figur, icon, this);
-			// this.setComponentZOrder(figur2d, 0);
-			// figuren.put(figur, figur2d);
-			// }
 		}
 
 		// SpielerViews darstellen
@@ -169,13 +147,4 @@ public class BrettView extends JPanel {
 		hinweisVertiefung.setBounds(hinweisPos.x - 6, hinweisPos.y, 222, 41);
 		add(hinweisVertiefung);
 	}
-
-	/*
-	 * FIXME reto weg public Feld2d getFeld2d(Feld feld) { return
-	 * felder.get(feld); }
-	 */
-	// FIXME: Reto ganz entfernen
-	// public Figur2d getFigur2d(Figur figur) {
-	// return figuren.get(figur);
-	// }
 }

@@ -7,7 +7,6 @@ import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
-import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
@@ -19,7 +18,6 @@ public class GUIController extends Controller {
 	private LobbyView lobbyView;
 	private BodesuriView spielView;
 
-	private FeldMouseAdapter feldMouseAdapter;
 	private KarteMouseAdapter karteMouseAdapter;
 	private JLabel hinweisFeld;
 	private JLabel gespielteKarteFeld;
@@ -61,16 +59,6 @@ public class GUIController extends Controller {
 		if (karteMouseAdapter != null) {
 			karteMouseAdapter.aktiv(zustand);
 		}
-	}
-
-	/**
-	 * Einen {@link FeldMouseAdapter} beim Controller registrieren. Dieser wird
-	 * vom Automaten über feldAuswahl() je nach Zustand (de-)aktiviert.
-	 *
-	 * @param feldMouseAdapter
-	 */
-	public void registriereFeldMouseAdapter(FeldMouseAdapter feldMouseAdapter) {
-		this.feldMouseAdapter = feldMouseAdapter;
 	}
 
 	/**

@@ -29,12 +29,12 @@ public class KarteMouseAdapter extends MouseAdapter {
 		if (aktiv) {
 			KarteView karteView = (KarteView) evt.getComponent();
 			kartenAuswahl.setPosition(karteView.getPosition());
-			
+
 			kartenAuswahlView.getDeckView().add(kartenAuswahl);
 			kartenAuswahlView.getDeckView().updateUI();
-			
+
 			kartenAuswahlView.getKarteGewaehltView().zeigeKarte(karteView.getKarte());
-			
+
 			controller.karteAuswaehlen(karteView.getKarte());
 		}
 	}
@@ -44,7 +44,7 @@ public class KarteMouseAdapter extends MouseAdapter {
 		if (!aktiv) {
 			kartenAuswahlView.getDeckView().remove(kartenAuswahl);
 			kartenAuswahlView.getDeckView().updateUI();
-			
+
 			kartenAuswahlView.getKarteGewaehltView().zeigeKeineKarte();
 		}
 	}

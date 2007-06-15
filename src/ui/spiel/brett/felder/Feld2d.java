@@ -30,7 +30,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		feld.addObserver(this);
 
 		addMouseListener(mouseAdapter);
-		update(null, null); /* FIXME: evtl. anders machen */
+		update(null, null); /* TODO:: evtl. schöner machen */
 	}
 
 	private void zeichne(Icon icon) {
@@ -68,17 +68,13 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 			/* Figur drauf stellen */
 			Figur2d figur = figurenManager.get(feld.getFigur());
 
+
+			/* wenn nur ein oder zwei Spieler mitspielen können
+			 * einige figuren null sein. Dann zeichnen wir einfach ni.
+			 */
 			if (figur != null) {
 				figur.setzeAuf(this);
-			} else {
-				/* ungenutzte figur */
 			}
-		} else {
-			/* Figur entfernen */
-
-			System.out.println("Feld " + this + "Keine Figur!");
-
-			/* FIXME: muss glaubs nix machen */
 		}
 
 		Icon icon;

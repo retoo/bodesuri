@@ -11,12 +11,10 @@ import applikation.client.pd.Feld;
  * MouseEventListener, der auf die Klicks der Felder achtet.
  */
 public class FeldMouseAdapter extends MouseAdapter {
-	/* FIXME reto private BrettView brettView; */
 	private GUIController controller;
 
 	public FeldMouseAdapter(GUIController controller) {
 		this.controller = controller;
-		controller.registriereFeldMouseAdapter(this);
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -37,16 +35,4 @@ public class FeldMouseAdapter extends MouseAdapter {
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
 		controller.feldAuswaehlen(feld);
 	}
-
-	/**
-	 * Hilfsmethode welche eine Figur als ausgewählt oder nicht-ausgewählt darstellt.
-	 *
-	 * @param istAusgewaehlt
-	 * 				Zur Unterscheidung, ob Figur ausgewählt oder nicht-ausgewählt erscheinen soll
-	 * @param feld
-	 * 				Angeklicktes Feld
-	 */
-	/* FIXME Reto public void setzeFigurAusgewaehltStatus(boolean istAusgewaehlt, Feld feld) {
-		( brettView.getFeld2d(feld) ).setAusgewaehlt(istAusgewaehlt, feld);
-	}*/
 }
