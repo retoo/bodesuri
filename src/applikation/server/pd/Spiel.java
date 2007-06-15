@@ -21,13 +21,14 @@ import dienste.serialisierung.SerialisierungsKontext;
  */
 public class Spiel implements SerialisierungsKontext {
 	private IdentityHashMap<EndPunktInterface, Spieler> endpunktZuSpieler;
+	private Vector<Spieler> spielers = new Vector<Spieler>();
+	private Vector<Partnerschaft> partnerschaften;
 	private int anzahlSpieler;
 	private pd.Spiel spiel;
 
 	public Server server;
 	public EventQueue queue;
 	public Runde runde;
-	public Vector<Spieler> spielers = new Vector<Spieler>();
 
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, this.spiel);
@@ -43,6 +44,7 @@ public class Spiel implements SerialisierungsKontext {
 		this.spiel = new pd.Spiel();
 		this.anzahlSpieler = anzSpieler;
 		this.spielers = new Vector<Spieler>();
+		this.partnerschaften = new Vector<Partnerschaft>();
 		this.endpunktZuSpieler = new IdentityHashMap<EndPunktInterface, Spieler>();
 	}
 
@@ -55,16 +57,22 @@ public class Spiel implements SerialisierungsKontext {
 			Spieler einzelgaenger = spielers.get(0);
 
 			einzelgaenger.partner = einzelgaenger;
+			partnerschaften.add( new Partnerschaft(einzelgaenger, einzelgaenger) );
+
 		} else if (anzahlSpieler == 2) {
 			spielers.get(0).partner = spielers.get(1);
 			spielers.get(1).partner = spielers.get(0);
+
+			partnerschaften.add( new Partnerschaft(spielers.get(0), spielers.get(1)) );
 		} else if (anzahlSpieler == 4) {
 			/* Normaler Betrieb */
 			spielers.get(0).partner = spielers.get(2);
 			spielers.get(2).partner = spielers.get(0);
+			partnerschaften.add( new Partnerschaft(spielers.get(0), spielers.get(2)) );
 
 			spielers.get(1).partner = spielers.get(3);
 			spielers.get(3).partner = spielers.get(1);
+			partnerschaften.add( new Partnerschaft(spielers.get(1), spielers.get(3)) );
 		} else {
 			throw new RuntimeException(
 			                           "Hups, so viele sieler sind nicht unterstüzt");
@@ -200,5 +208,15 @@ public class Spiel implements SerialisierungsKontext {
 	 */
 	public KartenGeber getKartenGeber() {
 	    return spiel.getKartenGeber();
+    }
+
+	public boolean istFertig() {
+		for (Partnerschaft p : partnerschaften) {
+			if (p.istFertig()) {
+				return true;
+			}
+		}
+
+	    return false;
     }
 }
