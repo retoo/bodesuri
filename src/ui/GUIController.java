@@ -15,17 +15,11 @@ import applikation.client.pd.Spieler;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
-
 	private LobbyView lobbyView;
-
 	private BodesuriView spielView;
-
 	private KarteMouseAdapter karteMouseAdapter;
-
 	private JLabel hinweisFeld;
-
 	private JLabel gespielteKarteFeld;
-
 	private Steuerung steuerung;
 
 	public GUIController() {
