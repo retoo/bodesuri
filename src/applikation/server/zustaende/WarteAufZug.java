@@ -46,6 +46,7 @@ public class WarteAufZug extends ServerZustand {
 	}
 
 	Class<? extends Zustand> aufgabe(EndPunktInterface absender, Aufgabe aufgabe) {
+		System.out.println("Aufgabe erhalten!");
 		Runde runde = spiel.runde;
 		Spieler spieler = runde.getAktuellerSpieler();
 

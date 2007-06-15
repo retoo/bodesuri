@@ -8,6 +8,7 @@ import ui.GUIController;
 public class KarteMouseAdapter extends MouseAdapter {
 	private GUIController controller;
 
+	//TODO Löschen! --Philippe
 	private Boolean aktiv;
 
 	private KartenAuswahlView kartenAuswahlView;

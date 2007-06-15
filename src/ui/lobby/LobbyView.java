@@ -5,7 +5,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import pd.spieler.Spieler;
+import applikation.client.pd.Spieler;
 
 /**
  * JFrame für das Lobby, in dem die Spieler auf den Spielstart warten.

@@ -1,9 +1,9 @@
 package applikation.client.zustaende;
 
 import pd.karten.Karte;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Controller;
 import applikation.client.pd.SpielDaten;
+import applikation.client.pd.ZugEingabe;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
@@ -147,7 +147,7 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
+	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
 		return keinUebergang();
 	}
 

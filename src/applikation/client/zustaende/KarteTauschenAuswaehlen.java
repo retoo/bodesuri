@@ -17,7 +17,7 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.spielerIch.getKarten().remove(event.karte);
-		spielDaten.endpunkt.sende(new KartenTausch(event.karte));
+		spielDaten.endpunkt.sende(new KartenTausch(event.karte.getKarte()));
 		return KarteTauschenBekommen.class;
 	}
 

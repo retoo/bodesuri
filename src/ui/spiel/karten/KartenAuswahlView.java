@@ -4,7 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import pd.spieler.Spieler;
+import applikation.client.pd.Spieler;
+
 import ui.GUIController;
 
 public class KartenAuswahlView extends JPanel {

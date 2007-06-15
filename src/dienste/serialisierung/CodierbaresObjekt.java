@@ -1,26 +1,27 @@
 package dienste.serialisierung;
 
 import java.io.Serializable;
+import java.util.Observable;
 
 /**
  * Objekt, dem ein Code zugeordnet ist und codiert werden kann.
- * 
+ *
  * Das Objekt wird mithilfe des Codierers codiert, um das codierte Objekt
  * anstelle des ursprünglichen Objekts über das Netzwerk zu schicken.
  */
-public abstract class CodierbaresObjekt implements Serializable {
+public abstract class CodierbaresObjekt extends Observable implements Serializable {
 	private String code;
-	
+
 	/**
 	 * Grundkonstruktor für codierbare Objekte.
-	 * 
+	 *
 	 * @param code Eindeutiger Code, der dem Objekt zugeordnet ist
 	 */
 	public CodierbaresObjekt(String code) {
 		getCodierer().speichere(code, this);
 		this.code = code;
 	}
-	
+
 	/**
 	 * Wird von ObjectOutputStream aufgerufen, um herauszufinden, was für ein
 	 * Objekt anstelle dieses Objekts in den ObjectOutputStream geschrieben
@@ -29,8 +30,8 @@ public abstract class CodierbaresObjekt implements Serializable {
 	protected Object writeReplace() {
 		return getCodiertesObjekt(code);
 	}
-	
+
 	protected abstract Codierer getCodierer();
-	
+
 	protected abstract CodiertesObjekt getCodiertesObjekt(String code);
 }

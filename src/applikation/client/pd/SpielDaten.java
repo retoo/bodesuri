@@ -1,11 +1,6 @@
 package applikation.client.pd;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import pd.Spiel;
 import pd.SpielThreads;
-import pd.spieler.Spieler;
 import applikation.client.zugautomat.ZugAutomat;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
@@ -20,11 +15,9 @@ public class SpielDaten implements SerialisierungsKontext {
 	public String spielerName;
 	public Spieler spielerIch;
 	
-	public Map<Spieler, applikation.client.pd.Spieler> spielers =
-		new HashMap<Spieler, applikation.client.pd.Spieler>();
 	public applikation.client.pd.Spieler aktuellerSpieler;
 
 	public void registriere(Thread thread) {
-		SpielThreads.registriere(thread, spiel);
+		SpielThreads.registriere(thread, spiel.getSpiel());
 	}
 }

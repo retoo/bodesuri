@@ -1,20 +1,19 @@
 package ui;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import pd.Spiel;
-import pd.brett.Feld;
-import pd.spieler.Spieler;
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
+import applikation.client.pd.Feld;
+import applikation.client.pd.Spiel;
+import applikation.client.pd.Spieler;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
@@ -37,9 +36,9 @@ public class GUIController extends Controller {
 		lobbyView.setVisible(true);
 	}
 
-	public void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers) {
+	public void zeigeSpiel(Spiel spiel, Spieler spielerIch) {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, spiel, spielerIch, spielers);
+		spielView = new BodesuriView(this, spiel, spielerIch);
 		spielView.setVisible(true);
 	}
 
@@ -56,12 +55,6 @@ public class GUIController extends Controller {
 	public void zeigeGespielteKarte(String gespielteKarte) {
 		if (gespielteKarteFeld != null) {
 			gespielteKarteFeld.setText(gespielteKarte);
-		}
-	}
-
-	public void zeigeFeldauswahl(Feld feld, boolean status) {
-		if (feldMouseAdapter != null) {
-			feldMouseAdapter.setzeFigurAusgewaehltStatus(status, feld);
 		}
 	}
 

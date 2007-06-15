@@ -1,7 +1,7 @@
 package applikation.client.zustaende;
 
-import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
+import applikation.client.pd.Spieler;
 import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;
@@ -37,7 +37,7 @@ public class Lobby extends ClientZustand {
             	spielDaten.spielerIch = neuerSpieler;
             }
             
-            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));
+//            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));
 		}
 
 		return SpielStart.class;

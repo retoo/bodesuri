@@ -3,21 +3,19 @@ package ui.spiel.brett;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.Map;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import pd.Spiel;
-import pd.spieler.Spieler;
-
 import ui.GUIController;
 import ui.ressourcen.Icons;
 import ui.spiel.karten.KartenAuswahlView;
+import applikation.client.pd.Spiel;
+import applikation.client.pd.Spieler;
 
 public class SpielView extends JPanel {
 	Image filz;
-	public SpielView(GUIController controller, Spiel spiel, Map<Spieler, applikation.client.pd.Spieler> spielers, Spieler spielerIch) {
+	public SpielView(GUIController controller, Spiel spiel, Spieler spielerIch) {
 		ImageIcon icon = (ImageIcon) Icons.FILZ;
 		filz = icon.getImage();
 		
@@ -26,7 +24,7 @@ public class SpielView extends JPanel {
 		setOpaque(false);
 
 		// Views
-		SpielBrettView spielBrettView = new SpielBrettView(controller, spiel,  spielers);
+		SpielBrettView spielBrettView = new SpielBrettView(controller, spiel);
 		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(controller, spielerIch);
 
 		// Layout zusammenstellen

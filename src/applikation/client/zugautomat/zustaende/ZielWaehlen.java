@@ -2,8 +2,8 @@ package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Controller;
+import applikation.client.pd.ZugEingabe;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
@@ -27,13 +27,13 @@ public class ZielWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		if (spielDaten.start == event.feld) {
-			controller.zeigeFeldauswahl(event.feld, false);
+			event.feld.setAusgewaehlt(false);
 			return StartWaehlen.class;
 		} else {
 			spielDaten.ziel = event.feld;
 
 			/* Kann in eine seperate Methode oder in die Klasse SpielDaten verschoben werden */
-			Bewegung bewegung = new Bewegung(spielDaten.start, spielDaten.ziel);
+			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(), spielDaten.ziel.getFeld());
 			ZugEingabe zugEingabe = new ZugEingabe(spielDaten.spielerIch,
 			                                       spielDaten.karte, bewegung);
 			try {
@@ -45,7 +45,7 @@ public class ZielWaehlen extends ClientZugZustand {
 
 			spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
 
-			controller.zeigeFeldauswahl(spielDaten.start, false);
+			spielDaten.start.setAusgewaehlt(false);
 			controller.aktiviereKarte(false);
 
 			return EndZustand.class;
@@ -53,13 +53,13 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 	
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
-		controller.zeigeFeldauswahl(spielDaten.start, false);
+		spielDaten.start.setAusgewaehlt(false);
 		return StartWaehlen.class;
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.karte = event.karte;
-		controller.zeigeFeldauswahl(spielDaten.start, false);
+		spielDaten.start.setAusgewaehlt(false);
 		return StartWaehlen.class;
 	}
 }

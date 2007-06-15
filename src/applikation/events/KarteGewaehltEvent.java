@@ -1,6 +1,6 @@
 package applikation.events;
 
-import pd.karten.Karte;
+import applikation.client.pd.Karte;
 import dienste.eventqueue.Event;
 
 /**
@@ -14,10 +14,10 @@ public class KarteGewaehltEvent extends Event {
 
 	/**
 	 * Der Benutzer hat eine Karte ausgewählt.
-	 * @param karte Die ausgewählte Karte
+	 * @param gewaehlteKarte Die ausgewählte Karte
 	 */
-	public KarteGewaehltEvent(Karte karte) {
-		this.karte = karte;
+	public KarteGewaehltEvent(Karte gewaehlteKarte) {
+		this.karte = gewaehlteKarte;
 	}
 
 }

@@ -8,8 +8,9 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
-import pd.karten.Karte;
-import pd.spieler.Spieler;
+import applikation.client.pd.Karte;
+import applikation.client.pd.Spieler;
+
 import ui.GUIController;
 import dienste.observer.ListChangeEvent;
 import dienste.observer.ObservableList;

@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class SpielStart extends ClientZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		controller.zeigeSpiel(spielDaten.spiel, spielDaten.spielerIch, spielDaten.spielers);
+		controller.zeigeSpiel(spielDaten.spiel, spielDaten.spielerIch);
 		return NichtAmZug.class;
 	}
 }

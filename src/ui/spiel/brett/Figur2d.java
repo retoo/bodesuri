@@ -7,6 +7,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import pd.spieler.Figur;
+
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
 
@@ -14,22 +15,20 @@ import ui.spiel.brett.felder.Feld2d;
  * JLabel, wird zur Darstellung der Spielfiguren verwendet.
  */
 public class Figur2d extends JLabel implements Observer {
-	private Figur figur;
-	private BrettView brett;
+	// FIXME reto private Figur figur;
 	private Icon icon;
 
-	public Figur2d(Figur figur, Icon icon, BrettView brett) {
+	public Figur2d(Figur figur, Icon icon) {
 		super(icon);
-		this.figur = figur;
-		this.brett = brett;
+		// FIXME reto this.figur = figur;
 		this.icon = icon;
-		setzeAuf(brett.getFeld2d(figur.getFeld()));
-		figur.addObserver(this);
+		//setzeAuf(brett.getFeld2d(figur.getFeld()));
+		//figur.addObserver(this);
 	}
 
 	/**
 	 * Die Spielfigur wird auf das ausgewählte Feld gesetzt.
-	 * 
+	 *
 	 * @param ziel
 	 *            Zielfeld
 	 */
@@ -38,7 +37,8 @@ public class Figur2d extends JLabel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		setzeAuf(brett.getFeld2d(figur.getFeld()));
+		// FIXME: Reto entfefrnen setzeAuf(brett.getFeld2d(figur.getFeld()));
+		//TODO --Philippe
 		// brett.getFeld2d(figur.getFeld()).setAusgewaehlt(false);
 	}
 

@@ -164,6 +164,9 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 		if (figur != null) {
 			figur.versetzeAuf(this);
 		}
+
+		setChanged();
+		notifyObservers();
 	}
 
 	/**

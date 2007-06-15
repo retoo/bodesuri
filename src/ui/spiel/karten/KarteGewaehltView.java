@@ -8,7 +8,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import pd.karten.Karte;
+import applikation.client.pd.Karte;
+
 import ui.GUIController;
 
 public class KarteGewaehltView extends JPanel {

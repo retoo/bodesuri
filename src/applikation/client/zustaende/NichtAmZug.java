@@ -1,8 +1,8 @@
 package applikation.client.zustaende;
 
-import pd.karten.Karte;
 import pd.regelsystem.RegelVerstoss;
-import pd.zugsystem.ZugEingabe;
+import applikation.client.pd.Karte;
+import applikation.client.pd.Spieler;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
@@ -26,14 +26,14 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
-		applikation.client.pd.Spieler neuerSpieler = spielDaten.spielers.get(zugAufforderung.spieler);
+		Spieler neuerSpieler = Spieler.findeSpieler(zugAufforderung.spieler);
 		if (spielDaten.aktuellerSpieler != null) {
 			spielDaten.aktuellerSpieler.setAmZug(false);
 		}
 		neuerSpieler.setAmZug(true);
 		spielDaten.aktuellerSpieler = neuerSpieler;
 
-		if (zugAufforderung.spieler == spielDaten.spielerIch) {
+		if (neuerSpieler == spielDaten.spielerIch) {
 			spielDaten.zugAutomat = new ZugAutomat(controller,
 			                                       spielDaten.queue,
 			                                       spielDaten.spielerIch);
@@ -46,7 +46,7 @@ public class NichtAmZug extends ClientZustand {
 		}
 	}
 
-	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
+	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
 		try {
 			controller.zeigeGespielteKarte(zug.getKarte() + " gespielt von "
 			                               + zug.getSpieler().getName());
@@ -62,8 +62,8 @@ public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		spielDaten.spielerIch.getKarten().clear();
 		controller.zeigeGespielteKarte("");
-		for (Karte karte : rundenStart.neueKarten) {
-			spielDaten.spielerIch.getKarten().add(karte);
+		for (pd.karten.Karte karte : rundenStart.neueKarten) {
+			spielDaten.spielerIch.getKarten().add(new Karte(karte));
 		}
 		return StarteRunde.class;
 	}

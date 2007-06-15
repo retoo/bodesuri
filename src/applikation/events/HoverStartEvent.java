@@ -1,7 +1,7 @@
 package applikation.events;
 
+import applikation.client.pd.Feld;
 import dienste.eventqueue.Event;
-import pd.brett.Feld;
 
 public class HoverStartEvent extends Event {
 	public final Feld feld;

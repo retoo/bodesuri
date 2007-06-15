@@ -1,8 +1,8 @@
 package applikation.client.zugautomat;
 
-import pd.brett.Feld;
-import pd.karten.Karte;
-import pd.spieler.Spieler;
+import applikation.client.pd.Feld;
+import applikation.client.pd.Karte;
+import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 

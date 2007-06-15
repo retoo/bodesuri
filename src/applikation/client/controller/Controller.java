@@ -1,12 +1,11 @@
 package applikation.client.controller;
 
 import java.util.List;
-import java.util.Map;
 
-import pd.Spiel;
-import pd.brett.Feld;
-import pd.karten.Karte;
-import pd.spieler.Spieler;
+import applikation.client.pd.Feld;
+import applikation.client.pd.Karte;
+import applikation.client.pd.Spiel;
+import applikation.client.pd.Spieler;
 import applikation.events.AufgegebenEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
@@ -42,9 +41,8 @@ public abstract class Controller {
 	 * Das Spielbrett anzeigen.
 	 * @param spiel 
 	 * @param spielerIch 
-	 * @param spielers 
 	 */
-	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch, Map<Spieler, applikation.client.pd.Spieler> spielers);
+	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch);
 	
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,
@@ -73,13 +71,6 @@ public abstract class Controller {
 	 */
 	public abstract void zeigeGespielteKarte(String karte);
 	
-	/**
-	 * Darstellen des gewählten bzw. abgewählten Feldes.
-	 * @param abgewaehltesFeld
-	 * @param status
-	 */
-	public abstract void zeigeFeldauswahl(Feld abgewaehltesFeld, boolean status);
-
 	/**
 	 * Die Auswahl von Karten (de-)aktivieren.
 	 *

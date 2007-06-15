@@ -1,6 +1,6 @@
 package applikation.events;
 
-import pd.zugsystem.ZugEingabe;
+import applikation.client.pd.ZugEingabe;
 import dienste.eventqueue.Event;
 
 public class GezogenEvent extends Event {

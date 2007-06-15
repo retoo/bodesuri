@@ -7,13 +7,12 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import pd.karten.Joker;
-import pd.karten.Karte;
+import applikation.client.pd.Karte;
 
 final public class Icons {
 	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
-	
+
 	// Verbinden
 	public static final Icon VERBINDEN = ladeBild("/ui/ressourcen/verbinden.png");
 	public static final Icon BODESURI_START = ladeBild("/ui/ressourcen/bodesuri_starten.png");
@@ -23,7 +22,7 @@ final public class Icons {
 	public static final Icon FIGUR_GRUEN = ladeBild("/ui/ressourcen/figur_gruen.png");
 	public static final Icon FIGUR_ROT = ladeBild("/ui/ressourcen/figur_rot.png");
 	public static final Icon FIGUR_GELB = ladeBild("/ui/ressourcen/figur_gelb.png");
-	
+
 	// Figuren
 	public static final Icon FELD_BLAU = ladeBild("/ui/ressourcen/feld_blau.png");
 	public static final Icon FELD_GRUEN = ladeBild("/ui/ressourcen/feld_gruen.png");
@@ -31,23 +30,23 @@ final public class Icons {
 	public static final Icon FELD_GELB = ladeBild("/ui/ressourcen/feld_gelb.png");
 	public static final Icon FELD_NORMAL = ladeBild("/ui/ressourcen/feld.png");
 	public static final Icon FELD_AUSWAHL = ladeBild("/ui/ressourcen/feld_weiss.png");
-	
+
 	// Spielerfarbe
 	public static final Icon SPIELER_BLAU = ladeBild("/ui/ressourcen/spieler_blau.png");
 	public static final Icon SPIELER_GRUEN = ladeBild("/ui/ressourcen/spieler_gruen.png");
 	public static final Icon SPIELER_ROT = ladeBild("/ui/ressourcen/spieler_rot.png");
 	public static final Icon SPIELER_GELB = ladeBild("/ui/ressourcen/spieler_gelb.png");
-	
+
 	// Deck
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
 	public static final Icon KARTEN_PLATZHALTER = ladeBild("/ui/ressourcen/karten/karte_platzhalter.png");
-	
+
 	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
-	
+
 	/**
 	 * Lädt das angegeben Icon.
-	 * 
+	 *
 	 * @param pfad Pfad des zu ladenden Icons.
 	 * @return icon
 	 */
@@ -60,16 +59,10 @@ final public class Icons {
 			throw new RuntimeException("Unable to load icon " + pfad);
 		}
 	}
-		
+
 	public static Icon getIcon(Karte karte) {
-		String name;
-		if (karte instanceof Joker) {
-			name = "joker";
-		} else {
-			name = karte.getClass().getSimpleName() + "_" + karte.getKartenFarbe();
-			name = name.toLowerCase();
-		}
-		
+		String name = karte.getName();
+
 		Icon icon = kartenIcons.get(name);
 		if (icon == null) {
 			String pfad = "/ui/ressourcen/karten/" + name + ".png";

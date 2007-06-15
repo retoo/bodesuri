@@ -3,7 +3,10 @@ package applikation.client.zugautomat.zustaende;
 import java.util.List;
 
 import pd.spieler.Figur;
+
 import applikation.client.controller.Controller;
+import applikation.client.pd.Feld;
+
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;
@@ -25,14 +28,19 @@ public class StartWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		// Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich ist
-		spielDaten.start = event.feld;
-		Figur figur = event.feld.getFigur();
+		Feld feld = event.feld;
+
+
+		spielDaten.start = feld;
+		Figur figur = feld.getFigur();
 		List<Figur> figuren = spielDaten.spielerIch.getFiguren();
+
+		// Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich ist (TODO: schöner machen )
 		if (figur != null && figuren.contains(figur)) {
-			controller.zeigeFeldauswahl(event.feld, true);
+			feld.setAusgewaehlt(true);
 			return ZielWaehlen.class;
 		} else {
+			feld.setAusgewaehlt(false);
 			return StartWaehlen.class;
 		}
 	}

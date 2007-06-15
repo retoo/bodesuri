@@ -1,6 +1,7 @@
 package ui.spiel.brett;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.IdentityHashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -36,7 +37,7 @@ public class SpielerView extends JPanel implements Observer {
 		
 		this.name = new JLabel(spieler.getSpieler().getName());
 		name.setIcon(farbeMap.get(spieler.getSpieler().getFarbe()));
-		name.setFont(name.getFont().deriveFont(1)); // Fett
+		name.setFont(name.getFont().deriveFont(Font.BOLD));
 		add(name);
 	}
 

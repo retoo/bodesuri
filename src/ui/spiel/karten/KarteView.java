@@ -6,7 +6,8 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 
-import pd.karten.Karte;
+import applikation.client.pd.Karte;
+
 import ui.ressourcen.Icons;
 
 /**
