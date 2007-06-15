@@ -129,7 +129,8 @@ public class SiebnerRegel extends VorwaertsRegel {
 				kandidaten.add(feldNeu);
 			}
 			
-			if (!reihenfolge.contains(figur)) {
+			boolean figurInReihenfolge = reihenfolge.contains(figur);
+			if (!figurInReihenfolge) {
 				reihenfolge.add(figur);
 			}
 			for (Feld kandidat : kandidaten) {
@@ -139,7 +140,9 @@ public class SiebnerRegel extends VorwaertsRegel {
 				}
 				positionen.put(figur, feld);
 			}
-			reihenfolge.remove(figur);
+			if (!figurInReihenfolge) {
+				reihenfolge.remove(figur);
+			}
 		}
 		
 		return false;
