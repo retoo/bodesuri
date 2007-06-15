@@ -21,8 +21,4 @@ public class SpielerFeld2d extends Feld2d {
 	public Icon getAktivesIcon() {
 		return Icons.FELD_AUSWAHL;
 	}
-
-	public Icon getPassivesIcon() {
-		return this.icon;
-	}
 }

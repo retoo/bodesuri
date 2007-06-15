@@ -32,27 +32,18 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	}
 
 	private void zeichne(Icon icon) {
+		int posx = position.x - (icon.getIconWidth() / 2);
+		int posy = position.y - (icon.getIconHeight() / 2);
 		setIcon(icon);
-		setBounds(getPosX(), getPosY(), icon.getIconWidth(), icon.getIconHeight());
-		updateUI(); /* TODO: Was soll das? (-reto) */
+		setBounds(posx, posy, icon.getIconWidth(), icon.getIconHeight());
 	}
 
 	public int getPointX() {
-		return (int) this.position.getX();
+		return position.x;
 	}
 
 	public int getPointY() {
-		return (int) this.position.getY();
-	}
-
-	public int getPosX() {
-		int pos = (int) position.getX() - (this.icon.getIconWidth() / 2);
-		return pos;
-	}
-
-	public int getPosY() {
-		int pos = (int) position.getY() - (this.icon.getIconHeight() / 2);
-		return pos;
+		return position.y;
 	}
 
 	public Feld getFeld() {
@@ -88,5 +79,8 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	}
 
 	public abstract Icon getAktivesIcon();
-	public abstract Icon getPassivesIcon();
+	
+	public Icon getPassivesIcon() {
+		return icon;
+	}
 }
