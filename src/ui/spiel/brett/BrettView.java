@@ -100,10 +100,10 @@ public class BrettView extends JPanel implements Observer {
 		// SpielerViews darstellen
 		zeichneSpielerView(steuerung, spiel.getSpieler());
 
+		erstelleHinweis();
+
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
 		add(new SpielBrett2d(brettAdapter));
-
-		erstelleHinweis();
 
 		spiel.addObserver(this);
 	}
