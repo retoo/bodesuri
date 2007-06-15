@@ -14,6 +14,7 @@ import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -76,7 +77,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 				}
 
 				if (hatFigur) {
-					zug.fuegeHinzu(heimschickAktion(feld, figur.getSpieler()));
+					zug.fuegeHinzu(new HeimschickAktion(feld));
 					figuren.put(feld, null);
 				}
 			}

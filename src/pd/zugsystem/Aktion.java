@@ -23,9 +23,7 @@ public class Aktion {
 		}
 		start.versetzeFigurAuf(ziel);
 		start.setGeschuetzt(false);
-		if (start.istLager() && ziel.istBank()) {
-			ziel.setGeschuetzt(true);
-		} else if (ziel.istHimmel() || ziel.istLager()) {
+		if (ziel.istHimmel() || (start.istLager() && ziel.istBank())) {
 			ziel.setGeschuetzt(true);
 		}
 	}

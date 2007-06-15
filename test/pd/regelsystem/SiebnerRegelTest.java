@@ -75,6 +75,24 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(lager(1).istBesetztVon(spieler(1)));
 	}
 	
+	public void testSiebnerZweiHeimSchicken() throws RegelVerstoss {
+		start[0] = bank(0);
+		ziel[0]  = bank(0).getNtesFeld(7);
+		lager(0).versetzeFigurAuf(start[0]);
+		Feld gegner1 = bank(0).getNtesFeld(2);
+		Feld gegner2 = bank(0).getNtesFeld(4);
+		lager(1, 0).versetzeFigurAuf(gegner1);
+		lager(1, 1).versetzeFigurAuf(gegner2);
+		sollteValidieren();
+		
+		assertTrue(start[0].istFrei());
+		assertTrue(ziel[0].istBesetztVon(spieler(0)));
+		assertTrue(gegner1.istFrei());
+		assertTrue(gegner2.istFrei());
+		assertTrue(lager(1, 0).istBesetztVon(spieler(1)));
+		assertTrue(lager(1, 1).istBesetztVon(spieler(1)));
+	}
+	
 	public void testSiebnerZuWenigSchritte() {
 		sollteVerstossGeben();
 		

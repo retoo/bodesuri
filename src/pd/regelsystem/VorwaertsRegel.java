@@ -10,6 +10,7 @@ import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -71,7 +72,7 @@ public class VorwaertsRegel extends Regel {
 		Zug zug = new Zug();
 
 		if (ziel.istBesetzt()) {
-			zug.fuegeHinzu(heimschickAktion(ziel, ziel.getFigur().getSpieler()));
+			zug.fuegeHinzu(new HeimschickAktion(ziel));
 		}
 
 		zug.fuegeHinzu(new Aktion(start, ziel));

@@ -7,6 +7,7 @@ import pd.brett.LagerFeld;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
+import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
@@ -56,7 +57,7 @@ public class StartRegel extends Regel {
 		if (ziel.istGeschuetzt()) {
 			throw new RegelVerstoss("Bankfeld ist geschützt.");
 		} else if (ziel.istBesetzt()) {
-			zug.fuegeHinzu(heimschickAktion(ziel, ziel.getFigur().getSpieler()));
+			zug.fuegeHinzu(new HeimschickAktion(ziel));
 		}
 		
 		zug.fuegeHinzu(new Aktion(start, ziel));

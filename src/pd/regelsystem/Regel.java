@@ -1,9 +1,6 @@
 package pd.regelsystem;
 
-import pd.brett.Feld;
-import pd.brett.LagerFeld;
 import pd.spieler.Spieler;
-import pd.zugsystem.Aktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
@@ -39,11 +36,6 @@ public abstract class Regel {
 	 */
 	public String getBeschreibung() {
 		return beschreibung;
-	}
-
-	protected Aktion heimschickAktion(Feld feld, Spieler spieler) {
-		LagerFeld lf = spieler.getSpiel().getBrett().getFreiesLagerFeldVon(spieler);
-		return new Aktion(feld, lf);
 	}
 
 	protected void setBeschreibung(String beschreibung) {
