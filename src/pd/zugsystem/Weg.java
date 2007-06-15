@@ -5,17 +5,13 @@ import java.util.Vector;
 import pd.brett.Feld;
 
 public class Weg extends Vector<Feld> {
-	private boolean rueckwaerts;
+	private boolean vorwaerts;
 	
-	public Weg() {
-		this(false);
-	}
-	
-	public Weg(boolean rueckwaerts) {
-		this.rueckwaerts = rueckwaerts;
+	public Weg(boolean vorwaerts) {
+		this.vorwaerts = vorwaerts;
 	}
 	
 	public boolean istRueckwaerts() {
-		return rueckwaerts;
+		return !vorwaerts;
 	}
 }

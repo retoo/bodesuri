@@ -26,35 +26,29 @@ public class Bewegung implements Serializable {
 	}
 	
 	public Weg getWeg() {
-		if ((start.istRing()   && ziel.istRing()) ||
-		    (start.istRing()   && ziel.istHimmel()) ||
-		    (start.istHimmel() && ziel.istHimmel()) ||
-		    (start.istLager()  && ziel.istBank())) {
-			// Alles gut
+		boolean vorwaerts;
+		
+		if ((start.istRing() && ziel.istRing())) {
+			int startNr = start.getNummer();
+			int zielNr  =  ziel.getNummer();
+			int anzahlFelder = Brett.ANZAHL_FELDER;
+			int startBisZiel = (zielNr - startNr + anzahlFelder) % anzahlFelder;
+			int zielBisStart = (startNr - zielNr + anzahlFelder) % anzahlFelder;
+			vorwaerts = (startBisZiel <= zielBisStart);
+		} else if ((start.istRing()   && ziel.istHimmel()) ||
+		           (start.istHimmel() && ziel.istHimmel())) {
+			vorwaerts = true;
 		} else {
 			return null;
 		}
 		
-		int startNr = start.getNummer();
-		int zielNr  =  ziel.getNummer();
-		int startBisZiel = (zielNr - startNr + Brett.ANZAHL_FELDER) % Brett.ANZAHL_FELDER;
-		int zielBisStart = (startNr - zielNr + Brett.ANZAHL_FELDER) % Brett.ANZAHL_FELDER;
-		
-		Weg weg;
-		if (startBisZiel <= zielBisStart) {
-			// Vorwaerts
-			weg = new Weg();
-		} else {
-			// Rückwärts
-			weg = new Weg(true);
-		}
+		Weg weg = new Weg(vorwaerts);
 		
 		Feld feld = start;
 		while (feld != ziel) {
 			weg.add(feld);
-			if (weg.istRueckwaerts()) {
-				feld = feld.getVorheriges();
-			} else {
+			
+			if (vorwaerts) {
 				if (feld.istBank() && ziel.istHimmel() 
 				    && ((SpielerFeld) feld).getSpieler() ==
 				       ((SpielerFeld) ziel).getSpieler())
@@ -63,6 +57,12 @@ public class Bewegung implements Serializable {
 				} else {
 					feld = feld.getNaechstes();
 				}
+			} else {
+				feld = feld.getVorheriges();
+			}
+			
+			if (feld == null) {
+				return null;
 			}
 		}
 		weg.add(feld);
