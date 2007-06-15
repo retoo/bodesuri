@@ -11,7 +11,6 @@ import ui.spiel.brett.felder.FeldMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
-import applikation.client.pd.Feld;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 

@@ -82,7 +82,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		}
 
 		Icon icon;
-		/* prüfen wir ob man auswählen muss */
+		/* prüfen wir ob selektiert */
 		if (feld.getAusgewaehlt()) {
 			System.out.println("Aktiviere...");
 			icon = getAktivesIcon();

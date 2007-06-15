@@ -60,7 +60,7 @@ public class VerbindenView extends JFrame {
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
-		
+
 		// View auf Monitor zentrieren
 		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2;
@@ -73,7 +73,7 @@ public class VerbindenView extends JFrame {
 		buttonpanel.setBorder(new EmptyBorder(0, 0, 15, 15));
 		abbrechenButton.setSelected(false);
 		verbindenButton.setSelected(true);
-		
+
 		// Actions definieren und Tastenbefehle binden
 		AbstractAction abbrechenAction = new AbstractAction("Abbrechen") {
 			public void actionPerformed(ActionEvent e) {
@@ -97,7 +97,7 @@ public class VerbindenView extends JFrame {
 		verbindenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ENTER"), "Verbinden");
 		verbindenButton.getActionMap().put("Verbinden", verbindenAction);
-		
+
 		abbrechenButton.setAction(abbrechenAction);
 		abbrechenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ESCAPE"), "Abbrechen");
@@ -118,9 +118,9 @@ public class VerbindenView extends JFrame {
 		pack();
 	}
 
-	
-	
-	
+
+
+
 	private class InputTextField extends JTextField {
 		private final Color FOCUS_GAINED 	= new Color(220, 223, 228);
 		private final Color FOCUS_LOST 		= new Color(255, 255, 255);
@@ -134,7 +134,7 @@ public class VerbindenView extends JFrame {
 		/**
 		 * Beim betreten und verlassen eines TextField wird diese Methode
 		 * ausgeführt.
-		 * 
+		 *
 		 * @see javax.swing.JFormattedTextField#processFocusEvent
 		 * @param e
 		 *            the focus event
@@ -157,8 +157,8 @@ public class VerbindenView extends JFrame {
 
 			/**
 			 * Erstellt ein neues Dokument
-			 * 
-			 * @param length
+			 *
+			 * @param limit
 			 *            maximal erlaubte Anzahl Zeichen
 			 */
 			public MyDocument(int limit) {
@@ -182,9 +182,9 @@ public class VerbindenView extends JFrame {
 		}
 	}
 
-	
-	
-	
+
+
+
 	private class InputPanel extends JPanel {
 		public InputPanel(JTextField hostname, JTextField port,
 				JTextField spielerName) {
