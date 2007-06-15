@@ -24,7 +24,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-import ui.GUIController;
+import ui.Steuerung;
 import ui.ressourcen.Icons;
 
 /**
@@ -42,17 +42,17 @@ public class VerbindenView extends JFrame {
 	private JTextField hostname 	= new InputTextField(DEFAULT_HOST, 15);
 	private JTextField port 		= new InputTextField(DEFAULT_PORT, 5);
 	private JTextField spielerName;
-	private GUIController controller;
 	private JPanel inputpanel;
 	private JPanel buttonpanel 		= new JPanel();
 	private JButton verbindenButton = new JButton("Verbinden");
 	private JButton abbrechenButton = new JButton("Abbrechen");
 	private JLabel verbindenIcon = new JLabel(Icons.VERBINDEN);
 	private JLabel bodesuriIcon = new JLabel(Icons.BODESURI_START);
+	private Steuerung steuerung;
 
-	public VerbindenView(GUIController controller, final String DEFAULT_NAME) {
+	public VerbindenView(Steuerung steuerung, final String DEFAULT_NAME) {
 		// Initialisierung
-		this.controller = controller;
+		this.steuerung = steuerung;
 		spielerName = new InputTextField(DEFAULT_NAME, 20);
 
 		setTitle("Bodesuri - Verbinden");
@@ -90,7 +90,7 @@ public class VerbindenView extends JFrame {
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
 
-				VerbindenView.this.controller.verbinde(host, port_raw, spieler);
+				VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
 			}
 		};
 		verbindenButton.setAction(verbindenAction);
@@ -181,9 +181,6 @@ public class VerbindenView extends JFrame {
 			}
 		}
 	}
-
-
-
 
 	private class InputPanel extends JPanel {
 		public InputPanel(JTextField hostname, JTextField port,

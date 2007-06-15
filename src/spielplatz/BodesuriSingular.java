@@ -30,7 +30,7 @@ public class BodesuriSingular {
 		Controller controller = new GUIController();
 		Automat client = new ClientAutomat(controller, "Singular");
 
-		controller. verbinde("localhost", 7788, "Singular");
+		controller.getSteuerung().verbinde("localhost", 7788, "Singular");
 
 
 		try {

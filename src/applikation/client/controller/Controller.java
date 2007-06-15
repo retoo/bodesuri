@@ -2,6 +2,8 @@ package applikation.client.controller;
 
 import java.util.List;
 
+import ui.Steuerung;
+
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
@@ -11,7 +13,6 @@ import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
-import applikation.events.VerbindeEvent;
 import dienste.eventqueue.EventQueue;
 
 /**
@@ -25,13 +26,14 @@ public abstract class Controller {
 
 	/**
 	 * Die Verbindungsdaten erfragen.
-	 * @param spielerName 
+	 *
+	 * @param spielerName
 	 */
 	public abstract void zeigeVerbinden(String spielerName);
 
 	/**
 	 * Die Lobby anzeigen.
-	 * 
+	 *
 	 * @param spieler
 	 *            Liste der Spieler
 	 */
@@ -39,38 +41,39 @@ public abstract class Controller {
 
 	/**
 	 * Das Spielbrett anzeigen.
-	 * @param spiel 
-	 * @param spielerIch 
+	 *
+	 * @param spiel
+	 * @param spielerIch
 	 */
 	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch);
-	
+
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,
 	 * darstellen.
-	 * 
+	 *
 	 * @param fehlermeldung
 	 *            anzuzeigende Fehlermeldung
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
-	
+
 	/**
 	 * Hinweise, die vom Automaten an den Controller gereicht werden, darstellen
 	 * um dem Spieler zu führen.
-	 * 
+	 *
 	 * @param hinweis
 	 *            anzuzeigender Hinweis
 	 */
 	public abstract void zeigeHinweis(String hinweis);
-	
+
 	/**
 	 * Die gespielte Karte, die vom Automaten an den Controller gereicht wird,
 	 * darstellen.
-	 * 
+	 *
 	 * @param karte
 	 *            gespielte Karte
 	 */
 	public abstract void zeigeGespielteKarte(String karte);
-	
+
 	/**
 	 * Die Auswahl von Karten (de-)aktivieren.
 	 *
@@ -78,20 +81,6 @@ public abstract class Controller {
 	 */
 	public abstract void aktiviereKarte(Boolean aktiv);
 
-	/**
-	 * Dem Automaten auftragen eine Verbindung zum Server aufzubauen.
-	 *
-	 * @param host
-	 *            Hostname des Servers
-	 * @param port_raw
-	 *            Port des Servers
-	 * @param spieler
-	 *            Name des Spielers
-	 */
-	public void verbinde(String host, int port_raw, String spieler) {
-		VerbindeEvent ve = new VerbindeEvent(host, port_raw, spieler);
-		eventQueue.enqueue(ve);
-	}
 
 	/**
 	 * Dem Automaten mitteilen welche Karte der Benutzer gewählt hat.
@@ -131,7 +120,7 @@ public abstract class Controller {
 		AufgegebenEvent age = new AufgegebenEvent();
 		eventQueue.enqueue(age);
 	}
-	
+
 	public void zielHover(Feld feld) {
 		HoverStartEvent hse = new HoverStartEvent(feld);
 		eventQueue.enqueue(hse);
@@ -139,6 +128,7 @@ public abstract class Controller {
 
 	public void setEventQueue(EventQueue queue) {
 		this.eventQueue = queue;
-    }
+	}
 
+	public abstract Steuerung getSteuerung();
 }

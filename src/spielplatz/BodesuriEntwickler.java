@@ -30,7 +30,7 @@ public class BodesuriEntwickler {
 				public void run() {
 					Controller controller = new GUIController();
 					Automat client = new ClientAutomat(controller, Thread.currentThread().getName());
-					controller.verbinde("localhost", 7788, Thread.currentThread().getName());
+					controller.getSteuerung().verbinde("localhost", 7788, Thread.currentThread().getName());
 
 					try {
 						client.run();

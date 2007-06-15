@@ -15,15 +15,25 @@ import applikation.client.pd.Spieler;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
+
 	private LobbyView lobbyView;
+
 	private BodesuriView spielView;
 
 	private KarteMouseAdapter karteMouseAdapter;
+
 	private JLabel hinweisFeld;
+
 	private JLabel gespielteKarteFeld;
 
+	private Steuerung steuerung;
+
+	public GUIController() {
+		steuerung = new Steuerung(eventQueue);
+	}
+
 	public void zeigeVerbinden(String spielerName) {
-		verbindenView = new VerbindenView(this, spielerName);
+		verbindenView = new VerbindenView(steuerung, spielerName);
 		verbindenView.setVisible(true);
 	}
 
@@ -89,5 +99,9 @@ public class GUIController extends Controller {
 	 */
 	public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
 		this.gespielteKarteFeld = gespielteKarteFeld;
+	}
+
+	public Steuerung getSteuerung() {
+		return steuerung;
 	}
 }
