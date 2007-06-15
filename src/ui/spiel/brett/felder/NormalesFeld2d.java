@@ -5,7 +5,6 @@ import java.awt.Point;
 import javax.swing.Icon;
 
 import ui.ressourcen.Icons;
-import ui.spiel.brett.FigurenManager;
 import applikation.client.pd.Feld;
 
 /**

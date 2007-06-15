@@ -1,4 +1,4 @@
-package ui.spiel.brett;
+package ui.spiel.brett.felder;
 
 import java.util.IdentityHashMap;
 

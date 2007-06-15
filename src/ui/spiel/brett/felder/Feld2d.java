@@ -6,8 +6,6 @@ import java.util.Observer;
 
 import javax.swing.Icon;
 
-import ui.spiel.brett.Figur2d;
-import ui.spiel.brett.FigurenManager;
 import applikation.client.pd.Feld;
 
 /**

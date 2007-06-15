@@ -21,6 +21,8 @@ import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
 import ui.spiel.brett.felder.FeldMouseAdapter;
+import ui.spiel.brett.felder.Figur2d;
+import ui.spiel.brett.felder.FigurenManager;
 import ui.spiel.brett.felder.NormalesFeld2d;
 import ui.spiel.brett.felder.SpielerFeld2d;
 import applikation.client.controller.Steuerung;

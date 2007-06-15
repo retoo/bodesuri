@@ -7,7 +7,6 @@ import javax.swing.Icon;
 import applikation.client.pd.Feld;
 
 import ui.ressourcen.Icons;
-import ui.spiel.brett.FigurenManager;
 
 /**
  * Feld Bank, welches jede Spielfigur am Anfang besucht haben muss, bevor er auf
