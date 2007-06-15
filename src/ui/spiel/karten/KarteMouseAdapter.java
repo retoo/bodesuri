@@ -3,26 +3,21 @@ package ui.spiel.karten;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.GUIController;
+import ui.Steuerung;
 
 public class KarteMouseAdapter extends MouseAdapter {
-	private GUIController controller;
-
-	//TODO Löschen! --Philippe
-	private Boolean aktiv;
-
+	private Steuerung steuerung;
 	private KartenAuswahlView kartenAuswahlView;
 	private KartenAuswahl kartenAuswahl;
 
-	public KarteMouseAdapter(GUIController controller,
-	                         KartenAuswahlView kartenAuswahlView,
-	                         KartenAuswahl kartenAuswahl) {
-		this.controller = controller;
+	private boolean aktiv;
+
+	public KarteMouseAdapter(Steuerung steuerung,
+	        KartenAuswahlView kartenAuswahlView, KartenAuswahl kartenAuswahl) {
+		this.steuerung = steuerung;
 		this.kartenAuswahlView = kartenAuswahlView;
 		this.kartenAuswahl = kartenAuswahl;
-
-		controller.registriereKarteMouseAdapter(this);
-		aktiv = false;
+		this.aktiv = false;
 	}
 
 	public void mouseClicked(MouseEvent evt) {
@@ -33,13 +28,14 @@ public class KarteMouseAdapter extends MouseAdapter {
 			kartenAuswahlView.getDeckView().add(kartenAuswahl);
 			kartenAuswahlView.getDeckView().updateUI();
 
-			kartenAuswahlView.getKarteGewaehltView().zeigeKarte(karteView.getKarte());
+			kartenAuswahlView.getKarteGewaehltView()
+			                 .zeigeKarte(karteView.getKarte());
 
-			controller.karteAuswaehlen(karteView.getKarte());
+			steuerung.karteAuswaehlen(karteView.getKarte());
 		}
 	}
 
-	public void aktiv(Boolean aktiv) {
+	protected void aktiv(Boolean aktiv) {
 		this.aktiv = aktiv;
 		if (!aktiv) {
 			kartenAuswahlView.getDeckView().remove(kartenAuswahl);

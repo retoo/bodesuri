@@ -3,7 +3,7 @@ package ui.spiel.brett.felder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import ui.GUIController;
+import ui.Steuerung;
 import ui.spiel.brett.Figur2d;
 import applikation.client.pd.Feld;
 
@@ -11,14 +11,14 @@ import applikation.client.pd.Feld;
  * MouseEventListener, der auf die Klicks der Felder achtet.
  */
 public class FeldMouseAdapter extends MouseAdapter {
-	private GUIController controller;
+	private Steuerung steuerung;
 
-	public FeldMouseAdapter(GUIController controller) {
-		this.controller = controller;
+	public FeldMouseAdapter(Steuerung steuerung) {
+		this.steuerung = steuerung;
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		controller.zielHover(((Feld2d) e.getComponent()).getFeld());
+		steuerung.zielHover(((Feld2d) e.getComponent()).getFeld());
 	}
 
 	/**
@@ -33,6 +33,6 @@ public class FeldMouseAdapter extends MouseAdapter {
 	 */
 	public void mouseClicked(MouseEvent e) {
 		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-		controller.feldAuswaehlen(feld);
+		steuerung.feldAuswaehlen(feld);
 	}
 }

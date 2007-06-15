@@ -3,8 +3,10 @@ package spielplatz;
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
+import applikation.events.VerbindeEvent;
 import applikation.server.ServerAutomat;
 import dienste.automat.Automat;
+import dienste.eventqueue.EventQueue;
 
 public class BodesuriSingular {
 
@@ -26,12 +28,15 @@ public class BodesuriSingular {
 		server.start();
 
 
-		//EventQueue eventQueue = new EventQueue();
-		Controller controller = new GUIController();
-		Automat client = new ClientAutomat(controller, "Singular");
+		EventQueue eventQueue = new EventQueue();
+		Controller controller = new GUIController(eventQueue);
+		Automat client = new ClientAutomat(controller, "Singular", eventQueue);
 
-		controller.getSteuerung().verbinde("localhost", 7788, "Singular");
+		String host = "localhost";
+		int port = 7788;
+		String spieler = "Mr. Singular";
 
+		eventQueue.enqueue(new VerbindeEvent(host, port, spieler));
 
 		try {
 			client.run();

@@ -6,24 +6,25 @@ import java.util.Observable;
 
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
-import dienste.observer.ObservableList;
 
 public class Spieler extends Observable {
+	/* FIXME: reto unstatisch (-reto) */
 	private static IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 
 	private Boolean amZug;
 	public pd.spieler.Spieler spieler;
 
-	private ObservableList<Karte> karten;
+	private Karten karten;
 
 	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.amZug = false;
-		this.karten = new ObservableList<Karte>();
+		this.karten = new Karten();
 
 		spielerRegister.put(spieler, this);
 	}
 
+	/* FIXME: reto unstatisch (-reto) */
 	public static Spieler findeSpieler(pd.spieler.Spieler spieler) {
 		Spieler s = spielerRegister.get(spieler);
 
@@ -37,7 +38,7 @@ public class Spieler extends Observable {
 		return spieler.kannZiehen();
 	}
 
-	public ObservableList<Karte> getKarten() {
+	public Karten getKarten() {
 		return karten;
 	}
 

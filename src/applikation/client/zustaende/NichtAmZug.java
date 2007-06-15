@@ -36,11 +36,12 @@ public class NichtAmZug extends ClientZustand {
 		if (neuerSpieler == spielDaten.spielerIch) {
 			spielDaten.zugAutomat = new ZugAutomat(controller,
 			                                       spielDaten.queue,
+			                                       spielDaten.spiel,
 			                                       spielDaten.spielerIch);
 			spielDaten.zugAutomat.init();
 			return AmZug.class;
 		} else {
-			controller.zeigeHinweis(zugAufforderung.spieler.getName()
+			spielDaten.spiel.setHinweis(zugAufforderung.spieler.getName()
 			                        + " ist am Zug.");
 			return this.getClass();
 		}
@@ -48,8 +49,8 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
 		try {
-			controller.zeigeGespielteKarte(zug.getKarte() + " gespielt von "
-			                               + zug.getSpieler().getName());
+//			 FIXME !!   controller.zeigeGespielteKarte(zug.getKarte() + " gespielt von "
+//			 FIXME !!  + zug.getSpieler().getName());
 			zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
@@ -61,7 +62,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		spielDaten.spielerIch.getKarten().clear();
-		controller.zeigeGespielteKarte("");
+//		 FIXME !!  controller.zeigeGespielteKarte("");
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spielDaten.spielerIch.getKarten().add(new Karte(karte));
 		}

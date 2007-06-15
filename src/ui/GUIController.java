@@ -7,22 +7,20 @@ import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
-import ui.spiel.karten.KarteMouseAdapter;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
+import dienste.eventqueue.EventQueue;
 
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private BodesuriView spielView;
-	private KarteMouseAdapter karteMouseAdapter;
 	private JLabel hinweisFeld;
-	private JLabel gespielteKarteFeld;
 	private Steuerung steuerung;
 
-	public GUIController() {
+	public GUIController(EventQueue eventQueue) {
 		steuerung = new Steuerung(eventQueue);
 	}
 
@@ -39,7 +37,7 @@ public class GUIController extends Controller {
 
 	public void zeigeSpiel(Spiel spiel, Spieler spielerIch) {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, spiel, spielerIch);
+		spielView = new BodesuriView(steuerung, spiel, spielerIch);
 		spielView.setVisible(true);
 	}
 
@@ -53,17 +51,19 @@ public class GUIController extends Controller {
 		}
 	}
 
-	public void zeigeGespielteKarte(String gespielteKarte) {
-		if (gespielteKarteFeld != null) {
-			gespielteKarteFeld.setText(gespielteKarte);
-		}
-	}
-
-	public void aktiviereKarte(Boolean zustand) {
-		if (karteMouseAdapter != null) {
-			karteMouseAdapter.aktiv(zustand);
-		}
-	}
+//	FIXME: Reto
+//
+//	public void zeigeGespielteKarte(String gespielteKarte) {
+//		if (gespielteKarteFeld != null) {
+//			gespielteKarteFeld.setText(gespielteKarte);
+//		}
+//	}
+//
+//	public void aktiviereKarte(Boolean zustand) {
+//		if (karteMouseAdapter != null) {
+//			karteMouseAdapter.aktiv(zustand);
+//		}
+//	}
 
 	/**
 	 * Einen {@link KarteMouseAdapter} beim Controller registrieren. Dieser wird
@@ -71,9 +71,9 @@ public class GUIController extends Controller {
 	 *
 	 * @param karteMouseAdapter
 	 */
-	public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
+	/*public void registriereKarteMouseAdapter(KarteMouseAdapter karteMouseAdapter) {
 		this.karteMouseAdapter = karteMouseAdapter;
-	}
+	}*/
 
 	/**
 	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
@@ -89,12 +89,16 @@ public class GUIController extends Controller {
 	 * Ein JLabel beim Controller registrieren. Dieses wird vom Automaten über
 	 * zeigeGespielteKarte() mit den gespielten Karten gefüttert.
 	 *
-	 * @param gespielteKarteFeld
-	 */
-	public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
-		this.gespielteKarteFeld = gespielteKarteFeld;
-	}
 
+	 */
+	// FIXME
+	/* public void registriereGespielteKarten(JLabel gespielteKarteFeld) {
+		this.gespielteKarteFeld = gespielteKarteFeld;
+	}*/
+
+	/**
+	 * @return Steuerungs objekt
+	 */
 	public Steuerung getSteuerung() {
 		return steuerung;
 	}

@@ -8,22 +8,22 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.GUIController;
+import ui.Steuerung;
 
 public class SteuerungsView extends JPanel {
-	GUIController controller;
+	Steuerung steuerung;
 
-	public SteuerungsView(GUIController controller) {
-		this.controller = controller;
+	public SteuerungsView(Steuerung steuerung) {
+		this.steuerung = steuerung;
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		setOpaque(false);
 
 		JLabel gespielteKarte = new JLabel();
-		controller.registriereGespielteKarten(gespielteKarte);
+		// FIXME: Reto steuerung.registriereGespielteKarten(gespielteKarte);
 		JButton aussetzen = new JButton("Aufgeben");
 		aussetzen.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	SteuerungsView.this.controller.aufgeben();
+            	SteuerungsView.this.steuerung.aufgeben();
             }
 		});
 

@@ -20,9 +20,9 @@ public class ZielWaehlen extends ClientZugZustand {
 	public ZielWaehlen(Controller controller) {
 		this.controller = controller;
 	}
-	
+
 	public void onEntry() {
-		controller.zeigeHinweis("Wähle das Zielfeld.");
+		spielDaten.spiel.setHinweis("Wähle das Zielfeld.");
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -46,12 +46,12 @@ public class ZielWaehlen extends ClientZugZustand {
 			spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
 
 			spielDaten.start.setAusgewaehlt(false);
-			controller.aktiviereKarte(false);
+			spielDaten.spielerIch.getKarten().setAktiv(false);
 
 			return EndZustand.class;
 		}
 	}
-	
+
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		spielDaten.start.setAusgewaehlt(false);
 		return StartWaehlen.class;

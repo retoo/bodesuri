@@ -1,6 +1,7 @@
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
+import dienste.eventqueue.EventQueue;
 
 
 public class Bodesuri {
@@ -11,8 +12,9 @@ public class Bodesuri {
 	 * @param args	Wird nicht genutzt
 	 */
 	public static void main(String[] args) {
-		Controller controller = new GUIController();
-		ClientAutomat automat = new ClientAutomat(controller, "Spieler");
+		EventQueue queue = new EventQueue();
+		Controller controller = new GUIController(queue);
+		ClientAutomat automat = new ClientAutomat(controller, "Spieler", queue);
 
 		try {
 			automat.run();

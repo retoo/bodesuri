@@ -11,8 +11,9 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenAuswaehlen extends ClientZustand {
 	public void onEntry() {
-		controller.zeigeHinweis("Zu tauschende Karte wählen.");
-		controller.aktiviereKarte(true);
+		spielDaten.spiel.setHinweis("Zu tauschende Karte wählen.");
+
+		spielDaten.spielerIch.getKarten().setAktiv(true);
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
@@ -27,6 +28,6 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 	}
 
 	public void onExit() {
-		controller.aktiviereKarte(false);
+		spielDaten.spielerIch.getKarten().setAktiv(false);
 	}
 }

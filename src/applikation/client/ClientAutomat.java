@@ -26,20 +26,29 @@ public class ClientAutomat extends Automat {
 	private Controller controller;
 	private SpielDaten spielDaten;
 
+
+	public ClientAutomat(Controller controller, String spielerName) {
+		this(controller, spielerName, null);
+	}
+
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
 	 *
 	 * @param controller
 	 * @param spielerName Standard-Wert für den Spielernamen
+	 * @param queue EventQueue
 	 */
-	public ClientAutomat(Controller controller, String spielerName) {
+	public ClientAutomat(Controller controller, String spielerName, EventQueue queue) {
 		this.controller = controller;
 		this.spielDaten = new SpielDaten();
 		this.spielDaten.spiel = spielDaten.spiel;
 
-		EventQueue queue = new EventQueue();
-		controller.setEventQueue(queue);
-		spielDaten.queue = queue;
+		EventQueue eventQueue = queue;
+		if (eventQueue == null) {
+			eventQueue = new EventQueue();
+		}
+
+		spielDaten.queue = eventQueue;
 		spielDaten.spielerName = spielerName;
 
 		registriere(new SchwererFehler());
@@ -57,7 +66,7 @@ public class ClientAutomat extends Automat {
 
 		setStart(ProgrammStart.class);
 
-		setEventQuelle(new EventQuelleAdapter(queue));
+		setEventQuelle(new EventQuelleAdapter(eventQueue));
 	}
 
 	public void registriere(ClientZustand zustand) {

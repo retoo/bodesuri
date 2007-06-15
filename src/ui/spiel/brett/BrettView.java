@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -15,7 +17,7 @@ import javax.swing.SwingConstants;
 import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
-import ui.GUIController;
+import ui.Steuerung;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
@@ -29,12 +31,15 @@ import applikation.client.pd.Spieler;
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
-public class BrettView extends JPanel {
+public class BrettView extends JPanel implements Observer {
 	private BrettXML brettXML;
-
 	private FigurenManager figurenManager;
+	private JLabel hinweisLabel;
+	private Spiel spiel;
 
-	public BrettView(GUIController controller, Spiel spiel) {
+	public BrettView(Steuerung steuerung, Spiel spiel) {
+		this.spiel = spiel;
+
 		setLayout(null);
 		setPreferredSize(new Dimension(600, 600));
 		setMinimumSize(new Dimension(600, 600));
@@ -64,7 +69,7 @@ public class BrettView extends JPanel {
 			}
 		}
 
-		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(controller);
+		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(steuerung);
 
 		// TODO: In ressourcen.Icons lösen (ähnlich wie bei Karten)
 		IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
@@ -80,30 +85,30 @@ public class BrettView extends JPanel {
 
 			if (feld.istNormal()) {
 				feld2d = new NormalesFeld2d(position, feld, mouseAdapter,
-						figurenManager);
+				                            figurenManager);
 			} else {
 				// TODO Ohne Cast möglich? --Philippe -- glaubs nein (-reto)
 				SpielerFeld f = (SpielerFeld) feld.getFeld();
 				Icon icon = farbeFeldMap.get(f.getSpieler().getFarbe());
 				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon,
-						figurenManager);
+				                           figurenManager);
 			}
 
 			this.add(feld2d);
 		}
 
 		// SpielerViews darstellen
-		zeichneSpielerView(controller, spiel.getSpieler());
+		zeichneSpielerView(steuerung, spiel.getSpieler());
 
-		// Hinweis darstellen
-		zeichneHinweis(controller);
-
-		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(this, controller);
+		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
 		add(new SpielBrett2d(brettAdapter));
+
+		erstelleHinweis();
+
+		spiel.addObserver(this);
 	}
 
-	private void zeichneSpielerView(GUIController controller,
-			List<Spieler> spielers) {
+	private void zeichneSpielerView(Steuerung steuerung, List<Spieler> spielers) {
 		int i = 0;
 		for (Spieler spieler : spielers) {
 
@@ -122,20 +127,19 @@ public class BrettView extends JPanel {
 			gbl.setConstraints(spielerView, gbc);
 			hinweisView.add(spielerView);
 			hinweisView.setBounds((int) brettXML.getSpielerViews().get(i)
-					.getX(), (int) brettXML.getSpielerViews().get(i).getY(),
-					170, 30);
+			                                    .getX(),
+			                      (int) brettXML.getSpielerViews().get(i)
+			                                    .getY(), 170, 30);
 			add(hinweisView);
 
-			// add(new SpielerView(spieler, brettXML.getSpielerViews().get(i)));
 			i++;
 		}
 	}
 
-	private void zeichneHinweis(GUIController controller) {
+	private void erstelleHinweis() {
 		// JLabel
-		JLabel hinweisLabel = new JLabel();
+		hinweisLabel = new JLabel("test");
 		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
-		controller.registriereHinweisFeld(hinweisLabel);
 		hinweisLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		Point hinweisPos = brettXML.getHinweis();
@@ -146,5 +150,10 @@ public class BrettView extends JPanel {
 		JLabel hinweisVertiefung = new JLabel(Icons.HINWEIS);
 		hinweisVertiefung.setBounds(hinweisPos.x - 6, hinweisPos.y, 222, 41);
 		add(hinweisVertiefung);
+	}
+
+	public void update(Observable o, Object arg) {
+		/* Hinweisfeld updaten */
+		hinweisLabel.setText(spiel.getHinweis());
 	}
 }

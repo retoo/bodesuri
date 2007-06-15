@@ -5,7 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
-import ui.GUIController;
+import ui.Steuerung;
 import ui.spiel.brett.SpielView;
 import ui.spiel.chat.ChatView;
 import applikation.client.pd.Spiel;
@@ -15,7 +15,7 @@ import applikation.client.pd.Spieler;
  * Das GUI des Spiels.
  */
 public class BodesuriView extends JFrame {
-	public BodesuriView(GUIController controller, Spiel spiel, Spieler spielerIch) {
+	public BodesuriView(Steuerung steuerung, Spiel spiel, Spieler spielerIch) {
 		// Layout setzen
 		setTitle("Bodesuri - Spiel (" + spielerIch.getName() + ")");
 		setName("Bodesuri");
@@ -25,9 +25,9 @@ public class BodesuriView extends JFrame {
 		setLayout(new BorderLayout());
 
 		// Views
-		SpielView spielView = new SpielView(controller, spiel, spielerIch);
-		ChatView chatView = new ChatView(controller);
-		
+		SpielView spielView = new SpielView(steuerung, spiel, spielerIch);
+		ChatView chatView = new ChatView(steuerung);
+
 		// Layout zusammenstellen
 		getContentPane().add(spielView, BorderLayout.NORTH);
 		getContentPane().add(chatView, BorderLayout.CENTER);

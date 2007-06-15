@@ -8,12 +8,11 @@ import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import ui.Steuerung;
 import applikation.client.pd.Karte;
+import applikation.client.pd.Karten;
 import applikation.client.pd.Spieler;
-
-import ui.GUIController;
 import dienste.observer.ListChangeEvent;
-import dienste.observer.ObservableList;
 import dienste.observer.ListChangeEvent.ListChangeType;
 
 /**
@@ -21,23 +20,24 @@ import dienste.observer.ListChangeEvent.ListChangeType;
  * die Karten der Spieler verwaltet und dargestellt.
  */
 public class DeckView extends JPanel implements Observer {
-	private ObservableList<Karte> karten;
+	private Karten karten;
 	private Vector<KarteView> karteViews;
+	private KarteMouseAdapter karteMouseAdapter;
 
-	public DeckView(GUIController controller,
+	public DeckView(Steuerung steuerung,
 	                KartenAuswahlView kartenAuswahlView, Spieler spielerIch) {
 		setLayout(null);
 		setOpaque(false);
-		
+
 		Dimension groesse = new Dimension(190, 340);
 		setPreferredSize(groesse);
 		setMaximumSize(groesse);
 		setMinimumSize(groesse);
 
 		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());
-		KarteMouseAdapter karteMouseAdapter =
-			new KarteMouseAdapter(controller, kartenAuswahlView, kartenAuswahl);
-		
+		karteMouseAdapter =
+			new KarteMouseAdapter(steuerung, kartenAuswahlView, kartenAuswahl);
+
 		karteViews = new Vector<KarteView>();
 		for (int i = 0; i < 6; ++i) {
 			int x = i % 2;
@@ -47,11 +47,11 @@ public class DeckView extends JPanel implements Observer {
 			karteViews.add(kv);
 			add(kv);
 		}
-		
+
 		this.karten = spielerIch.getKarten();
 		this.karten.addObserver(this);
 	}
-	
+
 	public void update(Observable o, Object arg) {
 		if (arg instanceof ListChangeEvent) {
 			ListChangeEvent change = (ListChangeEvent) arg;
@@ -78,5 +78,11 @@ public class DeckView extends JPanel implements Observer {
 				}
 			}
 		}
+
+		/* Mitteilen ob die Auswahl stattfinden kann */
+
+		/* TODO: Robin, kann man dies nun mit dem Observer nicht schöner machen? Evtl. hohne
+		 * kartemouseadapter und so? */
+		karteMouseAdapter.aktiv(karten.getAktiv());
     }
 }

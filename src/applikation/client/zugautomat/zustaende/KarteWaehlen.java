@@ -16,8 +16,8 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	public void onEntry() {
-		controller.zeigeHinweis("Wähle eine Karte.");
-		controller.aktiviereKarte(true);
+		spielDaten.spiel.setHinweis("Wähle eine Karte.");
+		spielDaten.spielerIch.getKarten().setAktiv(true);
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

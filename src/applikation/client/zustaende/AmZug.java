@@ -31,7 +31,7 @@ public class AmZug extends ClientZustand {
 		spielDaten.zugAutomat.step(event);
 		return this.getClass();
 	}
-	
+
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		spielDaten.zugAutomat.step(event);
 		return this.getClass();
@@ -49,10 +49,10 @@ public class AmZug extends ClientZustand {
                                "da es noch möglich ist zu ziehen.");
 			return this.getClass();
 		} else {
-			controller.aktiviereKarte(false);
 			spielDaten.endpunkt.sende(new Aufgabe());
+			spielDaten.spielerIch.getKarten().setAktiv(false); /* TODO: evtl. ins onexit? (-reto) */
 			spielDaten.spielerIch.getKarten().clear();
-			return NichtAmZug.class;			
+			return NichtAmZug.class;
 		}
 	}
 }
