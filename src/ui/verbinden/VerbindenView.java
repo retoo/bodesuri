@@ -6,119 +6,198 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
 
+import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 import ui.GUIController;
+import ui.ressourcen.Icons;
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet
  * werden soll, sowie auch zur Erfassung der Spielerinformationen.
  */
 public class VerbindenView extends JFrame {
-	private final int FRAME_WIDTH 		= 300;
-	private final int FRAME_HEIGHT 		= 175;
-	private final int BORDER_WIDTH		= 15;
-	private final String DEFAULT_PORT	= "7788";
-	private final String DEFAULT_HOST	= "localhost";
-	
-	private JTextField hostname = new InputTextField( DEFAULT_HOST );
-	private JTextField port = new InputTextField( DEFAULT_PORT );
+	// Konstanten und Vorgabewerte
+	private final int FRAME_WIDTH 		= 400;
+	private final int FRAME_HEIGHT 		= 216;
+	private final String DEFAULT_PORT 	= "7788";
+	private final String DEFAULT_HOST 	= "localhost";
+
+	// Components
+	private JTextField hostname 	= new InputTextField(DEFAULT_HOST, 15);
+	private JTextField port 		= new InputTextField(DEFAULT_PORT, 5);
 	private JTextField spielerName;
 	private GUIController controller;
 	private JPanel inputpanel;
-	private JPanel buttonpanel = new JPanel();
-	private JButton verbinden = new JButton("Verbinden");
-	private JButton abbrechen = new JButton("Abbrechen");
+	private JPanel buttonpanel 		= new JPanel();
+	private JButton verbindenButton = new JButton("Verbinden");
+	private JButton abbrechenButton = new JButton("Abbrechen");
+	private JLabel verbindenIcon = new JLabel(Icons.VERBINDEN);
+	private JLabel bodesuriIcon = new JLabel(Icons.BODESURI_START);
 
 	public VerbindenView(GUIController controller, final String DEFAULT_NAME) {
+		// Initialisierung
 		this.controller = controller;
-		spielerName = new InputTextField(DEFAULT_NAME);
+		spielerName = new InputTextField(DEFAULT_NAME, 20);
 
 		setTitle("Bodesuri - Verbinden");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout( new BorderLayout() );
-		setPreferredSize( new Dimension(FRAME_WIDTH, FRAME_HEIGHT) );
+		setLayout(new BorderLayout());
+		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
 		
 		// View auf Monitor zentrieren
-		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize(); 
-		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2; 
-		int y = (monitor.height - getSize().height - FRAME_HEIGHT) / 2; 
+		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
+		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2;
+		int y = (monitor.height - getSize().height - FRAME_HEIGHT) / 2;
 		setLocation(x, y);
 
 		// Components modifizieren
 		inputpanel = new InputPanel(hostname, port, spielerName);
-		buttonpanel.setLayout( new BoxLayout(buttonpanel, BoxLayout.LINE_AXIS) );
-		buttonpanel.setBorder(new EmptyBorder(0, 0, BORDER_WIDTH, BORDER_WIDTH));
-		abbrechen.setSelected( false );
-		verbinden.setSelected( true );
-		verbinden.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "pressed");
-		verbinden.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
+		buttonpanel.setLayout(new BoxLayout(buttonpanel, BoxLayout.LINE_AXIS));
+		buttonpanel.setBorder(new EmptyBorder(0, 0, 15, 15));
+		abbrechenButton.setSelected(false);
+		verbindenButton.setSelected(true);
+		
+		// Actions definieren und Tastenbefehle binden
+		AbstractAction abbrechenAction = new AbstractAction("Abbrechen") {
+			public void actionPerformed(ActionEvent e) {
+				// TODO: Braucht es solch eine Funktion im Controller?
+				// controller.beenden();
+				VerbindenView.this.setVisible(false);
+				VerbindenView.this.dispose();
+				System.exit(0);
+			}
+		};
+		AbstractAction verbindenAction = new AbstractAction("Verbinden") {
+			public void actionPerformed(ActionEvent e) {
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
 
 				VerbindenView.this.controller.verbinde(host, port_raw, spieler);
 			}
-		});
-		abbrechen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				VerbindenView.this.setVisible(false);
-				VerbindenView.this.dispose();
-				System.exit(0);
-			}
-		});
+		};
+		verbindenButton.setAction(verbindenAction);
+		verbindenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+									KeyStroke.getKeyStroke("ENTER"), "Verbinden");
+		verbindenButton.getActionMap().put("Verbinden", verbindenAction);
 		
+		abbrechenButton.setAction(abbrechenAction);
+		abbrechenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+									KeyStroke.getKeyStroke("ESCAPE"), "Abbrechen");
+		abbrechenButton.getActionMap().put("Abbrechen", abbrechenAction);
+
 		// Components hinzufügen
-		buttonpanel.add( Box.createHorizontalGlue() );
-		buttonpanel.add( abbrechen );
-		buttonpanel.add( Box.createRigidArea(new Dimension(BORDER_WIDTH, 0)) );
-		buttonpanel.add( verbinden );
-		add( inputpanel, BorderLayout.CENTER );
-		add( buttonpanel, BorderLayout.SOUTH );
-		
+		buttonpanel.add(Box.createHorizontalGlue());
+		buttonpanel.add(abbrechenButton);
+		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
+		buttonpanel.add( verbindenButton );
+		add(bodesuriIcon, BorderLayout.NORTH);
+		add(inputpanel, BorderLayout.CENTER);
+		add(buttonpanel, BorderLayout.SOUTH);
+		add(verbindenIcon, BorderLayout.WEST);
+
 		// View anzeigen
-		getRootPane().setDefaultButton(verbinden);
+		getRootPane().setDefaultButton(verbindenButton);
 		pack();
 	}
+
 	
-	private class VerbindenLabel extends JLabel {
-		public VerbindenLabel(String text) {
-			super(text);
-			setForeground(Color.BLACK);
-		}
-	}
+	
 	
 	private class InputTextField extends JTextField {
-		public InputTextField(String text) {
-			super(text);
-			
+		private final Color FOCUS_GAINED 	= new Color(220, 223, 228);
+		private final Color FOCUS_LOST 		= new Color(255, 255, 255);
+
+		public InputTextField(String text, int limit) {
+			super();
+			setDocument(new MyDocument(limit));
+			setText(text);
+		}
+
+		/**
+		 * Beim betreten und verlassen eines TextField wird diese Methode
+		 * ausgeführt.
+		 * 
+		 * @see javax.swing.JFormattedTextField#processFocusEvent
+		 * @param e
+		 *            the focus event
+		 */
+		protected void processFocusEvent(FocusEvent e) {
+			super.processFocusEvent(e);
+			switch (e.getID()) {
+			case FocusEvent.FOCUS_GAINED:
+				setBackground(FOCUS_GAINED);
+				break;
+			case FocusEvent.FOCUS_LOST:
+				setBackground(FOCUS_LOST);
+				break;
+			}
+
+		}
+
+		private class MyDocument extends PlainDocument {
+			private final int LIMIT;
+
+			/**
+			 * Erstellt ein neues Dokument
+			 * 
+			 * @param length
+			 *            maximal erlaubte Anzahl Zeichen
+			 */
+			public MyDocument(int limit) {
+				LIMIT = limit;
+			}
+
+			/**
+			 * Ueberschriebene Methode, gibt eine Meldung aus, falls zuviele
+			 * Zeichen eingegeben wurden.
+			 */
+			public void insertString(int offset, String text, AttributeSet attr)
+					throws BadLocationException {
+				if (text.length() == 0)
+					return;
+				if (getLength() + text.length() > LIMIT) {
+					JOptionPane.showMessageDialog(null, "Zu viele Zeichen");
+				} else {
+					super.insertString(offset, text, attr);
+				}
+			}
 		}
 	}
+
+	
+	
 	
 	private class InputPanel extends JPanel {
-		public InputPanel(JTextField hostname, JTextField port, JTextField spielerName) {
-			setLayout( new GridLayout(3, 2, 0, 5) );
-			setBorder(new EmptyBorder(BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH, BORDER_WIDTH));
-			
+		public InputPanel(JTextField hostname, JTextField port,
+				JTextField spielerName) {
+			setLayout(new GridLayout(3, 2, 0, 5));
+			setBorder(new EmptyBorder(5, 15, 15, 15));
+
 			// Components hinzufügen
-			add( new VerbindenLabel("Server:") );
-			add( hostname );
-			add( new VerbindenLabel("Port:") );
-			add( port );
-			add( new VerbindenLabel("Spieler:") );
-			add( spielerName );
+			add(new JLabel("Server:"));
+			add(hostname);
+			add(new JLabel("Port:"));
+			add(port);
+			add(new JLabel("Spieler:"));
+			add(spielerName);
 		}
 	}
 }

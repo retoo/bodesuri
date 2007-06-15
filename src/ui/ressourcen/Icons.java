@@ -14,6 +14,10 @@ final public class Icons {
 	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
 	
+	// Verbinden
+	public static final Icon VERBINDEN = ladeBild("/ui/ressourcen/verbinden.png");
+	public static final Icon BODESURI_START = ladeBild("/ui/ressourcen/bodesuri_starten.png");
+	
 	// Felder
 	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_blau.png");
 	public static final Icon FIGUR_GRUEN = ladeBild("/ui/ressourcen/figur_gruen.png");
@@ -56,7 +60,7 @@ final public class Icons {
 			throw new RuntimeException("Unable to load icon " + pfad);
 		}
 	}
-	
+		
 	public static Icon getIcon(Karte karte) {
 		String name;
 		if (karte instanceof Joker) {
