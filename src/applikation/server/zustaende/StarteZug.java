@@ -14,7 +14,7 @@ public class StarteZug extends ServerZustand implements PassiverZustand {
 		Spieler naechsterSpieler = spielers.runde.getAktuellerSpieler();
 		spielers.broadcast("Nächster Spieler ist " + naechsterSpieler + ".");
 
-		ZugAufforderung aufforderung =new ZugAufforderung(naechsterSpieler.spieler);
+		ZugAufforderung aufforderung = new ZugAufforderung(naechsterSpieler.spieler);
 
 		spielers.broadcast(aufforderung);
 

@@ -30,7 +30,12 @@ public class Runde {
 	}
 
 	public void entferneSpieler(Spieler aktuellerSpieler) {
-		this.teilnahmen.remove(aktuellerSpieler);
+		RundenTeilnahme res_map = teilnahmen.remove(aktuellerSpieler);
+		boolean res_vector= spieler.remove(aktuellerSpieler);
+
+		if (res_map == null || !res_vector) {
+			throw new RuntimeException("Konnte Spieler " + spieler + " nicht aus der aktuellen Runde entfernen");
+		}
 	}
 
 	public boolean isFertigGetauscht() {
@@ -51,9 +56,9 @@ public class Runde {
 	public void rotiereSpieler() {
 		int anzahlSpieler = teilnahmen.size();
 
-		if (anzahlSpieler > 0)
+		if (anzahlSpieler > 0) {
 			aktuellerSpieler = (aktuellerSpieler + 1) % anzahlSpieler;
-		else
+		} else
 			throw new RuntimeException("Kann nicht rotieren, es gibt ja noch gar keine Spieler");
 	}
 
