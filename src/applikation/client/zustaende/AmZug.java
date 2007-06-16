@@ -4,6 +4,7 @@ import applikation.client.pd.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
+import applikation.events.HoverEndeEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.Aufgabe;
@@ -28,9 +29,15 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		spielDaten.zugAutomat.step(event);
+		event.feld.setHover(true);
 		return this.getClass();
-	}
+    }
+
+	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
+		event.feld.setHover(false);
+		return this.getClass();
+    }
+
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		spielDaten.zugAutomat.step(event);

@@ -7,8 +7,8 @@ import pd.spieler.Figur;
 
 public class Feld extends Observable implements Observer {
 	private pd.brett.Feld feld;
-
 	private Boolean ausgewaehlt;
+	private boolean hover;
 
 	public Feld(pd.brett.Feld feld) {
 		this.feld = feld;
@@ -21,11 +21,21 @@ public class Feld extends Observable implements Observer {
 		return ausgewaehlt;
 	}
 
-	public void setAusgewaehlt(Boolean ausgewaehlt) {
+	public Boolean getHover() {
+		return hover;
+	}
+
+	public void setAusgewaehlt(boolean ausgewaehlt) {
 		this.ausgewaehlt = ausgewaehlt;
 		setChanged();
 		notifyObservers(ausgewaehlt);
 	}
+
+	public void setHover(boolean hover) {
+		this.hover = hover;
+		setChanged();
+		notifyObservers(ausgewaehlt);
+    }
 
 	public Figur getFigur() {
 		return feld.getFigur();

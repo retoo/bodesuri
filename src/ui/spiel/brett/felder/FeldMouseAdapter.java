@@ -17,8 +17,14 @@ public class FeldMouseAdapter extends MouseAdapter {
 	}
 
 	public void mouseEntered(MouseEvent e) {
-		steuerung.zielHover(((Feld2d) e.getComponent()).getFeld());
+		steuerung.hoverStart(((Feld2d) e.getComponent()).getFeld());
 	}
+
+
+	public void mouseExited(MouseEvent e) {
+		steuerung.hoverEnde(((Feld2d) e.getComponent()).getFeld());
+	}
+
 
 	/**
 	 * Das {@link Feld2d} auf das geklickt wird an den Controller weiterleiten

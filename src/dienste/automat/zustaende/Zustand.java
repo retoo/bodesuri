@@ -47,9 +47,11 @@ public abstract class Zustand implements ZustandsInterface {
     }
 
 	protected Class<? extends Zustand> ignoriereEvent(String event) {
-		if (event != null)
-			System.out.println("Ignoriere Event: " + event);
+		System.out.println("Ignoriere Event: " + event);
 
+		return this.getClass();
+    }
+	protected Class<? extends Zustand> ignoriereEvent() {
 		return this.getClass();
     }
 }

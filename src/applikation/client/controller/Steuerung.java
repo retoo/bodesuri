@@ -44,6 +44,7 @@ public interface Steuerung {
 	 */
 	public abstract void aufgeben();
 
-	public abstract void zielHover(Feld feld);
+	public abstract void hoverStart(Feld feld);
+	public abstract void hoverEnde(Feld feld);
 
 }

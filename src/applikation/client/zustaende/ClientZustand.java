@@ -8,6 +8,7 @@ import applikation.events.AufgegebenEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
+import applikation.events.HoverEndeEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
@@ -79,6 +80,8 @@ public class ClientZustand extends Zustand {
 				return feldAbgewaehlt((FeldAbgewaehltEvent) event);
 			else if (event instanceof HoverStartEvent)
 				return hoverStart((HoverStartEvent) event);
+			else if (event instanceof HoverEndeEvent)
+				return hoverEnde((HoverEndeEvent) event);
 		}
 
 		return super.handle(event);
@@ -117,7 +120,11 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		return ignoriereEvent("hoverStart");
+		return ignoriereEvent();
+    }
+
+	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
+		return ignoriereEvent();
     }
 
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface endpunkt) {

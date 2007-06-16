@@ -53,7 +53,6 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	public void update(Observable os, Object arg) {
 		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
 		if (feld.istBesetzt()) {
-			System.out.println("Feld " + this + " Feld: " + feld.getFigur());
 			/* Figur drauf stellen */
 			Figur2d figur = figurenManager.get(feld.getFigur());
 
@@ -69,7 +68,8 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		Icon icon;
 		/* prüfen wir ob selektiert */
 		if (feld.getAusgewaehlt()) {
-			System.out.println("Aktiviere...");
+			icon = getAktivesIcon();
+		} else if (feld.getHover()) {
 			icon = getAktivesIcon();
 		} else {
 			icon = getPassivesIcon();
@@ -79,7 +79,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	}
 
 	public abstract Icon getAktivesIcon();
-	
+
 	public Icon getPassivesIcon() {
 		return icon;
 	}
