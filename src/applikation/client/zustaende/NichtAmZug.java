@@ -26,7 +26,8 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
-		Spieler neuerSpieler = Spieler.findeSpieler(zugAufforderung.spieler);
+		Spieler neuerSpieler = spielDaten.spiel.findeSpieler(zugAufforderung.spieler);
+
 		if (spielDaten.aktuellerSpieler != null) {
 			spielDaten.aktuellerSpieler.setAmZug(false);
 		}

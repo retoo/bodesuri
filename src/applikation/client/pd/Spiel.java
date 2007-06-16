@@ -1,5 +1,6 @@
 package applikation.client.pd;
 
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
@@ -11,39 +12,57 @@ public class Spiel extends Observable {
 	private Vector<Spieler> spieler;
 	private String hinweis;
 
+	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
+
 	public Spiel() {
 		spiel = new pd.Spiel();
+		this.spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 
 		spieler = new Vector<Spieler>();
 		brett = new Brett(spiel.getBrett());
 	}
 
-	//TODO: Heisst bei Reto neuerSpieler()
+	// TODO: Heisst bei Reto neuerSpieler()
 	public Spieler fuegeHinzu(String spielerName) {
-		Spieler neuerSpieler = new Spieler(spiel.fuegeHinzu(spielerName));
+		pd.spieler.Spieler spielerPD = spiel.fuegeHinzu(spielerName);
+
+		Spieler neuerSpieler = new Spieler(spielerPD);
+
 		spieler.add(neuerSpieler);
+		spielerRegister.put(spielerPD, neuerSpieler);
+
 		return neuerSpieler;
 	}
 
+	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
+		Spieler s = spielerRegister.get(spieler);
+
+		if (s == null) {
+			throw new RuntimeException("Kann app.Spieler für den Spieler " + spieler + " nicht finden!");
+		}
+		return s;
+	}
+
+
 	public Brett getBrett() {
-	    return brett;
-    }
+		return brett;
+	}
 
 	public List<Spieler> getSpieler() {
-    	return spieler;
-    }
+		return spieler;
+	}
 
 	public pd.Spiel getSpiel() {
-	    return spiel;
-    }
+		return spiel;
+	}
 
 	public String getHinweis() {
-	    return hinweis;
-    }
+		return hinweis;
+	}
 
-    public void setHinweis(String hinweis) {
-    	this.hinweis = hinweis;
-    	setChanged();
-    	notifyObservers();
-    }
+	public void setHinweis(String hinweis) {
+		this.hinweis = hinweis;
+		setChanged();
+		notifyObservers();
+	}
 }
