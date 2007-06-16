@@ -11,6 +11,7 @@ import applikation.client.pd.Feld;
  */
 public class FeldMouseAdapter extends MouseAdapter {
 	private Steuerung steuerung;
+	private boolean betaetigt;
 
 	public FeldMouseAdapter(Steuerung steuerung) {
 		this.steuerung = steuerung;
@@ -23,21 +24,30 @@ public class FeldMouseAdapter extends MouseAdapter {
 
 	public void mouseExited(MouseEvent e) {
 		steuerung.hoverEnde(((Feld2d) e.getComponent()).getFeld());
+		if (betaetigt) {
+			betaetigt = false;
+		}
 	}
-
-
+	
+	public void mousePressed(MouseEvent e) {
+		betaetigt = true;
+	}
+	
 	/**
 	 * Das {@link Feld2d} auf das geklickt wird an den Controller weiterleiten
 	 * und falls eine {@link Figur2d} auf dem Feld ist, diese als ausgewählt
 	 * markieren.
 	 *
-	 * TODO: javadoc stimmt nicht mehr! (-reto)
+	 * TODO: javadoc stimmt nicht mehr! (--> pascal)
 	 *
 	 * @param e
 	 *            MouseEvent der das angeklickte Feld enthält
 	 */
-	public void mouseClicked(MouseEvent e) {
-		Feld feld = ((Feld2d) e.getComponent()).getFeld();
-		steuerung.feldAuswaehlen(feld);
+	public void mouseReleased(MouseEvent e) {
+		if (betaetigt) {
+			betaetigt = false;
+			Feld feld = ((Feld2d) e.getComponent()).getFeld();
+			steuerung.feldAuswaehlen(feld);
+		}
 	}
 }

@@ -30,6 +30,7 @@ final public class Icons {
 	public static final Icon FELD_GELB = ladeBild("/ui/ressourcen/feld_gelb.png");
 	public static final Icon FELD_NORMAL = ladeBild("/ui/ressourcen/feld.png");
 	public static final Icon FELD_AUSWAHL = ladeBild("/ui/ressourcen/feld_weiss.png");
+	public static final Icon FELD_HOVER = ladeBild("/ui/ressourcen/feld_hover.png");
 
 	// Spielerfarbe
 	public static final Icon SPIELER_BLAU = ladeBild("/ui/ressourcen/spieler_blau.png");

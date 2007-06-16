@@ -2,8 +2,6 @@ package ui.spiel.brett.felder;
 
 import java.awt.Point;
 
-import javax.swing.Icon;
-
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
 
@@ -13,9 +11,5 @@ import applikation.client.pd.Feld;
 public class NormalesFeld2d extends Feld2d {
 	public NormalesFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, FigurenManager figurenManager) {
 		super(p, feld, mouseAdapter, Icons.FELD_NORMAL, figurenManager);
-	}
-
-	public Icon getAktivesIcon() {
-		return Icons.FELD_AUSWAHL;
 	}
 }

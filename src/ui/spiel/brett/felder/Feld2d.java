@@ -6,6 +6,8 @@ import java.util.Observer;
 
 import javax.swing.Icon;
 
+import ui.ressourcen.Icons;
+
 import applikation.client.pd.Feld;
 
 /**
@@ -70,7 +72,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		if (feld.getAusgewaehlt()) {
 			icon = getAktivesIcon();
 		} else if (feld.getHover()) {
-			icon = getAktivesIcon();
+			icon = getHoverIcon();
 		} else {
 			icon = getPassivesIcon();
 		}
@@ -78,7 +80,13 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		zeichne(icon);
 	}
 
-	public abstract Icon getAktivesIcon();
+	public Icon getAktivesIcon() {
+		return Icons.FELD_AUSWAHL;
+	}
+	
+	public Icon getHoverIcon() {
+		return Icons.FELD_HOVER;
+	}
 
 	public Icon getPassivesIcon() {
 		return icon;
