@@ -9,4 +9,8 @@ public class HoverEndeEvent extends Event {
 	public HoverEndeEvent(Feld feld) {
 	    this.feld = feld;
     }
+
+	public boolean istLeise() {
+		return true;
+	}
 }

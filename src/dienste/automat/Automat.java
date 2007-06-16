@@ -127,7 +127,8 @@ public class Automat {
 			return false;
 		} else {
 			Event event = eventQuelle.getEvent();
-			System.out.println(this + ": Event - " + event);
+			if (!event.istLeise())
+				System.out.println(this + ": Event - " + event);
 			return stepAktiv(event);
 		}
 	}
@@ -144,7 +145,8 @@ public class Automat {
 		if (!isInit)
 			throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
 
-		System.out.println(this + ": Event - " + event);
+		if (!event.istLeise())
+			System.out.println(this + ": Event - " + event);
 
 		if (aktuellerZustand instanceof PassiverZustand) {
 			throw new RuntimeException(
@@ -175,7 +177,9 @@ public class Automat {
 		naechsterZustand.onEntry();
 
 		aktuellerZustand = naechsterZustand;
-		System.out.println(this.toString() + ": " + aktuellerZustand);
+
+		if (!event.istLeise())
+			System.out.println(this.toString() + ": " + aktuellerZustand);
 
 		return aktuellerZustand != endzustand;
 	}

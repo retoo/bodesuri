@@ -14,4 +14,8 @@ public abstract class Event {
 	public String toString() {
 		return getClass().getSimpleName().toString();
 	}
+
+	public boolean istLeise() {
+		return false;
+	}
 }
