@@ -1,0 +1,55 @@
+Index: /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java
+===================================================================
+--- /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java	(revision 987)
++++ /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java	(working copy)
+@@ -63,7 +63,7 @@
+ 			 * einige figuren null sein. Dann zeichnen wir einfach ni.
+ 			 */
+ 			if (figur != null) {
+-				figur.setzeAuf(this);
++				figur.setzeAuf(position.x, position.y);
+ 			}
+ 		}
+ 
+@@ -83,7 +83,7 @@
+ 	public Icon getAktivesIcon() {
+ 		return Icons.FELD_AUSWAHL;
+ 	}
+-	
++
+ 	public Icon getHoverIcon() {
+ 		return Icons.FELD_HOVER;
+ 	}
+Index: /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Figur2d.java
+===================================================================
+--- /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Figur2d.java	(revision 987)
++++ /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Figur2d.java	(working copy)
+@@ -20,22 +20,16 @@
+ 
+ 	/**
+ 	 * Die Spielfigur wird auf das ausgewählte Feld gesetzt.
++	 * @param x
++	 * @param y
+ 	 *
+-	 * @param ziel
+-	 *            Zielfeld
+ 	 */
+-	public void setzeAuf(Feld2d ziel) {
+-		setBounds(getPosX(ziel), getPosY(ziel), icon.getIconWidth(), icon
++	public void setzeAuf(int x, int y) {
++		int posX = x - (icon.getIconWidth() / 2) + 2;
++		int posY = y - (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2)) + 7;
++		setBounds(posX, posY, icon.getIconWidth(), icon
+ 				.getIconHeight());
+ 	}
+ 
+-	public int getPosX(Feld2d ziel) {
+-		return ziel.getPointX() - (icon.getIconWidth() / 2) + 2;
+-	}
+ 
+-	public int getPosY(Feld2d ziel) {
+-		return ziel.getPointY()
+-				- (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2))
+-				+ 7;
+-	}
+ }
