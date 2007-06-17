@@ -12,6 +12,7 @@ import applikation.events.HoverEndeEvent;
 import applikation.events.HoverStartEvent;
 import applikation.events.KarteGewaehltEvent;
 import applikation.events.VerbindeEvent;
+import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
@@ -55,6 +56,8 @@ public class ClientZustand extends Zustand {
 				return zugWurdeGemacht(((ZugInformation) nachricht).zug);
 			else if (nachricht instanceof ZugAufforderung)
 				return zugAufforderung((ZugAufforderung) nachricht);
+			else if (nachricht instanceof AktuellerSpielerInformation)
+				return aktuellerSpielerInformation((AktuellerSpielerInformation) nachricht);
 			else if (nachricht instanceof KartenTausch)
 				return kartenTausch(((KartenTausch) nachricht).karte);
 			else if (nachricht instanceof RundenStart)
@@ -92,6 +95,7 @@ public class ClientZustand extends Zustand {
 	/* GUI Handler - Verbinden */
 
 	/* GUI Handler - Lobby */
+
 
 	Class<? extends Zustand> verbinden(VerbindeEvent event) {
 		return keinUebergang();
@@ -168,6 +172,10 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> rundenStart(RundenStart rundenstart) {
 		return keinUebergang();
 	}
+
+	Class<? extends Zustand> aktuellerSpielerInformation(AktuellerSpielerInformation information) {
+		return keinUebergang();
+    }
 
 
 	/* Sonstiges */
