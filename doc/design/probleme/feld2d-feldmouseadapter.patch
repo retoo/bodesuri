@@ -1,0 +1,37 @@
+Index: /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java
+===================================================================
+--- /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java	(revision 987)
++++ /Users/reto/scripts/bodesuri/src/ui/spiel/brett/felder/Feld2d.java	(working copy)
+@@ -1,13 +1,13 @@
+ package ui.spiel.brett.felder;
+ 
+ import java.awt.Point;
++import java.awt.event.MouseListener;
+ import java.util.Observable;
+ import java.util.Observer;
+ 
+ import javax.swing.Icon;
+ 
+ import ui.ressourcen.Icons;
+-
+ import applikation.client.pd.Feld;
+ 
+ /**
+@@ -20,7 +20,7 @@
+ 	protected Icon icon;
+ 	private FigurenManager figurenManager;
+ 
+-	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, Icon icon, FigurenManager figurenManager) {
++	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter, Icon icon, FigurenManager figurenManager) {
+ 		super(icon);
+ 		this.icon = icon;
+ 		this.position = p;
+@@ -29,6 +29,8 @@
+ 
+ 		feld.addObserver(this);
+ 
++		/* TODO: Wollen wir das nicht hier rausnehmen (-reto)
++		 * könnte ja auch der ersteller von Feld2d machen */
+ 		addMouseListener(mouseAdapter);
+ 		update(null, null); /* TODO:: evtl. schöner machen */
+ 	}
