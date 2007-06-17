@@ -15,7 +15,7 @@ public class Spieler extends Observable {
 	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.amZug = false;
-		this.karten = new Karten();
+		this.karten = new Karten(spieler.getKarten());
 	}
 
 	public boolean kannZiehen() {
