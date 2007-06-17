@@ -9,10 +9,10 @@ import applikation.server.zustaende.SpielStart;
 import dienste.automat.Automat;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;
-import dienste.netzwerk.BriefkastenAdapter;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.ClientEndPunkt;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.server.BriefkastenAdapter;
 import dienste.serialisierung.SerialisierungsKontext;
 
 public class ServerTest extends TestCase {
@@ -27,7 +27,7 @@ public class ServerTest extends TestCase {
 		automat.step();
 
 		assertIstInZustand(automat, EmpfangeSpieler.class);
-		
+
 		SerialisierungsKontext kontext = new SerialisierungsKontext() {
 			public void registriere(Thread thread) {
 				// Ich passe.
@@ -38,7 +38,7 @@ public class ServerTest extends TestCase {
 			EventQueue eventQueue = new EventQueue();
 			EndPunktInterface client;
 			try {
-				client = new EndPunkt("localhost", 7788,
+				client = new ClientEndPunkt("localhost", 7788,
 				                      new BriefkastenAdapter(eventQueue),
 				                      kontext);
 			} catch (Exception e) {

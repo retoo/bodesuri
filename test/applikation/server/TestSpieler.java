@@ -4,7 +4,7 @@ import applikation.nachrichten.SpielBeitreten;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
-import dienste.netzwerk.NetzwerkEvent;
+import dienste.netzwerk.server.NetzwerkEvent;
 
 public class TestSpieler {
 	public EndPunktInterface endpunkt;
