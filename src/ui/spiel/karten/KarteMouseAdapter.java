@@ -35,6 +35,9 @@ public class KarteMouseAdapter extends MouseAdapter {
 		}
 	}
 
+	/* TODO: Ups, scheint noch legacy zu sein, update() von Deckview ruft diese methode hier auf, welche dann wieder
+	 * das deck holt und da ein paar dinge rumdingselt (-reto)
+	 */
 	protected void aktiv(Boolean aktiv) {
 		this.aktiv = aktiv;
 		if (!aktiv) {
