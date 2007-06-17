@@ -1,6 +1,8 @@
-package dienste.netzwerk;
+package dienste.netzwerk.server;
 
 import dienste.eventqueue.EventQueue;
+import dienste.netzwerk.Brief;
+import dienste.netzwerk.BriefKastenInterface;
 
 
 /**

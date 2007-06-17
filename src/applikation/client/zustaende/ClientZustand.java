@@ -27,8 +27,8 @@ import dienste.eventqueue.Event;
 import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
-import dienste.netzwerk.NetzwerkEvent;
 import dienste.netzwerk.VerbindungGeschlossen;
+import dienste.netzwerk.server.NetzwerkEvent;
 
 /**
  * Spezifischer aktiver Client-Zustand

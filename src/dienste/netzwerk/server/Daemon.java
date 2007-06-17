@@ -6,7 +6,6 @@ import java.net.Socket;
 
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
-import dienste.netzwerk.EndPunkt;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.serialisierung.SerialisierungsKontext;
 
@@ -53,7 +52,7 @@ public class Daemon implements Runnable {
 		try {
 			while (true) {
 				Socket clientSocket = serverSock.accept();
-				EndPunktInterface client = new EndPunkt(clientSocket, briefkasten,
+				EndPunktInterface client = new ServerEndPunkt(clientSocket, briefkasten,
 				                               serialisierungsKontext);
 
 				queue.enqueue(new NeueVerbindung(client));

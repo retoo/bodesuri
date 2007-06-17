@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 
 import dienste.serialisierung.SerialisierungsKontext;
 
@@ -13,66 +12,14 @@ import dienste.serialisierung.SerialisierungsKontext;
  * Kommunikationspartner.
  *
  */
-public class EndPunkt implements EndPunktInterface {
-	private Socket socket;
+public abstract class EndPunkt implements EndPunktInterface {
+	protected Socket socket;
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
 	private Empfaenger empfaenger;
-	private SerialisierungsKontext serialisierungsKontext;
+	protected SerialisierungsKontext serialisierungsKontext;
 
-	/**
-	 * Startet die Kommunkation mit dem übergebenen Socket. Dieser Konstrutkur
-	 * wird vom Server verwendet.
-	 *
-	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
-	 * verwenden sollte
-	 *
-	 * @param socket
-	 *            zu verwendendender Socket
-	 * @param briefkasten
-	 *            Briefkasten in welchem die Nachrichten abgelegt werden können
-	 * @param sk Serialisierungskontext
-	 * @throws IOException
-	 */
-	public EndPunkt(Socket socket, BriefKastenInterface briefkasten,
-	                SerialisierungsKontext sk)
-	        throws IOException {
-		this.socket = socket;
-		this.serialisierungsKontext = sk;
-
-		startVerhandlung(briefkasten);
-	}
-
-	/**
-	 * Startet die Kommunikation mit dem übergebenen System (Hostname & Port).
-	 * Dieser Konstrutkur wird vom Client verwendet.
-	 *
-	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
-	 * verwenden sollte
-	 *
-	 * @param hostname
-	 *            Hostname des zu verbindenen Systems
-	 * @param port
-	 *            Port des zu verbinden Systems
-	 * @param briefkasten Briefkasten in welchem die Nachrichten abgelegt werden können
-	 * @param sk Serialisierungskontext
-	 * @throws UnknownHostException
-	 * @throws IOException
-	 */
-	public EndPunkt(String hostname, int port, BriefKastenInterface briefkasten,
-	                SerialisierungsKontext sk)
-	        throws UnknownHostException, IOException {
-		System.out.println("Verbinde zu " + hostname + ":" + port);
-
-		serialisierungsKontext = sk;
-		socket = new Socket(hostname, port);
-
-		startVerhandlung(briefkasten);
-
-		System.out.println("Verbindungsaufbau erfolgreich");
-	}
-
-	private void startVerhandlung(BriefKastenInterface briefkasten) throws IOException {
+	protected void startVerhandlung(BriefKastenInterface briefkasten) throws IOException {
 		outputStream = new ObjectOutputStream(socket.getOutputStream());
 
 		/*

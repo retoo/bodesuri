@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
-import dienste.netzwerk.BriefkastenAdapter;
-import dienste.netzwerk.NetzwerkEvent;
 import dienste.serialisierung.SerialisierungsKontext;
 
 /**

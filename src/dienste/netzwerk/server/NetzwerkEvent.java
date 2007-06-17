@@ -1,6 +1,7 @@
-package dienste.netzwerk;
+package dienste.netzwerk.server;
 
 import dienste.eventqueue.Event;
+import dienste.netzwerk.Brief;
 
 /**
  * Event der ausgelöst wird wenn eine Netzwerknachricht eintrifft.

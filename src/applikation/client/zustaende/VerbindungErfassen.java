@@ -7,8 +7,8 @@ import applikation.events.VerbindeEvent;
 import applikation.nachrichten.SpielBeitreten;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.BriefKastenInterface;
-import dienste.netzwerk.BriefkastenAdapter;
-import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.ClientEndPunkt;
+import dienste.netzwerk.server.BriefkastenAdapter;
 
 /**
  * Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein
@@ -20,7 +20,7 @@ public class VerbindungErfassen extends ClientZustand {
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(spielDaten.queue);
 
-			spielDaten.endpunkt = new EndPunkt(ve.hostname, ve.port, briefkasten, spielDaten);
+			spielDaten.endpunkt = new ClientEndPunkt(ve.hostname, ve.port, briefkasten, spielDaten);
 			spielDaten.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			spielDaten.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
