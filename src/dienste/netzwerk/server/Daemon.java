@@ -1,10 +1,13 @@
-package dienste.netzwerk;
+package dienste.netzwerk.server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import dienste.eventqueue.EventQueue;
+import dienste.netzwerk.BriefKastenInterface;
+import dienste.netzwerk.EndPunkt;
+import dienste.netzwerk.EndPunktInterface;
 import dienste.serialisierung.SerialisierungsKontext;
 
 /**

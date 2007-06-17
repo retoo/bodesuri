@@ -6,7 +6,7 @@ import java.io.ObjectInputStream;
 import java.net.Socket;
 
 
-class Empfaenger implements Runnable {
+public class Empfaenger implements Runnable {
 	private BriefKastenInterface briefkasten;
 	private ObjectInputStream inputStream;
 	private EndPunktInterface endpunkt;

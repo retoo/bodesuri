@@ -1,4 +1,4 @@
-package dienste.netzwerk;
+package dienste.netzwerk.server;
 
 import dienste.eventqueue.Event;
 

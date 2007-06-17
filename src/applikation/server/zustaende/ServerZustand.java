@@ -12,8 +12,8 @@ import dienste.netzwerk.Brief;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.NetzwerkEvent;
-import dienste.netzwerk.NeueVerbindung;
 import dienste.netzwerk.VerbindungGeschlossen;
+import dienste.netzwerk.server.NeueVerbindung;
 
 
 /**

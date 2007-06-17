@@ -1,7 +1,8 @@
-package dienste.netzwerk;
+package dienste.netzwerk.server;
 
 import dienste.eventqueue.Event;
 import dienste.netzwerk.Empfaenger;
+import dienste.netzwerk.EndPunktInterface;
 
 /**
  * Meldet eine neue Verbindung. Wird durch den {@link Empfaenger} bei
