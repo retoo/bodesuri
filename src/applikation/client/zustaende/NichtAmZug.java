@@ -49,6 +49,7 @@ public class NichtAmZug extends ClientZustand {
 		spiel.setLetzterZug(zug);
 		try {
 			zug.validiere().ausfuehren();
+			spiel.zugHistory.addFirst(zug);
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
 			                              + ") vom Server erhalten!");
