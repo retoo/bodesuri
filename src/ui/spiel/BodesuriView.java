@@ -16,7 +16,7 @@ import applikation.client.pd.Spiel;
 public class BodesuriView extends JFrame {
 	public BodesuriView(Steuerung steuerung, Spiel spiel) {
 		// Layout setzen
-		setTitle("Bodesuri - Spiel (" + spiel.spielerIch.getName() + ")");
+		setTitle("Bodesuri - Spiel (" + spiel.spielerIch + ")");
 		setName("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

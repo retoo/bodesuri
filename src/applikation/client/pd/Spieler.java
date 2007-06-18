@@ -62,4 +62,8 @@ public class Spieler extends Observable {
 		setChanged();
 		notifyObservers();
     }
+	
+	public String toString() {
+		return spieler.toString();
+	}
 }

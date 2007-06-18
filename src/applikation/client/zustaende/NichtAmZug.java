@@ -37,8 +37,7 @@ public class NichtAmZug extends ClientZustand {
 		neuerSpieler.setAmZug(true);
 		spiel.aktuellerSpieler = neuerSpieler;
 
-		spiel.setHinweis(neuerSpieler.getName()
-			                        + " ist am Zug.");
+		spiel.setHinweis(neuerSpieler + " ist am Zug.");
 		return this.getClass();
     }
 
