@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
-import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,7 +15,6 @@ import javax.swing.SwingConstants;
 
 import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
-import pd.spieler.SpielerFarbe;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;
