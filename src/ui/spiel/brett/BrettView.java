@@ -88,12 +88,12 @@ public class BrettView extends JPanel implements Observer {
 			this.add(feld2d);
 		}
 
-		add(spielBrett2d);
-
 		// SpielerViews darstellen
 		zeichneSpielerView(steuerung, spiel.getSpieler());
 
 		erstelleHinweis();
+
+		add(spielBrett2d);
 
 		spiel.addObserver(this);
 	}
