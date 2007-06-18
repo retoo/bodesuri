@@ -22,8 +22,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
-
-		spiel.zugAutomat = new ZugAutomat(controller, spiel.queue, spiel);
+		spiel.zugAutomat = new ZugAutomat(controller, spiel);
 		spiel.zugAutomat.init();
 		return AmZug.class;
 	}
@@ -57,11 +56,6 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		spiel.setLetzterZug(null);
-		for (Spieler spieler : spiel.getSpieler()) {
-			spieler.setHatAufgebeben(false);
-		}
-
 		spiel.spielerIch.getKarten().clear();
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));

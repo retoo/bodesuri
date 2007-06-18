@@ -8,17 +8,15 @@ import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
 import applikation.client.zugautomat.zustaende.ZielWaehlen;
 import dienste.automat.Automat;
-import dienste.eventqueue.EventQueue;
 
 public class ZugAutomat extends Automat {
 	private Controller controller;
 	private SpielDaten spielDaten;
 
-	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient, Spiel spiel) {
+	public ZugAutomat(Controller controller, Spiel spiel) {
 		this.controller = controller;
 		spielDaten = new SpielDaten();
 		spielDaten.spiel = spiel;
-		spielDaten.eventQueueBodesuriClient = eventQueueBodesuriClient;
 
 		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen(controller));

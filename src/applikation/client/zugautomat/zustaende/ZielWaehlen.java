@@ -41,7 +41,7 @@ public class ZielWaehlen extends ClientZugZustand {
 				return this.getClass();
 			}
 
-			spielDaten.eventQueueBodesuriClient.enqueue(erfassterZug);
+			spielDaten.spiel.queue.enqueue(erfassterZug);
 
 			spielDaten.start.setAusgewaehlt(false);
 			spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
