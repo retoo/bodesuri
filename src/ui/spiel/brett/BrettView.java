@@ -54,16 +54,10 @@ public class BrettView extends JPanel implements Observer {
 		}
 
 		/* Figuren bereitstellen */
-		IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
-		farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
-		farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
-		farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
-		farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
-
 		figurenManager = new FigurenManager();
 		for (Spieler spieler : spiel.getSpieler()) {
 			for (Figur figur : spieler.getFiguren()) {
-				Icon icon = farbeFigurMap.get(spieler.getFarbe());
+				Icon icon = Icons.farbeFigurMap.get(spieler.getFarbe());
 				Figur2d figur2d = new Figur2d(figur, icon);
 				this.setComponentZOrder(figur2d, 0);
 

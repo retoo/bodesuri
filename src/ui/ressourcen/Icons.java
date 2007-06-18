@@ -49,12 +49,19 @@ final public class Icons {
 	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
 
 	public static final IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
+	public static final IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
+
 
 	static {
 		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
 		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
 		farbeFeldMap.put(SpielerFarbe.values()[2], Icons.FELD_BLAU);
 		farbeFeldMap.put(SpielerFarbe.values()[3], Icons.FELD_GELB);
+
+		farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
+		farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
+		farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
+		farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
 	}
 
 	/**
