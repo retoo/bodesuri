@@ -12,10 +12,14 @@ import dienste.netzwerk.server.BriefkastenAdapter;
 
 /**
  * Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein
- * {@link VerbindeEvent} eintrifft wir der Zustand {@link VerbindungSteht}
+ * {@link VerbindeEvent} eintrifft wir der Zustand {@link Lobby}
  * aufgerufen.
  */
 public class VerbindungErfassen extends ClientZustand {
+	public void onEntry() {
+		controller.zeigeVerbinden(spiel.spielerName);
+	}
+
 	Class<? extends Zustand> verbinden(VerbindeEvent ve) {
 		try {
 			BriefKastenInterface briefkasten = new BriefkastenAdapter(spiel.queue);
@@ -34,6 +38,6 @@ public class VerbindungErfassen extends ClientZustand {
 			return VerbindungErfassen.class;
 		}
 
-		return VerbindungSteht.class;
+		return Lobby.class;
 	}
 }

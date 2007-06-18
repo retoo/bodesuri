@@ -17,14 +17,19 @@ public class Lobby extends ClientZustand {
 	public Lobby(Controller controller) {
 		this.controller = controller;
 	}
+	
+	public void onEntry() {
+		controller.zeigeLobby(spiel.getSpieler());
+	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
 		System.out.println("Nachricht von " + absender + ": " + nachricht);
 		return this.getClass();
 	}
 
-    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetitigung) {
+    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
     	//TODO: ??? Controller(Lobby) über neuen Spieler benachrichtigen. --Philippe
+    	System.out.println("Ein Spieler ist beigetreten.");
 	    return this.getClass();
     }
 
