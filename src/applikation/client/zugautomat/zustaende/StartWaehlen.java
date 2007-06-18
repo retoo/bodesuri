@@ -33,7 +33,7 @@ public class StartWaehlen extends ClientZugZustand {
 
 		spielDaten.start = feld;
 		Figur figur = feld.getFigur();
-		List<Figur> figuren = spielDaten.spielerIch.getFiguren();
+		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
 
 		// Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich ist (TODO: schöner machen )
 		if (figur != null && figuren.contains(figur)) {

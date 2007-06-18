@@ -6,18 +6,17 @@ import javax.swing.JPanel;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
-import applikation.client.pd.Spieler;
 
 public class KartenAuswahlView extends JPanel {
 	private KarteGewaehltView karteGewaehltView;
 	private DeckView deckView;
 
-	public KartenAuswahlView(Steuerung steuerung, Spieler spielerIch, Spiel spiel) {
+	public KartenAuswahlView(Steuerung steuerung, Spiel spiel) {
 		setOpaque(false);
 		setLayout(new BorderLayout());
 
 		// Views
-		deckView = new DeckView(steuerung, this, spielerIch);
+		deckView = new DeckView(steuerung, this, spiel.spielerIch);
 		karteGewaehltView = new KarteGewaehltView(steuerung);
 		SteuerungsView steuerungsView = new SteuerungsView(steuerung, spiel);
 

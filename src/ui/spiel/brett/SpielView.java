@@ -11,11 +11,10 @@ import ui.ressourcen.Icons;
 import ui.spiel.karten.KartenAuswahlView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
-import applikation.client.pd.Spieler;
 
 public class SpielView extends JPanel {
 	Image filz;
-	public SpielView(Steuerung steuerung, Spiel spiel, Spieler spielerIch) {
+	public SpielView(Steuerung steuerung, Spiel spiel) {
 		ImageIcon icon = (ImageIcon) Icons.FILZ;
 		filz = icon.getImage();
 
@@ -25,7 +24,7 @@ public class SpielView extends JPanel {
 
 		// Views
 		SpielBrettView spielBrettView = new SpielBrettView(steuerung, spiel);
-		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(steuerung, spielerIch, spiel);
+		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(steuerung, spiel);
 
 		// Layout zusammenstellen
 		add(spielBrettView, BorderLayout.CENTER);

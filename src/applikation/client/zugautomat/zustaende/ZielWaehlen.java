@@ -32,7 +32,7 @@ public class ZielWaehlen extends ClientZugZustand {
 			spielDaten.ziel = event.feld;
 
 			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(), spielDaten.ziel.getFeld());
-			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spielerIch,
+			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spiel.spielerIch,
 			                                       spielDaten.karte, bewegung);
 			try {
 				erfassterZug.toZugEingabe().validiere();
@@ -44,7 +44,7 @@ public class ZielWaehlen extends ClientZugZustand {
 			spielDaten.eventQueueBodesuriClient.enqueue(erfassterZug);
 
 			spielDaten.start.setAusgewaehlt(false);
-			spielDaten.spielerIch.getKarten().setAktiv(false);
+			spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
 
 			return EndZustand.class;
 		}

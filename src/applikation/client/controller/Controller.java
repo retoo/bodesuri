@@ -45,9 +45,8 @@ public abstract class Controller implements Steuerung {
 	 * Das Spielbrett anzeigen.
 	 *
 	 * @param spiel
-	 * @param spielerIch
 	 */
-	public abstract void zeigeSpiel(Spiel spiel, Spieler spielerIch);
+	public abstract void zeigeSpiel(Spiel spiel);
 
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,

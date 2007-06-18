@@ -32,9 +32,9 @@ public class GUIController extends Controller {
 		lobbyView.setVisible(true);
 	}
 
-	public void zeigeSpiel(Spiel spiel, Spieler spielerIch) {
+	public void zeigeSpiel(Spiel spiel) {
 		lobbyView.setVisible(false);
-		spielView = new BodesuriView(this, spiel, spielerIch);
+		spielView = new BodesuriView(this, spiel);
 		spielView.setVisible(true);
 	}
 
