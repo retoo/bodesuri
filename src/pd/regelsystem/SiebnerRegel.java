@@ -39,14 +39,14 @@ public class SiebnerRegel extends VorwaertsRegel {
 		Set<Feld> geschuetzt = new HashSet<Feld>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			pruefeBewegung(bewegung, spieler);
-			if (bewegung.start.istGeschuetzt()) {
-				geschuetzt.add(bewegung.start);
-			}
 			Weg weg = bewegung.getWeg();
 			pruefeWegRichtung(weg);
 			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {
 				figuren.put(feld, feld.getFigur());
+				if (feld.istGeschuetzt()) {
+					geschuetzt.add(bewegung.start);
+				}
 			}
 		}
 
