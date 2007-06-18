@@ -51,7 +51,7 @@ public class ClientZugZustand extends Zustand {
 	}
 	
 	protected void karteAuswaehlen(Karte karte) {
-		if (spielDaten.karte != null && spielDaten.karte.getAusgewaehlt()) {
+		if (spielDaten.karte != null && spielDaten.karte.istAusgewaehlt()) {
 			spielDaten.karte.setAusgewaehlt(false);
 		}
 		spielDaten.karte = karte;

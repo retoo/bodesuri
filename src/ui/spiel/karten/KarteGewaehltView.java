@@ -53,7 +53,7 @@ public class KarteGewaehltView extends JPanel implements Observer {
 			ListChangeEvent change = (ListChangeEvent) arg;
 			if (change.changeType == ListChangeType.CHANGED) {
 				Karte karte = (Karte) change.changedObject;
-				if (karte.getAusgewaehlt()) {
+				if (karte.istAusgewaehlt()) {
 					zeigeKarte(karte);
 				} else {
 					zeigeKeineKarte();

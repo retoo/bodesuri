@@ -14,7 +14,7 @@ public class Karte extends Observable {
 		ausgewaehlt = false;
 	}
 
-	public boolean getAusgewaehlt() {
+	public boolean istAusgewaehlt() {
 		return ausgewaehlt;
 	}
 

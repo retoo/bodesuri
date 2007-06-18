@@ -52,7 +52,7 @@ public class Karten extends Observable implements Observer {
 
 	public void clear() {
 		for (Karte karte : appKarten) {
-			if (karte.getAusgewaehlt()) {
+			if (karte.istAusgewaehlt()) {
 				karte.setAusgewaehlt(false);
 			}
 		}

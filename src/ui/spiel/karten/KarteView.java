@@ -37,7 +37,7 @@ public class KarteView extends JLabel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (karte.getAusgewaehlt()) {
+		if (karte.istAusgewaehlt()) {
 			kartenAuswahl.setPosition(position);
 			kartenAuswahl.setVisible(true);
 		} else {
