@@ -61,6 +61,13 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[2].istBesetztVon(spieler(0)));
 	}
 	
+	public void testSiebnerRueckwaerts() {
+		start[0] = bank(0).getNtesFeld(5);
+		ziel[0]  = bank(0).getVorheriges().getVorheriges();
+		lager(0).versetzeFigurAuf(start[0]);
+		sollteVerstossGeben();
+	}
+	
 	public void testSiebnerHeimSchicken() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = start[0].getNtesFeld(7);

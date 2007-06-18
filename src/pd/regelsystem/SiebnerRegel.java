@@ -43,6 +43,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 				geschuetzt.add(bewegung.start);
 			}
 			Weg weg = bewegung.getWeg();
+			pruefeWegRichtung(weg);
 			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {
 				figuren.put(feld, feld.getFigur());

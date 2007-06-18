@@ -52,7 +52,8 @@ public class VorwaertsRegel extends Regel {
 		pruefeBewegung(bewegung, spieler);
 		
 		Weg weg = bewegung.getWeg();
-		pruefeWeg(weg);
+		pruefeWegRichtung(weg);
+		pruefeWegLaenge(weg);
 
 		for (Feld feld : weg) {
 			if (feld == start) continue;
@@ -110,12 +111,10 @@ public class VorwaertsRegel extends Regel {
 		}
 	}
 	
-	protected void pruefeWeg(Weg weg) throws RegelVerstoss {
+	protected void pruefeWegRichtung(Weg weg) throws RegelVerstoss {
 		if (weg.istRueckwaerts()) {
 			throw new RegelVerstoss("Es kann nicht rückwärts gefahren werden.");
 		}
-
-		pruefeWegLaenge(weg);
 	}
 	
 	protected void pruefeWegLaenge(Weg weg) throws RegelVerstoss {
