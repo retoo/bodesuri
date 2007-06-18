@@ -13,6 +13,13 @@ public class VorwaertsRegelTest extends RegelTestCase {
 		assertTrue(lager(1).istBesetztVon(spieler(1)));
 	}
 	
+	public void testVorwaertsRueckwaerts() {
+		start = bank(0).getNtesFeld(6);
+		ziel  = bank(0).getNtesFeld(1);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(5));
+	}
+	
 	public void testVorwaertsAufGeschuetztes() throws RegelVerstoss {
 		start = lager(0);
 		ziel  = bank(0);

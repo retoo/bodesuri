@@ -37,10 +37,11 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 	}
 	
 	protected void pruefeWeg(Weg weg) throws RegelVerstoss {
-		super.pruefeWeg(weg);
 		if (!weg.istRueckwaerts()) {
 			throw new RegelVerstoss("Es muss rückwärts gefahren werden.");
 		}
+
+		pruefeWegLaenge(weg);
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
