@@ -14,10 +14,15 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustand in welchem der Spieler dran kommt. Erstellt einen {@link ZugAutomat}
  * der sich um das Erfassen und Validieren eines Zuges kümmert. Der Automat
- * sendet eine {@link ZugErfasstEvent} wenn er fertig ist. Diese wird versandt und
- * der Automat geht nach {@link NichtAmZug} über.
+ * sendet eine {@link ZugErfasstEvent} wenn er fertig ist. Diese wird versandt
+ * und der Automat geht nach {@link NichtAmZug} über.
  */
 public class AmZug extends ClientZustand {
+    public void onEntry() {
+		spiel.zugAutomat = new ZugAutomat(controller, spiel);
+		spiel.zugAutomat.init();
+	}
+
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		spiel.zugAutomat.step(event);
 		return this.getClass();
@@ -31,13 +36,12 @@ public class AmZug extends ClientZustand {
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
 		event.feld.setHover(true);
 		return this.getClass();
-    }
+	}
 
 	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
 		event.feld.setHover(false);
 		return this.getClass();
-    }
-
+	}
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		spiel.zugAutomat.step(event);
@@ -52,8 +56,9 @@ public class AmZug extends ClientZustand {
 
 	Class<? extends Zustand> aufgegeben() {
 		if (spiel.spielerIch.kannZiehen()) {
-			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
-                               "da es noch möglich ist zu ziehen.");
+			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben "
+			                              + "werden, da es noch möglich ist zu "
+			                              + "ziehen.");
 			return this.getClass();
 		} else {
 			spiel.endpunkt.sende(new Aufgabe());

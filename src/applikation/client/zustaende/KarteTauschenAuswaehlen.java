@@ -23,7 +23,9 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-		controller.zeigeFehlermeldung("Bitte tausche zuerst die Karte mit deinem Partner bevor du aufgibst!");
+		//TODO: Philippe: Aufgeben im GUI deaktivieren.
+		controller.zeigeFehlermeldung("Bitte tausche zuerst eine Karte mit "
+		                              + "deinem Partner bevor du aufgibst!");
 		return this.getClass();
 	}
 

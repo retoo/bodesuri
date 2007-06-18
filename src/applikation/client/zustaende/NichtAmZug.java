@@ -1,29 +1,32 @@
 package applikation.client.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
+import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spieler;
-import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
-import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 
 /**
  * Zustand wenn der Spieler nicht am Zug ist.
  * <ul>
- * <li>Wenn eine {@link ZugAufforderung} eintrifft wird der Zustand
+ * <li>Wenn eine {@link ZugAufforderung} eintrifft, wird der Zustand
  * {@link AmZug} aufgerufen.</li>
- * <li>Wenn eine {@link ZugInformation} eintrifft wird der Zug ausgeführt, der
- * Zustand aber nicht gewechselt.</li>
+ * <li>Wenn eine {@link AktuellerSpielerInformation} eintrifft, wird der
+ * aktuelle Spieler dargestellt, der Zustand aber nicht gewechselt.</li>
+ * <li>Wenn eine {@link ZugEingabe} eintrifft, wird Zug aus der Eingabe
+ * visualisiert. Der Zustand wird nicht gewechselt.</li>
+ * <li>Wenn eine {@link RundenStart}-Nachricht eintrifft, werden die
+ * erhaltenen Karten gespeichert und der Zustand {@link StarteRunde} aufgerufen.</li>
+ * <li>Wenn eine {@link AufgabeInformation} eintrifft, wird der Spieler welcher
+ * aufgegeben hat im UI angepasst. Der Zustand wird nicht gewechselt.</li>
  * </ul>
  */
 public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
-		spiel.zugAutomat = new ZugAutomat(controller, spiel);
-		spiel.zugAutomat.init();
 		return AmZug.class;
 	}
 
@@ -41,8 +44,7 @@ public class NichtAmZug extends ClientZustand {
 		return this.getClass();
     }
 
-
-	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
+	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		spiel.setLetzterZug(zug);
 		try {
 			zug.validiere().ausfuehren();
