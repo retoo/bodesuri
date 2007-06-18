@@ -32,7 +32,9 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		/* TODO: Wollen wir das nicht hier rausnehmen (-reto)
 		 * könnte ja auch der ersteller von Feld2d machen */
 		addMouseListener(mouseAdapter);
-		update(null, null); /* TODO:: evtl. schöner machen */
+
+		/* Die Grafiken ein erstes mal generieren */
+		update(null, null);
 	}
 
 	private void zeichne(Icon icon) {
@@ -54,6 +56,16 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		return feld;
 	}
 
+	/* TODO: (von reto und robin)
+	 * das Zeichenn in ein drei-schichtes modell umwandeln
+	 *  - Einbuchtung
+	 *  - Farbcodierung
+	 *  - Figur
+	 *  - Selektion (hover) / Weg
+	 *
+	 *  figur nur hinschieben falls sich wirklic hwas verändert hat.
+	*
+	 */
 	public void update(Observable os, Object arg) {
 		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
 		if (feld.istBesetzt()) {
