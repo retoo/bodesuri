@@ -13,6 +13,7 @@ import applikation.client.pd.Karte;
 final public class Icons {
 	public static final Icon BRETT = ladeBild("/ui/ressourcen/brett.png");
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
+	public static final Icon JOKERSCHLIESSEN = ladeBild("/ui/ressourcen/joker_schliessen.png");
 
 	// Verbinden
 	public static final Icon VERBINDEN = ladeBild("/ui/ressourcen/verbinden.png");
