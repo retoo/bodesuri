@@ -6,6 +6,7 @@ import java.util.Vector;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
+import pd.karten.Karte;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
@@ -48,9 +49,9 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
 			                        "werden.");
 		}
-		
+
 		pruefeBewegung(bewegung, spieler);
-		
+
 		Weg weg = bewegung.getWeg();
 		pruefeWegRichtung(weg);
 		pruefeWegLaenge(weg);
@@ -80,11 +81,11 @@ public class VorwaertsRegel extends Regel {
 
 		return zug;
 	}
-	
+
 	protected void pruefeBewegung(Bewegung bewegung, Spieler spieler) throws RegelVerstoss {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
-		
+
 		if (start.istHimmel() && !ziel.istHimmel()) {
 			throw new RegelVerstoss(
 				"Im Himmel kann nur noch vorwärts gefahren werden.");
@@ -97,7 +98,7 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss(
 				"Es gibt nur eine Art, ins Lager zurückzukehren...");
 		}
-		
+
 		if (ziel.istHimmel()) {
 			HimmelFeld himmel = (HimmelFeld) ziel;
 			if (himmel.getSpieler() != spieler) {
@@ -110,13 +111,13 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
 		}
 	}
-	
+
 	protected void pruefeWegRichtung(Weg weg) throws RegelVerstoss {
 		if (weg.istRueckwaerts()) {
 			throw new RegelVerstoss("Es kann nicht rückwärts gefahren werden.");
 		}
 	}
-	
+
 	protected void pruefeWegLaenge(Weg weg) throws RegelVerstoss {
 		int wegLaenge = weg.size() - 1;
 		if (wegLaenge != schritte) {
@@ -128,12 +129,12 @@ public class VorwaertsRegel extends Regel {
 	public boolean kannZiehen(Spieler spieler) {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld start = figur.getFeld();
-			
+
 			Feld ziel = getZiel(start, schritte, false);
 			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
 				return true;
 			}
-			
+
 			ziel = getZiel(start, schritte, true);
 			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
 				return true;
@@ -142,12 +143,30 @@ public class VorwaertsRegel extends Regel {
 		return false;
 	}
 
+    public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
+		for (Figur figur : spieler.getFiguren()) {
+			Feld start = figur.getFeld();
+
+			Feld ziel = getZiel(start, schritte, false);
+			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
+				Bewegung bewegung = new Bewegung(start, ziel);
+				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
+			}
+
+			ziel = getZiel(start, schritte, true);
+			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
+				Bewegung bewegung = new Bewegung(start, ziel);
+				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
+			}
+		}
+    }
+
 	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
 		List<Bewegung> bewegungen = new Vector<Bewegung>();
 		bewegungen.add(new Bewegung(start, ziel));
 		return istZugMoeglich(spieler, bewegungen);
 	}
-	
+
 	protected boolean istZugMoeglich(Spieler spieler, List<Bewegung> bewegungen) {
 		try {
 			ZugEingabe ze = new ZugEingabe(spieler, null, bewegungen);

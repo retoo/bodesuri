@@ -1,13 +1,15 @@
 package pd.spieler;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import dienste.observer.ObservableList;
-
 import pd.Spiel;
 import pd.karten.Karte;
+import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
+import pd.zugsystem.ZugEingabe;
+import dienste.observer.ObservableList;
 
 /**
  * Spieler, der bei einem {@link Spiel} mitspielt, und 4 {@link Figur Figuren}
@@ -115,4 +117,17 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 
 		return true;
 	}
+
+	public List<ZugEingabe> getMoeglicheZuege() {
+		List<ZugEingabe> moeglich = new LinkedList<ZugEingabe>();
+
+		for (Karte karte : getKarten()) {
+			Regel regel = karte.getRegel();
+			if (regel != null) {
+				regel.moeglicheZuege(this, karte, moeglich);
+			}
+		}
+
+		return moeglich;
+    }
 }

@@ -1,9 +1,11 @@
 package pd.regelsystem;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
+import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
@@ -14,7 +16,7 @@ import pd.zugsystem.ZugEingabe;
  */
 public class RegelVeroderung extends Regel {
 	private Vector<Regel> regeln = new Vector<Regel>();
-	
+
 	public void fuegeHinzu(Regel regel) {
 		regeln.add(regel);
 	}
@@ -22,7 +24,7 @@ public class RegelVeroderung extends Regel {
 	/**
 	 * Beim Validieren werden alle enthaltenen Regeln durchgegangen und der
 	 * erste gültige Zug zurückgegeben.
-	 * 
+	 *
 	 * Wenn keine Regel gültig ist, wird eine RegelVerstoss geworfen.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
@@ -42,7 +44,7 @@ public class RegelVeroderung extends Regel {
 		}
 		throw new RegelVerstoss(s.toString());
 	}
-	
+
 	public boolean kannZiehen(Spieler spieler) {
 		for (Regel regel : regeln) {
 			if (regel.kannZiehen(spieler)) {
@@ -51,7 +53,13 @@ public class RegelVeroderung extends Regel {
 		}
 		return false;
 	}
-	
+
+    public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
+		for (Regel regel : regeln) {
+			regel.moeglicheZuege(spieler, karte, moeglich);
+		}
+    }
+
 	public String getBeschreibung() {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < regeln.size(); ++i) {
