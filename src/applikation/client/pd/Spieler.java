@@ -7,8 +7,8 @@ import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 
 public class Spieler extends Observable {
-	private Boolean amZug;
-	private Boolean hatAufgebeben;
+	private boolean amZug;
+	private boolean hatAufgebeben;
 	public pd.spieler.Spieler spieler;
 
 	private Karten karten;
@@ -16,6 +16,7 @@ public class Spieler extends Observable {
 	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.amZug = false;
+		this.hatAufgebeben = false;
 		this.karten = new Karten(spieler.getKarten());
 	}
 
@@ -42,27 +43,27 @@ public class Spieler extends Observable {
 	public SpielerFarbe getFarbe() {
 		return spieler.getFarbe();
 	}
-	
+
 	public Boolean getAmZug() {
 		return amZug;
 	}
-	
-	public void setAmZug(Boolean amZug) {
+
+	public void setAmZug(boolean amZug) {
 		this.amZug = amZug;
 		setChanged();
 		notifyObservers(amZug);
 	}
 
-	public Boolean getHatAufgebeben() {
+	public boolean getHatAufgebeben() {
     	return hatAufgebeben;
     }
 
-	public void setHatAufgebeben(Boolean hatAufgebeben) {
+	public void setHatAufgebeben(boolean hatAufgebeben) {
     	this.hatAufgebeben = hatAufgebeben;
 		setChanged();
 		notifyObservers();
     }
-	
+
 	public String toString() {
 		return spieler.toString();
 	}
