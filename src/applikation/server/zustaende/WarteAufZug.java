@@ -37,8 +37,6 @@ public class WarteAufZug extends ServerZustand {
         teilnahme.neuerZug(zugInfo.zug);
         spiel.broadcast(zugInfo);
 
-		System.out.println("Ausgeführter Zug: " + zugInfo.zug);
-
 		if (teilnahme.hatKeineKartenMehr()) {
 			runde.entferneSpieler(spieler);
 		}

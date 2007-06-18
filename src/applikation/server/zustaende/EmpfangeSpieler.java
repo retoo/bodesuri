@@ -2,7 +2,6 @@ package applikation.server.zustaende;
 
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielBeitreten;
-import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 
@@ -14,13 +13,7 @@ public class EmpfangeSpieler extends ServerZustand {
 	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,
 	                                        SpielBeitreten beitreten) {
 
-
-		Spieler spieler = spiel.fuegeHinzu(beitreten.spielerName, absender);
-
-
 		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
-
-		System.out.println("Neuer Spieler: " + spieler);
 
 		if (spiel.isKomplett()) {
 			spiel.partnerschaftenBilden();

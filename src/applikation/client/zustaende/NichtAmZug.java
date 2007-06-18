@@ -10,7 +10,6 @@ import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
-import dienste.netzwerk.EndPunktInterface;
 
 /**
  * Zustand wenn der Spieler nicht am Zug ist.
@@ -22,11 +21,6 @@ import dienste.netzwerk.EndPunktInterface;
  * </ul>
  */
 public class NichtAmZug extends ClientZustand {
-	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
-		System.out.println("Nachricht von " + absender + ": " + nachricht);
-		return this.getClass();
-	}
-
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
 
 		spiel.zugAutomat = new ZugAutomat(controller, spiel.queue, spiel);
@@ -67,15 +61,15 @@ public class NichtAmZug extends ClientZustand {
 		for (Spieler spieler : spiel.getSpieler()) {
 			spieler.setHatAufgebeben(false);
 		}
-		
+
 		spiel.spielerIch.getKarten().clear();
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));
 		}
-		
+
 		return StarteRunde.class;
 	}
-	
+
 	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
 		Spieler spieler = spiel.findeSpieler(aufgabe.spieler);
 		spieler.setHatAufgebeben(true);

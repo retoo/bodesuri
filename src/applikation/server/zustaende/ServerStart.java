@@ -12,8 +12,6 @@ import dienste.serialisierung.SerialisierungsKontext;
  */
 public class ServerStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		System.out.println("Initialisiere Server");
-
 		SerialisierungsKontext kontext = spiel;
 
 		try {

@@ -13,7 +13,6 @@ public class StarteZug extends ServerZustand implements PassiverZustand {
 
 		spielers.runde.rotiereSpieler();
 		Spieler naechsterSpieler = spielers.runde.getAktuellerSpieler();
-		spielers.broadcast("Nächster Spieler ist " + naechsterSpieler + ".");
 
 		AktuellerSpielerInformation info = new AktuellerSpielerInformation(naechsterSpieler.spieler);
 		spielers.broadcast(info);
