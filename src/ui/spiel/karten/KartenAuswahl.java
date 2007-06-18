@@ -3,19 +3,17 @@ package ui.spiel.karten;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import javax.swing.Icon;
 import javax.swing.JLabel;
 
 import ui.ressourcen.Icons;
 
-public class KartenAuswahl extends JLabel{
-	public KartenAuswahl(Point p){
-		removeAll();
-	}
-
-	public void setPosition(Point p){
-		setIcon(Icons.KARTEN_AUSWAHL);
-		setBounds((int) p.getX()-10, (int) p.getY()-10, Icons.KARTEN_AUSWAHL.getIconWidth(),
-				Icons.KARTEN_AUSWAHL.getIconHeight());
+public class KartenAuswahl extends JLabel {
+	public void setPosition(Point pos) {
+		Icon icon = Icons.KARTEN_AUSWAHL;
+		setIcon(icon);
+		setBounds(pos.x - 10, pos.y - 10,
+		          icon.getIconWidth(), icon.getIconHeight());
 		setPreferredSize(new Dimension(100, 125));
 		setMaximumSize(new Dimension(100, 125));
 		setMinimumSize(new Dimension(100, 125));

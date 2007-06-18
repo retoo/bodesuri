@@ -51,6 +51,7 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {
+		erfassterZug.getKarte().setAusgewaehlt(false);
 		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
 		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
 		return NichtAmZug.class;

@@ -34,16 +34,18 @@ public class DeckView extends JPanel implements Observer {
 		setMaximumSize(groesse);
 		setMinimumSize(groesse);
 
-		KartenAuswahl kartenAuswahl = new KartenAuswahl(new Point());
-		karteMouseAdapter =
-			new KarteMouseAdapter(steuerung, kartenAuswahlView, kartenAuswahl);
+		KartenAuswahl kartenAuswahl = new KartenAuswahl();
+		kartenAuswahl.setVisible(false);
+		add(kartenAuswahl);
+		
+		karteMouseAdapter =	new KarteMouseAdapter(steuerung);
 
 		karteViews = new Vector<KarteView>();
 		for (int i = 0; i < 6; ++i) {
 			int x = i % 2;
 			int y = i / 2;
 			Point position = new Point(10 + x*90, 10 + y*110);
-			KarteView kv = new KarteView(position, karteMouseAdapter);
+			KarteView kv = new KarteView(position, karteMouseAdapter, kartenAuswahl);
 			karteViews.add(kv);
 			add(kv);
 		}
@@ -78,11 +80,5 @@ public class DeckView extends JPanel implements Observer {
 				}
 			}
 		}
-
-		/* Mitteilen ob die Auswahl stattfinden kann */
-
-		/* TODO: Robin, kann man dies nun mit dem Observer nicht schöner machen? Evtl. hohne
-		 * kartemouseadapter und so? */
-		karteMouseAdapter.aktiv(karten.getAktiv());
     }
 }

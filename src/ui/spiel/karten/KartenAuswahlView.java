@@ -18,7 +18,7 @@ public class KartenAuswahlView extends JPanel {
 
 		// Views
 		deckView = new DeckView(steuerung, this, spiel.spielerIch);
-		karteGewaehltView = new KarteGewaehltView(steuerung);
+		karteGewaehltView = new KarteGewaehltView(steuerung, spiel.spielerIch.getKarten());
 		SteuerungsView steuerungsView = new SteuerungsView(steuerung, spiel);
 
 		// Layout zusammenstellen
@@ -37,12 +37,4 @@ public class KartenAuswahlView extends JPanel {
 		c.weighty = 1.0;
 		add(steuerungsView, c);
 	}
-
-	public DeckView getDeckView() {
-    	return deckView;
-    }
-
-	public KarteGewaehltView getKarteGewaehltView() {
-    	return karteGewaehltView;
-    }
 }

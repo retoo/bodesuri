@@ -46,7 +46,7 @@ public class JokerView extends JPanel{
 		Vector<KarteView> karteViews = new Vector<KarteView>();
 		for(int i = 0; i < kartenDeck.size(); i++){
 			Point position = new Point(200 + i * 100, 300);
-			KarteView kv = new KarteView(position, null);
+			KarteView kv = new KarteView(position, null, null);
 			karteViews.add(kv);
 			kv.setKarte(kartenDeck.get(i));
 			add(kv);

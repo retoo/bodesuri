@@ -64,7 +64,7 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		spielDaten.karte = event.karte;
+		karteAuswaehlen(event.karte);
 		spielDaten.start.setAusgewaehlt(false);
 		return StartWaehlen.class;
 	}

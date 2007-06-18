@@ -6,6 +6,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.pd.Karte;
 import applikation.client.zugautomat.pd.SpielDaten;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
@@ -47,6 +48,14 @@ public class ClientZugZustand extends Zustand {
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
+	}
+	
+	protected void karteAuswaehlen(Karte karte) {
+		if (spielDaten.karte != null && spielDaten.karte.getAusgewaehlt()) {
+			spielDaten.karte.setAusgewaehlt(false);
+		}
+		spielDaten.karte = karte;
+		spielDaten.karte.setAusgewaehlt(true);
 	}
 
 	public void setController(Controller controller) {

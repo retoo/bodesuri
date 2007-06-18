@@ -6,18 +6,19 @@ import pd.karten.Joker;
 import pd.karten.KartenFarbe;
 
 public class Karte extends Observable {
-	private Boolean ausgewaehlt;
+	private boolean ausgewaehlt;
 	private pd.karten.Karte karte;
 
 	public Karte(pd.karten.Karte karte) {
 		this.karte = karte;
+		ausgewaehlt = false;
 	}
 
-	public Boolean getAusgewaehlt() {
+	public boolean getAusgewaehlt() {
 		return ausgewaehlt;
 	}
 
-	public void setAusgewaehlt(Boolean ausgewaehlt) {
+	public void setAusgewaehlt(boolean ausgewaehlt) {
 		this.ausgewaehlt = ausgewaehlt;
 		setChanged();
 		notifyObservers(ausgewaehlt);

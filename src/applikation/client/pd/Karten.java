@@ -51,6 +51,11 @@ public class Karten extends Observable implements Observer {
     }
 
 	public void clear() {
+		for (Karte karte : appKarten) {
+			if (karte.getAusgewaehlt()) {
+				karte.setAusgewaehlt(false);
+			}
+		}
 		pdKarten.clear();
 		appKarten.clear();
 	}

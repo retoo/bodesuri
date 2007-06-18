@@ -1,6 +1,8 @@
 package ui.spiel.karten;
 
 import java.awt.Font;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -8,14 +10,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import dienste.observer.ListChangeEvent;
+import dienste.observer.ListChangeEvent.ListChangeType;
+
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Karte;
+import applikation.client.pd.Karten;
 
-public class KarteGewaehltView extends JPanel {
+public class KarteGewaehltView extends JPanel implements Observer {
 	private JLabel name;
 	private JTextArea beschreibung;
 
-	public KarteGewaehltView(Steuerung steuerung) {
+	public KarteGewaehltView(Steuerung steuerung, Karten karten) {
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		setOpaque(false);
@@ -38,14 +44,30 @@ public class KarteGewaehltView extends JPanel {
 		
 		add(name);
 		add(beschreibung);
+
+		karten.addObserver(this);
 	}
 
-	public void zeigeKarte(Karte karte) {
+	public void update(Observable observable, Object arg) {
+		if (arg instanceof ListChangeEvent) {
+			ListChangeEvent change = (ListChangeEvent) arg;
+			if (change.changeType == ListChangeType.CHANGED) {
+				Karte karte = (Karte) change.changedObject;
+				if (karte.getAusgewaehlt()) {
+					zeigeKarte(karte);
+				} else {
+					zeigeKeineKarte();
+				}
+			}
+		}
+	}
+
+	private void zeigeKarte(Karte karte) {
 		name.setText(karte.toString());
 		beschreibung.setText(karte.getRegelBeschreibung());
 	}
 
-	public void zeigeKeineKarte() {
+	private void zeigeKeineKarte() {
 		// Leerzeichen sind ein Hack, damit die Grösse richtig berechnet wird.
 		name.setText(" ");
 		beschreibung.setText(" ");
