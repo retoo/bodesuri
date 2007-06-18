@@ -2,12 +2,11 @@ package applikation.client.zugautomat;
 
 import applikation.client.controller.Controller;
 import applikation.client.pd.Spiel;
-import applikation.client.pd.Spieler;
 import applikation.client.zugautomat.pd.SpielDaten;
 import applikation.client.zugautomat.zustaende.ClientZugZustand;
-import applikation.client.zugautomat.zustaende.ZielWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;
 import applikation.client.zugautomat.zustaende.StartWaehlen;
+import applikation.client.zugautomat.zustaende.ZielWaehlen;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
 
@@ -15,10 +14,9 @@ public class ZugAutomat extends Automat {
 	private Controller controller;
 	private SpielDaten spielDaten;
 
-	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient, Spiel spiel, Spieler spielerIch) {
+	public ZugAutomat(Controller controller, EventQueue eventQueueBodesuriClient, Spiel spiel) {
 		this.controller = controller;
 		spielDaten = new SpielDaten();
-		spielDaten.spielerIch = spielerIch;
 		spielDaten.spiel = spiel;
 		spielDaten.eventQueueBodesuriClient = eventQueueBodesuriClient;
 

@@ -11,7 +11,7 @@ import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.SpielDaten;
+import applikation.client.pd.Spiel;
 import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
@@ -35,7 +35,7 @@ import dienste.netzwerk.server.NetzwerkEvent;
  */
 public class ClientZustand extends Zustand {
 	protected Controller controller;
-	protected SpielDaten spielDaten;
+	protected Spiel spiel;
 
 	public Class<? extends Zustand> handle(Event event) {
 		if (event instanceof NetzwerkEvent) {
@@ -105,8 +105,8 @@ public class ClientZustand extends Zustand {
 	/* GUI Handler - Global */
 
 	Class<? extends Zustand> chatEingabe(ChatEingabeEvent eingabe) {
-		ChatNachricht cn = new ChatNachricht(spielDaten.spielerIch.getName(), eingabe.text);
-		spielDaten.endpunkt.sende(cn);
+		ChatNachricht cn = new ChatNachricht(spiel.spielerIch.getName(), eingabe.text);
+		spiel.endpunkt.sende(cn);
 
 		return this.getClass();
     }
@@ -163,7 +163,7 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, ChatNachricht nachricht) {
-		spielDaten.spiel.getChat().neueNachricht(nachricht.sender, nachricht.text);
+		spiel.getChat().neueNachricht(nachricht.sender, nachricht.text);
 
 		return this.getClass();
 	}
@@ -201,7 +201,7 @@ public class ClientZustand extends Zustand {
 	    this.controller = controller;
     }
 
-	public void setSpielDaten(SpielDaten spielDaten) {
-		this.spielDaten = spielDaten;
+	public void setSpiel(Spiel spiel) {
+		this.spiel = spiel;
     }
 }

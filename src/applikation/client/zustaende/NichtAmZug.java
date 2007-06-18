@@ -28,31 +28,29 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
 
-		spielDaten.zugAutomat = new ZugAutomat(controller, spielDaten.queue,
-		                                       spielDaten.spiel,
-		                                       spielDaten.spielerIch);
-		spielDaten.zugAutomat.init();
+		spiel.zugAutomat = new ZugAutomat(controller, spiel.queue, spiel);
+		spiel.zugAutomat.init();
 		return AmZug.class;
 	}
 
     Class<? extends Zustand> aktuellerSpielerInformation(AktuellerSpielerInformation information) {
-		Spieler neuerSpieler = spielDaten.spiel.findeSpieler(information.spieler);
+		Spieler neuerSpieler = spiel.findeSpieler(information.spieler);
 
-		if (spielDaten.aktuellerSpieler != null) {
-			spielDaten.aktuellerSpieler.setAmZug(false);
+		if (spiel.aktuellerSpieler != null) {
+			spiel.aktuellerSpieler.setAmZug(false);
 		}
 
 		neuerSpieler.setAmZug(true);
-		spielDaten.aktuellerSpieler = neuerSpieler;
+		spiel.aktuellerSpieler = neuerSpieler;
 
-		spielDaten.spiel.setHinweis(neuerSpieler.getName()
+		spiel.setHinweis(neuerSpieler.getName()
 			                        + " ist am Zug.");
 		return this.getClass();
     }
 
 
 	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
-		spielDaten.spiel.setLetzterZug(zug);
+		spiel.setLetzterZug(zug);
 		try {
 			zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
@@ -64,10 +62,10 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		spielDaten.spielerIch.getKarten().clear();
-		spielDaten.spiel.setLetzterZug(null);
+		spiel.spielerIch.getKarten().clear();
+		spiel.setLetzterZug(null);
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
-			spielDaten.spielerIch.getKarten().add(new Karte(karte));
+			spiel.spielerIch.getKarten().add(new Karte(karte));
 		}
 		return StarteRunde.class;
 	}

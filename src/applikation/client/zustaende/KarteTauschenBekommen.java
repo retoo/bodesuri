@@ -9,14 +9,14 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenBekommen extends ClientZustand {
 	public void onEntry() {
-		spielDaten.spiel.setHinweis("Warte auf die Karte deines Partners.");
+		spiel.setHinweis("Warte auf die Karte deines Partners.");
 	}
 
 	Class<? extends Zustand> kartenTausch(pd.karten.Karte karte) {
 		/* Wir erstellen hier die app.karte neu, die wird dann nur für die jweilige runde verwendet (siehe auch rundenstart) */
 		Karte k = new Karte(karte);
 
-		spielDaten.spielerIch.getKarten().add(k);
+		spiel.spielerIch.getKarten().add(k);
 		return NichtAmZug.class;
 	}
 

@@ -1,9 +1,9 @@
 package applikation.client;
 
 import applikation.client.controller.Controller;
-import applikation.client.pd.SpielDaten;
-import applikation.client.zustaende.ClientZustand;
+import applikation.client.pd.Spiel;
 import applikation.client.zustaende.AmZug;
+import applikation.client.zustaende.ClientZustand;
 import applikation.client.zustaende.KarteTauschenAuswaehlen;
 import applikation.client.zustaende.KarteTauschenBekommen;
 import applikation.client.zustaende.Lobby;
@@ -24,7 +24,7 @@ import dienste.eventqueue.EventQueue;
  */
 public class ClientAutomat extends Automat {
 	private Controller controller;
-	private SpielDaten spielDaten;
+	private Spiel spiel;
 
 
 	public ClientAutomat(Controller controller, String spielerName) {
@@ -40,16 +40,15 @@ public class ClientAutomat extends Automat {
 	 */
 	public ClientAutomat(Controller controller, String spielerName, EventQueue queue) {
 		this.controller = controller;
-		this.spielDaten = new SpielDaten();
-		this.spielDaten.spiel = spielDaten.spiel;
+		this.spiel = new Spiel();
 
 		EventQueue eventQueue = queue;
 		if (eventQueue == null) {
 			eventQueue = new EventQueue();
 		}
 
-		spielDaten.queue = eventQueue;
-		spielDaten.spielerName = spielerName;
+		spiel.queue = eventQueue;
+		spiel.spielerName = spielerName;
 
 		registriere(new SchwererFehler());
 		registriere(new ProgrammStart());
@@ -71,7 +70,7 @@ public class ClientAutomat extends Automat {
 
 	public void registriere(ClientZustand zustand) {
 		zustand.setController(controller);
-		zustand.setSpielDaten(spielDaten);
+		zustand.setSpiel(spiel);
 
 		super.registriere(zustand);
 	}

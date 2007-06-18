@@ -18,19 +18,19 @@ import dienste.netzwerk.server.BriefkastenAdapter;
 public class VerbindungErfassen extends ClientZustand {
 	Class<? extends Zustand> verbinden(VerbindeEvent ve) {
 		try {
-			BriefKastenInterface briefkasten = new BriefkastenAdapter(spielDaten.queue);
+			BriefKastenInterface briefkasten = new BriefkastenAdapter(spiel.queue);
 
-			spielDaten.endpunkt = new ClientEndPunkt(ve.hostname, ve.port, briefkasten, spielDaten);
-			spielDaten.endpunkt.sende(new SpielBeitreten(ve.spielerName));
-			spielDaten.spielerName = ve.spielerName;
+			spiel.endpunkt = new ClientEndPunkt(ve.hostname, ve.port, briefkasten, spiel);
+			spiel.endpunkt.sende(new SpielBeitreten(ve.spielerName));
+			spiel.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
 			controller.zeigeFehlermeldung("Unbekannter Hostname: " + ve.hostname);
-			spielDaten.endpunkt = null;
+			spiel.endpunkt = null;
 			return VerbindungErfassen.class;
 		} catch (IOException e) {
 			controller.zeigeFehlermeldung("Verbindung konnte nicht hergestellt werden: "
 			                    + e.getMessage());
-			spielDaten.endpunkt = null;
+			spiel.endpunkt = null;
 			return VerbindungErfassen.class;
 		}
 

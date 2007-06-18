@@ -11,14 +11,14 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenAuswaehlen extends ClientZustand {
 	public void onEntry() {
-		spielDaten.spiel.setHinweis("Zu tauschende Karte wählen.");
+		spiel.setHinweis("Zu tauschende Karte wählen.");
 
-		spielDaten.spielerIch.getKarten().setAktiv(true);
+		spiel.spielerIch.getKarten().setAktiv(true);
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		spielDaten.spielerIch.getKarten().remove(event.karte);
-		spielDaten.endpunkt.sende(new KartenTausch(event.karte.getKarte()));
+		spiel.spielerIch.getKarten().remove(event.karte);
+		spiel.endpunkt.sende(new KartenTausch(event.karte.getKarte()));
 		return KarteTauschenBekommen.class;
 	}
 
@@ -28,6 +28,6 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 	}
 
 	public void onExit() {
-		spielDaten.spielerIch.getKarten().setAktiv(false);
+		spiel.spielerIch.getKarten().setAktiv(false);
 	}
 }

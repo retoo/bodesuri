@@ -9,7 +9,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class ProgrammStart extends ClientZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
-		controller.zeigeVerbinden(spielDaten.spielerName);
+		controller.zeigeVerbinden(spiel.spielerName);
 		return VerbindungErfassen.class;
 	}
 }

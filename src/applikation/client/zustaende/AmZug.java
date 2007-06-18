@@ -19,12 +19,12 @@ import dienste.automat.zustaende.Zustand;
  */
 public class AmZug extends ClientZustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		spielDaten.zugAutomat.step(event);
+		spiel.zugAutomat.step(event);
 		return this.getClass();
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		spielDaten.zugAutomat.step(event);
+		spiel.zugAutomat.step(event);
 		return this.getClass();
 	}
 
@@ -40,26 +40,26 @@ public class AmZug extends ClientZustand {
 
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
-		spielDaten.zugAutomat.step(event);
+		spiel.zugAutomat.step(event);
 		return this.getClass();
 	}
 
 	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {
-		spielDaten.spielerIch.getKarten().remove(erfassterZug.getKarte());
-		spielDaten.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
+		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
+		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
 		return NichtAmZug.class;
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-		if (spielDaten.spielerIch.kannZiehen()) {
+		if (spiel.spielerIch.kannZiehen()) {
 			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben werden, " +
                                "da es noch möglich ist zu ziehen.");
 			return this.getClass();
 		} else {
-			spielDaten.endpunkt.sende(new Aufgabe());
+			spiel.endpunkt.sende(new Aufgabe());
 			/* TODO: evtl. ins onexit? (-reto) */
-			spielDaten.spielerIch.getKarten().setAktiv(false);
-			spielDaten.spielerIch.getKarten().clear();
+			spiel.spielerIch.getKarten().setAktiv(false);
+			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;
 		}
 	}

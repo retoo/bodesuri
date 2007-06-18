@@ -32,9 +32,9 @@ public class Lobby extends ClientZustand {
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
 		for (SpielerInfo si : startNachricht.spielInfo.spielers) {
 			String name = si.name;
-			Spieler neuerSpieler = spielDaten.spiel.fuegeHinzu(name);
-            if (name.equals(spielDaten.spielerName)) {
-            	spielDaten.spielerIch = neuerSpieler;
+			Spieler neuerSpieler = spiel.fuegeHinzu(name);
+            if (name.equals(spiel.spielerName)) {
+            	spiel.spielerIch = neuerSpieler;
             }
             
 //            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));

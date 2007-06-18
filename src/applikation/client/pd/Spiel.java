@@ -5,13 +5,27 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
+import dienste.automat.Automat;
+import dienste.eventqueue.EventQueue;
+import dienste.netzwerk.EndPunktInterface;
+import dienste.serialisierung.SerialisierungsKontext;
+
+import pd.SpielThreads;
 import pd.zugsystem.ZugEingabe;
 
-public class Spiel extends Observable {
+public class Spiel extends Observable implements SerialisierungsKontext {
 	private pd.Spiel spiel;
 
 	private Brett brett;
 	private Vector<Spieler> spieler;
+
+	public EventQueue queue;
+	public EndPunktInterface endpunkt;
+	public Automat zugAutomat;
+
+	public String spielerName;
+	public Spieler spielerIch;
+	public applikation.client.pd.Spieler aktuellerSpieler;
 
 	private String hinweis;
 	private ZugEingabe letzterZug;
@@ -42,11 +56,11 @@ public class Spiel extends Observable {
 		Spieler s = spielerRegister.get(spieler);
 
 		if (s == null) {
-			throw new RuntimeException("Kann app.Spieler für den Spieler " + spieler + " nicht finden!");
+			throw new RuntimeException("Kann app.Spieler für den Spieler "
+			                           + spieler + " nicht finden!");
 		}
 		return s;
 	}
-
 
 	public Brett getBrett() {
 		return brett;
@@ -71,16 +85,20 @@ public class Spiel extends Observable {
 	}
 
 	public Chat getChat() {
-	    return chat;
-    }
+		return chat;
+	}
 
 	public ZugEingabe getLetzterZug() {
-    	return letzterZug;
-    }
+		return letzterZug;
+	}
 
 	public void setLetzterZug(ZugEingabe letzterZug) {
-    	this.letzterZug = letzterZug;
-    	setChanged();
-    	notifyObservers();
-    }
+		this.letzterZug = letzterZug;
+		setChanged();
+		notifyObservers();
+	}
+
+	public void registriere(Thread thread) {
+		SpielThreads.registriere(thread, spiel);
+	}
 }
