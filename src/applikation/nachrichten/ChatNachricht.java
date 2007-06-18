@@ -6,15 +6,11 @@ import dienste.netzwerk.Nachricht;
  * Nachricht die eine Chatnachricht beinhaltet
  */
 public class ChatNachricht extends Nachricht {
-	/**
-	 * Chat-Nachricht
-	 */
-	public final String nachricht;
+	public final String text;
+	public final String sender;
 
-	/**
-	 * @param nachricht
-	 */
-	public ChatNachricht(String nachricht) {
-		this.nachricht = nachricht;
+	public ChatNachricht(String sender, String nachricht) {
+		this.text = nachricht;
+		this.sender = sender;
 	}
 }

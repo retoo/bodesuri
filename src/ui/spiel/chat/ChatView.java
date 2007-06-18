@@ -1,12 +1,12 @@
 package ui.spiel.chat;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -33,7 +33,7 @@ public class ChatView extends JPanel implements Observer {
 		chat.addObserver(this);
 
 		// Layout setzen
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(new BorderLayout());
 		setBackground(Color.darkGray);
 
 		// Layout zusammenstellen
@@ -43,9 +43,11 @@ public class ChatView extends JPanel implements Observer {
 		/* hässlich, wir zwingen das textarea min. drei Zeilen gross zu sein */
 		chatArea.setText("\n\n\n");
 
-		add(new JScrollPane(chatArea));
+		add(new JScrollPane(chatArea), BorderLayout.CENTER);
 
 		eingabe = new JTextField();
+
+		eingabe.requestFocusInWindow();
 
 		eingabe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -54,7 +56,7 @@ public class ChatView extends JPanel implements Observer {
 			}
 		});
 
-		add(eingabe);
+		add(eingabe, BorderLayout.SOUTH);
 	}
 
 	public void update(Observable o, Object arg) {

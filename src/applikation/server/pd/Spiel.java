@@ -102,7 +102,7 @@ public class Spiel implements SerialisierungsKontext {
 	 *            zu sendende Textmitteilung
 	 */
 	public void broadcast(String msg) {
-		broadcast(new ChatNachricht(msg));
+		broadcast(new ChatNachricht("Server", msg));
 	}
 
 	/**

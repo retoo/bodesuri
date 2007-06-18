@@ -75,9 +75,7 @@ public class ClientZustand extends Zustand {
 	    Brief brief = be.brief;
 	    Nachricht nachricht = brief.nachricht;
 
-	    if (nachricht instanceof ChatNachricht)
-	    	return chatNachricht(brief.absender, ((ChatNachricht) nachricht).nachricht);
-	    else if (nachricht instanceof SpielVollNachricht)
+	    if (nachricht instanceof SpielVollNachricht)
 	    	return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
 	    else if (nachricht instanceof BeitrittsInformation)
 	    	return beitrittsBestaetitigung((BeitrittsInformation) nachricht);
@@ -95,6 +93,8 @@ public class ClientZustand extends Zustand {
 	    	return rundenStart((RundenStart) nachricht);
 	    else if (nachricht instanceof VerbindungGeschlossen)
 	    	return verbindungGeschlossen(brief.absender);
+	    else if (nachricht instanceof ChatNachricht)
+	    	return chatNachricht(brief.absender, (ChatNachricht) nachricht);
 	    else
 	    	System.out.println("Nachricht " + nachricht.getClass()
 	    	                   + " ist (noch) nicht implementiert!");
@@ -105,7 +105,7 @@ public class ClientZustand extends Zustand {
 	/* GUI Handler - Global */
 
 	Class<? extends Zustand> chatEingabe(ChatEingabeEvent eingabe) {
-		ChatNachricht cn = new ChatNachricht(eingabe.text);
+		ChatNachricht cn = new ChatNachricht(spielDaten.spielerIch.getName(), eingabe.text);
 		spielDaten.endpunkt.sende(cn);
 
 		return this.getClass();
@@ -162,8 +162,8 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
-		spielDaten.spiel.getChat().neueNachricht(absender.toString(), nachricht);
+	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, ChatNachricht nachricht) {
+		spielDaten.spiel.getChat().neueNachricht(nachricht.sender, nachricht.text);
 
 		return this.getClass();
 	}
