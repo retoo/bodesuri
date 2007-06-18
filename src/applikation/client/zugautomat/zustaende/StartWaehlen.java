@@ -30,7 +30,6 @@ public class StartWaehlen extends ClientZugZustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		Feld feld = event.feld;
 
-
 		spielDaten.start = feld;
 		Figur figur = feld.getFigur();
 		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
