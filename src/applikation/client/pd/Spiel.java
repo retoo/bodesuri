@@ -12,7 +12,7 @@ public class Spiel extends Observable {
 
 	private Brett brett;
 	private Vector<Spieler> spieler;
-	
+
 	private String hinweis;
 	private ZugEingabe letzterZug;
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
@@ -27,7 +27,6 @@ public class Spiel extends Observable {
 		chat = new Chat();
 	}
 
-	// TODO: Heisst bei Reto neuerSpieler()
 	public Spieler fuegeHinzu(String spielerName) {
 		pd.spieler.Spieler spielerPD = spiel.fuegeHinzu(spielerName);
 
