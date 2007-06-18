@@ -3,6 +3,7 @@ package applikation.client.zugautomat.zustaende;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.zugautomat.pd.SpielDaten;
@@ -22,13 +23,19 @@ public class ClientZugZustand extends Zustand {
 			return feldAbgewaehlt((FeldAbgewaehltEvent) event);
 		else if (event instanceof HoverStartEvent)
 			return hoverStart((HoverStartEvent) event);
+		else if (event instanceof HoverEndeEvent)
+			return hoverEnde((HoverEndeEvent) event);
 
 		return super.handle(event);
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		return ignoriereEvent("hoverStart");
-    }
+		return ignoriereEvent();
+	}
+
+	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
+		return ignoriereEvent();
+	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		return ignoriereEvent("karteGewaehlt");
@@ -37,16 +44,16 @@ public class ClientZugZustand extends Zustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return ignoriereEvent("feldGewaehlt");
 	}
-	
+
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
 	}
 
 	public void setController(Controller controller) {
 		this.controller = controller;
-    }
+	}
 
 	public void setspielDaten(SpielDaten spielDaten) {
-	    this.spielDaten = spielDaten;
-    }
+		this.spielDaten = spielDaten;
+	}
 }

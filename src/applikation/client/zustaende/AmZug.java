@@ -34,11 +34,13 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
+		spiel.zugAutomat.step(event);
 		event.feld.setHover(true);
 		return this.getClass();
 	}
 
 	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
+		spiel.zugAutomat.step(event);
 		event.feld.setHover(false);
 		return this.getClass();
 	}

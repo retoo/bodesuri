@@ -2,11 +2,15 @@ package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Weg;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.HoverEndeEvent;
+import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.ZugErfasstEvent;
+import applikation.client.pd.Brett;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
@@ -31,13 +35,17 @@ public class ZielWaehlen extends ClientZugZustand {
 		} else {
 			spielDaten.ziel = event.feld;
 
-			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(), spielDaten.ziel.getFeld());
-			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spiel.spielerIch,
-			                                       spielDaten.karte, bewegung);
+			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
+			                                 spielDaten.ziel.getFeld());
+			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(
+			                                                   spielDaten.spiel.spielerIch,
+			                                                   spielDaten.karte,
+			                                                   bewegung);
 			try {
 				erfassterZug.toZugEingabe().validiere();
 			} catch (RegelVerstoss e) {
-				controller.zeigeFehlermeldung("Ungültiger Zug: " + e.getMessage());
+				controller.zeigeFehlermeldung("Ungültiger Zug: "
+				                              + e.getMessage());
 				return this.getClass();
 			}
 
@@ -59,5 +67,38 @@ public class ZielWaehlen extends ClientZugZustand {
 		spielDaten.karte = event.karte;
 		spielDaten.start.setAusgewaehlt(false);
 		return StartWaehlen.class;
+	}
+
+	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
+		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
+		                                 event.feld.getFeld());
+		Brett brett = spielDaten.spiel.getBrett();
+
+		Weg weg = bewegung.getWeg();
+
+		if (weg != null) {
+			for (pd.brett.Feld f : weg) {
+				brett.getFeld(f).setHover(true);
+			}
+		}
+
+		return this.getClass();
+	}
+
+	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
+		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
+		                                 event.feld.getFeld());
+		Brett brett = spielDaten.spiel.getBrett();
+
+		Weg weg = bewegung.getWeg();
+
+		if (weg != null) {
+
+			for (pd.brett.Feld f : weg) {
+				brett.getFeld(f).setHover(false);
+			}
+		}
+
+		return this.getClass();
 	}
 }
