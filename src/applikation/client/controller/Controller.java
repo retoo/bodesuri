@@ -10,6 +10,7 @@ import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 import applikation.events.AufgegebenEvent;
+import applikation.events.ChatEingabeEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.HoverEndeEvent;
@@ -92,4 +93,8 @@ public abstract class Controller implements Steuerung {
 		eventQueue.enqueue(hee);
 	}
 
+	public void chatNachricht(String text) {
+		ChatEingabeEvent cee = new ChatEingabeEvent(text);
+		eventQueue.enqueue(cee);
+    }
 }

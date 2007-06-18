@@ -5,6 +5,7 @@ import applikation.client.controller.Controller;
 import applikation.client.pd.SpielDaten;
 import applikation.client.pd.ZugEingabe;
 import applikation.events.AufgegebenEvent;
+import applikation.events.ChatEingabeEvent;
 import applikation.events.FeldAbgewaehltEvent;
 import applikation.events.FeldGewaehltEvent;
 import applikation.events.GezogenEvent;
@@ -39,67 +40,85 @@ public class ClientZustand extends Zustand {
 
 	public Class<? extends Zustand> handle(Event event) {
 		if (event instanceof NetzwerkEvent) {
-			NetzwerkEvent be = (NetzwerkEvent) event;
-
-			Brief brief = be.brief;
-			Nachricht nachricht = brief.nachricht;
-
-			if (nachricht instanceof ChatNachricht)
-				return chatNachricht(brief.absender, ((ChatNachricht) nachricht).nachricht);
-			else if (nachricht instanceof SpielVollNachricht)
-				return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
-			else if (nachricht instanceof BeitrittsInformation)
-				return beitrittsBestaetitigung((BeitrittsInformation) nachricht);
-			else if (nachricht instanceof SpielStartNachricht)
-				return spielStarten((SpielStartNachricht) nachricht);
-			else if (nachricht instanceof ZugInformation)
-				return zugWurdeGemacht(((ZugInformation) nachricht).zug);
-			else if (nachricht instanceof ZugAufforderung)
-				return zugAufforderung((ZugAufforderung) nachricht);
-			else if (nachricht instanceof AktuellerSpielerInformation)
-				return aktuellerSpielerInformation((AktuellerSpielerInformation) nachricht);
-			else if (nachricht instanceof KartenTausch)
-				return kartenTausch(((KartenTausch) nachricht).karte);
-			else if (nachricht instanceof RundenStart)
-				return rundenStart((RundenStart) nachricht);
-			else if (nachricht instanceof VerbindungGeschlossen)
-				return verbindungGeschlossen(brief.absender);
-			else
-				System.out.println("Nachricht " + nachricht.getClass()
-				                   + " ist (noch) nicht implementiert!");
-
+			return handleNetzwerk(event);
 		} else {
-			if (event instanceof VerbindeEvent)
-				return verbinden((VerbindeEvent) event);
-			else if (event instanceof AufgegebenEvent)
-				return aufgegeben();
-			else if (event instanceof GezogenEvent)
-				return gezogen(((GezogenEvent) event).zugEingabe);
-			else if (event instanceof KarteGewaehltEvent)
-				return karteGewaehlt((KarteGewaehltEvent) event);
-			else if (event instanceof FeldGewaehltEvent)
-				return feldGewaehlt((FeldGewaehltEvent) event);
-			else if (event instanceof FeldAbgewaehltEvent)
-				return feldAbgewaehlt((FeldAbgewaehltEvent) event);
-			else if (event instanceof HoverStartEvent)
-				return hoverStart((HoverStartEvent) event);
-			else if (event instanceof HoverEndeEvent)
-				return hoverEnde((HoverEndeEvent) event);
+			return handleGUI(event);
 		}
-
-		return super.handle(event);
 	}
 
+	private Class<? extends Zustand> handleGUI(Event event) {
+	    if (event instanceof VerbindeEvent)
+	    	return verbinden((VerbindeEvent) event);
+	    else if (event instanceof AufgegebenEvent)
+	    	return aufgegeben();
+	    else if (event instanceof GezogenEvent)
+	    	return gezogen(((GezogenEvent) event).zugEingabe);
+	    else if (event instanceof KarteGewaehltEvent)
+	    	return karteGewaehlt((KarteGewaehltEvent) event);
+	    else if (event instanceof FeldGewaehltEvent)
+	    	return feldGewaehlt((FeldGewaehltEvent) event);
+	    else if (event instanceof FeldAbgewaehltEvent)
+	    	return feldAbgewaehlt((FeldAbgewaehltEvent) event);
+	    else if (event instanceof HoverStartEvent)
+	    	return hoverStart((HoverStartEvent) event);
+	    else if (event instanceof HoverEndeEvent)
+	    	return hoverEnde((HoverEndeEvent) event);
+	    else if (event instanceof ChatEingabeEvent)
+	    	return chatEingabe((ChatEingabeEvent) event);
 
+	    return super.handle(event);
+    }
+
+
+	private Class<? extends Zustand> handleNetzwerk(Event event) {
+	    NetzwerkEvent be = (NetzwerkEvent) event;
+
+	    Brief brief = be.brief;
+	    Nachricht nachricht = brief.nachricht;
+
+	    if (nachricht instanceof ChatNachricht)
+	    	return chatNachricht(brief.absender, ((ChatNachricht) nachricht).nachricht);
+	    else if (nachricht instanceof SpielVollNachricht)
+	    	return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
+	    else if (nachricht instanceof BeitrittsInformation)
+	    	return beitrittsBestaetitigung((BeitrittsInformation) nachricht);
+	    else if (nachricht instanceof SpielStartNachricht)
+	    	return spielStarten((SpielStartNachricht) nachricht);
+	    else if (nachricht instanceof ZugInformation)
+	    	return zugWurdeGemacht(((ZugInformation) nachricht).zug);
+	    else if (nachricht instanceof ZugAufforderung)
+	    	return zugAufforderung((ZugAufforderung) nachricht);
+	    else if (nachricht instanceof AktuellerSpielerInformation)
+	    	return aktuellerSpielerInformation((AktuellerSpielerInformation) nachricht);
+	    else if (nachricht instanceof KartenTausch)
+	    	return kartenTausch(((KartenTausch) nachricht).karte);
+	    else if (nachricht instanceof RundenStart)
+	    	return rundenStart((RundenStart) nachricht);
+	    else if (nachricht instanceof VerbindungGeschlossen)
+	    	return verbindungGeschlossen(brief.absender);
+	    else
+	    	System.out.println("Nachricht " + nachricht.getClass()
+	    	                   + " ist (noch) nicht implementiert!");
+
+	    return super.handle(event);
+    }
+
+	/* GUI Handler - Global */
+
+	Class<? extends Zustand> chatEingabe(ChatEingabeEvent eingabe) {
+		ChatNachricht cn = new ChatNachricht(eingabe.text);
+		spielDaten.endpunkt.sende(cn);
+
+		return this.getClass();
+    }
 
 	/* GUI Handler - Verbinden */
-
-	/* GUI Handler - Lobby */
-
 
 	Class<? extends Zustand> verbinden(VerbindeEvent event) {
 		return keinUebergang();
 	}
+
+	/* GUI Handler - Lobby */
 
 	/* GUI Handler - Spiel */
 
@@ -145,7 +164,7 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
-		System.out.println(nachricht);
+		spielDaten.spiel.getChat().neueNachricht(absender.toString(), nachricht);
 
 		return this.getClass();
 	}

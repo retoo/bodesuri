@@ -26,7 +26,7 @@ public class BodesuriView extends JFrame {
 
 		// Views
 		SpielView spielView = new SpielView(steuerung, spiel, spielerIch);
-		ChatView chatView = new ChatView(steuerung);
+		ChatView chatView = new ChatView(spiel.getChat(), steuerung);
 
 		// Layout zusammenstellen
 		getContentPane().add(spielView, BorderLayout.NORTH);

@@ -1,6 +1,7 @@
 	package applikation.server.zustaende;
 
 import applikation.nachrichten.Aufgabe;
+import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
@@ -43,6 +44,8 @@ public abstract class ServerZustand extends Zustand {
 				return kartenTausch(brief.absender, (KartenTausch) nachricht);
     		else if (nachricht instanceof Aufgabe)
     			return aufgabe(brief.absender, (Aufgabe) nachricht);
+    		else if (nachricht instanceof ChatNachricht)
+    			return chatnachricht(brief.absender, (ChatNachricht) nachricht);
     		else
     			throw new RuntimeException("Unbekannte Nachricht");
     	} 	/* Systemnachrichten */
@@ -54,6 +57,11 @@ public abstract class ServerZustand extends Zustand {
     }
 
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
+
+	private Class<? extends Zustand> chatnachricht(EndPunktInterface absender, ChatNachricht nachricht) {
+		spiel.broadcast(nachricht);
+	    return this.getClass();
+    }
 
 	Class<? extends Zustand> aufgabe(EndPunktInterface absender, Aufgabe aufgabe) {
 	    return keinUebergang();

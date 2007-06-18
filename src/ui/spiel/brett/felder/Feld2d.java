@@ -1,13 +1,13 @@
 package ui.spiel.brett.felder;
 
 import java.awt.Point;
+import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
 
 import ui.ressourcen.Icons;
-
 import applikation.client.pd.Feld;
 
 /**
@@ -20,7 +20,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	protected Icon icon;
 	private FigurenManager figurenManager;
 
-	public Feld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, Icon icon, FigurenManager figurenManager) {
+	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter, Icon icon, FigurenManager figurenManager) {
 		super(icon);
 		this.icon = icon;
 		this.position = p;
@@ -29,6 +29,8 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 
 		feld.addObserver(this);
 
+		/* TODO: Wollen wir das nicht hier rausnehmen (-reto)
+		 * könnte ja auch der ersteller von Feld2d machen */
 		addMouseListener(mouseAdapter);
 		update(null, null); /* TODO:: evtl. schöner machen */
 	}
@@ -63,7 +65,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 			 * einige figuren null sein. Dann zeichnen wir einfach ni.
 			 */
 			if (figur != null) {
-				figur.setzeAuf(this);
+				figur.setzeAuf(position.x, position.y);
 			}
 		}
 
@@ -83,7 +85,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	public Icon getAktivesIcon() {
 		return Icons.FELD_AUSWAHL;
 	}
-	
+
 	public Icon getHoverIcon() {
 		return Icons.FELD_HOVER;
 	}

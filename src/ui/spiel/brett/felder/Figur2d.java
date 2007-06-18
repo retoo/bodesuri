@@ -20,22 +20,16 @@ public class Figur2d extends JLabel {
 
 	/**
 	 * Die Spielfigur wird auf das ausgewählte Feld gesetzt.
+	 * @param x
+	 * @param y
 	 *
-	 * @param ziel
-	 *            Zielfeld
 	 */
-	public void setzeAuf(Feld2d ziel) {
-		setBounds(getPosX(ziel), getPosY(ziel), icon.getIconWidth(), icon
+	public void setzeAuf(int x, int y) {
+		int posX = x - (icon.getIconWidth() / 2) + 2;
+		int posY = y - (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2)) + 7;
+		setBounds(posX, posY, icon.getIconWidth(), icon
 				.getIconHeight());
 	}
 
-	public int getPosX(Feld2d ziel) {
-		return ziel.getPointX() - (icon.getIconWidth() / 2) + 2;
-	}
 
-	public int getPosY(Feld2d ziel) {
-		return ziel.getPointY()
-				- (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2))
-				+ 7;
-	}
 }

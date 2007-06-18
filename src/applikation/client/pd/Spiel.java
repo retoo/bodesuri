@@ -11,8 +11,8 @@ public class Spiel extends Observable {
 	private Brett brett;
 	private Vector<Spieler> spieler;
 	private String hinweis;
-
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
+	private Chat chat;
 
 	public Spiel() {
 		spiel = new pd.Spiel();
@@ -20,6 +20,7 @@ public class Spiel extends Observable {
 
 		spieler = new Vector<Spieler>();
 		brett = new Brett(spiel.getBrett());
+		chat = new Chat();
 	}
 
 	// TODO: Heisst bei Reto neuerSpieler()
@@ -65,4 +66,8 @@ public class Spiel extends Observable {
 		setChanged();
 		notifyObservers();
 	}
+
+	public Chat getChat() {
+	    return chat;
+    }
 }

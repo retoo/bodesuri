@@ -47,4 +47,6 @@ public interface Steuerung {
 	public abstract void hoverStart(Feld feld);
 	public abstract void hoverEnde(Feld feld);
 
+	public abstract void chatNachricht(String text);
+
 }
