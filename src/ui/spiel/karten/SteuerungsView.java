@@ -48,8 +48,7 @@ public class SteuerungsView extends JPanel implements Observer {
 	public void update(Observable o, Object arg) {
 		ZugEingabe letzterZug = spiel.getLetzterZug();
 		if (letzterZug != null) {
-			letzterZugLabel
-			               .setText(spiel.getLetzterZug().getKurzBeschreibung());
+			letzterZugLabel.setText(letzterZug.getKurzBeschreibung());
 		} else {
 			letzterZugLabel.setText("");
 		}
