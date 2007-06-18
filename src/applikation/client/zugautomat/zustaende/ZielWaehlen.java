@@ -5,9 +5,8 @@ import pd.zugsystem.Bewegung;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
-import applikation.client.events.GezogenEvent;
 import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.pd.ZugEingabe;
+import applikation.client.events.ZugErfasstEvent;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
@@ -32,18 +31,17 @@ public class ZielWaehlen extends ClientZugZustand {
 		} else {
 			spielDaten.ziel = event.feld;
 
-			/* Kann in eine seperate Methode oder in die Klasse SpielDaten verschoben werden */
 			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(), spielDaten.ziel.getFeld());
-			ZugEingabe zugEingabe = new ZugEingabe(spielDaten.spielerIch,
+			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spielerIch,
 			                                       spielDaten.karte, bewegung);
 			try {
-				zugEingabe.validiere();
+				erfassterZug.toZugEingabe().validiere();
 			} catch (RegelVerstoss e) {
 				controller.zeigeFehlermeldung("Ungültiger Zug: " + e.getMessage());
 				return this.getClass();
 			}
 
-			spielDaten.eventQueueBodesuriClient.enqueue(new GezogenEvent(zugEingabe));
+			spielDaten.eventQueueBodesuriClient.enqueue(erfassterZug);
 
 			spielDaten.start.setAusgewaehlt(false);
 			spielDaten.spielerIch.getKarten().setAktiv(false);

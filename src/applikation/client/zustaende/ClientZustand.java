@@ -6,13 +6,12 @@ import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.ChatEingabeEvent;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
-import applikation.client.events.GezogenEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.VerbindeEvent;
+import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.SpielDaten;
-import applikation.client.pd.ZugEingabe;
 import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
@@ -51,8 +50,8 @@ public class ClientZustand extends Zustand {
 	    	return verbinden((VerbindeEvent) event);
 	    else if (event instanceof AufgegebenEvent)
 	    	return aufgegeben();
-	    else if (event instanceof GezogenEvent)
-	    	return gezogen(((GezogenEvent) event).zugEingabe);
+	    else if (event instanceof ZugErfasstEvent)
+	    	return gezogen((ZugErfasstEvent) event);
 	    else if (event instanceof KarteGewaehltEvent)
 	    	return karteGewaehlt((KarteGewaehltEvent) event);
 	    else if (event instanceof FeldGewaehltEvent)
@@ -122,7 +121,7 @@ public class ClientZustand extends Zustand {
 
 	/* GUI Handler - Spiel */
 
-	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
+	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {
 		return ignoriereEvent("gezogen");
 	}
 

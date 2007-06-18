@@ -5,7 +5,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.pd.ZugEingabe;
+import applikation.client.events.ZugErfasstEvent;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ZugInformation;
@@ -14,7 +14,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustand in welchem der Spieler dran kommt. Erstellt einen {@link ZugAutomat}
  * der sich um das Erfassen und Validieren eines Zuges kümmert. Der Automat
- * sendet eine {@link ZugEingabe} wenn er fertig ist. Diese wird versandt und
+ * sendet eine {@link ZugErfasstEvent} wenn er fertig ist. Diese wird versandt und
  * der Automat geht nach {@link NichtAmZug} über.
  */
 public class AmZug extends ClientZustand {
@@ -44,9 +44,9 @@ public class AmZug extends ClientZustand {
 		return this.getClass();
 	}
 
-	Class<? extends Zustand> gezogen(ZugEingabe zugEingabe) {
-		spielDaten.spielerIch.getKarten().remove(zugEingabe.getKarte());
-		spielDaten.endpunkt.sende(new ZugInformation(zugEingabe.getZugEingabe()));
+	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {
+		spielDaten.spielerIch.getKarten().remove(erfassterZug.getKarte());
+		spielDaten.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
 		return NichtAmZug.class;
 	}
 
