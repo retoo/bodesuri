@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
@@ -41,8 +40,14 @@ public class BrettView extends JPanel implements Observer {
 		this.spiel = spiel;
 
 		setLayout(null);
-		setPreferredSize(new Dimension(600, 600));
-		setMinimumSize(new Dimension(600, 600));
+		setOpaque(false);
+
+		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
+		Brett2d spielBrett2d = new Brett2d(brettAdapter);
+
+		setPreferredSize(spielBrett2d.getPreferredSize());
+		setMinimumSize(spielBrett2d.getMinimumSize());
+		setMaximumSize(spielBrett2d.getMaximumSize());
 
 		try {
 			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
@@ -83,13 +88,12 @@ public class BrettView extends JPanel implements Observer {
 			this.add(feld2d);
 		}
 
+		add(spielBrett2d);
+
 		// SpielerViews darstellen
 		zeichneSpielerView(steuerung, spiel.getSpieler());
 
 		erstelleHinweis();
-
-		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
-		add(new SpielBrett2d(brettAdapter));
 
 		spiel.addObserver(this);
 	}

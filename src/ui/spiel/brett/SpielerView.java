@@ -30,7 +30,7 @@ public class SpielerView extends JPanel implements Observer {
 		farbeMap.put(SpielerFarbe.gruen, Icons.SPIELER_GRUEN);
 		farbeMap.put(SpielerFarbe.rot, Icons.SPIELER_ROT);
 
-		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setOpaque(false);
 
 		spieler.addObserver(this);

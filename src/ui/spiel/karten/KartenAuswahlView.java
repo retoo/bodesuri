@@ -1,6 +1,7 @@
 package ui.spiel.karten;
 
-import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 import javax.swing.JPanel;
 
@@ -12,8 +13,8 @@ public class KartenAuswahlView extends JPanel {
 	private DeckView deckView;
 
 	public KartenAuswahlView(Steuerung steuerung, Spiel spiel) {
+		setLayout(new GridBagLayout());
 		setOpaque(false);
-		setLayout(new BorderLayout());
 
 		// Views
 		deckView = new DeckView(steuerung, this, spiel.spielerIch);
@@ -21,9 +22,20 @@ public class KartenAuswahlView extends JPanel {
 		SteuerungsView steuerungsView = new SteuerungsView(steuerung, spiel);
 
 		// Layout zusammenstellen
-		add(deckView, BorderLayout.NORTH);
-		add(karteGewaehltView, BorderLayout.CENTER);
-		add(steuerungsView, BorderLayout.SOUTH);
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.anchor = GridBagConstraints.NORTH;
+		c.fill = GridBagConstraints.HORIZONTAL;
+
+		c.weighty = 0.0;
+		add(deckView, c);
+
+		c.weighty = 0.0;
+		add(karteGewaehltView, c);
+
+		c.weighty = 1.0;
+		add(steuerungsView, c);
 	}
 
 	public DeckView getDeckView() {

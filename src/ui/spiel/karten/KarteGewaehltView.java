@@ -1,9 +1,9 @@
 package ui.spiel.karten;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -16,23 +16,28 @@ public class KarteGewaehltView extends JPanel {
 	private JTextArea beschreibung;
 
 	public KarteGewaehltView(Steuerung steuerung) {
-		setLayout(new BorderLayout());
+		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		setOpaque(false);
 
 		name = new JLabel();
+		name.setOpaque(false);
 		Font nameFont = name.getFont().deriveFont(Font.BOLD, 16);
 		name.setFont(nameFont);
 
 		beschreibung = new JTextArea();
+		beschreibung.setOpaque(false);
 		beschreibung.setLineWrap(true);
 		beschreibung.setEnabled(false);
 		beschreibung.setWrapStyleWord(true);
-		beschreibung.setOpaque(false);
 		beschreibung.setDisabledTextColor(beschreibung.getForeground());
+		beschreibung.setRows(2);
 
-		add(name, BorderLayout.NORTH);
-		add(beschreibung, BorderLayout.CENTER);
+		name.setAlignmentX(JLabel.LEFT_ALIGNMENT);
+		beschreibung.setAlignmentX(JTextArea.LEFT_ALIGNMENT);
+		
+		add(name);
+		add(beschreibung);
 	}
 
 	public void zeigeKarte(Karte karte) {
@@ -41,7 +46,8 @@ public class KarteGewaehltView extends JPanel {
 	}
 
 	public void zeigeKeineKarte() {
-		name.setText("");
-		beschreibung.setText("");
+		// Leerzeichen sind ein Hack, damit die Grösse richtig berechnet wird.
+		name.setText(" ");
+		beschreibung.setText(" ");
 	}
 }
