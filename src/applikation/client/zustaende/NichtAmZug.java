@@ -5,6 +5,7 @@ import applikation.client.pd.Karte;
 import applikation.client.pd.Spieler;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.AktuellerSpielerInformation;
+import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
@@ -62,11 +63,22 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		spiel.spielerIch.getKarten().clear();
 		spiel.setLetzterZug(null);
+		for (Spieler spieler : spiel.getSpieler()) {
+			spieler.setHatAufgebeben(false);
+		}
+		
+		spiel.spielerIch.getKarten().clear();
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));
 		}
+		
 		return StarteRunde.class;
+	}
+	
+	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
+		Spieler spieler = spiel.findeSpieler(aufgabe.spieler);
+		spieler.setHatAufgebeben(true);
+		return this.getClass();
 	}
 }

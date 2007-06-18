@@ -1,4 +1,4 @@
-package applikation.server.zustaende;
+package applikation.nachrichten;
 
 import dienste.netzwerk.Nachricht;
 import pd.spieler.Spieler;

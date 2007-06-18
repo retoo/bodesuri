@@ -13,6 +13,7 @@ import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 import applikation.nachrichten.AktuellerSpielerInformation;
+import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
@@ -91,6 +92,8 @@ public class ClientZustand extends Zustand {
 	    	return kartenTausch(((KartenTausch) nachricht).karte);
 	    else if (nachricht instanceof RundenStart)
 	    	return rundenStart((RundenStart) nachricht);
+	    else if (nachricht instanceof AufgabeInformation) 
+	    	return aufgabe((AufgabeInformation) nachricht);
 	    else if (nachricht instanceof VerbindungGeschlossen)
 	    	return verbindungGeschlossen(brief.absender);
 	    else if (nachricht instanceof ChatNachricht)
@@ -188,6 +191,10 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenstart) {
+		return keinUebergang();
+	}
+	
+	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
 		return keinUebergang();
 	}
 

@@ -22,7 +22,7 @@ import applikation.client.pd.Spieler;
 public class SpielerView extends JPanel implements Observer {
 	private IdentityHashMap<SpielerFarbe, Icon> farbeMap;
 	private JLabel name;
-	
+
 	public SpielerView(Spieler spieler) {
 		farbeMap = new IdentityHashMap<SpielerFarbe, Icon>();
 		farbeMap.put(SpielerFarbe.blau, Icons.SPIELER_BLAU);
@@ -34,16 +34,21 @@ public class SpielerView extends JPanel implements Observer {
 		setOpaque(false);
 
 		spieler.addObserver(this);
-		
+
 		this.name = new JLabel(spieler.getSpieler().getName());
 		name.setIcon(farbeMap.get(spieler.getSpieler().getFarbe()));
 		name.setFont(name.getFont().deriveFont(Font.BOLD));
 		add(name);
 	}
 
-	public void update(Observable arg0, Object arg) {
-		if ((Boolean) arg) {
+	public void update(Observable observable, Object arg) {
+		Spieler spieler = (Spieler) observable;
+		if (spieler.getAmZug()) {
 			this.name.setForeground(Color.WHITE);
+		} else if (spieler.getHatAufgebeben()) {
+			// TODO: Evtl. noch schöner visualisieren. Grau ist nicht sehr
+			// intuitiv --Philippe
+			this.name.setForeground(Color.GRAY);
 		} else {
 			this.name.setForeground(Color.BLACK);
 		}

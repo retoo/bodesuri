@@ -3,6 +3,7 @@ package applikation.server.zustaende;
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Zug;
 import applikation.nachrichten.Aufgabe;
+import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.ZugInformation;
 import applikation.server.pd.Runde;
 import applikation.server.pd.RundenTeilnahme;
