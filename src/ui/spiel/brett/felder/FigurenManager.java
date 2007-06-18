@@ -20,6 +20,5 @@ public class FigurenManager {
 
 	public void registriere(Figur figur, Figur2d figur2d) {
 		figurMap.put(figur, figur2d);
-		System.out.println("Registriere: " + figur + " - " + figur2d);
 	}
 }
