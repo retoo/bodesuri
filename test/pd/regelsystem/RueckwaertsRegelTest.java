@@ -8,6 +8,13 @@ public class RueckwaertsRegelTest extends RegelTestCase {
 		sollteValidieren(new RueckwaertsRegel(5));
 	}
 	
+	public void testRueckwaertsVorwaerts() throws RegelVerstoss {
+		start = bank(0);
+		ziel  = bank(0).getNtesFeld(5);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new RueckwaertsRegel(5));
+	}
+	
 	public void testRueckwaertsImHimmel() {
 		start = himmel(0, 3);
 		ziel  = himmel(0, 1);
