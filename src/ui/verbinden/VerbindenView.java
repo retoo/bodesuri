@@ -121,7 +121,7 @@ public class VerbindenView extends JFrame {
 
 
 
-	private class InputTextField extends JTextField {
+	private static class InputTextField extends JTextField {
 		private final Color FOCUS_GAINED 	= new Color(220, 223, 228);
 		private final Color FOCUS_LOST 		= new Color(255, 255, 255);
 
@@ -152,7 +152,7 @@ public class VerbindenView extends JFrame {
 
 		}
 
-		private class MyDocument extends PlainDocument {
+		private static class MyDocument extends PlainDocument {
 			private final int LIMIT;
 
 			/**
@@ -182,7 +182,7 @@ public class VerbindenView extends JFrame {
 		}
 	}
 
-	private class InputPanel extends JPanel {
+	private static class InputPanel extends JPanel {
 		public InputPanel(JTextField hostname, JTextField port,
 				JTextField spielerName) {
 			setLayout(new GridLayout(3, 2, 0, 5));
