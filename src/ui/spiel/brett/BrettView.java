@@ -73,13 +73,6 @@ public class BrettView extends JPanel implements Observer {
 
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(steuerung);
 
-		// TODO: In ressourcen.Icons lösen (ähnlich wie bei Karten)
-		IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
-		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
-		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
-		farbeFeldMap.put(SpielerFarbe.values()[2], Icons.FELD_BLAU);
-		farbeFeldMap.put(SpielerFarbe.values()[3], Icons.FELD_GELB);
-
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 
@@ -89,9 +82,8 @@ public class BrettView extends JPanel implements Observer {
 				feld2d = new NormalesFeld2d(position, feld, mouseAdapter,
 				                            figurenManager);
 			} else {
-				// TODO Ohne Cast möglich? --Philippe -- glaubs nein (-reto)
 				SpielerFeld f = (SpielerFeld) feld.getFeld();
-				Icon icon = farbeFeldMap.get(f.getSpieler().getFarbe());
+				Icon icon = Icons.farbeFeldMap.get(f.getSpieler().getFarbe());
 				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon,
 				                           figurenManager);
 			}

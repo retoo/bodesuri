@@ -2,10 +2,13 @@ package ui.ressourcen;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
 import java.util.Map;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
+import pd.spieler.SpielerFarbe;
 
 import applikation.client.pd.Karte;
 
@@ -16,7 +19,7 @@ final public class Icons {
 	// Verbinden
 	public static final Icon VERBINDEN = ladeBild("/ui/ressourcen/verbinden.png");
 	public static final Icon BODESURI_START = ladeBild("/ui/ressourcen/bodesuri_starten.png");
-	
+
 	// Felder
 	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_blau.png");
 	public static final Icon FIGUR_GRUEN = ladeBild("/ui/ressourcen/figur_gruen.png");
@@ -44,6 +47,15 @@ final public class Icons {
 	public static final Icon KARTEN_PLATZHALTER = ladeBild("/ui/ressourcen/karten/karte_platzhalter.png");
 
 	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
+
+	public static final IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
+
+	static {
+		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
+		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
+		farbeFeldMap.put(SpielerFarbe.values()[2], Icons.FELD_BLAU);
+		farbeFeldMap.put(SpielerFarbe.values()[3], Icons.FELD_GELB);
+	}
 
 	/**
 	 * Lädt das angegeben Icon.
