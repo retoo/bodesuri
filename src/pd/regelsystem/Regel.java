@@ -4,7 +4,7 @@ import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 
-// TODO: Gründe für RegelVerstoss vereinheitlichen.
+// TODO: Robin: Gründe für RegelVerstoss vereinheitlichen. --Robin
 
 /**
  * Basisklasse für Regeln. 

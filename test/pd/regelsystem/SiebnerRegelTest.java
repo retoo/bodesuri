@@ -238,7 +238,7 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(regel.kannZiehen(spieler(0)));
 	}
 	
-	// TODO: Mehr und kompliziertere Tests schreiben, z. B. mit Himmel.
+	// TODO: Robin Mehr und kompliziertere Tests schreiben, z. B. mit Himmel. --Robin
 	
 	protected List<Bewegung> getBewegungen() {
 		Vector<Bewegung> bewegungen = new Vector<Bewegung>();

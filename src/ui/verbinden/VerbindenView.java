@@ -77,8 +77,8 @@ public class VerbindenView extends JFrame {
 		// Actions definieren und Tastenbefehle binden
 		AbstractAction abbrechenAction = new AbstractAction("Abbrechen") {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Braucht es solch eine Funktion im Controller?
-				// controller.beenden();
+				// TODO: Pascal: Braucht es solch eine Funktion im Controller?
+				// controller.beenden(); --Pascal
 				VerbindenView.this.setVisible(false);
 				VerbindenView.this.dispose();
 				System.exit(0);

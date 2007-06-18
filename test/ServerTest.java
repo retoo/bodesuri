@@ -60,7 +60,7 @@ public class ServerTest extends TestCase {
 			Nachricht beitrittBestaetigung = ts.getNachricht();
 			assertTrue("Prüfen ob brief vom Typ Beitrittsbestätigung: " + beitrittBestaetigung, beitrittBestaetigung instanceof BeitrittsInformation);
 
-			/* TODO: hässlich reto, mach das besser !!*/
+			/* TODO: Reto: hässlich reto, mach das besser !! --Reto*/
 	/*		Nachricht spielstart;
 			while( true ) {
 				 spielstart = ts.getNachricht();

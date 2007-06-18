@@ -25,7 +25,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 	    setBeschreibung("7 vorwärts, auf beliebige Figuren aufgeteilt");
     }
 
-	// TODO: Hat Review nötig :).
+	// TODO: Reto & Robin Hat Review nötig :). --Robin
 	@SuppressWarnings("null")
     public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {

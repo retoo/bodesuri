@@ -24,8 +24,7 @@ public class Lobby extends ClientZustand {
 	}
 
     Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetitigung) {
-    	//TODO: Controller(Lobby) über neuen Spieler benachrichtigen.
-    	// Soll die SpielerListe auch Observerable sein?
+    	//TODO: ??? Controller(Lobby) über neuen Spieler benachrichtigen. --Philippe
 	    return this.getClass();
     }
 

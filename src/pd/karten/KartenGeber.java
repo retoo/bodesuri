@@ -21,7 +21,6 @@ public class KartenGeber {
 	 * Karten vorhanden. Das Deck wird gemischelt.
 	 */
 	private void mischen() {
-		// TODO: Sollte Deck beim zweiten Mischen andere Nummer haben?
 		for (int i=0; i < 2; ++i) {
 			kartenStapel.addAll(Deck.erstelleKarten(i));
 		}

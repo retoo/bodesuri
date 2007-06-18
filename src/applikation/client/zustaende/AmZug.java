@@ -57,7 +57,6 @@ public class AmZug extends ClientZustand {
 			return this.getClass();
 		} else {
 			spiel.endpunkt.sende(new Aufgabe());
-			/* TODO: evtl. ins onexit? (-reto) */
 			spiel.spielerIch.getKarten().setAktiv(false);
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;

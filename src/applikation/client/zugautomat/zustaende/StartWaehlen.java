@@ -35,7 +35,8 @@ public class StartWaehlen extends ClientZugZustand {
 		Figur figur = feld.getFigur();
 		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
 
-		// Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich ist (TODO: schöner machen )
+		// TODO: Pascal: Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich
+		// ist --Reto
 		if (figur != null && figuren.contains(figur)) {
 			feld.setAusgewaehlt(true);
 			return ZielWaehlen.class;
