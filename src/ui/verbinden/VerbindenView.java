@@ -33,10 +33,10 @@ import applikation.client.controller.Steuerung;
  */
 public class VerbindenView extends JFrame {
 	// Konstanten und Vorgabewerte
-	private final int FRAME_WIDTH 		= 400;
-	private final int FRAME_HEIGHT 		= 216;
-	private final String DEFAULT_PORT 	= "7788";
-	private final String DEFAULT_HOST 	= "localhost";
+	private final static int FRAME_WIDTH 		= 400;
+	private final static int FRAME_HEIGHT 		= 216;
+	private final static String DEFAULT_PORT 	= "7788";
+	private final static String DEFAULT_HOST 	= "localhost";
 
 	// Components
 	private JTextField hostname 	= new InputTextField(DEFAULT_HOST, 15);
