@@ -1,17 +1,17 @@
 package applikation.client.pd;
 
 import java.util.IdentityHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
+import pd.SpielThreads;
+import pd.zugsystem.ZugEingabe;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.serialisierung.SerialisierungsKontext;
-
-import pd.SpielThreads;
-import pd.zugsystem.ZugEingabe;
 
 public class Spiel extends Observable implements SerialisierungsKontext {
 	private pd.Spiel spiel;
@@ -32,8 +32,11 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
 	private Chat chat;
 
+	public LinkedList<ZugEingabe> zugHistory;
+
 	public Spiel() {
 		spiel = new pd.Spiel();
+		zugHistory = new LinkedList<ZugEingabe>();
 		this.spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 
 		spieler = new Vector<Spieler>();
