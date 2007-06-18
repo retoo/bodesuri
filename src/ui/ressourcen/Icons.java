@@ -11,7 +11,7 @@ import pd.spieler.SpielerFarbe;
 import applikation.client.pd.Karte;
 
 final public class Icons {
-	public static final Icon SPIELBRETT = ladeBild("/ui/ressourcen/spielbrett.png");
+	public static final Icon BRETT = ladeBild("/ui/ressourcen/spielbrett.png");
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
 
 	// Verbinden

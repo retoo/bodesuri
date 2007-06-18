@@ -5,8 +5,8 @@ import ui.ressourcen.Icons;
 
 public class Brett2d extends JLabel {
 	public Brett2d(BrettMouseAdapter mouseAdapter){
-		super(Icons.SPIELBRETT);
-		setBounds(0, 0, Icons.SPIELBRETT.getIconWidth(), Icons.SPIELBRETT.getIconHeight());
+		super(Icons.BRETT);
+		setBounds(0, 0, Icons.BRETT.getIconWidth(), Icons.BRETT.getIconHeight());
 		addMouseListener(mouseAdapter);
 	}
 }
