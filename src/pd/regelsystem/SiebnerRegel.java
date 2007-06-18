@@ -45,7 +45,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			for (Feld feld : weg) {
 				figuren.put(feld, feld.getFigur());
 				if (feld.istGeschuetzt()) {
-					geschuetzt.add(bewegung.start);
+					geschuetzt.add(feld);
 				}
 			}
 		}
