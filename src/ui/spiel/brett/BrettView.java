@@ -43,11 +43,11 @@ public class BrettView extends JPanel implements Observer {
 		setOpaque(false);
 
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
-		Brett2d spielBrett2d = new Brett2d(brettAdapter);
+		Brett2d brett2d = new Brett2d(brettAdapter);
 
-		setPreferredSize(spielBrett2d.getPreferredSize());
-		setMinimumSize(spielBrett2d.getMinimumSize());
-		setMaximumSize(spielBrett2d.getMaximumSize());
+		setPreferredSize(brett2d.getPreferredSize());
+		setMinimumSize(brett2d.getMinimumSize());
+		setMaximumSize(brett2d.getMaximumSize());
 
 		try {
 			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
@@ -93,7 +93,7 @@ public class BrettView extends JPanel implements Observer {
 
 		erstelleHinweis();
 
-		add(spielBrett2d);
+		add(brett2d);
 
 		spiel.addObserver(this);
 	}
