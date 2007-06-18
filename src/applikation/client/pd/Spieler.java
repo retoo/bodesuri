@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
+import pd.zugsystem.ZugEingabe;
 
 public class Spieler extends Observable {
 	private boolean amZug;
@@ -67,4 +68,8 @@ public class Spieler extends Observable {
 	public String toString() {
 		return spieler.toString();
 	}
+
+	public List<ZugEingabe> getMoeglicheZuege() {
+	    return spieler.getMoeglicheZuege();
+    }
 }
