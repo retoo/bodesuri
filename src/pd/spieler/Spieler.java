@@ -43,7 +43,7 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	/**
 	 * Sieht zum Beispiel so aus: "Spieler Zoë"
 	 */
-	//TODO: Wäre es nicht konsequenter hier noch den Spielernamen auszugeben?
+	//TODO: Wäre es nicht konsequenter hier nur den Spielernamen auszugeben?
 	// Bei der Karte ist es nämlich auch so... --Philippe
 	public String toString() {
 		return "Spieler " + getName();
