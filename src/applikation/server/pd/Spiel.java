@@ -187,7 +187,7 @@ public class Spiel implements SerialisierungsKontext {
 	 * @param endpunkt Endpunkt des Spielers
 	 * @return Spieler Objekt
 	 */
-	public Spieler neuerSpieler(String spielerName, EndPunktInterface endpunkt) {
+	public Spieler fuegeHinzu(String spielerName, EndPunktInterface endpunkt) {
 		/* PD Spieler erstellen */
 		pd.spieler.Spieler pdSpieler = spiel.fuegeHinzu(spielerName);
 

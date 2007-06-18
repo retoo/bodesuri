@@ -15,7 +15,7 @@ public class EmpfangeSpieler extends ServerZustand {
 	                                        SpielBeitreten beitreten) {
 
 
-		Spieler spieler = spiel.neuerSpieler(beitreten.spielerName, absender);
+		Spieler spieler = spiel.fuegeHinzu(beitreten.spielerName, absender);
 
 
 		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
