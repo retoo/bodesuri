@@ -4,28 +4,28 @@ import java.util.List;
 import java.util.Vector;
 
 public class Deck {
-	public static List<Karte> erstelleKarten(int deck) {
+	public static List<Karte> erstelleKarten() {
 		List<Karte> karten = new Vector<Karte>();
-		
+
 		for (KartenFarbe farbe : KartenFarbe.values()) {
-			karten.add(new Zwei(farbe, deck));
-			karten.add(new Drei(farbe, deck));
-			karten.add(new Vier(farbe, deck));
-			karten.add(new Fuenf(farbe, deck));
-			karten.add(new Sechs(farbe, deck));
-			karten.add(new Sieben(farbe, deck));
-			karten.add(new Acht(farbe, deck));
-			karten.add(new Neun(farbe, deck));
-			karten.add(new Zehn(farbe, deck));
-			karten.add(new Bube(farbe, deck));
-			karten.add(new Dame(farbe, deck));
-			karten.add(new Koenig(farbe, deck));
-			karten.add(new Ass(farbe, deck));
+			karten.add(new Zwei(farbe));
+			karten.add(new Drei(farbe));
+			karten.add(new Vier(farbe));
+			karten.add(new Fuenf(farbe));
+			karten.add(new Sechs(farbe));
+			karten.add(new Sieben(farbe));
+			karten.add(new Acht(farbe));
+			karten.add(new Neun(farbe));
+			karten.add(new Zehn(farbe));
+			karten.add(new Bube(farbe));
+			karten.add(new Dame(farbe));
+			karten.add(new Koenig(farbe));
+			karten.add(new Ass(farbe));
 		}
-		karten.add(new Joker(KartenFarbe.Herz, deck));
-		karten.add(new Joker(KartenFarbe.Karo, deck));
-		karten.add(new Joker(KartenFarbe.Kreuz, deck));
-		
+		karten.add(new Joker(KartenFarbe.Herz));
+		karten.add(new Joker(KartenFarbe.Karo));
+		karten.add(new Joker(KartenFarbe.Kreuz));
+
 		return karten;
 	}
 }

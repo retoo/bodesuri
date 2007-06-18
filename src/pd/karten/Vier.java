@@ -5,8 +5,8 @@ import pd.regelsystem.RueckwaertsRegel;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Vier extends Karte {
-	public Vier(KartenFarbe farbe, int deck) {
-		super("Vier", farbe, deck);
+	public Vier(KartenFarbe farbe) {
+		super("Vier", farbe);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();
 		regelVeroderung.fuegeHinzu(new VorwaertsRegel(4));
 		regelVeroderung.fuegeHinzu(new RueckwaertsRegel(4));

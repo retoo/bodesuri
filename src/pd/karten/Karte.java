@@ -8,8 +8,8 @@ public abstract class Karte extends BodesuriCodierbaresObjekt {
 	private Regel regel;
 	private String name;
 
-	public Karte(String name, KartenFarbe farbe, int deck) {
-		super("Karte " + farbe + " " + name + " " + deck);
+	public Karte(String name, KartenFarbe farbe) {
+		super("Karte " + farbe + " " + name);
 		this.farbe = farbe;
 		this.name = name;
 	}

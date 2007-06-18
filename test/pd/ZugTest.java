@@ -10,7 +10,7 @@ import pd.zugsystem.ZugEingabe;
 public class ZugTest extends ProblemDomainTestCase {
 	public void testZugEingabe() throws RegelVerstoss {
 		Bewegung bewegung = new Bewegung(lager(0), bank(0));
-		Ass ass = new Ass(KartenFarbe.Herz, 0);
+		Ass ass = new Ass(KartenFarbe.Herz);
 		ZugEingabe ze = new ZugEingabe(spieler(0), ass, bewegung);
 		
 		assertEquals(spieler(0), ze.getSpieler());

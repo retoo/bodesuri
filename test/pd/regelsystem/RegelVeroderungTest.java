@@ -6,7 +6,7 @@ import pd.karten.Vier;
 public class RegelVeroderungTest extends RegelTestCase {
 	protected void setUp() {
 		super.setUp();
-		regel = new Vier(KartenFarbe.Herz, 0).getRegel();
+		regel = new Vier(KartenFarbe.Herz).getRegel();
 	}
 	
 	public void testVier() throws RegelVerstoss {

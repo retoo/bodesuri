@@ -8,14 +8,14 @@ import pd.karten.Sechs;
 
 public class KartenTest extends ProblemDomainTestCase {
 	public void testKarte() {
-		Karte sechs = new Sechs(KartenFarbe.Herz, 0);
+		Karte sechs = new Sechs(KartenFarbe.Herz);
 		assertEquals("Sechs", sechs.getName());
 		assertEquals(KartenFarbe.Herz, sechs.getKartenFarbe());
 		assertEquals("Herz Sechs", sechs.toString());
 	}
 	
 	public void testDeck() {
-		List<Karte> deck = Deck.erstelleKarten(0);
+		List<Karte> deck = Deck.erstelleKarten();
 		assertEquals(55, deck.size());
 		// Für 100% Abdeckung
 		new Deck();

@@ -17,6 +17,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 	private Feld feld2;
 	
 	protected void setUp() {
+		System.out.println("test");
 		super.setUp();
 		feld1 = bank(0);
 		feld2 = feld1.getNaechstes();

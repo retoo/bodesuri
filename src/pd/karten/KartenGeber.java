@@ -10,8 +10,10 @@ public class KartenGeber {
 	 * 55 Karten * 2 = 110 Karten
 	 */
 	private Stack<Karte> kartenStapel = new Stack<Karte>();
+	private List<Karte> deck;
 
 	public KartenGeber() {
+		deck = Deck.erstelleKarten();
 		mischen();
 	}
 
@@ -21,8 +23,8 @@ public class KartenGeber {
 	 * Karten vorhanden. Das Deck wird gemischelt.
 	 */
 	private void mischen() {
-		for (int i=0; i < 2; ++i) {
-			kartenStapel.addAll(Deck.erstelleKarten(i));
+		for (int i = 0; i < 2; ++i) {
+			kartenStapel.addAll(deck);
 		}
 		
 		int anzahl = kartenStapel.size();

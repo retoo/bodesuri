@@ -3,8 +3,8 @@ package pd.karten;
 import pd.regelsystem.TauschRegel;
 
 public class Bube extends Karte {
-	public Bube(KartenFarbe farbe, int deck) {
-		super("Bube", farbe, deck);
+	public Bube(KartenFarbe farbe) {
+		super("Bube", farbe);
 		setRegel(new TauschRegel());
 	}
 }

@@ -75,19 +75,19 @@ public class JokerView extends JPanel {
 
 	public void erstelleKarten() {
 		karten = new Vector<Karte>();
-		karten.add(new Ass(KartenFarbe.Herz, 0));
-		karten.add(new Koenig(KartenFarbe.Herz, 0));
-		karten.add(new Bube(KartenFarbe.Herz, 0));
-		karten.add(new Dame(KartenFarbe.Herz, 0));
-		karten.add(new Zehn(KartenFarbe.Herz, 0));
-		karten.add(new Neun(KartenFarbe.Herz, 0));
-		karten.add(new Acht(KartenFarbe.Herz, 0));
-		karten.add(new Sieben(KartenFarbe.Herz, 0));
-		karten.add(new Sechs(KartenFarbe.Herz, 0));
-		karten.add(new Fuenf(KartenFarbe.Herz, 0));
-		karten.add(new Vier(KartenFarbe.Herz, 0));
-		karten.add(new Drei(KartenFarbe.Herz, 0));
-		karten.add(new Zwei(KartenFarbe.Herz, 0));
+		karten.add(new Ass(KartenFarbe.Herz));
+		karten.add(new Koenig(KartenFarbe.Herz));
+		karten.add(new Bube(KartenFarbe.Herz));
+		karten.add(new Dame(KartenFarbe.Herz));
+		karten.add(new Zehn(KartenFarbe.Herz));
+		karten.add(new Neun(KartenFarbe.Herz));
+		karten.add(new Acht(KartenFarbe.Herz));
+		karten.add(new Sieben(KartenFarbe.Herz));
+		karten.add(new Sechs(KartenFarbe.Herz));
+		karten.add(new Fuenf(KartenFarbe.Herz));
+		karten.add(new Vier(KartenFarbe.Herz));
+		karten.add(new Drei(KartenFarbe.Herz));
+		karten.add(new Zwei(KartenFarbe.Herz));
 	}
 
 	public void erstelleDeck() {

@@ -3,8 +3,8 @@ package pd.karten;
 import pd.regelsystem.VorwaertsRegel;
 
 public class Fuenf extends Karte {
-	public Fuenf(KartenFarbe farbe, int deck) {
-		super("Fünf", farbe, deck);
+	public Fuenf(KartenFarbe farbe) {
+		super("Fünf", farbe);
 		setRegel(new VorwaertsRegel(5));
 	}
 }
