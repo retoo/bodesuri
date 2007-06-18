@@ -27,6 +27,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> zugAufforderung(ZugAufforderung zugAufforderung) {
+		controller.zugAufforderung();
 		return AmZug.class;
 	}
 
@@ -53,6 +54,8 @@ public class NichtAmZug extends ClientZustand {
 			                              + ") vom Server erhalten!");
 			return SchwererFehler.class;
 		}
+
+		controller.zugWurdeGemacht(zug);
 		return this.getClass();
 	}
 

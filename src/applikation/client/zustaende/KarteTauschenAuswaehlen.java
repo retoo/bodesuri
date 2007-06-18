@@ -14,6 +14,8 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 		spiel.setHinweis("Zu tauschende Karte wählen.");
 
 		spiel.spielerIch.getKarten().setAktiv(true);
+
+		controller.karteTauschenAuswaehlen();
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {

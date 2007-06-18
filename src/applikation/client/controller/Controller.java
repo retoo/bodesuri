@@ -2,6 +2,8 @@ package applikation.client.controller;
 
 import java.util.List;
 
+import pd.zugsystem.ZugEingabe;
+
 import dienste.eventqueue.EventQueue;
 
 
@@ -95,5 +97,14 @@ public abstract class Controller implements Steuerung {
 	public void chatNachricht(String text) {
 		ChatEingabeEvent cee = new ChatEingabeEvent(text);
 		eventQueue.enqueue(cee);
+    }
+
+	public void zugWurdeGemacht(ZugEingabe zug) {
+    }
+
+	public void zugAufforderung() {
+    }
+
+	public void karteTauschenAuswaehlen() {
     }
 }
