@@ -60,7 +60,7 @@ public class BrettView extends JPanel implements Observer {
 		figurenManager = new FigurenManager();
 		for (Spieler spieler : spiel.getSpieler()) {
 			for (Figur figur : spieler.getFiguren()) {
-				Icon icon = Icons.farbeFigurMap.get(spieler.getFarbe());
+				Icon icon = Icons.getFigurIcon(spieler.getFarbe());
 				Figur2d figur2d = new Figur2d(figur, icon);
 				this.setComponentZOrder(figur2d, 0);
 
@@ -80,7 +80,7 @@ public class BrettView extends JPanel implements Observer {
 				                            figurenManager);
 			} else {
 				SpielerFeld f = (SpielerFeld) feld.getFeld();
-				Icon icon = Icons.farbeFeldMap.get(f.getSpieler().getFarbe());
+				Icon icon = Icons.getSpielerFeldIcon(f.getSpieler().getFarbe());
 				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon,
 				                           figurenManager);
 			}

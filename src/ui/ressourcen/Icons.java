@@ -2,14 +2,12 @@ package ui.ressourcen;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.IdentityHashMap;
 import java.util.Map;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import pd.spieler.SpielerFarbe;
-
 import applikation.client.pd.Karte;
 
 final public class Icons {
@@ -20,49 +18,17 @@ final public class Icons {
 	public static final Icon VERBINDEN = ladeBild("/ui/ressourcen/verbinden.png");
 	public static final Icon BODESURI_START = ladeBild("/ui/ressourcen/bodesuri_starten.png");
 
-	// Felder
-	public static final Icon FIGUR_BLAU = ladeBild("/ui/ressourcen/figur_blau.png");
-	public static final Icon FIGUR_GRUEN = ladeBild("/ui/ressourcen/figur_gruen.png");
-	public static final Icon FIGUR_ROT = ladeBild("/ui/ressourcen/figur_rot.png");
-	public static final Icon FIGUR_GELB = ladeBild("/ui/ressourcen/figur_gelb.png");
-
 	// Figuren
-	public static final Icon FELD_BLAU = ladeBild("/ui/ressourcen/feld_blau.png");
-	public static final Icon FELD_GRUEN = ladeBild("/ui/ressourcen/feld_gruen.png");
-	public static final Icon FELD_ROT = ladeBild("/ui/ressourcen/feld_rot.png");
-	public static final Icon FELD_GELB = ladeBild("/ui/ressourcen/feld_gelb.png");
 	public static final Icon FELD_NORMAL = ladeBild("/ui/ressourcen/feld.png");
 	public static final Icon FELD_AUSWAHL = ladeBild("/ui/ressourcen/feld_weiss.png");
 	public static final Icon FELD_HOVER = ladeBild("/ui/ressourcen/feld_hover.png");
-
-	// Spielerfarbe
-	public static final Icon SPIELER_BLAU = ladeBild("/ui/ressourcen/spieler_blau.png");
-	public static final Icon SPIELER_GRUEN = ladeBild("/ui/ressourcen/spieler_gruen.png");
-	public static final Icon SPIELER_ROT = ladeBild("/ui/ressourcen/spieler_rot.png");
-	public static final Icon SPIELER_GELB = ladeBild("/ui/ressourcen/spieler_gelb.png");
 
 	// Deck
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
 	public static final Icon KARTEN_PLATZHALTER = ladeBild("/ui/ressourcen/karten/karte_platzhalter.png");
 
-	private static Map<String, Icon> kartenIcons = new HashMap<String, Icon>();
-
-	public static final IdentityHashMap<SpielerFarbe, Icon> farbeFeldMap = new IdentityHashMap<SpielerFarbe, Icon>();
-	public static final IdentityHashMap<SpielerFarbe, Icon> farbeFigurMap = new IdentityHashMap<SpielerFarbe, Icon>();
-
-
-	static {
-		farbeFeldMap.put(SpielerFarbe.values()[0], Icons.FELD_ROT);
-		farbeFeldMap.put(SpielerFarbe.values()[1], Icons.FELD_GRUEN);
-		farbeFeldMap.put(SpielerFarbe.values()[2], Icons.FELD_BLAU);
-		farbeFeldMap.put(SpielerFarbe.values()[3], Icons.FELD_GELB);
-
-		farbeFigurMap.put(SpielerFarbe.values()[0], Icons.FIGUR_ROT);
-		farbeFigurMap.put(SpielerFarbe.values()[1], Icons.FIGUR_GRUEN);
-		farbeFigurMap.put(SpielerFarbe.values()[2], Icons.FIGUR_BLAU);
-		farbeFigurMap.put(SpielerFarbe.values()[3], Icons.FIGUR_GELB);
-	}
+	private static Map<String, Icon> icons = new HashMap<String, Icon>();
 
 	/**
 	 * Lädt das angegeben Icon.
@@ -81,17 +47,34 @@ final public class Icons {
 	}
 
 	public static Icon getIcon(Karte karte) {
-		String name = karte.getIconName();
-
-		Icon icon = kartenIcons.get(name);
+		String name = "karten/" + karte.getIconName() + ".png";
+		return getIcon(name);
+	}
+	
+	public static Icon getSpielerFeldIcon(SpielerFarbe farbe) {
+		String name = "feld_" + farbe.toString().toLowerCase() + ".png";
+		return getIcon(name);
+	}
+	
+	public static Icon getFigurIcon(SpielerFarbe farbe) {
+		String name = "figur_" + farbe.toString().toLowerCase() + ".png";
+		return getIcon(name);
+	}
+	
+	public static Icon getSpielerIcon(SpielerFarbe farbe) {
+		String name = "spieler_" + farbe.toString().toLowerCase() + ".png";
+		return getIcon(name);
+	}
+	
+	private static Icon getIcon(String name) {
+		Icon icon = icons.get(name);
 		if (icon == null) {
-			String pfad = "/ui/ressourcen/karten/" + name + ".png";
-			URL url = Icons.class.getResource(pfad);
+			URL url = Icons.class.getResource("/ui/ressourcen/" + name);
 			if (url == null) {
-				throw new RuntimeException("Bild " + pfad + " nicht gefunden.");
+				throw new RuntimeException("Bild " + name + " nicht gefunden.");
 			}
 			icon = new ImageIcon(url);
-			kartenIcons.put(name, icon);
+			icons.put(name, icon);
 		}
 		return icon;
 	}
