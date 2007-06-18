@@ -6,7 +6,6 @@ import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 
-/* Wird bald aktiv */
 public class KartenTauschen extends ServerZustand {
 	Class<? extends Zustand> kartenTausch(EndPunktInterface absender, KartenTausch tausch) {
 		Spieler spieler = spiel.getSpieler(absender);
