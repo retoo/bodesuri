@@ -97,16 +97,16 @@ public class VorwaertsRegel extends Regel {
 				"Es gibt nur eine Art, ins Lager zurückzukehren...");
 		}
 		
-		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
-			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
-		}
-		
 		if (ziel.istHimmel()) {
 			HimmelFeld himmel = (HimmelFeld) ziel;
 			if (himmel.getSpieler() != spieler) {
 				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
-				                        "gezogen werden.");
+				"gezogen werden.");
 			}
+		}
+
+		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
+			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
 		}
 	}
 	

@@ -18,6 +18,6 @@ public class SpielTest extends ProblemDomainTestCase {
 
 		assertEquals(0, spieler(0).getNummer());
 		assertEquals("Spieler 0", spieler(0).getName());
-		assertEquals("Spieler Spieler 0", spieler(0).toString());
+		assertEquals("Spieler 0", spieler(0).toString());
 	}
 }
