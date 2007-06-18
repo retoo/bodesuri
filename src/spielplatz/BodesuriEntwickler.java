@@ -3,7 +3,7 @@ package spielplatz;
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
-import applikation.events.VerbindeEvent;
+import applikation.client.events.VerbindeEvent;
 import applikation.server.ServerAutomat;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;

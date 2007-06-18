@@ -1,12 +1,12 @@
-package applikation.events;
+package applikation.client.events;
 
 import applikation.client.pd.Feld;
 import dienste.eventqueue.Event;
 
-public class HoverStartEvent extends Event {
+public class HoverEndeEvent extends Event {
 	public final Feld feld;
 
-	public HoverStartEvent(Feld feld) {
+	public HoverEndeEvent(Feld feld) {
 	    this.feld = feld;
     }
 

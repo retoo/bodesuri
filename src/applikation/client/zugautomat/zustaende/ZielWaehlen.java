@@ -3,11 +3,11 @@ package applikation.client.zugautomat.zustaende;
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 import applikation.client.controller.Controller;
+import applikation.client.events.FeldAbgewaehltEvent;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.GezogenEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.ZugEingabe;
-import applikation.events.FeldAbgewaehltEvent;
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.GezogenEvent;
-import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 

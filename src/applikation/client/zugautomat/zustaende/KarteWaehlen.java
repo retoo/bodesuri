@@ -1,8 +1,8 @@
 package applikation.client.zugautomat.zustaende;
 
 import applikation.client.controller.Controller;
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.KarteGewaehltEvent;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;
 
 /**

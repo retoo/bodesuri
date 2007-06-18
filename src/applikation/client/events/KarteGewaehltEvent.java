@@ -1,4 +1,4 @@
-package applikation.events;
+package applikation.client.events;
 
 import applikation.client.pd.Karte;
 import dienste.eventqueue.Event;

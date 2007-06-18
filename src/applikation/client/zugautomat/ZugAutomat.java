@@ -3,6 +3,7 @@ package applikation.client.zugautomat;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
+import applikation.client.zugautomat.pd.SpielDaten;
 import applikation.client.zugautomat.zustaende.ClientZugZustand;
 import applikation.client.zugautomat.zustaende.ZielWaehlen;
 import applikation.client.zugautomat.zustaende.KarteWaehlen;

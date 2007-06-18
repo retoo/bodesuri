@@ -1,4 +1,4 @@
-package applikation.events;
+package applikation.client.events;
 
 import dienste.eventqueue.Event;
 

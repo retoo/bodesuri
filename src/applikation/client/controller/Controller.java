@@ -5,18 +5,18 @@ import java.util.List;
 import dienste.eventqueue.EventQueue;
 
 
+import applikation.client.events.AufgegebenEvent;
+import applikation.client.events.ChatEingabeEvent;
+import applikation.client.events.FeldAbgewaehltEvent;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.HoverEndeEvent;
+import applikation.client.events.HoverStartEvent;
+import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.events.VerbindeEvent;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
-import applikation.events.AufgegebenEvent;
-import applikation.events.ChatEingabeEvent;
-import applikation.events.FeldAbgewaehltEvent;
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.HoverEndeEvent;
-import applikation.events.HoverStartEvent;
-import applikation.events.KarteGewaehltEvent;
-import applikation.events.VerbindeEvent;
 
 /**
  * Der Controller dient zum Kanalisieren der Zugriffe zwischen der UI- und

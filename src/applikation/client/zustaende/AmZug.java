@@ -1,12 +1,12 @@
 package applikation.client.zustaende;
 
+import applikation.client.events.FeldAbgewaehltEvent;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.HoverEndeEvent;
+import applikation.client.events.HoverStartEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.ZugEingabe;
 import applikation.client.zugautomat.ZugAutomat;
-import applikation.events.FeldAbgewaehltEvent;
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.HoverEndeEvent;
-import applikation.events.HoverStartEvent;
-import applikation.events.KarteGewaehltEvent;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;

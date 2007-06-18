@@ -5,10 +5,10 @@ import java.util.List;
 import pd.spieler.Figur;
 
 import applikation.client.controller.Controller;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.Feld;
 
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.KarteGewaehltEvent;
 import dienste.automat.zustaende.Zustand;
 
 /**

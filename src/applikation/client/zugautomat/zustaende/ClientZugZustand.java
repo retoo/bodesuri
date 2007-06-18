@@ -1,11 +1,11 @@
 package applikation.client.zugautomat.zustaende;
 
 import applikation.client.controller.Controller;
-import applikation.client.zugautomat.SpielDaten;
-import applikation.events.FeldAbgewaehltEvent;
-import applikation.events.FeldGewaehltEvent;
-import applikation.events.HoverStartEvent;
-import applikation.events.KarteGewaehltEvent;
+import applikation.client.events.FeldAbgewaehltEvent;
+import applikation.client.events.FeldGewaehltEvent;
+import applikation.client.events.HoverStartEvent;
+import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.zugautomat.pd.SpielDaten;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 

@@ -1,4 +1,4 @@
-package applikation.client.zugautomat;
+package applikation.client.zugautomat.pd;
 
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;

@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import applikation.events.KarteGewaehltEvent;
+import applikation.client.events.KarteGewaehltEvent;
 import applikation.nachrichten.KartenTausch;
 import dienste.automat.zustaende.Zustand;
 
