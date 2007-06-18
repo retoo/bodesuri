@@ -21,24 +21,34 @@ public class FeldMouseAdapter extends MouseAdapter {
 		steuerung.hoverStart(((Feld2d) e.getComponent()).getFeld());
 	}
 
-
+	/**
+	 * Ein boolean wird gesetzt, der in <code>mouseReleased()</code> und 
+	 * <code>mousePressed()</code> verwendet wird um <code>mouseClicked()</code> 
+	 * zu simulieren. Hover-Ende-Effekt wird hier implementiert.
+	 *
+	 * @param e
+	 *            MouseEvent der das angeklickte Feld enthält
+	 */
 	public void mouseExited(MouseEvent e) {
 		steuerung.hoverEnde(((Feld2d) e.getComponent()).getFeld());
-		if (betaetigt) {
-			betaetigt = false;
-		}
+		betaetigt = false;
 	}
 	
+	/**
+	 * Ein boolean wird gesetzt, der in <code>mouseReleased()</code> und 
+	 * <code>mouseExited()</code> verwendet wird um <code>mouseClicked()</code> 
+	 * zu simulieren.
+	 *
+	 * @param e
+	 *            MouseEvent der das angeklickte Feld enthält
+	 */
 	public void mousePressed(MouseEvent e) {
 		betaetigt = true;
 	}
 	
 	/**
-	 * Das {@link Feld2d} auf das geklickt wird an den Controller weiterleiten
-	 * und falls eine {@link Figur2d} auf dem Feld ist, diese als ausgewählt
-	 * markieren.
-	 *
-	 * TODO: javadoc stimmt nicht mehr! (--> pascal)
+	 * Aus dem {@link Feld2d} das {@link Feld} extrahieren und an die 
+	 * {@link Steuerung} weiterleiten.
 	 *
 	 * @param e
 	 *            MouseEvent der das angeklickte Feld enthält
