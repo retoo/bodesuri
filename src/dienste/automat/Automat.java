@@ -83,7 +83,8 @@ public class Automat {
 	public void init() {
 		pruefeAutomat(false);
 		start.onEntry();
-		/* TODO: nachdenken wann handle() (sofern passiv) vom startzustand ausgeführt wird */
+		verarbeitePassiveZustaende();
+
 		isInit = true;
 	}
 
