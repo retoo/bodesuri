@@ -56,7 +56,7 @@ public class SpielView extends JPanel {
 
 		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics bg = bi.getGraphics();
-		bg.drawImage((Image) filz, 0, 0, null);
+		bg.drawImage(filz, 0, 0, null);
 		bg.dispose();
 
 		Rectangle2D tr = new Rectangle2D.Double(0, 0, width, height);
