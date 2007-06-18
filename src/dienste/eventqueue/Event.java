@@ -12,8 +12,7 @@ public abstract class Event {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		/* TODO: getSimpleName returned bereits einen String (-reto ) */
-		return getClass().getSimpleName().toString();
+		return getClass().getSimpleName();
 	}
 
 	public boolean istLeise() {
