@@ -13,9 +13,6 @@ public class ServerEndPunkt extends EndPunkt {
 	 * Startet die Kommunkation mit dem übergebenen Socket. Dieser Konstrutkur
 	 * wird vom Server verwendet.
 	 *
-	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
-	 * verwenden sollte
-	 *
 	 * @param socket
 	 *            zu verwendendender Socket
 	 * @param briefkasten

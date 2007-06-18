@@ -11,8 +11,6 @@ public class ClientEndPunkt extends EndPunkt{
 	 * Startet die Kommunikation mit dem übergebenen System (Hostname & Port).
 	 * Dieser Konstrutkur wird vom Client verwendet.
 	 *
-	 * TODO: prüfen ob man evtl. zwei Subklassen anstatt zwei Konstruktoren
-	 * verwenden sollte
 	 *
 	 * @param hostname
 	 *            Hostname des zu verbindenen Systems

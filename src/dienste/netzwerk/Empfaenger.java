@@ -37,23 +37,13 @@ public class Empfaenger implements Runnable {
 				briefkasten.einwerfen(brief);
 			}
 		} catch (EOFException eof) {
-			/* TODO: Nicht sicher ob das so gut */
-
 			Brief brief = new Brief(endpunkt, new VerbindungGeschlossen());
 			briefkasten.einwerfen(brief);
 			return;
 		} catch (IOException e) {
-			/*
-			 * mir ist nicht ganz bekannt wann in welchen legitimen Fällen die
-			 * Exception auftauchen kann... falls dieser Fehler auftaucht (z.B.
-			 * bei 'normalen' Verbindungs Problemen) dann muss das Handling dem
-			 * vom EOFError angepasst werden (siehe oben).
-			 */
-			System.out.println("IOException im Empfänger (Endpunkt: "
-			                   + endpunkt + ")");
-			e.printStackTrace();
-			System.exit(99);
-
+			Brief brief = new Brief(endpunkt, new VerbindungGeschlossen());
+			briefkasten.einwerfen(brief);
+			return;
 		} catch (ClassNotFoundException e) {
 			/*
 			 * der Client kannte die Klasse nicht die übertragen wurde, fehler
