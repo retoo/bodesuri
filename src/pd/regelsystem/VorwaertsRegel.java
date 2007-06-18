@@ -143,7 +143,7 @@ public class VorwaertsRegel extends Regel {
 		return false;
 	}
 
-    public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
+	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld start = figur.getFeld();
 
@@ -159,7 +159,7 @@ public class VorwaertsRegel extends Regel {
 				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
 			}
 		}
-    }
+	}
 
 	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
 		List<Bewegung> bewegungen = new Vector<Bewegung>();

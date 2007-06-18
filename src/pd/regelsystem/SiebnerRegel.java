@@ -21,13 +21,13 @@ import pd.zugsystem.ZugEingabe;
 
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
-	    super(7); // Für kannZiehen gebraucht.
-	    setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt auch heim");
-    }
+		super(7); // Für kannZiehen gebraucht.
+		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt auch heim");
+	}
 
 	// TODO: Reto & Robin Hat Review nötig :). --Robin
 	@SuppressWarnings("null")
-    public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
+	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {
 			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
 		}

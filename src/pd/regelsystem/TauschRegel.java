@@ -70,7 +70,7 @@ public class TauschRegel extends Regel {
 		return false;
 	}
 
-    public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
+	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld startFeld = figur.getFeld();
 			if (!startFeld.istGeschuetzt()) {
@@ -89,5 +89,5 @@ public class TauschRegel extends Regel {
 				}
 			}
 		}
-    }
+	}
 }
