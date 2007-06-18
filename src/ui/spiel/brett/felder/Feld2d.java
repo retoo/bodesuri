@@ -29,8 +29,6 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 
 		feld.addObserver(this);
 
-		/* TODO: Reto: Wollen wir das nicht hier rausnehmen (-reto)
-		 * könnte ja auch der erstellen von Feld2d machen */
 		addMouseListener(mouseAdapter);
 
 		/* Die Grafiken ein erstes mal generieren */
