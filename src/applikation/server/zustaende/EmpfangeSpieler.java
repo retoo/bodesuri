@@ -13,6 +13,7 @@ public class EmpfangeSpieler extends ServerZustand {
 	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,
 	                                        SpielBeitreten beitreten) {
 
+		spiel.fuegeHinzu(beitreten.spielerName, absender);
 		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
 
 		if (spiel.isKomplett()) {
