@@ -6,6 +6,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
+import javax.swing.JLabel;
 
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
@@ -84,7 +85,11 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 		if (feld.getAusgewaehlt()) {
 			icon = getAktivesIcon();
 		} else if (feld.getHover()) {
-			icon = getHoverIcon();
+			//icon = getHoverIcon();
+			JLabel hover = new JLabel(getHoverIcon());
+			hover.setBounds(position.x, position.y, getHoverIcon().getIconWidth(), getHoverIcon().getIconHeight());
+			add(hover);
+			icon = getIcon();
 		} else {
 			icon = getPassivesIcon();
 		}

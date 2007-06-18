@@ -679,4 +679,10 @@
 			<y>280</y>
 		</koordinaten>
 	</hinweis>
-</brett>
+	<jokerKarten nummer="0">
+		<koordinaten>
+			<x>180</x>
+			<y>280</y>
+		</koordinaten>
+	</jokerKarten>
+	</brett>

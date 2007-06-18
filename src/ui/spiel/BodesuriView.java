@@ -3,8 +3,10 @@ package ui.spiel;
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
+import ui.spiel.brett.JokerView;
 import ui.spiel.brett.SpielView;
 import ui.spiel.chat.ChatView;
 import applikation.client.controller.Steuerung;
@@ -33,6 +35,9 @@ public class BodesuriView extends JFrame {
 
 		// GUI anzeigen
 		pack();
+//		JPanel jokerView = new JokerView(this); 
+//		setGlassPane(jokerView);
+//		jokerView.setVisible(true);
 	}
 
 	/**
