@@ -165,7 +165,7 @@ public class SiebnerRegelTest extends RegelTestCase {
 		
 		start[0] = bank(0).getVorheriges();
 		ziel[0]  = start[0].getNtesFeld(7);
-		lager(0).versetzeFigurAuf(start[0]);
+		lager(0, 1).versetzeFigurAuf(start[0]);
 		sollteVerstossGeben();
 	}
 	
