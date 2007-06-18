@@ -5,12 +5,16 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
+import pd.zugsystem.ZugEingabe;
+
 public class Spiel extends Observable {
 	private pd.Spiel spiel;
 
 	private Brett brett;
 	private Vector<Spieler> spieler;
+	
 	private String hinweis;
+	private ZugEingabe letzterZug;
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
 	private Chat chat;
 
@@ -69,5 +73,15 @@ public class Spiel extends Observable {
 
 	public Chat getChat() {
 	    return chat;
+    }
+
+	public ZugEingabe getLetzterZug() {
+    	return letzterZug;
+    }
+
+	public void setLetzterZug(ZugEingabe letzterZug) {
+    	this.letzterZug = letzterZug;
+    	setChanged();
+    	notifyObservers();
     }
 }

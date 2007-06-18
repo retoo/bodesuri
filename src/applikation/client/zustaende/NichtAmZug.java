@@ -52,9 +52,8 @@ public class NichtAmZug extends ClientZustand {
 
 
 	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
+		spielDaten.spiel.setLetzterZug(zug);
 		try {
-//			 FIXME !!   controller.zeigeGespielteKarte(zug.getKarte() + " gespielt von "
-//			 FIXME !!  + zug.getSpieler().getName());
 			zug.validiere().ausfuehren();
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
@@ -66,7 +65,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		spielDaten.spielerIch.getKarten().clear();
-//		 FIXME !!  controller.zeigeGespielteKarte("");
+		spielDaten.spiel.setLetzterZug(null);
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spielDaten.spielerIch.getKarten().add(new Karte(karte));
 		}

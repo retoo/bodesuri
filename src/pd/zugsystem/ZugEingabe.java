@@ -106,4 +106,8 @@ public class ZugEingabe implements Serializable {
 		return "ZugEingabe: " + getSpieler() + " mit " + getKarte() + " "
 		       + getBewegung();
 	}
+	
+	public String getKurzBeschreibung() {
+		return getSpieler().getName() + " spielt " + getKarte();
+	}
 }

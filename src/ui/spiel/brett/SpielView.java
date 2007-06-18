@@ -25,7 +25,7 @@ public class SpielView extends JPanel {
 
 		// Views
 		SpielBrettView spielBrettView = new SpielBrettView(steuerung, spiel);
-		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(steuerung, spielerIch);
+		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(steuerung, spielerIch, spiel);
 
 		// Layout zusammenstellen
 		add(spielBrettView, BorderLayout.CENTER);
