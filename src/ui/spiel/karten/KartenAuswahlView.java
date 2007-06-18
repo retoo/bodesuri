@@ -17,7 +17,7 @@ public class KartenAuswahlView extends JPanel {
 		setOpaque(false);
 
 		// Views
-		deckView = new DeckView(steuerung, this, spiel.spielerIch);
+		deckView = new DeckView(steuerung, spiel.spielerIch.getKarten());
 		karteGewaehltView = new KarteGewaehltView(steuerung, spiel.spielerIch.getKarten());
 		SteuerungsView steuerungsView = new SteuerungsView(steuerung, spiel);
 

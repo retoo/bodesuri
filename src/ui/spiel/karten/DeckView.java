@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Karten;
-import applikation.client.pd.Spieler;
 import dienste.observer.ListChangeEvent;
 import dienste.observer.ListChangeEvent.ListChangeType;
 
@@ -24,8 +23,9 @@ public class DeckView extends JPanel implements Observer {
 	private Vector<KarteView> karteViews;
 	private KarteMouseAdapter karteMouseAdapter;
 
-	public DeckView(Steuerung steuerung,
-	                KartenAuswahlView kartenAuswahlView, Spieler spielerIch) {
+	public DeckView(Steuerung steuerung, Karten karten) {
+		this.karten = karten;
+
 		setLayout(null);
 		setOpaque(false);
 
@@ -50,8 +50,7 @@ public class DeckView extends JPanel implements Observer {
 			add(kv);
 		}
 
-		this.karten = spielerIch.getKarten();
-		this.karten.addObserver(this);
+		karten.addObserver(this);
 	}
 
 	public void update(Observable o, Object arg) {
