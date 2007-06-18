@@ -1,11 +1,12 @@
 package applikation.client.pd;
 
+import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
 import dienste.observer.ObservableList;
 
-public class Karten extends Observable implements Observer {
+public class Karten extends Observable implements Observer, Iterable<Karte> {
 	private boolean aktiv;
 	private ObservableList<pd.karten.Karte> pdKarten;
 	private ObservableList<Karte> appKarten;
@@ -39,6 +40,10 @@ public class Karten extends Observable implements Observer {
 	public int size() {
 		return appKarten.size();
 	}
+
+	public Iterator<Karte> iterator() {
+		return appKarten.iterator();
+    }
 
 	public void add(Karte karte) {
 		pdKarten.add(karte.getKarte());
