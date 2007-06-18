@@ -103,7 +103,7 @@ public class Runde {
 
 	public void tauscheKarten() {
 		for (RundenTeilnahme rt : teilnahmen.values()) {
-			rt.tasuchteKarte();
+			rt.tauscheKarte();
 		}
 	}
 

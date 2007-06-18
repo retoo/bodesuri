@@ -21,7 +21,7 @@ public class RundenTeilnahme {
 		this.zuegeDieseRunde = new Vector<ZugEingabe>();
 	}
 
-	public void tasuchteKarte() {
+	public void tauscheKarte() {
 		karten.add(karteVomPartner);
 
 		/* dem Clienten mitteilen */
