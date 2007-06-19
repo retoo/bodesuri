@@ -1,6 +1,7 @@
 package ui;
 
 import java.util.List;
+import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
@@ -11,6 +12,7 @@ import applikation.client.controller.Controller;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
+import applikation.geteiltes.SpielerInfo;
 import dienste.eventqueue.EventQueue;
 
 public class GUIController extends Controller {
@@ -56,5 +58,9 @@ public class GUIController extends Controller {
 			spielView.dispose();
 		}
 		super.beenden();
+	}
+
+	public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
+		lobbyView.zeigeSpieler(spielers);
 	}
 }

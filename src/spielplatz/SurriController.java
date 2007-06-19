@@ -4,6 +4,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Vector;
 
 import pd.karten.Karte;
 import pd.zugsystem.Bewegung;
@@ -16,6 +17,7 @@ import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
+import applikation.geteiltes.SpielerInfo;
 import dienste.eventqueue.Event;
 import dienste.eventqueue.EventQueue;
 
@@ -92,6 +94,10 @@ public class SurriController extends Controller implements Observer {
 	public void update(Observable o, Object arg) {
 
     }
+
+	public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
+		
+	}
 
 
 }

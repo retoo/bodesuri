@@ -32,6 +32,7 @@ public class Lobby extends ClientZustand {
 
     Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
     	//TODO: ??? Controller(Lobby) über neuen Spieler benachrichtigen. --Philippe
+    	controller.zeigeSpielerInLobby(bestaetigung.spielInfo.spielers);
     	System.out.println("Ein Spieler ist beigetreten.");
 	    return this.getClass();
     }
