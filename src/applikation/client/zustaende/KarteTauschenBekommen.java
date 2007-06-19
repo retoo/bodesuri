@@ -9,7 +9,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenBekommen extends ClientZustand {
 	public void onEntry() {
-		spiel.setHinweis("Warte auf die Karte deines Partners.");
+		spiel.setHinweis("Warte auf Karte des Partners.");
 	}
 
 	Class<? extends Zustand> kartenTausch(pd.karten.Karte karte) {
