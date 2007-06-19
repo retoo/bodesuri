@@ -200,6 +200,15 @@ public class Spiel implements SerialisierungsKontext {
 		return spieler;
 	}
 
+	public void entferne(EndPunktInterface absender) {
+		Spieler s = getSpieler(absender);
+
+		if (s == null)
+			throw new RuntimeException("Unbekannter absender " + absender);
+
+		spielers.remove(s);
+    }
+
 	/**
 	 * Liefert den Kartengeber des Spiels. Siehe {@link pd.Spiel#getKartenGeber()}
 	 * @return Den {@link KartenGeber}
@@ -208,13 +217,18 @@ public class Spiel implements SerialisierungsKontext {
 	    return spiel.getKartenGeber();
     }
 
+	/* TODO: pascal & reto: wollen wir das nun nicht in die pd schieben? die partnerschaft ist jetzt doch auch da (-reto) */
 	public boolean istFertig() {
+		return getGewinner() != null;
+    }
+
+	public Partnerschaft getGewinner() {
 		for (Partnerschaft p : partnerschaften) {
 			if (p.istFertig()) {
-				return true;
+				return p;
 			}
 		}
 
-	    return false;
+	    return null;
     }
 }

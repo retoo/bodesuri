@@ -5,17 +5,21 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+import dienste.serialisierung.SerialisierungsKontext;
+
 
 public class Empfaenger implements Runnable {
 	private BriefKastenInterface briefkasten;
 	private ObjectInputStream inputStream;
 	private EndPunktInterface endpunkt;
+	private SerialisierungsKontext serialisierungsKontext;
 
 	protected Empfaenger(EndPunktInterface endpunkt, Socket socket,
-	        BriefKastenInterface briefkasten) throws IOException {
+	        BriefKastenInterface briefkasten, SerialisierungsKontext serialisierungsKontext) throws IOException {
 		inputStream = new ObjectInputStream(socket.getInputStream());
 		this.endpunkt = endpunkt;
 		this.briefkasten = briefkasten;
+		this.serialisierungsKontext = serialisierungsKontext;
 
 		if (endpunkt == null) {
 			throw new RuntimeException("Remove me later, FIXME");
@@ -24,6 +28,7 @@ public class Empfaenger implements Runnable {
 
 	public void run() {
 		try {
+			serialisierungsKontext.registriere(Thread.currentThread());
 
 			while (true) {
 				Object obj = inputStream.readObject();

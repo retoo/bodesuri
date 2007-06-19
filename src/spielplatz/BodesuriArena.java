@@ -10,14 +10,17 @@ public class BodesuriArena {
 
 	/**
 	 * @param args
+	 * @throws InterruptedException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		nicks = new Vector<String>();
 
 		nicks.add("Anna Navarre ");
 		nicks.add("JC Denton");
 		nicks.add("Joseph Manderley");
 		nicks.add("Walton Simons");
+
+
 
 		Thread server = new Thread(new Runnable() {
 			public void run() {
@@ -34,12 +37,25 @@ public class BodesuriArena {
 
 		server.start();
 
-		for (int i = 0; i < 4; i++) {
+		Vector<Thread> clients = new Vector<Thread>();
 
+		for (int i = 0; i < 4; i++) {
 			Runnable r = new TestClient(nicks.get(i));
 
 			Thread t = new Thread(r);
 			t.start();
+			clients.add(t);
 		}
+
+		System.out.println("Warte auf Ende ...");
+		server.join();
+		System.out.println("Server fertig");
+
+		for (Thread t : clients) {
+			t.join();
+			System.out.println("Client fertig");
+		}
+
+		System.out.println("Alles fertig");
 	}
 }

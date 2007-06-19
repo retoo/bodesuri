@@ -43,4 +43,9 @@ public class Server {
 		Thread t = new Thread(daemon);
 		t.start();
 	}
+
+
+	public void ausschalten() {
+	    daemon.auschalten();
+    }
 }

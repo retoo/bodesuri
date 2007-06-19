@@ -18,6 +18,7 @@ import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.RundenStart;
+import applikation.nachrichten.SpielFertigNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.nachrichten.SpielVollNachricht;
 import applikation.nachrichten.ZugAufforderung;
@@ -92,12 +93,14 @@ public class ClientZustand extends Zustand {
 	    	return kartenTausch(((KartenTausch) nachricht).karte);
 	    else if (nachricht instanceof RundenStart)
 	    	return rundenStart((RundenStart) nachricht);
-	    else if (nachricht instanceof AufgabeInformation) 
+	    else if (nachricht instanceof AufgabeInformation)
 	    	return aufgabe((AufgabeInformation) nachricht);
 	    else if (nachricht instanceof VerbindungGeschlossen)
 	    	return verbindungGeschlossen(brief.absender);
 	    else if (nachricht instanceof ChatNachricht)
 	    	return chatNachricht(brief.absender, (ChatNachricht) nachricht);
+	    else if (nachricht instanceof SpielFertigNachricht)
+	    	return spielFertig((SpielFertigNachricht) nachricht);
 	    else
 	    	System.out.println("Nachricht " + nachricht.getClass()
 	    	                   + " ist (noch) nicht implementiert!");
@@ -193,7 +196,7 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> rundenStart(RundenStart rundenstart) {
 		return keinUebergang();
 	}
-	
+
 	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
 		return keinUebergang();
 	}
@@ -201,6 +204,11 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> aktuellerSpielerInformation(AktuellerSpielerInformation information) {
 		return keinUebergang();
     }
+
+
+	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
+		return keinUebergang();
+	}
 
 
 	/* Sonstiges */

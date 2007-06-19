@@ -23,13 +23,10 @@ public abstract class EndPunkt implements EndPunktInterface {
 		outputStream = new ObjectOutputStream(socket.getOutputStream());
 
 		/*
-		 * Bis auf weiteres machen wir das Empfanger der Nachrichten mal in
-		 * einem seperaetn Thread. Später kann man das evtl. mit Select etc.
-		 * besser lösen
+		 * Der Empfanger der Nachrichten in einem dedizierten Thread.
 		 */
-		empfaenger = new Empfaenger(this, socket, briefkasten);
+		empfaenger = new Empfaenger(this, socket, briefkasten, serialisierungsKontext);
 		empfaengerThread = new Thread(empfaenger);
-		serialisierungsKontext.registriere(empfaengerThread);
 		empfaengerThread.start();
 	}
 

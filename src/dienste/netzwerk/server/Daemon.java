@@ -70,4 +70,12 @@ public class Daemon implements Runnable {
 			}
 		}
 	}
+
+	public void auschalten() {
+		try {
+	        serverSock.close();
+        } catch (IOException e) {
+	        throw new RuntimeException(e);
+        }
+	}
 }

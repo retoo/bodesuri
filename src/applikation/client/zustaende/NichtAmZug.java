@@ -1,5 +1,7 @@
 package applikation.client.zustaende;
 
+import java.io.IOException;
+
 import pd.regelsystem.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
@@ -7,7 +9,9 @@ import applikation.client.pd.Spieler;
 import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.RundenStart;
+import applikation.nachrichten.SpielFertigNachricht;
 import applikation.nachrichten.ZugAufforderung;
+import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -73,5 +77,17 @@ public class NichtAmZug extends ClientZustand {
 		Spieler spieler = spiel.findeSpieler(aufgabe.spieler);
 		spieler.setHatAufgebeben(true);
 		return this.getClass();
+	}
+
+	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
+		System.out.println("Spiel ist fertig, gewiner ist: " + nachricht.gewinner);
+
+		try {
+	        spiel.endpunkt.ausschalten();
+        } catch (IOException e) {
+        	throw new RuntimeException(e);
+        }
+
+	    return EndZustand.class;
 	}
 }
