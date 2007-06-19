@@ -1,16 +1,11 @@
 package applikation.client.zugautomat.zustaende;
 
-import java.util.List;
-
 import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
-
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.Feld;
-import applikation.client.pd.Spieler;
-
 import dienste.automat.zustaende.Zustand;
 
 /**
