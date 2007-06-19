@@ -25,8 +25,8 @@ public class Figur2d extends JLabel {
 	 *
 	 */
 	public void setzeAuf(int x, int y) {
-		int posX = x - (icon.getIconWidth() / 2) + 2;
-		int posY = y - (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2)) + 7;
+		int posX = x - (icon.getIconWidth() / 2) + 1;
+		int posY = y - (icon.getIconHeight() - (Icons.FELD_NORMAL.getIconHeight() / 2)) - 3;
 		setBounds(posX, posY, icon.getIconWidth(), icon
 				.getIconHeight());
 	}
