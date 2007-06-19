@@ -27,7 +27,7 @@ public class LobbyView extends JFrame {
 	private final static JPanel lobbyPanel = new JPanel();
 	private static JLabel verbundeneSpielerLabel = new JLabel();
 	private Vector<String> verbundeneSpieler = new Vector<String>();
-	
+
 	public LobbyView(List<Spieler> spieler, Steuerung steuerung, Chat chat) {
 		setTitle("Bodesuri - Lobby");
 		setLocationByPlatform(true);
@@ -35,16 +35,16 @@ public class LobbyView extends JFrame {
 		setLayout(new BorderLayout());
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
-		
+
 		for (Spieler s : spieler) {
 			verbundeneSpieler.add(s.getName());
 		}
 		aktualisiereSpielerListe();
-		
+
 		lobbyPanel.setBorder(new EmptyBorder(15, 15, 15, 15));
 		lobbyPanel.add(new JLabel("Dies ist erst das Layout, der Chat wirft noch eine Exception, da noch nicht richtig eigebaut!"));
 		lobbyPanel.add( verbundeneSpielerLabel );
-		
+
 		// View auf Monitor zentrieren
 		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2;
@@ -53,11 +53,12 @@ public class LobbyView extends JFrame {
 
 		add(lobbyPanel, BorderLayout.CENTER);
 		add(new ChatView(chat, steuerung), BorderLayout.SOUTH);
-		
+
 		// View anzeigen
 		pack();
 	}
 
+	/* TODO: Pascal, wieso hast du das nicht mit einer ObservableList gemacht? Absichtlich? (-Reto) */
 	public void zeigeSpieler(Vector<SpielerInfo> spielers) {
 		for (SpielerInfo spielerInfo : spielers) {
 			if ( !verbundeneSpieler.contains(spielerInfo.name) ) {
@@ -66,7 +67,7 @@ public class LobbyView extends JFrame {
 		}
 		aktualisiereSpielerListe();
 	}
-	
+
 	private void aktualisiereSpielerListe() {
 		String aktuelleSpielerListe = "Verbundene Spieler sind: ";
 		for (String spieler : verbundeneSpieler) {
