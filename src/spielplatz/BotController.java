@@ -94,7 +94,7 @@ public class BotController extends Controller {
 			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
 
 			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, bewegung);
-			eventQueue.enqueue(zee);;
+			eventQueue.enqueue(zee);
 		}
 
 	}
