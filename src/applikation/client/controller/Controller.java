@@ -40,16 +40,18 @@ public abstract class Controller implements Steuerung {
 	 *
 	 * @param spieler
 	 *            Liste der Spieler
+	 * @param chat
+	 * 			  Chat
 	 */
 	public abstract void zeigeLobby(List<Spieler> spieler, Chat chat);
 
 	/**
 	 * Einen neuen Spieler in der Lobby anzeigen.
-	 * 
+	 *
 	 * @param spielers
 	 */
 	public abstract void zeigeSpielerInLobby(Vector<SpielerInfo> spielers);
-	
+
 	/**
 	 * Das Spielbrett anzeigen.
 	 *
@@ -114,7 +116,7 @@ public abstract class Controller implements Steuerung {
 
 	public void karteTauschenAuswaehlen() {
     }
-	
+
 	public void beenden() {
 //		SpielEndeEvent see = new SpielEndeEvent();
 //		eventQueue.enqueue(see);
