@@ -30,7 +30,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	private String hinweis;
 	private ZugEingabe letzterZug;
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
-	private Chat chat;
+	public Chat chat;
 
 	public LinkedList<ZugEingabe> zugHistory;
 
@@ -85,10 +85,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		this.hinweis = hinweis;
 		setChanged();
 		notifyObservers();
-	}
-
-	public Chat getChat() {
-		return chat;
 	}
 
 	public ZugEingabe getLetzterZug() {

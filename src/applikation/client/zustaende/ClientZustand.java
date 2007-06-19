@@ -169,7 +169,7 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, ChatNachricht nachricht) {
-		spiel.getChat().neueNachricht(nachricht.sender, nachricht.text);
+		spiel.chat.neueNachricht(nachricht.sender, nachricht.text);
 
 		return this.getClass();
 	}

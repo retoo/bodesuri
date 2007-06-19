@@ -25,7 +25,7 @@ public class BodesuriView extends JFrame {
 
 		// Views
 		SpielView spielView = new SpielView(steuerung, spiel);
-		ChatView chatView = new ChatView(spiel.getChat(), steuerung);
+		ChatView chatView = new ChatView(spiel.chat, steuerung);
 
 		// Layout zusammenstellen
 		getContentPane().add(spielView, BorderLayout.NORTH);
@@ -33,7 +33,7 @@ public class BodesuriView extends JFrame {
 
 		// GUI anzeigen
 		pack();
-//		JPanel jokerView = new JokerView(this); 
+//		JPanel jokerView = new JokerView(this);
 //		setGlassPane(jokerView);
 //		jokerView.setVisible(true);
 	}

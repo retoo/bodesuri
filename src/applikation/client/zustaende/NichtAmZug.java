@@ -51,9 +51,11 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		spiel.setLetzterZug(zug);
+		spiel.zugHistory.addFirst(zug);
+		spiel.chat.meldeZug(zug);
+
 		try {
 			zug.validiere().ausfuehren();
-			spiel.zugHistory.addFirst(zug);
 		} catch (RegelVerstoss e) {
 			controller.zeigeFehlermeldung("Ungültigen Zug (" + e
 			                              + ") vom Server erhalten!");
@@ -65,6 +67,7 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
+		spiel.chat.meldeRundenStart();
 		spiel.spielerIch.getKarten().clear();
 		for (pd.karten.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));
@@ -75,6 +78,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
 		Spieler spieler = spiel.findeSpieler(aufgabe.spieler);
+		spiel.chat.meldeAufgabe(aufgabe);
 		spieler.setHatAufgebeben(true);
 		return this.getClass();
 	}
