@@ -49,4 +49,5 @@ public interface Steuerung {
 
 	public abstract void chatNachricht(String text);
 
+	public abstract void beenden();
 }

@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
@@ -42,6 +43,7 @@ public class VerbindenView extends JFrame {
 	private JTextField hostname 	= new InputTextField(DEFAULT_HOST, 15);
 	private JTextField port 		= new InputTextField(DEFAULT_PORT, 5);
 	private JTextField spielerName;
+	private JProgressBar progressBar = new JProgressBar(0, 100);
 	private JPanel inputpanel;
 	private JPanel buttonpanel 		= new JPanel();
 	private JButton verbindenButton = new JButton("Verbinden");
@@ -50,10 +52,12 @@ public class VerbindenView extends JFrame {
 	private JLabel bodesuriIcon = new JLabel(Icons.BODESURI_START);
 	private Steuerung steuerung;
 
-	public VerbindenView(Steuerung steuerung, final String DEFAULT_NAME) {
+	public VerbindenView(final Steuerung steuerung, final String DEFAULT_NAME) {
 		// Initialisierung
 		this.steuerung = steuerung;
 		spielerName = new InputTextField(DEFAULT_NAME, 20);
+		progressBar.setVisible(false);
+		progressBar.setIndeterminate(true);
 
 		setTitle("Bodesuri - Verbinden");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,11 +81,7 @@ public class VerbindenView extends JFrame {
 		// Actions definieren und Tastenbefehle binden
 		AbstractAction abbrechenAction = new AbstractAction("Abbrechen") {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: Pascal: Braucht es solch eine Funktion im Controller?
-				// controller.beenden(); --Pascal
-				VerbindenView.this.setVisible(false);
-				VerbindenView.this.dispose();
-				System.exit(0);
+				steuerung.beenden();
 			}
 		};
 		AbstractAction verbindenAction = new AbstractAction("Verbinden") {
@@ -89,8 +89,18 @@ public class VerbindenView extends JFrame {
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
-
+				
+				verbindenButton.setEnabled(false);
+				hostname.setEnabled(false);
+				port.setEnabled(false);
+				spielerName.setEnabled(false);
+				progressBar.setVisible(true);
 				VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
+				hostname.setEnabled(true);
+				port.setEnabled(true);
+				spielerName.setEnabled(true);
+				progressBar.setVisible(false);
+				verbindenButton.setEnabled(true);
 			}
 		};
 		verbindenButton.setAction(verbindenAction);
@@ -105,6 +115,8 @@ public class VerbindenView extends JFrame {
 
 		// Components hinzufügen
 		buttonpanel.add(Box.createHorizontalGlue());
+		buttonpanel.add(progressBar);
+		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
 		buttonpanel.add(abbrechenButton);
 		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
 		buttonpanel.add( verbindenButton );

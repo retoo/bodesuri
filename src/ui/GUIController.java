@@ -41,4 +41,18 @@ public class GUIController extends Controller {
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
+	
+	public void beenden() {
+		if (verbindenView != null) {
+			verbindenView.setVisible(false);
+			verbindenView.dispose();
+		} else if (lobbyView != null) {
+			lobbyView.setVisible(false);
+			lobbyView.dispose();
+		} else if (spielView != null) {
+			spielView.setVisible(false);
+			spielView.dispose();
+		}
+		super.beenden();
+	}
 }

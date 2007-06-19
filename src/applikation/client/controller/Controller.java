@@ -107,4 +107,10 @@ public abstract class Controller implements Steuerung {
 
 	public void karteTauschenAuswaehlen() {
     }
+	
+	public void beenden() {
+//		SpielEndeEvent see = new SpielEndeEvent();
+//		eventQueue.enqueue(see);
+		System.exit(0);		// TODO: Pascal: ggf. Event werfen
+	}
 }
