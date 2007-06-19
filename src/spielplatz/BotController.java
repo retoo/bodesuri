@@ -2,8 +2,6 @@ package spielplatz;
 
 import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.Vector;
 
 import pd.karten.Karte;
@@ -21,15 +19,24 @@ import applikation.geteiltes.SpielerInfo;
 import dienste.eventqueue.Event;
 import dienste.eventqueue.EventQueue;
 
-public class SurriController extends Controller implements Observer {
-	private String nick;
+public class BotController extends Controller {
 	private Spiel spiel;
 	private GUIController guicontroller;
+	private String nickname;
+	private String hostname;
+	private int port;
+	private boolean gui;
 
-	public SurriController(EventQueue queue, String nick) {
-		this.guicontroller = new GUIController(queue);
+	public BotController(EventQueue queue, String nickname, String hostname, int port, Bot bot, boolean gui) {
+		if (gui) {
+			this.guicontroller = new GUIController(queue);
+		}
+
+		this.gui = gui;
 		this.eventQueue = queue;
-		this.nick = nick;
+		this.nickname = nickname;
+		this.hostname = hostname;
+		this.port = port;
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
@@ -37,18 +44,20 @@ public class SurriController extends Controller implements Observer {
 	}
 
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
-		guicontroller.zeigeLobby(spieler, chat);
+		if (gui)
+			guicontroller.zeigeLobby(spieler, chat);
 	}
 
 	public void zeigeSpiel(Spiel spiel) {
-		guicontroller.zeigeSpiel(spiel);
+		if (gui)
+			guicontroller.zeigeSpiel(spiel);
 		this.spiel = spiel;
-		spiel.addObserver(this);
 	}
 
 	public void zeigeVerbinden(String spielerName) {
-		guicontroller.zeigeVerbinden(spielerName);
-		Event e = new VerbindeEvent("localhost", 7788, nick);
+		if (gui)
+			guicontroller.zeigeVerbinden(spielerName);
+		Event e = new VerbindeEvent(this.hostname, this.port, this.nickname);
 
 		eventQueue.enqueue(e);
 	}
@@ -85,19 +94,11 @@ public class SurriController extends Controller implements Observer {
 			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
 
 			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, bewegung);
-			eventQueue.enqueue(zee);
+			eventQueue.enqueue(zee);;
 		}
 
 	}
 
-
-	public void update(Observable o, Object arg) {
-
+    public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
     }
-
-	public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
-		
-	}
-
-
 }

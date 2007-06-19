@@ -40,7 +40,7 @@ public class BodesuriArena {
 		Vector<Thread> clients = new Vector<Thread>();
 
 		for (int i = 0; i < 4; i++) {
-			Runnable r = new TestClient(nicks.get(i));
+			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
 
 			Thread t = new Thread(r);
 			t.start();
