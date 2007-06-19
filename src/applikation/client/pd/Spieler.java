@@ -69,6 +69,14 @@ public class Spieler extends Observable {
 		return spieler.toString();
 	}
 
+	public void setPartner(pd.spieler.Spieler partner) {
+		spieler.setPartner(partner);
+	}
+	
+	public pd.spieler.Spieler getPartner() {
+		return spieler.getPartner();
+	}
+
 	public List<ZugEingabe> getMoeglicheZuege() {
 	    return spieler.getMoeglicheZuege();
     }

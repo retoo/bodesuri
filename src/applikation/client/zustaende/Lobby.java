@@ -1,5 +1,8 @@
 package applikation.client.zustaende;
 
+import java.util.List;
+
+import pd.spieler.Partnerschaft;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Spieler;
 import applikation.geteiltes.SpielerInfo;
@@ -42,6 +45,14 @@ public class Lobby extends ClientZustand {
             }
             
 //            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));
+		}
+		
+		// Partnerschaften auf PD abbilden, damit validierung auf Clients funktioniert
+		List<Spieler> spielers = spiel.getSpieler();
+		for (Spieler s : spielers) {
+			for (Partnerschaft ps : startNachricht.partnerschaften) {
+				s.setPartner( ps.getPartner(s.getSpieler()) );
+			}
 		}
 
 		return SpielStart.class;

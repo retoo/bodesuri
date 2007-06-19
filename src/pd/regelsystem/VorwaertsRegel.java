@@ -45,7 +45,8 @@ public class VorwaertsRegel extends Regel {
 		Feld ziel  = bewegung.ziel;
 		Spieler spieler = zugEingabe.getSpieler();
 
-		if (!start.istBesetztVon(spieler)) {
+		boolean istInEndModus = (spieler.istFertig() && start.istBesetztVon(spieler.getPartner()));
+		if (!start.istBesetztVon(spieler) && !istInEndModus ) {
 			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
 			                        "werden.");
 		}

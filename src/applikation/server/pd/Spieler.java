@@ -13,7 +13,7 @@ public class Spieler {
 	/**
 	 * Name des Spielers
 	 */
-	public Spieler partner;
+	private Spieler partner;
 	private EndPunktInterface endpunkt;
 	public pd.spieler.Spieler spieler;
 
@@ -54,5 +54,16 @@ public class Spieler {
 
 	public String toString() {
 		return spieler.getName() + " (" + endpunkt + ")";
+	}
+	
+	public Spieler getPartner() {
+		return partner;
+	}
+	
+	public void setPartner(Spieler partner) {
+		this.partner = partner;
+		if (partner != null) {
+			spieler.setPartner(partner.spieler);
+		}
 	}
 }

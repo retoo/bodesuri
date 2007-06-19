@@ -12,8 +12,7 @@ public class SpielStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
 		Spiel spielerschaft = spiel;
 
-		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getSpielInfo());
-
+		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getSpielInfo(), spielerschaft.getPartnerschaften());
 		spielerschaft.broadcast(ssn);
 
 		return StartRunde.class;

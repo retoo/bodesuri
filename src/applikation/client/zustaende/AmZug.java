@@ -19,6 +19,8 @@ import dienste.automat.zustaende.Zustand;
  * und der Automat geht nach {@link NichtAmZug} über.
  */
 public class AmZug extends ClientZustand {
+	private boolean hatEndModusErreicht = false;
+	
     public void onEntry() {
 		spiel.zugAutomat = new ZugAutomat(controller, spiel);
 		spiel.zugAutomat.init();
@@ -55,6 +57,16 @@ public class AmZug extends ClientZustand {
 		erfassterZug.getKarte().setAusgewaehlt(false);
 		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
 		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
+		
+		// Wenn der Spieler fertig wird, werden dessen Figuren dem Partner hinzugefügt,
+		// und umgekehrt. Dies wird nur einmalig ausgeführt.
+		if ( spiel.spielerIch.spieler.istFertig() && !hatEndModusErreicht ) {
+			spiel.spielerIch.spieler.addPartnerFiguren(spiel.spielerIch.spieler.getPartner().getFiguren());
+			spiel.spielerIch.spieler.getPartner().addPartnerFiguren(spiel.spielerIch.spieler.getFiguren());
+			hatEndModusErreicht = true;
+		}
+		
+		
 		return NichtAmZug.class;
 	}
 

@@ -40,7 +40,7 @@ public abstract class EndPunkt implements EndPunktInterface {
 		try {
 			outputStream.writeObject(nachricht);
 		} catch (IOException e) {
-			throw new VerbindungWegException(e);
+			throw new RuntimeException(e);	// TODO: reto -> ist hier wirklich keine VerbindungWegException?
 		}
 	}
 

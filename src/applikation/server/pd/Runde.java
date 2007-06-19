@@ -88,7 +88,7 @@ public class Runde {
 
 	public void tausche(Spieler spieler, KartenTausch tausch) {
 		RundenTeilnahme rt_spieler = teilnahmen.get(spieler);
-		RundenTeilnahme rt_partner = teilnahmen.get(spieler.partner);
+		RundenTeilnahme rt_partner = teilnahmen.get(spieler.getPartner());
 
 		if (rt_spieler.hatGetauscht())
 			throw new RuntimeException("Spieler " + spieler

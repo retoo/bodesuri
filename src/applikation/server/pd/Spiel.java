@@ -5,13 +5,13 @@ import java.util.Vector;
 
 import pd.SpielThreads;
 import pd.karten.KartenGeber;
+import pd.spieler.Partnerschaft;
 import applikation.geteiltes.SpielInfo;
 import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.ChatNachricht;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
-import dienste.netzwerk.VerbindungWegException;
 import dienste.netzwerk.server.Server;
 import dienste.serialisierung.SerialisierungsKontext;
 
@@ -56,26 +56,24 @@ public class Spiel implements SerialisierungsKontext {
 			/* Entwickler Betrieb */
 			Spieler einzelgaenger = spielers.get(0);
 
-			einzelgaenger.partner = einzelgaenger;
-			partnerschaften.add( new Partnerschaft(einzelgaenger, einzelgaenger) );
-
+			einzelgaenger.setPartner(einzelgaenger);
+			partnerschaften.add( new Partnerschaft(einzelgaenger.spieler, einzelgaenger.spieler) );
 		} else if (anzahlSpieler == 2) {
-			spielers.get(0).partner = spielers.get(1);
-			spielers.get(1).partner = spielers.get(0);
+			spielers.get(0).setPartner(spielers.get(1));
+			spielers.get(1).setPartner(spielers.get(0));
 
-			partnerschaften.add( new Partnerschaft(spielers.get(0), spielers.get(1)) );
+			partnerschaften.add( new Partnerschaft(spielers.get(0).spieler, spielers.get(1).spieler) );
 		} else if (anzahlSpieler == 4) {
 			/* Normaler Betrieb */
-			spielers.get(0).partner = spielers.get(2);
-			spielers.get(2).partner = spielers.get(0);
-			partnerschaften.add( new Partnerschaft(spielers.get(0), spielers.get(2)) );
+			spielers.get(0).setPartner(spielers.get(2));
+			spielers.get(2).setPartner(spielers.get(0));
+			partnerschaften.add( new Partnerschaft(spielers.get(0).spieler, spielers.get(2).spieler) );
 
-			spielers.get(1).partner = spielers.get(3);
-			spielers.get(3).partner = spielers.get(1);
-			partnerschaften.add( new Partnerschaft(spielers.get(1), spielers.get(3)) );
+			spielers.get(1).setPartner(spielers.get(3));
+			spielers.get(3).setPartner(spielers.get(1));
+			partnerschaften.add( new Partnerschaft(spielers.get(1).spieler, spielers.get(3).spieler) );
 		} else {
-			throw new RuntimeException(
-			                           "Hups, so viele sieler sind nicht unterstüzt");
+			throw new RuntimeException("Hups, so viele sieler sind nicht unterstüzt");
 		}
 	}
 
@@ -87,11 +85,7 @@ public class Spiel implements SerialisierungsKontext {
 	 */
 	public void broadcast(Nachricht nachricht) {
 		for (Spieler spieler : spielers) {
-			try {
-				spieler.sende(nachricht);
-			} catch (VerbindungWegException e) {
-				throw new RuntimeException(e);
-			}
+			spieler.sende(nachricht);
 		}
 	}
 
@@ -163,6 +157,10 @@ public class Spiel implements SerialisierungsKontext {
 		return spieler;
 	}
 
+	public Vector<Partnerschaft> getPartnerschaften() {
+		return partnerschaften;
+	}
+	
 	public SpielInfo getSpielInfo() {
 		Vector<SpielerInfo> spielers = new Vector<SpielerInfo>();
 
