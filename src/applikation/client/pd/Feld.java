@@ -16,6 +16,9 @@ public class Feld extends Observable implements Observer {
 
 		feld.addObserver(this);
 	}
+	public void versetzeFigurAuf(Feld ziel) {
+		feld.versetzeFigurAuf(ziel.getFeld());
+	}
 
 	public Boolean getAusgewaehlt() {
 		return ausgewaehlt;

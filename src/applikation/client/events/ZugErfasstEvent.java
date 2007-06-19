@@ -1,5 +1,8 @@
 package applikation.client.events;
 
+import java.util.List;
+import java.util.Vector;
+
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
@@ -9,27 +12,26 @@ import dienste.eventqueue.Event;
 public class ZugErfasstEvent extends Event {
 	Spieler spieler;
 	Karte karte;
-	Bewegung bewegung;
+	List<Bewegung> bewegungen;
 
 	public ZugErfasstEvent(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this.spieler = spieler;
 		this.karte = karte;
-		this.bewegung = bewegung;
+		this.bewegungen = new Vector<Bewegung>();
+		this.bewegungen.add(bewegung);
+	}
+	
+	public ZugErfasstEvent(Spieler spieler, Karte karte, List<Bewegung> bewegung) {
+		this.spieler = spieler;
+		this.karte = karte;
+		this.bewegungen = bewegung;
 	}
 
 	public Karte getKarte() {
 		return karte;
 	}
 
-	public Bewegung getBewegung() {
-    	return bewegung;
-    }
-
-	public Spieler getSpieler() {
-    	return spieler;
-    }
-	
 	public ZugEingabe toZugEingabe() {
-		return new ZugEingabe(spieler.getSpieler(), karte.getKarte(), bewegung);
+		return new ZugEingabe(spieler.getSpieler(), karte.getKarte(), bewegungen);
 	}
 }
