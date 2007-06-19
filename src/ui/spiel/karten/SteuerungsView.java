@@ -11,16 +11,13 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
-import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
 public class SteuerungsView extends JPanel implements Observer {
 	Steuerung steuerung;
 	Spiel spiel;
-	JTextArea letzterZugLabel;
 
 	public SteuerungsView(Steuerung steuerung, Spiel spiel) {
 		this.steuerung = steuerung;
@@ -30,14 +27,10 @@ public class SteuerungsView extends JPanel implements Observer {
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		setOpaque(false);
 
+		/* TODO: Robin: das war vom ehemaligen steuerung label, ich lass mal hier, vielleicht b
+		 * brauchst ud das für die buttons (-reto)
+		 */
 		spiel.addObserver(this);
-
-		letzterZugLabel = new JTextArea();
-		letzterZugLabel.setLineWrap(true);
-		letzterZugLabel.setEnabled(false);
-		letzterZugLabel.setWrapStyleWord(true);
-		letzterZugLabel.setOpaque(false);
-		letzterZugLabel.setDisabledTextColor(letzterZugLabel.getForeground());
 
 		JButton aussetzen = new JButton("Aufgeben");
 		aussetzen.setOpaque(false);
@@ -47,20 +40,15 @@ public class SteuerungsView extends JPanel implements Observer {
 			}
 		});
 
-		letzterZugLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 		aussetzen.setAlignmentX(Component.LEFT_ALIGNMENT);
 
 		add(aussetzen);
 		add(Box.createVerticalGlue());
-		add(letzterZugLabel);
 	}
 
 	public void update(Observable o, Object arg) {
-		ZugEingabe letzterZug = spiel.getLetzterZug();
-		if (letzterZug != null) {
-			letzterZugLabel.setText(letzterZug.getKurzBeschreibung());
-		} else {
-			letzterZugLabel.setText("");
-		}
+		/* TODO: Robin: das war vom ehemaligen steuerung label, ich lass mal hier, vielleicht b
+		 * brauchst ud das für die buttons (-reto)
+		 */
 	}
 }
