@@ -122,8 +122,7 @@ public class VorwaertsRegel extends Regel {
 	protected void pruefeWegLaenge(Weg weg) throws RegelVerstoss {
 		int wegLaenge = weg.size() - 1;
 		if (wegLaenge != schritte) {
-			throw new RegelVerstoss("Zug muss über " + schritte +
-			                        " und nicht " + wegLaenge + " Felder gehen.");
+			throw new WegLaengeVerstoss(schritte, wegLaenge);
 		}
 	}
 

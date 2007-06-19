@@ -51,8 +51,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 		}
 
 		if (wegLaenge != 7) {
-			throw new RegelVerstoss("Zug muss über " + 7 +
-                                    " und nicht " + wegLaenge + " Felder gehen.");
+			throw new WegLaengeVerstoss(7, wegLaenge);
 		}
 
 		Zug zug = new Zug();
