@@ -1,5 +1,8 @@
 package spielplatz;
 
+import java.util.List;
+import java.util.Vector;
+
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
@@ -26,6 +29,9 @@ public class BodesuriEntwickler {
 		});
 
 		server.start();
+		List<String> namen = new Vector<String>();
+		namen.add("Christoph");
+		namen.add("Micheline");
 
 		for (int i = 0; i < 2; i++) {
 			Thread client = new Thread(new Runnable() {
@@ -49,7 +55,7 @@ public class BodesuriEntwickler {
 						System.exit(99);
 					}
 	            }
-			}, "Spieler " + i); /* evil.. :P */
+			}, namen.get(i)); /* evil.. :P */
 
 			client.start();
 		}
