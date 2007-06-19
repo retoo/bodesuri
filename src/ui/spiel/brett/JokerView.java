@@ -3,6 +3,7 @@ package ui.spiel.brett;
 import java.awt.Color;
 import java.util.Vector;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -23,7 +24,6 @@ import pd.karten.Zehn;
 import pd.karten.Zwei;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
-import ui.spiel.BodesuriView;
 import ui.spiel.karten.KarteView;
 
 public class JokerView extends JPanel {
@@ -33,21 +33,21 @@ public class JokerView extends JPanel {
 
 	private BrettXML brettXML;
 
-	public JokerView(BodesuriView view){
+	public JokerView(JFrame view) {
 		setLayout(null);
 		setBackground(new Color(0,0,0,100));
 		setOpaque(false);
-		
+
 		erstelleKarten();
 		erstelleDeck();
-		
+
 		try {
 			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
 			// Checked Exception in unchecked umwandeln
 			throw new RuntimeException(e);
 		}
-		
+
 		Vector<KarteView> karteViews = new Vector<KarteView>();
 		for(int i = 0; i < kartenDeck.size(); i++){
 			KarteView kv = new KarteView(brettXML.getJokerKarten().get(i), null, null);
@@ -55,22 +55,22 @@ public class JokerView extends JPanel {
 			kv.setKarte(kartenDeck.get(i));
 			add(kv);
 		}
-		
+
 		JLabel jokerSchliessen = new JLabel();
 		jokerSchliessen.setIcon(Icons.JOKERSCHLIESSEN);
-		jokerSchliessen.setBounds((int)brettXML.getJokerKarten().get(13).getX(), 
-				(int)brettXML.getJokerKarten().get(13).getY(), 
-				Icons.JOKERSCHLIESSEN.getIconWidth(), 
+		jokerSchliessen.setBounds((int)brettXML.getJokerKarten().get(13).getX(),
+				(int)brettXML.getJokerKarten().get(13).getY(),
+				Icons.JOKERSCHLIESSEN.getIconWidth(),
 				Icons.JOKERSCHLIESSEN.getIconHeight());
 		add(jokerSchliessen);
-		
+
 		JLabel hintergrund = new JLabel();
 		hintergrund.setBackground(new Color(0,0,0,178));
 		hintergrund.setOpaque(true);
 		hintergrund.setBounds(0, 0, view.getWidth(), view.getHeight());
-		
+
 		add(hintergrund);
-		
+
 	}
 
 	public void erstelleKarten() {
