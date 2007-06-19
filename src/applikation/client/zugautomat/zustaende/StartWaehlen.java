@@ -2,12 +2,14 @@ package applikation.client.zugautomat.zustaende;
 
 import java.util.List;
 
+import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
 
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.Feld;
+import applikation.client.pd.Spieler;
 
 import dienste.automat.zustaende.Zustand;
 
@@ -29,16 +31,17 @@ public class StartWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		Feld feld = event.feld;
-
 		spielDaten.start = feld;
-		Figur figur = feld.getFigur();
-		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
 
-		// TODO: Pascal: Prüfen, ob Figur auf Feld ist und ob Figur vom Spieler-Ich
-		// ist --Reto
-		if (figur != null && figuren.contains(figur)) {
-			feld.setAusgewaehlt(true);
-			return ZielWaehlen.class;
+		Figur figur = feld.getFigur();
+		pd.spieler.Spieler ich = spielDaten.spiel.spielerIch.getSpieler();
+
+		/* Prüfen ob die Markierung des StartFeldes Sinn macht */
+		if  (figur != null && /* Hat es eine Figur ? */
+			(figur.getSpieler() == ich || /* Die Figur ghört dem eigenen Spieler ODER es ist eine Tauschregel*/
+			spielDaten.karte.getRegel() instanceof TauschRegel)) {
+				feld.setAusgewaehlt(true);
+				return ZielWaehlen.class;
 		} else {
 			feld.setAusgewaehlt(false);
 			return StartWaehlen.class;

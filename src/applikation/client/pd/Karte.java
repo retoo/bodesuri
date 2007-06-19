@@ -4,6 +4,8 @@ import java.util.Observable;
 
 import pd.karten.Joker;
 import pd.karten.KartenFarbe;
+import pd.regelsystem.Regel;
+import pd.regelsystem.TauschRegel;
 
 public class Karte extends Observable {
 	private boolean ausgewaehlt;
@@ -44,8 +46,12 @@ public class Karte extends Observable {
 			return name.toLowerCase();
 		}
 	}
-	
+
 	public String toString() {
 		return karte.toString();
 	}
+
+	public Regel getRegel() {
+		return karte.getRegel();
+    }
 }
