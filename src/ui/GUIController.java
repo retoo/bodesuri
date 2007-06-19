@@ -8,6 +8,7 @@ import ui.lobby.LobbyView;
 import ui.spiel.BodesuriView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
+import applikation.client.pd.Chat;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
@@ -26,14 +27,15 @@ public class GUIController extends Controller {
 		verbindenView.setVisible(true);
 	}
 
-	public void zeigeLobby(List<Spieler> spieler) {
+	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
 		verbindenView.setVisible(false);
-		lobbyView = new LobbyView(spieler);
+		lobbyView = new LobbyView(spieler, this, chat);
 		lobbyView.setVisible(true);
 	}
 
 	public void zeigeSpiel(Spiel spiel) {
 		lobbyView.setVisible(false);
+		lobbyView.dispose();
 		spielView = new BodesuriView(this, spiel);
 		spielView.setVisible(true);
 	}

@@ -12,6 +12,7 @@ import ui.GUIController;
 import applikation.client.controller.Controller;
 import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
+import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
@@ -33,8 +34,8 @@ public class SurriController extends Controller implements Observer {
 		throw new RuntimeException(fehlermeldung);
 	}
 
-	public void zeigeLobby(List<Spieler> spieler) {
-		guicontroller.zeigeLobby(spieler);
+	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
+		guicontroller.zeigeLobby(spieler, chat);
 	}
 
 	public void zeigeSpiel(Spiel spiel) {

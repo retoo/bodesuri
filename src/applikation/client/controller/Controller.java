@@ -3,10 +3,6 @@ package applikation.client.controller;
 import java.util.List;
 
 import pd.zugsystem.ZugEingabe;
-
-import dienste.eventqueue.EventQueue;
-
-
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.ChatEingabeEvent;
 import applikation.client.events.FeldAbgewaehltEvent;
@@ -15,10 +11,12 @@ import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.VerbindeEvent;
+import applikation.client.pd.Chat;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
+import dienste.eventqueue.EventQueue;
 
 /**
  * Der Controller dient zum Kanalisieren der Zugriffe zwischen der UI- und
@@ -41,7 +39,7 @@ public abstract class Controller implements Steuerung {
 	 * @param spieler
 	 *            Liste der Spieler
 	 */
-	public abstract void zeigeLobby(List<Spieler> spieler);
+	public abstract void zeigeLobby(List<Spieler> spieler, Chat chat);
 
 	/**
 	 * Das Spielbrett anzeigen.
