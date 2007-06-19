@@ -40,7 +40,7 @@ public abstract class EndPunkt implements EndPunktInterface {
 		try {
 			outputStream.writeObject(nachricht);
 		} catch (IOException e) {
-			throw new VerbindungWegException();
+			throw new VerbindungWegException(e);
 		}
 	}
 
