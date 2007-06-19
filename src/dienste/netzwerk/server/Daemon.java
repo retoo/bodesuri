@@ -3,6 +3,7 @@ package dienste.netzwerk.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
@@ -19,6 +20,7 @@ public class Daemon implements Runnable {
 	private ServerSocket serverSock;
 	private EventQueue queue;
 	private SerialisierungsKontext serialisierungsKontext;
+	private boolean istBeendet;
 
 	/**
 	 * Erstellt einen neuen Dämon.
@@ -58,6 +60,11 @@ public class Daemon implements Runnable {
 				queue.enqueue(new NeueVerbindung(client));
 			}
 		} catch (Exception e) {
+			/* Prüfen ob der Socket ggf. absichtlcih beendet wurde*/
+			if (e instanceof SocketException && istBeendet == true) {
+				return;
+			}
+
 			try {
 				/* Fehler dem HauptThread melden und abbrechen */
 				queue.enqueue(new SchwererDaemonFehler(e));
@@ -73,6 +80,7 @@ public class Daemon implements Runnable {
 
 	public void auschalten() {
 		try {
+			istBeendet = true;
 	        serverSock.close();
         } catch (IOException e) {
 	        throw new RuntimeException(e);
