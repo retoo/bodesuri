@@ -45,7 +45,7 @@ public class Spieler extends Observable {
 		return spieler.getFarbe();
 	}
 
-	public Boolean getAmZug() {
+	public boolean getAmZug() {
 		return amZug;
 	}
 
