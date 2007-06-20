@@ -24,6 +24,11 @@ public class BLabel extends JLabel {
 		setSize(width, height); /* TONIGHT WE SWING IN HELL */
 	}
 
+	public BLabel(Icon icon, Point p) {
+	    this(icon, 0, 0);
+	    zentriereAuf(p);
+    }
+
 	public void zentriereAuf(Point position) {
 		setLocation(position.x - dxFinal, position.y - dyFinal);
 	}

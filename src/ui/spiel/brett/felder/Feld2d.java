@@ -1,13 +1,14 @@
 package ui.spiel.brett.felder;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
-import javax.swing.JLabel;
 
+import ui.erweiterungen.BLabel;
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
 
@@ -15,40 +16,34 @@ import applikation.client.pd.Feld;
  * JLabel, ist die Oberklase aller Felder. Von dieser Klasse leiten alle
  * weiteren Typen von Feldern ab.
  */
-public abstract class Feld2d extends javax.swing.JLabel implements Observer {
+public abstract class Feld2d extends BLabel implements Observer {
 	private Point position;
 	private final Feld feld;
 	protected Icon icon;
 	private FigurenManager figurenManager;
+	private BLabel hover;
+	private BLabel ausgewaehlt;
 
-	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter, Icon icon, FigurenManager figurenManager) {
-		super(icon);
+	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter, Icon icon, BLabel hover, FigurenManager figurenManager) {
+		super(icon, p);
 		this.icon = icon;
 		this.position = p;
 		this.feld = feld;
+		this.hover = hover;
 		this.figurenManager = figurenManager;
+		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
+		this.ausgewaehlt.setVisible(false);
+		this.add(ausgewaehlt);
 
 		feld.addObserver(this);
 
 		addMouseListener(mouseAdapter);
 
 		/* Die Grafiken ein erstes mal generieren */
+
+		zentriereAuf(position);
+
 		update(null, null);
-	}
-
-	private void zeichne(Icon icon) {
-		int posx = position.x - (icon.getIconWidth() / 2);
-		int posy = position.y - (icon.getIconHeight() / 2);
-		setIcon(icon);
-		setBounds(posx, posy, icon.getIconWidth(), icon.getIconHeight());
-	}
-
-	public int getPointX() {
-		return position.x;
-	}
-
-	public int getPointY() {
-		return position.y;
 	}
 
 	public Feld getFeld() {
@@ -66,6 +61,7 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 	 *  -- reto und robin
 	 */
 	public void update(Observable os, Object arg) {
+		System.out.println("fuu");
 		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
 		if (feld.istBesetzt()) {
 			/* Figur drauf stellen */
@@ -76,36 +72,23 @@ public abstract class Feld2d extends javax.swing.JLabel implements Observer {
 			 * einige figuren null sein. Dann zeichnen wir einfach ni.
 			 */
 			if (figur != null) {
-				figur.setzeAuf(position.x, position.y);
+				figur.setzeAuf(position);
 			}
 		}
 
-		Icon icon;
 		/* prüfen wir ob selektiert */
-		if (feld.getAusgewaehlt()) {
-			icon = getAktivesIcon();
-		} else if (feld.getHover()) {
-			//icon = getHoverIcon();
-			JLabel hover = new JLabel(getHoverIcon());
-			hover.setBounds(position.x, position.y, getHoverIcon().getIconWidth(), getHoverIcon().getIconHeight());
-			add(hover);
-			icon = getIcon();
+		if (feld.getHover()) {
+			hover.setVisible(true);
+			hover.zentriereAuf(this.position);
 		} else {
-			icon = getPassivesIcon();
+			hover.setVisible(false);
 		}
 
-		zeichne(icon);
-	}
-
-	public Icon getAktivesIcon() {
-		return Icons.FELD_AUSWAHL;
-	}
-
-	public Icon getHoverIcon() {
-		return Icons.FELD_HOVER;
-	}
-
-	public Icon getPassivesIcon() {
-		return icon;
+		if (feld.getAusgewaehlt()) {
+			System.out.println("ausgewählt");
+			ausgewaehlt.setVisible(true);
+		} else {
+			ausgewaehlt.setVisible(false);
+		}
 	}
 }
