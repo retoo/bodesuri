@@ -35,6 +35,6 @@ public class Chat extends ObservableList<String> {
 
 	public void meldeRundenStart() {
 		System.out.println("Melde Rundenstart");
-		add(getZeit() + ": Rundenstart");
+		add(getZeit() + ": Rundenstart\n");
 	}
 }
