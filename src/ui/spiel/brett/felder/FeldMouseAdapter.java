@@ -2,7 +2,7 @@ package ui.spiel.brett.felder;
 
 import java.awt.event.MouseEvent;
 
-import ui.spiel.ClickMouseAdapter;
+import ui.erweiterungen.ClickMouseAdapter;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Feld;

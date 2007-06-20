@@ -1,4 +1,4 @@
-package ui.spiel;
+package ui.erweiterungen;
 
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
