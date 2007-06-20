@@ -156,9 +156,9 @@ public class ClientZustand extends Zustand {
     }
 
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface endpunkt) {
-		controller.zeigeFehlermeldung("Verbindung zu Server " + endpunkt +
-		                  " wurde unerwartet beendet. Client wird beendet.");
-    	return EndZustand.class;
+		controller.zeigeFehlermeldung("Die Verbindung zum Server ist "
+		                              + "abgebrochen. Das Spiel wird beendet.");
+		return EndZustand.class;
     }
 
 
