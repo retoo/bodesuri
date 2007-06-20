@@ -71,4 +71,8 @@ public class ListChangeEvent {
 	public String toString() {
 		return "" + changeType + " #" + changedIndex + " " + changedObject;
 	}
+	
+	public Object getChangeObject(){
+		return changedObject;
+	}
 }
