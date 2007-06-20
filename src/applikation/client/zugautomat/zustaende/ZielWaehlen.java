@@ -1,7 +1,5 @@
 package applikation.client.zugautomat.zustaende;
 
-import pd.regelsystem.RegelVerstoss;
-import pd.regelsystem.WegLaengeVerstoss;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 import applikation.client.controller.Controller;
@@ -10,9 +8,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Brett;
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -36,31 +32,7 @@ public class ZielWaehlen extends ClientZugZustand {
 		} else {
 			spielDaten.ziel = event.feld;
 			spielDaten.ziel.setAusgewaehlt(true);
-
-			Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
-			                                 spielDaten.ziel.getFeld());
-			ZugErfasstEvent erfassterZug = new ZugErfasstEvent(
-			                                                   spielDaten.spiel.spielerIch,
-			                                                   spielDaten.karte,
-			                                                   bewegung);
-			try {
-				erfassterZug.toZugEingabe().validiere();
-			} catch (WegLaengeVerstoss e) {
-				if (e.getIstLaenge() < 7) {
-					return StartWaehlen.class;
-				}
-			} catch (RegelVerstoss e) {
-				controller.zeigeFehlermeldung("Ungültiger Zug: "
-				                              + e.getMessage());
-				return this.getClass();
-			}
-
-			spielDaten.spiel.queue.enqueue(erfassterZug);
-
-			brettZuruecksetzen();
-			spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
-
-			return EndZustand.class;
+			return ZugValidieren.class;
 		}
 	}
 
