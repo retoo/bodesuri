@@ -10,14 +10,18 @@ public class BLabel extends JLabel {
 	private int dy;
 
 	public BLabel(Icon icon) {
-		this(icon, icon.getIconWidth() / 2, icon.getIconHeight() / 2);
+		this(icon, 0, 0);
 	}
 
 	public BLabel(Icon icon, int dx, int dy) {
 		super(icon);
-		this.dx = dx;
-		this.dy = dy;
-		setSize(icon.getIconWidth(), icon.getIconHeight());
+		int width = icon.getIconWidth();
+		int height = icon.getIconHeight();
+
+		this.dx = (width / 2) + dx;
+		this.dy = (height / 2) + dy;
+
+		setSize(width, height); /* TONIGHT WE SWING IN HELL */
 	}
 
 	public void zentriereAuf(Point position) {
