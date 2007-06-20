@@ -19,8 +19,7 @@ public class StartWaehlen extends ClientZugZustand {
     }
 
 	public void onEntry() {
-		spielDaten.start = null;
-		spielDaten.ziel = null;
+		brettZuruecksetzen();
 		spielDaten.spiel.setHinweis("Wähle das Startfeld.");
 	}
 
@@ -44,6 +43,7 @@ public class StartWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		brettZuruecksetzen();
 		karteAuswaehlen(event.karte);
 		return this.getClass();
 	}

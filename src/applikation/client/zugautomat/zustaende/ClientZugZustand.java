@@ -57,6 +57,17 @@ public class ClientZugZustand extends Zustand {
 		spielDaten.karte = karte;
 		spielDaten.karte.setAusgewaehlt(true);
 	}
+	
+	protected void brettZuruecksetzen() {
+		if (spielDaten.start != null) {
+			spielDaten.start.setAusgewaehlt(false);
+			spielDaten.start = null;
+		}
+		if (spielDaten.ziel != null) {
+			spielDaten.ziel.setAusgewaehlt(false);
+			spielDaten.ziel = null;
+		}
+	}
 
 	public void setController(Controller controller) {
 		this.controller = controller;
