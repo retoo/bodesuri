@@ -1,6 +1,7 @@
 package ui.spiel.brett;
 
 import java.awt.Color;
+import java.awt.Point;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -58,10 +59,10 @@ public class JokerView extends JPanel {
 
 		JLabel jokerSchliessen = new JLabel();
 		jokerSchliessen.setIcon(Icons.JOKERSCHLIESSEN);
-		jokerSchliessen.setBounds((int)brettXML.getJokerKarten().get(13).getX(),
-				(int)brettXML.getJokerKarten().get(13).getY(),
-				Icons.JOKERSCHLIESSEN.getIconWidth(),
-				Icons.JOKERSCHLIESSEN.getIconHeight());
+		Point pos = brettXML.getJokerKarten().get(13);
+		jokerSchliessen.setBounds(pos.x, pos.y,
+		                          Icons.JOKERSCHLIESSEN.getIconWidth(),
+		                          Icons.JOKERSCHLIESSEN.getIconHeight());
 		add(jokerSchliessen);
 
 		JLabel hintergrund = new JLabel();
