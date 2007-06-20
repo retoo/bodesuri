@@ -2,6 +2,7 @@ package ui.spiel.brett;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.JFrame;
@@ -25,6 +26,7 @@ import pd.karten.Zehn;
 import pd.karten.Zwei;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
+import ui.spiel.ClickMouseAdapter;
 import ui.spiel.karten.KarteMouseAdapter;
 import ui.spiel.karten.KarteView;
 import ui.spiel.karten.KartenAuswahl;
@@ -64,9 +66,10 @@ public class JokerView extends JPanel {
 		Point pos = brettXML.getJokerKarten().get(13);
 		jokerSchliessen.setBounds(pos.x, pos.y, Icons.JOKERSCHLIESSEN
 				.getIconWidth(), Icons.JOKERSCHLIESSEN.getIconHeight());
-		jokerSchliessen.addMouseListener(new java.awt.event.MouseAdapter() {
-			public void mousePressed(java.awt.event.MouseEvent evt) {
-				System.out.println(evt);
+		jokerSchliessen.addMouseListener(new ClickMouseAdapter() {
+			public void clicked(MouseEvent e) {
+				setVisible(false);
+				
 			}
 		});
 		add(jokerSchliessen);
