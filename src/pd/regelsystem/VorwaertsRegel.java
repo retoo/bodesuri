@@ -96,8 +96,7 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss(
 				"Es darf nur mit dem König oder dem Ass gestartet werden.");
 		} else if (ziel.istLager()) {
-			throw new RegelVerstoss(
-				"Es gibt nur eine Art, ins Lager zurückzukehren...");
+			throw new RegelVerstoss("Man kann nicht ins Lager fahren.");
 		}
 
 		if (ziel.istHimmel()) {
