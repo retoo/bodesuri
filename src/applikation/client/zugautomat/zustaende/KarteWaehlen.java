@@ -26,8 +26,6 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		controller.zeigeFehlermeldung("Hobla, jetzt musst du zuerst eine "
-		                              + "Karte wählen, versuchs nochmals!");
 		return this.getClass();
 	}
 }
