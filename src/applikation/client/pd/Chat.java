@@ -26,7 +26,7 @@ public class Chat extends ObservableList<String> {
     }
 
 	public void meldeZug(ZugEingabe zug) {
-		add(getZeit() + ": " + zug.getSpieler() + " zieht mit Karte " + zug.getKarte() + "\n");
+		add(getZeit() + ": " + zug.getSpieler() + " spielt " + zug.getKarte() + "\n");
     }
 
 	public void meldeAufgabe(AufgabeInformation aufgabe) {
