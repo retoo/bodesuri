@@ -9,6 +9,7 @@ import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.Brett;
+import applikation.client.pd.Feld;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -26,11 +27,26 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		if (spielDaten.start == event.feld) {
-			event.feld.setAusgewaehlt(false);
+		Feld feld = event.feld;
+
+		if (spielDaten.start == feld) {
+			/* Dasselbe Feld nochmals angeklickt */
+
+			feld.setAusgewaehlt(false);
+
 			return StartWaehlen.class;
+		} else if/* Prüfen ob der Spieler eine andere Figur aus seinem eigenen Lager angelickt hat */
+				(feld.istLager() && /* ist ein lager */
+				 feld.getFigur() != null  && /* hat figur drauf */
+				 feld.getFigur().getSpieler() == spielDaten.spiel.spielerIch.getSpieler()) { /* gehört mir */
+
+			spielDaten.start.setAusgewaehlt(false); /* TODO: reto ins spieldaten verschieben */
+			spielDaten.start = feld;
+			spielDaten.start.setAusgewaehlt(true);
+
+			return this.getClass();
 		} else {
-			spielDaten.ziel = event.feld;
+			spielDaten.ziel = feld;
 			spielDaten.ziel.setAusgewaehlt(true);
 			return ZugValidieren.class;
 		}

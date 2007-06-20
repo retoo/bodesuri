@@ -64,4 +64,7 @@ public class Feld extends Observable implements Observer {
 		setChanged();
 		notifyObservers();
 	}
+	public boolean istLager() {
+	    return feld.istLager();
+    }
 }
