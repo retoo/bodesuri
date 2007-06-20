@@ -15,8 +15,7 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
 		                                 spielDaten.ziel.getFeld());
 		spielDaten.bewegungen.add(bewegung);
-		ZugErfasstEvent erfassterZug = new ZugErfasstEvent(
-		                                                   spielDaten.spiel.spielerIch,
+		ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spiel.spielerIch,
 		                                                   spielDaten.karte,
 		                                                   spielDaten.bewegungen);
 		
@@ -38,9 +37,7 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		spielDaten.spiel.queue.enqueue(erfassterZug);
 		brettZuruecksetzen();
 		bewegungenZuruecksetzen();
-
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
-
 		return EndZustand.class;
 	}
 
@@ -49,5 +46,4 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		spielDaten.bewegungen.remove(spielDaten.bewegungen.size()-1);
 		spielDaten.ziel.setAusgewaehlt(false);
     }
-
 }

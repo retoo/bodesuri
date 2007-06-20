@@ -52,7 +52,12 @@ public class ClientZugZustand extends Zustand {
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
 	}
-	
+
+	/**
+	 * Eine Karte als ausgewählt markieren.
+	 * 
+	 * @param karte
+	 */
 	protected void karteAuswaehlen(Karte karte) {
 		if (spielDaten.karte != null && spielDaten.karte.istAusgewaehlt()) {
 			spielDaten.karte.setAusgewaehlt(false);
@@ -60,7 +65,10 @@ public class ClientZugZustand extends Zustand {
 		spielDaten.karte = karte;
 		spielDaten.karte.setAusgewaehlt(true);
 	}
-	
+
+	/**
+	 * Start und Ziel entselektieren & löschen.
+	 */
 	protected void brettZuruecksetzen() {
 		if (spielDaten.start != null) {
 			spielDaten.start.setAusgewaehlt(false);
@@ -71,7 +79,10 @@ public class ClientZugZustand extends Zustand {
 			spielDaten.ziel = null;
 		}
 	}
-	
+
+	/**
+	 * Den Vektor mit den erfassten Bewegungen löschen.
+	 */
 	protected void bewegungenZuruecksetzen() {
 		spielDaten.bewegungen = new Vector<Bewegung>();
 	}
