@@ -10,6 +10,7 @@ import dienste.automat.zustaende.Zustand;
 public class KarteTauschenBekommen extends ClientZustand {
 	public void onEntry() {
 		spiel.setHinweis("Warte auf Karte des Partners.");
+		spiel.spielerIch.setAmZug(false);
 	}
 
 	Class<? extends Zustand> kartenTausch(pd.karten.Karte karte) {

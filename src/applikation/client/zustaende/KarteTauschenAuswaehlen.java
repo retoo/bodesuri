@@ -12,9 +12,8 @@ import dienste.automat.zustaende.Zustand;
 public class KarteTauschenAuswaehlen extends ClientZustand {
 	public void onEntry() {
 		spiel.setHinweis("Zu tauschende Karte wählen.");
-
 		spiel.spielerIch.getKarten().setAktiv(true);
-
+		spiel.spielerIch.setAmZug(true);
 		controller.karteTauschenAuswaehlen();
 	}
 
