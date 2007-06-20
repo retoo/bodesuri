@@ -1,13 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<!DOCTYPE brett [
-<!ELEMENT brett (feld*)>
-<!ELEMENT feld (koordinaten)>
-<!ELEMENT koordinaten (x, y)>
-<!ELEMENT x (#PCDATA)>
-<!ELEMENT y (#PCDATA)>
-<!ATTLIST brett name CDATA #IMPLIED>
-<!ATTLIST feld nummer CDATA #REQUIRED>
-]>
+
 <brett name="prototyp">
 	<feld nummer="0">
 		<koordinaten>
