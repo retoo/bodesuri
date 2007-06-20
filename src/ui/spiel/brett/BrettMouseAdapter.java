@@ -1,18 +1,19 @@
 package ui.spiel.brett;
 
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import ui.spiel.ClickMouseAdapter;
 
 import applikation.client.controller.Steuerung;
 
-public class BrettMouseAdapter extends MouseAdapter {
+public class BrettMouseAdapter extends ClickMouseAdapter {
 	private Steuerung steuerung;
 
 	public BrettMouseAdapter(Steuerung steuerung) {
 		this.steuerung = steuerung;
 	}
 
-	public void mouseClicked(MouseEvent e) {
+	public void clicked(MouseEvent e) {
 		steuerung.feldAbwaehlen();
 	}
 }
