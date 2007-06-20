@@ -116,10 +116,9 @@ public class BrettView extends JPanel implements Observer {
 			gbc.anchor = GridBagConstraints.CENTER;
 			gbl.setConstraints(spielerView, gbc);
 			hinweisView.add(spielerView);
-			hinweisView.setBounds((int) brettXML.getSpielerViews().get(i)
-			                                    .getX(),
-			                      (int) brettXML.getSpielerViews().get(i)
-			                                    .getY(), 170, 30);
+			hinweisView.setBounds(brettXML.getSpielerViews().get(i).x,
+			                      brettXML.getSpielerViews().get(i).y,
+			                      170, 30);
 			add(hinweisView);
 
 			i++;

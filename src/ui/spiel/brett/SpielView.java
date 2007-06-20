@@ -45,7 +45,7 @@ public class SpielView extends JPanel {
 	protected void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setPaint(paint);
-		g2.fillRect(0,0, getWidth(), getHeight());
+		g2.fillRect(0, 0, getWidth(), getHeight());
 		super.paintComponent(g);
 	}
 
