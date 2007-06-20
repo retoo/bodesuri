@@ -6,7 +6,7 @@ import java.util.Vector;
 import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
-import ui.spiel.BodesuriView;
+import ui.spiel.SpielView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Chat;
@@ -18,7 +18,7 @@ import dienste.eventqueue.EventQueue;
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
-	private BodesuriView spielView;
+	private SpielView spielView;
 
 	public GUIController(EventQueue eventQueue) {
 		this.eventQueue = eventQueue;
@@ -38,7 +38,7 @@ public class GUIController extends Controller {
 	public void zeigeSpiel(Spiel spiel) {
 		lobbyView.setVisible(false);
 		lobbyView.dispose();
-		spielView = new BodesuriView(this, spiel);
+		spielView = new SpielView(this, spiel);
 		spielView.setVisible(true);
 	}
 

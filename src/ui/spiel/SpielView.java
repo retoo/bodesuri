@@ -27,10 +27,10 @@ import applikation.client.pd.Spiel;
 /**
  * Das GUI des Spiels.
  */
-public class BodesuriView extends JFrame {
+public class SpielView extends JFrame {
 	private static final int RAND = 8;
 
-	public BodesuriView(Steuerung steuerung, Spiel spiel) {
+	public SpielView(Steuerung steuerung, Spiel spiel) {
 		setTitle("Bodesuri - Spiel (" + spiel.spielerIch + ")");
 		setName("Bodesuri");
 		setLocationByPlatform(true);
