@@ -22,19 +22,19 @@ public class Chat extends ObservableList<String> {
     }
 
 	public void neueNachricht(String absender, String nachricht) {
-		add(getZeit() + ": " + absender + "> " + nachricht + "\n");
+		add(getZeit() + ": " + absender + "> " + nachricht);
     }
 
 	public void meldeZug(ZugEingabe zug) {
-		add(getZeit() + ": " + zug.getSpieler() + " spielt " + zug.getKarte() + "\n");
+		add(getZeit() + ": " + zug.getSpieler() + " spielt " + zug.getKarte());
     }
 
 	public void meldeAufgabe(AufgabeInformation aufgabe) {
-		add(getZeit() + ": " + aufgabe.spieler + " kann nicht mehr ziehen\n");
+		add(getZeit() + ": " + aufgabe.spieler + " kann nicht mehr ziehen");
     }
 
 	public void meldeRundenStart() {
 		System.out.println("Melde Rundenstart");
-		add(getZeit() + ": Rundenstart\n");
+		add(getZeit() + ": Rundenstart");
 	}
 }

@@ -38,15 +38,10 @@ public class ChatView extends JPanel implements Observer {
 
 		// Layout zusammenstellen
 		chatArea = new JTextArea();
-
 		chatArea.setEditable(false);
-		/* hässlich, wir zwingen das textarea min. drei Zeilen gross zu sein */
-		chatArea.setText("\n\n\n");
-
-		add(new JScrollPane(chatArea), BorderLayout.CENTER);
+		chatArea.setRows(3);
 
 		eingabe = new JTextField();
-
 		eingabe.requestFocusInWindow();
 
 		eingabe.addActionListener(new ActionListener() {
@@ -56,16 +51,19 @@ public class ChatView extends JPanel implements Observer {
 			}
 		});
 
+		add(new JScrollPane(chatArea), BorderLayout.CENTER);
 		add(eingabe, BorderLayout.SOUTH);
 	}
 
 	public void update(Observable o, Object arg) {
-		StringBuilder messages = new StringBuilder();
+		StringBuilder text = new StringBuilder();
 
-		for (String message : chat) {
-			messages.insert(0, message);
+		for (int i = 0; i < chat.size(); ++i) {
+			if (i != 0) text.append("\n");
+			text.append(chat.get(i));
 		}
 
-		chatArea.setText(messages.toString());
+		chatArea.setText(text.toString());
+		chatArea.setCaretPosition(chatArea.getDocument().getLength());
 	}
 }
