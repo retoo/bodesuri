@@ -50,13 +50,18 @@ public class GUIController extends Controller {
 		if (verbindenView != null) {
 			verbindenView.setVisible(false);
 			verbindenView.dispose();
-		} else if (lobbyView != null) {
+		}
+
+		if (lobbyView != null) {
 			lobbyView.setVisible(false);
 			lobbyView.dispose();
-		} else if (spielView != null) {
+		}
+
+		if (spielView != null) {
 			spielView.setVisible(false);
 			spielView.dispose();
 		}
+
 		super.beenden();
 	}
 
