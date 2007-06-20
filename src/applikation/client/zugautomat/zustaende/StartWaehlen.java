@@ -44,6 +44,7 @@ public class StartWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		brettZuruecksetzen();
+		bewegungenZuruecksetzen();
 		karteAuswaehlen(event.karte);
 		return this.getClass();
 	}

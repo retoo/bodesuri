@@ -38,11 +38,13 @@ public class ZielWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		brettZuruecksetzen();
+		bewegungenZuruecksetzen();
 		return StartWaehlen.class;
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		brettZuruecksetzen();
+		bewegungenZuruecksetzen();
 		karteAuswaehlen(event.karte);
 		return StartWaehlen.class;
 	}

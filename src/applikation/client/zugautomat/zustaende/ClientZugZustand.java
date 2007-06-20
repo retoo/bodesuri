@@ -1,5 +1,8 @@
 package applikation.client.zugautomat.zustaende;
 
+import java.util.Vector;
+
+import pd.zugsystem.Bewegung;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
@@ -67,6 +70,10 @@ public class ClientZugZustand extends Zustand {
 			spielDaten.ziel.setAusgewaehlt(false);
 			spielDaten.ziel = null;
 		}
+	}
+	
+	protected void bewegungenZuruecksetzen() {
+		spielDaten.bewegungen = new Vector<Bewegung>();
 	}
 
 	public void setController(Controller controller) {
