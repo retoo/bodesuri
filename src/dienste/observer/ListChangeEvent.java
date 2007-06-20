@@ -13,15 +13,15 @@ public class ListChangeEvent {
 	 *
 	 *  @see ListChangeEvent.ListChangeType
 	 */
-	public ListChangeType changeType;
+	public final ListChangeType changeType;
 	/**
 	 * Index of the changed object.
 	 */
-	public int changedIndex;
+	public final int changedIndex;
 	/**
 	 * Changed object.
 	 */
-	public Object changedObject;
+	public final Object changedObject;
 
 	public enum ListChangeType {
 	/**
@@ -70,9 +70,5 @@ public class ListChangeEvent {
 
 	public String toString() {
 		return "" + changeType + " #" + changedIndex + " " + changedObject;
-	}
-	
-	public Object getChangeObject(){
-		return changedObject;
 	}
 }
