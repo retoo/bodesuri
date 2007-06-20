@@ -58,14 +58,12 @@ public class AmZug extends ClientZustand {
 		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
 		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
 		
-		// Wenn der Spieler fertig wird, werden dessen Figuren dem Partner hinzugefügt,
-		// und umgekehrt. Dies wird nur einmalig ausgeführt.
+		// Wenn der Spieler fertig wird, werden dessen Figuren dem Partner hinzugefügt. 
+		// Dies wird nur einmalig ausgeführt.
 		if ( spiel.spielerIch.spieler.istFertig() && !hatEndModusErreicht ) {
-			spiel.spielerIch.spieler.addPartnerFiguren(spiel.spielerIch.spieler.getPartner().getFiguren());
-			spiel.spielerIch.spieler.getPartner().addPartnerFiguren(spiel.spielerIch.spieler.getFiguren());
+			spiel.spielerIch.spieler.addPartnerFiguren();
 			hatEndModusErreicht = true;
 		}
-		
 		
 		return NichtAmZug.class;
 	}

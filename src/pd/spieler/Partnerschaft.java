@@ -13,20 +13,24 @@ public class Partnerschaft implements Serializable {
 	}
 
 	public boolean istFertig() {
-		boolean aFertig = spielerA.istFertig();
-		boolean bFertig = spielerB.istFertig();
-		
-		if ( aFertig && bFertig ) {
+		if ( spielerA.istFertig() && spielerB.istFertig() ) {
 			return true;
-		} else if ( aFertig && !bFertig ) {
-			spielerA.addPartnerFiguren( spielerB.getFiguren() );
-		} else if ( !aFertig && bFertig ) {
-			spielerB.addPartnerFiguren( spielerA.getFiguren() );
 		}
 		
 		return false;
 	}
-
+	
+	public Spieler istEndModusMoeglich() {
+		boolean aFertig = spielerA.istFertig();
+		boolean bFertig = spielerB.istFertig();
+		
+		if (aFertig && !bFertig) {
+			return spielerA;
+		} else if (!aFertig && bFertig) {
+			return spielerB;
+		} else return null;
+	}
+	
 	public boolean istMitglied(Spieler spieler) {
 		return (spieler == spielerA || spieler == spielerB) ? true : false;
 	}

@@ -120,11 +120,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		return true;
 	}
 	
-	public void addPartnerFiguren(List<Figur> partnerFiguren) {
-		figuren.addAll(partnerFiguren);
-		for (Figur figur : figuren) {
-			System.out.println(figur);
-		}
+	public void addPartnerFiguren() {
+		figuren.addAll( partner.getFiguren() );
 	}
 	
 	public Spieler getPartner() {
@@ -134,7 +131,7 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public void setPartner(Spieler partner) {
 		this.partner = partner;
 	}
-
+	
 	public List<ZugEingabe> getMoeglicheZuege() {
 		List<ZugEingabe> moeglich = new LinkedList<ZugEingabe>();
 
