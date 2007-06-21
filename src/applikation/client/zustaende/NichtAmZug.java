@@ -35,7 +35,8 @@ public class NichtAmZug extends ClientZustand {
 		return AmZug.class;
 	}
 
-    Class<? extends Zustand> aktuellerSpielerInformation(AktuellerSpielerInformation information) {
+	Class<? extends Zustand> aktuellerSpielerInformation(
+	                                                     AktuellerSpielerInformation information) {
 		Spieler neuerSpieler = spiel.findeSpieler(information.spieler);
 
 		if (spiel.aktuellerSpieler != null) {
@@ -47,7 +48,7 @@ public class NichtAmZug extends ClientZustand {
 
 		spiel.setHinweis(neuerSpieler + " ist am Zug.");
 		return this.getClass();
-    }
+	}
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		spiel.setLetzterZug(zug);
@@ -84,14 +85,16 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
-		System.out.println("Spiel ist fertig, gewiner ist: " + nachricht.gewinner);
-
+		// TODO: Reto: Anders ausgeben. Entweder Infobox oder in der Mitte
+		// --Philippe
+		System.out.println("Das Spiel ist fertig.\n Die Gewinner " + "sind "
+		                   + nachricht.gewinner + ".");
 		try {
-	        spiel.endpunkt.ausschalten();
-        } catch (IOException e) {
-        	throw new RuntimeException(e);
-        }
+			spiel.endpunkt.ausschalten();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 
-	    return EndZustand.class;
+		return EndZustand.class;
 	}
 }
