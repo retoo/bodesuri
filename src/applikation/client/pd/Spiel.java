@@ -37,24 +37,32 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public Spiel() {
 		spiel = new pd.Spiel();
 		zugHistory = new LinkedList<ZugEingabe>();
-		this.spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 
+		// Assoziiere PD-Spieler nach App-Spieler
+		spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 		spieler = new Vector<Spieler>();
+		for (int i=0; i < spiel.getSpieler().size(); i++) {
+			pd.spieler.Spieler pdSpieler = spiel.getSpieler().get(i);
+			Spieler appSpieler = new Spieler( pdSpieler );
+			spieler.add(appSpieler);
+			spielerRegister.put(pdSpieler, appSpieler);
+		}
+		
 		brett = new Brett(spiel.getBrett());
 		chat = new Chat();
 	}
 
-	public Spieler fuegeHinzu(String spielerName) {
-		pd.spieler.Spieler spielerPD = spiel.fuegeHinzu(spielerName);
-
-		Spieler neuerSpieler = new Spieler(spielerPD);
-
-		spieler.add(neuerSpieler);
-		spielerRegister.put(spielerPD, neuerSpieler);
-
-		return neuerSpieler;
-	}
-
+//	public Spieler fuegeHinzu(String spielerName) {
+//		pd.spieler.Spieler spielerPD = spiel.fuegeHinzu(spielerName);
+//
+//		Spieler neuerSpieler = new Spieler(spielerPD);
+//
+//		spieler.add(neuerSpieler);
+//		spielerRegister.put(spielerPD, neuerSpieler);
+//
+//		return neuerSpieler;
+//	}
+	
 	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
 		Spieler s = spielerRegister.get(spieler);
 

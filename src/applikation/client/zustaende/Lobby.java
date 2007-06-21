@@ -5,7 +5,6 @@ import java.util.List;
 import pd.spieler.Partnerschaft;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Spieler;
-import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -22,7 +21,7 @@ public class Lobby extends ClientZustand {
 	}
 	
 	public void onEntry() {
-		controller.zeigeLobby(spiel.getSpieler(), spiel.chat);
+		controller.zeigeLobby(spiel.getSpiel().getSpieler(), spiel.chat);
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {
@@ -31,23 +30,18 @@ public class Lobby extends ClientZustand {
 	}
 
     Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
-    	//TODO: ??? Controller(Lobby) über neuen Spieler benachrichtigen. --Philippe
-    	controller.zeigeSpielerInLobby(bestaetigung.spielInfo.spielers);
-    	System.out.println("Ein Spieler ist beigetreten.");
+    	for (int i = 0; i < bestaetigung.spielInfo.spielers.size(); i++) {
+    		spiel.getSpiel().getSpieler().get(i).setName(bestaetigung.spielInfo.spielers.get(i).name);
+    		
+    		if (bestaetigung.spielInfo.spielers.get(i).name.equals(spiel.spielerName)) {
+            	spiel.spielerIch = spiel.getSpieler().get(i);
+            }
+    	}
+    	
 	    return this.getClass();
     }
 
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
-		for (SpielerInfo si : startNachricht.spielInfo.spielers) {
-			String name = si.name;
-			Spieler neuerSpieler = spiel.fuegeHinzu(name);
-            if (name.equals(spiel.spielerName)) {
-            	spiel.spielerIch = neuerSpieler;
-            }
-            
-//            spielDaten.spielers.put(neuerSpieler, new applikation.client.pd.Spieler(neuerSpieler));
-		}
-		
 		// Partnerschaften auf PD abbilden, damit validierung auf Clients funktioniert
 		List<Spieler> spielers = spiel.getSpieler();
 		for (Spieler s : spielers) {

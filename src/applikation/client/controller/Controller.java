@@ -1,8 +1,8 @@
 package applikation.client.controller;
 
 import java.util.List;
-import java.util.Vector;
 
+import pd.spieler.Spieler;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.ChatEingabeEvent;
@@ -16,8 +16,6 @@ import applikation.client.pd.Chat;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
-import applikation.client.pd.Spieler;
-import applikation.geteiltes.SpielerInfo;
 import dienste.eventqueue.EventQueue;
 
 /**
@@ -44,13 +42,6 @@ public abstract class Controller implements Steuerung {
 	 * 			  Chat
 	 */
 	public abstract void zeigeLobby(List<Spieler> spieler, Chat chat);
-
-	/**
-	 * Einen neuen Spieler in der Lobby anzeigen.
-	 *
-	 * @param spielers
-	 */
-	public abstract void zeigeSpielerInLobby(Vector<SpielerInfo> spielers);
 
 	/**
 	 * Das Spielbrett anzeigen.

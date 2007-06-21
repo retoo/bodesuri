@@ -60,7 +60,6 @@ public abstract class Feld2d extends BLabel implements Observer {
 	 *  -- reto und robin
 	 */
 	public void update(Observable os, Object arg) {
-		System.out.println("fuu");
 		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
 		if (feld.istBesetzt()) {
 			/* Figur drauf stellen */

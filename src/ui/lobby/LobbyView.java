@@ -4,7 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.List;
-import java.util.Vector;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,19 +15,18 @@ import javax.swing.border.EmptyBorder;
 import ui.spiel.chat.ChatView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Chat;
-import applikation.client.pd.Spieler;
-import applikation.geteiltes.SpielerInfo;
+import pd.spieler.Spieler;
 
 /**
  * JFrame für das Lobby, in dem die Spieler auf den Spielstart warten.
  */
-public class LobbyView extends JFrame {
+public class LobbyView extends JFrame implements Observer {
 	// Konstanten und Vorgabewerte
-	private final static int FRAME_WIDTH 		= 600;
-	private final static int FRAME_HEIGHT 		= 400;
-	private final static JPanel lobbyPanel = new JPanel();
-	private static JLabel verbundeneSpielerLabel = new JLabel();
-	private Vector<String> verbundeneSpieler = new Vector<String>();
+	private final static int FRAME_WIDTH 			= 600;
+	private final static int FRAME_HEIGHT 			= 400;
+	private final static JPanel lobbyPanel 			= new JPanel();
+	private static JLabel verbundeneSpielerLabel 	= new JLabel();
+	private List<Spieler> verbundeneSpieler;
 
 	public LobbyView(List<Spieler> spieler, Steuerung steuerung, Chat chat) {
 		setTitle("Bodesuri - Lobby");
@@ -36,8 +36,9 @@ public class LobbyView extends JFrame {
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
 
-		for (Spieler s : spieler) {
-			verbundeneSpieler.add(s.getName());
+		verbundeneSpieler = spieler;
+		for (Spieler s : verbundeneSpieler) {
+			s.addObserver(this);
 		}
 		aktualisiereSpielerListe();
 
@@ -58,21 +59,15 @@ public class LobbyView extends JFrame {
 		pack();
 	}
 
-	/* TODO: Pascal, wieso hast du das nicht mit einer ObservableList gemacht? Absichtlich? (-Reto) */
-	public void zeigeSpieler(Vector<SpielerInfo> spielers) {
-		for (SpielerInfo spielerInfo : spielers) {
-			if ( !verbundeneSpieler.contains(spielerInfo.name) ) {
-				verbundeneSpieler.add(spielerInfo.name);
-			}
-		}
-		aktualisiereSpielerListe();
-	}
-
 	private void aktualisiereSpielerListe() {
 		String aktuelleSpielerListe = "Verbundene Spieler sind: ";
-		for (String spieler : verbundeneSpieler) {
+		for (Spieler spieler : verbundeneSpieler) {
 			aktuelleSpielerListe += spieler + " | ";
 		}
 		verbundeneSpielerLabel.setText(aktuelleSpielerListe);
+	}
+
+	public void update(Observable arg0, Object arg1) {
+		aktualisiereSpielerListe();
 	}
 }

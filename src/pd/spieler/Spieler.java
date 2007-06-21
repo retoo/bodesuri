@@ -71,6 +71,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 */
 	public void setName(String name) {
 		this.name = name;
+		setChanged();
+		notifyObservers();
 	}
 
 	/**
