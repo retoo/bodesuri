@@ -38,4 +38,8 @@ public class Partnerschaft implements Serializable {
 	public Spieler getPartner(Spieler spieler) {
 		return (spieler == spielerA) ? spielerB : spielerA;
 	}
+	
+	public String toString() {
+		return spielerA + " und " + spielerB;
+	}
 }
