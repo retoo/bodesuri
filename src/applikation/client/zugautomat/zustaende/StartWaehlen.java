@@ -1,5 +1,7 @@
 package applikation.client.zugautomat.zustaende;
 
+import java.util.List;
+
 import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
 import applikation.client.controller.Controller;
@@ -27,12 +29,11 @@ public class StartWaehlen extends ClientZugZustand {
 		spielDaten.setStart(feld);
 
 		Figur figur = feld.getFigur();
-		pd.spieler.Spieler ich = spielDaten.spiel.spielerIch.getSpieler();
+		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
 
 		/* Prüfen ob die Markierung des StartFeldes Sinn macht */
-		if  (figur != null && /* Hat es eine Figur ? */
-			(figur.getSpieler() == ich || /* Die Figur ghört dem eigenen Spieler ODER es ist eine Tauschregel*/
-			spielDaten.karte.getRegel() instanceof TauschRegel)) {
+		if  (figur != null && (figuren.contains(figur) || /* Die Figur ghört dem eigenen Spieler (auch Partnerfiguren im Endmodus!) */
+			spielDaten.karte.getRegel() instanceof TauschRegel)) { /* ODER es ist eine Tauschregel */
 				feld.setAusgewaehlt(true);
 				return ZielWaehlen.class;
 		} else {
