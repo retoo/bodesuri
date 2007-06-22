@@ -75,8 +75,6 @@ public class VerbindenView extends JFrame {
 		inputpanel = new InputPanel(hostname, port, spielerName);
 		buttonpanel.setLayout(new BoxLayout(buttonpanel, BoxLayout.LINE_AXIS));
 		buttonpanel.setBorder(new EmptyBorder(0, 0, 15, 15));
-		abbrechenButton.setSelected(false);
-		verbindenButton.setSelected(true);
 
 		// Actions definieren und Tastenbefehle binden
 		AbstractAction abbrechenAction = new AbstractAction("Abbrechen") {
@@ -117,9 +115,9 @@ public class VerbindenView extends JFrame {
 		buttonpanel.add(Box.createHorizontalGlue());
 		buttonpanel.add(progressBar);
 		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
-		buttonpanel.add(abbrechenButton);
-		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
 		buttonpanel.add( verbindenButton );
+		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
+		buttonpanel.add(abbrechenButton);
 		add(bodesuriIcon, BorderLayout.NORTH);
 		add(inputpanel, BorderLayout.CENTER);
 		add(buttonpanel, BorderLayout.SOUTH);

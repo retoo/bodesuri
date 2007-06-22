@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 import ui.spiel.brett.SpielerView;
 import ui.spiel.chat.ChatView;
@@ -32,22 +33,23 @@ public class LobbyView extends JFrame implements Observer {
 	private final static int FRAME_WIDTH = 450;
 	private final static int FRAME_HEIGHT = 400;
 	private final static String introTitel = "Willkommen in der Bodesuri-Lobby";
-	private final static String introText = "<html>Hier siehst Du die verbundenen " +
-			"Spieler, mit denen Du<br>bereits chatten kannst.</html>";
 	private HashMap<Object, SpielerView> spielerViews;
 	private Vector<pd.spieler.Spieler> pdSpieler;
 	private JPanel spielerPanel;
-	private JLabel introTextLabel;
 	private JLabel introTitelLabel;
+	private JPanel viewPanel;
 
 	public LobbyView(List<Spieler> spieler, Steuerung steuerung, Chat chat) {
 		// Initialisierung
 		spielerViews = new HashMap<Object, SpielerView>();
 		pdSpieler = new Vector<pd.spieler.Spieler>();
-		introTextLabel = new JLabel(introText);
 		introTitelLabel = new JLabel(introTitel);
 		introTitelLabel.setFont(introTitelLabel.getFont().deriveFont(Font.BOLD));
+		introTitelLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		spielerPanel = new JPanel();
+		viewPanel = new JPanel();
+		viewPanel.setBorder(new EmptyBorder(10,10,10,10));
+		viewPanel.setOpaque(false);
 		
 		for (Spieler s : spieler) {
 			SpielerView sv = new SpielerView(s);	// SpielverViews erstellen
@@ -59,7 +61,7 @@ public class LobbyView extends JFrame implements Observer {
 		setTitle("Bodesuri - Lobby");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
 
@@ -69,21 +71,25 @@ public class LobbyView extends JFrame implements Observer {
 		int y = (monitor.height - getSize().height - FRAME_HEIGHT) / 2;
 		setLocation(x, y);
 
-		spielerPanel.setBorder(new EmptyBorder(20, 50, 20, 50));
+		spielerPanel.setBorder(new TitledBorder("Anwesende Spieler"));
+		spielerPanel.setMaximumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		spielerPanel.setLayout(new BoxLayout(spielerPanel, BoxLayout.Y_AXIS));
 		// Panels dem Frame hinzufügen
-		spielerPanel.add(introTitelLabel);
-		spielerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-		spielerPanel.add(introTextLabel);
-		spielerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
+		viewPanel.add(introTitelLabel);
+		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		for (Entry<Object, SpielerView> sv : spielerViews.entrySet() ) {
+			spielerPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			spielerPanel.add(sv.getValue());
 			spielerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 			spielerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
-		add(spielerPanel);
-		add(new ChatView(chat, steuerung));
-
+		viewPanel.add(spielerPanel);
+		ChatView chatView = new ChatView(chat, steuerung);
+		chatView.setBorder(new TitledBorder("Chat"));
+		viewPanel.add(chatView);
+		add(viewPanel);
+		
 		// View anzeigen
 		pack();
 	}
@@ -102,4 +108,6 @@ public class LobbyView extends JFrame implements Observer {
 		}
 		super.dispose();
 	}
+	
+
 }

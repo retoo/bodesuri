@@ -3,6 +3,7 @@ package ui;
 import java.util.List;
 
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 import ui.lobby.LobbyView;
 import ui.spiel.SpielView;
@@ -19,11 +20,12 @@ public class GUIController extends Controller {
 	private LobbyView lobbyView;
 	private SpielView spielView;
 	private String defaultName;
-	private JokerView jv;
+	private JokerView jokerView;
 
 	public GUIController(EventQueue eventQueue, String defaultName) {
 		this.defaultName = defaultName;
 		this.eventQueue = eventQueue;
+		setNativeLookAndFeel();
 	}
 
 	public void zeigeVerbinden() {
@@ -50,12 +52,12 @@ public class GUIController extends Controller {
 		lobbyView.dispose();
 		spielView = new SpielView(this, spiel);
 		spielView.setVisible(true);
-		jv = new JokerView(this);
-		spielView.setGlassPane(jv);
+		jokerView = new JokerView(this);
+		spielView.setGlassPane(jokerView);
 	}
 
 	public void zeigeJokerauswahl(boolean aktiv) {
-		jv.setVisible(aktiv);
+		jokerView.setVisible(aktiv);
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
@@ -83,5 +85,15 @@ public class GUIController extends Controller {
 		}
 
 		super.beenden();
+	}
+	/**
+	 * Setzt den nativen Look & Feel für Windows. Auf allen anderen Plattformen
+	 * wird eine Exception geworfen, die ignoriert wird.
+	 */
+	private static void setNativeLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (Exception e) {
+		}
 	}
 }

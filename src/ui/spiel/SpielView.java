@@ -35,7 +35,6 @@ public class SpielView extends JFrame {
 		setName("Bodesuri");
 		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setNativeLookAndFeel();
 
 		// Views
 		JPanel topPanel = erstelleTopPanel(steuerung, spiel);
@@ -79,17 +78,6 @@ public class SpielView extends JFrame {
 		panel.add(steuerungsView, c);
 
 		return panel;
-	}
-
-	/**
-	 * Setzt den nativen Look & Feel für Windows. Auf allen anderen Plattformen
-	 * wird eine Exception geworfen, die ignoriert wird.
-	 */
-	private static void setNativeLookAndFeel() {
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (Exception e) {
-		}
 	}
 }
 
