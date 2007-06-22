@@ -22,7 +22,7 @@ import pd.zugsystem.ZugEingabe;
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
 		super(7); // Für kannZiehen gebraucht.
-		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt auch heim");
+		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt heim");
 	}
 
 	// TODO: Reto & Robin Hat Review nötig :). --Robin
