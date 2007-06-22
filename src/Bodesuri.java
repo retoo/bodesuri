@@ -13,8 +13,8 @@ public class Bodesuri {
 	 */
 	public static void main(String[] args) {
 		EventQueue queue = new EventQueue();
-		Controller controller = new GUIController(queue);
-		ClientAutomat automat = new ClientAutomat(controller, "Spieler", queue);
+		Controller controller = new GUIController(queue, "Spieler");
+		ClientAutomat automat = new ClientAutomat(controller, queue);
 
 		try {
 			automat.run();

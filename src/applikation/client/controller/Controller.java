@@ -28,10 +28,8 @@ public abstract class Controller implements Steuerung {
 	protected EventQueue eventQueue;
 	/**
 	 * Die Verbindungsdaten erfragen.
-	 *
-	 * @param spielerName
 	 */
-	public abstract void zeigeVerbinden(String spielerName);
+	public abstract void zeigeVerbinden();
 
 	/**
 	 * Die Lobby anzeigen.
@@ -52,17 +50,21 @@ public abstract class Controller implements Steuerung {
 
 	/**
 	 * Die Auswahl der Karte für die der Joker steht.
+	 *
+	 * @param aktiv
 	 */
 	public abstract void zeigeJokerauswahl(boolean aktiv);
 
 	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,
 	 * darstellen.
-	 * 
+	 *
 	 * @param fehlermeldung
 	 *            anzuzeigende Fehlermeldung
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
+
+	public abstract void zeigeMeldung(String meldung);
 
 	public void verbinde(String host, int port_raw, String spieler) {
 		VerbindeEvent ve = new VerbindeEvent(host, port_raw, spieler);
@@ -117,5 +119,7 @@ public abstract class Controller implements Steuerung {
 //		SpielEndeEvent see = new SpielEndeEvent();
 //		eventQueue.enqueue(see);
 		System.exit(0);		// TODO: Pascal: ggf. Event werfen
+		// TODO: Pascal: ich würde hier nix machen, der automat soll isch selber sauber aufräumen. (-reto)
+		// Kontaktiere mich sonst
 	}
 }

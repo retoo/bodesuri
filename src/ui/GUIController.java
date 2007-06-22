@@ -18,14 +18,16 @@ public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private SpielView spielView;
+	private String defaultName;
 	private JokerView jv;
 
-	public GUIController(EventQueue eventQueue) {
+	public GUIController(EventQueue eventQueue, String defaultName) {
+		this.defaultName = defaultName;
 		this.eventQueue = eventQueue;
 	}
 
-	public void zeigeVerbinden(String spielerName) {
-		verbindenView = new VerbindenView(this, spielerName);
+	public void zeigeVerbinden() {
+		verbindenView = new VerbindenView(this, defaultName);
 		verbindenView.setVisible(true);
 	}
 
@@ -55,11 +57,15 @@ public class GUIController extends Controller {
 	public void zeigeJokerauswahl(boolean aktiv) {
 		jv.setVisible(aktiv);
 	}
-	
+
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}
-	
+
+    public void zeigeMeldung(String meldung) {
+    	JOptionPane.showMessageDialog(null, meldung);
+    }
+
 	public void beenden() {
 		if (verbindenView != null) {
 			verbindenView.setVisible(false);

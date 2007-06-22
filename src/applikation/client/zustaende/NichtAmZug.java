@@ -85,10 +85,7 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
-		// TODO: Reto: Anders ausgeben. Entweder Infobox oder in der Mitte
-		// --Philippe
-		System.out.println("Das Spiel ist fertig.\n Die Gewinner " + "sind "
-		                   + nachricht.gewinner + ".");
+		controller.zeigeMeldung("Das Spiel ist fertig, gewonnen haben "  + nachricht.gewinner);
 		try {
 			spiel.endpunkt.ausschalten();
 		} catch (IOException e) {

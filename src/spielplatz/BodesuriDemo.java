@@ -44,8 +44,8 @@ public class BodesuriDemo {
 
 
 		EventQueue queue = new EventQueue();
-		Controller controller = new GUIController(queue);
-		Automat client = new ClientAutomat(controller, "Dog", queue);
+		Controller controller = new GUIController(queue, "Dog");
+		Automat client = new ClientAutomat(controller,  queue);
 
 		try {
 			client.run();

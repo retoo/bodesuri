@@ -17,7 +17,7 @@ import dienste.netzwerk.server.BriefkastenAdapter;
  */
 public class VerbindungErfassen extends ClientZustand {
 	public void onEntry() {
-		controller.zeigeVerbinden(spiel.spielerName);
+		controller.zeigeVerbinden();
 	}
 
 	Class<? extends Zustand> verbinden(VerbindeEvent ve) {

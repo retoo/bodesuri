@@ -29,8 +29,8 @@ public class BodesuriSingular {
 
 
 		EventQueue eventQueue = new EventQueue();
-		Controller controller = new GUIController(eventQueue);
-		Automat client = new ClientAutomat(controller, "Singular", eventQueue);
+		Controller controller = new GUIController(eventQueue, "Singular");
+		Automat client = new ClientAutomat(controller, eventQueue);
 
 		String host = "localhost";
 		int port = 7788;

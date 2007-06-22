@@ -29,7 +29,7 @@ public class BotController extends Controller {
 
 	public BotController(EventQueue queue, String nickname, String hostname, int port, Bot bot, boolean gui) {
 		if (gui) {
-			this.guicontroller = new GUIController(queue);
+			this.guicontroller = new GUIController(queue, nickname);
 		}
 
 		this.gui = gui;
@@ -43,6 +43,12 @@ public class BotController extends Controller {
 		throw new RuntimeException(fehlermeldung);
 	}
 
+
+    public void zeigeMeldung(String meldung) {
+    	if (gui)
+    		guicontroller.zeigeMeldung(meldung);
+    }
+
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
 		if (gui)
 			guicontroller.zeigeLobby(spieler, chat);
@@ -54,9 +60,9 @@ public class BotController extends Controller {
 		this.spiel = spiel;
 	}
 
-	public void zeigeVerbinden(String spielerName) {
+	public void zeigeVerbinden() {
 		if (gui)
-			guicontroller.zeigeVerbinden(spielerName);
+			guicontroller.zeigeVerbinden();
 		Event e = new VerbindeEvent(this.hostname, this.port, this.nickname);
 
 		eventQueue.enqueue(e);

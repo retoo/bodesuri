@@ -38,8 +38,8 @@ public class BodesuriEntwickler {
 				public void run() {
 					String name = Thread.currentThread().getName();
 					EventQueue queue = new EventQueue();
-					Controller controller = new GUIController(queue);
-					Automat client = new ClientAutomat(controller, name, queue);
+					Controller controller = new GUIController(queue, name);
+					Automat client = new ClientAutomat(controller, queue);
 
 					String host = "localhost";
 					int port = 7788;

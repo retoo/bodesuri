@@ -20,8 +20,6 @@ public class BodesuriArena {
 		nicks.add("Joseph Manderley");
 		nicks.add("Walton Simons");
 
-
-
 		Thread server = new Thread(new Runnable() {
 			public void run() {
 				ServerAutomat server = new ServerAutomat(4);
@@ -40,7 +38,7 @@ public class BodesuriArena {
 		Vector<Thread> clients = new Vector<Thread>();
 
 		for (int i = 0; i < 4; i++) {
-			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
+			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, true);
 
 			Thread t = new Thread(r);
 			t.start();
