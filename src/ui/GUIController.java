@@ -50,7 +50,7 @@ public class GUIController extends Controller {
 		lobbyView.dispose();
 		spielView = new SpielView(this, spiel);
 		spielView.setVisible(true);
-		jv = new JokerView(spielView.getSize(), this);
+		jv = new JokerView(this);
 		spielView.setGlassPane(jv);
 	}
 
