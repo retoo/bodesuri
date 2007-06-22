@@ -17,6 +17,10 @@ public abstract class SpielerFeld extends Feld {
 		this.spieler = spieler;
     }
 
+	public boolean istVon(Spieler spieler) {
+		return spieler == this.spieler;
+	}
+	
 	public Spieler getSpieler() {
 		return spieler;
 	}

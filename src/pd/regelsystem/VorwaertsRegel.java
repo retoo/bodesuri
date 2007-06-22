@@ -100,7 +100,7 @@ public class VorwaertsRegel extends Regel {
 
 		if (ziel.istHimmel()) {
 			HimmelFeld himmel = (HimmelFeld) ziel;
-			if (himmel.getSpieler() != spieler) {
+			if (!himmel.istVon(spieler)) {
 				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
 				"gezogen werden.");
 			}

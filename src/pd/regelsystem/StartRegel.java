@@ -52,7 +52,7 @@ public class StartRegel extends Regel {
 		}
 		BankFeld bank = (BankFeld)ziel;
 
-		if (bank.getSpieler() != spieler) {
+		if (!bank.istVon(spieler)) {
 			throw new RegelVerstoss("Das Bankfeld muss dem Spieler gehören.");
 		}
 

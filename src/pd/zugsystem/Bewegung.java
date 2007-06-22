@@ -49,7 +49,7 @@ public class Bewegung implements Serializable {
 			weg.add(feld);
 			
 			if (vorwaerts) {
-				if (feld.istBank() && ziel.istHimmel() 
+				if (feld.istBank() && ziel.istHimmel()
 				    && ((SpielerFeld) feld).getSpieler() ==
 				       ((SpielerFeld) ziel).getSpieler())
 				{

@@ -121,7 +121,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			
 			Feld feldNeu;
 			List<Feld> kandidaten = new Vector<Feld>();
-			if (feld.istBank() && ((BankFeld) feld).getSpieler() == spieler) {
+			if (feld.istBank() && ((BankFeld) feld).istVon(spieler)) {
 				feldNeu = ((BankFeld) feld).getHimmel();
 				kandidaten.add(feldNeu);
 			}
