@@ -1,13 +1,11 @@
 package ui.spiel.brett.felder;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
-import javax.swing.border.LineBorder;
 
 import ui.erweiterungen.BLabel;
 import ui.ressourcen.Icons;
@@ -35,13 +33,12 @@ public abstract class Feld2d extends BLabel implements Observer {
 		this.feld = feld;
 		this.hover = hover;
 		this.figurenManager = figurenManager;
-		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL, p);
+		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
 
 		//this.wegMarkierung = new IdentityHashMap<BLabel>();
 
-		setBorder(new LineBorder(Color.BLACK));
 
 		feld.addObserver(this);
 
