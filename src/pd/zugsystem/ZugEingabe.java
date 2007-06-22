@@ -75,6 +75,10 @@ public class ZugEingabe implements Serializable {
 	public Spieler getSpieler() {
 		return spieler;
 	}
+	
+	public Spieler getBetroffenerSpieler() {
+		return spieler.istFertig() ? spieler.getPartner() : spieler;
+	}
 
 	/**
 	 * @return Karte, mit der gespielt wird

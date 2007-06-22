@@ -29,7 +29,7 @@ public class TauschRegel extends Regel {
 			throw new RegelVerstoss("Nur eine Bewegung möglich.");
 		}
 
-		Spieler spieler = zugEingabe.getSpieler();
+		Spieler spieler = zugEingabe.getBetroffenerSpieler();
 		Feld start = zugEingabe.getBewegung().start;
 		Feld ziel  = zugEingabe.getBewegung().ziel;
 

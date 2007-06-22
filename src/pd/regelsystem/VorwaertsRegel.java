@@ -40,13 +40,12 @@ public class VorwaertsRegel extends Regel {
 			throw new RegelVerstoss("Nur eine Bewegung möglich.");
 		}
 
+		Spieler spieler = zugEingabe.getBetroffenerSpieler();
 		Bewegung bewegung = zugEingabe.getBewegung();
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
-		Spieler spieler = zugEingabe.getSpieler();
 
-		boolean istInEndModus = (spieler.istFertig() && start.istBesetztVon(spieler.getPartner()));
-		if (!start.istBesetztVon(spieler) && !istInEndModus ) {
+		if (!start.istBesetztVon(spieler)) {
 			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
 			                        "werden.");
 		}

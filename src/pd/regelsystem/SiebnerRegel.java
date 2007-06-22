@@ -32,7 +32,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
 		}
 
-		Spieler spieler = zugEingabe.getSpieler();
+		Spieler spieler = zugEingabe.getBetroffenerSpieler();
 		
 		int wegLaenge = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
