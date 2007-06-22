@@ -98,7 +98,7 @@ public class AutomatenTest extends TestCase {
 		} catch (Exception e) {
 			fehlerAufgetreten = true;
 			assertEquals(
-			             "Nichtregistierer Zustand class dienste.automat.testzustaende.DummyZustand",
+			             "Nichtregistrierter Zustand class dienste.automat.testzustaende.DummyZustand",
 			             e.getMessage());
 		}
 
