@@ -1,5 +1,6 @@
 package ui.spiel.karten;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.Observable;
 import java.util.Observer;
@@ -30,18 +31,21 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		name.setOpaque(false);
 		Font nameFont = name.getFont().deriveFont(Font.BOLD, 16);
 		name.setFont(nameFont);
+		name.setForeground(Color.white);
 
 		beschreibung = new JTextArea();
 		beschreibung.setOpaque(false);
 		beschreibung.setLineWrap(true);
 		beschreibung.setEnabled(false);
 		beschreibung.setWrapStyleWord(true);
-		beschreibung.setDisabledTextColor(beschreibung.getForeground());
-		beschreibung.setRows(2);
+		beschreibung.setDisabledTextColor(Color.white);
+		beschreibung.setRows(3);
+
+		zeigeKeineKarte();
 
 		name.setAlignmentX(JLabel.LEFT_ALIGNMENT);
 		beschreibung.setAlignmentX(JTextArea.LEFT_ALIGNMENT);
-		
+
 		add(name);
 		add(beschreibung);
 
@@ -68,8 +72,8 @@ public class KarteGewaehltView extends JPanel implements Observer {
 	}
 
 	private void zeigeKeineKarte() {
-		// Leerzeichen sind ein Hack, damit die Grösse richtig berechnet wird.
-		name.setText(" ");
-		beschreibung.setText(" ");
+		// Zeilenumbrüche sind ein Hack, damit die Grösse richtig berechnet wird.
+		name.setText("\n");
+		beschreibung.setText("\n\n");
 	}
 }
