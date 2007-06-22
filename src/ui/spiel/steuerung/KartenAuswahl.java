@@ -1,4 +1,4 @@
-package ui.spiel.karten;
+package ui.spiel.steuerung;
 
 import java.awt.Dimension;
 import java.awt.Point;

@@ -20,7 +20,7 @@ import javax.swing.UIManager;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.BrettView;
 import ui.spiel.chat.ChatView;
-import ui.spiel.karten.SteuerungsView;
+import ui.spiel.steuerung.SteuerungsView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 

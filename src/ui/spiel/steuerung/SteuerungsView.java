@@ -1,4 +1,4 @@
-package ui.spiel.karten;
+package ui.spiel.steuerung;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
