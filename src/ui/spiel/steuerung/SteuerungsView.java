@@ -3,7 +3,10 @@ package ui.spiel.steuerung;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import ui.ressourcen.Icons;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
@@ -17,6 +20,7 @@ public class SteuerungsView extends JPanel {
 		DeckView deckView = new DeckView(steuerung, spiel.spielerIch.getKarten());
 		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(steuerung, spiel.spielerIch.getKarten());
 		SteuerungsButtonView steuerungsButtonView = new SteuerungsButtonView(steuerung, spiel);
+		JLabel logo = new JLabel(Icons.LOGO);
 
 		// Layout zusammenstellen
 		GridBagConstraints c = new GridBagConstraints();
@@ -33,5 +37,8 @@ public class SteuerungsView extends JPanel {
 
 		c.weighty = 1.0;
 		add(steuerungsButtonView, c);
+
+		c.weighty = 0.0;
+		add(logo, c);
 	}
 }
