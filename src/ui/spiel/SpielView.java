@@ -20,7 +20,7 @@ import javax.swing.UIManager;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.BrettView;
 import ui.spiel.chat.ChatView;
-import ui.spiel.karten.KartenAuswahlView;
+import ui.spiel.karten.SteuerungsView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
@@ -69,14 +69,14 @@ public class SpielView extends JFrame {
 		panel.setLayout(new GridBagLayout());
 
 		BrettView brettView = new BrettView(steuerung, spiel);
-		KartenAuswahlView kartenAuswahlView = new KartenAuswahlView(steuerung, spiel);
+		SteuerungsView steuerungsView = new SteuerungsView(steuerung, spiel);
 
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.NORTH;
 		c.fill = GridBagConstraints.BOTH;
 
 		panel.add(brettView, c);
-		panel.add(kartenAuswahlView, c);
+		panel.add(steuerungsView, c);
 
 		return panel;
 	}

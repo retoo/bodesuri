@@ -1,68 +1,37 @@
 package ui.spiel.karten;
 
-import java.awt.CardLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
-import applikation.client.pd.SteuerungsZustand;
 
-public class SteuerungsView extends JPanel implements Observer {
-	Steuerung steuerung;
-	Spiel spiel;
-
-	CardLayout layout;
-	JButton aufgeben;
-	JButton tauschen;
-
+public class SteuerungsView extends JPanel {
 	public SteuerungsView(Steuerung steuerung, Spiel spiel) {
-		this.steuerung = steuerung;
-		this.spiel = spiel;
-
-		layout = new CardLayout();
-		setLayout(layout);
-		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+		setLayout(new GridBagLayout());
 		setOpaque(false);
 
-		spiel.addObserver(this);
+		// Views
+		DeckView deckView = new DeckView(steuerung, spiel.spielerIch.getKarten());
+		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(steuerung, spiel.spielerIch.getKarten());
+		SteuerungsButtonView steuerungsButtonView = new SteuerungsButtonView(steuerung, spiel);
 
-		aufgeben = new JButton("Aufgeben");
-		aufgeben.setOpaque(false);
-		aufgeben.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SteuerungsView.this.steuerung.aufgeben();
-			}
-		});
+		// Layout zusammenstellen
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridwidth = 1;
+		c.gridx = 0;
+		c.anchor = GridBagConstraints.NORTH;
+		c.fill = GridBagConstraints.HORIZONTAL;
 
-		tauschen = new JButton("Tauschen");
-		tauschen.setOpaque(false);
-		tauschen.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SteuerungsView.this.steuerung.kartenTauschBestaetigen();
-			}
-		});
+		c.weighty = 0.0;
+		add(deckView, c);
 
-		add(new JLabel(), "");
-		add(aufgeben, "aufgeben");
-		add(tauschen, "tauschen");
-	}
+		c.weighty = 0.0;
+		add(karteGewaehltView, c);
 
-	public void update(Observable o, Object arg) {
-		SteuerungsZustand sz = spiel.getSteuerungsZustand();
-		if (sz == SteuerungsZustand.AUFGEBEN) {
-			layout.show(this, "aufgeben");
-		} else if (sz == SteuerungsZustand.TAUSCHEN){
-			layout.show(this, "tauschen");
-		} else {
-			layout.show(this, "");
-		}
+		c.weighty = 1.0;
+		add(steuerungsButtonView, c);
 	}
 }
