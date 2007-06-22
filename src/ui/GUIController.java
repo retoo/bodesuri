@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import ui.lobby.LobbyView;
 import ui.spiel.SpielView;
+import ui.spiel.brett.JokerView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Chat;
@@ -17,6 +18,7 @@ public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private SpielView spielView;
+	private JokerView jv;
 
 	public GUIController(EventQueue eventQueue) {
 		this.eventQueue = eventQueue;
@@ -46,8 +48,14 @@ public class GUIController extends Controller {
 		lobbyView.dispose();
 		spielView = new SpielView(this, spiel);
 		spielView.setVisible(true);
+		jv = new JokerView(spielView.getSize(), this);
+		spielView.setGlassPane(jv);
 	}
 
+	public void zeigeJokerauswahl(boolean aktiv) {
+		jv.setVisible(aktiv);
+	}
+	
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		JOptionPane.showMessageDialog(null, fehlermeldung);
 	}

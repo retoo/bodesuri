@@ -51,9 +51,14 @@ public abstract class Controller implements Steuerung {
 	public abstract void zeigeSpiel(Spiel spiel);
 
 	/**
+	 * Die Auswahl der Karte für die der Joker steht.
+	 */
+	public abstract void zeigeJokerauswahl(boolean aktiv);
+
+	/**
 	 * Fehlermeldungen, die vom Automaten an den Controller gereicht werden,
 	 * darstellen.
-	 *
+	 * 
 	 * @param fehlermeldung
 	 *            anzuzeigende Fehlermeldung
 	 */

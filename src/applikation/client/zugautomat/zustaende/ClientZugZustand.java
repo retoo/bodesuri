@@ -1,15 +1,16 @@
 package applikation.client.zugautomat.zustaende;
 
-import java.util.Vector;
+import java.util.LinkedList;
 
-import pd.zugsystem.Bewegung;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
+import applikation.client.zugautomat.pd.Bewegung;
 import applikation.client.zugautomat.pd.SpielDaten;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
@@ -67,16 +68,11 @@ public class ClientZugZustand extends Zustand {
 	}
 
 	/**
-	 * Start und Ziel entselektieren & löschen.
+	 * Alle Selektionen zurücksetzen.
 	 */
 	protected void brettZuruecksetzen() {
-		if (spielDaten.start != null) {
-			spielDaten.start.setAusgewaehlt(false);
-			spielDaten.start = null;
-		}
-		if (spielDaten.ziel != null) {
-			spielDaten.ziel.setAusgewaehlt(false);
-			spielDaten.ziel = null;
+		for (Feld feld : spielDaten.getAlleFelder()) {
+			feld.setAusgewaehlt(false);
 		}
 	}
 
@@ -84,7 +80,8 @@ public class ClientZugZustand extends Zustand {
 	 * Den Vektor mit den erfassten Bewegungen löschen.
 	 */
 	protected void bewegungenZuruecksetzen() {
-		spielDaten.bewegungen = new Vector<Bewegung>();
+		spielDaten.bewegungen = new LinkedList<Bewegung>();
+		spielDaten.bewegungen.add(new Bewegung());
 	}
 
 	public void setController(Controller controller) {

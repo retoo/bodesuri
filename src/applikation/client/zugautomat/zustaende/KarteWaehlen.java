@@ -18,10 +18,21 @@ public class KarteWaehlen extends ClientZugZustand {
 	public void onEntry() {
 		spielDaten.spiel.setHinweis("Wähle eine Karte.");
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(true);
+		brettZuruecksetzen();
+		bewegungenZuruecksetzen();
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		karteAuswaehlen(event.karte);
+		if (event.karte.getKarte() instanceof pd.karten.Joker) {
+			controller.zeigeJokerauswahl(true);
+			spielDaten.karte = event.karte;
+			return this.getClass();
+		} if (event.karte instanceof applikation.client.pd.Joker) {
+			controller.zeigeJokerauswahl(false);
+			spielDaten.konkreteKarte = event.karte;
+		}else {
+			karteAuswaehlen(event.karte);
+		}
 		return StartWaehlen.class;
 	}
 

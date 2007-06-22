@@ -19,13 +19,12 @@ public class StartWaehlen extends ClientZugZustand {
     }
 
 	public void onEntry() {
-		brettZuruecksetzen();
 		spielDaten.spiel.setHinweis("Wähle das Startfeld.");
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		Feld feld = event.feld;
-		spielDaten.start = feld;
+		spielDaten.setStart(feld);
 
 		Figur figur = feld.getFigur();
 		pd.spieler.Spieler ich = spielDaten.spiel.spielerIch.getSpieler();
@@ -43,9 +42,7 @@ public class StartWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		brettZuruecksetzen();
-		bewegungenZuruecksetzen();
-		karteAuswaehlen(event.karte);
-		return this.getClass();
+		spielDaten.spiel.queue.enqueue(event);
+		return KarteWaehlen.class;
 	}
 }

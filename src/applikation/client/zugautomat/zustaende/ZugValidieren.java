@@ -3,7 +3,6 @@ package applikation.client.zugautomat.zustaende;
 import pd.karten.Sieben;
 import pd.regelsystem.RegelVerstoss;
 import pd.regelsystem.WegLaengeVerstoss;
-import pd.zugsystem.Bewegung;
 import applikation.client.events.ZugErfasstEvent;
 import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.PassiverZustand;
@@ -12,18 +11,17 @@ import dienste.automat.zustaende.Zustand;
 public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 
 	public Class<? extends Zustand> handle() {
-		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
-		                                 spielDaten.ziel.getFeld());
-		spielDaten.bewegungen.add(bewegung);
 		ZugErfasstEvent erfassterZug = new ZugErfasstEvent(spielDaten.spiel.spielerIch,
 		                                                   spielDaten.karte,
-		                                                   spielDaten.bewegungen);
+		                                                   spielDaten.konkreteKarte,
+		                                                   spielDaten.getPdBewegungen());
 		
 		try {
 			erfassterZug.toZugEingabe().validiere();
 		} catch (WegLaengeVerstoss e) {
 			System.out.println(e.getIstLaenge());
 			if (erfassterZug.getKarte().getKarte() instanceof Sieben && e.getIstLaenge() < 7) {
+				spielDaten.neueBewegungHinzufuegen();
 				return StartWaehlen.class;
 			} else {
 				fehler(e.getMessage());
@@ -43,7 +41,6 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 
 	private void fehler(String fehlermeldung) {
 		controller.zeigeFehlermeldung(fehlermeldung);
-		spielDaten.bewegungen.remove(spielDaten.bewegungen.size()-1);
-		spielDaten.ziel.setAusgewaehlt(false);
+		spielDaten.getZiel().setAusgewaehlt(false);
     }
 }

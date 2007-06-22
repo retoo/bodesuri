@@ -34,7 +34,7 @@ public class ZielWaehlen extends ClientZugZustand {
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		Feld feld = event.feld;
 
-		if (spielDaten.start == feld) {
+		if (spielDaten.getStart() == feld) {
 			/* Dasselbe Feld nochmals angeklickt */
 
 			feld.setAusgewaehlt(false);
@@ -45,14 +45,14 @@ public class ZielWaehlen extends ClientZugZustand {
 				 feld.getFigur() != null  && /* hat figur drauf */
 				 feld.getFigur().getSpieler() == spielDaten.spiel.spielerIch.getSpieler()) { /* gehört mir */
 
-			spielDaten.start.setAusgewaehlt(false); /* TODO: reto ins spieldaten verschieben */
-			spielDaten.start = feld;
-			spielDaten.start.setAusgewaehlt(true);
+			spielDaten.getStart().setAusgewaehlt(false); /* TODO: reto ins spieldaten verschieben */
+			spielDaten.setStart(feld);
+			spielDaten.getStart().setAusgewaehlt(true);
 
 			return this.getClass();
 		} else {
-			spielDaten.ziel = feld;
-			spielDaten.ziel.setAusgewaehlt(true);
+			spielDaten.setZiel(feld);
+			spielDaten.getZiel().setAusgewaehlt(true);
 			return ZugValidieren.class;
 		}
 	}
@@ -64,14 +64,12 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		brettZuruecksetzen();
-		bewegungenZuruecksetzen();
-		karteAuswaehlen(event.karte);
-		return StartWaehlen.class;
+		spielDaten.spiel.queue.enqueue(event);
+		return KarteWaehlen.class;
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
+		Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
 		                                 event.feld.getFeld());
 		Brett brett = spielDaten.spiel.getBrett();
 
@@ -92,7 +90,7 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
-		Bewegung bewegung = new Bewegung(spielDaten.start.getFeld(),
+		Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
 		                                 event.feld.getFeld());
 		Brett brett = spielDaten.spiel.getBrett();
 

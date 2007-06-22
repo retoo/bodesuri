@@ -19,7 +19,6 @@ import javax.swing.UIManager;
 
 import ui.ressourcen.Icons;
 import ui.spiel.brett.BrettView;
-import ui.spiel.brett.JockerDeck;
 import ui.spiel.chat.ChatView;
 import ui.spiel.karten.KartenAuswahlView;
 import applikation.client.controller.Steuerung;
@@ -62,7 +61,6 @@ public class SpielView extends JFrame {
 
 		// GUI anzeigen
 		pack();
-		new JockerDeck(this, steuerung, spiel.spielerIch.getKarten());
 	}
 
 	private JPanel erstelleTopPanel(Steuerung steuerung, Spiel spiel) {

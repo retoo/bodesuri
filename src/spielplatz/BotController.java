@@ -93,12 +93,16 @@ public class BotController extends Controller {
 			Bewegung bewegung = ze.getBewegung();
 			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
 
-			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, bewegung);
+			//TODO: Reto: hier müsste noch eine konkrete Karte(Joker) rein... --Philippe
+			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegung);
 			eventQueue.enqueue(zee);
 		}
 
 	}
 
     public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
+    }
+
+    public void zeigeJokerauswahl(boolean aktiv) {
     }
 }
