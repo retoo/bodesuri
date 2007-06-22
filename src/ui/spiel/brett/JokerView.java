@@ -2,11 +2,14 @@ package ui.spiel.brett;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -45,8 +48,10 @@ public class JokerView extends JPanel {
 		
 		JPanel kartenPanel = new JPanel();
 		kartenPanel.setLayout(null);
+		kartenPanel.setMinimumSize(new Dimension(490, 430));
+		kartenPanel.setPreferredSize(new Dimension(490, 430));
+		kartenPanel.setMaximumSize(new Dimension(490, 430));
 		kartenPanel.setOpaque(false);		
-		kartenPanel.setBounds(new Rectangle(490, 430));
 		
 		erstelleDeck();
 
@@ -82,12 +87,15 @@ public class JokerView extends JPanel {
 		kartenPanel.add(jokerSchliessen);
 		
 		JPanel hintergrund = new JPanel();
-		hintergrund.setLayout(new BorderLayout());
-		hintergrund.setOpaque(false);
+		hintergrund.setLayout(new BoxLayout(hintergrund, BoxLayout.PAGE_AXIS));
 		hintergrund.setBackground(new Color(0, 0, 0, 178));
 		hintergrund.setOpaque(true);
+		kartenPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		kartenPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
 		
-		hintergrund.add(kartenPanel, BorderLayout.CENTER);
+		hintergrund.add(Box.createVerticalGlue());
+		hintergrund.add(kartenPanel);
+		hintergrund.add(Box.createVerticalGlue());
 		add(hintergrund, BorderLayout.CENTER);
 	}
 
