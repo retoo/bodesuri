@@ -10,6 +10,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.events.KartenTauschBestaetigtEvent;
 import applikation.client.events.VerbindeEvent;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Feld;
@@ -74,6 +75,11 @@ public abstract class Controller implements Steuerung {
 	public void karteAuswaehlen(Karte gewaehlteKarte) {
 		KarteGewaehltEvent kge = new KarteGewaehltEvent(gewaehlteKarte);
 		eventQueue.enqueue(kge);
+	}
+
+	public void kartenTauschBestaetigen() {
+		KartenTauschBestaetigtEvent ktbe = new KartenTauschBestaetigtEvent();
+		eventQueue.enqueue(ktbe);
 	}
 
 	public void feldAuswaehlen(Feld gewaehltesFeld) {

@@ -13,12 +13,13 @@ import javax.swing.JPanel;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
+import applikation.client.pd.SteuerungsZustand;
 
 public class SteuerungsView extends JPanel implements Observer {
-	CardLayout layout;
 	Steuerung steuerung;
 	Spiel spiel;
 
+	CardLayout layout;
 	JButton aufgeben;
 	JButton tauschen;
 
@@ -31,9 +32,6 @@ public class SteuerungsView extends JPanel implements Observer {
 		setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		setOpaque(false);
 
-		/* TODO: Robin: das war vom ehemaligen steuerung label, ich lass mal hier, vielleicht b
-		 * brauchst ud das für die buttons (-reto)
-		 */
 		spiel.addObserver(this);
 
 		aufgeben = new JButton("Aufgeben");
@@ -48,18 +46,23 @@ public class SteuerungsView extends JPanel implements Observer {
 		tauschen.setOpaque(false);
 		tauschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO
+				SteuerungsView.this.steuerung.kartenTauschBestaetigen();
 			}
 		});
 
+		add(new JLabel(), "");
 		add(aufgeben, "aufgeben");
 		add(tauschen, "tauschen");
-		add(new JLabel(), "");
 	}
 
 	public void update(Observable o, Object arg) {
-		/* TODO: Robin: das war vom ehemaligen steuerung label, ich lass mal hier, vielleicht b
-		 * brauchst ud das für die buttons (-reto)
-		 */
+		SteuerungsZustand sz = spiel.getSteuerungsZustand();
+		if (sz == SteuerungsZustand.AUFGEBEN) {
+			layout.show(this, "aufgeben");
+		} else if (sz == SteuerungsZustand.TAUSCHEN){
+			layout.show(this, "tauschen");
+		} else {
+			layout.show(this, "");
+		}
 	}
 }

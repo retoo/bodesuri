@@ -34,6 +34,9 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public LinkedList<ZugEingabe> zugHistory;
 	private int zaehler = -1;
 
+	public SteuerungsZustand steuerungsZustand;
+	public Karte ausgewaehlteKarte;
+
 	public Spiel() {
 		spiel = new pd.Spiel();
 		zugHistory = new LinkedList<ZugEingabe>();
@@ -50,6 +53,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 		brett = new Brett(spiel.getBrett());
 		chat = new Chat();
+		steuerungsZustand = SteuerungsZustand.NICHTS;
 	}
 
 	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
@@ -100,6 +104,16 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	public void setLetzterZug(ZugEingabe letzterZug) {
 		this.letzterZug = letzterZug;
+		setChanged();
+		notifyObservers();
+	}
+
+	public SteuerungsZustand getSteuerungsZustand() {
+		return steuerungsZustand;
+	}
+
+	public void setSteuerungsZustand(SteuerungsZustand steuerungsZustand) {
+		this.steuerungsZustand = steuerungsZustand;
 		setChanged();
 		notifyObservers();
 	}

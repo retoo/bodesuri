@@ -1,6 +1,8 @@
 package applikation.client.zustaende;
 
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.pd.Karte;
+import applikation.client.pd.SteuerungsZustand;
 import applikation.nachrichten.KartenTausch;
 import dienste.automat.zustaende.Zustand;
 
@@ -18,20 +20,29 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		event.karte.setAusgewaehlt(false);
-		spiel.spielerIch.getKarten().remove(event.karte);
-		spiel.endpunkt.sende(new KartenTausch(event.karte.getKarte()));
-		return KarteTauschenBekommen.class;
+		if (spiel.ausgewaehlteKarte != null && spiel.ausgewaehlteKarte.istAusgewaehlt()) {
+			spiel.ausgewaehlteKarte.setAusgewaehlt(false);
+		}
+		spiel.ausgewaehlteKarte = event.karte;
+		spiel.ausgewaehlteKarte.setAusgewaehlt(true);
+		spiel.setSteuerungsZustand(SteuerungsZustand.TAUSCHEN);
+		return this.getClass();
 	}
 
-	Class<? extends Zustand> aufgegeben() {
-		//TODO: Philippe: Aufgeben im GUI deaktivieren.
-		controller.zeigeFehlermeldung("Bitte tausche zuerst eine Karte mit "
-		                              + "deinem Partner bevor du aufgibst!");
-		return this.getClass();
+	Class<? extends Zustand> kartenTauschBestaetigt() {
+		Karte karte = spiel.ausgewaehlteKarte;
+		if (karte == null) {
+			return this.getClass();
+		}
+		spiel.ausgewaehlteKarte = null;
+		karte.setAusgewaehlt(false);
+		spiel.spielerIch.getKarten().remove(karte);
+		spiel.endpunkt.sende(new KartenTausch(karte.getKarte()));
+		return KarteTauschenBekommen.class;
 	}
 
 	public void onExit() {
 		spiel.spielerIch.getKarten().setAktiv(false);
+		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
 	}
 }

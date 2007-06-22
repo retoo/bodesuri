@@ -9,6 +9,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.events.KartenTauschBestaetigtEvent;
 import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
@@ -56,6 +57,8 @@ public class ClientZustand extends Zustand {
 	    	return gezogen((ZugErfasstEvent) event);
 	    else if (event instanceof KarteGewaehltEvent)
 	    	return karteGewaehlt((KarteGewaehltEvent) event);
+	    else if (event instanceof KartenTauschBestaetigtEvent)
+	    	return kartenTauschBestaetigt();
 	    else if (event instanceof FeldGewaehltEvent)
 	    	return feldGewaehlt((FeldGewaehltEvent) event);
 	    else if (event instanceof FeldAbgewaehltEvent)
@@ -69,7 +72,6 @@ public class ClientZustand extends Zustand {
 
 	    return super.handle(event);
     }
-
 
 	private Class<? extends Zustand> handleNetzwerk(Event event) {
 	    NetzwerkEvent be = (NetzwerkEvent) event;
@@ -136,7 +138,7 @@ public class ClientZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
-		return ignoriereEvent("feldG");
+		return ignoriereEvent("feldGewaehlt");
 	}
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
@@ -145,6 +147,10 @@ public class ClientZustand extends Zustand {
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		return ignoriereEvent("karteGewaehlt");
+	}
+
+	Class<? extends Zustand> kartenTauschBestaetigt() {
+		return ignoriereEvent("kartenTauschBestaetigt");
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {

@@ -7,6 +7,7 @@ import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.ZugErfasstEvent;
+import applikation.client.pd.SteuerungsZustand;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.ZugInformation;
@@ -24,6 +25,7 @@ public class AmZug extends ClientZustand {
     public void onEntry() {
 		spiel.zugAutomat = new ZugAutomat(controller, spiel);
 		spiel.zugAutomat.init();
+		spiel.setSteuerungsZustand(SteuerungsZustand.AUFGEBEN);
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -90,5 +92,9 @@ public class AmZug extends ClientZustand {
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;
 		}
+	}
+
+	public void onExit() {
+		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
 	}
 }

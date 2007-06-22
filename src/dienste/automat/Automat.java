@@ -249,7 +249,7 @@ public class Automat {
 		Zustand zustand = zustaende.get(klasse);
 
 		if (zustand == null)
-			throw new RuntimeException("Nichtregistierer Zustand " + klasse);
+			throw new RuntimeException("Nichtregistrierter Zustand " + klasse);
 
 		return zustand;
 	}

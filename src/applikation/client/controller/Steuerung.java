@@ -25,6 +25,12 @@ public interface Steuerung {
 	public abstract void karteAuswaehlen(Karte gewaehlteKarte);
 
 	/**
+	 * Dem Automaten mitteilen, dass die vom Benutzer ausgewählte Karte
+	 * getauscht werden soll.
+	 */
+	public abstract void kartenTauschBestaetigen();
+
+	/**
 	 * Dem Automaten mitteilen welches Feld der Benutzer gewählt hat.
 	 *
 	 * @param gewaehltesFeld
