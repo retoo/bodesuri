@@ -69,7 +69,6 @@ public class BrettView extends JPanel implements Observer {
 
 		this.setComponentZOrder(hover, getComponentCount());
 
-		int i = 0;
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 
@@ -86,7 +85,6 @@ public class BrettView extends JPanel implements Observer {
 			}
 
 			this.setComponentZOrder(feld2d, this.getComponentCount());
-			i++;
 		}
 
 
