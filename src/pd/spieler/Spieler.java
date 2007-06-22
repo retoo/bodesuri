@@ -122,10 +122,6 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		return true;
 	}
 	
-	public void addPartnerFiguren() {
-		figuren.addAll( partner.getFiguren() );
-	}
-	
 	public Spieler getPartner() {
 		return partner;
 	}

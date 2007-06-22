@@ -4,6 +4,7 @@ import java.util.List;
 
 import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
+import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.KarteGewaehltEvent;
@@ -29,11 +30,14 @@ public class StartWaehlen extends ClientZugZustand {
 		spielDaten.setStart(feld);
 
 		Figur figur = feld.getFigur();
-		List<Figur> figuren = spielDaten.spiel.spielerIch.getFiguren();
+		Spieler spieler = spielDaten.spiel.spielerIch.spieler;
+		if (spieler.istFertig()) {
+			spieler = spieler.getPartner();
+		}
 
 		/* Prüfen ob die Markierung des StartFeldes Sinn macht */
-		if  (figur != null && (figuren.contains(figur) || /* Die Figur ghört dem eigenen Spieler (auch Partnerfiguren im Endmodus!) */
-			spielDaten.karte.getRegel() instanceof TauschRegel)) { /* ODER es ist eine Tauschregel */
+		if  (figur != null && figur.istVon(spieler) || /* Die Figur ghört dem Spieler (oder dem Partner, falls im Endmodus) */
+			spielDaten.karte.getRegel() instanceof TauschRegel) { /* ODER es ist eine Tauschregel */
 				feld.setAusgewaehlt(true);
 				return ZielWaehlen.class;
 		} else {

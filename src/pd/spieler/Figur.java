@@ -26,6 +26,10 @@ public class Figur extends Observable {
 		return spieler;
 	}
 	
+	public boolean istVon(Spieler spieler) {
+		return this.spieler == spieler;
+	}
+	
 	public Feld getFeld() {
 		return feld;
 	}
