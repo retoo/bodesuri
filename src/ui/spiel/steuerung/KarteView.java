@@ -47,7 +47,7 @@ public class KarteView extends JLabel implements Observer {
 
 	public void setKarte(Karte karte) {
 		if (this.karte != null) {
-			this.karte.deleteObserver(this);			
+			this.karte.deleteObserver(this);
 		}
 		this.karte = karte;
 		if (karte != null) {
