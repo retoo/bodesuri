@@ -1,8 +1,6 @@
 package pd.regelsystem;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.Vector;
 
 import pd.karten.Karte;
@@ -30,13 +28,16 @@ public class RegelVeroderung extends Regel {
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		StringBuilder s = new StringBuilder();
 		s.append("Keine Regel war gültig:");
-		Set<String> verstoesse = new HashSet<String>();
+		Vector<String> verstoesse = new Vector<String>();
 		for (Regel regel : regeln) {
 			try {
 				Zug resultat = regel.validiere(zugEingabe);
 				return resultat;
 			} catch (RegelVerstoss rv) {
-				verstoesse.add(rv.getMessage());
+				String message = rv.getMessage();
+				if (!verstoesse.contains(message)) {
+					verstoesse.add(message);
+				}
 			}
 		}
 		for (String verstoss : verstoesse) {
