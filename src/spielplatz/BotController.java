@@ -74,6 +74,7 @@ public class BotController extends Controller {
 		int el = (int) Math.floor(Math.random() * karten.size());
 
 		this.karteAuswaehlen(karten.get(el));
+		this.kartenTauschBestaetigen();
 	}
 
 	public void zugAufforderung() {
@@ -85,7 +86,6 @@ public class BotController extends Controller {
 
 		for (applikation.client.pd.Karte k : spiel.spielerIch.getKarten()) {
 			karten.put(k.getKarte(), k);
-
 		}
 
 		if (moeglich.isEmpty()) {
@@ -102,6 +102,8 @@ public class BotController extends Controller {
 			//TODO: Reto: hier müsste noch eine konkrete Karte(Joker) rein... --Philippe
 			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegung);
 			eventQueue.enqueue(zee);
+			
+			
 		}
 
 	}
