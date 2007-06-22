@@ -1,8 +1,10 @@
 package ui.spiel.brett;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
@@ -37,11 +39,16 @@ public class JokerView extends JPanel {
 	private Vector<Karte> kartenDeck;
 	private BrettXML brettXML;
 
-	public JokerView(Dimension groesse, Steuerung steuerung) {
-		setLayout(null);
+	public JokerView(Steuerung steuerung) {
+		setLayout(new BorderLayout());
 		setBackground(new Color(0, 0, 0, 100));
 		setOpaque(false);
-
+		
+		JPanel kartenPanel = new JPanel();
+		kartenPanel.setLayout(null);
+		kartenPanel.setOpaque(false);		
+		kartenPanel.setBounds(new Rectangle(490, 430));
+		
 		erstelleDeck();
 
 		try {
@@ -60,9 +67,9 @@ public class JokerView extends JPanel {
 					kma, ka);
 			karteViews.add(kv);
 			kv.setKarte(kartenDeck.get(i));
-			add(kv);
+			kartenPanel.add(kv);
 		}
-
+		
 		JLabel jokerSchliessen = new JLabel();
 		jokerSchliessen.setIcon(Icons.JOKERSCHLIESSEN);
 		Point pos = brettXML.getJokerKarten().get(13);
@@ -71,17 +78,18 @@ public class JokerView extends JPanel {
 		jokerSchliessen.addMouseListener(new ClickMouseAdapter() {
 			public void clicked(MouseEvent e) {
 				setVisible(false);
-				
 			}
 		});
-		add(jokerSchliessen);
-
-		JLabel hintergrund = new JLabel();
+		kartenPanel.add(jokerSchliessen);
+		
+		JPanel hintergrund = new JPanel();
+		hintergrund.setLayout(new BorderLayout());
+		hintergrund.setOpaque(false);
 		hintergrund.setBackground(new Color(0, 0, 0, 178));
 		hintergrund.setOpaque(true);
-		hintergrund.setBounds(0, 0, (int)groesse.getWidth(), (int)groesse.getHeight());
-
-		add(hintergrund);
+		
+		hintergrund.add(kartenPanel, BorderLayout.CENTER);
+		add(hintergrund, BorderLayout.CENTER);
 	}
 
 	public void erstelleDeck() {
