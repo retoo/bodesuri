@@ -25,7 +25,6 @@ public class KarteTauschenBekommen extends ClientZustand {
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-		//TODO: Philippe: Aufgeben im GUI deaktivieren.
 		controller.zeigeFehlermeldung("Bitte schau zuerst was du für eine"
 		                              + " Karte bekommst bevor du aufgibst!");
 		return this.getClass();
