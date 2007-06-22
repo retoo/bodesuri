@@ -1,7 +1,5 @@
 package applikation.client.zugautomat.zustaende;
 
-import java.util.List;
-
 import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
