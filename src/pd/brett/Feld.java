@@ -76,7 +76,7 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 	 * @return true, wenn eine Figur des Spielers auf dem Feld ist
 	 */
 	public boolean istBesetztVon(Spieler spieler) {
-		return istBesetzt() && getFigur().getSpieler() == spieler;
+		return istBesetzt() && getFigur().istVon(spieler);
 	}
 
 	/**

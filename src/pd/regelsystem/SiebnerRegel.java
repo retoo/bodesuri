@@ -65,7 +65,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 					if (!hatFigur) {
 						throw new RegelVerstoss("Startfeld hat keine Figur " +
 						                        "zum Ziehen.");
-					} else if (figur.getSpieler() != zugEingabe.getSpieler()) {
+					} else if (!figur.istVon(spieler)) {
 						throw new RegelVerstoss("Man kann nur mit eigenen Figuren ziehen.");
 					}
 					continue;

@@ -43,7 +43,7 @@ public class ZielWaehlen extends ClientZugZustand {
 		} else if/* Prüfen ob der Spieler eine andere Figur aus seinem eigenen Lager angelickt hat */
 				(feld.istLager() && /* ist ein lager */
 				 feld.getFigur() != null  && /* hat figur drauf */
-				 feld.getFigur().getSpieler() == spielDaten.spiel.spielerIch.getSpieler()) { /* gehört mir */
+				 feld.getFigur().istVon(spielDaten.spiel.spielerIch.getSpieler())) { /* gehört mir */
 
 			spielDaten.getStart().setAusgewaehlt(false); /* TODO: reto ins spieldaten verschieben */
 			spielDaten.setStart(feld);
