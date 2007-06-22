@@ -69,26 +69,26 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-//		if (spiel.spielerIch.kannZiehen()) {
-//			int i = 0;
-//
-//			for (ZugEingabe ze : spiel.zugHistory) {
-//				System.out.println(ze);
-//
-//				if (i++ > 30) {
-//					break;
-//				}
-//			}
-//
-//			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben "
-//			                              + "werden, da es noch möglich ist zu "
-//			                              + "ziehen.");
-//			return this.getClass();
-//		} else {
+		if (spiel.spielerIch.kannZiehen()) {
+			int i = 0;
+
+			for (ZugEingabe ze : spiel.zugHistory) {
+				System.out.println(ze);
+
+				if (i++ > 30) {
+					break;
+				}
+			}
+
+			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben "
+			                              + "werden, da es noch möglich ist zu "
+			                              + "ziehen.");
+			return this.getClass();
+		} else {
 			spiel.endpunkt.sende(new Aufgabe());
 			spiel.spielerIch.getKarten().setAktiv(false);
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;
-//		}
+		}
 	}
 }
