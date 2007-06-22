@@ -20,7 +20,7 @@ public class BodesuriArena {
 		nicks.add("Joseph Manderley");
 		nicks.add("Walton Simons");
 
-		Thread server = new Thread(new Runnable() {
+		Thread serverThread = new Thread(new Runnable() {
 			public void run() {
 				ServerAutomat server = new ServerAutomat(4);
 				try {
@@ -33,12 +33,15 @@ public class BodesuriArena {
             }
 		});
 
-		server.start();
+		serverThread.start();
+		
+		/* TODO: Reto: Sicherstellen das sich server im Zustand 'Empfange Spieler befindet' */
+		Thread.sleep(2000);
 
 		Vector<Thread> clients = new Vector<Thread>();
 
 		for (int i = 0; i < 4; i++) {
-			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, true);
+			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
 
 			Thread t = new Thread(r);
 			t.start();
@@ -46,7 +49,7 @@ public class BodesuriArena {
 		}
 
 		System.out.println("Warte auf Ende ...");
-		server.join();
+		serverThread.join();
 		System.out.println("Server fertig");
 
 		for (Thread t : clients) {
