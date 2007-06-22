@@ -10,7 +10,7 @@ import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Spiel;
-import pd.spieler.Spieler;
+import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 
 public class GUIController extends Controller {
@@ -34,6 +34,14 @@ public class GUIController extends Controller {
 	}
 
 	public void zeigeSpiel(Spiel spiel) {
+		// Warte 3 Sekunden, damit alle auch den zuletzt beigetretenen Spieler
+		// noch in der Lobby sehen.
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			throw new RuntimeException("Das Warten in der Lobby wurde durch " +
+					"einen anderen Thread unterbrochen.");
+		}
 		lobbyView.setVisible(false);
 		lobbyView.dispose();
 		spielView = new SpielView(this, spiel);

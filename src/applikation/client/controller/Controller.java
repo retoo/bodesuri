@@ -2,7 +2,6 @@ package applikation.client.controller;
 
 import java.util.List;
 
-import pd.spieler.Spieler;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.ChatEingabeEvent;
@@ -16,6 +15,7 @@ import applikation.client.pd.Chat;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
+import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 
 /**

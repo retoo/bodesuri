@@ -14,7 +14,7 @@ import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
-import pd.spieler.Spieler;
+import applikation.client.pd.Spieler;
 import applikation.geteiltes.SpielerInfo;
 import dienste.eventqueue.Event;
 import dienste.eventqueue.EventQueue;

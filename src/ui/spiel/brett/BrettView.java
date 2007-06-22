@@ -135,7 +135,7 @@ public class BrettView extends JPanel implements Observer {
 
 	private void erstelleHinweis() {
 		// JLabel
-		hinweisLabel = new JLabel("test");
+		hinweisLabel = new JLabel();
 		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
 		hinweisLabel.setHorizontalAlignment(SwingConstants.CENTER);
 

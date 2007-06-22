@@ -43,4 +43,8 @@ public class SpielerView extends JPanel implements Observer {
 			this.name.setForeground(Color.BLACK);
 		}
 	}
+	
+	public void setSpielerName(String name) {
+		this.name.setText(name);
+	}
 }

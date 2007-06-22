@@ -21,7 +21,7 @@ public class Lobby extends ClientZustand {
 	}
 	
 	public void onEntry() {
-		controller.zeigeLobby(spiel.getSpiel().getSpieler(), spiel.chat);
+		controller.zeigeLobby(spiel.getSpieler(), spiel.chat);
 	}
 
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, String nachricht) {

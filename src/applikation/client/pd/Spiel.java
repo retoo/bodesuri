@@ -52,17 +52,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		chat = new Chat();
 	}
 
-//	public Spieler fuegeHinzu(String spielerName) {
-//		pd.spieler.Spieler spielerPD = spiel.fuegeHinzu(spielerName);
-//
-//		Spieler neuerSpieler = new Spieler(spielerPD);
-//
-//		spieler.add(neuerSpieler);
-//		spielerRegister.put(spielerPD, neuerSpieler);
-//
-//		return neuerSpieler;
-//	}
-
 	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
 		Spieler s = spielerRegister.get(spieler);
 
