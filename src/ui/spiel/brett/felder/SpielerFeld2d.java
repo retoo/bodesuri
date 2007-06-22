@@ -12,8 +12,7 @@ import applikation.client.pd.Feld;
  * die weiteren normalen Feldern weiter ziehe kann
  */
 public class SpielerFeld2d extends Feld2d {
-	public SpielerFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter,
-			Icon icon, BLabel hover, FigurenManager figurenManager) {
+	public SpielerFeld2d(Point p, Feld feld, FeldMouseAdapter mouseAdapter, Icon icon, BLabel hover, FigurenManager figurenManager) {
 		super(p, feld, mouseAdapter, icon, hover, figurenManager);
 	}
 }

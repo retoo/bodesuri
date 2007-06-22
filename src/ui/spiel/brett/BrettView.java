@@ -43,13 +43,6 @@ public class BrettView extends JPanel implements Observer {
 		setLayout(null);
 		setOpaque(false);
 
-		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
-		Brett2d brett2d = new Brett2d(brettAdapter);
-
-		setPreferredSize(brett2d.getPreferredSize());
-		setMinimumSize(brett2d.getMinimumSize());
-		setMaximumSize(brett2d.getMaximumSize());
-
 		try {
 			brettXML = new BrettXML("/ui/ressourcen/brett.xml");
 		} catch (Exception e) {
@@ -72,6 +65,7 @@ public class BrettView extends JPanel implements Observer {
 		FeldMouseAdapter mouseAdapter = new FeldMouseAdapter(steuerung);
 
 		BLabel hover = new BLabel(Icons.FELD_HOVER);
+		hover.setVisible(false);
 
 		this.setComponentZOrder(hover, getComponentCount());
 
@@ -91,7 +85,6 @@ public class BrettView extends JPanel implements Observer {
 				                           figurenManager);
 			}
 
-
 			this.setComponentZOrder(feld2d, this.getComponentCount());
 			i++;
 		}
@@ -101,6 +94,12 @@ public class BrettView extends JPanel implements Observer {
 		zeichneSpielerView(steuerung, spiel.getSpieler());
 
 		erstelleHinweis();
+
+		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
+		Brett2d brett2d = new Brett2d(brettAdapter);
+		setPreferredSize(brett2d.getPreferredSize());
+		setMinimumSize(brett2d.getMinimumSize());
+		setMaximumSize(brett2d.getMaximumSize());
 
 		add(brett2d);
 
@@ -151,7 +150,15 @@ public class BrettView extends JPanel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
+		String zaehlerString = "";
+		int zaehler = spiel.getZaehler();
+		if (zaehler == 0) {
+			zaehlerString = "      ";
+		} else if (zaehler > 0) {
+			zaehlerString = " (" + zaehler + ")";
+		}
+
 		/* Hinweisfeld updaten */
-		hinweisLabel.setText(spiel.getHinweis());
+		hinweisLabel.setText(spiel.getHinweis() + zaehlerString);
 	}
 }

@@ -1,11 +1,13 @@
 package ui.spiel.brett.felder;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
+import javax.swing.border.LineBorder;
 
 import ui.erweiterungen.BLabel;
 import ui.ressourcen.Icons;
@@ -22,17 +24,24 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private FigurenManager figurenManager;
 	private BLabel hover;
 	private BLabel ausgewaehlt;
+	//private Object wegMarkierung;
 
-	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter, Icon icon, BLabel hover, FigurenManager figurenManager) {
+	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter,
+	        Icon icon, BLabel hover,
+	        FigurenManager figurenManager) {
 		super(icon, p);
 		this.icon = icon;
 		this.position = p;
 		this.feld = feld;
 		this.hover = hover;
 		this.figurenManager = figurenManager;
-		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
+		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL, p);
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
+
+		//this.wegMarkierung = new IdentityHashMap<BLabel>();
+
+		setBorder(new LineBorder(Color.BLACK));
 
 		feld.addObserver(this);
 
@@ -49,15 +58,13 @@ public abstract class Feld2d extends BLabel implements Observer {
 		return feld;
 	}
 
-	/* TODO: Danilo: Zeichnen überarbeiten
-	 * Das Zeichnen in ein drei-schichtiges Modell umwandeln
-	 *  - Einbuchtung (Loch)
-	 *  - Farbe
-	 *  - Figur
-	 *  - Selektion (hover) / Weg
+	/*
+	 * TODO: Danilo: Zeichnen überarbeiten Das Zeichnen in ein drei-schichtiges
+	 * Modell umwandeln - Einbuchtung (Loch) - Farbe - Figur - Selektion (hover) /
+	 * Weg
 	 *
-	 *  Figur nur hinschieben falls sich wirklich was verändert hat.
-	 *  -- reto und robin
+	 * Figur nur hinschieben falls sich wirklich was verändert hat. -- reto und
+	 * robin
 	 */
 	public void update(Observable os, Object arg) {
 		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
@@ -65,23 +72,25 @@ public abstract class Feld2d extends BLabel implements Observer {
 			/* Figur drauf stellen */
 			Figur2d figur = figurenManager.get(feld.getFigur());
 
-
-			/* wenn nur ein oder zwei Spieler mitspielen können
-			 * einige figuren null sein. Dann zeichnen wir einfach ni.
+			/*
+			 * wenn nur ein oder zwei Spieler mitspielen können einige figuren
+			 * null sein. Dann zeichnen wir einfach ni.
 			 */
 			if (figur != null) {
 				figur.setzeAuf(position);
 			}
 		}
 
-		/* prüfen wir ob selektiert */
+		/* prüfen wir ob hoern */
 		if (feld.getHover()) {
+
 			hover.setVisible(true);
 			hover.zentriereAuf(this.position);
 		} else {
 			hover.setVisible(false);
 		}
 
+		/* Prüfen ob Selektiert */
 		if (feld.getAusgewaehlt()) {
 			System.out.println("ausgewählt");
 			ausgewaehlt.setVisible(true);

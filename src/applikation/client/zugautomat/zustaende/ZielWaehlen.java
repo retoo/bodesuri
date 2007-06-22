@@ -24,6 +24,11 @@ public class ZielWaehlen extends ClientZugZustand {
 
 	public void onEntry() {
 		spielDaten.spiel.setHinweis("Wähle das Zielfeld.");
+		spielDaten.spiel.setZaehler(0);
+	}
+
+	public void onExit() {
+		spielDaten.spiel.setZaehler(-1);
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -72,11 +77,16 @@ public class ZielWaehlen extends ClientZugZustand {
 
 		Weg weg = bewegung.getWeg();
 
+
 		if (weg != null) {
+			spielDaten.spiel.setZaehler(weg.getWegLaenge());
+
 			for (pd.brett.Feld f : weg) {
 				brett.getFeld(f).setHover(true);
 			}
 		}
+
+
 
 		return this.getClass();
 	}
@@ -89,6 +99,7 @@ public class ZielWaehlen extends ClientZugZustand {
 		Weg weg = bewegung.getWeg();
 
 		if (weg != null) {
+			spielDaten.spiel.setZaehler(0);
 
 			for (pd.brett.Feld f : weg) {
 				brett.getFeld(f).setHover(false);
