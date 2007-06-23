@@ -4,6 +4,7 @@ import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import applikation.client.controller.Controller;
+import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.pd.Feld;
@@ -46,5 +47,14 @@ public class StartWaehlen extends ClientZugZustand {
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
 		spielDaten.spiel.queue.enqueue(event);
 		return KarteWaehlen.class;
+	}
+
+	/* TODO: Philippe: Hab die Methode hier auch implementiert. Was soll passieren wenn der Spielr
+	 * beim Startwählen aufs Brett klickt? Ich würd sagen dann sollten beim Siebnerzug alle alten
+	 * Bewegungen gelöscht werden? Einverstanden? (-reto)
+	 */
+	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
+		bewegungenZuruecksetzen();
+		return StartWaehlen.class;
 	}
 }

@@ -29,10 +29,10 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 				 */
 				if (erfassterZug.getKarte().getKarte() instanceof Sieben &&
 					wegverstoss.getIstLaenge() < 7) {
+					spielDaten.felderDeaktivieren();
+
 					spielDaten.getZiel().setGeist(true);
 					spielDaten.neueBewegungHinzufuegen();
-
-					spielDaten.felderDeaktivieren();
 
 					return StartWaehlen.class;
 				}

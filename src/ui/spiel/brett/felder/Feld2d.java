@@ -23,7 +23,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private FigurenManager figurenManager;
 	private BLabel hover;
 	private BLabel ausgewaehlt;
-
+	private BLabel geist;
 	private BLabel wegNormal;
 
 	/* TODO: Reto: Ein bissschen aufräumen hier. z.B. eine helferklasse machen
@@ -41,6 +41,10 @@ public abstract class Feld2d extends BLabel implements Observer {
 		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
+
+		this.geist = new BLabel(Icons.FELD_AUSWAHL);
+		this.geist.setVisible(false);
+		this.add(geist);
 
 		this.wegNormal = new BLabel(Icons.getSpielerHoverIcon(farbe));
 		this.wegNormal.setVisible(false);
@@ -85,7 +89,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 		}
 
 		/* prüfen wir ob hoern */
-		if (feld.getHover()) {
+		if (feld.istHover()) {
 
 			hover.setVisible(true);
 			hover.zentriereAuf(this.position);
@@ -93,17 +97,8 @@ public abstract class Feld2d extends BLabel implements Observer {
 			hover.setVisible(false);
 		}
 
-		/* Prüfen ob Selektiert */
-		if (feld.getAusgewaehlt()) {
-			ausgewaehlt.setVisible(true);
-		} else {
-			ausgewaehlt.setVisible(false);
-		}
-
-		if (feld.istWeg()) {
-			wegNormal.setVisible(true);
-		} else {
-			wegNormal.setVisible(false);
-		}
+		ausgewaehlt.setVisible(feld.istAusgewaehlt());
+		wegNormal.setVisible(feld.istWeg());
+		geist.setVisible(feld.istGeist());
 	}
 }

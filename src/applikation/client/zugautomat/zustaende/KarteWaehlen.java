@@ -18,7 +18,6 @@ public class KarteWaehlen extends ClientZugZustand {
 	public void onEntry() {
 		spielDaten.spiel.setHinweis("Wähle eine Karte.");
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(true);
-		brettZuruecksetzen();
 		bewegungenZuruecksetzen();
 	}
 

@@ -57,7 +57,6 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
-		brettZuruecksetzen();
 		bewegungenZuruecksetzen();
 		return StartWaehlen.class;
 	}
