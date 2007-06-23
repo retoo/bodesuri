@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import javax.swing.Icon;
 
+import pd.spieler.SpielerFarbe;
 import ui.erweiterungen.BLabel;
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
@@ -22,23 +23,28 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private FigurenManager figurenManager;
 	private BLabel hover;
 	private BLabel ausgewaehlt;
-	//private Object wegMarkierung;
 
+	private BLabel wegNormal;
+
+	/* TODO: Reto: Ein bissschen aufräumen hier. z.B. eine helferklasse machen
+	 * die alle parameer beinhaltet die sowohl basis wie subklasse benötigen (-reto) */
 	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter,
-	        Icon icon, BLabel hover,
+	        Icon icon, BLabel hover, SpielerFarbe farbe,
 	        FigurenManager figurenManager) {
 		super(icon, p);
 		this.icon = icon;
 		this.position = p;
 		this.feld = feld;
 		this.hover = hover;
+
 		this.figurenManager = figurenManager;
 		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
 
-		//this.wegMarkierung = new IdentityHashMap<BLabel>();
-
+		this.wegNormal = new BLabel(Icons.getSpielerHoverIcon(farbe));
+		this.wegNormal.setVisible(false);
+		add(wegNormal);
 
 		feld.addObserver(this);
 
@@ -89,10 +95,15 @@ public abstract class Feld2d extends BLabel implements Observer {
 
 		/* Prüfen ob Selektiert */
 		if (feld.getAusgewaehlt()) {
-			System.out.println("ausgewählt");
 			ausgewaehlt.setVisible(true);
 		} else {
 			ausgewaehlt.setVisible(false);
+		}
+
+		if (feld.istWeg()) {
+			wegNormal.setVisible(true);
+		} else {
+			wegNormal.setVisible(false);
 		}
 	}
 }

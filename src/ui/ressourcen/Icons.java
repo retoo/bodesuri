@@ -52,22 +52,27 @@ final public class Icons {
 		String name = "karten/" + karte.getIconName() + ".png";
 		return getIcon(name);
 	}
-	
+
 	public static Icon getSpielerFeldIcon(SpielerFarbe farbe) {
 		String name = "feld_" + farbe.toString().toLowerCase() + ".png";
 		return getIcon(name);
 	}
-	
+
+	public static Icon getSpielerHoverIcon(SpielerFarbe farbe) {
+		String name = "feld_hover_" + farbe.toString().toLowerCase() + ".png";
+		return getIcon(name);
+	}
+
 	public static Icon getFigurIcon(SpielerFarbe farbe) {
 		String name = "figur_" + farbe.toString().toLowerCase() + ".png";
 		return getIcon(name);
 	}
-	
+
 	public static Icon getSpielerIcon(SpielerFarbe farbe) {
 		String name = "spieler_" + farbe.toString().toLowerCase() + ".png";
 		return getIcon(name);
 	}
-	
+
 	private static Icon getIcon(String name) {
 		Icon icon = icons.get(name);
 		if (icon == null) {

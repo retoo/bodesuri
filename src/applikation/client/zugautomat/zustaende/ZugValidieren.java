@@ -15,32 +15,38 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		                                                   spielDaten.karte,
 		                                                   spielDaten.konkreteKarte,
 		                                                   spielDaten.getPdBewegungen());
-		
+
 		try {
 			erfassterZug.toZugEingabe().validiere();
-		} catch (WegLaengeVerstoss e) {
-			System.out.println(e.getIstLaenge());
-			if (erfassterZug.getKarte().getKarte() instanceof Sieben && e.getIstLaenge() < 7) {
-				spielDaten.neueBewegungHinzufuegen();
-				return StartWaehlen.class;
-			} else {
-				fehler(e.getMessage());
-				return ZielWaehlen.class;
-			}
 		} catch (RegelVerstoss e) {
-			fehler(e.getMessage());
+			if (e instanceof WegLaengeVerstoss) {
+				WegLaengeVerstoss wegverstoss = (WegLaengeVerstoss) e;
+
+				/*
+				 * Philippe: JOKERPROBLEM Wenn die Karte über den Jker geholt
+				 * wurde ist getkare nicht sieben, dan musst du ggf. halt
+				 * konkreteKarte() verwendeen (-reto)
+				 */
+				if (erfassterZug.getKarte().getKarte() instanceof Sieben &&
+					wegverstoss.getIstLaenge() < 7) {
+					spielDaten.getZiel().setGeist(true);
+					spielDaten.neueBewegungHinzufuegen();
+
+					spielDaten.felderDeaktivieren();
+
+					return StartWaehlen.class;
+				}
+			}
+
+			controller.zeigeFehlermeldung(e.getMessage());
+			spielDaten.setZiel(null);
 			return ZielWaehlen.class;
 		}
 
 		spielDaten.spiel.queue.enqueue(erfassterZug);
-		brettZuruecksetzen();
+
 		bewegungenZuruecksetzen();
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
 		return EndZustand.class;
 	}
-
-	private void fehler(String fehlermeldung) {
-		controller.zeigeFehlermeldung(fehlermeldung);
-		spielDaten.getZiel().setAusgewaehlt(false);
-    }
 }

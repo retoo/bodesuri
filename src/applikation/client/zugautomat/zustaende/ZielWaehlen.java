@@ -1,5 +1,7 @@
 package applikation.client.zugautomat.zustaende;
 
+import pd.regelsystem.Regel;
+import pd.regelsystem.VorwaertsRegel;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 import applikation.client.controller.Controller;
@@ -8,7 +10,6 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
-import applikation.client.pd.Brett;
 import applikation.client.pd.Feld;
 import dienste.automat.zustaende.Zustand;
 
@@ -29,6 +30,7 @@ public class ZielWaehlen extends ClientZugZustand {
 
 	public void onExit() {
 		spielDaten.spiel.setZaehler(-1);
+		spielDaten.setAktuellerWeg(null);
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -37,22 +39,19 @@ public class ZielWaehlen extends ClientZugZustand {
 		if (spielDaten.getStart() == feld) {
 			/* Dasselbe Feld nochmals angeklickt */
 
-			feld.setAusgewaehlt(false);
+			spielDaten.setStart(null);
 
 			return StartWaehlen.class;
-		} else if/* Prüfen ob der Spieler eine andere Figur aus seinem eigenen Lager angelickt hat */
+		} else if /* Prüfen ob der Spieler eine andere Figur aus seinem eigenen Lager angelickt hat */
 				(feld.istLager() && /* ist ein lager */
 				 feld.getFigur() != null  && /* hat figur drauf */
 				 feld.getFigur().istVon(spielDaten.spiel.spielerIch.getSpieler())) { /* gehört mir */
 
-			spielDaten.getStart().setAusgewaehlt(false); /* TODO: reto ins spieldaten verschieben */
 			spielDaten.setStart(feld);
-			spielDaten.getStart().setAusgewaehlt(true);
 
 			return this.getClass();
 		} else {
 			spielDaten.setZiel(feld);
-			spielDaten.getZiel().setAusgewaehlt(true);
 			return ZugValidieren.class;
 		}
 	}
@@ -69,41 +68,37 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
-		Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
-		                                 event.feld.getFeld());
-		Brett brett = spielDaten.spiel.getBrett();
+		/* Hover anschalten */
+		event.feld.setHover(false);
 
-		Weg weg = bewegung.getWeg();
+		Regel regel = spielDaten.karte.getRegel();
 
+		/* Robin: Wie unterscheid ich hier am besten ob es sich bei dem Zug um einen
+		 * Vor- oder Rückwärtszug handelt - mein aktueller Ansatz geht ned wirklich gut? (-reto)
+		 * Phiilippe: JOKERPROBLEM Wie bauen wir hier sauber den Joker ein? Ich hoffe es benötigt keine
+		 * Fallunterscheidung (-reto)
+		 */
+		if (regel instanceof VorwaertsRegel) {
+			/* Weg markieren */
+			Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
+			                                 event.feld.getFeld());
 
-		if (weg != null) {
-			spielDaten.spiel.setZaehler(weg.getWegLaenge());
+			Weg weg = bewegung.getWeg();
 
-			for (pd.brett.Feld f : weg) {
-				brett.getFeld(f).setHover(true);
+			if (weg != null) {
+				spielDaten.setAktuellerWeg(weg);
+				spielDaten.spiel.setZaehler(weg.getWegLaenge());
 			}
 		}
-
-
 
 		return this.getClass();
 	}
 
 	Class<? extends Zustand> hoverEnde(HoverEndeEvent event) {
-		Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
-		                                 event.feld.getFeld());
-		Brett brett = spielDaten.spiel.getBrett();
+		/* Hover abschalten*/
+		event.feld.setHover(false);
 
-		Weg weg = bewegung.getWeg();
-
-		if (weg != null) {
-			spielDaten.spiel.setZaehler(0);
-
-			for (pd.brett.Feld f : weg) {
-				brett.getFeld(f).setHover(false);
-			}
-		}
-
+		/* Weg nicht mehr markieren */
 		return this.getClass();
 	}
 }

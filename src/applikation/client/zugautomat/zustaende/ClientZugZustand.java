@@ -56,7 +56,7 @@ public class ClientZugZustand extends Zustand {
 
 	/**
 	 * Eine Karte als ausgewählt markieren.
-	 * 
+	 *
 	 * @param karte
 	 */
 	protected void karteAuswaehlen(Karte karte) {
@@ -71,8 +71,10 @@ public class ClientZugZustand extends Zustand {
 	 * Alle Selektionen zurücksetzen.
 	 */
 	protected void brettZuruecksetzen() {
-		for (Feld feld : spielDaten.getAlleFelder()) {
-			feld.setAusgewaehlt(false);
+		/* TODO: Reto & Philippe: Brauchen wir evtl. noch für den Geist */
+		/* TODO: Reto: Geister deselektieren */
+		for (Feld f : spielDaten.spiel.getBrett().getAlleFelder()) {
+			f.setGeist(false); /* schöner machen */
 		}
 	}
 
@@ -80,6 +82,7 @@ public class ClientZugZustand extends Zustand {
 	 * Den Vektor mit den erfassten Bewegungen löschen.
 	 */
 	protected void bewegungenZuruecksetzen() {
+		spielDaten.felderDeaktivieren();
 		spielDaten.bewegungen = new LinkedList<Bewegung>();
 		spielDaten.bewegungen.add(new Bewegung());
 	}

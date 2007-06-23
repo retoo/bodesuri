@@ -25,7 +25,6 @@ public class StartWaehlen extends ClientZugZustand {
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		Feld feld = event.feld;
-		spielDaten.setStart(feld);
 
 		Figur figur = feld.getFigur();
 		Spieler spieler = spielDaten.spiel.spielerIch.spieler;
@@ -36,10 +35,10 @@ public class StartWaehlen extends ClientZugZustand {
 		/* Prüfen ob die Markierung des StartFeldes Sinn macht */
 		if  (figur != null && figur.istVon(spieler) || /* Die Figur ghört dem Spieler (oder dem Partner, falls im Endmodus) */
 			spielDaten.karte.getRegel() instanceof TauschRegel) { /* ODER es ist eine Tauschregel */
-				feld.setAusgewaehlt(true);
+
+				spielDaten.setStart(feld);
 				return ZielWaehlen.class;
 		} else {
-			feld.setAusgewaehlt(false);
 			return StartWaehlen.class;
 		}
 	}

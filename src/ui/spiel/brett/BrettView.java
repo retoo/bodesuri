@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 
 import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
+import pd.spieler.SpielerFarbe;
 import ui.erweiterungen.BLabel;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
@@ -69,19 +70,22 @@ public class BrettView extends JPanel implements Observer {
 
 		this.setComponentZOrder(hover, getComponentCount());
 
+		SpielerFarbe farbeIch = spiel.spielerIch.getFarbe();
+
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
 
 			Point position = brettXML.getFelder().get(feld.getNummer());
 
 			if (feld.istNormal()) {
-				feld2d = new NormalesFeld2d(position, feld, mouseAdapter, hover,
-				                            figurenManager);
+				feld2d = new NormalesFeld2d(position, feld, mouseAdapter,
+				                            hover, farbeIch, figurenManager);
 			} else {
 				SpielerFeld f = (SpielerFeld) feld.getFeld();
+
 				Icon icon = Icons.getSpielerFeldIcon(f.getSpieler().getFarbe());
-				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon, hover,
-				                           figurenManager);
+				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon,
+				                           hover, farbeIch, figurenManager);
 			}
 
 			this.setComponentZOrder(feld2d, this.getComponentCount());

@@ -23,6 +23,9 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
+		/* Philippe: ups, der code hat mich grad schön verwirrt, kann man hier
+		 * ein kommentar hinmachen :)? (-reto)
+		 */
 		if (event.karte.getKarte() instanceof pd.karten.Joker) {
 			controller.zeigeJokerauswahl(true);
 			karteAuswaehlen(event.karte);
