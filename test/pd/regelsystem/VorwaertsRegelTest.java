@@ -132,4 +132,11 @@ public class VorwaertsRegelTest extends RegelTestCase {
 		lager(0).versetzeFigurAuf(start);
 		sollteVerstossGeben(new VorwaertsRegel(1));
 	}
+
+	public void testVorwaertsAberRueckwaertsImHimmel() {
+		start = himmel(0, 3);
+		ziel  = himmel(0, 1);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(4));
+	}
 }

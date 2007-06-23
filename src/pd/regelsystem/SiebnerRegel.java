@@ -40,6 +40,9 @@ public class SiebnerRegel extends VorwaertsRegel {
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			pruefeBewegung(bewegung, spieler);
 			Weg weg = bewegung.getWeg();
+			if (weg == null) {
+				throw new RegelVerstoss("Ungültige Bewegung.");
+			}
 			pruefeWegRichtung(weg);
 			wegLaenge += weg.size() - 1;
 			for (Feld feld : weg) {

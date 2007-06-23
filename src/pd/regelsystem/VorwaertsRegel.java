@@ -53,6 +53,9 @@ public class VorwaertsRegel extends Regel {
 		pruefeBewegung(bewegung, spieler);
 
 		Weg weg = bewegung.getWeg();
+		if (weg == null) {
+			throw new RegelVerstoss("Ungültige Bewegung.");
+		}
 		pruefeWegRichtung(weg);
 		pruefeWegLaenge(weg);
 

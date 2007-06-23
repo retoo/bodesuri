@@ -45,4 +45,10 @@ public class WegTest extends ProblemDomainTestCase {
 		assertEquals(17, weg.size());
 		assertTrue(weg.istRueckwaerts());
 	}
+
+	public void testWegVonEinemHimmelZumAndern() {
+		Bewegung bewegung = new Bewegung(himmel(0), himmel(1));
+		Weg weg = bewegung.getWeg();
+		assertNull(weg);
+	}
 }
