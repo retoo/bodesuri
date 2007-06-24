@@ -141,9 +141,9 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Anti-Cheat Funktion die sicherstellt, dass der Endpunkt auch immer der 
+	 * Anti-Cheat Funktion die sicherstellt, dass der Endpunkt auch immer der
 	 * aktuelle Spieler der Runde ist.
-	 * 
+	 *
 	 * @param endpunkt
 	 */
 	public void sicherStellenIstAktuellerSpieler(EndPunktInterface endpunkt) {
@@ -151,7 +151,7 @@ public class Spiel implements SerialisierungsKontext {
 
 			broadcast("HAH.. huere michi, de " + endpunkt
 			          + " wott voll bschisse");
-			new RuntimeException("Beschiss von " + endpunkt + " an "
+			throw new RuntimeException("Beschiss von " + endpunkt + " an "
 			                     + runde.getAktuellerSpieler());
 		}
 	}
@@ -169,7 +169,7 @@ public class Spiel implements SerialisierungsKontext {
 	public Vector<Partnerschaft> getPartnerschaften() {
 		return partnerschaften;
 	}
-	
+
 	public SpielInfo getSpielInfo() {
 		Vector<SpielerInfo> spielers = new Vector<SpielerInfo>();
 
@@ -229,7 +229,7 @@ public class Spiel implements SerialisierungsKontext {
 	/**
 	 * Zeigt an, ob das Spiel fertig ist oder nicht. Dies wird anhand der Partnerschaften
 	 * ermittelt (sobald eine Partnerschaft fertig ist, ist auch das Spiel fertig).
-	 * 
+	 *
 	 * @return Ob Spiel fertig ist oder nicht
 	 */
 	public boolean istFertig() {
@@ -238,7 +238,7 @@ public class Spiel implements SerialisierungsKontext {
 
 	/**
 	 * Gibt die siegreiche Partnerschaft zurück.
-	 * 
+	 *
 	 * @return Siegreiche Partnerschaft. Falls noch nicht bekannt wird null zurückgegeben.
 	 */
 	public Partnerschaft getGewinner() {
