@@ -1,8 +1,5 @@
 package dienste.netzwerk.server;
 
-import java.io.IOException;
-
-
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.serialisierung.SerialisierungsKontext;
@@ -32,9 +29,8 @@ public class Server {
 	 *
 	 * @param queue EventQueue in welche die eingehenden {@link NetzwerkEvent} gelegt werden
 	 * @param sk Serialisierungskontext
-	 * @throws IOException Bei Problemen mit dem Socket wird eine IOExpceiton geworfen
 	 */
-	public Server(EventQueue queue, SerialisierungsKontext sk) throws IOException {
+	public Server(EventQueue queue, SerialisierungsKontext sk) {
 		this.queue = queue;
 		serverBriefkasten = new BriefkastenAdapter(queue);
 

@@ -32,14 +32,16 @@ public class Daemon implements Runnable {
 	 *            werden soll
 	 * @param queue
 	 *            Queue über welche die neue Verbindung angekündet wird
-	 * @param sk Serialisierungskontext
-	 * @throws IOException
-	 *             Bei Netzwerkproblemen
+	 * @param sk
+	 *            Serialisierungskontext
 	 */
 	public Daemon(int port, BriefKastenInterface briefkasten, EventQueue queue,
-	              SerialisierungsKontext sk)
-	        throws IOException {
-		this.serverSock = new ServerSocket(port);
+	        SerialisierungsKontext sk) {
+		try {
+	        this.serverSock = new ServerSocket(port);
+        } catch (IOException e) {
+        	throw new RuntimeException(e);
+        }
 		this.briefkasten = briefkasten;
 		this.queue = queue;
 		this.serialisierungsKontext = sk;
