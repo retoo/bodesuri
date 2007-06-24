@@ -30,9 +30,7 @@ public class AmZug extends ClientZustand {
 	public void onExit() {
 		/* TODO: Robin: wollen wir das evtl. auch in den zguatuomatenabschluss rein tun? (-reto) */
 		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
-
-		if (!spiel.zugAutomat.istFertig())
-			spiel.zugAutomat.step(new ZugautomatEndeEvent());
+		spiel.zugAutomat.step(new ZugautomatEndeEvent());
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {

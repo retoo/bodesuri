@@ -1,6 +1,5 @@
 package applikation.client.zugautomat.zustaende;
 
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
@@ -11,6 +10,6 @@ public class ZugautomatAbschluss extends ClientZugZustand implements
 		bewegungenZuruecksetzen();
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
 
-		return EndZustand.class;
+		return ZugautomatEndZustand.class;
 	}
 }
