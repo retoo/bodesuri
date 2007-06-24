@@ -47,7 +47,7 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			if (start.istLager() || start.istHimmel()) {
@@ -63,7 +63,7 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 	}
 
 	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			if (start.istLager() || start.istHimmel()) {
@@ -73,7 +73,6 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 			Feld ziel = getZiel(start, schritte);
 			if (istZugMoeglich(spieler, start, ziel)) {
 				Bewegung bewegung = new Bewegung(start, ziel);
-
 				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
 			}
 		}

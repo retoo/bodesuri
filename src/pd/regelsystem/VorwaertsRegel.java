@@ -128,7 +128,7 @@ public class VorwaertsRegel extends Regel {
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			Feld ziel = getZiel(start, schritte, false);
@@ -145,7 +145,7 @@ public class VorwaertsRegel extends Regel {
 	}
 
 	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			Feld ziel = getZiel(start, schritte, false);

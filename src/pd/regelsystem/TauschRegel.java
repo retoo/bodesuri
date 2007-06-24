@@ -53,13 +53,13 @@ public class TauschRegel extends Regel {
 	}
 
 	public boolean kannZiehen(Spieler spieler) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			if (!figur.getFeld().istGeschuetzt()) {
 				for (Spieler spieler2 : spieler.getSpiel().getSpieler()) {
 					if (spieler == spieler2) {
 						continue;
 					}
-					for (Figur figur2 : spieler2.getFiguren()) {
+					for (Figur figur2 : spieler2.getZiehbareFiguren()) {
 						if (!figur2.getFeld().istGeschuetzt()) {
 							return true;
 						}
@@ -71,14 +71,14 @@ public class TauschRegel extends Regel {
 	}
 
 	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld startFeld = figur.getFeld();
 			if (!startFeld.istGeschuetzt()) {
 				for (Spieler spieler2 : spieler.getSpiel().getSpieler()) {
 					if (spieler == spieler2) {
 						continue;
 					}
-					for (Figur figur2 : spieler2.getFiguren()) {
+					for (Figur figur2 : spieler2.getZiehbareFiguren()) {
 						Feld zielFeld = figur2.getFeld();
 						if (!zielFeld.istGeschuetzt()) {
 							Bewegung bewegung = new Bewegung(startFeld, zielFeld);

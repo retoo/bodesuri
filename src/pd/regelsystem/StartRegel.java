@@ -71,7 +71,7 @@ public class StartRegel extends Regel {
 
 	public boolean kannZiehen(Spieler spieler) {
 		Brett brett = spieler.getSpiel().getBrett();
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			if (figur.getFeld().istLager()) {
 				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
 					return true;
@@ -83,7 +83,7 @@ public class StartRegel extends Regel {
 
 	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
 		Brett brett = spieler.getSpiel().getBrett();
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			if (figur.getFeld().istLager()) {
 				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
 					Bewegung bewegung = new Bewegung(figur.getFeld(), brett.getBankFeldVon(spieler));

@@ -102,7 +102,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 	
 	public boolean kannZiehen(Spieler spieler) {
 		Map<Figur, Feld> positionen = new IdentityHashMap<Figur, Feld>();
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			positionen.put(figur, figur.getFeld());
 		}
 		List<Figur> reihenfolge = new Vector<Figur>();
@@ -115,7 +115,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			return istZugMoeglich(spieler, positionen, reihenfolge);
 		}
 		
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld feld = positionen.get(figur);
 			
 			if (feld.istLager()) {

@@ -76,12 +76,26 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	}
 
 	/**
-	 * @return Figuren, mit denen der Spieler spielt
+	 * @return Liste von Figuren, die dem Spieler gehören
 	 */
 	public List<Figur> getFiguren() {
 		return figuren;
 	}
-
+	
+	/**
+	 * Figuren, mit denen der Spieler spielt, oder zusätzlich noch die des Partners,
+	 * falls der Spieler schon fertig sein sollte.
+	 * 
+	 * @return Liste von Figuren
+	 */
+	public List<Figur> getZiehbareFiguren() {
+		Vector<Figur> ziehbareFiguren = new Vector<Figur>(figuren);
+		if ( istFertig() && !partner.istFertig() ) {
+			ziehbareFiguren.addAll(partner.getFiguren());
+		}
+		return ziehbareFiguren;
+	}
+	
 	/**
 	 * @return Spielernummer
 	 */
