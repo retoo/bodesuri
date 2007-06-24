@@ -1,4 +1,4 @@
-package ui.spiel.chat;
+package ui.geteiltes;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

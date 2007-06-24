@@ -17,6 +17,7 @@ import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 import ui.geteiltes.BLabel;
+import ui.geteiltes.SpielerView;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;

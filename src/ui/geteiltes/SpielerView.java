@@ -1,4 +1,4 @@
-package ui.spiel.brett;
+package ui.geteiltes;
 
 import java.awt.Color;
 import java.awt.Font;

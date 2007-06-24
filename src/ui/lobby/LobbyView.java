@@ -19,8 +19,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
-import ui.spiel.brett.SpielerView;
-import ui.spiel.chat.ChatView;
+import ui.geteiltes.ChatView;
+import ui.geteiltes.SpielerView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Spieler;

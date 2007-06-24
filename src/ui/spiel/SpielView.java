@@ -16,9 +16,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ui.geteiltes.ChatView;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.BrettView;
-import ui.spiel.chat.ChatView;
 import ui.spiel.steuerung.SteuerungsView;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
