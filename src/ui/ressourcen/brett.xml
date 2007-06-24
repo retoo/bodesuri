@@ -665,6 +665,30 @@
 			<y>536</y>
 		</koordinaten>
 	</spielerView>
+	<spielerZustandsView nummer="0">
+		<koordinaten>
+			<x>570</x>
+			<y>110</y>
+		</koordinaten>
+	</spielerZustandsView>
+	<spielerZustandsView nummer="1">
+		<koordinaten>
+			<x>30</x>
+			<y>110</y>
+		</koordinaten>
+	</spielerZustandsView>
+	<spielerZustandsView nummer="2">
+		<koordinaten>
+			<x>30</x>
+			<y>490</y>
+		</koordinaten>
+	</spielerZustandsView>
+	<spielerZustandsView nummer="3">
+		<koordinaten>
+			<x>570</x>
+			<y>490</y>
+		</koordinaten>
+	</spielerZustandsView>
 	<hinweis nummer="0">
 		<koordinaten>
 			<x>195</x>

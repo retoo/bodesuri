@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
@@ -100,8 +99,8 @@ public class BrettView extends JPanel implements Observer {
 		}
 
 
-		// SpielerViews darstellen
-		zeichneSpielerView(steuerung, spiel.getSpieler());
+		// Views für Spieler
+		erstelleSpielerViews(spiel.getSpieler());
 
 		erstelleHinweis();
 
@@ -116,30 +115,31 @@ public class BrettView extends JPanel implements Observer {
 		spiel.addObserver(this);
 	}
 
-	private void zeichneSpielerView(Steuerung steuerung, List<Spieler> spielers) {
-		int i = 0;
-		for (Spieler spieler : spielers) {
+	private void erstelleSpielerViews(List<Spieler> spielers) {
+		for (int i = 0; i < spielers.size(); ++i) {
+			Spieler spieler = spielers.get(i);
 
+			// SpielerView
 			JPanel spielerView = new SpielerView(spieler);
 
-			// Views
-			JPanel hinweisView = new JPanel();
-			hinweisView.setOpaque(false);
-
-			GridBagLayout gbl = new GridBagLayout();
-			hinweisView.setLayout(gbl);
+			JPanel spielerViewPanel = new JPanel();
+			spielerViewPanel.setOpaque(false);
+			spielerViewPanel.setLayout(new GridBagLayout());
 
 			// Spezielles Verfahren, um ein JPanel zu zentrieren
 			GridBagConstraints gbc = new GridBagConstraints();
 			gbc.anchor = GridBagConstraints.CENTER;
-			gbl.setConstraints(spielerView, gbc);
-			hinweisView.add(spielerView);
-			hinweisView.setBounds(brettXML.getSpielerViews().get(i).x,
-			                      brettXML.getSpielerViews().get(i).y,
-			                      170, 30);
-			add(hinweisView);
+			spielerViewPanel.add(spielerView, gbc);
 
-			i++;
+			spielerViewPanel.setLocation(brettXML.getSpielerViews().get(i));
+			spielerViewPanel.setSize(170, 30);
+
+			add(spielerViewPanel);
+
+			// SpielerZustandsView
+			Point zustandPos = brettXML.getSpielerZustandsViews().get(i);
+			JPanel spielerZustandsView = new SpielerZustandView(spieler, zustandPos);
+			add(spielerZustandsView);
 		}
 	}
 

@@ -19,6 +19,7 @@ import org.xml.sax.SAXException;
 public class BrettXML {
 	private Map<Integer, Point> felder;
 	private Map<Integer, Point> spielerViews;
+	private Map<Integer, Point> spielerZustandsViews;
 	private Map<Integer, Point> jokerKarten;
 	private Point hinweis;
 
@@ -35,6 +36,7 @@ public class BrettXML {
 		Element brett = document.getDocumentElement();
 		felder = positionenAuslesen("feld", brett);
 		spielerViews = positionenAuslesen("spielerView", brett);
+		spielerZustandsViews = positionenAuslesen("spielerZustandsView", brett);
 		hinweis = positionenAuslesen("hinweis", brett).get(0);
 		jokerKarten = positionenAuslesen("jokerKarten", brett);
 	}
@@ -69,7 +71,11 @@ public class BrettXML {
 	public Map<Integer, Point> getSpielerViews() {
 		return spielerViews;
 	}
-	
+
+	public Map<Integer, Point> getSpielerZustandsViews() {
+		return spielerZustandsViews;
+	}
+
 	public Map<Integer, Point> getJokerKarten(){
 		return jokerKarten;
 	}
