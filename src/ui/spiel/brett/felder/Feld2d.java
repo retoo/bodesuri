@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import javax.swing.Icon;
 
+import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 import ui.geteiltes.BLabel;
 import ui.ressourcen.Icons;
@@ -25,6 +26,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private BLabel ausgewaehlt;
 	private BLabel geist;
 	private BLabel wegNormal;
+	private Figur aktuelleFigur;
 
 	public Feld2d(Icon icon, Feld2dKonfiguration konfig) {
 		super(icon, konfig.position);
@@ -39,7 +41,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 		this.add(ausgewaehlt);
 
 		this.geist = new BLabel(Icons.getSpielerGeist(konfig.farbeIch), -1, -1);
-		this.geist.zentriereAuf(this.getMittelpunkt());
+		this.geist.zentriereAuf(this.getRelativerMittelpunkt());
 		this.geist.setVisible(false);
 		this.add(geist);
 
@@ -53,7 +55,8 @@ public abstract class Feld2d extends BLabel implements Observer {
 
 		/* Das Feld ein erstes mal zeichnen*/
 		zentriereAuf(position);
-		update(null, null);
+
+		positioniereFigur(false);
 	}
 
 	public Feld getFeld() {
@@ -69,19 +72,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 	 * robin
 	 */
 	public void update(Observable os, Object arg) {
-		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
-		if (feld.istBesetzt()) {
-			/* Figur drauf stellen */
-			Figur2d figur = figurenManager.get(feld.getFigur());
-
-			/*
-			 * wenn nur ein oder zwei Spieler mitspielen können einige figuren
-			 * null sein. Dann zeichnen wir einfach ni.
-			 */
-			if (figur != null) {
-				figur.setzeAuf(position);
-			}
-		}
+		positioniereFigur(true);
 
 		/* prüfen wir ob hoern */
 		if (feld.istHover()) {
@@ -96,6 +87,30 @@ public abstract class Feld2d extends BLabel implements Observer {
 		wegNormal.setVisible(feld.istWeg());
 		geist.setVisible(feld.istGeist());
 	}
+
+	private void positioniereFigur(boolean animation) {
+	    Figur figur = feld.getFigur();
+
+		/* Prüfen ob Feld mit einer Figur bestückt weden muss */
+		if (feld.istBesetzt() && aktuelleFigur != figur) {
+
+			/* Figur drauf stellen */
+			Figur2d figur2d = figurenManager.get(figur);
+
+			/*
+			 * wenn nur ein oder zwei Spieler mitspielen können einige figuren
+			 * null sein. Dann zeichnen wir einfach ni.
+			 */
+			if (figur2d != null) {
+				if (animation)
+					figur2d.bewegeNach(position);
+				else
+					figur2d.zentriereAuf(position);
+
+				aktuelleFigur = figur;
+			}
+		}
+    }
 
 	public static class Feld2dKonfiguration {
 		public final Point position;
