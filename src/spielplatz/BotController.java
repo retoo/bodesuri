@@ -102,11 +102,11 @@ public class BotController extends Controller {
 
 			int rand = (int) Math.floor(Math.random() * moeglich.size());
 			ZugEingabe ze = moeglich.get(rand);
-			Bewegung bewegung = ze.getBewegung();
+			List<Bewegung> bewegungen = ze.getBewegungen();
 			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
 
 			//TODO: Reto: hier müsste noch eine konkrete Karte(Joker) rein... --Philippe
-			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegung);
+			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegungen);
 			eventQueue.enqueue(zee);
 		}
 
