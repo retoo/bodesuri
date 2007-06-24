@@ -61,6 +61,15 @@ public class RegelVeroderung extends Regel {
 		}
     }
 
+    public boolean arbeitetMitWeg() {
+    	for (Regel regel : regeln) {
+    		if (regel.arbeitetMitWeg()) {
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+
 	public String getBeschreibung() {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < regeln.size(); ++i) {

@@ -78,6 +78,9 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		}
 	}
 
+	public boolean arbeitetMitWeg() {
+		return true;
+	}
 
 	private Feld getZiel(Feld start, int schritte) {
 		Feld feld = start;

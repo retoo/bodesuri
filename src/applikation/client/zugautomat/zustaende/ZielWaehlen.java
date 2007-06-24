@@ -1,7 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.Regel;
-import pd.regelsystem.VorwaertsRegel;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 import applikation.client.controller.Controller;
@@ -72,12 +71,10 @@ public class ZielWaehlen extends ClientZugZustand {
 
 		Regel regel = spielDaten.karte.getRegel();
 
-		/* Robin: Wie unterscheid ich hier am besten ob es sich bei dem Zug um einen
-		 * Vor- oder Rückwärtszug handelt - mein aktueller Ansatz geht ned wirklich gut? (-reto)
-		 * Phiilippe: JOKERPROBLEM Wie bauen wir hier sauber den Joker ein? Ich hoffe es benötigt keine
+		/* Phiilippe: JOKERPROBLEM Wie bauen wir hier sauber den Joker ein? Ich hoffe es benötigt keine
 		 * Fallunterscheidung (-reto)
 		 */
-		if (regel instanceof VorwaertsRegel) {
+		if (regel != null && regel.arbeitetMitWeg()) {
 			/* Weg markieren */
 			Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),
 			                                 event.feld.getFeld());

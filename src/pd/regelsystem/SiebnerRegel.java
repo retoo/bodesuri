@@ -108,7 +108,11 @@ public class SiebnerRegel extends VorwaertsRegel {
 		List<Figur> reihenfolge = new Vector<Figur>();
 		return sucheZug(spieler, positionen, reihenfolge, 7);
 	}
-	
+
+	public boolean arbeitetMitWeg() {
+		return true;
+	}
+
 	private boolean sucheZug(Spieler spieler, Map<Figur, Feld> positionen,
 	                         List<Figur> reihenfolge, int schritte) {
 		if (schritte == 0) {

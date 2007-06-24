@@ -46,4 +46,8 @@ public abstract class Regel {
 	}
 
 	public abstract void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich);
+
+	public boolean arbeitetMitWeg() {
+		return false;
+	}
 }

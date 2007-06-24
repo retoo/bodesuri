@@ -162,6 +162,10 @@ public class VorwaertsRegel extends Regel {
 		}
 	}
 
+	public boolean arbeitetMitWeg() {
+		return true;
+	}
+
 	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
 		List<Bewegung> bewegungen = new Vector<Bewegung>();
 		bewegungen.add(new Bewegung(start, ziel));
