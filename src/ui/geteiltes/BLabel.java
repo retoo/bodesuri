@@ -50,11 +50,6 @@ public class BLabel extends JLabel {
 
 		double distanz = start.distance(ziel);
 
-		if (distanz < 100) {
-			zentriereAuf(ziel);
-			return;
-		}
-
 		int steps = (int) Math.round(distanz / 10);
 		int dx = ziel.x - start.x;
 		int dy = ziel.y - start.y;
