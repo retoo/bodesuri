@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
+import applikation.client.konfiguration.Konfiguration;
+
 import pd.SpielThreads;
 import pd.zugsystem.ZugEingabe;
 import dienste.automat.Automat;
@@ -26,6 +28,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public String spielerName;
 	public Spieler spielerIch;
 	public applikation.client.pd.Spieler aktuellerSpieler;
+	public Konfiguration konfiguration;
 
 	private String hinweis;
 	private ZugEingabe letzterZug;
@@ -37,7 +40,11 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public SteuerungsZustand steuerungsZustand;
 	public Karte ausgewaehlteKarte;
 
-	public Spiel() {
+
+
+	public Spiel(Konfiguration konfig) {
+		this.konfiguration = konfig;
+
 		spiel = new pd.Spiel();
 		zugHistory = new LinkedList<ZugEingabe>();
 

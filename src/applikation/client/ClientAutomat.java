@@ -1,6 +1,7 @@
 package applikation.client;
 
 import applikation.client.controller.Controller;
+import applikation.client.konfiguration.Konfiguration;
 import applikation.client.pd.Spiel;
 import applikation.client.zustaende.AmZug;
 import applikation.client.zustaende.ClientZustand;
@@ -25,8 +26,8 @@ public class ClientAutomat extends Automat {
 	private Spiel spiel;
 
 
-	public ClientAutomat(Controller controller) {
-		this(controller, null);
+	public ClientAutomat(Controller controller, Konfiguration konfig) {
+		this(controller, null, konfig);
 	}
 
 	/**
@@ -34,10 +35,11 @@ public class ClientAutomat extends Automat {
 	 *
 	 * @param controller
 	 * @param queue EventQueue
+	 * @param konfig Basiskonfiguration
 	 */
-	public ClientAutomat(Controller controller, EventQueue queue) {
+	public ClientAutomat(Controller controller, EventQueue queue, Konfiguration konfig) {
 		this.controller = controller;
-		this.spiel = new Spiel();
+		this.spiel = new Spiel(konfig);
 
 		EventQueue eventQueue = queue;
 		if (eventQueue == null) {

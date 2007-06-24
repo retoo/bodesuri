@@ -68,7 +68,7 @@ public class AmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> aufgegeben() {
-		if (spiel.spielerIch.kannZiehen()) {
+		if (spiel.spielerIch.kannZiehen() && !spiel.konfiguration.debugAufgabeImmerMoeglich) {
 			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben "
 			                              + "werden, da es noch möglich ist zu "
 			                              + "ziehen.");

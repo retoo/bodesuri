@@ -23,7 +23,7 @@ public class Bodesuri extends BodesuriThread {
 	public void run() {
 		EventQueue queue = new EventQueue();
 		Controller controller = new GUIController(queue, konfiguration);
-		ClientAutomat automat = new ClientAutomat(controller, queue);
+		ClientAutomat automat = new ClientAutomat(controller, queue, konfiguration);
 		automat.run();
 	}
 

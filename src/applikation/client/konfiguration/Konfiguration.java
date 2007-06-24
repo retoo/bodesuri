@@ -1,6 +1,6 @@
 package applikation.client.konfiguration;
 
-public class Konfiguration {
+public class Konfiguration implements Cloneable {
 	/**
 	 * Debug-Option: Sollen es immer möglich sein Aufzugeben
 	 */

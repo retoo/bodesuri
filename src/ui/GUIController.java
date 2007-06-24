@@ -44,7 +44,8 @@ public class GUIController extends Controller {
 		// Warte 3 Sekunden, damit alle auch den zuletzt beigetretenen Spieler
 		// noch in der Lobby sehen.
 		try {
-			Thread.sleep(3000);
+			if (!konfiguration.debugKeineLobbyVerzoegerung)
+				Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException("Das Warten in der Lobby wurde durch " +
 					"einen anderen Thread unterbrochen.");

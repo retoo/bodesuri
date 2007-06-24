@@ -4,6 +4,8 @@ import initialisierung.BodesuriServer;
 
 import java.util.Vector;
 
+import applikation.client.konfiguration.Konfiguration;
+
 public class BodesuriArena {
 	public static void main(String[] args) throws InterruptedException {
 		BodesuriServer server = new BodesuriServer();
@@ -19,7 +21,10 @@ public class BodesuriArena {
 		nicks.add("Walton Simons");
 
 		for (int i = 0; i < 4; i++) {
-			Thread t = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
+			Konfiguration konfig = new Konfiguration();
+			konfig.defaultName = nicks.get(i);
+
+			Thread t = new Botsuri(konfig, "localhost", 7788, Stupidbot.class, false);
 
 			t.start();
 			clients.add(t);
