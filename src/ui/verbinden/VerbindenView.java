@@ -27,6 +27,7 @@ import javax.swing.text.PlainDocument;
 
 import ui.ressourcen.Icons;
 import applikation.client.controller.Steuerung;
+import applikation.client.konfiguration.DefaultKonfiguration;
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet
@@ -52,10 +53,11 @@ public class VerbindenView extends JFrame {
 	private JLabel bodesuriIcon = new JLabel(Icons.BODESURI_START);
 	private Steuerung steuerung;
 
-	public VerbindenView(final Steuerung steuerung, final String DEFAULT_NAME) {
+	/* TODO: Pascal: Willst du die defaultKonfiguration noch einbauen? (-reto) */
+	public VerbindenView(final Steuerung steuerung, final DefaultKonfiguration konfiguration) {
 		// Initialisierung
 		this.steuerung = steuerung;
-		spielerName = new InputTextField(DEFAULT_NAME, 20);
+		spielerName = new InputTextField(konfiguration.defaultName, 20);
 		progressBar.setVisible(false);
 		progressBar.setIndeterminate(true);
 
@@ -87,7 +89,7 @@ public class VerbindenView extends JFrame {
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
 				Integer port_raw = Integer.valueOf(port.getText());
-				
+
 				verbindenButton.setEnabled(false);
 				hostname.setEnabled(false);
 				port.setEnabled(false);
@@ -122,6 +124,13 @@ public class VerbindenView extends JFrame {
 		add(inputpanel, BorderLayout.CENTER);
 		add(buttonpanel, BorderLayout.SOUTH);
 		add(verbindenIcon, BorderLayout.WEST);
+
+
+		/* Debug: Autlogin auslösen falls gewünscht */
+
+		if (konfiguration.debugAutoLogin) {
+			verbindenButton.doClick();
+		}
 
 		// View anzeigen
 		getRootPane().setDefaultButton(verbindenButton);

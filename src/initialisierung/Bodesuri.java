@@ -3,25 +3,26 @@ package initialisierung;
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
+import applikation.client.konfiguration.DefaultKonfiguration;
 import dienste.eventqueue.EventQueue;
 import dienste.threads.BodesuriThread;
 
 
 public class Bodesuri extends BodesuriThread {
-	private String name = "Spieler";
+	private DefaultKonfiguration konfiguration;
 
 	public Bodesuri() {
-		super("Bodesuri Client");
+		this(new DefaultKonfiguration());
     }
 
-	public Bodesuri(String name) {
-		super("Bodesuri Client " + name);
-		this.name = name;
+	public Bodesuri(DefaultKonfiguration konfiguration) {
+		super("Bodesuri Client " + konfiguration.defaultName);
+		this.konfiguration = konfiguration;
     }
 
 	public void run() {
 		EventQueue queue = new EventQueue();
-		Controller controller = new GUIController(queue, name);
+		Controller controller = new GUIController(queue, konfiguration);
 		ClientAutomat automat = new ClientAutomat(controller, queue);
 		automat.run();
 	}

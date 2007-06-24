@@ -10,6 +10,7 @@ import ui.spiel.SpielView;
 import ui.spiel.brett.JokerView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
+import applikation.client.konfiguration.DefaultKonfiguration;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
@@ -19,17 +20,17 @@ public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private SpielView spielView;
-	private String defaultName;
+	private DefaultKonfiguration konfiguration;
 	private JokerView jokerView;
 
-	public GUIController(EventQueue eventQueue, String defaultName) {
-		this.defaultName = defaultName;
+	public GUIController(EventQueue eventQueue, DefaultKonfiguration konfiguration) {
+		this.konfiguration = konfiguration;
 		this.eventQueue = eventQueue;
 		setNativeLookAndFeel();
 	}
 
 	public void zeigeVerbinden() {
-		verbindenView = new VerbindenView(this, defaultName);
+		verbindenView = new VerbindenView(this, konfiguration);
 		verbindenView.setVisible(true);
 	}
 
