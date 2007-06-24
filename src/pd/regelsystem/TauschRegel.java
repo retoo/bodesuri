@@ -1,7 +1,5 @@
 package pd.regelsystem;
 
-import java.util.List;
-
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Figur;
@@ -10,6 +8,7 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.TauschAktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für das Tauschen zweier Figuren.
@@ -52,38 +51,24 @@ public class TauschRegel extends Regel {
 		return zug;
 	}
 
-	public boolean kannZiehen(Spieler spieler) {
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                               ZugEingabeAbnehmer abnehmer) {
 		for (Figur figur : spieler.getFiguren()) {
-			if (!figur.getFeld().istGeschuetzt()) {
+			Feld start = figur.getFeld();
+			if (!start.istGeschuetzt()) {
 				for (Spieler spieler2 : spieler.getSpiel().getSpieler()) {
 					if (spieler == spieler2) {
 						continue;
 					}
 					for (Figur figur2 : spieler2.getFiguren()) {
-						if (!figur2.getFeld().istGeschuetzt()) {
-							return true;
-						}
-					}
-				}
-			}
-		}
-		return false;
-	}
-
-	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
-			Feld startFeld = figur.getFeld();
-			if (!startFeld.istGeschuetzt()) {
-				for (Spieler spieler2 : spieler.getSpiel().getSpieler()) {
-					if (spieler == spieler2) {
-						continue;
-					}
-					for (Figur figur2 : spieler2.getFiguren()) {
-						Feld zielFeld = figur2.getFeld();
-						if (!zielFeld.istGeschuetzt()) {
-							Bewegung bewegung = new Bewegung(startFeld, zielFeld);
+						Feld ziel = figur2.getFeld();
+						if (!ziel.istGeschuetzt()) {
+							Bewegung bewegung = new Bewegung(start, ziel);
 							ZugEingabe ze = new ZugEingabe(spieler, karte, bewegung);
-							moeglich.add(ze);
+							boolean abbrechen = abnehmer.nehmeEntgegen(ze);
+							if (abbrechen) {
+								return;
+							}
 						}
 					}
 				}

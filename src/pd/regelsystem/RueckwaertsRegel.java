@@ -1,7 +1,5 @@
 package pd.regelsystem;
 
-import java.util.List;
-
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.spieler.Figur;
@@ -9,6 +7,7 @@ import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Gleich wie {@link VorwaertsRegel}, aber Zugrichtung ist rückwärts.
@@ -17,6 +16,10 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 	public RueckwaertsRegel(int schritte) {
 		super(schritte);
 		setBeschreibung(schritte + " rückwärts");
+	}
+
+	public boolean arbeitetMitWeg() {
+		return true;
 	}
 
 	protected void pruefeBewegung(Bewegung bewegung, Spieler spieler) throws RegelVerstoss {
@@ -46,7 +49,8 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		}
 	}
 
-	public boolean kannZiehen(Spieler spieler) {
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                                  ZugEingabeAbnehmer abnehmer) {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld start = figur.getFeld();
 
@@ -55,31 +59,14 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 			}
 
 			Feld ziel = getZiel(start, schritte);
-			if (istZugMoeglich(spieler, start, ziel)) {
-				return true;
+			ZugEingabe ze = getMoeglicheZugEingabe(spieler, karte, start, ziel);
+			if (ze != null) {
+				boolean abbrechen = abnehmer.nehmeEntgegen(ze);
+				if (abbrechen) {
+					return;
+				}
 			}
 		}
-		return false;
-	}
-
-	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
-			Feld start = figur.getFeld();
-
-			if (start.istLager() || start.istHimmel()) {
-				continue;
-			}
-
-			Feld ziel = getZiel(start, schritte);
-			if (istZugMoeglich(spieler, start, ziel)) {
-				Bewegung bewegung = new Bewegung(start, ziel);
-				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
-			}
-		}
-	}
-
-	public boolean arbeitetMitWeg() {
-		return true;
 	}
 
 	private Feld getZiel(Feld start, int schritte) {

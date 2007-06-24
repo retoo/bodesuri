@@ -1,7 +1,5 @@
 package pd.regelsystem;
 
-import java.util.List;
-
 import pd.brett.BankFeld;
 import pd.brett.Brett;
 import pd.brett.Feld;
@@ -14,6 +12,7 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für das Starten mit einer Figur vom {@link LagerFeld} auf das
@@ -69,26 +68,20 @@ public class StartRegel extends Regel {
 		return zug;
 	}
 
-	public boolean kannZiehen(Spieler spieler) {
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                               ZugEingabeAbnehmer abnehmer) {
 		Brett brett = spieler.getSpiel().getBrett();
 		for (Figur figur : spieler.getFiguren()) {
 			if (figur.getFeld().istLager()) {
 				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		Brett brett = spieler.getSpiel().getBrett();
-		for (Figur figur : spieler.getFiguren()) {
-			if (figur.getFeld().istLager()) {
-				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
-					Bewegung bewegung = new Bewegung(figur.getFeld(), brett.getBankFeldVon(spieler));
-					ZugEingabe ze = new ZugEingabe(spieler, karte , bewegung);
-					moeglich.add(ze);
+					Feld start = figur.getFeld();
+					Feld ziel  = brett.getBankFeldVon(spieler);
+					Bewegung bewegung = new Bewegung(start, ziel);
+					ZugEingabe ze = new ZugEingabe(spieler, karte, bewegung);
+					boolean abbrechen = abnehmer.nehmeEntgegen(ze);
+					if (abbrechen) {
+						return;
+					}
 				}
 			}
 		}

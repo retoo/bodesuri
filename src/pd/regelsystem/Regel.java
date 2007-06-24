@@ -6,6 +6,9 @@ import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
+import pd.zugsystem.ZugEingabeHoffender;
+import pd.zugsystem.ZugEingabeSammler;
 
 // TODO: Robin: Gründe für RegelVerstoss vereinheitlichen. --Robin
 
@@ -14,6 +17,10 @@ import pd.zugsystem.ZugEingabe;
  */
 public abstract class Regel {
 	private String beschreibung;
+
+	public boolean arbeitetMitWeg() {
+		return false;
+	}
 
 	/**
 	 * Validiere eine Zugeingabe. Bei einer gültigen Eingabe wird ein Zug
@@ -32,7 +39,20 @@ public abstract class Regel {
 	 * @param spieler Spieler, dessen Figuren überprüft werden
 	 * @return true, wenn Spieler noch Zugmöglichkeit hat
 	 */
-	public abstract boolean kannZiehen(Spieler spieler);
+	public boolean kannZiehen(Spieler spieler) {
+		ZugEingabeHoffender hoffender = new ZugEingabeHoffender();
+		liefereZugEingaben(spieler, null, hoffender);
+		return hoffender.hatBekommen();
+	}
+
+	public List<ZugEingabe> moeglicheZuege(Spieler spieler, Karte karte) {
+		ZugEingabeSammler sammler = new ZugEingabeSammler();
+		liefereZugEingaben(spieler, karte, sammler);
+		return sammler.getZugEingaben();
+	}
+
+	protected abstract void liefereZugEingaben(Spieler spieler, Karte karte,
+	                                           ZugEingabeAbnehmer abnehmer);
 
 	/**
 	 * @return Beschreibung der Regel
@@ -43,11 +63,5 @@ public abstract class Regel {
 
 	protected void setBeschreibung(String beschreibung) {
 		this.beschreibung = beschreibung;
-	}
-
-	public abstract void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich);
-
-	public boolean arbeitetMitWeg() {
-		return false;
 	}
 }

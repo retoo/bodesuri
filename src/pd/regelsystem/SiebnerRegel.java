@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import pd.brett.BankFeld;
 import pd.brett.Feld;
+import pd.karten.Karte;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
@@ -18,11 +19,16 @@ import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
 		super(7); // Für kannZiehen gebraucht.
 		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt heim");
+	}
+
+	public boolean arbeitetMitWeg() {
+		return true;
 	}
 
 	// TODO: Reto & Robin Hat Review nötig :). --Robin
@@ -33,7 +39,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 		}
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
-		
+
 		int wegLaenge = 0;
 		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
 		Set<Feld> geschuetzt = new HashSet<Feld>();
@@ -84,7 +90,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 					figuren.put(feld, null);
 				}
 			}
-			
+
 			if (bewegung.start == bewegung.ziel) {
 				continue;
 			}
@@ -99,33 +105,38 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 		return zug;
 	}
-	
-	public boolean kannZiehen(Spieler spieler) {
+
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                                  ZugEingabeAbnehmer abnehmer) {
 		Map<Figur, Feld> positionen = new IdentityHashMap<Figur, Feld>();
 		for (Figur figur : spieler.getFiguren()) {
 			positionen.put(figur, figur.getFeld());
 		}
 		List<Figur> reihenfolge = new Vector<Figur>();
-		return sucheZug(spieler, positionen, reihenfolge, 7);
+		liefereZugEingaben(spieler, karte, abnehmer, positionen, reihenfolge, 7);
 	}
 
-	public boolean arbeitetMitWeg() {
-		return true;
-	}
-
-	private boolean sucheZug(Spieler spieler, Map<Figur, Feld> positionen,
-	                         List<Figur> reihenfolge, int schritte) {
+	private boolean liefereZugEingaben(Spieler spieler, Karte karte,
+	                                   ZugEingabeAbnehmer abnehmer,
+	                                   Map<Figur, Feld> positionen,
+	                                   List<Figur> reihenfolge, int schritte) {
 		if (schritte == 0) {
-			return istZugMoeglich(spieler, positionen, reihenfolge);
+			ZugEingabe ze = getMoeglicheZugEinabe(spieler, karte,
+			                                      positionen, reihenfolge);
+			if (ze == null) {
+				return false;
+			}
+			boolean abbrechen = abnehmer.nehmeEntgegen(ze);
+			return abbrechen;
 		}
-		
+
 		for (Figur figur : spieler.getFiguren()) {
 			Feld feld = positionen.get(figur);
 			
 			if (feld.istLager()) {
 				continue;
 			}
-			
+
 			Feld feldNeu;
 			List<Feld> kandidaten = new Vector<Feld>();
 			if (feld.istBank() && ((BankFeld) feld).istVon(spieler)) {
@@ -136,28 +147,36 @@ public class SiebnerRegel extends VorwaertsRegel {
 			if (feldNeu != null) {
 				kandidaten.add(feldNeu);
 			}
-			
+
 			boolean figurInReihenfolge = reihenfolge.contains(figur);
 			if (!figurInReihenfolge) {
 				reihenfolge.add(figur);
 			}
 			for (Feld kandidat : kandidaten) {
 				positionen.put(figur, kandidat);
-				if (sucheZug(spieler, positionen, reihenfolge, schritte - 1)) {
-					return true;
+
+				boolean abbrechen;
+				abbrechen = liefereZugEingaben(spieler, karte, abnehmer,
+				                               positionen, reihenfolge,
+				                               schritte - 1);
+				if (abbrechen) {
+					return abbrechen;
 				}
+
 				positionen.put(figur, feld);
 			}
 			if (!figurInReihenfolge) {
 				reihenfolge.remove(figur);
 			}
 		}
-		
+
+		/* Noch nicht abbrechen */
 		return false;
 	}
-	
-	private boolean istZugMoeglich(Spieler spieler, Map<Figur, Feld> positionen,
-	                               List<Figur> reihenfolge) {
+
+	private ZugEingabe getMoeglicheZugEinabe(Spieler spieler, Karte karte,
+	                                         Map<Figur, Feld> positionen,
+	                                         List<Figur> reihenfolge) {
 		List<Bewegung> bewegungen = new Vector<Bewegung>();
 		for (Figur figur : reihenfolge) {
 			Feld start = figur.getFeld();
@@ -166,6 +185,6 @@ public class SiebnerRegel extends VorwaertsRegel {
 				bewegungen.add(new Bewegung(start, ziel));
 			}
 		}
-		return istZugMoeglich(spieler, bewegungen);
+		return getMoeglicheZugEingabe(spieler, karte, bewegungen);
 	}
 }

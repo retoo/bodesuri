@@ -15,6 +15,7 @@ import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für normales Vorwärtsfahren, mit Heimschicken von Figur auf Zielfeld.
@@ -28,6 +29,10 @@ public class VorwaertsRegel extends Regel {
 	public VorwaertsRegel(int schritte) {
 		this.schritte = schritte;
 		setBeschreibung(schritte + " vorwärts");
+	}
+
+	public boolean arbeitetMitWeg() {
+		return true;
 	}
 
 	/**
@@ -127,58 +132,49 @@ public class VorwaertsRegel extends Regel {
 		}
 	}
 
-	public boolean kannZiehen(Spieler spieler) {
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                                  ZugEingabeAbnehmer abnehmer) {
 		for (Figur figur : spieler.getFiguren()) {
 			Feld start = figur.getFeld();
 
-			Feld ziel = getZiel(start, schritte, false);
-			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
-				return true;
-			}
+			Vector<Feld> ziele = new Vector<Feld>();
 
-			ziel = getZiel(start, schritte, true);
-			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
-				return true;
-			}
-		}
-		return false;
-	}
+			ziele.add(getZiel(start, schritte, false));
+			ziele.add(getZiel(start, schritte, true));
 
-	public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Figur figur : spieler.getFiguren()) {
-			Feld start = figur.getFeld();
+			for (Feld ziel : ziele) {
+				ZugEingabe ze = getMoeglicheZugEingabe(spieler, karte,
+				                                       start, ziel);
+				if (ze == null) {
+					continue;
+				}
 
-			Feld ziel = getZiel(start, schritte, false);
-			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
-				Bewegung bewegung = new Bewegung(start, ziel);
-				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
-			}
-
-			ziel = getZiel(start, schritte, true);
-			if (ziel != null && istZugMoeglich(spieler, start, ziel)) {
-				Bewegung bewegung = new Bewegung(start, ziel);
-				moeglich.add(new ZugEingabe(spieler, karte, bewegung));
+				boolean abbrechen = abnehmer.nehmeEntgegen(ze);
+				if (abbrechen) {
+					return;
+				}
 			}
 		}
 	}
 
-	public boolean arbeitetMitWeg() {
-		return true;
-	}
-
-	protected boolean istZugMoeglich(Spieler spieler, Feld start, Feld ziel) {
+	protected ZugEingabe getMoeglicheZugEingabe(Spieler spieler, Karte karte,
+	                                            Feld start, Feld ziel) {
+		if (start == null || ziel == null) {
+			return null;
+		}
 		List<Bewegung> bewegungen = new Vector<Bewegung>();
 		bewegungen.add(new Bewegung(start, ziel));
-		return istZugMoeglich(spieler, bewegungen);
+		return getMoeglicheZugEingabe(spieler, karte, bewegungen);
 	}
 
-	protected boolean istZugMoeglich(Spieler spieler, List<Bewegung> bewegungen) {
+	protected ZugEingabe getMoeglicheZugEingabe(Spieler spieler, Karte karte,
+	                                            List<Bewegung> bewegungen) {
 		try {
-			ZugEingabe ze = new ZugEingabe(spieler, null, bewegungen);
+			ZugEingabe ze = new ZugEingabe(spieler, karte, bewegungen);
 			validiere(ze);
-			return true;
+			return ze;
 		} catch (RegelVerstoss rv) {
-			return false;
+			return null;
 		}
 	}
 

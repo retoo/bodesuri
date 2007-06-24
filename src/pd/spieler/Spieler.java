@@ -106,7 +106,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public boolean kannZiehen() {
 		Spieler betroffenerSpieler = istFertig() ? partner : this;
 		for (Karte karte : getKarten()) {
-			if (karte.getRegel() != null && karte.getRegel().kannZiehen(betroffenerSpieler)) {
+			Regel regel = karte.getRegel();
+			if (regel != null && regel.kannZiehen(betroffenerSpieler)) {
 				return true;
 			}
 		}
@@ -133,12 +134,12 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	
 	public List<ZugEingabe> getMoeglicheZuege() {
 		List<ZugEingabe> moeglich = new LinkedList<ZugEingabe>();
+		Spieler betroffenerSpieler = istFertig() ? partner : this;
 
 		for (Karte karte : getKarten()) {
 			Regel regel = karte.getRegel();
 			if (regel != null) {
-				Spieler betroffenerSpieler = istFertig() ? partner : this;
-				regel.moeglicheZuege(betroffenerSpieler, karte, moeglich);
+				moeglich.addAll(regel.moeglicheZuege(betroffenerSpieler, karte));
 			}
 		}
 

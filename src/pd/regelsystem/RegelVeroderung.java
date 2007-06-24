@@ -1,12 +1,12 @@
 package pd.regelsystem;
 
-import java.util.List;
 import java.util.Vector;
 
 import pd.karten.Karte;
 import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
+import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel, die andere Regeln beinhalten kann. Ist gültig, wenn eine der
@@ -17,6 +17,15 @@ public class RegelVeroderung extends Regel {
 
 	public void fuegeHinzu(Regel regel) {
 		regeln.add(regel);
+	}
+
+	public boolean arbeitetMitWeg() {
+		for (Regel regel : regeln) {
+			if (regel.arbeitetMitWeg()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -46,29 +55,12 @@ public class RegelVeroderung extends Regel {
 		throw new RegelVerstoss(s.toString());
 	}
 
-	public boolean kannZiehen(Spieler spieler) {
+	protected void liefereZugEingaben(Spieler spieler, Karte karte,
+	                                  ZugEingabeAbnehmer abnehmer) {
 		for (Regel regel : regeln) {
-			if (regel.kannZiehen(spieler)) {
-				return true;
-			}
+			regel.liefereZugEingaben(spieler, karte, abnehmer);
 		}
-		return false;
 	}
-
-    public void moeglicheZuege(Spieler spieler, Karte karte, List<ZugEingabe> moeglich) {
-		for (Regel regel : regeln) {
-			regel.moeglicheZuege(spieler, karte, moeglich);
-		}
-    }
-
-    public boolean arbeitetMitWeg() {
-    	for (Regel regel : regeln) {
-    		if (regel.arbeitetMitWeg()) {
-    			return true;
-    		}
-    	}
-    	return false;
-    }
 
 	public String getBeschreibung() {
 		StringBuilder s = new StringBuilder();
