@@ -25,11 +25,6 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private BLabel geist;
 	private BLabel wegNormal;
 
-	/*
-	 * TODO: Reto: Ein bissschen aufräumen hier. z.B. eine helferklasse machen
-	 * die alle parameer beinhaltet die sowohl basis wie subklasse benötigen
-	 * (-reto)
-	 */
 	public Feld2d(Icon icon, Feld2dKonfiguration konfig) {
 		super(icon, konfig.position);
 		this.icon = icon;
