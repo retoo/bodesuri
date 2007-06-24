@@ -1,3 +1,4 @@
+package initialisierung;
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
