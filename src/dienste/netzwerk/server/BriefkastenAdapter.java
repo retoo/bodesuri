@@ -21,10 +21,6 @@ public class BriefkastenAdapter implements BriefKastenInterface {
 	 */
 	public BriefkastenAdapter(EventQueue queue) {
 		this.queue = queue;
-
-		if (queue == null) {
-			throw new RuntimeException("Ups. remove me later FIXME FIXME");
-		}
 	}
 
 	/*

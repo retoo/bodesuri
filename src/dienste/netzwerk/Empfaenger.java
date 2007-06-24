@@ -20,10 +20,6 @@ public class Empfaenger implements Runnable {
 		this.endpunkt = endpunkt;
 		this.briefkasten = briefkasten;
 		this.serialisierungsKontext = serialisierungsKontext;
-
-		if (endpunkt == null) {
-			throw new RuntimeException("Remove me later, FIXME");
-		}
 	}
 
 	public void run() {
@@ -32,9 +28,6 @@ public class Empfaenger implements Runnable {
 
 			while (true) {
 				Object obj = inputStream.readObject();
-
-				if (obj == null)
-					throw new RuntimeException("FIXME FIXME");
 
 				Nachricht nachricht = (Nachricht) obj;
 				Brief brief = new Brief(endpunkt, nachricht);
