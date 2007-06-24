@@ -1,5 +1,7 @@
 package ui.spiel.brett;
 
+import geteiltes.BLabel;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
@@ -15,7 +17,6 @@ import javax.swing.SwingConstants;
 import pd.brett.SpielerFeld;
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
-import ui.erweiterungen.BLabel;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.brett.felder.Feld2d;

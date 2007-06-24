@@ -1,8 +1,9 @@
 package ui.spiel.brett.felder;
 
+import geteiltes.ClickMouseAdapter;
+
 import java.awt.event.MouseEvent;
 
-import ui.erweiterungen.ClickMouseAdapter;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Feld;
