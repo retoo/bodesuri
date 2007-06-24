@@ -11,9 +11,7 @@ public class ZugAbschluss extends ServerZustand implements PassiverZustand {
 			Partnerschaft gewinner = spiel.getGewinner();
 			spiel.broadcast(new SpielFertigNachricht(gewinner));
 
-			spiel.server.ausschalten();
-
-			return ServerEnde.class;
+			return ServerStoppen.class;
 		} else if (spiel.runde.isFertig()) {
 			return StartRunde.class;
 		} else { /* ganz noraml weiter zum nächsten zug */

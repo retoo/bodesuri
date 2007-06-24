@@ -6,7 +6,6 @@ import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
 import applikation.server.pd.Spiel;
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 import dienste.netzwerk.Brief;
@@ -79,7 +78,10 @@ public abstract class ServerZustand extends Zustand {
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
 		System.out.println("Verbindung zu Client " + absender
 		                   + " wurde unerwartet beendet. Server wird beendet.");
-		return EndZustand.class;
+
+		spiel.entferne(absender);
+
+		return WarteBisAlleVerbindungenWeg.class;
 	}
 
 	Class<? extends Zustand> zugInfo(EndPunktInterface absender,
