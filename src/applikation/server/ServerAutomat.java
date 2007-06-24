@@ -60,6 +60,10 @@ public class ServerAutomat extends Automat {
 		super.registriere(zustand);
 	}
 
+	public boolean istBereitFuerSpieler() {
+		return isZustand(EmpfangeSpieler.class);
+	}
+
 	public void run() {
 		super.run();
 	}
