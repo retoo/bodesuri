@@ -30,7 +30,7 @@ public class ZielWaehlen extends ClientZugZustand {
 
 	public void onExit() {
 		spielDaten.spiel.setZaehler(-1);
-		spielDaten.setAktuellerWeg(null);
+		spielDaten.weg.setAktuellerWeg(null);
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -85,7 +85,7 @@ public class ZielWaehlen extends ClientZugZustand {
 			Weg weg = bewegung.getWeg();
 
 			if (weg != null) {
-				spielDaten.setAktuellerWeg(weg);
+				spielDaten.weg.setAktuellerWeg(weg);
 				spielDaten.spiel.setZaehler(weg.getWegLaenge());
 			}
 		}

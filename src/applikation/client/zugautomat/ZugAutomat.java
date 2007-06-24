@@ -16,8 +16,7 @@ public class ZugAutomat extends Automat {
 
 	public ZugAutomat(Controller controller, Spiel spiel) {
 		this.controller = controller;
-		spielDaten = new SpielDaten();
-		spielDaten.spiel = spiel;
+		spielDaten = new SpielDaten(spiel);
 
 		registriere(new KarteWaehlen(controller));
 		registriere(new StartWaehlen(controller));

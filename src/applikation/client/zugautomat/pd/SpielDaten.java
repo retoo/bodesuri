@@ -4,8 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import pd.zugsystem.Weg;
-import applikation.client.pd.Brett;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
@@ -21,14 +19,17 @@ public class SpielDaten {
 	 */
 	public Karte konkreteKarte;
 	public Spiel spiel;
+	public Weg weg;
 
 	public LinkedList<Bewegung> bewegungen;
 
-	private Weg aktuellerWeg;
+	public SpielDaten(Spiel spiel) {
+		this.spiel = spiel;
 
-	public SpielDaten() {
 		bewegungen = new LinkedList<Bewegung>();
 		bewegungen.addLast(new Bewegung());
+
+		weg = new Weg(spiel.getBrett());
 	}
 
 	public boolean neueBewegungHinzufuegen() {
@@ -96,35 +97,4 @@ public class SpielDaten {
 		}
 		return pdBewegungen;
 	}
-
-	/* TODO: Reto: eigene klasse schreiben (-reto)*/
-    public Weg getAktuellerWeg() {
-    	return aktuellerWeg;
-    }
-
-    public void setAktuellerWeg(Weg neuerWeg) {
-    	if (aktuellerWeg != null)
-    		unmarkiere(aktuellerWeg);
-
-    	this.aktuellerWeg = neuerWeg;
-
-    	if (aktuellerWeg != null)
-    		markiere(aktuellerWeg);
-    }
-
-	private void markiere(Weg aktuellerWeg) {
-		Brett brett = spiel.getBrett();
-
-		for (pd.brett.Feld f : aktuellerWeg) {
-			brett.getFeld(f).setWeg(true);
-		}
-    }
-
-	private void unmarkiere(Weg aktuellerWeg) {
-		Brett brett = spiel.getBrett();
-
-		for (pd.brett.Feld f : aktuellerWeg) {
-			brett.getFeld(f).setWeg(false);
-		}
-    }
 }
