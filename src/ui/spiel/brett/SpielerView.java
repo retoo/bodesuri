@@ -32,6 +32,7 @@ public class SpielerView extends JPanel implements Observer {
 	}
 
 	public void update(Observable observable, Object arg) {
+		/* TODO: Unchecked cast */
 		Spieler spieler = (Spieler) observable;
 		if (spieler.getAmZug()) {
 			this.name.setForeground(Color.WHITE);
@@ -43,7 +44,7 @@ public class SpielerView extends JPanel implements Observer {
 			this.name.setForeground(Color.BLACK);
 		}
 	}
-	
+
 	public void setSpielerName(String name) {
 		this.name.setText(name);
 	}

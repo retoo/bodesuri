@@ -50,7 +50,7 @@ public class LobbyView extends JFrame implements Observer {
 		viewPanel = new JPanel();
 		viewPanel.setBorder(new EmptyBorder(10,10,10,10));
 		viewPanel.setOpaque(false);
-		
+
 		for (Spieler s : spieler) {
 			SpielerView sv = new SpielerView(s);	// SpielverViews erstellen
 			spielerViews.put(s.getSpieler().hashCode(), sv);
@@ -89,18 +89,19 @@ public class LobbyView extends JFrame implements Observer {
 		chatView.setBorder(new TitledBorder("Chat"));
 		viewPanel.add(chatView);
 		add(viewPanel);
-		
+
 		// View anzeigen
 		pack();
 	}
 
 	public void update(Observable beigetretenerSpieler, Object arg1) {
+		/* TODO: unchecked cast */
 		SpielerView sv = spielerViews.get( ((pd.spieler.Spieler)beigetretenerSpieler).hashCode() );
 		if (sv != null) { // falls Spieler in HashMap gefunden wurde
 			sv.setSpielerName( beigetretenerSpieler.toString() );
 		}
 	}
-	
+
 	public void dispose() {
 		// Entferne Observer in PD.Spieler
 		for (pd.spieler.Spieler s : pdSpieler) {
@@ -108,6 +109,6 @@ public class LobbyView extends JFrame implements Observer {
 		}
 		super.dispose();
 	}
-	
+
 
 }
