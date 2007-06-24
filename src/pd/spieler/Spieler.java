@@ -104,8 +104,9 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
 	 */
 	public boolean kannZiehen() {
+		Spieler betroffenerSpieler = istFertig() ? partner : this;
 		for (Karte karte : getKarten()) {
-			if (karte.getRegel() != null && karte.getRegel().kannZiehen(this)) {
+			if (karte.getRegel() != null && karte.getRegel().kannZiehen(betroffenerSpieler)) {
 				return true;
 			}
 		}
