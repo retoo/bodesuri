@@ -88,14 +88,23 @@ public class VerbindenView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String host = hostname.getText();
 				String spieler = spielerName.getText();
-				Integer port_raw = Integer.valueOf(port.getText());
+				int port_raw = Integer.valueOf(port.getText());
 
+				// GUI in "Beschäftigt" Modus versetzen
 				verbindenButton.setEnabled(false);
 				hostname.setEnabled(false);
 				port.setEnabled(false);
 				spielerName.setEnabled(false);
 				progressBar.setVisible(true);
-				VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
+				
+				// Verbindung herstellen
+				if (port_raw > 1024 && port_raw < 65536) {
+					VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
+				} else {
+					JOptionPane.showMessageDialog(null, "Es sind nur Ports zwischen 1024 und\n65535 zugelassen.");
+				}
+				
+				// GUI wieder "aufwecken"
 				hostname.setEnabled(true);
 				port.setEnabled(true);
 				spielerName.setEnabled(true);
