@@ -1,34 +1,19 @@
 package spielplatz;
 
+import initialisierung.Bodesuri;
+import initialisierung.BodesuriServer;
+
 import java.util.List;
 import java.util.Vector;
 
-import ui.GUIController;
-import applikation.client.ClientAutomat;
-import applikation.client.controller.Controller;
-import applikation.server.ServerAutomat;
-import dienste.automat.Automat;
-import dienste.eventqueue.EventQueue;
-
 public class BodesuriDemo {
 
-	public static void main(String[] args) {
-		Thread server = new Thread(new Runnable() {
-			public void run() {
-				ServerAutomat server = new ServerAutomat(4);
-
-				try {
-					server.run();
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("Server: Exception in run()");
-					System.exit(99);
-				}
-			}
-		});
-
+	public static void main(String[] args) throws InterruptedException {
+		BodesuriServer server = new BodesuriServer();
 		server.start();
+		server.warteAufBereitschaft();
 
+		Vector<Thread> clients = new Vector<Thread>();
 
 		List<String> namen = new Vector<String>();
 		namen.add("Donald");
@@ -38,21 +23,19 @@ public class BodesuriDemo {
 		for (int i = 0; i < 3; i++) {
 			Botsuri b = new Botsuri(namen.get(i), "localhost", 7788, spielplatz.Stupidbot.class, false);
 
-			Thread t = new Thread(b);
-			t.start();
+			b.start();
+
+			clients.add(b);
 		}
 
+		Bodesuri b = new Bodesuri();
+		b.start();
 
-		EventQueue queue = new EventQueue();
-		Controller controller = new GUIController(queue, "Dog");
-		Automat client = new ClientAutomat(controller,  queue);
+		server.join();
+		b.join();
 
-		try {
-			client.run();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Client: Exception in run()");
-			System.exit(99);
+		for (Thread t : clients) {
+			t.join();
 		}
 	}
 }

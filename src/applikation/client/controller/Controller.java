@@ -122,10 +122,6 @@ public abstract class Controller implements Steuerung {
     }
 
 	public void beenden() {
-//		SpielEndeEvent see = new SpielEndeEvent();
-//		eventQueue.enqueue(see);
-		System.exit(0);		// TODO: Pascal: ggf. Event werfen
-		// TODO: Pascal: ich würde hier nix machen, der automat soll isch selber sauber aufräumen. (-reto)
-		// Kontaktiere mich sonst
+		/* TODO: reto review (-reto) */
 	}
 }

@@ -9,13 +9,14 @@ import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.serialisierung.SerialisierungsKontext;
+import dienste.threads.BodesuriThread;
 
 /**
  * Netzwerkdämon der neue Netzwerk-Verbindungen akzeptiert und diese den
  * dazugehörigen Server meldet.
  *
  */
-public class Daemon implements Runnable {
+public class Daemon extends BodesuriThread {
 	private BriefKastenInterface briefkasten;
 	private ServerSocket serverSock;
 	private EventQueue queue;
@@ -37,6 +38,8 @@ public class Daemon implements Runnable {
 	 */
 	public Daemon(int port, BriefKastenInterface briefkasten, EventQueue queue,
 	        SerialisierungsKontext sk) {
+		super("Server-Daemon");
+
 		try {
 	        this.serverSock = new ServerSocket(port);
         } catch (IOException e) {
@@ -73,9 +76,8 @@ public class Daemon implements Runnable {
 			} catch (Exception e_nested) {
 				/* sogar das Fehler-Melden geht nicht mehr */
 				System.out.println("Doppel-Fehler");
-				e.printStackTrace();
 				e_nested.printStackTrace();
-				System.exit(99);
+				throw new RuntimeException(e);
 			}
 		}
 	}

@@ -1,60 +1,34 @@
 package spielplatz;
 
+import initialisierung.BodesuriServer;
+
 import java.util.Vector;
 
-import applikation.server.ServerAutomat;
-
 public class BodesuriArena {
-
-	public static Vector<String> nicks;
-
-	/**
-	 * @param args
-	 * @throws InterruptedException
-	 */
 	public static void main(String[] args) throws InterruptedException {
-		nicks = new Vector<String>();
+		BodesuriServer server = new BodesuriServer();
+		server.start();
+		server.warteAufBereitschaft();
 
+		Vector<Thread> clients = new Vector<Thread>();
+
+		Vector<String> nicks = new Vector<String>();
 		nicks.add("Anna Navarre ");
 		nicks.add("JC Denton");
 		nicks.add("Joseph Manderley");
 		nicks.add("Walton Simons");
 
-		Thread serverThread = new Thread(new Runnable() {
-			public void run() {
-				ServerAutomat server = new ServerAutomat(4);
-				try {
-					server.run();
-				} catch (Exception e) {
-					e.printStackTrace();
-					System.out.println("Server: Exception in run()");
-					System.exit(99);
-				}
-            }
-		});
-
-		serverThread.start();
-		
-		/* TODO: Reto: Sicherstellen das sich server im Zustand 'Empfange Spieler befindet' */
-		Thread.sleep(2000);
-
-		Vector<Thread> clients = new Vector<Thread>();
-
 		for (int i = 0; i < 4; i++) {
-			Runnable r = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
+			Thread t = new Botsuri(nicks.get(i), "localhost", 7788, Stupidbot.class, false);
 
-			Thread t = new Thread(r);
 			t.start();
 			clients.add(t);
 		}
 
-		System.out.println("Warte auf Ende ...");
-		serverThread.join();
-		System.out.println("Server fertig");
+		server.join();
 
 		for (Thread t : clients) {
 			t.join();
-			System.out.println("Client fertig");
 		}
 
 		System.out.println("Alles fertig");

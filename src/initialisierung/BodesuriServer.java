@@ -1,22 +1,28 @@
 package initialisierung;
 import applikation.server.ServerAutomat;
+import dienste.threads.BodesuriThread;
 
 
-public class BodesuriServer implements Runnable {
+public class BodesuriServer extends BodesuriThread{
 	private ServerAutomat server;
+	private int anzahlSpieler = 4;
 	private static final int VERZOEGERUNG = 100;
-	private static final int VERSUCHE = 20;
+	private static final int VERSUCHE = 55;
+
+
+	public BodesuriServer() {
+		super("Bodesuri Server");
+	}
+
+	public BodesuriServer(int anzahlSpieler) {
+		this();
+
+		this.anzahlSpieler = anzahlSpieler;
+    }
 
 	public void run() {
-		server = new ServerAutomat();
-
-		try {
-			server.run();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Server: Exception in run()");
-			System.exit(99);
-		}
+		server = new ServerAutomat(anzahlSpieler);
+		server.run();
 	}
 
 	public void warteAufBereitschaft() {
@@ -29,15 +35,16 @@ public class BodesuriServer implements Runnable {
             	throw new RuntimeException(e);
             }
 
-			if (server.istBereitFuerSpieler()) {
+			if (server != null && server.istBereitFuerSpieler()) {
 				serverBereit = true;
 				break;
 			}
 		}
 
 		if (!serverBereit) {
-			int pruefdauer = (VERSUCHE * VERZOEGERUNG) / 100;
-			throw new RuntimeException("Server wurde nicht innert " + pruefdauer + " Sekunden bereit");
+			int pruefdauer = (VERSUCHE * VERZOEGERUNG) / 1000;
+			System.out.println("ERROR: Server startete nicht innert " + pruefdauer + " Sekunden.");
+			System.exit(99);
 		}
     }
 
@@ -45,10 +52,12 @@ public class BodesuriServer implements Runnable {
 	 * Applikationsstart des Servers. Benötigte Instanzen werden erstellt,
 	 * Server wird initialisiert und gestartet.
 	 * @param args	Wird nicht genutzt
+	 * @throws InterruptedException
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		BodesuriServer server = new BodesuriServer();
 
-		server.run();
+		server.start();
+		server.join();
 	}
 }

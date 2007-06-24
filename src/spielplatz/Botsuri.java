@@ -3,12 +3,14 @@ package spielplatz;
 import applikation.client.ClientAutomat;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
+import dienste.threads.BodesuriThread;
 
-public class Botsuri implements Runnable {
+public class Botsuri extends BodesuriThread {
 	private BotController controller;
 	private EventQueue queue;
 
 	public Botsuri(String name, String host, int port, Class<? extends Bot> typ, boolean gui) {
+		super("Bot " + name);
 		Bot bot = createBot(typ);
 
 		queue = new EventQueue();

@@ -16,7 +16,6 @@ public abstract class EndPunkt implements EndPunktInterface {
 	protected Socket socket;
 	private Thread empfaengerThread;
 	private ObjectOutputStream outputStream;
-	private Empfaenger empfaenger;
 	protected SerialisierungsKontext serialisierungsKontext;
 
 	protected void startVerhandlung(BriefKastenInterface briefkasten) throws IOException {
@@ -25,8 +24,7 @@ public abstract class EndPunkt implements EndPunktInterface {
 		/*
 		 * Der Empfanger der Nachrichten in einem dedizierten Thread.
 		 */
-		empfaenger = new Empfaenger(this, socket, briefkasten, serialisierungsKontext);
-		empfaengerThread = new Thread(empfaenger);
+		empfaengerThread = new Empfaenger(this, socket, briefkasten, serialisierungsKontext);
 		empfaengerThread.start();
 	}
 

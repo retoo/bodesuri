@@ -36,9 +36,13 @@ public class Server {
 
 		daemon = new Daemon(PORT, serverBriefkasten, queue, sk);
 
-		Thread t = new Thread(daemon);
-		t.start();
+		starteDaemon();
 	}
+
+
+	private void starteDaemon() {
+		daemon.start();
+    }
 
 
 	public void ausschalten() {

@@ -102,8 +102,6 @@ public class BotController extends Controller {
 			//TODO: Reto: hier müsste noch eine konkrete Karte(Joker) rein... --Philippe
 			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegung);
 			eventQueue.enqueue(zee);
-			
-			
 		}
 
 	}
