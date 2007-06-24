@@ -1,7 +1,6 @@
 package ui.spiel.brett.felder;
 
 import java.awt.Point;
-import java.awt.event.MouseListener;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -26,18 +25,19 @@ public abstract class Feld2d extends BLabel implements Observer {
 	private BLabel geist;
 	private BLabel wegNormal;
 
-	/* TODO: Reto: Ein bissschen aufräumen hier. z.B. eine helferklasse machen
-	 * die alle parameer beinhaltet die sowohl basis wie subklasse benötigen (-reto) */
-	public Feld2d(Point p, Feld feld, MouseListener mouseAdapter,
-	        Icon icon, BLabel hover, SpielerFarbe farbe,
-	        FigurenManager figurenManager) {
-		super(icon, p);
+	/*
+	 * TODO: Reto: Ein bissschen aufräumen hier. z.B. eine helferklasse machen
+	 * die alle parameer beinhaltet die sowohl basis wie subklasse benötigen
+	 * (-reto)
+	 */
+	public Feld2d(Icon icon, Feld2dKonfiguration konfig) {
+		super(icon, konfig.position);
 		this.icon = icon;
-		this.position = p;
-		this.feld = feld;
-		this.hover = hover;
+		this.position = konfig.position;
+		this.feld = konfig.feld;
+		this.hover = konfig.hover;
 
-		this.figurenManager = figurenManager;
+		this.figurenManager = konfig.figurenManager;
 		this.ausgewaehlt = new BLabel(Icons.FELD_AUSWAHL);
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
@@ -46,18 +46,16 @@ public abstract class Feld2d extends BLabel implements Observer {
 		this.geist.setVisible(false);
 		this.add(geist);
 
-		this.wegNormal = new BLabel(Icons.getSpielerHoverIcon(farbe));
+		this.wegNormal = new BLabel(Icons.getSpielerHoverIcon(konfig.farbeIch));
 		this.wegNormal.setVisible(false);
 		add(wegNormal);
 
 		feld.addObserver(this);
 
-		addMouseListener(mouseAdapter);
+		addMouseListener(konfig.mouseAdapter);
 
-		/* Die Grafiken ein erstes mal generieren */
-
+		/* Das Feld ein erstes mal zeichnen*/
 		zentriereAuf(position);
-
 		update(null, null);
 	}
 
@@ -100,5 +98,25 @@ public abstract class Feld2d extends BLabel implements Observer {
 		ausgewaehlt.setVisible(feld.istAusgewaehlt());
 		wegNormal.setVisible(feld.istWeg());
 		geist.setVisible(feld.istGeist());
+	}
+
+	public static class Feld2dKonfiguration {
+		public final Point position;
+		public final Feld feld;
+		public final FeldMouseAdapter mouseAdapter;
+		public final BLabel hover;
+		public final SpielerFarbe farbeIch;
+		public final FigurenManager figurenManager;
+
+		public Feld2dKonfiguration(Point position, Feld feld,
+		        FeldMouseAdapter mouseAdapter, BLabel hover,
+		        SpielerFarbe farbeIch, FigurenManager figurenManager) {
+			this.position = position;
+			this.feld = feld;
+			this.mouseAdapter = mouseAdapter;
+			this.hover = hover;
+			this.farbeIch = farbeIch;
+			this.figurenManager = figurenManager;
+		}
 	}
 }

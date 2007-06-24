@@ -24,6 +24,7 @@ import ui.spiel.brett.felder.Figur2d;
 import ui.spiel.brett.felder.FigurenManager;
 import ui.spiel.brett.felder.NormalesFeld2d;
 import ui.spiel.brett.felder.SpielerFeld2d;
+import ui.spiel.brett.felder.Feld2d.Feld2dKonfiguration;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Spiel;
@@ -74,18 +75,23 @@ public class BrettView extends JPanel implements Observer {
 
 		for (Feld feld : spiel.getBrett().getAlleFelder()) {
 			Feld2d feld2d;
-
 			Point position = brettXML.getFelder().get(feld.getNummer());
 
+
+			Feld2dKonfiguration konfig = new Feld2dKonfiguration(position,
+			                                                     feld,
+			                                                     mouseAdapter,
+			                                                     hover,
+			                                                     farbeIch,
+			                                                     figurenManager);
+
 			if (feld.istNormal()) {
-				feld2d = new NormalesFeld2d(position, feld, mouseAdapter,
-				                            hover, farbeIch, figurenManager);
+				feld2d = new NormalesFeld2d(konfig);
 			} else {
 				SpielerFeld f = (SpielerFeld) feld.getFeld();
-
 				Icon icon = Icons.getSpielerFeldIcon(f.getSpieler().getFarbe());
-				feld2d = new SpielerFeld2d(position, feld, mouseAdapter, icon,
-				                           hover, farbeIch, figurenManager);
+
+				feld2d = new SpielerFeld2d(icon, konfig);
 			}
 
 			this.setComponentZOrder(feld2d, this.getComponentCount());
