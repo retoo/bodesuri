@@ -83,20 +83,6 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	}
 	
 	/**
-	 * Figuren, mit denen der Spieler spielt, oder zusätzlich noch die des Partners,
-	 * falls der Spieler schon fertig sein sollte.
-	 * 
-	 * @return Liste von Figuren
-	 */
-	public List<Figur> getZiehbareFiguren() {
-		Vector<Figur> ziehbareFiguren = new Vector<Figur>(figuren);
-		if ( istFertig() && !partner.istFertig() ) {
-			ziehbareFiguren.addAll(partner.getFiguren());
-		}
-		return ziehbareFiguren;
-	}
-	
-	/**
 	 * @return Spielernummer
 	 */
 	public int getNummer() {
@@ -150,7 +136,8 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		for (Karte karte : getKarten()) {
 			Regel regel = karte.getRegel();
 			if (regel != null) {
-				regel.moeglicheZuege(this, karte, moeglich);
+				Spieler betroffenerSpieler = istFertig() ? partner : this;
+				regel.moeglicheZuege(betroffenerSpieler, karte, moeglich);
 			}
 		}
 
