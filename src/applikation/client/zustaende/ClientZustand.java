@@ -125,8 +125,6 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	/* GUI Handler - Lobby */
-
 	/* GUI Handler - Spiel */
 
 	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {

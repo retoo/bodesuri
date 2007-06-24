@@ -48,6 +48,11 @@ public class Spiel implements SerialisierungsKontext {
 		this.endpunktZuSpieler = new IdentityHashMap<EndPunktInterface, Spieler>();
 	}
 
+	/**
+	 * Bildet die Partnerschaften, die im Spiel benötigt werden. Die zuordnung der Spieler zu
+	 * den Partnerschaften erfolgt nach einem vorgegebenen Schema. Das Bilden der Partnerschaften
+	 * funktioniert für 1, 2 oder 4 Spieler.
+	 */
 	public void partnerschaftenBilden() {
 		if (anzahlSpieler != spielers.size())
 			throw new RuntimeException("partnerschaftBilden zu früh aufgerufen");
@@ -109,8 +114,6 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Anzahl der offenen Spielposten
-	 *
 	 * @return Anzahl der noch offenen Spielslots
 	 */
 	public int getAnzahlOffen() {
@@ -118,14 +121,15 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Prüft ob Spiel komplett ist
-	 *
 	 * @return true falls Spiel komplett
 	 */
 	public boolean isKomplett() {
 		return getAnzahlSpieler() == anzahlSpieler;
 	}
 
+	/**
+	 * @return Neu zu spielende Runde
+	 */
 	public Runde starteRunde() {
 		if (runde == null) {
 			runde = new Runde(0, spielers, spiel.getKartenGeber());
@@ -136,12 +140,18 @@ public class Spiel implements SerialisierungsKontext {
 		return runde;
 	}
 
+	/**
+	 * Anti-Cheat Funktion die sicherstellt, dass der Endpunkt auch immer der 
+	 * aktuelle Spieler der Runde ist.
+	 * 
+	 * @param endpunkt
+	 */
 	public void sicherStellenIstAktuellerSpieler(EndPunktInterface endpunkt) {
 		if (runde.getAktuellerSpieler() != getSpieler(endpunkt)) {
 
 			broadcast("HAH.. huere michi, de " + endpunkt
 			          + " wott voll bschisse");
-			new RuntimeException("beschiss von " + endpunkt + " an "
+			new RuntimeException("Beschiss von " + endpunkt + " an "
 			                     + runde.getAktuellerSpieler());
 		}
 	}
@@ -150,8 +160,7 @@ public class Spiel implements SerialisierungsKontext {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
 
 		if (spieler == null)
-			throw new RuntimeException(
-			                           "Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes "
+			throw new RuntimeException("Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes "
 			                                   + endpunkt + " auflösen");
 
 		return spieler;
@@ -191,15 +200,15 @@ public class Spiel implements SerialisierungsKontext {
 
 		/* Mini PD Spieler erstellen */
 		Spieler spieler = new Spieler(endpunkt, pdSpieler);
-
-
 		endpunktZuSpieler.put(spieler.getEndPunkt(), spieler);
-
 		spielers.add(spieler);
 
 		return spieler;
 	}
 
+	/**
+	 * @param absender Zu entfernenden Spieler
+	 */
 	public void entferne(EndPunktInterface absender) {
 		Spieler s = getSpieler(absender);
 
@@ -217,11 +226,21 @@ public class Spiel implements SerialisierungsKontext {
 	    return spiel.getKartenGeber();
     }
 
-	/* TODO: pascal & reto: wollen wir das nun nicht in die pd schieben? die partnerschaft ist jetzt doch auch da (-reto) */
+	/**
+	 * Zeigt an, ob das Spiel fertig ist oder nicht. Dies wird anhand der Partnerschaften
+	 * ermittelt (sobald eine Partnerschaft fertig ist, ist auch das Spiel fertig).
+	 * 
+	 * @return Ob Spiel fertig ist oder nicht
+	 */
 	public boolean istFertig() {
 		return getGewinner() != null;
     }
 
+	/**
+	 * Gibt die siegreiche Partnerschaft zurück.
+	 * 
+	 * @return Siegreiche Partnerschaft. Falls noch nicht bekannt wird null zurückgegeben.
+	 */
 	public Partnerschaft getGewinner() {
 		for (Partnerschaft p : partnerschaften) {
 			if (p.istFertig()) {
