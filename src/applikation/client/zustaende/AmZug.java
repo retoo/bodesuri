@@ -1,6 +1,5 @@
 package applikation.client.zustaende;
 
-import pd.zugsystem.ZugEingabe;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
@@ -70,17 +69,6 @@ public class AmZug extends ClientZustand {
 
 	Class<? extends Zustand> aufgegeben() {
 		if (spiel.spielerIch.kannZiehen()) {
-			int i = 0;
-
-			/* TODO: Reto entfenren (-reto) */
-			for (ZugEingabe ze : spiel.zugHistory) {
-				System.out.println(ze);
-
-				if (i++ > 30) {
-					break;
-				}
-			}
-
 			controller.zeigeFehlermeldung("Es kann noch nicht aufgegeben "
 			                              + "werden, da es noch möglich ist zu "
 			                              + "ziehen.");
