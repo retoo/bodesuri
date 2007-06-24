@@ -10,7 +10,7 @@ import ui.spiel.SpielView;
 import ui.spiel.brett.JokerView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
@@ -20,10 +20,10 @@ public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;
 	private SpielView spielView;
-	private DefaultKonfiguration konfiguration;
+	private Konfiguration konfiguration;
 	private JokerView jokerView;
 
-	public GUIController(EventQueue eventQueue, DefaultKonfiguration konfiguration) {
+	public GUIController(EventQueue eventQueue, Konfiguration konfiguration) {
 		this.konfiguration = konfiguration;
 		this.eventQueue = eventQueue;
 		setNativeLookAndFeel();

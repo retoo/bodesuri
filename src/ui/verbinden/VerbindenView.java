@@ -27,7 +27,7 @@ import javax.swing.text.PlainDocument;
 
 import ui.ressourcen.Icons;
 import applikation.client.controller.Steuerung;
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 
 /**
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet
@@ -54,7 +54,7 @@ public class VerbindenView extends JFrame {
 	private Steuerung steuerung;
 
 	/* TODO: Pascal: Willst du die defaultKonfiguration noch einbauen? (-reto) */
-	public VerbindenView(final Steuerung steuerung, final DefaultKonfiguration konfiguration) {
+	public VerbindenView(final Steuerung steuerung, final Konfiguration konfiguration) {
 		// Initialisierung
 		this.steuerung = steuerung;
 		spielerName = new InputTextField(konfiguration.defaultName, 20);

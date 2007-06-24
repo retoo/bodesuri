@@ -1,6 +1,6 @@
 package spielplatz;
 
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 import initialisierung.Bodesuri;
 import initialisierung.BodesuriServer;
 
@@ -11,7 +11,7 @@ public class BodesuriSingular {
 		server.start();
 		server.warteAufBereitschaft();
 
-		DefaultKonfiguration konfig = new DefaultKonfiguration();
+		Konfiguration konfig = new Konfiguration();
 		konfig.defaultName = "Huere Michi";
 		konfig.debugAutoLogin = true;
 

@@ -1,6 +1,6 @@
 package spielplatz;
 
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 import initialisierung.Bodesuri;
 import initialisierung.BodesuriServer;
 
@@ -11,11 +11,11 @@ public class BodesuriEntwickler {
 		server.start();
 		server.warteAufBereitschaft();
 
-		DefaultKonfiguration konfigA = new DefaultKonfiguration();
+		Konfiguration konfigA = new Konfiguration();
 		konfigA.defaultName = "Christoph";
 		konfigA.debugAutoLogin = true;
 
-		DefaultKonfiguration konfigB = new DefaultKonfiguration();
+		Konfiguration konfigB = new Konfiguration();
 		konfigB.defaultName = "Micheline";
 		konfigB.debugAutoLogin = true;
 

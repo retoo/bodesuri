@@ -3,19 +3,19 @@ package initialisierung;
 import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 import dienste.eventqueue.EventQueue;
 import dienste.threads.BodesuriThread;
 
 
 public class Bodesuri extends BodesuriThread {
-	private DefaultKonfiguration konfiguration;
+	private Konfiguration konfiguration;
 
 	public Bodesuri() {
-		this(new DefaultKonfiguration());
+		this(new Konfiguration());
     }
 
-	public Bodesuri(DefaultKonfiguration konfiguration) {
+	public Bodesuri(Konfiguration konfiguration) {
 		super("Bodesuri Client " + konfiguration.defaultName);
 		this.konfiguration = konfiguration;
     }

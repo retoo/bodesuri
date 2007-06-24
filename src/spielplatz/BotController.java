@@ -11,7 +11,7 @@ import ui.GUIController;
 import applikation.client.controller.Controller;
 import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
-import applikation.client.konfiguration.DefaultKonfiguration;
+import applikation.client.konfiguration.Konfiguration;
 import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
@@ -29,7 +29,7 @@ public class BotController extends Controller {
 	private boolean gui;
 
 	public BotController(EventQueue queue, String nickname, String hostname, int port, Bot bot, boolean gui) {
-		DefaultKonfiguration konfig = new DefaultKonfiguration();
+		Konfiguration konfig = new Konfiguration();
 
 		konfig.debugAutoLogin = true;
 		konfig.defaultName = nickname;
