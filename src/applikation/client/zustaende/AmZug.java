@@ -7,6 +7,7 @@ import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.ZugErfasstEvent;
+import applikation.client.events.ZugautomatEndeEvent;
 import applikation.client.pd.SteuerungsZustand;
 import applikation.client.zugautomat.ZugAutomat;
 import applikation.nachrichten.Aufgabe;
@@ -24,6 +25,14 @@ public class AmZug extends ClientZustand {
 		spiel.zugAutomat = new ZugAutomat(controller, spiel);
 		spiel.zugAutomat.init();
 		spiel.setSteuerungsZustand(SteuerungsZustand.AUFGEBEN);
+	}
+
+	public void onExit() {
+		/* TODO: Robin: wollen wir das evtl. auch in den zguatuomatenabschluss rein tun? (-reto) */
+		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
+
+		if (!spiel.zugAutomat.istFertig())
+			spiel.zugAutomat.step(new ZugautomatEndeEvent());
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
@@ -57,7 +66,7 @@ public class AmZug extends ClientZustand {
 		erfassterZug.getKarte().setAusgewaehlt(false);
 		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
 		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
-		
+
 		return NichtAmZug.class;
 	}
 
@@ -65,6 +74,7 @@ public class AmZug extends ClientZustand {
 		if (spiel.spielerIch.kannZiehen()) {
 			int i = 0;
 
+			/* TODO: Reto entfenren (-reto) */
 			for (ZugEingabe ze : spiel.zugHistory) {
 				System.out.println(ze);
 
@@ -79,13 +89,10 @@ public class AmZug extends ClientZustand {
 			return this.getClass();
 		} else {
 			spiel.endpunkt.sende(new Aufgabe());
+			/* TODO: Philippe: wollen wir das ins onexit reinschieben, zugautomten aufräumzügs tu ich auch da rein (-reto) */
 			spiel.spielerIch.getKarten().setAktiv(false);
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;
 		}
-	}
-
-	public void onExit() {
-		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
 	}
 }
