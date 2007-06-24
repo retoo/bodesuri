@@ -1,6 +1,5 @@
 package ui.spiel.brett.felder;
 
-import geteiltes.BLabel;
 
 import java.awt.Point;
 import java.util.Observable;
@@ -9,6 +8,7 @@ import java.util.Observer;
 import javax.swing.Icon;
 
 import pd.spieler.SpielerFarbe;
+import ui.geteiltes.BLabel;
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
 

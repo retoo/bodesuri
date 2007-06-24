@@ -1,8 +1,9 @@
 package ui.spiel.brett;
 
-import geteiltes.ClickMouseAdapter;
 
 import java.awt.event.MouseEvent;
+
+import ui.geteiltes.ClickMouseAdapter;
 
 
 import applikation.client.controller.Steuerung;

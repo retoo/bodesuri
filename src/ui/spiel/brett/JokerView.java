@@ -1,6 +1,5 @@
 package ui.spiel.brett;
 
-import geteiltes.ClickMouseAdapter;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -29,6 +28,7 @@ import pd.karten.Sieben;
 import pd.karten.Vier;
 import pd.karten.Zehn;
 import pd.karten.Zwei;
+import ui.geteiltes.ClickMouseAdapter;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
 import ui.spiel.steuerung.KarteMouseAdapter;
