@@ -71,14 +71,11 @@ public class ClientZugZustand extends Zustand {
 	 * Den Vektor mit den erfassten Bewegungen löschen.
 	 */
 	protected void bewegungenZuruecksetzen() {
-		/**
-		 * Alle Selektionen zurücksetzen.
-		 */
-		/* TODO: Reto & Philippe: Brauchen wir evtl. noch für den Geist */
-		/* TODO: Reto: Geister deselektieren */
-		for (Feld f : spielDaten.spiel.getBrett().getAlleFelder()) {
+		/* Geister-Figuren für 7ner Zug zurücksetzen. */
+		for (Feld f : spielDaten.spiel.getBrett().getAlleFelder())
 			f.setGeist(false); /* schöner machen */
-		}
+
+		/* Alle Selektionen zurücksetzen. */
 		spielDaten.felderDeaktivieren();
 		spielDaten.bewegungen = new LinkedList<Bewegung>();
 		spielDaten.bewegungen.add(new Bewegung());
