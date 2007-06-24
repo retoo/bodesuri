@@ -4,7 +4,6 @@ import pd.karten.Sieben;
 import pd.regelsystem.RegelVerstoss;
 import pd.regelsystem.WegLaengeVerstoss;
 import applikation.client.events.ZugErfasstEvent;
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
@@ -45,8 +44,6 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 
 		spielDaten.spiel.queue.enqueue(erfassterZug);
 
-		bewegungenZuruecksetzen();
-		spielDaten.spiel.spielerIch.getKarten().setAktiv(false);
-		return EndZustand.class;
+		return ZugautomatAbschluss.class;
 	}
 }

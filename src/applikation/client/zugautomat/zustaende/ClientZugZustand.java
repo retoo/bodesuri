@@ -8,6 +8,7 @@ import applikation.client.events.FeldGewaehltEvent;
 import applikation.client.events.HoverEndeEvent;
 import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
+import applikation.client.events.ZugautomatEndeEvent;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.zugautomat.pd.Bewegung;
@@ -30,6 +31,9 @@ public class ClientZugZustand extends Zustand {
 			return hoverStart((HoverStartEvent) event);
 		else if (event instanceof HoverEndeEvent)
 			return hoverEnde((HoverEndeEvent) event);
+		else if (event instanceof ZugautomatEndeEvent)
+			return zugautomatEnde();
+
 
 		return super.handle(event);
 	}
@@ -53,6 +57,10 @@ public class ClientZugZustand extends Zustand {
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
 	}
+
+	Class<? extends Zustand> zugautomatEnde() {
+		return ZugautomatAbschluss.class;
+    }
 
 	/**
 	 * Eine Karte als ausgewählt markieren.

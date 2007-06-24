@@ -265,7 +265,12 @@ public class Automat {
 		return aktuellerZustand.getClass() == zustand;
 	}
 
+	public boolean istFertig() {
+		return aktuellerZustand == endzustand;
+	}
+
 	public String toString() {
 		return "Automat: ";
 	}
+
 }
