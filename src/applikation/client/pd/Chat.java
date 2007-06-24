@@ -10,9 +10,9 @@ import pd.zugsystem.ZugEingabe;
 import dienste.observer.ObservableList;
 
 public class Chat extends ObservableList<String> {
-	private static DateFormat dateFormat = DateFormat.getTimeInstance();
+	private DateFormat dateFormat = DateFormat.getTimeInstance();
 
-	private final static String getZeit() {
+	private final String getZeit() {
 		String time = dateFormat.format(new Date());
 		return time;
 	}
