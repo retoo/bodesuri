@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 public class BLabel extends JLabel {
 	private final int dxFinal;
 	private final int dyFinal;
+	private final Point mittelpunkt;
 
 	public BLabel(Icon icon) {
 		this(icon, 0, 0);
@@ -22,6 +23,8 @@ public class BLabel extends JLabel {
 		this.dyFinal = (height / 2) + dy;
 
 		setSize(width, height); /* TONIGHT WE SWING IN HELL */
+
+		this.mittelpunkt = new Point(width / 2, height /2);
 	}
 
 	public BLabel(Icon icon, Point p) {
@@ -31,5 +34,9 @@ public class BLabel extends JLabel {
 
 	public void zentriereAuf(Point position) {
 		setLocation(position.x - dxFinal, position.y - dyFinal);
+	}
+
+	public Point getMittelpunkt() {
+		return mittelpunkt;
 	}
 }

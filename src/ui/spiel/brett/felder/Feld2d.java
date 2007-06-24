@@ -37,7 +37,8 @@ public abstract class Feld2d extends BLabel implements Observer {
 		this.ausgewaehlt.setVisible(false);
 		this.add(ausgewaehlt);
 
-		this.geist = new BLabel(Icons.FELD_AUSWAHL);
+		this.geist = new BLabel(Icons.getSpielerGeist(konfig.farbeIch), -1, -1);
+		this.geist.zentriereAuf(this.getMittelpunkt());
 		this.geist.setVisible(false);
 		this.add(geist);
 

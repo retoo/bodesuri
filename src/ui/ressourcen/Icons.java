@@ -63,6 +63,11 @@ final public class Icons {
 		return getIcon(name);
 	}
 
+	public static Icon getSpielerGeist(SpielerFarbe farbe) {
+		String name = "figur_geist_" + farbe.toString().toLowerCase() + ".png";
+		return getIcon(name);
+    }
+
 	public static Icon getFigurIcon(SpielerFarbe farbe) {
 		String name = "figur_" + farbe.toString().toLowerCase() + ".png";
 		return getIcon(name);
