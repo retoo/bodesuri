@@ -4,8 +4,8 @@ import java.io.Serializable;
 
 
 public class Partnerschaft implements Serializable {
-	Spieler spielerA;
-	Spieler spielerB;
+	private final Spieler spielerA;
+	private final Spieler spielerB;
 
 	public Partnerschaft(Spieler spielerA, Spieler spielerB) {
 		this.spielerA = spielerA;
@@ -15,28 +15,15 @@ public class Partnerschaft implements Serializable {
 	public boolean istFertig() {
 		if ( spielerA.istFertig() && spielerB.istFertig() ) {
 			return true;
-		}
-		
-		return false;
+		} else return false;
 	}
 	
-	public Spieler istEndModusMoeglich() {
-		boolean aFertig = spielerA.istFertig();
-		boolean bFertig = spielerB.istFertig();
-		
-		if (aFertig && !bFertig) {
-			return spielerA;
-		} else if (!aFertig && bFertig) {
-			return spielerB;
-		} else return null;
+	public Spieler getSpielerA() {
+		return spielerA;
 	}
 	
-	public boolean istMitglied(Spieler spieler) {
-		return (spieler == spielerA || spieler == spielerB) ? true : false;
-	}
-	
-	public Spieler getPartner(Spieler spieler) {
-		return (spieler == spielerA) ? spielerB : spielerA;
+	public Spieler getSpielerB() {
+		return spielerB;
 	}
 	
 	public String toString() {

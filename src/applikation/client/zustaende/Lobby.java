@@ -1,10 +1,7 @@
 package applikation.client.zustaende;
 
-import java.util.List;
-
 import pd.spieler.Partnerschaft;
 import applikation.client.controller.Controller;
-import applikation.client.pd.Spieler;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
@@ -43,11 +40,9 @@ public class Lobby extends ClientZustand {
 
 	Class<? extends Zustand> spielStarten(SpielStartNachricht startNachricht) {
 		// Partnerschaften auf PD abbilden, damit validierung auf Clients funktioniert
-		List<Spieler> spielers = spiel.getSpieler();
-		for (Spieler s : spielers) {
-			for (Partnerschaft ps : startNachricht.partnerschaften) {
-				s.setPartner( ps.getPartner(s.getSpieler()) );
-			}
+		for (Partnerschaft ps : startNachricht.partnerschaften) {
+			ps.getSpielerA().setPartner(ps.getSpielerB());
+			ps.getSpielerB().setPartner(ps.getSpielerA());
 		}
 
 		return SpielStart.class;
