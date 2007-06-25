@@ -144,18 +144,20 @@ public class BrettView extends JPanel implements Observer {
 	}
 
 	private void erstelleHinweis() {
-		// JLabel
+		Point pos = brettXML.getHinweis();
+
 		hinweisLabel = new JLabel();
 		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
 		hinweisLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-		Point hinweisPos = brettXML.getHinweis();
-
-		hinweisLabel.setBounds(hinweisPos.x, hinweisPos.y, 211, 40);
+		int w = 210;
+		int h = 40;
+		hinweisLabel.setSize(w, h);
+		hinweisLabel.setLocation(pos.x - (w / 2), pos.y - (h / 2));
 		add(hinweisLabel);
 
-		JLabel hinweisVertiefung = new JLabel(Icons.HINWEIS);
-		hinweisVertiefung.setBounds(hinweisPos.x - 6, hinweisPos.y, 222, 41);
+		BLabel hinweisVertiefung = new BLabel(Icons.HINWEIS);
+		hinweisVertiefung.zentriereAuf(pos);
 		add(hinweisVertiefung);
 	}
 
