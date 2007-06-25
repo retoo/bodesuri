@@ -22,18 +22,21 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		/* Philippe: ups, der code hat mich grad schön verwirrt, kann man hier
-		 * ein kommentar hinmachen :)? (-reto)
-		 */
 		if (event.karte.getKarte() instanceof pd.karten.Joker) {
+			// Wenn der Spieler aus seinen Karten einen Joker auswählt die
+			// Jokerauswahl anzeigen.
 			controller.zeigeJokerauswahl(true);
 			karteAuswaehlen(event.karte);
 			return this.getClass();
-		} if (event.karte instanceof applikation.client.pd.Joker) {
+		} else if (event.karte instanceof applikation.client.pd.Joker) {
+			// Die Jokerauswahl gibt dann Applikations-Joker zurück. Diese
+			// enthalten die Karte für die der Joker steht (konkreteKarte).
 			controller.zeigeJokerauswahl(false);
 			spielDaten.konkreteKarte = event.karte;
-		}else {
+		} else {
+			// Normalfall (kein Joker)
 			karteAuswaehlen(event.karte);
+			spielDaten.konkreteKarte = null;
 		}
 		return StartWaehlen.class;
 	}
