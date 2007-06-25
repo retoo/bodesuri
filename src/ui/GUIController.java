@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 import ui.lobby.LobbyView;
+import ui.spiel.JokerView;
 import ui.spiel.SpielView;
-import ui.spiel.brett.JokerView;
 import ui.verbinden.VerbindenView;
 import applikation.client.controller.Controller;
 import applikation.client.konfiguration.Konfiguration;

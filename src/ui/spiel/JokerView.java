@@ -1,4 +1,4 @@
-package ui.spiel.brett;
+package ui.spiel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
