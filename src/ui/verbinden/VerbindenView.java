@@ -126,9 +126,9 @@ public class VerbindenView extends JFrame {
 		buttonpanel.add(Box.createHorizontalGlue());
 		buttonpanel.add(progressBar);
 		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
-		buttonpanel.add( verbindenButton );
-		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
 		buttonpanel.add(abbrechenButton);
+		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
+		buttonpanel.add(verbindenButton);
 		add(bodesuriIcon, BorderLayout.NORTH);
 		add(inputpanel, BorderLayout.CENTER);
 		add(buttonpanel, BorderLayout.SOUTH);
