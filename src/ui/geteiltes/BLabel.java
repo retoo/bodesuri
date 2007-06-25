@@ -50,21 +50,22 @@ public class BLabel extends JLabel {
 
 		double distanz = start.distance(ziel);
 
-		int steps = (int) Math.round(distanz / 10);
-		int dx = ziel.x - start.x;
-		int dy = ziel.y - start.y;
+		int steps = (int) Math.round(distanz / 20);
+		double dx = ziel.x - start.x;
+		double dy = ziel.y - start.y;
 
 		double stepX = dx / steps;
 		double stepY = dy / steps;
 
-		for (int i = 0; i < steps; i++) {
+		for (int i = 1; i <= steps; i++) {
 			int curX = start.x + (int) Math.round(i * stepX);
 			int curY = start.y + (int) Math.round(i * stepY);
 
 			zentriereAuf(curX, curY);
 			try {
-	            Thread.sleep(10);
+	            Thread.sleep(20);
             } catch (InterruptedException e) {
+            	throw new RuntimeException(e);
             }
 		}
 
