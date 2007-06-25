@@ -49,10 +49,6 @@ public class StartWaehlen extends ClientZugZustand {
 		return KarteWaehlen.class;
 	}
 
-	/* TODO: Philippe: Hab die Methode hier auch implementiert. Was soll passieren wenn der Spielr
-	 * beim Startwählen aufs Brett klickt? Ich würd sagen dann sollten beim Siebnerzug alle alten
-	 * Bewegungen gelöscht werden? Einverstanden? (-reto)
-	 */
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		bewegungenZuruecksetzen();
 		return StartWaehlen.class;

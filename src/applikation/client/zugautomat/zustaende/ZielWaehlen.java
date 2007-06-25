@@ -69,11 +69,7 @@ public class ZielWaehlen extends ClientZugZustand {
 		/* Hover anschalten */
 		event.feld.setHover(false);
 
-		Regel regel = spielDaten.karte.getRegel();
-
-		/* Phiilippe: JOKERPROBLEM Wie bauen wir hier sauber den Joker ein? Ich hoffe es benötigt keine
-		 * Fallunterscheidung (-reto)
-		 */
+		Regel regel = spielDaten.konkreteKarte.getRegel();
 		if (regel != null && regel.arbeitetMitWeg()) {
 			/* Weg markieren */
 			Bewegung bewegung = new Bewegung(spielDaten.getStart().getFeld(),

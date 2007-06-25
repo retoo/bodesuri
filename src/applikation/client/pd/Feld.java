@@ -28,11 +28,6 @@ public class Feld extends Observable implements Observer {
 		notifyObservers();
 	}
 
-	/* TODO: Philippe: Brauchen wir das wirklich noch ? (-reto) */
-	public void versetzeFigurAuf(Feld ziel) {
-		feld.versetzeFigurAuf(ziel.getFeld());
-	}
-
 	public pd.brett.Feld getFeld() {
 		return feld;
 	}
