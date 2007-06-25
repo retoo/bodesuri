@@ -11,14 +11,14 @@ import applikation.nachrichten.KartenTausch;
 
 public class Runde {
 	private HashMap<Spieler, RundenTeilnahme> teilnahmen;
-	private Vector<Spieler> spieler;
+	private Vector<Spieler> spielers;
 	private int aktuellerSpieler;
 	public final int nummer;
 
 	public Runde(int nummer, List<Spieler> spielers, KartenGeber kartenGeber) {
 		this.teilnahmen = new HashMap<Spieler, RundenTeilnahme>();
 		this.nummer = nummer;
-		this.spieler = new Vector<Spieler>(spielers);
+		this.spielers = new Vector<Spieler>(spielers);
 
 		int anzahlKarten = getAnzahlKartenProSpieler();
 
@@ -29,9 +29,11 @@ public class Runde {
 		}
 	}
 
-	public void entferneSpieler(Spieler aktuellerSpieler) {
-		RundenTeilnahme res_map = teilnahmen.remove(aktuellerSpieler);
-		boolean res_vector= spieler.remove(aktuellerSpieler);
+	public void entferneSpieler(Spieler spieler) {
+		RundenTeilnahme res_map = teilnahmen.remove(spieler);
+		boolean res_vector=  spielers.remove(spieler);
+
+		this.aktuellerSpieler--;
 
 		if (res_map == null || !res_vector) {
 			throw new RuntimeException("Konnte Spieler " + spieler + " nicht aus der aktuellen Runde entfernen");
@@ -68,7 +70,7 @@ public class Runde {
 	 * @return der zurzeit spielende Spieler
 	 */
 	public Spieler getAktuellerSpieler() {
-		return spieler.get(aktuellerSpieler);
+		return spielers.get(aktuellerSpieler);
 	}
 
 	/*
