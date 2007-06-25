@@ -15,7 +15,7 @@ final public class Icons {
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
 	public static final Icon JOKERSCHLIESSEN = ladeBild("/ui/ressourcen/joker_schliessen.png");
 	public static final Icon LOGO = ladeBild("/ui/ressourcen/bodesuri_logo.png");
-	public static final Icon BODESURI = ladeBild("/ui/ressourcen/bodesuri.png");
+	public static final Icon AM_ZUG = ladeBild("/ui/ressourcen/am_zug.png");
 	public static final Icon FAHNE = ladeBild("/ui/ressourcen/fahne.png");
 
 	// Verbinden
