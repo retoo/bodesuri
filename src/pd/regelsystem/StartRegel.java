@@ -71,11 +71,11 @@ public class StartRegel extends Regel {
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,
 	                               ZugEingabeAbnehmer abnehmer) {
 		Brett brett = spieler.getSpiel().getBrett();
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			if (figur.getFeld().istLager()) {
-				if (!brett.getBankFeldVon(spieler).istGeschuetzt()) {
+				Feld ziel = brett.getBankFeldVon(figur.getSpieler());
+				if (!ziel.istGeschuetzt()) {
 					Feld start = figur.getFeld();
-					Feld ziel  = brett.getBankFeldVon(spieler);
 					Bewegung bewegung = new Bewegung(start, ziel);
 					ZugEingabe ze = new ZugEingabe(spieler, karte, bewegung);
 					boolean abbrechen = abnehmer.nehmeEntgegen(ze);

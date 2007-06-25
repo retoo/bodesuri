@@ -26,6 +26,9 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	}
 	
 	protected void sollteValidieren(Regel regel) throws RegelVerstoss {
+		if (regel == null) {
+			throw new RuntimeException("Keine Regel zum Validieren angegeben.");
+		}
 		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
 		Zug zug = regel.validiere(ze);
 		zug.ausfuehren();

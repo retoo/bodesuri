@@ -51,7 +51,7 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,
 	                                  ZugEingabeAbnehmer abnehmer) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			if (start.istLager() || start.istHimmel()) {

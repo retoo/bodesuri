@@ -134,7 +134,7 @@ public class VorwaertsRegel extends Regel {
 
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,
 	                                  ZugEingabeAbnehmer abnehmer) {
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld start = figur.getFeld();
 
 			Vector<Feld> ziele = new Vector<Feld>();

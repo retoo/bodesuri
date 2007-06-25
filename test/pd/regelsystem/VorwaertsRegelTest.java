@@ -139,4 +139,16 @@ public class VorwaertsRegelTest extends RegelTestCase {
 		lager(0).versetzeFigurAuf(start);
 		sollteVerstossGeben(new VorwaertsRegel(4));
 	}
+
+	public void testVorwaertsFuerPartner() throws RegelVerstoss {
+		for (int i = 0; i < 4; ++i) {
+			lager(0, i).versetzeFigurAuf(himmel(0, i));
+		}
+		assertTrue(spieler(0).istFertig());
+
+		start = bank(2);
+		ziel  = bank(2).getNtesFeld(5);
+		lager(2, 0).versetzeFigurAuf(start);
+		sollteValidieren(new VorwaertsRegel(5));
+	}
 }

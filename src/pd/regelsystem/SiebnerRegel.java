@@ -109,7 +109,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,
 	                                  ZugEingabeAbnehmer abnehmer) {
 		Map<Figur, Feld> positionen = new IdentityHashMap<Figur, Feld>();
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			positionen.put(figur, figur.getFeld());
 		}
 		List<Figur> reihenfolge = new Vector<Figur>();
@@ -130,7 +130,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			return abbrechen;
 		}
 
-		for (Figur figur : spieler.getFiguren()) {
+		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld feld = positionen.get(figur);
 			
 			if (feld.istLager()) {
@@ -139,7 +139,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 			Feld feldNeu;
 			List<Feld> kandidaten = new Vector<Feld>();
-			if (feld.istBank() && ((BankFeld) feld).istVon(spieler)) {
+			if (feld.istBank() && ((BankFeld) feld).istVon(figur.getSpieler())) {
 				feldNeu = ((BankFeld) feld).getHimmel();
 				kandidaten.add(feldNeu);
 			}

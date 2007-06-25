@@ -81,7 +81,17 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public List<Figur> getFiguren() {
 		return figuren;
 	}
-	
+
+	/**
+	 * Figuren, mit denen der Spieler spielt. Dies sind die eigenen oder die des
+	 * Partners, falls alle eigenen im Himmel sind.
+	 * 
+	 * @return Liste von Figuren
+	 */
+	public List<Figur> getZiehbareFiguren() {
+		return istFertig() ? partner.getFiguren() : getFiguren();
+	}
+
 	/**
 	 * @return Spielernummer
 	 */
@@ -104,10 +114,9 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
 	 */
 	public boolean kannZiehen() {
-		Spieler betroffenerSpieler = istFertig() ? partner : this;
 		for (Karte karte : getKarten()) {
 			Regel regel = karte.getRegel();
-			if (regel != null && regel.kannZiehen(betroffenerSpieler)) {
+			if (regel != null && regel.kannZiehen(this)) {
 				return true;
 			}
 		}
@@ -133,16 +142,15 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	}
 	
 	public List<ZugEingabe> getMoeglicheZuege() {
-		List<ZugEingabe> moeglich = new LinkedList<ZugEingabe>();
-		Spieler betroffenerSpieler = istFertig() ? partner : this;
+		List<ZugEingabe> moegliche = new LinkedList<ZugEingabe>();
 
 		for (Karte karte : getKarten()) {
 			Regel regel = karte.getRegel();
 			if (regel != null) {
-				moeglich.addAll(regel.moeglicheZuege(betroffenerSpieler, karte));
+				moegliche.addAll(regel.moeglicheZuege(this, karte));
 			}
 		}
 
-		return moeglich;
+		return moegliche;
     }
 }

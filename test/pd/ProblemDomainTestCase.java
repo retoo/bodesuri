@@ -1,5 +1,7 @@
 package pd;
 
+import java.util.List;
+
 import junit.framework.TestCase;
 import pd.Spiel;
 import pd.brett.BankFeld;
@@ -17,11 +19,17 @@ public abstract class ProblemDomainTestCase extends TestCase {
 	protected void setUp() {
 		spiel = new Spiel();
 		brett = spiel.getBrett();
-		
+
 		for (int i = 0; i < 4; ++i) {
 			spiel.fuegeHinzu("Spieler" + i);
 		}
-		
+
+		List<Spieler> spieler = spiel.getSpieler();
+		spieler.get(0).setPartner(spieler.get(2));
+		spieler.get(2).setPartner(spieler.get(0));
+		spieler.get(1).setPartner(spieler.get(3));
+		spieler.get(3).setPartner(spieler.get(1));
+
 		kartenGeber = spiel.getKartenGeber();
 	}
 	
