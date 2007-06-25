@@ -10,13 +10,44 @@
 \input{../titelseite}
 \section{Voraussetzungen} % (fold)
 \label{sec:voraussetzungen}
-Bedingungen die für einen Test vorausgesetzt werden
+\begin{itemize}
+	\item Die Tests werden alle im Vierspielermodus durchgeführt.
+	\item Bots werden nur für Tests eingesetzt, welche sie reproduzierbar ein weiteres Mal durchlaufen können.
+	\item Netzwerkverkehr und Netzwerkauslastung werden gezielt und reproduzierbar mit dem Tool iperf simuliert.
+	\item Bei vermuteten TCP/IP Problemen wird Wireshark als Sniffer verwendet und die aufgezeichneten Datenströme abgespeichert.
+	\item Ein Test wird erst begonnen, wenn sein Vorgänger erfolgreich durchgeführt wurde.
+\end{itemize}
 % section voraussetzungen (end)
 
 \section{Vorbereitungen} % (fold)
 \label{sec:vorbereitungen}
-Was muss vor einem Test gemacht werden. Spezielle Einstellungen
+\paragraph{Vor allen Tests}\label{ssub:vorbereitungen_vor_allen_tests} % (fold)
+	\begin{itemize}
+		\item Auf den PCs auf denen der Server und die Clients laufen werden alle Firewalls deaktiviert oder die verwendeten Ports explizit freigeschaltet.
+	\end{itemize}
+% paragraph vorbereitungen_vor_allen_tests (end)
+\paragraph{Vor jeder Test-Iteration}\label{ssub:vorbereitungen_vor_jeder_testiteration} % (fold)
+	\begin{itemize}
+		\item Testprotokoll zur Ausfüllung vorbereiten.
+	\end{itemize}
+% paragraph vorbereitungen_vor_jeder_testiteration (end)
 % section vorbereitungen (end)
+
+\section{Nachbearbeitungen}\label{sec:nachbearbeitungen} % (fold)
+	\paragraph{Nach allen Tests}\label{ssub:nach_allen_tests} % (fold)
+		\begin{itemize}
+			\item Alle Tests müssen erfolgreich absolviert worden sein.
+			\item Alle Unit-Tests funktionieren (Green Bar).
+		\end{itemize}
+	% paragraph nach_allen_tests (end)
+	\paragraph{Nach jeder Test-Iteration}\label{ssub:nach_jeder_test_iteration} % (fold)
+		\begin{itemize}
+			\item Alle gefundenen Fehler wurden korrigiert.
+			\item Alle Unit-Tests funktionieren (Green Bar).
+			\item Testprotokoll wurde vollständig ausgefüllt.
+		\end{itemize}
+	% paragraph nach_jeder_test_iteration (end)
+% section nachbearbeitungen (end)
 
 \section{Systemtest} % (fold)
 \label{sec:systemtest}
