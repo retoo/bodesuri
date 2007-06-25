@@ -6,13 +6,15 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
-import applikation.client.konfiguration.Konfiguration;
-
 import pd.SpielThreads;
 import pd.zugsystem.ZugEingabe;
+import applikation.client.events.VerbindungAbgebrochenEvent;
+import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
+import dienste.netzwerk.Nachricht;
+import dienste.netzwerk.VerbindungWegException;
 import dienste.serialisierung.SerialisierungsKontext;
 
 public class Spiel extends Observable implements SerialisierungsKontext {
@@ -28,6 +30,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public String spielerName;
 	public Spieler spielerIch;
 	public applikation.client.pd.Spieler aktuellerSpieler;
+	public SteuerungsZustand steuerungsZustand;
 	public Konfiguration konfiguration;
 
 	private String hinweis;
@@ -37,10 +40,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public LinkedList<ZugEingabe> zugHistory;
 	private int zaehler = -1;
 
-	public SteuerungsZustand steuerungsZustand;
 	public Karte ausgewaehlteKarte;
-
-
 
 	public Spiel(Konfiguration konfig) {
 		this.konfiguration = konfig;
@@ -127,5 +127,13 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, spiel);
+	}
+	
+	public void sende(Nachricht nachricht) {
+		try {
+			endpunkt.sende(nachricht);
+		} catch (VerbindungWegException e) {
+			queue.enqueue(new VerbindungAbgebrochenEvent());
+		}
 	}
 }

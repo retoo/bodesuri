@@ -37,7 +37,7 @@ public class KarteTauschenAuswaehlen extends ClientZustand {
 		spiel.ausgewaehlteKarte = null;
 		karte.setAusgewaehlt(false);
 		spiel.spielerIch.getKarten().remove(karte);
-		spiel.endpunkt.sende(new KartenTausch(karte.getKarte()));
+		spiel.sende(new KartenTausch(karte.getKarte()));
 		return KarteTauschenBekommen.class;
 	}
 
