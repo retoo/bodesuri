@@ -88,12 +88,10 @@ public class BotController extends Controller {
 
 		List<ZugEingabe> moeglich = spiel.spielerIch.getMoeglicheZuege();
 
-		if (gui) {
 			try {
-				Thread.sleep(750); // "denken"
+				Thread.sleep(1000); // "denken"
 			} catch (InterruptedException e) {
 			}
-		}
 
 		IdentityHashMap<Karte, applikation.client.pd.Karte> karten = new IdentityHashMap<Karte, applikation.client.pd.Karte>();
 

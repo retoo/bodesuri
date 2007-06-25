@@ -25,11 +25,12 @@ Zwischen Client und Server werden Nachrichten verschiedener Typen zur Synchronis
 	\label{fig:client_server}
 \end{figure}
 
-Die Validierung der gespielten Züge geschieht auf dem Client, der Server ist zuständig für die Koordination des Spielablaufs und für die Kommunikation zwischen den Spielern.
+Die Validierung der gespielten Züge geschieht sowohl auf dem Client als auch auf dem Server. Der Server ist ausserdem noch zuständig für die Koordination des Spielablaufs und für die Kommunikation zwischen den Spielern.
 
 \subsection{Architektonische Ziele \& Einschränkungen} % (fold)
 \label{sub:architektonische_ziele_einschraenkungen}
-\paragraph{Designentscheidungen}\label{ssub:designentscheidungen} % (fold)
+\subsubsection{Designentscheidungen}
+
 \subparagraph{Zustandsautomat} % (fold)
 \label{ssub:zustandsautomat}
 Unser Spiel hat einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite. Der grösste Teil der Abläufe wird von Events im Userinterface oder von Netzwerk-Nachrichten ausgelöst. Darum haben wir uns entschlossen, den Spielablauf in einem Zustandsautomaten zu verpacken.
@@ -122,7 +123,7 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 \subsubsection{Package pd.regelsystem, pd.zugsystem} % (fold)
 \label{ssub:package_pd_regelsystem}
 \subparagraph{Beschreibung}
-Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnet die daraus resultierenden Aktionen in der Problem-Domain (Figur von Feld X auf Feld Y verschieben).
+Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnen die daraus resultierenden Aktionen in der Problem-Domain (Figur von Feld X auf Feld Y verschieben).
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -183,9 +184,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 \subsubsection{Package dienste.automat} % (fold)
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung}
-Beinhaltet einen Zustandsautomaten der im Client und im Server eine gezielte Abarbeitung
-des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten
-Bahnen zwischen den Zuständen hin und her.
+Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her.
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -829,7 +828,7 @@ Das Spiel besteht aus verschiedenen Views:
 
 Im Verlauf der ersten Tests mit RMI stellte sich schnell heraus, dass RMI weit mehr kann als für das Projekt notwendig wäre und es dem Projekt somit unnötig Komplexität hinzufügt. Andererseits stellt RMI  einige Anforderungen an die Client/Server-Struktur, die sich nur schwer mit den Projektanforderungen decken lassen. So kann RMI nur erschwert hinter Firewalls betrieben werden und eine Kommunikation über ein durch NAT\footnote{Network Adress Translation. Firewall-Feature welches Netzbereiche auf andere Netzbereiche abbildet. Wird häufig verwendet, um private Adressbereiche im Internet hinter einer einzelnen Adresse zu verstecken.} verstecktes Netzwerk ist gar nicht erst möglich. Da die Internet-Zugangslösungen in den meisten Haushalten auf Firewalls und NAT basieren, könnte das Spiel von einem grösseren Teil der potenziellen Kundschaft gar nicht gespielt werden.
 
-Wir entschieden uns auf Grund dieser Probleme, auf eine eigene Lösung umzusteigen, welche auf den Java-Klassen Socket und Object(Input|Output)Stream basiert. Insgesamt gingen etwa 10 Stunden Arbeit für diese Umstellung verloren.
+Wir entschieden uns aufgrund dieser Probleme, auf eine eigene Lösung umzusteigen, welche auf den Java-Klassen Socket und Object(Input|Output)Stream basiert. Insgesamt gingen etwa 10 Stunden Arbeit für diese Umstellung verloren.
 % subsection rmi (end)
 
 \subsection{Java 2D} % (fold)
