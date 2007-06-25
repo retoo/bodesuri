@@ -31,7 +31,7 @@ Dieses Dokument ist die Grundlage für das ganze Projekt und hat deshalb Gültig
 
 \subsection{Übersicht}
 
-Der folgende Abschnitt verschafft eine Übersicht des Projektes. Im Abschnitt 3 werden die Projektmitglieder vorgestellt. Als weiteres wird das Zeitmanagement erläutert und die Meilensteine festgelegt. Abschnitt 5 behandelt die möglichen Risiken und ihre Auswirkungen auf das Projekt. Darauf folgt eine Auflistung der einzelnen Arbeitspakete, die auf das Projekt präzise zusammengestellt wurden, sowie die verwendete Infrastruktur. Zum Schluss werden die Qualitätsmassnahmen gesucht und festgehalten.
+Der folgende Abschnitt verschafft eine Übersicht des Projektes. Im Abschnitt \ref{projektorganisation} werden die Projektmitglieder vorgestellt. Als weiteres wird das Zeitmanagement erläutert und die Meilensteine festgelegt. Abschnitt \ref{risiko_management} behandelt die möglichen Risiken und ihre Auswirkungen auf das Projekt. Darauf folgt eine Auflistung der einzelnen Arbeitspakete, die für das Projekt präzise zusammengestellt wurden, sowie die verwendete Infrastruktur. Zum Schluss werden die Qualitätsmassnahmen festgehalten.
 
 
 \section{Projektübersicht}
@@ -44,10 +44,11 @@ Wir möchten mit diesem Projekt unser Wissen aus den Modulen Software Engineerin
 
 \subsection{Annahmen und Einschränkungen}
 
-Jedem einzelnen Projektmitglied wird eine Zeitspanne von 100 Stunden zur Verfügung gestellt, um entsprechende Arbeitspakete auszuführen. Wenn am Ende noch genug Zeit vorhanden ist, werden dem Spiel weitere Features (Arbeitspakete mit der Priorität 3) hinzugefügt. Anderenfalls werden diese Arbeitspakete nicht implementiert, um den Abgabetermin einhalten zu können.
+Jedem einzelnen Projektmitglied wird eine Zeitspanne von 100 Stunden zur Verfügung gestellt, um entsprechende Arbeitspakete auszuführen. Wenn am Ende noch genug Zeit vorhanden ist, werden dem Spiel weitere Features (Arbeitspakete mit der Priorität 3) hinzugefügt. Andernfalls werden diese Arbeitspakete nicht implementiert, um den Abgabetermin einhalten zu können.
 
 
 \section{Projektorganisation}
+\label{projektorganisation}
 
 Unser Team besteht aus fünf Mitgliedern. Alle sind gleichberechtigt.
 
@@ -103,8 +104,8 @@ Start      & Ende       & Wochen & Inhalt         & \multicolumn{2}{l}{Meilenste
 
 \subsubsection{Besprechungen}
 
-Alle Beteiligten treffen sich jeweils Dienstag Nachmittags zur Teambesprechung. Wichtige Entscheidungen werden soweit möglich nur dort getroffen.\\
-Für wichtige Mitteilungen wird eine Mailingliste eingerichtet. Protokolle, Traktandenlisten und weitere wichtige Dokumenten werden über ein Wiki verwaltet.
+Alle Beteiligten treffen sich jeweils Dienstag nachmittags zur Teambesprechung. Wichtige Entscheidungen werden soweit möglich nur dort getroffen.\\
+Für wichtige Mitteilungen wird eine Mailingliste eingerichtet. Protokolle, Traktandenlisten und weitere wichtige Dokumente werden in einem Wiki verwaltet.
 
 \subsubsection{Releases}
 
@@ -120,6 +121,7 @@ Final     & 18.6.2007   & Finale Version \\
 \end{tabular}
 
 \section{Risiko-Management}
+\label{risiko_management}
 
 \begin{tabular}{@{} p{2.7cm} p{3.6cm} p{4cm} l l @{}}
 \toprule
@@ -166,7 +168,7 @@ Siehe separates Dokument \texttt{Projektplan.xls}.
 	\item Java 2D
 	\item \LaTeX{}, Microsoft Excel
 	\item Apache Ant
-	\item trac (Wiki, BugTracker)
+	\item Trac (Wiki, Bugtracker)
 \end{itemize}
 
 
@@ -175,13 +177,18 @@ Siehe separates Dokument \texttt{Projektplan.xls}.
 Um die Qualität der Applikation zu gewährleisten werden folgende Massnahmen ergriffen:
 \begin{itemize}
 	\item \textbf{Unit-Tests}: Fortlaufende Tests der Funktionalität mittels Unit-Tests (JUnit). Es werden XX\% Codeabdeckung angestrebt.
-	\item \textbf{Interne Tests}: Regelmässige, auf den Usecases basierende Tests mittels Testprotokollen
-	\item \textbf{Externe Tests}: Usability-Tests über externe Tester (potenzielle Benutzer)
+	\item \textbf{Interne Tests}: Regelmässige, auf den Usecases basierende Tests mittels Testprotokollen.
+	\item \textbf{Externe Tests}: Usability-Tests über externe Tester (potenzielle Benutzer).
 %	\item \textbf{Bug-Tracking}: Fortlaufendes „Tracken“ von Bugs in einer Bug-Verwaltungs-Software
-	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet
-	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle
-	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und geprüft, ob die Anwendung den Anforderungsspezifikationenen entspricht.
+	\item \textbf{Continuous Integration}: Mittels Cruise-Control wird der Zustand der Applikation automatisch nach jeder Änderung getestet.
+	\item \textbf{Revision Control}: Der komplette Quellcode der Applikation befindet sich in einem zentralen Subversion-Repository und steht somit unter Versionskontrolle.
+	\item \textbf{Regelmässige Reviews}: In diesen werden die Coderichtlinien kontrolliert und miteinander schwierige Codestellen und Probleme noch einmal angeschaut und verbessert.
 \end{itemize}
 
-Der Verlauf der Qualitätssicherung wird in separaten Dokumenten fesgehalten (\texttt{code.pdf}, \texttt{review.pdf}, \texttt{test.pdf})
+Der Verlauf der Qualitätssicherung wird in separaten Dokumenten fesgehalten:
+\begin{itemize}
+	\item Coderichtlinien in \texttt{code.pdf}
+	\item Reviews im Wiki
+	\item Tests in \texttt{test.pdf}
+\end{itemize}
 \end{document}
