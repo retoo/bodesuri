@@ -10,6 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
@@ -52,6 +53,7 @@ public class LobbyView extends JFrame implements Observer {
 
 		for (Spieler s : spieler) {
 			SpielerView sv = new SpielerView(s);	// SpielverViews erstellen
+			sv.setBorder(BorderFactory.createEmptyBorder(2, 7, 5, 5));
 			spielerViews.put(s.getSpieler().hashCode(), sv);
 			s.getSpieler().addObserver(this); 		// Observer auf PD.Spieler
 			pdSpieler.add(s.getSpieler());
@@ -73,15 +75,13 @@ public class LobbyView extends JFrame implements Observer {
 		spielerPanel.setBorder(new TitledBorder("Anwesende Spieler"));
 		spielerPanel.setMaximumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		spielerPanel.setLayout(new BoxLayout(spielerPanel, BoxLayout.Y_AXIS));
+		spielerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		// Panels dem Frame hinzufügen
 		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		viewPanel.add(introTitelLabel);
 		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		for (SpielerView spielerView : spielerViews.values()) {
-			spielerPanel.add(Box.createRigidArea(new Dimension(5, 0)));
 			spielerPanel.add(spielerView);
-			spielerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-			spielerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
 		viewPanel.add(spielerPanel);
 		ChatView chatView = new ChatView(chat, steuerung);
