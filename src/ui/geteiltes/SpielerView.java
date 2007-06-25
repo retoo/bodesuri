@@ -36,7 +36,7 @@ public class SpielerView extends JPanel implements Observer {
 		Spieler spieler = (Spieler) observable;
 		if (spieler.getAmZug()) {
 			this.name.setForeground(Color.WHITE);
-		} else if (spieler.getHatAufgebeben()) {
+		} else if (spieler.hatAufgegeben()) {
 			this.name.setForeground(Color.GRAY);
 		} else {
 			this.name.setForeground(Color.BLACK);

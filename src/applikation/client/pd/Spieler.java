@@ -9,7 +9,7 @@ import pd.zugsystem.ZugEingabe;
 
 public class Spieler extends Observable {
 	private boolean amZug;
-	private boolean hatAufgebeben;
+	private boolean hatAufgegeben;
 	public pd.spieler.Spieler spieler;
 
 	private Karten karten;
@@ -17,7 +17,7 @@ public class Spieler extends Observable {
 	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.amZug = false;
-		this.hatAufgebeben = false;
+		this.hatAufgegeben = false;
 		this.karten = new Karten(spieler.getKarten());
 	}
 
@@ -55,12 +55,12 @@ public class Spieler extends Observable {
 		notifyObservers(amZug);
 	}
 
-	public boolean getHatAufgebeben() {
-    	return hatAufgebeben;
+	public boolean hatAufgegeben() {
+    	return hatAufgegeben;
     }
 
 	public void setHatAufgebeben(boolean hatAufgebeben) {
-    	this.hatAufgebeben = hatAufgebeben;
+    	this.hatAufgegeben = hatAufgebeben;
 		setChanged();
 		notifyObservers();
     }
