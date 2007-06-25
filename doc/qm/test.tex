@@ -14,7 +14,7 @@
 	\item Die Tests werden alle im Vierspielermodus durchgeführt.
 	\item Bots werden nur für Tests eingesetzt, welche sie reproduzierbar ein weiteres Mal durchlaufen können.
 	\item Netzwerkverkehr und Netzwerkauslastung werden gezielt und reproduzierbar mit dem Tool iperf simuliert.
-	\item Bei vermuteten TCP/IP Problemen wird Wireshark als Sniffer verwendet und die aufgezeichneten Datenströme abgespeichert.
+	\item Bei vermuteten TCP/IP Problemen wird Wireshark als Sniffer verwendet und die aufgezeichneten Datenströme abgespeichert und dem Test eindeutig zugeordnet.
 	\item Ein Test wird erst begonnen, wenn sein Vorgänger erfolgreich durchgeführt wurde.
 \end{itemize}
 % section voraussetzungen (end)
@@ -48,6 +48,174 @@
 		\end{itemize}
 	% paragraph nach_jeder_test_iteration (end)
 % section nachbearbeitungen (end)
+
+\section{JUnit-Tests}\label{sec:junit_tests} % (fold)
+Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Problem-Domain Klassen abdecken und weite Teile der Applikationsschicht. Die UI- und Dienste-Schicht werden nicht explizit und nur punktuell durch JUnit-Tests abgedeckt. Sie werden hauptsächlich durch die Use-Case Tests manuell getestet.
+\subsection{JUnit-Tests für das Package <<pd>>}\label{sub:junit_tests_für_das_package_pd_} % (fold)
+	\paragraph{ProblemDomainTestCase}\label{ssub:problemdomaintestcase} % (fold)
+	Erweitert den eingebauten Typen <<TestCase>> um das Spiel, Brett und den Kartengeber. Die Klasse bietet folgende zusätzliche Methoden:
+	\begin{itemize}
+		\item BankFeld bank(int spieler) --> Bankfeld des Spielers.
+		\item Spieler spieler(int nummer) --> Spieler anhand der Nummer.
+		\item LagerFeld lager(int spieler) --> erstes Lagerfeld des Spielers.
+		\item LagerFeld lager(int spieler, int feld) --> konkretes Lagerfeld des Spielers.
+		\item HimmelFeld himmel(int spieler) --> erstes Himmelfeld des Spielers.
+		\item HimmelFeld himmel(int spieler, int feld) --> konkretes Himmelfeld des Spielers.
+	\end{itemize}
+	% paragraph problemdomaintestcase (end)
+	\paragraph{BrettTest}\label{ssub:bretttest} % (fold)
+	Testet die Funktionalitäten des Brettes. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testGetAlleFelder() --> Prüft, ob alle Felder vorhanden sind.
+		\item testGetFreiesLagerFeldVon() --> Prüft, ob Freies Lagerfeld gefunden wird und ob keines gefunden wird, wenn alle Lagerfelder besetzt sind.
+	\end{itemize}
+	% paragraph bretttest (end)
+	\paragraph{FeldTest}\label{ssub:feldtest} % (fold)
+	Testet die Funktionalitäten des Feldes. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testNächstesVorheriges() --> Prüft Feldverkettung.
+		\item testGetNtesFeld() --> Prüft Feldverkettung und Getter-Methode.
+		\item testIstFrei() --> Prüft Getter-Methode.
+		\item testIstBesetzt() --> Prüft Getter-Methode.
+		\item testVersetzeFigurAuf() --> Versetzt Figur auf anderes Feld.
+		\item testGetHimmel() --> Prüft auf Konsistenz der Himmelfelder.
+		\item testGetSpieler() --> Prüft auf Konstistenz des Spielers.
+		\item testGetNummer() --> Prüft auf Konsistenz der Feldnummerierung.
+	\end{itemize}
+	% paragraph feldtest (end)
+	\paragraph{KartenTest}\label{ssub:kartentest} % (fold)
+	Testet die Funktionalitäten der Karten. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testKarte() --> Prüft Getter-Methoden und Initialisierung der Karte.
+		\item testDeck() --> Prüft Deck, ob korrekt initialisiert.
+		\item testGetKarte() --> Prüft Verhalten beim Mischeln.
+	\end{itemize}
+	% paragraph kartentest (end)
+	\paragraph{SpielTest}\label{ssub:spieltest} % (fold)
+	Testet die Funktionalitäten des Spiels. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testSpieler() --> Prüft auf konsistentes Verhalten des Spielers innerhalb des Spiels.
+	\end{itemize}
+	% paragraph spieltest (end)
+	\paragraph{WegTest}\label{ssub:wegtest} % (fold)
+	Testet die Funktionalität des Zugverhaltens. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testWegVorwärts() --> Testet normalen Vorwärtsweg.
+		\item testWegVorwärtsÜberGrenze() --> Testet Vorwärtsweg über Grenze.
+		\item testWegRückwärts() --> Testet normalen Rückwärtsweg.
+		\item testWegRückwärtsÜberGrenze() --> Testet Rückwärtsweg über Grenze.
+		\item testWegVonEinemHimmelZumAnderen() --> Testet Weg vom einen Himmelfeld zum anderen.
+	\end{itemize}
+	% paragraph wegtest (end)
+	\paragraph{ZugTest}\label{ssub:zugtest} % (fold)
+	Testet die Funktionalität des Zugsystems. Folgende Tests werden durchgeführt:
+	\begin{itemize}
+		\item testZugEingabe() --> Prüft, ob Zugeingabe richtig validiert wird.
+		\item testAktionAufBesetztesFeld() --> Prüft, ob verbotene Aktionen verhindert werden.
+	\end{itemize}
+	% paragraph zugtest (end)
+	\subsubsection{JUnit-Tests für das Package <<regelsystem>>}\label{ssub:junit_tests_für_das_package_regelsystem_} % (fold)
+		\paragraph{RegelTestCase}\label{ssub:regeltestcase} % (fold)
+		Erweitert den eingebauten Typen <<TestCase>> um einen Spieler, Startfeld, Zielfeld und eine Regel. Die Klasse bietet folgende zusätzliche Methoden:
+		\begin{itemize}
+			\item sollteValidieren() --> Validiert eine Standardregel.
+			\item sollteValidieren(Regel regel) --> Validiert eine konkrete Regel.
+			\item sollteVerstossGeben() --> Prüft, ob Standardregel Verstoss verursacht.
+			\item sollteVerstossGeben(Regel regel) --> Prüft, ob konkrete Regel Verstoss verursacht.
+			\item List<Bewegung> getBewegungen() --> Erstellt eine Liste mit Bewegungen.
+		\end{itemize}
+		% paragraph regeltestcase (end)
+		\paragraph{RegelVeroderungTest}\label{ssub:regelveroderungtest} % (fold)
+		Testet die Funktionalitäten der RegelVeroderung. Folgende Tests werden durchgeführt:
+		\begin{itemize}
+			\item testVier() --> Validiert Viererregel (normal, vorwärts).
+			\item testVierFalsch() --> Validiert Viererregel (Verstoss, vorwärts).
+			\item testVierRückwärts() --> Validiert Viererregel (normal, rückwärts).
+			\item testVierRückwärtsFalsch() --> Validiert Viererregel (Verstoss, rückwärts).
+		\end{itemize}
+		% paragraph regelveroderungtest (end)
+		\paragraph{RegelVerstossTest}\label{ssub:regelverstosstest} % (fold)
+		Testet die Funktionalitäten eines Regelverstosses. Folgende Tests werden durchgeführt:
+		\begin{itemize}
+			\item testRegelVerstoss() --> Prüft, ob Regelverstösse richtig geworfen werden.
+		\end{itemize}
+		% paragraph regelverstosstest (end)
+		\paragraph{RückwärtsRegelTest}\label{ssub:rückwärtsregeltest} % (fold)
+		Testet die Funktionalitäten der Rückwärtsregel. Folgende Tests werden durchgeführt:
+		\begin{itemize}
+			\item testRückwärts() --> 
+			\item testRückwärtsVorwärts() --> 
+			\item 
+		\end{itemize}
+		% paragraph rückwärtsregeltest (end)
+		\paragraph{SiebnerRegelTest}\label{ssub:siebnerregeltest} % (fold)
+		
+		% paragraph siebnerregeltest (end)
+		\paragraph{StartRegelTest}\label{ssub:startregeltest} % (fold)
+		
+		% paragraph startregeltest (end)
+		\paragraph{TauschRegelTest}\label{ssub:tauschregeltest} % (fold)
+		
+		% paragraph tauschregeltest (end)
+		\paragraph{VorwärtsRegelTest}\label{ssub:vorwärtsregeltest} % (fold)
+		
+		% paragraph vorwärtsregeltest (end)
+	% subsubsection junit_tests_für_das_package_regelsystem_ (end)
+% subsection junit_tests_für_das_package_pd_ (end)
+\subsection{JUnit-Tests für das Package <<applikation>>}\label{sub:junit_tests_für_das_package_applikation_} % (fold)
+	\paragraph{TestSpieler}\label{ssub:testspieler} % (fold)
+	
+	% paragraph testspieler (end)
+% subsection junit_tests_für_das_package_applikation_ (end)
+\subsection{JUnit-Tests für das Package <<dienste>>}\label{sub:junit_tests_für_das_package_dienste_} % (fold)
+	\paragraph{TestAutomat}\label{ssub:testautomat} % (fold)
+	
+	% paragraph testautomat (end)
+	\paragraph{AutomatenTest}\label{ssub:automatentest} % (fold)
+	
+	% paragraph automatentest (end)
+	\paragraph{ServerTest}\label{ssub:servertest} % (fold)
+	
+	% paragraph servertest (end)
+	\paragraph{SerialisierungTest}\label{ssub:serialisierungtest} % (fold)
+	
+	% paragraph serialisierungtest (end)
+	\subsubsection{JUnit-Tests für das Package <<dienste.automat.events>>}\label{ssub:junit_tests_für_das_package_dienste_automat_events_} % (fold)
+		\paragraph{TestEventA}\label{ssub:testeventa} % (fold)
+		
+		% paragraph testeventa (end)
+		\paragraph{TestEventB}\label{ssub:testeventb} % (fold)
+		
+		% paragraph testeventb (end)
+		\paragraph{TestEventC}\label{ssub:testeventc} % (fold)
+		
+		% paragraph testeventc (end)
+		\paragraph{TestExitEvent}\label{ssub:testexitevent} % (fold)
+		
+		% paragraph testexitevent (end)
+	% subsubsection junit_tests_für_das_package_dienste_automat_events_ (end)
+	\subsubsection{JUnit-Tests für das Package <<dienste.automat.zustaende>>}\label{ssub:junit_tests_für_das_package_dienste_automat_} % (fold)
+		\paragraph{AktiverTestZustand}\label{ssub:aktivertestzustand} % (fold)
+		
+		% paragraph aktivertestzustand (end)
+		\paragraph{AktiverTestZustandAlpha}\label{ssub:aktivertestzustandalpha} % (fold)
+		
+		% paragraph aktivertestzustandalpha (end)
+		\paragraph{AktiverTestZustandBeta}\label{ssub:aktivertestzustandbeta} % (fold)
+		
+		% paragraph aktivertestzustandbeta (end)
+		\paragraph{DummyZustand}\label{ssub:dummyzustand} % (fold)
+		
+		% paragraph dummyzustand (end)
+		\paragraph{PassiverTestZustandAlpha}\label{ssub:passivertestzustandalpha} % (fold)
+		
+		% paragraph passivertestzustandalpha (end)
+		\paragraph{PassiverTestZustandBeta}\label{ssub:passivertestzustandbeta} % (fold)
+		
+		% paragraph passivertestzustandbeta (end)
+	% subsubsection junit_tests_für_das_package_dienste_automat_ (end)
+% subsection junit_tests_für_das_package_dienste_ (end)
+% section junit_tests (end)
 
 \section{Systemtest} % (fold)
 \label{sec:systemtest}
@@ -170,9 +338,11 @@ NF9 & Ausser des Spielernamens und der Serverkonfiguration müssen keine Konfigu
 \bottomrule
 \end{tabular}
 % subsection tests_anhand_der_nichtfunktionalen_anforderungen (end)
-
-
 % section systemtest (end)
+
+\section{Tests anhand konkreter Spielsituationen}\label{sec:tests_anhand_konkreter_spielsituationen} % (fold)
+
+% section tests_anhand_konkreter_spielsituationen (end)
 
 \section{Verbesserungsmöglichkeiten} % (fold)
 \label{sec:verbesserungsmöglichkeiten}
