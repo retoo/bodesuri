@@ -23,21 +23,21 @@
 
 \subsection{Personas}\label{sec:personas} 
 
-\subsubsection{Hans Müller}\label{sub:hans_müller} 
+\subsubsection{Hans Müller, 28, Familienvater}\label{sub:hans_müller} 
 
-Hans Müller, 28, Familienvater. Er ist gelernter Kaufmann und arbeitet als Sachbearbeiter bei einer Bank. Er nutzt den PC regelmäsig im Geschäft (Office, SAP und bankeigene Software). Surft privat ab und zu mal im Netz, um dort Informationen einzuholen. Kennt sich aber sonst eher wenig mit PCs aus. 
+Er ist gelernter Kaufmann und arbeitet als Sachbearbeiter bei einer Bank. Er nutzt den PC regelmäsig im Geschäft (Office, SAP und bankeigene Software). Surft privat ab und zu mal im Netz, um dort Informationen einzuholen. Kennt sich aber sonst eher wenig mit PCs aus. 
 
 Er spielt seit mehreren Jahren angefressen Dog. Zu Spitzenzeiten bis zu 3 Mal pro Woche. Er möchte Bodesuri nutzen, damit er einfacher auf die Schnelle mit seinen Kollegen zocken kann. 
 
-\subsubsection{Maria Lehner}\label{sub:maria_lehner} 
+\subsubsection{Maria Lehner, 18, Gymnasiastin}\label{sub:maria_lehner} 
 
-Maria Lehner, 18, Gymnasiastin. Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vor allem um mit ihren Kollegen per MSN zu Chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich Umwelt/Natur, da sie sich dafür interessiert. 
+Ist mit dem PC aufgewachsen und hat einen eigenen in ihrem Zimmer stehen. Sie nutzt ihn vor allem um mit ihren Kollegen per MSN zu chatten und im Internet zu surfen. Ab und zu schreibt sie auch eine Arbeit für die Schule mit Word. Maria möchte später studieren gehen, am liebsten etwas im Bereich Umwelt/Natur, da sie sich dafür interessiert. 
 
 Dog kennt sie von einem Klassenkollegen, der sie letzte Woche zu sich nach Hause zu einem Turnier eingeladen hat. Sie hat verloren und möchte nun etwas üben.
 
 \subsection{Beschreibung der Use-Cases}\label{sub:use_cases}
 \subsubsection{UC01: Spiel erstellen}\label{ssub:uc01_spiel_erstellen}
-Der Benutzer der das Spiel beherbergt startet die Serverapplikation.
+Der Benutzer, der das Spiel beherbergt, startet die Serverapplikation.
 
 \begin{tabular}{@{} l l @{}}
 	\textbf{Aktor:}											&	Spieler \\
@@ -117,7 +117,7 @@ Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erst
 \end{enumerate}
 
 \subsubsection{UC03: Spiel spielen}\label{ssub:uc03_spiel_erstellen}
-Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach werden reihum je eine Karte gezogen und die Spielfiguren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
+Das System verteilt allen Spielern Karten. Jeder Spieler tauscht mit seinem Partner eine Karte. Danach wird reihum je eine Karte gezogen und die Figuren entsprechend bewegt. Wenn die Spieler alle ihre Karten gespielt haben, verteilt das System wieder neue Karten und eine neue Runde beginnt. 
 
 \begin{tabular}{@{} l l @{}}
 	\textbf{Aktor:}														&	Spieler \\
@@ -132,15 +132,15 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 \paragraph{Actor Action}
 \begin{enumerate}
 	\item[] \vspace{3 \lineheight}
-	\item[3] Spieler wählt Karte aus die er mit dem Partner tauschen will.
+	\item[3] Spieler wählt Karte aus, die er mit dem Partner tauschen will.
 	\item[] \vspace{11 \lineheight}
-	\item[6] Spieler wählt Karte die er spielen will aus und erfasst den Zug den er damit machen will.
+	\item[6] Spieler wählt Karte die er spielen will aus und erfasst den Zug, den er damit machen will.
 \end{enumerate}
 \columnbreak
 \paragraph{Client}
 \begin{enumerate}
 	\item[] \vspace{1 \lineheight}
-	\item[2] Client erhält Spielkarten vom Server.
+	\item[2] Client erhält Karten vom Server.
 	\item[] \vspace{2 \lineheight}
 	\item[4] Client übermittelt getauschte Karte an den Server und erhält von diesem getauschte Karten des Mitspielers.
 	\item[5] Client wartet bis der Benutzer am Zug ist und visualisiert die Züge der anderen Benutzer.
@@ -167,7 +167,7 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 \begin{enumerate}
 	\item[*a] Benutzer verlässt das Spiel.
 	\begin{enumerate}
-		\item System benachrichtigt den Server, welcher alle anderen Spieler benachrichtigt.
+		\item System benachrichtigt den Server, der alle anderen Spieler benachrichtigt.
 		\item Spiel wird beendet.
 	\end{enumerate}
 	
@@ -190,7 +190,7 @@ Das System verteilt allen Spielern Spielkarten. Jeder Spieler tauscht mit seinem
 	\item[9a] Der Spieler hat gewonnen.
 	\begin{enumerate}
 		\item Der Partner hat auch schon gewonnen.\newline
-		Das System zeigt an welche Gruppe gewonnen hat und zeigt eine kleine Rangliste.
+		Das System zeigt, welche Gruppe gewonnen hat, und eine kleine Rangliste.
 		\item Der Partner hat noch nicht gewonnen.
 		\begin{enumerate}
 			\item System benachrichtigt den Server.
@@ -242,8 +242,8 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 % paragraph datenhaltung (end)
 \paragraph{Kommunikationsschnittstelle}\label{ssub:kommunikationsschnittstelle} % (fold)
 \begin{itemize}
-	\item Die Client/Server Kommunikation wird mit Java Sockets realisiert.
-	\item Daten bzw. Objekte werden über Java Sockets serialisiert.
+	\item Die Client/Server-Kommunikation wird mit Java-Sockets realisiert.
+	\item Daten bzw. Objekte werden über Java-Sockets serialisiert.
 	\item Für ein Spiel ist ein Server unabdingbar.
 	\item Jeder teilnehmende Spieler stellt einen Client dar.
 \end{itemize}
@@ -253,7 +253,7 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 \subsection{Anforderungen im Einzelnen}\label{sub:anforderungen_im_einzelnen} % (fold)
 \subsubsection{Randbedingungen für den Entwurf}\label{ssub:randbedingungen_für_den_entwurf} % (fold)
 
-Als Code-Richtlinien werden weitgehend die "<Sun Coding Guidelines"> übernommen (siehe separates Dokument).
+Als Coderichtlinien werden weitgehend die "<Sun Coding Guidelines"> übernommen (siehe separates Dokument \texttt{code.pdf}).
 
 \paragraph{Einschränkungen bezüglich Software}\label{ssub:einschränkungen_bzgl_software} % (fold)
 \begin{itemize}
