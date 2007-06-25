@@ -1,5 +1,6 @@
 package applikation.client.zugautomat.zustaende;
 
+import pd.regelsystem.Regel;
 import pd.regelsystem.TauschRegel;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
@@ -32,13 +33,15 @@ public class StartWaehlen extends ClientZugZustand {
 		if (spieler.istFertig()) {
 			spieler = spieler.getPartner();
 		}
+		Regel regel = spielDaten.karte.getRegel();
+
+		boolean eigeneFigur = (figur != null && figur.istVon(spieler));
+		boolean tauschRegel = (figur != null && regel instanceof TauschRegel);
 
 		/* Prüfen ob die Markierung des StartFeldes Sinn macht */
-		if  (figur != null && figur.istVon(spieler) || /* Die Figur ghört dem Spieler (oder dem Partner, falls im Endmodus) */
-			spielDaten.karte.getRegel() instanceof TauschRegel) { /* ODER es ist eine Tauschregel */
-
-				spielDaten.setStart(feld);
-				return ZielWaehlen.class;
+		if  (eigeneFigur || tauschRegel) {
+			spielDaten.setStart(feld);
+			return ZielWaehlen.class;
 		} else {
 			return StartWaehlen.class;
 		}
