@@ -35,7 +35,6 @@ public class SteuerungsButtonView extends JPanel implements Observer {
 		spiel.addObserver(this);
 
 		aufgeben = new JButton("Aufgeben");
-		aufgeben.setOpaque(false);
 		aufgeben.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SteuerungsButtonView.this.steuerung.aufgeben();
@@ -43,12 +42,19 @@ public class SteuerungsButtonView extends JPanel implements Observer {
 		});
 
 		tauschen = new JButton("Tauschen");
-		tauschen.setOpaque(false);
 		tauschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SteuerungsButtonView.this.steuerung.kartenTauschBestaetigen();
 			}
 		});
+		
+		// Auf dem Mac sollen die Buttons transpartent sein (sie haben sonst
+		// weisse Ecken). Unter Windows sieht dies aber nicht gut aus.
+		String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.startsWith("mac os x")) {
+			aufgeben.setOpaque(false);
+			tauschen.setOpaque(false);
+		}
 
 		add(new JLabel(), "");
 		add(aufgeben, "aufgeben");

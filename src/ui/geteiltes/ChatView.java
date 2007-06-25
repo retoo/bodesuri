@@ -1,6 +1,7 @@
 package ui.geteiltes;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
@@ -36,6 +37,12 @@ public class ChatView extends JPanel implements Observer {
 
 		// Layout zusammenstellen
 		chatArea = new JTextArea();
+		// Dialog-Schrift setzen. Unter Windows haben wir sonst Courier als
+		// Schriftart.
+		Font chatAreaFont = new Font("Dialog",
+		                                 chatArea.getFont().getStyle(),
+		                                 chatArea.getFont().getSize());
+		chatArea.setFont(chatAreaFont);
 		chatArea.setEditable(false);
 		chatArea.setRows(3);
 

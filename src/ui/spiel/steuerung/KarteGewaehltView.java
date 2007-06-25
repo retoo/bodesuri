@@ -11,12 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-import dienste.observer.ListChangeEvent;
-import dienste.observer.ListChangeEvent.ListChangeType;
-
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Karten;
+import dienste.observer.ListChangeEvent;
+import dienste.observer.ListChangeEvent.ListChangeType;
 
 public class KarteGewaehltView extends JPanel implements Observer {
 	private JLabel name;
@@ -28,14 +27,20 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		setOpaque(false);
 
 		name = new JLabel();
-		name.setOpaque(false);
 		Font nameFont = name.getFont().deriveFont(Font.BOLD, 16);
 		name.setFont(nameFont);
 		name.setForeground(Color.white);
+		name.setOpaque(false);
 
 		beschreibung = new JTextArea();
-		beschreibung.setOpaque(false);
+		// Dialog-Schrift setzen. Unter Windows haben wir sonst Courier als
+		// Schriftart.
+		Font beschreibungFont = new Font("Dialog",
+        		                         beschreibung.getFont().getStyle(),
+        		                         beschreibung.getFont().getSize());
+		beschreibung.setFont(beschreibungFont);
 		beschreibung.setLineWrap(true);
+		beschreibung.setOpaque(false);
 		beschreibung.setEnabled(false);
 		beschreibung.setWrapStyleWord(true);
 		beschreibung.setDisabledTextColor(Color.white);
