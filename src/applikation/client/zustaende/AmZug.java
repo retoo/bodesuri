@@ -27,8 +27,6 @@ public class AmZug extends ClientZustand {
 	}
 
 	public void onExit() {
-		/* TODO: Robin: wollen wir das evtl. auch in den zguatuomatenabschluss rein tun? (-reto) */
-		spiel.setSteuerungsZustand(SteuerungsZustand.NICHTS);
 		spiel.zugAutomat.step(new ZugautomatEndeEvent());
 	}
 
