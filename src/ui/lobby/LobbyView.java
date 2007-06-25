@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
-import java.util.Map.Entry;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -78,9 +77,9 @@ public class LobbyView extends JFrame implements Observer {
 		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 		viewPanel.add(introTitelLabel);
 		viewPanel.add(Box.createRigidArea(new Dimension(0, 10)));
-		for (Entry<Object, SpielerView> sv : spielerViews.entrySet() ) {
+		for (SpielerView spielerView : spielerViews.values()) {
 			spielerPanel.add(Box.createRigidArea(new Dimension(5, 0)));
-			spielerPanel.add(sv.getValue());
+			spielerPanel.add(spielerView);
 			spielerPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 			spielerPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		}
