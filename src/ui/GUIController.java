@@ -88,13 +88,22 @@ public class GUIController extends Controller {
 
 		super.beenden();
 	}
+
 	/**
-	 * Setzt den nativen Look & Feel für Windows. Auf allen anderen Plattformen
-	 * wird eine Exception geworfen, die ignoriert wird.
+	 * Setzt den nativen Look & Feel für Windows oder Linux.
 	 */
 	private static void setNativeLookAndFeel() {
+		String osName = System.getProperty("os.name").toLowerCase();
+		if (osName.startsWith("windows")) {
+			trySetLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} else if (osName.startsWith("linux")) {
+			trySetLookAndFeel("com.sun.java.swing.plaf.gtk.GTKLookAndFeel");
+		}
+	}
+
+	private static void trySetLookAndFeel(String laf) {
 		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+			UIManager.setLookAndFeel(laf);
 		} catch (Exception e) {
 		}
 	}
