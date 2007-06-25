@@ -35,6 +35,7 @@ public class SteuerungsButtonView extends JPanel implements Observer {
 		spiel.addObserver(this);
 
 		aufgeben = new JButton("Aufgeben");
+		aufgeben.setToolTipText("Alle Karten ablegen und diese Runde aussetzen.");
 		aufgeben.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SteuerungsButtonView.this.steuerung.aufgeben();
@@ -42,6 +43,7 @@ public class SteuerungsButtonView extends JPanel implements Observer {
 		});
 
 		tauschen = new JButton("Tauschen");
+		tauschen.setToolTipText("Karte dem Partner geben");
 		tauschen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SteuerungsButtonView.this.steuerung.kartenTauschBestaetigen();
