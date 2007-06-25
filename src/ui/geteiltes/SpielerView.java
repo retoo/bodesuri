@@ -37,7 +37,7 @@ public class SpielerView extends JPanel implements Observer {
 		if (spieler.getAmZug()) {
 			this.name.setForeground(Color.WHITE);
 		} else if (spieler.hatAufgegeben()) {
-			this.name.setForeground(Color.GRAY);
+			this.name.setForeground(Color.BLACK);
 		} else {
 			this.name.setForeground(Color.BLACK);
 		}

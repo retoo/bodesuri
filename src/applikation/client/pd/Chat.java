@@ -30,11 +30,10 @@ public class Chat extends ObservableList<String> {
     }
 
 	public void meldeAufgabe(AufgabeInformation aufgabe) {
-		add(getZeit() + ": " + aufgabe.spieler + " kann nicht mehr ziehen");
+		add(getZeit() + ": " + aufgabe.spieler + " gibt auf.");
     }
 
 	public void meldeRundenStart() {
-		System.out.println("Melde Rundenstart");
 		add(getZeit() + ": Rundenstart");
 	}
 }
