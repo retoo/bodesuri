@@ -14,7 +14,7 @@
 	\item Die Tests werden alle im Vierspielermodus durchgeführt.
 	\item Bots werden nur für Tests eingesetzt, welche sie reproduzierbar ein weiteres Mal durchlaufen können.
 	\item Netzwerkverkehr und Netzwerkauslastung werden gezielt und reproduzierbar mit dem Tool iperf simuliert.
-	\item Bei vermuteten TCP/IP Problemen wird Wireshark als Sniffer verwendet und die aufgezeichneten Datenströme abgespeichert und dem Test eindeutig zugeordnet.
+	\item Bei vermuteten TCP/IP-Problemen wird Wireshark als Sniffer verwendet und die aufgezeichneten Datenströme abgespeichert und dem Test eindeutig zugeordnet.
 	\item Ein Test wird erst begonnen, wenn sein Vorgänger erfolgreich durchgeführt wurde.
 \end{itemize}
 % section voraussetzungen (end)
@@ -23,7 +23,7 @@
 \label{sec:vorbereitungen}
 \paragraph{Vor allen Tests}\label{ssub:vorbereitungen_vor_allen_tests} % (fold)
 	\begin{itemize}
-		\item Auf den PCs auf denen der Server und die Clients laufen werden alle Firewalls deaktiviert oder die verwendeten Ports explizit freigeschaltet.
+		\item Auf den PCs, auf denen der Server und die Clients laufen, werden alle Firewalls deaktiviert oder die verwendeten Ports explizit freigeschaltet.
 	\end{itemize}
 % paragraph vorbereitungen_vor_allen_tests (end)
 \paragraph{Vor jeder Test-Iteration}\label{ssub:vorbereitungen_vor_jeder_testiteration} % (fold)
@@ -50,7 +50,7 @@
 % section nachbearbeitungen (end)
 
 \section{JUnit-Tests}\label{sec:junit_tests} % (fold)
-Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Problem-Domain Klassen abdecken und weite Teile der Applikationsschicht. Die UI- und Dienste-Schicht werden nicht explizit und nur punktuell durch JUnit-Tests abgedeckt. Sie werden hauptsächlich durch die Use-Case Tests manuell getestet.
+Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Problem-Domain-Klassen abdecken und weite Teile der Applikationsschicht. Die UI- und Dienste-Schicht werden nicht explizit und nur punktuell durch JUnit-Tests abgedeckt. Sie werden hauptsächlich durch die Use-Case-Tests manuell getestet.
 \subsection{JUnit-Tests für das Package <<pd>>}\label{sub:junit_tests_für_das_package_pd_} % (fold)
 	\paragraph{ProblemDomainTestCase}\label{ssub:problemdomaintestcase} % (fold)
 	Erweitert den eingebauten Typen <<TestCase>> um das Spiel, Brett und den Kartengeber. Die Klasse bietet folgende zusätzliche Methoden:
