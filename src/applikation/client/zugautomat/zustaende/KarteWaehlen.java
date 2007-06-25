@@ -36,7 +36,6 @@ public class KarteWaehlen extends ClientZugZustand {
 		} else {
 			// Normalfall (kein Joker)
 			karteAuswaehlen(event.karte);
-			spielDaten.konkreteKarte = null;
 		}
 		return StartWaehlen.class;
 	}

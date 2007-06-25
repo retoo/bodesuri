@@ -72,6 +72,7 @@ public class ClientZugZustand extends Zustand {
 			spielDaten.karte.setAusgewaehlt(false);
 		}
 		spielDaten.karte = karte;
+		spielDaten.konkreteKarte = karte;
 		spielDaten.karte.setAusgewaehlt(true);
 	}
 

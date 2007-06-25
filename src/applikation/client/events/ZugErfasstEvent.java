@@ -35,6 +35,10 @@ public class ZugErfasstEvent extends Event {
 	public Karte getKarte() {
 		return karte;
 	}
+	
+	public Karte getKonkreteKarte() {
+		return konkreteKarte;
+	}
 
 	public ZugEingabe toZugEingabe() {
 		ZugEingabe ze = new ZugEingabe(spieler.getSpieler(), karte.getKarte(), bewegungen);

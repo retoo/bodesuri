@@ -20,13 +20,9 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 		} catch (RegelVerstoss e) {
 			if (e instanceof WegLaengeVerstoss) {
 				WegLaengeVerstoss wegverstoss = (WegLaengeVerstoss) e;
-
-				/*
-				 * Philippe: JOKERPROBLEM Wenn die Karte über den Jker geholt
-				 * wurde ist getkare nicht sieben, dan musst du ggf. halt
-				 * konkreteKarte() verwendeen (-reto)
-				 */
-				if (erfassterZug.getKarte().getKarte() instanceof Sieben &&
+				// Ist die Karte eine Sieben und wir haben noch keine 7 Züge?
+				// -> Weiteren Zug erfassen -> Zurück zu StartWaehlen.
+				if (erfassterZug.getKonkreteKarte().getKarte() instanceof Sieben &&
 					wegverstoss.getIstLaenge() < 7) {
 					spielDaten.felderDeaktivieren();
 
