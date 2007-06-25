@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 
@@ -67,12 +66,6 @@ public class VerbindenView extends JFrame {
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
 
-		// View auf Monitor zentrieren
-		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2;
-		int y = (monitor.height - getSize().height - FRAME_HEIGHT) / 2;
-		setLocation(x, y);
-
 		// Components modifizieren
 		inputpanel = new InputPanel(hostname, port, spielerName);
 		buttonpanel.setLayout(new BoxLayout(buttonpanel, BoxLayout.LINE_AXIS));
@@ -116,6 +109,7 @@ public class VerbindenView extends JFrame {
 		verbindenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ENTER"), "Verbinden");
 		verbindenButton.getActionMap().put("Verbinden", verbindenAction);
+		getRootPane().setDefaultButton(verbindenButton);
 
 		abbrechenButton.setAction(abbrechenAction);
 		abbrechenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
@@ -136,14 +130,13 @@ public class VerbindenView extends JFrame {
 
 
 		/* Debug: Autlogin auslösen falls gewünscht */
-
 		if (konfiguration.debugAutoLogin) {
 			verbindenButton.doClick();
 		}
 
-		// View anzeigen
-		getRootPane().setDefaultButton(verbindenButton);
+		// View anordnen und zentrieren
 		pack();
+		setLocationRelativeTo(null);
 	}
 
 

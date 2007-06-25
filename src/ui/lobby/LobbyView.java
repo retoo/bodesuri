@@ -3,7 +3,6 @@ package ui.lobby;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -45,17 +44,10 @@ public class LobbyView extends JFrame {
 		viewPanel.setOpaque(false);
 
 		setTitle("Bodesuri - Lobby");
-		setLocationByPlatform(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		viewPanel.setLayout(new BoxLayout(viewPanel, BoxLayout.PAGE_AXIS));
 		setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 		setResizable(false);
-
-		// View auf Monitor zentrieren
-		Dimension monitor = Toolkit.getDefaultToolkit().getScreenSize();
-		int x = (monitor.width - getSize().width - FRAME_WIDTH) / 2;
-		int y = (monitor.height - getSize().height - FRAME_HEIGHT) / 2;
-		setLocation(x, y);
 
 		spielerPanel.setBorder(new TitledBorder("Anwesende Spieler"));
 		spielerPanel.setMaximumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
@@ -78,7 +70,8 @@ public class LobbyView extends JFrame {
 		viewPanel.add(chatView);
 		add(viewPanel);
 
-		// View anzeigen
+		// View anordnen und zentrieren
 		pack();
+		setLocationRelativeTo(null);
 	}
 }
