@@ -18,22 +18,26 @@ import applikation.client.pd.Spieler;
 
 public class SpielerView extends JPanel implements Observer {
 	private JLabel name;
+	private Spieler spieler;
 
 	public SpielerView(Spieler spieler) {
+		this.spieler = spieler;
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setOpaque(false);
-
-		spieler.addObserver(this);
 
 		this.name = new JLabel(spieler.getSpieler().getName());
 		name.setIcon(Icons.getSpielerIcon(spieler.getSpieler().getFarbe()));
 		name.setFont(name.getFont().deriveFont(Font.BOLD));
 		add(name);
+
+		spieler.addObserver(this);
 	}
 
 	public void update(Observable observable, Object arg) {
-		/* TODO: Unchecked cast */
-		Spieler spieler = (Spieler) observable;
+		if (name.getText() != spieler.getName()) {
+			name.setText(spieler.getName());
+		}
+
 		if (spieler.getAmZug()) {
 			this.name.setForeground(Color.WHITE);
 		} else if (spieler.hatAufgegeben()) {
@@ -43,7 +47,8 @@ public class SpielerView extends JPanel implements Observer {
 		}
 	}
 
-	public void setSpielerName(String name) {
-		this.name.setText(name);
+	public void removeNotify() {
+		spieler.deleteObserver(this);
+		super.removeNotify();
 	}
 }

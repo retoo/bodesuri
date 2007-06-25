@@ -2,12 +2,13 @@ package applikation.client.pd;
 
 import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 
 import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 import pd.zugsystem.ZugEingabe;
 
-public class Spieler extends Observable {
+public class Spieler extends Observable implements Observer {
 	private boolean amZug;
 	private boolean hatAufgegeben;
 	public pd.spieler.Spieler spieler;
@@ -19,6 +20,12 @@ public class Spieler extends Observable {
 		this.amZug = false;
 		this.hatAufgegeben = false;
 		this.karten = new Karten(spieler.getKarten());
+		spieler.addObserver(this);
+	}
+
+	public void update(Observable o, Object arg) {
+		setChanged();
+		notifyObservers();
 	}
 
 	public boolean kannZiehen() {
