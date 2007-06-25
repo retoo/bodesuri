@@ -1,12 +1,12 @@
 package ui.spiel.brett;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -14,20 +14,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pd.karten.Acht;
-import pd.karten.Ass;
-import pd.karten.Bube;
-import pd.karten.Dame;
-import pd.karten.Drei;
-import pd.karten.Fuenf;
+import pd.karten.Deck;
 import pd.karten.KartenFarbe;
-import pd.karten.Koenig;
-import pd.karten.Neun;
-import pd.karten.Sechs;
-import pd.karten.Sieben;
-import pd.karten.Vier;
-import pd.karten.Zehn;
-import pd.karten.Zwei;
+
 import ui.geteiltes.ClickMouseAdapter;
 import ui.ressourcen.BrettXML;
 import ui.ressourcen.Icons;
@@ -102,18 +91,9 @@ public class JokerView extends JPanel {
 
 	public void erstelleDeck() {
 		kartenDeck = new Vector<applikation.client.pd.Karte>();
-		kartenDeck.add(new Joker(new Karte(new Ass(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Koenig(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Bube(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Dame(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Zehn(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Neun(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Acht(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Sieben(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Sechs(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Fuenf(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Vier(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Drei(KartenFarbe.Herz))));
-		kartenDeck.add(new Joker(new Karte(new Zwei(KartenFarbe.Herz))));
+		List<pd.karten.Karte> karten = Deck.getKartenFuerFarbe(KartenFarbe.Herz);
+		for (pd.karten.Karte karte : karten) {
+			kartenDeck.add(new Joker(new Karte(karte)));
+		}
 	}
 }
