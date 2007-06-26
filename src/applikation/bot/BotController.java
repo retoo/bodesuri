@@ -1,4 +1,4 @@
-package spielplatz;
+package applikation.bot;
 
 import java.util.IdentityHashMap;
 import java.util.List;
@@ -7,9 +7,7 @@ import java.util.Vector;
 import pd.karten.Karte;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
-import ui.GUIController;
 import applikation.client.controller.Controller;
-import applikation.client.events.VerbindeEvent;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.konfiguration.Konfiguration;
 import applikation.client.pd.Chat;
@@ -17,61 +15,43 @@ import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 import applikation.nachrichten.SpielerInfo;
-import dienste.eventqueue.Event;
 import dienste.eventqueue.EventQueue;
 
 public class BotController extends Controller {
 	private Spiel spiel;
-	private GUIController guicontroller;
-	private String nickname;
-	private String hostname;
-	private int port;
-	private boolean gui;
+	private Controller gui;
 
-	public BotController(EventQueue queue, String nickname, String hostname, int port, Bot bot, boolean gui) {
-		Konfiguration konfig = new Konfiguration();
+	public BotController(Konfiguration konfig, EventQueue queue, Controller guiController, Bot bot) {
+		this.gui = guiController;
+		this.eventQueue = queue;
+		/* TODO: Einbauen */
 
 		konfig.debugAutoLogin = true;
-		konfig.defaultName = nickname;
-
-		if (gui) {
-			this.guicontroller = new GUIController(queue, konfig);
-		}
-
-		this.gui = gui;
-		this.eventQueue = queue;
-		this.nickname = nickname;
-		this.hostname = hostname;
-		this.port = port;
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
 		throw new RuntimeException(fehlermeldung);
 	}
 
-
     public void zeigeMeldung(String meldung) {
-    	if (gui)
-    		guicontroller.zeigeMeldung(meldung);
+    	if (gui != null)
+    		gui.zeigeMeldung(meldung);
     }
 
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
-		if (gui)
-			guicontroller.zeigeLobby(spieler, chat);
+		if (gui != null)
+			gui.zeigeLobby(spieler, chat);
 	}
 
 	public void zeigeSpiel(Spiel spiel) {
-		if (gui)
-			guicontroller.zeigeSpiel(spiel);
+		if (gui != null)
+			gui.zeigeSpiel(spiel);
 		this.spiel = spiel;
 	}
 
 	public void zeigeVerbinden() {
-		if (gui)
-			guicontroller.zeigeVerbinden();
-		Event e = new VerbindeEvent(this.hostname, this.port, this.nickname);
-
-		eventQueue.enqueue(e);
+		if (gui != null)
+			gui.zeigeVerbinden();
 	}
 
 	public void karteTauschenAuswaehlen() {
@@ -122,4 +102,6 @@ public class BotController extends Controller {
 
     public void zeigeJokerauswahl(boolean aktiv) {
     }
+
+
 }

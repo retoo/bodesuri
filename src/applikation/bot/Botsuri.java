@@ -1,6 +1,7 @@
-package spielplatz;
+package applikation.bot;
 
 import applikation.client.ClientAutomat;
+import applikation.client.controller.Controller;
 import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
@@ -11,14 +12,14 @@ public class Botsuri extends BodesuriThread {
 	private EventQueue queue;
 	private Konfiguration konfiguration;
 
-	public Botsuri(Konfiguration konfig, String host, int port, Class<? extends Bot> typ, boolean gui) {
+	public Botsuri(Konfiguration konfig, EventQueue queue, Controller guiController, Class<? extends Bot> typ, boolean gui) {
 		super("Bot " + konfig.defaultName);
 		this.konfiguration = konfig;
+		this.queue = queue;
 
 		Bot bot = createBot(typ);
 
-		queue = new EventQueue();
-		controller = new BotController(queue, konfig.defaultName, host, port, bot, gui);
+		controller = new BotController(konfig, queue, guiController, bot);
     }
 
 	private Bot createBot(Class<? extends Bot> typ) {

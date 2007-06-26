@@ -1,12 +1,14 @@
-package spielplatz;
+package initialisierung;
 
-import initialisierung.Bodesuri;
-import initialisierung.BodesuriServer;
 
 import java.util.List;
 import java.util.Vector;
 
+import ui.GUIController;
+import applikation.bot.Botsuri;
+import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
+import dienste.eventqueue.EventQueue;
 
 public class BodesuriDemo {
 
@@ -23,10 +25,13 @@ public class BodesuriDemo {
 		namen.add("Mickey");
 
 		for (int i = 0; i < 3; i++) {
+
 			Konfiguration konfig = new Konfiguration();
 			konfig.defaultName = namen.get(i);
 
-			Botsuri b = new Botsuri(konfig, "localhost", 7788, spielplatz.Stupidbot.class, false);
+			EventQueue queue = new EventQueue();
+			GUIController guiController = new GUIController(queue, konfig);
+			Botsuri b = new Botsuri(konfig, queue, guiController, Stupidbot.class, false);
 
 			b.start();
 

@@ -1,4 +1,4 @@
-package spielplatz;
+package applikation.bot;
 
 public interface Bot {
 
