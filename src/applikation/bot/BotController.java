@@ -68,10 +68,10 @@ public class BotController extends Controller {
 
 		List<ZugEingabe> moeglich = spiel.spielerIch.getMoeglicheZuege();
 
-			try {
-				Thread.sleep(1000); // "denken"
-			} catch (InterruptedException e) {
-			}
+		try {
+			Thread.sleep(1000); // "denken"
+		} catch (InterruptedException e) {
+		}
 
 		IdentityHashMap<Karte, applikation.client.pd.Karte> karten = new IdentityHashMap<Karte, applikation.client.pd.Karte>();
 
@@ -90,7 +90,13 @@ public class BotController extends Controller {
 			List<Bewegung> bewegungen = ze.getBewegungen();
 			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
 
-			//TODO: Reto: hier müsste noch eine konkrete Karte(Joker) rein... --Philippe
+			/* Spezialfall Joker:
+			 * Der Bot erhält mit getMoeglicheZüge() eines Jokers alle möglichen
+			 * Züge, da der Joker alle möglichen Regeln verodert hat. Daraus
+			 * kann er aber nicht rückschliessen welche konkrete Karte er
+			 * spielen soll.
+			 * Da der Server beim Validieren des Jokers aber eh alle Regeln
+			 * akzeptiert, ist dies kein Problem.*/
 			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegungen);
 			eventQueue.enqueue(zee);
 		}
