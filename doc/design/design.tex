@@ -184,7 +184,13 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 \subsubsection{Package dienste.automat} % (fold)
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung}
-Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her.
+Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her. 
+
+Der Automat bietet zwei Betriebsmodi an:
+\begin{itemize}
+	\item Eigenständiger automatischer Betrieb in einem dedizierte Thread. Der Automat liest neue Ereiggnise aus einer Synched Queue und verarbeitet diese. Sind keine Ereignisse anstehend blockiert der Automat
+	\item Ferngesteuerter integrierter Betrieb. Der Automat wird vom Caller bei anstehnenden Ereignissen  aufgerufen und verarbeitet dieser exkat ein Ereignis (inklusive den dazugehörenden Zuständen) und übergibt anschliessend die Kontrolle wieder dem Caller. Der Modus eignet sich speziell für Unterautomaten bei welchen man keinen zusätzlichen Thread und eine seperate Ereignisqueue einsetzen möchte. Der Hauptautomat liest die Events ein und gibt sie direkt dem Unterautomaten weiter. 
+\end{itemize}
 
 \subparagraph{Schnittstellen} % (fold)
 \label{ssub:schnittstellen}
@@ -206,7 +212,8 @@ Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielt
 \subsubsection{Package dienste.serialisierung}
 
 \subparagraph{Beschreibung}
-Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden.
+Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden. 
+% TODO: Robin/Reto: kann man das ein bisschen umformulieren, der ', welche ...' Teil gefällt mir irgendwie nicht.(Reto)
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
@@ -231,6 +238,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \label{ssub:schnittstellen}
 \begin{itemize}
 	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
+% FIXME: Reto stimmt so nümm (Reto)
 	\item Die Kommunikation mit dem Netzwerk findet über die Bibliotheken java.net statt.
 \end{itemize}
 
@@ -373,7 +381,7 @@ Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikatio
 \subsection{Prozesse \& Threads} % (fold)
 \label{sub:prozesse_threads}
 
-Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Die Clients kommunizieren über je einen TCP-Socket mit dem Server.
+Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Zwischen den Clients und dem Server besteht je ein TCP Socket. 
 
 \begin{figure}[h]
 	\centering
@@ -412,13 +420,15 @@ Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. 
 \textbf{Klasse}       & Empfaenger \\
 \textbf{Anzahl}       & 1 \\
 \textbf{Gestartet}    & Bei Verbindungsaufbau durch den Main-Thread (Klasse Endpunkt) \\
-\textbf{Beendet}      & Bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt)
+\textbf{Beendet}      & Bei Verbindungsabbau durch den Main-Thread (Klasse Endpunkt) oder bei Fehlern selbsttändig.
 \end{tabular}
 
 % paragraph empfänger_thread (end)
 
 \paragraph{Timer(s)} % (fold)
 \label{ssub:timer_s_}
+
+% TODO: Reto: Timetouts wurden gestrichen  (Reto)
 
 Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie werden bei Bedarf gestartet und lösen nach einer definierten Zeitspanne einen Event aus bzw. werden vom Anwender wieder gestoppt.
 
@@ -434,13 +444,14 @@ Timer werden an verschiedenen Stellen für das Timeout-Handling eingesetzt. Sie 
 \paragraph{Swing-Threads} % (fold)
 \label{ssub:swing_threads}
 
-Swing startet intern verschiedene Threads. Die genauen Abläufe und Struktur dieser Threads sind für dieses Projekt nicht relevant.
+Swing startet intern verschiedene Threads. Die genauen Abläufe und Struktur dieser Threads sind für diese Dokumentation nicht relevant.
 
 \begin{tabular}{@{} l p{12.5cm}}
 \textbf{Klasse}       & AWK-AppKit \\
 \textbf{Anzahl}       & 1..* \\
 \textbf{Gestartet}    & Durch Swing \\
 \textbf{Beendet}      & N/A
+% TODO: Reto: Abklären da gibts doch sicher ne methode oder so (reto)
 \end{tabular}
 
 % paragraph swing_threads (end)
@@ -478,6 +489,10 @@ Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen
 \label{ssub:empfänger_thread}
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
+
+Es wird pro offene Verbindung ein Empfänger gestartet.
+
+% TODO: Reto: Hier gibts evtl. eine Design-Entscheidung dazu (reto)
 
 \begin{tabular}{@{} l p{12.5cm}}
 \textbf{Klasse}       & Empfänger \\
