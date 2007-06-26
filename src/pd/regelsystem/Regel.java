@@ -39,13 +39,20 @@ public abstract class Regel {
 	 * @param spieler Spieler, dessen Figuren überprüft werden
 	 * @return true, wenn Spieler noch Zugmöglichkeit hat
 	 */
-	public boolean kannZiehen(Spieler spieler) {
+	public boolean istZugMoeglich(Spieler spieler) {
 		ZugEingabeHoffender hoffender = new ZugEingabeHoffender();
 		liefereZugEingaben(spieler, null, hoffender);
 		return hoffender.hatBekommen();
 	}
 
-	public List<ZugEingabe> moeglicheZuege(Spieler spieler, Karte karte) {
+	/**
+	 * Gib alle ZugEingaben zurück, mit denen der Spieler noch ziehen könnte.
+	 * 
+	 * @param spieler Spieler, dessen Figuren überprüft werden
+	 * @param karte Karte, die den ZugEingaben zugewiesen werden soll
+	 * @return Liste von ZugEingaben
+	 */
+	public List<ZugEingabe> getMoeglicheZuege(Spieler spieler, Karte karte) {
 		ZugEingabeSammler sammler = new ZugEingabeSammler();
 		liefereZugEingaben(spieler, karte, sammler);
 		return sammler.getZugEingaben();

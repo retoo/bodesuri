@@ -233,16 +233,16 @@ public class SiebnerRegelTest extends RegelTestCase {
 	}
 	
 	public void testSiebnerKannZiehen() {
-		assertFalse(regel.kannZiehen(spieler(0)));
+		assertFalse(regel.istZugMoeglich(spieler(0)));
 		
 		lager(0, 0).versetzeFigurAuf(himmel(0, 0));
 		lager(0, 1).versetzeFigurAuf(himmel(0, 1));
 		lager(0, 2).versetzeFigurAuf(himmel(0, 2));
 		lager(0, 3).versetzeFigurAuf(himmel(0, 3));
-		assertFalse(regel.kannZiehen(spieler(0)));
+		assertFalse(regel.istZugMoeglich(spieler(0)));
 		
 		himmel(0, 0).versetzeFigurAuf(bank(0));
-		assertTrue(regel.kannZiehen(spieler(0)));
+		assertTrue(regel.istZugMoeglich(spieler(0)));
 	}
 	
 	// TODO: Robin Mehr und kompliziertere Tests schreiben, z. B. mit Himmel. --Robin
