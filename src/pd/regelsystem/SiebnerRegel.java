@@ -33,7 +33,6 @@ public class SiebnerRegel extends VorwaertsRegel {
 		return true;
 	}
 
-	// TODO: Reto & Robin Hat Review nötig :). --Robin
 	@SuppressWarnings("null")
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {

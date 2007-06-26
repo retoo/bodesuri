@@ -63,14 +63,6 @@ public abstract class Feld2d extends BLabel implements Observer {
         return feld;
     }
 
-    /*
-     * TODO: Danilo: Zeichnen überarbeiten Das Zeichnen in ein drei-schichtiges
-     * Modell umwandeln - Einbuchtung (Loch) - Farbe - Figur - Selektion (hover) /
-     * Weg
-     *
-     * Figur nur hinschieben falls sich wirklich was verändert hat. -- reto und
-     * robin
-     */
     public void update(Observable os, Object arg) {
         positioniereFigur(true);
 

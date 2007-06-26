@@ -129,6 +129,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		SpielThreads.registriere(thread, spiel);
 	}
 	
+	//TODO: Reto: Bitte schöner machen -Philippe
 	public void sende(Nachricht nachricht) {
 		try {
 			endpunkt.sende(nachricht);

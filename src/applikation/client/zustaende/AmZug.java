@@ -73,7 +73,6 @@ public class AmZug extends ClientZustand {
 			return this.getClass();
 		} else {
 			spiel.sende(new Aufgabe());
-			/* TODO: Philippe: wollen wir das ins onexit reinschieben, zugautomten aufräumzügs tu ich auch da rein (-reto) */
 			spiel.spielerIch.getKarten().setAktiv(false);
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;

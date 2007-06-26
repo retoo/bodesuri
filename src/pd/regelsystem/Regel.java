@@ -11,8 +11,6 @@ import pd.zugsystem.ZugEingabeAbnehmer;
 import pd.zugsystem.ZugEingabeHoffender;
 import pd.zugsystem.ZugEingabeSammler;
 
-// TODO: Robin: Gründe für RegelVerstoss vereinheitlichen. --Robin
-
 /**
  * Basisklasse für Regeln.
  */
