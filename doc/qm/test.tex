@@ -261,7 +261,7 @@ Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Probl
 \toprule
 \textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 \midrule
-1 & Spielbrett initialisiert & Das Spielbrett ist initialisiert und auf allen Clients innerhalb der Zeitlimite von 3s synchronisiert. & [Ok|Err] \\
+1 & Spielbrett initialisiert & Das Spielbrett ist initialisiert und auf allen Clients innerhalb der Zeitlimite von 3\,s synchronisiert. & [Ok|Err] \\
  \cline{3-4} & & Alle Clients und der Server befinden sich in einem wohldefinierten Zustand. & \\
 \midrule
 2 & Karten erhalten & Der beteiligte Client hat die Spielkarten erhalten und visualisiert sie korrekt für den Spieler. & [Ok|Err] \\
@@ -302,7 +302,6 @@ Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Probl
  \cline{3-4} & & Benutzer weiss, dass er anderen Spielzug auswählen muss. & \\
 \midrule
 9a a) & Spiel gewonnen & Auf allen Clients und dem Server ist das Spiel beendet. & [Ok|Err] \\
- \cline{3-4} & & Auf allen Clients wird eine Rangliste/Statistik angezeigt. & \\
  \cline{3-4} & & Gewinner (-Team) ist klar ersichtlich. & \\
 \midrule
 9a b) & Spiel gewonnen & Der Server weiss, dass der Spieler fertig ist. & [Ok|Err] \\
@@ -310,7 +309,6 @@ Im Folgenden werden die JUnit-Tests beschrieben, welche hauptsächlich die Probl
  \cline{3-4} & & Der Spieler, der neu fertig ist, kann nun auch die Figuren des Mitpsielers bedienen (wenn er an der Reihe ist). & \\
 \midrule
 *a) & Benutzer verlässt Spiel & Spiel wird auf allen Clients und dem Server beendet. & [Ok|Err] \\
- \cline{3-4} & & Auf allen Clients wird eine Rangliste/Statistik angezeigt. & \\
  \cline{3-4} & & Gewinner (-Team) ist klar ersichtlich. & \\
 \midrule
 *b) & Server nicht erreichbar & Benutzer wird vom System benachrichtigt. & [Ok|Err] \\
