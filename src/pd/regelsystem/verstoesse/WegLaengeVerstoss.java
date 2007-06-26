@@ -1,4 +1,4 @@
-package pd.regelsystem;
+package pd.regelsystem.verstoesse;
 
 public class WegLaengeVerstoss extends RegelVerstoss {
 	private int sollLaenge;

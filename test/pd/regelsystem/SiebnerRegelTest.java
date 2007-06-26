@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.brett.Feld;
-import pd.regelsystem.RegelVerstoss;
 import pd.regelsystem.SiebnerRegel;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 
 public class SiebnerRegelTest extends RegelTestCase {

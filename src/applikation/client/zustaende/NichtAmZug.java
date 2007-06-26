@@ -2,7 +2,7 @@ package applikation.client.zustaende;
 
 import java.io.IOException;
 
-import pd.regelsystem.RegelVerstoss;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spieler;

@@ -11,6 +11,8 @@ import java.util.Vector;
 import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.karten.Karte;
+import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;

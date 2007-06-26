@@ -1,5 +1,6 @@
 package pd.regelsystem;
 
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import junit.framework.TestCase;
 
 public class RegelVerstossTest extends TestCase {

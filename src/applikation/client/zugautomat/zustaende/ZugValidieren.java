@@ -1,8 +1,8 @@
 package applikation.client.zugautomat.zustaende;
 
 import pd.karten.Sieben;
-import pd.regelsystem.RegelVerstoss;
-import pd.regelsystem.WegLaengeVerstoss;
+import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import applikation.client.events.ZugErfasstEvent;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;

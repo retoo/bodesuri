@@ -1,4 +1,4 @@
-package pd.regelsystem;
+package pd.regelsystem.verstoesse;
 
 /**
  * Wird geworfen, wenn eine Regel ungültig ist, also die Zugeingabe gegen die

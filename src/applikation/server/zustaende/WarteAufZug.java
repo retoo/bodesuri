@@ -1,6 +1,6 @@
 package applikation.server.zustaende;
 
-import pd.regelsystem.RegelVerstoss;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.Zug;
 import applikation.nachrichten.Aufgabe;
 import applikation.nachrichten.AufgabeInformation;

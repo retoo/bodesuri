@@ -3,6 +3,7 @@ package pd.regelsystem;
 import java.util.Vector;
 
 import pd.karten.Karte;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;

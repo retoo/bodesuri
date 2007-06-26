@@ -1,5 +1,7 @@
 package pd.regelsystem;
 
+import pd.regelsystem.verstoesse.RegelVerstoss;
+
 public class VorwaertsRegelTest extends RegelTestCase {
 	public void testVorwaertsHeimSchicken() throws RegelVerstoss {
 		start = bank(0);

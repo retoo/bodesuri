@@ -1,5 +1,7 @@
 package pd.regelsystem;
 
+import pd.regelsystem.verstoesse.RegelVerstoss;
+
 public class TauschRegelTest extends RegelTestCase {
 	protected void setUp() {
 		super.setUp();

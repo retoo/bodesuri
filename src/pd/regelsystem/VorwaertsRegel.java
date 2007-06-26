@@ -7,6 +7,8 @@ import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.brett.HimmelFeld;
 import pd.karten.Karte;
+import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;

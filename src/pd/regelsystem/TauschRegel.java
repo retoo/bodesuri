@@ -2,6 +2,7 @@ package pd.regelsystem;
 
 import pd.brett.Feld;
 import pd.karten.Karte;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;

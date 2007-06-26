@@ -6,7 +6,7 @@ import java.util.Vector;
 
 import pd.karten.Karte;
 import pd.regelsystem.Regel;
-import pd.regelsystem.RegelVerstoss;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spieler.Spieler;
 
 /**

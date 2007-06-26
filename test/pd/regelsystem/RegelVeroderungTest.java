@@ -2,6 +2,7 @@ package pd.regelsystem;
 
 import pd.karten.KartenFarbe;
 import pd.karten.Vier;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 
 public class RegelVeroderungTest extends RegelTestCase {
 	protected void setUp() {

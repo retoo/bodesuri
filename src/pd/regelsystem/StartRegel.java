@@ -5,6 +5,7 @@ import pd.brett.Brett;
 import pd.brett.Feld;
 import pd.brett.LagerFeld;
 import pd.karten.Karte;
+import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;

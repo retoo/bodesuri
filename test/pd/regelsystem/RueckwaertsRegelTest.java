@@ -1,5 +1,7 @@
 package pd.regelsystem;
 
+import pd.regelsystem.verstoesse.RegelVerstoss;
+
 public class RueckwaertsRegelTest extends RegelTestCase {
 	public void testRueckwaerts() throws RegelVerstoss {
 		start = bank(0).getNtesFeld(5);
