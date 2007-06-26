@@ -1,8 +1,8 @@
 package applikation.server.pd;
 
-import applikation.geteiltes.SpielInfo;
-import applikation.geteiltes.SpielerInfo;
 import applikation.nachrichten.BeitrittsInformation;
+import applikation.nachrichten.SpielInfo;
+import applikation.nachrichten.SpielerInfo;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
 

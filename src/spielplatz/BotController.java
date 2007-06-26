@@ -16,7 +16,7 @@ import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
-import applikation.geteiltes.SpielerInfo;
+import applikation.nachrichten.SpielerInfo;
 import dienste.eventqueue.Event;
 import dienste.eventqueue.EventQueue;
 

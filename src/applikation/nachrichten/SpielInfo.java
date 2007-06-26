@@ -1,4 +1,4 @@
-package applikation.geteiltes;
+package applikation.nachrichten;
 
 import java.io.Serializable;
 import java.util.Vector;

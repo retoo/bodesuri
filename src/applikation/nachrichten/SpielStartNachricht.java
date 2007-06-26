@@ -3,7 +3,6 @@ package applikation.nachrichten;
 import java.util.Vector;
 
 import pd.spieler.Partnerschaft;
-import applikation.geteiltes.SpielInfo;
 import dienste.netzwerk.Nachricht;
 
 /**
