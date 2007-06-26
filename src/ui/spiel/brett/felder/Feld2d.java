@@ -2,6 +2,7 @@ package ui.spiel.brett.felder;
 
 
 import java.awt.Point;
+import java.awt.event.MouseAdapter;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -111,13 +112,13 @@ public abstract class Feld2d extends BLabel implements Observer {
     public static class Feld2dKonfiguration {
         public final Point position;
         public final Feld feld;
-        public final FeldMouseAdapter mouseAdapter;
+        public final MouseAdapter mouseAdapter;
         public final BLabel hover;
         public final SpielerFarbe farbeIch;
         public final FigurenManager figurenManager;
 
         public Feld2dKonfiguration(Point position, Feld feld,
-                FeldMouseAdapter mouseAdapter, BLabel hover,
+        		MouseAdapter mouseAdapter, BLabel hover,
                 SpielerFarbe farbeIch, FigurenManager figurenManager) {
             this.position = position;
             this.feld = feld;
