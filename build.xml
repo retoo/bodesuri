@@ -88,7 +88,7 @@
   <target name="jar" depends="copy-ressources,compile">
     <jar destfile="${lib-dir}/bodesuri.jar" basedir="${obj-dir}">
     	<manifest>
-    		<attribute name="Main-Class" value="Bodesuri"/>
+    		<attribute name="Main-Class" value="initialisierung.Bodesuri"/>
     	</manifest>
    	</jar>
    	<signjar
