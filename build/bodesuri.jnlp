@@ -9,12 +9,14 @@
       <homepage href="http://bodesuri.speedpc.ch/"/>
       <description>Eine Version des Spieles "Dog" in Java</description>
       <description kind="short">Java Dog</description>
-      <offline-allowed/> 
+      <offline-allowed/>
+      <icon href="build/icon.png"/>
+      <icon kind="splash" href="build/splash.png"/>
    </information> 
    <resources>
       <j2se version="1.5+" href="http://bodesuri.speedpc.ch/lib"/>
       <j2se version="1.5+"/>
       <jar href="lib/bodesuri.jar" main="true" download="eager"/>
    </resources>
-   <application-desc main-class="Bodesuri"/>
+   <application-desc main-class="initialisierung.Bodesuri"/>
 </jnlp> 
