@@ -3,7 +3,13 @@ package pd;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 
+/**
+ * Testet die Funktionalität des Zugsystems.
+ */
 public class WegTest extends ProblemDomainTestCase {
+	/**
+	 * Testet den normalen Vorwärtszug.
+	 */
 	public void testWegVorwaerts() {
 		Bewegung bewegung = new Bewegung(bank(0), bank(0).getNtesFeld(3));
 		Weg weg = bewegung.getWeg();
@@ -16,6 +22,9 @@ public class WegTest extends ProblemDomainTestCase {
 		assertFalse(weg.istRueckwaerts());
 	}
 	
+	/**
+	 * Testet den Vorwärtszug, der über eine Grenze führt.
+	 */
 	public void testWegVorwaertsUeberGrenze() {
 		Bewegung bewegung = new Bewegung(bank(3), bank(0));
 		Weg weg = bewegung.getWeg();
@@ -26,6 +35,9 @@ public class WegTest extends ProblemDomainTestCase {
 		assertFalse(weg.istRueckwaerts());
 	}
 	
+	/**
+	 * Testet den normalen Rückwärtszug.
+	 */
 	public void testWegRueckwaerts() {
 		Bewegung bewegung = new Bewegung(bank(0).getNtesFeld(5), bank(0));
 		Weg weg = bewegung.getWeg();
@@ -36,6 +48,9 @@ public class WegTest extends ProblemDomainTestCase {
 		assertTrue(weg.istRueckwaerts());
 	}
 	
+	/**
+	 * Testet den Rückwärtszug, der über eine Grenze führt.
+	 */
 	public void testWegRueckwaertsUeberGrenze() {
 		Bewegung bewegung = new Bewegung(bank(0), bank(3));
 		Weg weg = bewegung.getWeg();
@@ -46,6 +61,9 @@ public class WegTest extends ProblemDomainTestCase {
 		assertTrue(weg.istRueckwaerts());
 	}
 
+	/**
+	 * Testet den Weg im Himmel auf ein anderes Feld im Himmel.
+	 */
 	public void testWegVonEinemHimmelZumAndern() {
 		Bewegung bewegung = new Bewegung(himmel(0), himmel(1));
 		Weg weg = bewegung.getWeg();
