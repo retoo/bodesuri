@@ -65,6 +65,13 @@ public abstract class Controller implements Steuerung {
 	 */
 	public abstract void zeigeFehlermeldung(String fehlermeldung);
 
+	/**
+	 * Meldungen, die vom Automaten an den Controller gereicht werden,
+	 * darstellen.
+	 * 
+	 * @param meldung
+	 *            anzuzeigende Meldung
+	 */
 	public abstract void zeigeMeldung(String meldung);
 
 	public void verbinde(String host, int port_raw, String spieler) {

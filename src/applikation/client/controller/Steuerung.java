@@ -45,8 +45,7 @@ public interface Steuerung {
 	public abstract void feldAbwaehlen();
 
 	/**
-	 * Wenn man keine Karten mehr spielen kann. Noch nicht sicher ob dies auch
-	 * im definitven Spiel drin ist...
+	 * Dem Automaten mitteilen, dass man aufgeben möchte.
 	 */
 	public abstract void aufgeben();
 

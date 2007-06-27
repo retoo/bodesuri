@@ -3,7 +3,8 @@ package applikation.client.events;
 import dienste.eventqueue.Event;
 
 /**
- * Event der ausgelöst wird wenn der Benutzer eine Verbindung zum Server herstellen will.
+ * Event der ausgelöst wird wenn der Benutzer eine Verbindung zum Server
+ * herstellen will.
  */
 public class VerbindeEvent extends Event {
 	/**
@@ -21,9 +22,13 @@ public class VerbindeEvent extends Event {
 
 	/**
 	 * Der Benutzer will eine Verbindung zum Server herstellen.
-	 * @param hostname Der Hostname des Servers
-	 * @param port Der Port des Servers
-	 * @param spielerName Name das Spielers
+	 * 
+	 * @param hostname
+	 *            Der Hostname des Servers
+	 * @param port
+	 *            Der Port des Servers
+	 * @param spielerName
+	 *            Name das Spielers
 	 */
 	public VerbindeEvent(String hostname, Integer port, String spielerName) {
 		this.hostname = hostname;

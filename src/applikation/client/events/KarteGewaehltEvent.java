@@ -4,7 +4,7 @@ import applikation.client.pd.Karte;
 import dienste.eventqueue.Event;
 
 /**
- * Event der ausgelöst wird wenn der Benutzer eine Karte ausgewählt hat.
+ * Event der ausgelöst wird wenn der Benutzer eine Karte auswählt.
  */
 public class KarteGewaehltEvent extends Event {
 	/**
@@ -14,7 +14,9 @@ public class KarteGewaehltEvent extends Event {
 
 	/**
 	 * Der Benutzer hat eine Karte ausgewählt.
-	 * @param gewaehlteKarte Die ausgewählte Karte
+	 * 
+	 * @param gewaehlteKarte
+	 *            Die ausgewählte Karte
 	 */
 	public KarteGewaehltEvent(Karte gewaehlteKarte) {
 		this.karte = gewaehlteKarte;
