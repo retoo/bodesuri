@@ -2,22 +2,24 @@
 
 <jnlp spec="0.2 1.0"
       codebase="http://bodesuri.speedpc.ch/"
-      href="build/bodesuri.jnlp">
-   <information> 
-      <title>Bodesuri - Demo</title> 
-      <vendor>Natürlich wir!</vendor>
-      <homepage href="http://bodesuri.speedpc.ch/"/>
-      <description>Eine Version des Spieles "Dog" in Java. In dieser Version
-      wird automatisch ein Server mit drei Computerspielern gestartet.</description>
-      <description kind="short">Java Dog</description>
-      <offline-allowed/>
-      <icon href="build/icon.gif"/>
-      <icon kind="splash" href="build/splash.jpg"/>
-   </information> 
-   <resources>
-      <j2se version="1.5+" href="http://bodesuri.speedpc.ch/lib"/>
-      <j2se version="1.5+"/>
-      <jar href="lib/bodesuri.jar" main="true" download="eager"/>
-   </resources>
-   <application-desc main-class="initialisierung.Bodesuri"/>
+      href="build/bodesuri-demo.jnlp">
+	<information> 
+		<title>Bodesuri - Demo</title> 
+		<vendor>Natürlich wir!</vendor>
+		<homepage href="http://bodesuri.speedpc.ch/"/>
+		<description>Eine Version des Spieles "Dog" in Java. In dieser Version wird automatisch ein Server mit drei Computerspielern gestartet.</description>
+		<description kind="short">Java Dog</description>
+		<offline-allowed/>
+		<icon href="build/icon.gif"/>
+		<icon kind="splash" href="build/splash.jpg"/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se version="1.5+" href="http://bodesuri.speedpc.ch/lib"/>
+		<j2se version="1.5+"/>
+		<jar href="lib/bodesuri.jar" main="true" download="eager"/>
+	</resources>
+	<application-desc main-class="initialisierung.BodesuriDemo"/>
 </jnlp> 
