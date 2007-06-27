@@ -30,7 +30,7 @@ public class ZugAutomat extends Automat {
 		setStart(KarteWaehlen.class);
 	}
 
-	public void registriere(ClientZugZustand zustand) {
+	private void registriere(ClientZugZustand zustand) {
 		zustand.setController(controller);
 		zustand.setspielDaten(spielDaten);
 	    super.registriere(zustand);

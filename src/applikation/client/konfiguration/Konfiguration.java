@@ -1,18 +1,22 @@
 package applikation.client.konfiguration;
 
+/**
+ * Standardwerte für die Anwendungskonfiguration.
+ */
 public class Konfiguration {
 	/**
-	 * Debug-Option: Sollen es immer möglich sein Aufzugeben
+	 * Debug-Option: Ob man, Obwohl noch Züge möglich sind aufgeben darf.
 	 */
 	public boolean debugAufgabeImmerMoeglich = false;
 
 	/**
-	 * Debug-Option: Automatischer Login mit den Defaultwerten
+	 * Debug-Option: Den VerindenView überspringen und die Standardwerte
+	 * verwenden.
 	 */
 	public boolean debugAutoLogin = false;
 
 	/**
-	 * Lobby-Verzögerung sobald Spiel komplet ist
+	 * Debug-Option: Keine Verzögerung beim schliessen der Lobby.
 	 */
 	public boolean debugKeineLobbyVerzoegerung = false;
 

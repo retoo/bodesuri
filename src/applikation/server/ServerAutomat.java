@@ -56,7 +56,7 @@ public class ServerAutomat extends Automat {
 		setEventQuelle(new EventQuelleAdapter(queue));
 	}
 
-	public void registriere(ServerZustand zustand) {
+	private void registriere(ServerZustand zustand) {
 		zustand.setSpielDaten(spiel);
 
 		super.registriere(zustand);

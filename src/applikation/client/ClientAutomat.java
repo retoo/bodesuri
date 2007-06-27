@@ -19,7 +19,7 @@ import dienste.automat.EventQuelleAdapter;
 import dienste.eventqueue.EventQueue;
 
 /**
- * Version des Automaten für den Client
+ * Der Automat für den Client. 
  */
 public class ClientAutomat extends Automat {
 	private Controller controller;
@@ -64,7 +64,7 @@ public class ClientAutomat extends Automat {
 		setEventQuelle(new EventQuelleAdapter(eventQueue));
 	}
 
-	public void registriere(ClientZustand zustand) {
+	private void registriere(ClientZustand zustand) {
 		zustand.setController(controller);
 		zustand.setSpiel(spiel);
 
