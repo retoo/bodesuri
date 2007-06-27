@@ -7,23 +7,22 @@ public class Konfiguration {
 	public boolean debugAufgabeImmerMoeglich = false;
 
 	/**
-	 * Debug-Option: Automatischer Login mit den Default werden
+	 * Debug-Option: Automatischer Login mit den Defaultwerten
 	 */
 	public boolean debugAutoLogin = false;
 
-
 	/**
-	 * Lobby-Verzögerung sobald Spiel komplett ist
+	 * Lobby-Verzögerung sobald Spiel komplet ist
 	 */
 	public boolean debugKeineLobbyVerzoegerung = false;
 
 	/**
-	 * Default-Name
+	 * Default-Hostname
 	 */
 	public String defaultHost = "localhost";
 
 	/**
-	 * Default-Name
+	 * Default-Port
 	 */
 	public int defaultPort = 7788;
 
