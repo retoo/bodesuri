@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<jnlp spec="0.2 1.0"
+      codebase="http://bodesuri.speedpc.ch/"
+      href="build/bodesuri-client.jnlp">
+	<information>
+		<title>Bodesuri - Client</title>
+		<vendor>Natürlich wir!</vendor>
+		<homepage href="http://bodesuri.speedpc.ch/"/>
+		<description>Eine Version des Spieles "Dog" in Java.</description>
+		<description kind="short">Java Dog</description>
+		<offline-allowed/>
+		<icon href="build/icon.gif"/>
+		<icon kind="splash" href="build/splash.jpg"/>
+	</information>
+	<security>
+		<all-permissions/>
+	</security>
+	<resources>
+		<j2se version="1.5+" href="http://bodesuri.speedpc.ch/lib"/>
+		<j2se version="1.5+"/>
+		<jar href="lib/bodesuri.jar" main="true" download="eager"/>
+	</resources>
+	<application-desc main-class="initialisierung.BodesuriBot"/>
+</jnlp>
