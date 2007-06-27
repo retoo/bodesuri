@@ -11,6 +11,10 @@ import pd.brett.LagerFeld;
 import pd.karten.KartenGeber;
 import pd.spieler.Spieler;
 
+/**
+ * Ist Basis aller TestCases, welche die Problem-Domain abdecken. Initialisiert
+ * weite Teile der PD und bietet einige Hilfsmethoden an.
+ */
 public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spiel spiel;
 	protected Brett brett;
@@ -33,26 +37,72 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		kartenGeber = spiel.getKartenGeber();
 	}
 	
+	/**
+	 * Liefert den Spieler anhand der Nummer.
+	 * 
+	 * @param nummer
+	 * 			Nummer des Spielers im Array/Vektor
+	 * @return Spezifizierten Spieler
+	 */
 	protected Spieler spieler(int nummer) {
 		return spiel.getSpieler().get(nummer);
 	}
 	
+	/**
+	 * Liefert das Bankfeld des Spielers.
+	 * 
+	 * @param spieler
+	 * 			Spieler
+	 * @return Das Bankfeld des Spielers.
+	 */
 	protected BankFeld bank(int spieler) {
 		return brett.getBankFeldVon(spiel.getSpieler().get(spieler));
 	}
 	
+	/**
+	 * Liefert erstes Lagerfeld des Spielers.
+	 * 
+	 * @param spieler
+	 * 			Spieler
+	 * @return Das erste Lagerfeld des Spielers.
+	 */
 	protected LagerFeld lager(int spieler) {
 		return lager(spieler, 0);
 	}
 	
+	/**
+	 * Liefert ein konkretes Lagerfeld des Spielers.
+	 * 
+	 * @param spieler
+	 * 			Spieler
+	 * @param feld
+	 * 			Konkretes Feld.
+	 * @return Konkretes Lagerfeld des Spielers.
+	 */
 	protected LagerFeld lager(int spieler, int feld) {
 		return brett.getLagerFelderVon(spiel.getSpieler().get(spieler)).get(feld);
 	}
 	
+	/**
+	 * Liefert erstes Himmelfeld des Spielers.
+	 * 
+	 * @param spieler
+	 * 			Spieler
+	 * @return Das erste Lagerfeld des Spielers.
+	 */
 	protected HimmelFeld himmel(int spieler) {
 		return himmel(spieler, 0);
 	}
 	
+	/**
+	 * Liefert ein konkretes Himmelfeld des Spielers.
+	 * 
+	 * @param spieler
+	 * 			Spieler
+	 * @param feld
+	 * 			Konkretes Feld.
+	 * @return Konkretes Himmelfeld des Spielers.
+	 */
 	protected HimmelFeld himmel(int spieler, int feld) {
 		return brett.getHimmelFelderVon(spiel.getSpieler().get(spieler)).get(feld);
 	}
