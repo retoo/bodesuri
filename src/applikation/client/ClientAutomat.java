@@ -19,7 +19,7 @@ import dienste.automat.EventQuelleAdapter;
 import dienste.eventqueue.EventQueue;
 
 /**
- * Der Automat für den Client. 
+ * Der Automat für den Client.
  */
 public class ClientAutomat extends Automat {
 	private Controller controller;
@@ -53,11 +53,11 @@ public class ClientAutomat extends Automat {
 		registriere(new VerbindungErfassen());
 		registriere(new Lobby(controller));
 		registriere(new SpielStart());
-		registriere(new AmZug());
-		registriere(new NichtAmZug());
 		registriere(new StarteRunde());
 		registriere(new KarteTauschenAuswaehlen());
 		registriere(new KarteTauschenBekommen());
+		registriere(new NichtAmZug());
+		registriere(new AmZug());
 
 		setStart(ProgrammStart.class);
 

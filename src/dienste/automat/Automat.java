@@ -9,9 +9,9 @@ import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
 /**
- * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere abarbeiten eines
+ * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere Abarbeiten eines
  * Zustandsautomaten anhand eingehender Events.
- *
+ * 
  * Die Erstellung eines Automaten besteht aus folgenden Schritten:
  * <ul>
  * <il>Situationsabhänige aktive Zustandsklasse erstellen</li>
@@ -25,7 +25,7 @@ import dienste.eventqueue.Event;
  * verwendet werden.</li>
  * <il>Automat mit run() starten</li>
  * </ul>
- *
+ * 
  */
 public class Automat {
 	private Zustand start;
