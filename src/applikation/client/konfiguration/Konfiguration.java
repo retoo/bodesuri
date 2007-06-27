@@ -5,18 +5,18 @@ package applikation.client.konfiguration;
  */
 public class Konfiguration {
 	/**
-	 * Debug-Option: Ob man, Obwohl noch Züge möglich sind aufgeben darf.
+	 * Debug-Option: Ob man, obwohl noch Züge möglich sind, aufgeben darf.
 	 */
 	public boolean debugAufgabeImmerMoeglich = false;
 
 	/**
-	 * Debug-Option: Den VerindenView überspringen und die Standardwerte
+	 * Debug-Option: Die VerbindenView überspringen und die Standardwerte
 	 * verwenden.
 	 */
 	public boolean debugAutoLogin = false;
 
 	/**
-	 * Debug-Option: Keine Verzögerung beim schliessen der Lobby.
+	 * Debug-Option: Keine Verzögerung beim Schliessen der Lobby.
 	 */
 	public boolean debugKeineLobbyVerzoegerung = false;
 
