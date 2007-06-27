@@ -6,7 +6,13 @@ import pd.karten.Karte;
 import pd.karten.KartenFarbe;
 import pd.karten.Sechs;
 
+/**
+ * Teste die Funktionalitäten der Karte.
+ */
 public class KartenTest extends ProblemDomainTestCase {
+	/**
+	 * Prüft Getter-Methoden und Initialisierung der Karte.
+	 */
 	public void testKarte() {
 		Karte sechs = new Sechs(KartenFarbe.Herz);
 		assertEquals("Sechs", sechs.getName());
@@ -14,6 +20,9 @@ public class KartenTest extends ProblemDomainTestCase {
 		assertEquals("Herz Sechs", sechs.toString());
 	}
 	
+	/**
+	 * Prüft das Deck, ob es korrekt initialisiert wurde.
+	 */
 	public void testDeck() {
 		List<Karte> deck = Deck.erstelleKarten();
 		assertEquals(55, deck.size());
@@ -21,6 +30,9 @@ public class KartenTest extends ProblemDomainTestCase {
 		new Deck();
 	}
 	
+	/**
+	 * Prüft Verhalten beim Mischens.
+	 */
 	public void testGetKarte() {
 		// Verhalten bei erneutem Mischeln
 		for (int i = 0; i < 150; ++i) {
