@@ -27,7 +27,6 @@ public class BotController extends Controller {
 		this.eventQueue = queue;
 		this.konfig = konfig;
 		this.bot = bot;
-		konfig.debugAutoLogin = true;
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {

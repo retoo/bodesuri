@@ -27,6 +27,7 @@ public class BodesuriDemo {
 
 			Konfiguration konfig = new Konfiguration();
 			konfig.defaultName = namen.get(i);
+			konfig.debugAutoLogin = true;
 
 			EventQueue queue = new EventQueue();
 			Botsuri b = new Botsuri(konfig, queue, null, Stupidbot.class);

@@ -29,6 +29,7 @@ public class BodesuriArena {
 		for (int i = 0; i < 4; i++) {
 			Konfiguration konfig = new Konfiguration();
 			konfig.defaultName = nicks.get(i);
+			konfig.debugAutoLogin = true;
 
 			EventQueue queue = new EventQueue();
 			GUIController guiController = new GUIController(queue, konfig);
