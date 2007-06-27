@@ -2,12 +2,19 @@ package pd;
 
 import pd.Spiel;
 
+/**
+ * Testet die Funktionalität des Spiels.
+ */
 public class SpielTest extends ProblemDomainTestCase {
 	protected void setUp() {
 		super.setUp();
 		spiel = new Spiel();
 	}
 
+	/**
+	 * Prüft auf konsistentes Verhalten des Spielers innerhalb
+	 * des Spiels. 
+	 */
 	public void testSpieler() {
 		assertEquals(4, spiel.getSpieler().size());
 		spiel.fuegeHinzu("Spieler 0");
