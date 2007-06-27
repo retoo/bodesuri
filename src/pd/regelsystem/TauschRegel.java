@@ -3,6 +3,7 @@ package pd.regelsystem;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.Verstoesse;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
@@ -26,7 +27,7 @@ public class TauschRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() != 1) {
-			throw new RegelVerstoss("Nur eine Bewegung möglich.");
+			throw new Verstoesse.AnzahlBewegungen();
 		}
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
@@ -34,17 +35,15 @@ public class TauschRegel extends Regel {
 		Feld ziel  = zugEingabe.getBewegung().ziel;
 
 		if (start.istFrei() || ziel.istFrei()) {
-			throw new RegelVerstoss("Es müssen zwei Figuren getauscht werden.");
+			throw new Verstoesse.FalscheFigurenTauschen();
 		}
 
 		if (start.istGeschuetzt() || ziel.istGeschuetzt()) {
-			throw new RegelVerstoss("Es können keine geschützten Figuren " +
-			                        "getauscht werden.");
+			throw new Verstoesse.GeschuetzteTauschen();
 		}
 
 		if (!(start.istBesetztVon(spieler) ^ ziel.istBesetztVon(spieler))) {
-			throw new RegelVerstoss("Es muss eine eigene Figur und " +
-			                        "eine andere getauscht werden.");
+			throw new Verstoesse.FalscheFigurenTauschen();
 		}
 
 		Zug zug = new Zug();

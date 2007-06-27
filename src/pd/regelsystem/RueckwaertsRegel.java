@@ -3,6 +3,7 @@ package pd.regelsystem;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.Verstoesse;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Bewegung;
@@ -28,25 +29,21 @@ public class RueckwaertsRegel extends VorwaertsRegel {
 		Feld ziel  = bewegung.ziel;
 
 		if (start.istLager() && ziel.istLager()) {
-			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
+			throw new Verstoesse.ImLagerFahren();
 		} else if (start.istLager()) {
-			throw new RegelVerstoss("Es kann nicht rückwärts aus dem Lager " +
-			                        "gefahren werden.");
+			throw new Verstoesse.FalschStarten();
 		} else if (ziel.istLager()) {
-			throw new RegelVerstoss("Es gibt nur eine Art, ins Lager " +
-			                        "zurückzukehren...");
+			throw new Verstoesse.InsLagerFahren();
 		} else if (start.istHimmel()) {
-				throw new RegelVerstoss("Im Himmel kann nicht mehr rückwärts " +
-				                        "gefahren werden.");
+				throw new Verstoesse.ImHimmelNurVorwaertsFahren();
 		} else if (ziel.istHimmel()) {
-			throw new RegelVerstoss("Es kann nicht rückwärts in den Himmel " +
-			                        "gefahren werden.");
+			throw new Verstoesse.RueckwaertsInHimmelFahren();
 		}
 	}
 
 	protected void pruefeWegRichtung(Weg weg) throws RegelVerstoss {
 		if (!weg.istRueckwaerts()) {
-			throw new RegelVerstoss("Es muss rückwärts gefahren werden.");
+			throw new Verstoesse.NurRueckwaertsFahren();
 		}
 	}
 

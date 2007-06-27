@@ -36,24 +36,19 @@ public class RegelVeroderung extends Regel {
 	 * Wenn keine Regel gültig ist, wird eine RegelVerstoss geworfen.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
-		StringBuilder s = new StringBuilder();
-		s.append("Keine Regel war gültig:");
-		Vector<String> verstoesse = new Vector<String>();
+		RegelVerstoss verstoss = null;
 		for (Regel regel : regeln) {
 			try {
 				Zug resultat = regel.validiere(zugEingabe);
 				return resultat;
 			} catch (RegelVerstoss rv) {
-				String message = rv.getMessage();
-				if (!verstoesse.contains(message)) {
-					verstoesse.add(message);
+				if (verstoss == null ||
+				    rv.getSpezifitaet() > verstoss.getSpezifitaet()) {
+					verstoss = rv;
 				}
 			}
 		}
-		for (String verstoss : verstoesse) {
-			s.append("\n - " + verstoss);
-		}
-		throw new RegelVerstoss(s.toString());
+		throw verstoss;
 	}
 
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,

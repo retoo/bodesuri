@@ -6,6 +6,7 @@ import pd.brett.Feld;
 import pd.brett.LagerFeld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.Verstoesse;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 import pd.zugsystem.Aktion;
@@ -31,7 +32,7 @@ public class StartRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() != 1) {
-			throw new RegelVerstoss("Nur eine Bewegung möglich.");
+			throw new Verstoesse.AnzahlBewegungen();
 		}
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
@@ -39,27 +40,27 @@ public class StartRegel extends Regel {
 		Feld ziel  = zugEingabe.getBewegung().ziel;
 
 		if (!start.istLager()) {
-			throw new RegelVerstoss("Der Start muss ein Lagerfeld sein.");
+			throw new Verstoesse.NurMitFigurVomLagerStarten();
 		}
 		LagerFeld lager = (LagerFeld)start;
 
 		if (!lager.istBesetztVon(spieler)) {
-			throw new RegelVerstoss("Auf Lagerfeld muss Figur stehen.");
+			throw new Verstoesse.NurMitFigurVomLagerStarten();
 		}
 
 		if (!ziel.istBank()) {
-			throw new RegelVerstoss("Das Ziel muss das Bankfeld sein.");
+			throw new Verstoesse.NurAufEigeneBankStarten();
 		}
 		BankFeld bank = (BankFeld)ziel;
 
 		if (!bank.istVon(spieler)) {
-			throw new RegelVerstoss("Das Bankfeld muss dem Spieler gehören.");
+			throw new Verstoesse.NurAufEigeneBankStarten();
 		}
 
 		Zug zug = new Zug();
 
 		if (ziel.istGeschuetzt()) {
-			throw new RegelVerstoss("Bankfeld ist geschützt.");
+			throw new Verstoesse.AufGeschuetzteFigurStarten();
 		} else if (ziel.istBesetzt()) {
 			zug.fuegeHinzu(new HeimschickAktion(ziel));
 		}

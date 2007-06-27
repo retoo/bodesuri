@@ -1,18 +1,50 @@
 package pd.regelsystem;
 
+import pd.karten.Ass;
+import pd.karten.Karte;
+import pd.karten.KartenFarbe;
 import pd.regelsystem.verstoesse.RegelVerstoss;
-import junit.framework.TestCase;
+import pd.regelsystem.verstoesse.WegLaengeVerstoss;
+import pd.zugsystem.Bewegung;
+import pd.zugsystem.ZugEingabe;
 
 /**
  * Testet die Funktionalität eines Regelverstosses.
  */
-public class RegelVerstossTest extends TestCase {
+public class RegelVerstossTest extends RegelTestCase {
 	/**
-	 * Erstellt einen neuen Regelverstoss und prüft, ob dieser korrekt
-	 * erstellt und initialisiert wurde.
+	 * Testet das Verhalten des RegelVerstoss beim Ass, wo je nach Spezifität
+	 * der eine oder der andere WegLaengeVerstoss geworfen werden sollte.
 	 */
-	public void testRegelVerstoss() {
-		RegelVerstoss rv = new RegelVerstoss("Des Todes!");
-		assertEquals("Regelverstoss: Des Todes!", rv.toString());
+	public void testRegelVerstossBeiAss() {
+		Karte ass = new Ass(KartenFarbe.Herz);
+
+		start = bank(0);
+		ziel  = bank(0).getNtesFeld(3);
+		lager(0).versetzeFigurAuf(start);
+		try {
+			Bewegung b = new Bewegung(start, ziel);
+			ZugEingabe ze = new ZugEingabe(spieler(0), ass, b);
+			ze.validiere();
+			fail("Sollte RegelVerstoss geben.");
+		} catch (RegelVerstoss rv) {
+			assertTrue(rv instanceof WegLaengeVerstoss);
+			WegLaengeVerstoss wlv = (WegLaengeVerstoss) rv;
+			assertEquals(3, wlv.getIstLaenge());
+			assertEquals(1, wlv.getSollLaenge());
+		}
+
+		ziel  = bank(0).getNtesFeld(8);
+		try {
+			Bewegung b = new Bewegung(start, ziel);
+			ZugEingabe ze = new ZugEingabe(spieler(0), ass, b);
+			ze.validiere();
+			fail("Sollte RegelVerstoss geben.");
+		} catch (RegelVerstoss rv) {
+			assertTrue(rv instanceof WegLaengeVerstoss);
+			WegLaengeVerstoss wlv = (WegLaengeVerstoss) rv;
+			assertEquals(8, wlv.getIstLaenge());
+			assertEquals(11, wlv.getSollLaenge());
+		}
 	}
 }

@@ -57,7 +57,8 @@ public class ZugEingabe implements Serializable {
 	public Zug validiere() throws RegelVerstoss {
 		Regel regel = konkreteKarte.getRegel();
 		if (regel == null) {
-			throw new RegelVerstoss("Karte ist noch nicht spielbar.");
+			throw new RuntimeException("Der Karte " + konkreteKarte +
+			                           " ist keine Regel zugewiesen.");
 		}
 		return regel.validiere(this);
 	}

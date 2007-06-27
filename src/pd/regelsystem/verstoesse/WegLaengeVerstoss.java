@@ -5,8 +5,9 @@ public class WegLaengeVerstoss extends RegelVerstoss {
 	private int istLaenge;
 
 	public WegLaengeVerstoss(int sollLaenge, int istLaenge) {
-		super("Zug muss über " + sollLaenge +
-              " und nicht " + istLaenge + " Felder gehen.");
+		super(1.0 / Math.abs(sollLaenge - istLaenge),
+		      "Man muss " + sollLaenge +
+              " und nicht " + istLaenge + " Felder weit fahren.");
 		this.sollLaenge = sollLaenge;
 		this.istLaenge  = istLaenge;
 	}

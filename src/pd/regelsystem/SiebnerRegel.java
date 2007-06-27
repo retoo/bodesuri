@@ -12,6 +12,7 @@ import pd.brett.BankFeld;
 import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
@@ -36,7 +37,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 	@SuppressWarnings("null")
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {
-			throw new RegelVerstoss("Mindestens eine Bewegung nötig.");
+			throw new Verstoesse.AnzahlBewegungen();
 		}
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
@@ -48,7 +49,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			pruefeBewegung(bewegung, spieler);
 			Weg weg = bewegung.getWeg();
 			if (weg == null) {
-				throw new RegelVerstoss("Ungültige Bewegung.");
+				throw new Verstoesse.SoNichtFahren();
 			}
 			pruefeWegRichtung(weg);
 			wegLaenge += weg.size() - 1;
@@ -73,17 +74,16 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 				if (feld == bewegung.start) {
 					if (!hatFigur) {
-						throw new RegelVerstoss("Startfeld hat keine Figur " +
-						                        "zum Ziehen.");
+						throw new Verstoesse.MitFigurFahren();
 					} else if (!figur.istVon(spieler)) {
-						throw new RegelVerstoss("Man kann nur mit eigenen Figuren ziehen.");
+						throw new Verstoesse.MitEigenerFigurFahren();
 					}
 					continue;
 				}
 
 				if (geschuetzt.contains(feld) ||
 				    (hatFigur && feld.istHimmel())) {
-					throw new RegelVerstoss("Weg beinhaltet geschütztes Feld.");
+					throw new Verstoesse.AufOderUeberGeschuetzteFahren();
 				}
 
 				if (hatFigur) {

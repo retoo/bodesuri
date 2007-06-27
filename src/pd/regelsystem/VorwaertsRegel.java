@@ -8,6 +8,7 @@ import pd.brett.Feld;
 import pd.brett.HimmelFeld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
+import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
@@ -44,7 +45,7 @@ public class VorwaertsRegel extends Regel {
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() != 1) {
-			throw new RegelVerstoss("Nur eine Bewegung möglich.");
+			throw new Verstoesse.AnzahlBewegungen();
 		}
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
@@ -52,16 +53,19 @@ public class VorwaertsRegel extends Regel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 
+		if (!start.istBesetzt()) {
+			throw new Verstoesse.MitFigurFahren();
+		}
+
 		if (!start.istBesetztVon(spieler)) {
-			throw new RegelVerstoss("Zug muss mit eigener Figur begonnen " +
-			                        "werden.");
+			throw new Verstoesse.MitEigenerFigurFahren();
 		}
 
 		pruefeBewegung(bewegung, spieler);
 
 		Weg weg = bewegung.getWeg();
 		if (weg == null) {
-			throw new RegelVerstoss("Ungültige Bewegung.");
+			throw new Verstoesse.SoNichtFahren();
 		}
 		pruefeWegRichtung(weg);
 		pruefeWegLaenge(weg);
@@ -71,13 +75,11 @@ public class VorwaertsRegel extends Regel {
 
 			if (feld.istBank() && feld != ziel &&
 			    ((BankFeld)feld).istBesetztVonBesitzer()) {
-				throw new RegelVerstoss("Es kann nicht über eine Figur " +
-				                        "auf ihrem Bankfeld gezogen werden.");
+				throw new Verstoesse.UeberFigurAufBankFahren();
 			}
 
 			if (feld.istGeschuetzt()) {
-				throw new RegelVerstoss("Es kann nicht auf oder über ein " +
-				                        "geschütztes Feld gezogen werden.");
+				throw new Verstoesse.AufOderUeberGeschuetzteFahren();
 			}
 		}
 
@@ -97,33 +99,30 @@ public class VorwaertsRegel extends Regel {
 		Feld ziel  = bewegung.ziel;
 
 		if (start.istHimmel() && !ziel.istHimmel()) {
-			throw new RegelVerstoss(
-				"Im Himmel kann nur noch vorwärts gefahren werden.");
+			throw new Verstoesse.ImHimmelNurVorwaertsFahren();
 		} else if (start.istLager() && ziel.istLager()) {
-			throw new RegelVerstoss("Im Lager kann nicht gefahren werden.");
+			throw new Verstoesse.ImLagerFahren();
 		} else if (start.istLager()) {
-			throw new RegelVerstoss(
-				"Es darf nur mit dem König oder dem Ass gestartet werden.");
+			throw new Verstoesse.FalschStarten();
 		} else if (ziel.istLager()) {
-			throw new RegelVerstoss("Man kann nicht ins Lager fahren.");
+			throw new Verstoesse.InsLagerFahren();
 		}
 
 		if (ziel.istHimmel()) {
 			HimmelFeld himmel = (HimmelFeld) ziel;
 			if (!himmel.istVon(spieler)) {
-				throw new RegelVerstoss("Es muss in den eigenen Himmel " +
-				"gezogen werden.");
+				throw new Verstoesse.NurInEigenenHimmelFahren();
 			}
 		}
 
 		if (start.istBank() && ziel.istHimmel() && start.istGeschuetzt()) {
-			throw new RegelVerstoss("Es muss zuerst eine Runde gemacht werden.");
+			throw new Verstoesse.DirektInHimmelFahren();
 		}
 	}
 
 	protected void pruefeWegRichtung(Weg weg) throws RegelVerstoss {
 		if (weg.istRueckwaerts()) {
-			throw new RegelVerstoss("Es kann nicht rückwärts gefahren werden.");
+			throw new Verstoesse.NurVorwaertsFahren();
 		}
 	}
 
