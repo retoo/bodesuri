@@ -4,7 +4,6 @@ package initialisierung;
 import java.util.List;
 import java.util.Vector;
 
-import ui.GUIController;
 import applikation.bot.Botsuri;
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
@@ -30,8 +29,7 @@ public class BodesuriDemo {
 			konfig.defaultName = namen.get(i);
 
 			EventQueue queue = new EventQueue();
-			GUIController guiController = new GUIController(queue, konfig);
-			Botsuri b = new Botsuri(konfig, queue, guiController, Stupidbot.class, false);
+			Botsuri b = new Botsuri(konfig, queue, null, Stupidbot.class);
 
 			b.start();
 

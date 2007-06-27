@@ -12,7 +12,7 @@ public class Botsuri extends BodesuriThread {
 	private EventQueue queue;
 	private Konfiguration konfiguration;
 
-	public Botsuri(Konfiguration konfig, EventQueue queue, Controller guiController, Class<? extends Bot> typ, boolean gui) {
+	public Botsuri(Konfiguration konfig, EventQueue queue, Controller guiController, Class<? extends Bot> typ) {
 		super("Bot " + konfig.defaultName);
 		this.konfiguration = konfig;
 		this.queue = queue;

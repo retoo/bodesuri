@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.karten.Karte;
-import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import applikation.client.controller.Controller;
 import applikation.client.events.ZugErfasstEvent;
@@ -20,12 +19,14 @@ import dienste.eventqueue.EventQueue;
 public class BotController extends Controller {
 	private Spiel spiel;
 	private Controller gui;
+	private Konfiguration konfig;
+	private Bot bot;
 
 	public BotController(Konfiguration konfig, EventQueue queue, Controller guiController, Bot bot) {
 		this.gui = guiController;
 		this.eventQueue = queue;
-		/* TODO: Einbauen */
-
+		this.konfig = konfig;
+		this.bot = bot;
 		konfig.debugAutoLogin = true;
 	}
 
@@ -52,6 +53,8 @@ public class BotController extends Controller {
 	public void zeigeVerbinden() {
 		if (gui != null)
 			gui.zeigeVerbinden();
+		else
+			verbinde(konfig.defaultHost, konfig.defaultPort, konfig.defaultName	);
 	}
 
 	public void karteTauschenAuswaehlen() {
@@ -79,28 +82,12 @@ public class BotController extends Controller {
 			karten.put(k.getKarte(), k);
 		}
 
-		if (moeglich.isEmpty()) {
-			System.out.println("nix möglich");
-			this.aufgeben();
-		} else {
-			System.out.println("möglich sind: " + moeglich.size());
+		ZugErfasstEvent ze = bot.macheZug(spiel, moeglich, karten);
 
-			int rand = (int) Math.floor(Math.random() * moeglich.size());
-			ZugEingabe ze = moeglich.get(rand);
-			List<Bewegung> bewegungen = ze.getBewegungen();
-			applikation.client.pd.Karte karte = karten.get(ze.getKarte());
-
-			/* Spezialfall Joker:
-			 * Der Bot erhält mit getMoeglicheZüge() eines Jokers alle möglichen
-			 * Züge, da der Joker alle möglichen Regeln verodert hat. Daraus
-			 * kann er aber nicht rückschliessen welche konkrete Karte er
-			 * spielen soll.
-			 * Da der Server beim Validieren des Jokers aber eh alle Regeln
-			 * akzeptiert, ist dies kein Problem.*/
-			ZugErfasstEvent zee = new ZugErfasstEvent(spiel.spielerIch, karte, karte, bewegungen);
-			eventQueue.enqueue(zee);
-		}
-
+		if (ze != null)
+			eventQueue.enqueue(ze);
+		else
+			aufgeben();
 	}
 
     public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {

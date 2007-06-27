@@ -32,7 +32,7 @@ public class BodesuriArena {
 
 			EventQueue queue = new EventQueue();
 			GUIController guiController = new GUIController(queue, konfig);
-			Thread t = new Botsuri(konfig, queue, guiController, Stupidbot.class, false);
+			Thread t = new Botsuri(konfig, queue, guiController, Stupidbot.class);
 
 			t.start();
 			clients.add(t);
