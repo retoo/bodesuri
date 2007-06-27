@@ -8,6 +8,9 @@ import pd.regelsystem.SiebnerRegel;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.Bewegung;
 
+/**
+ * Testet die Funktionalität der Siebnerregel.
+ */
 public class SiebnerRegelTest extends RegelTestCase {
 	private Feld[] start;
 	private Feld[] ziel;
@@ -19,6 +22,10 @@ public class SiebnerRegelTest extends RegelTestCase {
 		ziel  = new Feld[7];
 	}
 	
+	/**
+	 * Ein aufteilbarer Zug darf nur immer vom gleichen Spieler 
+	 * durchgeführt werden.
+	 */
 	public void testAndereMitMehrerenBewegungen() {
 		start[0] = bank(0);
 		ziel[0]  = start[0].getNtesFeld(3);
@@ -31,6 +38,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben(new StartRegel());
 	}
 	
+	/**
+	 * Prüft, ob genau sieben Felder gefahren wird und ob
+	 * Figur auch wirklich verschoben wurde.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebner() throws RegelVerstoss {
 		start[0] = bank(0).getNaechstes();
 		ziel[0]  = start[0].getNtesFeld(7);
@@ -43,6 +56,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[0].istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Prüft, ob man den Zug auch auf die immer gleiche Figur aufteilen
+	 * kann (was nicht Sinn macht, ausser aus Komfortgründen).
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerUnsinnigAberGueltig() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = start[0].getNtesFeld(2);
@@ -61,6 +80,10 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[2].istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Testet, ob man mit der Siebnerregel auch nicht rückwärts fahren
+	 * kann.
+	 */
 	public void testSiebnerRueckwaerts() {
 		start[0] = bank(0).getNtesFeld(5);
 		ziel[0]  = bank(0).getVorheriges().getVorheriges();
@@ -68,6 +91,13 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Prüft, ob eine Gegnerfigur, welche auf dem Weg eines Siebnerzuges
+	 * liegt heimgeschickt wird und ob die heimgeschickte Figur auch wieder
+	 * auf dem Lagerfeld ist.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerHeimSchicken() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = start[0].getNtesFeld(7);
@@ -82,6 +112,13 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(lager(1).istBesetztVon(spieler(1)));
 	}
 	
+	/**
+	 * Prüft, ob zwei Gegnerfiguren, welche auf dem Weg eines Siebnerzuges
+	 * liegen heimgeschickt werden und ob sie auch wieder auf ihren Lagerfeldern
+	 * sind.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerZweiHeimSchicken() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(7);
@@ -100,6 +137,10 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(lager(1, 1).istBesetztVon(spieler(1)));
 	}
 	
+	/**
+	 * Prüft, ob erkannt wird, wenn bei einem Siebnerzug zu wenige
+	 * Schritte gemacht wurden.
+	 */
 	public void testSiebnerZuWenigSchritte() {
 		sollteVerstossGeben();
 		
@@ -115,6 +156,10 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Prüft, ob erkannt wird, wenn bei einem Siebnerzug zu viele
+	 * Schritte gemacht wurden.
+	 */
 	public void testSiebnerZuVielSchritte() {
 		start[0] = bank(0);
 		ziel[0]  = start[0].getNtesFeld(10);
@@ -126,6 +171,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Prüft, ob bei einem Verstoss gegen die Siebnerregel auch 
+	 * berücksichtigt wird, wenn mehrere Teilzüge ungültig sind.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerMehrfach() throws RegelVerstoss {
 		start[0] = bank(0).getNaechstes();
 		ziel[0]  = start[0].getNtesFeld(3);
@@ -145,6 +196,11 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[1].istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Prüft, ob ein Mehrfachzug auch wirklich einen Verstoss gibt, der
+	 * im ersten Teilzug die Figur frisst, welche im zweiten Teilzug 
+	 * gezogen wird.
+	 */
 	public void testSiebnerMehrfachStartFigurGefressen() {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(6);
@@ -155,6 +211,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Prüft, ob mit einer Siebnerregel auch nicht über ein geschütztes 
+	 * Bankfeld gefahren werden kann.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerUeberGeschuetztes() throws RegelVerstoss {
 		start[0] = lager(0);
 		ziel[0]  = bank(0);
@@ -169,6 +231,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Prüft, ob mit der Siebnerregel über ein ungeschütztes Bankfeld
+	 * gezogen werden kann.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerUeberBankFeld() throws RegelVerstoss {
 		start[0] = bank(0).getVorheriges();
 		ziel[0]  = bank(0);
@@ -185,6 +253,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[1].istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Prüft, ob die Siebnerregel auf Figuren angewendet werden kann, welche
+	 * vormals auf ihr Bankfeld gekommen waren und somit geschützt waren.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerMitGeschuetztem() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(5);
@@ -201,6 +275,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(ziel[1].istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Prüft eine schwierige Situation mit Figuren, die geschützt sind, es
+	 * nach dem Siebnerzug jedoch nicht mehr sein werden.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerMitGeschuetztemVerzwickt() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(3);
@@ -215,6 +295,9 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteValidieren();
 	}
 	
+	/**
+	 * Züge mit fremden Figuren sollten nicht möglich sein.
+	 */
 	public void testSiebnerMitFremdem() {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(7);
@@ -222,6 +305,12 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteVerstossGeben();
 	}
 	
+	/**
+	 * Bewegungen, die keine Veränderungen mit sich bringen sollten die 
+	 * Siebnerregel nicht tangieren.
+	 * 
+	 * @throws RegelVerstoss
+	 */
 	public void testSiebnerMitLeerenBewegungen() throws RegelVerstoss {
 		start[0] = bank(0);
 		ziel[0]  = bank(0).getNtesFeld(7);
@@ -232,6 +321,10 @@ public class SiebnerRegelTest extends RegelTestCase {
 		sollteValidieren();
 	}
 	
+	/**
+	 * Prüft, ob in einer Grenzsituation die Siebnerregel die korrekte
+	 * Antowrt auf die Frage liefert, ob ein Zug noch möglich ist.
+	 */
 	public void testSiebnerKannZiehen() {
 		assertFalse(regel.istZugMoeglich(spieler(0)));
 		
@@ -247,6 +340,9 @@ public class SiebnerRegelTest extends RegelTestCase {
 	
 	// TODO: Robin Mehr und kompliziertere Tests schreiben, z. B. mit Himmel. --Robin
 	
+	/**
+	 * @return Liefert eine Liste mit allen Bewegungen
+	 */
 	protected List<Bewegung> getBewegungen() {
 		Vector<Bewegung> bewegungen = new Vector<Bewegung>();
 		for (int i = 0; i < start.length; ++i) {
