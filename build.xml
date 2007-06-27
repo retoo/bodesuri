@@ -51,6 +51,7 @@
   </taskdef>
 <!-- initialization -->
   <target name="init">
+    <property file="key.properties"/>
     <mkdir dir="${lib-dir}" />
 
     <!-- tmp -->
@@ -90,6 +91,13 @@
     		<attribute name="Main-Class" value="Bodesuri"/>
     	</manifest>
    	</jar>
+   	<signjar
+        alias="bodesuri" keystore="build/cert/bodesuri.keystore"
+        storepass="${key.storepass}"
+        keypass="${key.keypass}"
+        lazy="true">
+        <fileset dir="lib" includes="**/*.jar" />
+    </signjar>
   </target>
 <!-- instrumentations -->
   <target name="generate-instrument" depends="clean-cobertura">
