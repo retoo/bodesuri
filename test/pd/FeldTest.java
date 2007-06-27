@@ -1,6 +1,9 @@
 package pd;
 import pd.brett.Feld;
 
+/**
+ * Stellt Tests zur Überprüfung der Funktionalität eines Feldes zur Verfügung.
+ */
 public class FeldTest extends ProblemDomainTestCase {
 	private Feld feld1;
 	private Feld feld2;
@@ -12,22 +15,34 @@ public class FeldTest extends ProblemDomainTestCase {
 		lager(0).versetzeFigurAuf(feld1);
 	}
 
+	/**
+	 * Prüft die Feldverkettung.
+	 */
 	public void testNaechstesVorheriges() {
 		Feld feld = feld1.getNaechstes().getVorheriges();
 		assertEquals(feld1, feld);
 	}
 	
+	/**
+	 * Prüft die Feldverkettung und Getter-Methode.
+	 */
 	public void testGetNtesFeld() {
 		assertEquals(feld1, feld1.getNtesFeld(0));
 		assertEquals(feld1.getNaechstes(), feld1.getNtesFeld(1));
 		assertEquals(feld1.getNaechstes().getNaechstes(), feld1.getNtesFeld(2));
 	}
 
+	/**
+	 * Prüft die Getter-Methode.
+	 */
 	public void testIstFrei() {
 		assertFalse(feld1.istFrei());
 		assertTrue(feld2.istFrei());
 	}
 
+	/**
+	 * Prüft die Getter-Methode.
+	 */
 	public void testIstBesetzt() {
 		assertTrue(feld1.istBesetzt());
 		assertTrue(feld1.istBesetztVon(spieler(0)));
@@ -35,23 +50,36 @@ public class FeldTest extends ProblemDomainTestCase {
 		assertFalse(feld2.istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Versetzt Figur auf anderes Feld und prüft, ob danach die Verkettung
+	 * noch in Ordnung ist.
+	 */
 	public void testVersetzeFigurAuf() {
 		feld1.versetzeFigurAuf(feld2);
 		assertTrue(feld1.istFrei());
 		assertTrue(feld2.istBesetztVon(spieler(0)));
 	}
 	
+	/**
+	 * Prüft auf Konsistenz der Himmelfelder.
+	 */
 	public void testGetHimmel() {
 		assertEquals(brett.getHimmelFelderVon(spieler(0)).get(0),
 		             bank(0).getHimmel());
 	}
 	
+	/**
+	 * Prüft auf Konstistenz des Spielers.
+	 */
 	public void testGetSpieler() {
 		assertEquals(spieler(0), lager(0).getSpieler());
 		assertEquals(spieler(0), bank(0).getSpieler());
 		assertEquals(spieler(0), bank(0).getHimmel().getSpieler());
 	}
 	
+	/**
+	 * Prüft auf Konsistenz der Feldnummerierung. 
+	 */
 	public void testGetNummer() {
 		assertEquals(0, bank(0).getNummer());
 		assertEquals("BankFeld 0", bank(0).toString());
