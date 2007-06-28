@@ -27,8 +27,8 @@ public class Brett {
 
 	/**
 	 * Erstellt ein Brett.
-	 * 
-	 * @param spieler Spieler, in dessen Namen die Felder erstellt werden sollen.
+	 *
+	 * @param spieler Spieler, die auf dem Brett spielen
 	 */
 	public Brett(List<Spieler> spieler) {
 		erstelleFelder(spieler);
