@@ -28,7 +28,23 @@ public class VerbindenView extends JFrame {
 	// Konstanten und Vorgabewerte
 	private final static int FRAME_WIDTH 	= 400;
 	private final static int FRAME_HEIGHT 	= 216;
-	private Konfiguration konfiguration;
+	private final Konfiguration konfiguration;
+	
+	private class EingabeInfo {
+		public String host = "";
+		public int port = 0;
+		public String spieler = "";
+		public boolean istEingabeGueltig = true;
+		public String hinweis = "";
+		public EingabeInfo(String hinweis, boolean istEingabeGueltig, 
+							String host, String spieler, int port) {
+			this.hinweis = hinweis;
+			this.istEingabeGueltig = istEingabeGueltig;
+			this.host = host;
+			this.spieler = spieler;
+			this.port = port;
+		}
+	}
 
 	// Components
 	private LimitiertesTextField hostTextField;
@@ -127,19 +143,55 @@ public class VerbindenView extends JFrame {
 	 * Hostname, Port und Spielername.
 	 */
 	public void verbinden() {
-		String host = konfiguration.defaultHost = hostTextField.getText();
-		String spieler = konfiguration.defaultName = spielerTextField.getText();
-		int port = konfiguration.defaultPort = Integer.valueOf(portTextField.getText());
-		// TODO: Pascal: korrekte Validierung der Eingaben (-pascal)
+		EingabeInfo info = validiereEingaben( hostTextField.getText(), 
+											  spielerTextField.getText(), 
+											  portTextField.getText());
 
-		setzeEingabeSperre(true);
-		
-		// Verbindung herstellen. Der Controller führt die Verbindung aus.
-		if (port > 1024 && port < 65536) {
-			VerbindenView.this.steuerung.verbinde(host, port, spieler);
+		if ( info.istEingabeGueltig ) {
+			setzeEingabeSperre(true);	// wird im GUIController wieder aufgehoben, falls
+										// nicht erfolgreich verbunden wurde.
+			konfiguration.defaultHost = info.host;
+			konfiguration.defaultName = info.spieler;
+			konfiguration.defaultPort = info.port;
+			
+			// Verbindung herstellen. Der Controller führt die Verbindung aus.
+			VerbindenView.this.steuerung.verbinde(info.host, info.port, info.spieler);
 		} else {
-			JOptionPane.showMessageDialog(null, "Es sind nur Ports zwischen 1024 und\n65535 zugelassen.");
+			JOptionPane.showMessageDialog(null, info.hinweis);
 		}
+	}
+	
+	private EingabeInfo validiereEingaben(String host, String spieler, String port_raw) {
+		String hinweis = "";
+		boolean istGueltig = true;
+		int port = 0;
+		
+		// Überprüfung des Hostnamens
+		if (host.equals("")) {
+			istGueltig = false;
+			hinweis += "\n - Der Hostname darf nicht leer sein.";
+		}
+		
+		// Überprüfung der Port-Eingabe
+		try {
+			port = Integer.parseInt(port_raw);
+			if (port < 1 || port > 65535)
+				throw new NumberFormatException();
+		} catch (NumberFormatException ex) {
+			istGueltig = false;
+			hinweis += "\n - Der Port muss zwischen 1 und 65535 liegen.";
+		}
+		
+		// Überprüfung des Spielernamens
+		if (spieler.equals("")) {
+			istGueltig = false;
+			hinweis += "\n - Der Spielername darf nicht leer sein.";
+		}
+		
+		if ( !istGueltig )
+			hinweis = "Folgende Eingaben waren nicht korrekt:" + hinweis;
+		
+		return new EingabeInfo(hinweis, istGueltig, host, spieler, port);
 	}
 	
 	/**
