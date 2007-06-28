@@ -19,6 +19,7 @@ public class Runde {
 		this.teilnahmen = new HashMap<Spieler, RundenTeilnahme>();
 		this.nummer = nummer;
 		this.spielers = new Vector<Spieler>(spielers);
+		this.aktuellerSpieler = nummer % spielers.size();
 
 		int anzahlKarten = getAnzahlKartenProSpieler();
 
