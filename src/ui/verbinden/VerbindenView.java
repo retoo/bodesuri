@@ -1,7 +1,6 @@
 package ui.verbinden;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.Dimension;
 
 import javax.swing.Box;
@@ -203,18 +202,15 @@ public class VerbindenView extends JFrame {
 	 * 				Falls true, wird das View gesperrt, bei false entsperrt.
 	 */
 	public void setzeEingabeSperre(boolean istGesperrt) {
-		Component zuWechseln = istGesperrt ? abbrechenButton : beendenButton;
-		buttonpanel.remove(3);
-		buttonpanel.add(zuWechseln, 3);
+//		Component zuWechseln = istGesperrt ? abbrechenButton : beendenButton;
+//		buttonpanel.remove(3);
+//		buttonpanel.add(zuWechseln, 3);
+		beendenButton.setEnabled(!istGesperrt);
 		
 		verbindenButton.setEnabled( !istGesperrt );
 		hostTextField.setEnabled( !istGesperrt );
 		portTextField.setEnabled( !istGesperrt );
 		spielerTextField.setEnabled( !istGesperrt );
 		progressBar.setVisible( istGesperrt );
-		
-//		hostTextField.processFocusEvent( new FocusEvent(hostTextField, getDefaultCloseOperation(), !istGesperrt) );
-//		spielerTextField.processFocusEvent( new FocusEvent(spielerTextField, getDefaultCloseOperation(), !istGesperrt) );
-//		portTextField.processFocusEvent( new FocusEvent(portTextField, getDefaultCloseOperation(), !istGesperrt) );
 	}
 }
