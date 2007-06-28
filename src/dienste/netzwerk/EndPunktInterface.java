@@ -1,6 +1,5 @@
 package dienste.netzwerk;
 
-import java.io.IOException;
 
 public interface EndPunktInterface {
 
@@ -15,9 +14,7 @@ public interface EndPunktInterface {
 
 	/**
 	 * Beendet die Verbindung
-	 *
-	 * @throws IOException
 	 */
-	public abstract void ausschalten() throws IOException;
+	public abstract void ausschalten();
 
 }

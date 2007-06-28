@@ -11,7 +11,7 @@ import dienste.eventqueue.Event;
 /**
  * Zustandsautomat für alle Lebenslagen. Ermöglicht das saubere Abarbeiten eines
  * Zustandsautomaten anhand eingehender Events.
- * 
+ *
  * Die Erstellung eines Automaten besteht aus folgenden Schritten:
  * <ul>
  * <il>Situationsabhänige aktive Zustandsklasse erstellen</li>
@@ -25,252 +25,285 @@ import dienste.eventqueue.Event;
  * verwendet werden.</li>
  * <il>Automat mit run() starten</li>
  * </ul>
- * 
+ *
  */
 public class Automat {
-	private Zustand start;
-	private EventQuelle eventQuelle;
-	private Map<Class<? extends Zustand>, Zustand> zustaende;
-	private Zustand aktuellerZustand;
-	private final EndZustand endzustand;
-	private boolean isInit;
+    private Zustand start;
+    private EventQuelle eventQuelle;
+    private Map<Class<? extends Zustand>, Zustand> zustaende;
+    private Zustand aktuellerZustand;
+    private final EndZustand endzustand;
+    private boolean isInit;
 
-	/**
-	 * Erstellt einen neuen Automaten
-	 */
-	public Automat() {
-		zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
+    /**
+     * Erstellt einen neuen Automaten
+     */
+    public Automat() {
+        zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 
-		endzustand = new EndZustand();
-		registriere(endzustand);
+        endzustand = new EndZustand();
+        registriere(endzustand);
 
-		isInit = false;
-	}
+        isInit = false;
+    }
 
-	/**
-	 * Registriert einen neuen Zustand
-	 *
-	 * @param zustand
-	 *            hinzuzufügende Zustand
-	 */
-	public void registriere(Zustand zustand) {
-		zustaende.put(zustand.getClass(), zustand);
-	}
+    /**
+     * Registriert einen neuen Zustand
+     *
+     * @param zustand
+     *            hinzuzufügende Zustand
+     */
+    public void registriere(Zustand zustand) {
+        zustaende.put(zustand.getClass(), zustand);
+    }
 
-	/**
-	 * Setzt den übergebenen Zustand als Startzustand
-	 *
-	 * @param zustandsKlasse
-	 *            Klasse des Zustandes der als Startzustand verwendet werden
-	 *            soll
-	 */
-	public void setStart(Class<? extends Zustand> zustandsKlasse) {
-		start = getZustand(zustandsKlasse);
+    /**
+     * Setzt den übergebenen Zustand als Startzustand
+     *
+     * @param zustandsKlasse
+     *            Klasse des Zustandes der als Startzustand verwendet werden
+     *            soll
+     */
+    public void setStart(Class<? extends Zustand> zustandsKlasse) {
+        start = getZustand(zustandsKlasse);
 
-		aktuellerZustand = start;
-	}
+        aktuellerZustand = start;
+    }
 
-	/**
-	 * Setzt die zu verwendende EventQuelle
-	 *
-	 * @param quelle
-	 *            Zum lesen der Eventes verwendete Quelle
-	 */
-	public void setEventQuelle(EventQuelle quelle) {
-		eventQuelle = quelle;
-	}
+    /**
+     * Setzt die zu verwendende EventQuelle
+     *
+     * @param quelle
+     *            Zum lesen der Eventes verwendete Quelle
+     */
+    public void setEventQuelle(EventQuelle quelle) {
+        eventQuelle = quelle;
+    }
 
-	public void init() {
-		pruefeAutomat(false);
-		start.onEntry();
-		verarbeitePassiveZustaende();
+    public void init() {
+        pruefeAutomat(false);
+        start.onEntry();
+        verarbeitePassiveZustaende();
 
-		isInit = true;
-	}
+        isInit = true;
+    }
 
-	/**
-	 * Startet den Zustandsautomaten und führt ihn so lange bis ein
-	 * {@link EndZustand} eintritt.
-	 */
-	public void run() {
-		pruefeAutomat(true);
-		isInit = true;
+    /**
+     * Startet den Zustandsautomaten und führt ihn so lange bis ein
+     * {@link EndZustand} eintritt.
+     */
+    public void run() {
+        pruefeAutomat(true);
+        isInit = true;
 
-		boolean isNichtFertig = (aktuellerZustand != endzustand);
-		while (isNichtFertig) {
-			isNichtFertig = step();
-		}
-	}
+        boolean isNichtFertig = (aktuellerZustand != endzustand);
+        while (isNichtFertig) {
+            isNichtFertig = step();
+        }
+    }
 
-	/**
-	 * Verarbeitet einen einzigen Zustand. Bei Aktiven Zuständen bedeutet dies,
-	 * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
-	 * ausgeführt.
-	 *
-	 *
-	 * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
-	 * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
-	 * werden
-	 *
-	 * @see Zustand
-	 * @see PassiverZustand
-	 * @see EndZustand
-	 *
-	 * @return false falls sich der Automat im Endzustand befindet
-	 */
-	public boolean step() {
-		if (!isInit)
-			throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
+    /**
+     * Verarbeitet einen einzigen Zustand. Bei Aktiven Zuständen bedeutet dies,
+     * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
+     * ausgeführt.
+     *
+     *
+     * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
+     * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
+     * werden
+     *
+     * @see Zustand
+     * @see PassiverZustand
+     * @see EndZustand
+     *
+     * @return false falls sich der Automat im Endzustand befindet
+     */
+    public boolean step() {
+        if (!isInit)
+            throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
 
-		if (aktuellerZustand instanceof PassiverZustand) {
-			return stepPassiv();
-		} else if (aktuellerZustand instanceof EndZustand) {
-			return false;
-		} else {
-			Event event = eventQuelle.getEvent();
-			if (!event.istLeise())
-				System.out.println(this + ": Event - " + event);
-			return stepAktiv(event);
-		}
-	}
+        if (aktuellerZustand instanceof PassiverZustand) {
+            return stepPassiv();
+        } else if (aktuellerZustand instanceof EndZustand) {
+            return false;
+        } else {
+            Event event = eventQuelle.getEvent();
+            if (!event.istLeise())
+                System.out.println(this + ": Event - " + event);
+            return stepAktiv(event);
+        }
+    }
 
-	/**
-	 * Ermöglicht das verarbeiten von Zuständen mit extern eingelesenen Events.
-	 * Kann z.B. für Unterautomaten verwendet werden
-	 *
-	 * @param event
-	 *            Zu verarbeitender Event
-	 * @return false falls sich der Automat im Endzustand befindet
-	 */
-	public boolean step(Event event) {
-		if (!isInit)
-			throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
+    /**
+     * Ermöglicht das verarbeiten von Zuständen mit extern eingelesenen Events.
+     * Kann z.B. für Unterautomaten verwendet werden
+     *
+     * @param event
+     *            Zu verarbeitender Event
+     * @return false falls sich der Automat im Endzustand befindet
+     */
+    public boolean step(Event event) {
+        if (!isInit)
+            throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
 
-		if (!event.istLeise())
-			System.out.println(this + ": Event - " + event);
+        if (!event.istLeise())
+            System.out.println(this + ": Event - " + event);
 
-		if (aktuellerZustand instanceof PassiverZustand) {
-			throw new RuntimeException(
-			                           "step(event) in einem passiven Zustande aufgerufen."
-			                           + " Zustand: "
-			                           + aktuellerZustand);
-		}
+        if (aktuellerZustand instanceof PassiverZustand) {
+            throw new RuntimeException(
+                                       "step(event) in einem passiven Zustande aufgerufen."
+                                       + " Zustand: "
+                                       + aktuellerZustand);
+        }
 
-		boolean isIstNichtFertig = stepAktiv(event);
+        boolean isIstNichtFertig = stepAktiv(event);
 
-		/* Wir brechen hier ab falls wir uns im Endzustand befinden */
-		if (!isIstNichtFertig)
-			return false;
+        /* Wir brechen hier ab falls wir uns im Endzustand befinden */
+        if (!isIstNichtFertig)
+            return false;
 
-		return verarbeitePassiveZustaende();
-	}
+        return verarbeitePassiveZustaende();
+    }
 
-	/**
-	 * Verarbeitet einen 'Aktiven' Zustand.
-	 *
-	 * @param event
-	 *            Zu verarbeitende event
-	 * @return false falls sich der Automat im Endzustand befindet
-	 */
-	private boolean stepAktiv(Event event) {
-		Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
+    /**
+     * Verarbeitet einen 'Aktiven' Zustand.
+     *
+     * @param event
+     *            Zu verarbeitende event
+     * @return false falls sich der Automat im Endzustand befindet
+     */
+    /* TODO: Robin: Kannst du bitte in stepAktiv und stepPassiv mein neues
+     * Exceptionahdnling reviewen. Siehst du irgendwelche 'Gefahren' in Form
+     * von verändertem Verhalten? (-reto)
+     */
+    private boolean stepAktiv(Event event) {
+    	try {
+	        Zustand naechsterZustand = getZustand(aktuellerZustand.handle(event));
 
-		if (naechsterZustand != aktuellerZustand) {
-			aktuellerZustand.onExit();
-			naechsterZustand.onEntry();
-		}
+	        boolean zustandAenderte = naechsterZustand != aktuellerZustand;
 
-		aktuellerZustand = naechsterZustand;
+	        if (zustandAenderte) {
+	            aktuellerZustand.onExit();
+	        }
 
-		if (!event.istLeise())
-			System.out.println(this.toString() + ": " + aktuellerZustand);
+	        aktuellerZustand = naechsterZustand;
 
-		return aktuellerZustand != endzustand;
-	}
+	        if (zustandAenderte) {
+	        	aktuellerZustand.onEntry();
+	        }
 
-	/**
-	 * Verarbeitet einen einzelnen Passiven Zustand
-	 *
-	 * @return false falls sich der Automat im Endzustand befindet
-	 */
-	private boolean stepPassiv() {
-		PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
+	        if (!event.istLeise())
+	            System.out.println(this.toString() + ": " + aktuellerZustand);
 
-		Zustand naechsterZustand = getZustand(zustand.handle());
+	        return aktuellerZustand != endzustand;
+    	} catch (Exception e) {
+    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
+    		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
+    		aktuellerZustand.handleException(e);
 
-		if (naechsterZustand != aktuellerZustand) {
-			zustand.onExit();
-			naechsterZustand.onEntry();
-		}
+    		/* Nach einem Fehler beendet sich der Automat zwangsläufig. Idealerweise
+    		 * würde der Automat noch die Chance kriegen irgendwas zu machen. Für unsere
+    		 * Zwecke wäre das aber zu kompliziert. */
+    		return false;
+    	}
+    }
 
-		aktuellerZustand = naechsterZustand;
-		System.out.println(this.toString() + ": " + aktuellerZustand);
+    /**
+     * Verarbeitet einen einzelnen Passiven Zustand
+     *
+     * @return false falls sich der Automat im Endzustand befindet
+     */
+    private boolean stepPassiv() {
+    	try {
+	        PassiverZustand zustand = (PassiverZustand) aktuellerZustand;
 
-		return aktuellerZustand != endzustand;
-	}
+	        Zustand naechsterZustand = getZustand(zustand.handle());
 
-	/**
-	 * Verarbeitet alle anstehenden passiven Zustnde
-	 *
-	 * @return false falls sich der Automat im Endzustand befindet
-	 */
-	private boolean verarbeitePassiveZustaende() {
-		while (aktuellerZustand instanceof PassiverZustand) {
-			stepPassiv();
-		}
+	        boolean zustandAenderte = naechsterZustand != aktuellerZustand;
 
-		return aktuellerZustand == endzustand;
-	}
+	        if (zustandAenderte) {
+	        	aktuellerZustand.onExit();
+	        }
 
-	/**
-	 *
-	 * Prüft den Automaten auf Fehler
-	 */
-	private void pruefeAutomat(boolean hatQuelle) {
-		if (zustaende.size() <= 1)
-			throw new RuntimeException("Keine Zustände registriert");
+	        aktuellerZustand = naechsterZustand;
 
-		if (start == null)
-			throw new RuntimeException("Kein Startzustand gesetzt");
+	        if (zustandAenderte) {
+	            aktuellerZustand.onEntry();
+	        }
 
-		if (hatQuelle && eventQuelle == null)
-			throw new RuntimeException("Keine EventQuelle definiert");
-	}
+	        System.out.println(this.toString() + ": " + aktuellerZustand);
 
-	/**
-	 * Such die Instanz des Zustandes der der übergebener Klasse angehört und an
-	 * diesen Automaten gebunden ist.
-	 *
-	 * @param klasse
-	 *            Klasse des gesuchten Zustandes
-	 * @return Instanz eines Zustandes
-	 */
-	private Zustand getZustand(Class<? extends Zustand> klasse) {
-		Zustand zustand = zustaende.get(klasse);
+	        return aktuellerZustand != endzustand;
+    	} catch (Exception e) {
+    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
+    		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
+    		aktuellerZustand.handleException(e);
 
-		if (zustand == null)
-			throw new RuntimeException("Nichtregistrierter Zustand " + klasse);
+    		/* Nach einem Fehler beendet sich der Automat zwangsläufig. Idealerweise
+    		 * würde der Automat noch die Chance kriegen irgendwas zu machen. Für unsere
+    		 * Zwecke wäre das aber zu kompliziert. */
+    		return false;
+    	}
+    }
 
-		return zustand;
-	}
+    /**
+     * Verarbeitet alle anstehenden passiven Zustnde
+     *
+     * @return false falls sich der Automat im Endzustand befindet
+     */
+    private boolean verarbeitePassiveZustaende() {
+        while (aktuellerZustand instanceof PassiverZustand) {
+            stepPassiv();
+        }
 
-	/**
-	 * Prüft ob sich der Automat in dem übergebenen Zustand befindet. Diese
-	 * Methode sollte nur für Tests verwendet werden.
-	 *
-	 * @param zustand zu prüfender Zustand
-	 * @return true falls sich der Automat zurzeit in diesem Zustand befindet
-	 */
-	public boolean isZustand(Class<? extends Zustand> zustand) {
-		return aktuellerZustand.getClass() == zustand;
-	}
+        return aktuellerZustand == endzustand;
+    }
 
-	public boolean istFertig() {
-		return aktuellerZustand == endzustand;
-	}
+    /**
+     *
+     * Prüft den Automaten auf Fehler
+     */
+    private void pruefeAutomat(boolean hatQuelle) {
+        if (zustaende.size() <= 1)
+            throw new RuntimeException("Keine Zustände registriert");
 
-	public String toString() {
-		return "Automat: ";
-	}
+        if (start == null)
+            throw new RuntimeException("Kein Startzustand gesetzt");
+
+        if (hatQuelle && eventQuelle == null)
+            throw new RuntimeException("Keine EventQuelle definiert");
+    }
+
+    /**
+     * Such die Instanz des Zustandes der der übergebener Klasse angehört und an
+     * diesen Automaten gebunden ist.
+     *
+     * @param klasse
+     *            Klasse des gesuchten Zustandes
+     * @return Instanz eines Zustandes
+     */
+    private Zustand getZustand(Class<? extends Zustand> klasse) {
+        Zustand zustand = zustaende.get(klasse);
+
+        if (zustand == null)
+            throw new RuntimeException("Nichtregistrierter Zustand " + klasse);
+
+        return zustand;
+    }
+
+    /**
+     * Prüft ob sich der Automat in dem übergebenen Zustand befindet. Diese
+     * Methode sollte nur für Tests verwendet werden.
+     *
+     * @param zustand zu prüfender Zustand
+     * @return true falls sich der Automat zurzeit in diesem Zustand befindet
+     */
+    public boolean isZustand(Class<? extends Zustand> zustand) {
+        return aktuellerZustand.getClass() == zustand;
+    }
+
+    public String toString() {
+        return "Automat: ";
+    }
 
 }

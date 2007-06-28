@@ -10,19 +10,16 @@ import dienste.eventqueue.Event;
  * die Klassen {@link Zustand} und {@link PassiverZustand} erweitert werden.
  */
 public abstract class Zustand implements ZustandsInterface {
+	/* (non-Javadoc)
+	 * @see dienste.automat.zustaende.ZustandsInterface#onEntry()
+	 */
 	public void onEntry() {
 	}
 
-	public void onExit() {
-	}
-
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see java.lang.Object#toString()
+	/* (non-Javadoc)
+	 * @see dienste.automat.zustaende.ZustandsInterface#onExit()
 	 */
-	public String toString() {
-		return this.getClass().getSimpleName();
+	public void onExit() {
 	}
 
 	/**
@@ -46,12 +43,45 @@ public abstract class Zustand implements ZustandsInterface {
     	                                 + this);
     }
 
+	/**
+	 * Wird dieser Übergang verwendet wird der Event ignoriert und eine kleine Meldung
+	 * ausgegeben
+	 *
+	 * @param event String der ausgegben werden soll.
+	 * @return immer die aktuelle Klase
+	 */
 	protected Class<? extends Zustand> ignoriereEvent(String event) {
 		System.out.println("Ignoriere Event: " + event);
 
 		return this.getClass();
     }
+	/**
+	 * Dieser Übergang ignoriert den aktuellen Event komplett.
+	 *
+	 * @return immer die aktuelle Klasse
+	 */
 	protected Class<? extends Zustand> ignoriereEvent() {
 		return this.getClass();
     }
+
+	/**
+	 * Sollte der Automat eine Exception erhalten wird diese
+	 * an diesen Handler weitergereicht. Wird diese Methode überschrieben
+	 * kann ein alternatives Handling implementiert werden. Z.B. könnte
+	 * man sihc überlegen dem User eine Fehlermeldung zukommen zu lassen.
+	 *
+	 * @param exception die ursprüngliche Exception
+	 */
+	public void handleException(Exception exception) {
+		throw new RuntimeException(exception);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return this.getClass().getSimpleName();
+	}
 }

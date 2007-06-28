@@ -6,13 +6,10 @@ import java.util.Observable;
 import java.util.Vector;
 
 import pd.serialisierung.CodiererThreads;
-import applikation.client.events.VerbindungAbgebrochenEvent;
 import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
-import dienste.netzwerk.Nachricht;
-import dienste.netzwerk.VerbindungWegException;
 import dienste.serialisierung.SerialisierungsKontext;
 
 /**
@@ -46,7 +43,8 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	/** Abbildung von PD-Spielern zu Applikations-Spielern */
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
 	public Chat chat;
-	/** TODO: Philippe: Was ist das? -philippe */
+	/* TODO: Philippe: Was ist das? -philippe */
+	/* TODO: Philippe: das ist von mir, der Zähler im Hinweisfeld (-reto)*/
 	private int zaehler = -1;
 
 	public Spiel(Konfiguration konfig) {
@@ -72,7 +70,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	/**
 	 * Sucht nach dem passenden {@link Spieler} zu einem
 	 * {@link pd.spieler.Spieler}.
-	 * 
+	 *
 	 * @param spieler
 	 *            Der bekannte PD-Spieler
 	 * @return Der gesuchte Applikations-Spieler
@@ -85,23 +83,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 			                           + spieler + " nicht finden!");
 		}
 		return s;
-	}
-
-	/**
-	 * Über den Endpunkt eine Nachricht an den Server senden. Dekoriert
-	 * {@link dienste.netzwerk.EndPunktInterface#sende(Nachricht)}, löst aber
-	 * im Fehlerfall einen {@link VerbindungAbgebrochenEvent} aus.
-	 * 
-	 * @param nachricht
-	 *            Zu sendende Nachricht
-	 */
-	// TODO: Reto: Bitte schöner machen -Philippe
-	public void sende(Nachricht nachricht) {
-		try {
-			endpunkt.sende(nachricht);
-		} catch (VerbindungWegException e) {
-			queue.enqueue(new VerbindungAbgebrochenEvent());
-		}
 	}
 
 	public Brett getBrett() {

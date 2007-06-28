@@ -1,6 +1,5 @@
 package applikation.client.zustaende;
 
-import java.io.IOException;
 
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.ZugEingabe;
@@ -85,11 +84,8 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
 		controller.zeigeMeldung("Das Spiel ist fertig, gewonnen haben "  + nachricht.gewinner);
-		try {
-			spiel.endpunkt.ausschalten();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
-		}
+
+		spiel.endpunkt.ausschalten();
 
 		return EndZustand.class;
 	}

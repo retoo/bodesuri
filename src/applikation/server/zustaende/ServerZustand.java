@@ -1,8 +1,10 @@
 package applikation.server.zustaende;
 
 import applikation.nachrichten.Aufgabe;
+import applikation.nachrichten.BeitrittVerweigert;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
+import applikation.nachrichten.SpielAbbruch;
 import applikation.nachrichten.SpielBeitreten;
 import applikation.nachrichten.ZugInformation;
 import applikation.server.pd.Spiel;
@@ -76,12 +78,12 @@ public abstract class ServerZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
-		System.out.println("Verbindung zu Client " + absender
-		                   + " wurde unerwartet beendet. Server wird beendet.");
-
 		spiel.entferne(absender);
 
-		return WarteBisAlleVerbindungenWeg.class;
+		spiel.broadcast(new SpielAbbruch("Verbindung zu Client " + absender
+                + " wurde unerwartet beendet. Server wird beendet."));
+
+		return ServerStoppen.class;
 	}
 
 	Class<? extends Zustand> zugInfo(EndPunktInterface absender,
@@ -98,9 +100,21 @@ public abstract class ServerZustand extends Zustand {
 		throw new RuntimeException(fehler.exception);
 	}
 
+	/**
+	 * Wenn wir uns nicht im Zustande {@link EmpfangeSpieler} befinden
+	 * werden alle Clients abgewiesen.
+	 *
+	 * @param absender
+	 * @param beitreten
+	 * @return Zustand wird unverändert beibehalten
+	 */
 	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,
 	                                        SpielBeitreten beitreten) {
-		return keinUebergang();
+
+		/* TODO: Philippe: kannst du das noch im Client einbauen (-reto) */
+		absender.sende(new BeitrittVerweigert());
+		absender.ausschalten();
+		return this.getClass();
 	}
 
 	public void setSpielDaten(Spiel spielDaten) {

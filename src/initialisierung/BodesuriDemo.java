@@ -4,10 +4,8 @@ package initialisierung;
 import java.util.List;
 import java.util.Vector;
 
-import applikation.bot.Botsuri;
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
-import dienste.eventqueue.EventQueue;
 
 public class BodesuriDemo {
 
@@ -29,8 +27,7 @@ public class BodesuriDemo {
 			konfig.defaultName = namen.get(i);
 			konfig.debugAutoLogin = true;
 
-			EventQueue queue = new EventQueue();
-			Botsuri b = new Botsuri(konfig, queue, null, Stupidbot.class);
+			BodesuriBot b = new BodesuriBot(konfig, Stupidbot.class, false);
 
 			b.start();
 

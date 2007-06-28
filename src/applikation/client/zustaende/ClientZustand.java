@@ -11,7 +11,6 @@ import applikation.client.events.HoverStartEvent;
 import applikation.client.events.KarteGewaehltEvent;
 import applikation.client.events.KartenTauschBestaetigtEvent;
 import applikation.client.events.VerbindeEvent;
-import applikation.client.events.VerbindungAbgebrochenEvent;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 import applikation.nachrichten.AktuellerSpielerInformation;
@@ -71,8 +70,6 @@ public class ClientZustand extends Zustand {
 	    	return hoverEnde((HoverEndeEvent) event);
 	    else if (event instanceof ChatEingabeEvent)
 	    	return chatEingabe((ChatEingabeEvent) event);
-	    else if (event instanceof VerbindungAbgebrochenEvent)
-	    	return verbindungAbgebrochen();
 
 	    return super.handle(event);
     }
@@ -115,19 +112,28 @@ public class ClientZustand extends Zustand {
     }
 
 	/* Netzwerk & GUI Handler - Global */
-	
+
 	Class<? extends Zustand> verbindungAbgebrochen() {
 		controller.zeigeFehlermeldung("Die Verbindung zum Server ist "
 		                              + "abgebrochen. Das Spiel wird beendet.");
 		controller.beenden();
 		return EndZustand.class;
 	}
-	
+
+	/* TODO: Philippe: Please review (-reto) */
+	public void handleException(Exception e) {
+		controller.zeigeFehlermeldung("Es trat ein schwerer Fehler auf. " +
+				"Spiel wird beendet: " + e.getMessage());
+		e.printStackTrace();
+		controller.beenden();
+	}
+
+
 	/* GUI Handler - Global */
 
 	Class<? extends Zustand> chatEingabe(ChatEingabeEvent eingabe) {
 		ChatNachricht cn = new ChatNachricht(spiel.spielerIch.getName(), eingabe.text);
-		spiel.sende(cn);
+		spiel.endpunkt.sende(cn);
 
 		return this.getClass();
     }

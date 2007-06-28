@@ -1,14 +1,10 @@
 package spielplatz;
 
+import initialisierung.BodesuriBot;
 import initialisierung.BodesuriServer;
 
 import java.util.Vector;
 
-import dienste.eventqueue.EventQueue;
-
-import ui.GUIController;
-
-import applikation.bot.Botsuri;
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
 
@@ -31,9 +27,7 @@ public class BodesuriArena {
 			konfig.defaultName = nicks.get(i);
 			konfig.debugAutoLogin = true;
 
-			EventQueue queue = new EventQueue();
-			GUIController guiController = new GUIController(queue, konfig);
-			Thread t = new Botsuri(konfig, queue, guiController, Stupidbot.class);
+			Thread t = new BodesuriBot(konfig, Stupidbot.class, false);
 
 			t.start();
 			clients.add(t);

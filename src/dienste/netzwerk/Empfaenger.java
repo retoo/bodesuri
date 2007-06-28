@@ -41,7 +41,6 @@ public class Empfaenger extends BodesuriThread {
 			briefkasten.einwerfen(brief);
 			return;
 		} catch (ClassNotFoundException e) {
-			/* TODO: reto testen */
 			throw new RuntimeException(e);
 		}
 	}

@@ -42,9 +42,13 @@ public abstract class EndPunkt implements EndPunktInterface {
 	/* (non-Javadoc)
      * @see dienste.netzwerk.EndPunktInterface#ausschalten()
      */
-	public void ausschalten() throws IOException {
-		socket.shutdownInput();
-		socket.shutdownOutput();
+	public void ausschalten() {
+		try {
+			socket.shutdownInput();
+			socket.shutdownOutput();
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	/* (non-Javadoc)

@@ -61,7 +61,7 @@ public class AmZug extends ClientZustand {
 	Class<? extends Zustand> gezogen(ZugErfasstEvent erfassterZug) {
 		erfassterZug.getKarte().setAusgewaehlt(false);
 		spiel.spielerIch.getKarten().remove(erfassterZug.getKarte());
-		spiel.sende(new ZugInformation(erfassterZug.toZugEingabe()));
+		spiel.endpunkt.sende(new ZugInformation(erfassterZug.toZugEingabe()));
 
 		return NichtAmZug.class;
 	}
@@ -73,7 +73,8 @@ public class AmZug extends ClientZustand {
 			                              + "ziehen.");
 			return this.getClass();
 		} else {
-			spiel.sende(new Aufgabe());
+			spiel.endpunkt.sende(new Aufgabe());
+
 			spiel.spielerIch.getKarten().setAktiv(false);
 			spiel.spielerIch.getKarten().clear();
 			return NichtAmZug.class;
