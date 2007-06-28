@@ -1,13 +1,11 @@
 package applikation.client.pd;
 
 import java.util.IdentityHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
 import pd.SpielThreads;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.events.VerbindungAbgebrochenEvent;
 import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
@@ -43,9 +41,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public SteuerungsZustand steuerungsZustand;
 	/** Der Inhalt des Hinweisfeldes in der Mittel des Spielbretts */
 	private String hinweis;
-	/** Alle bis jetzt gemachten Züge */
-	private LinkedList<ZugEingabe> zugHistory;
-	/** Die ausgewälte Karte */
 	public Karte ausgewaehlteKarte;
 
 	/** Abbildung von PD-Spielern zu Applikations-Spielern */
@@ -58,7 +53,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		this.konfiguration = konfig;
 
 		spiel = new pd.Spiel();
-		zugHistory = new LinkedList<ZugEingabe>();
 
 		// Assoziiere PD-Spieler nach App-Spieler
 		spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
@@ -138,16 +132,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	public void setZaehler(int i) {
 		this.zaehler = i;
-		setChanged();
-		notifyObservers();
-	}
-
-	public ZugEingabe getLetzterZug() {
-		return zugHistory.getFirst();
-	}
-
-	public void setLetzterZug(ZugEingabe letzterZug) {
-		zugHistory.addFirst(letzterZug);
 		setChanged();
 		notifyObservers();
 	}

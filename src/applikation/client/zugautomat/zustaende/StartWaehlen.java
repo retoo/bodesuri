@@ -12,9 +12,16 @@ import applikation.client.pd.Feld;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein
- * {@link FeldGewaehltEvent} eintrifft wird der gesamte Zug validiert und
- * versendet. Der Automat wird dann beendet.
+ * Zustand wenn der Spieler das Startfeld wählen muss.
+ * <ul>
+ * <li>Trifft ein {@link FeldGewaehltEvent} ein wird das Feld überprüft. Macht
+ * die Wahl Sinn wird nach {@link ZielWaehlen} gewechselt. Sonst bleiben wir in
+ * diesem Zustand.</li>
+ * <li>Trifft ein {@link KarteGewaehltEvent} ein (der Spieler hat eine andere
+ * Karte ausgewählt) wird nach {@link KarteWaehlen} gewechselt.</li>
+ * <li>Trifft ein {@link FeldAbgewaehltEvent} ein, wird das Brett
+ * zurückgesetzt. Wir bleiben aber in diesem Zustand.</li>
+ * </ul>
  */
 public class StartWaehlen extends ClientZugZustand {
 	public StartWaehlen(Controller controller) {
@@ -43,7 +50,7 @@ public class StartWaehlen extends ClientZugZustand {
 			spielDaten.setStart(feld);
 			return ZielWaehlen.class;
 		} else {
-			return StartWaehlen.class;
+			return this.getClass();
 		}
 	}
 

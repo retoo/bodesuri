@@ -16,6 +16,10 @@ import applikation.client.zugautomat.pd.SpielDaten;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 
+/**
+ * Spezifischer aktiver Zustand des ZugAutomaten. Enthält alle Events die
+ * Auftreten können.
+ */
 public class ClientZugZustand extends Zustand {
 	protected SpielDaten spielDaten;
 	protected Controller controller;
@@ -37,6 +41,8 @@ public class ClientZugZustand extends Zustand {
 
 		return super.handle(event);
 	}
+	
+	/* GUI Handler - Spiel */
 
 	Class<? extends Zustand> hoverStart(HoverStartEvent event) {
 		return ignoriereEvent();
@@ -57,14 +63,17 @@ public class ClientZugZustand extends Zustand {
 	Class<? extends Zustand> feldAbgewaehlt(FeldAbgewaehltEvent event) {
 		return ignoriereEvent("feldAbgewaehlt");
 	}
+	
+	/* Sonstiges */
 
 	Class<? extends Zustand> zugautomatEnde() {
 		return ZugautomatAbschluss.class;
     }
 
 	/**
-	 * Eine Karte als ausgewählt markieren.
-	 *
+	 * Eine Karte als ausgewählt markieren und dabei die Markierung der vormals
+	 * ausgewählten Karte entfernen.
+	 * 
 	 * @param karte
 	 */
 	protected void karteAuswaehlen(Karte karte) {
@@ -77,15 +86,21 @@ public class ClientZugZustand extends Zustand {
 	}
 
 	/**
-	 * Den Vektor mit den erfassten Bewegungen löschen.
+	 * Alle Bewegungen des Bretts zurücksetzten.
+	 * <ul>
+	 *   <li>Geisterfiguren des 7er Zuges entfernen</li>
+	 *   <li>Alle Selektionen auf dem Brett entfernen</li>
+	 *   <li>Alle erfassten Bewegungen löschen</li>
+	 * </ul>
 	 */
 	protected void bewegungenZuruecksetzen() {
-		/* Geister-Figuren für 7ner Zug zurücksetzen. */
+		/* Geister-Figuren entfernen. */
 		for (Feld f : spielDaten.spiel.getBrett().getAlleFelder())
 			f.setGeist(false); /* schöner machen */
 
-		/* Alle Selektionen zurücksetzen. */
+		/* Selektionen entferen. */
 		spielDaten.felderDeaktivieren();
+		/* Bewegungen löschen. */
 		spielDaten.bewegungen = new LinkedList<Bewegung>();
 		spielDaten.bewegungen.add(new Bewegung());
 	}

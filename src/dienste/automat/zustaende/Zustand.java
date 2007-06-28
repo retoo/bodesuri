@@ -3,8 +3,8 @@ package dienste.automat.zustaende;
 import dienste.eventqueue.Event;
 
 /**
- * Zustand in einem Zustands-Automaten. Jedem Zustand gewisse Tätigkeiten beim betreten
- * bzw. verlassen zugewiesen werden.
+ * Zustand in einem Zustands-Automaten. Jedem Zustand gewisse Tätigkeiten beim Betreten
+ * bzw. Verlassen zugewiesen werden.
  *
  * Die Klasse sollte nicht direkt abgeleitet werden, stattessen sollten
  * die Klassen {@link Zustand} und {@link PassiverZustand} erweitert werden.

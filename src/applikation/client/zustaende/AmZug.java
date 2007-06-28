@@ -14,10 +14,11 @@ import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand in welchem der Spieler dran kommt. Erstellt einen {@link ZugAutomat}
- * der sich um das Erfassen und Validieren eines Zuges kümmert. Der Automat
- * sendet eine {@link ZugErfasstEvent} wenn er fertig ist. Diese wird versandt
- * und der Automat geht nach {@link NichtAmZug} über.
+ * Zustand in welchem der Spieler am Zug ist. Erstellt einen {@link ZugAutomat}
+ * der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende
+ * Events werden direkt an den ZugAutomaten weitergeleitet. Dieser sendet eine
+ * {@link ZugErfasstEvent} wenn er fertig ist. Der Event wird versandt und der
+ * Automat geht nach {@link NichtAmZug} über.
  */
 public class AmZug extends ClientZustand {
     public void onEntry() {

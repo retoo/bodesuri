@@ -35,7 +35,8 @@ import dienste.netzwerk.VerbindungGeschlossen;
 import dienste.netzwerk.server.NetzwerkEvent;
 
 /**
- * Spezifischer aktiver Client-Zustand
+ * Spezifischer aktiver Zustand des ClientAutomaten.Enthält alle Events die
+ * Auftreten können.
  */
 public class ClientZustand extends Zustand {
 	protected Controller controller;

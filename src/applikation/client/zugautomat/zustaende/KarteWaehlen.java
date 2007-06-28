@@ -40,6 +40,7 @@ public class KarteWaehlen extends ClientZugZustand {
 		return StartWaehlen.class;
 	}
 
+	// Solle hier eigentlich noch nicht passieren, aber man weis nie.
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {
 		return this.getClass();
 	}

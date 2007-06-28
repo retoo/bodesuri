@@ -13,9 +13,22 @@ import applikation.client.pd.Feld;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein
- * {@link FeldGewaehltEvent} eintrifft wird der gesamte Zug validiert und
- * versendet. Der Automat wird dann beendet.
+ * Zustand wenn der Spieler das Zielfeld wählen muss.
+ * <ul>
+ * <li>Trifft ein {@link FeldGewaehltEvent} ein wird das Feld überprüft.
+ * <ul>
+ * <li>Macht die Wahl Sinn wird nach {@link ZugValidieren} gewechselt.</li>
+ * <li>Wurde das Startfeld ausgewählt wird das Startfeld wieder deaktiviert und
+ * nach {@link StartWaehlen} gewechselt.</li>
+ * </ul>
+ * </li>
+ * <li>Trifft ein {@link KarteGewaehltEvent} ein (der Spieler hat eine andere
+ * Karte ausgewählt) wird nach {@link KarteWaehlen} gewechselt.</li>
+ * <li>Trifft ein {@link FeldAbgewaehltEvent} ein, wird das Brett
+ * zurückgesetzt. Wir bleiben aber in diesem Zustand.</li>
+ * <li>{@link HoverStartEvent} und {@link HoverEndeEvent} aktiveren bzw.
+ * deaktiviern das Markieren des Weges</li>
+ * </ul>
  */
 public class ZielWaehlen extends ClientZugZustand {
 	public ZielWaehlen(Controller controller) {
@@ -37,7 +50,6 @@ public class ZielWaehlen extends ClientZugZustand {
 
 		if (spielDaten.getStart() == feld) {
 			/* Dasselbe Feld nochmals angeklickt */
-
 			spielDaten.setStart(null);
 
 			return StartWaehlen.class;

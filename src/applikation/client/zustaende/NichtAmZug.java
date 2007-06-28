@@ -27,6 +27,8 @@ import dienste.automat.zustaende.Zustand;
  * erhaltenen Karten gespeichert und der Zustand {@link StarteRunde} aufgerufen.</li>
  * <li>Wenn eine {@link AufgabeInformation} eintrifft, wird der Spieler welcher
  * aufgegeben hat im UI angepasst. Der Zustand wird nicht gewechselt.</li>
+ * <li>Wenn eine {@link SpielFertigNachricht} eintrifft, wird der Gewinner
+ * angezeigt und der {@link EndZustand} aufgerufen.</li>
  * </ul>
  */
 public class NichtAmZug extends ClientZustand {
@@ -35,8 +37,7 @@ public class NichtAmZug extends ClientZustand {
 		return AmZug.class;
 	}
 
-	Class<? extends Zustand> aktuellerSpielerInformation(
-	                                                     AktuellerSpielerInformation information) {
+	Class<? extends Zustand> aktuellerSpielerInformation(AktuellerSpielerInformation information) {
 		Spieler neuerSpieler = spiel.findeSpieler(information.spieler);
 
 		if (spiel.aktuellerSpieler != null) {
@@ -51,7 +52,6 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
-		spiel.setLetzterZug(zug);
 		spiel.chat.meldeZug(zug);
 
 		try {

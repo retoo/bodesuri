@@ -7,6 +7,18 @@ import applikation.client.events.ZugErfasstEvent;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
+/**
+ * Validiert den erfassten Zug.
+ * <ul>
+ * <li>Ist die Karte eine Sieben und es sind noch nicht 7 Felder gefahren,
+ * wechseln wir zurück nach {@link StartWaehlen} um eine weitere Bewegung zu
+ * erfassen.</li>
+ * <li>Ist der Zug ungültig wird eine Fehlermeldung gezeigt, das Ziel
+ * deaktiviert und zurück nach {@link ZielWaehlen} gewechselt.</li>
+ * <li> Ist der Zug gültig wird er zurück an den ClientAutomat übermittelt und
+ * nach {@link ZugautomatAbschluss} gewechselt.</li>
+ * 
+ */
 public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 
 	public Class<? extends Zustand> handle() {
@@ -21,7 +33,7 @@ public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 			if (e instanceof WegLaengeVerstoss) {
 				WegLaengeVerstoss wegverstoss = (WegLaengeVerstoss) e;
 				// Ist die Karte eine Sieben und wir haben noch keine 7 Züge?
-				// -> Weiteren Zug erfassen -> Zurück zu StartWaehlen.
+				// -> Weitere Bewegung erfassen -> Zurück zu StartWaehlen.
 				if (erfassterZug.getKonkreteKarte().getKarte() instanceof Sieben &&
 					wegverstoss.getIstLaenge() < 7) {
 					spielDaten.felderDeaktivieren();
