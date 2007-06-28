@@ -17,6 +17,11 @@ import dienste.automat.zustaende.UnbekannterEventException;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.EventQueue;
 
+/**
+ * Ist die Basis aller Tests für den Automaten. Setzt einen <Code>TestCase</Code>
+ * für den Automaten auf und bietet allgemeine Testmethoden die den Erfolg des
+ * Tests prüfen.
+ */
 public class AutomatenTest extends TestCase {
 	private Automat automat;
 	private EventQueue input;
@@ -30,6 +35,9 @@ public class AutomatenTest extends TestCase {
 		automat.init();
 	}
 
+	/**
+	 * Prüft, ob der Automat anhält, wenn er einen EndZustand erreicht hat.
+	 */
 	public void testStop() {
 		input.enqueue(new TestExitEvent());
 
@@ -40,6 +48,9 @@ public class AutomatenTest extends TestCase {
 		assertIstInZustand(automat, EndZustand.class);
 	}
 
+	/**
+	 * Testet den Automaten, wenn bei ihm keine Zustände registriert wurden.
+	 */
 	public void testKeineZustaende() {
 		Automat autmat = new Automat();
 
@@ -55,9 +66,11 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
+	/**
+	 * Testet den Automaten, wenn ihm kein StartZustand angegeben wurde.
+	 */
 	public void testKeinStart() {
 		Automat automat = new Automat();
-
 		automat.registriere(new DummyZustand());
 
 		boolean fehlerAufgetreten = false;
@@ -72,9 +85,12 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
-	public void testKeineSource() {
+	/**
+	 * Prüft das Verhalten des Automaten, wenn ihm keine EventQuelle
+	 * angegeben wurde.
+	 */
+	public void testKeineEventQuelle() {
 		Automat automat = new Automat();
-
 		automat.registriere(new DummyZustand());
 		automat.setStart(DummyZustand.class);
 
@@ -90,41 +106,46 @@ public class AutomatenTest extends TestCase {
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
-	public void testUnbkeannterStart() {
+	/**
+	 * Testet, ob unbekannte Zustände als StartZustand misbraucht werden
+	 * können.
+	 */
+	public void testUnbkannterStart() {
 		boolean fehlerAufgetreten = false;
 
 		try {
 			automat.setStart(DummyZustand.class);
 		} catch (Exception e) {
 			fehlerAufgetreten = true;
-			assertEquals(
-			             "Nichtregistrierter Zustand class dienste.automat.testzustaende.DummyZustand",
+			assertEquals("Nichtregistrierter Zustand class dienste.automat.testzustaende.DummyZustand",
 			             e.getMessage());
 		}
 
 		assertTrue("Fehler nicht aufgetreten", fehlerAufgetreten);
 	}
 
+	/**
+	 * Erzeugt eine Reihe von Test-Events und geht diese im Automaten
+	 * Schritt für Schritt durch (mittels <Code>step()</Code>).
+	 */
 	public void testStep() {
 		input.enqueue(new TestEventA());
-
 		assertTrue(automat.step());
-
 		assertIstInZustand(automat, AktiverTestZustandAlpha.class);
-
+		
 		input.enqueue(new TestEventB());
-
 		assertTrue(automat.step());
-
 		assertIstInZustand(automat, AktiverTestZustandBeta.class);
-
+		
 		input.enqueue(new TestEventB());
-
 		assertTrue(automat.step());
-
 		assertIstInZustand(automat, AktiverTestZustandBeta.class);
 	}
 
+	/**
+	 * Testet, ob unbekannte Events in einer <Code>UnbekannterEventException</Code>
+	 * enden.
+	 */
 	public void testUnbekannterEvent() {
 		input.enqueue(new TestEventC());
 
@@ -139,6 +160,10 @@ public class AutomatenTest extends TestCase {
 		assertTrue(fehlerAufgetreten);
 	}
 
+	/**
+	 * Testet, ob ungültige Übergänge korrekt in einer
+	 * <Code>KeinUebergangException</Code> enden.
+	 */
 	public void testKeinUebergang() {
 		input.enqueue(new TestEventB());
 		input.enqueue(new TestEventC());
@@ -156,6 +181,9 @@ public class AutomatenTest extends TestCase {
 		assertTrue(fehlerAufgetreten);
 	}
 
+	/**
+	 * Testet den passiven Zustand des Automaten.
+	 */
 	public void testPassiverZustand() {
 		automat.registriere(new PassiverTestZustandAlpha());
 		automat.registriere(new PassiverTestZustandBeta());
@@ -167,7 +195,11 @@ public class AutomatenTest extends TestCase {
 		assertIstInZustand(automat, EndZustand.class);
 	}
 
-	public void testRun() {
+	/**
+	 * Testet die <Code>run()</Code> Methode des Automaten, indem einige
+	 * Test-Events erzeugt und in den Automaten eingespiesen werden.
+	 */
+	public void testRunMethodeDesAutomaten() {
 		input.enqueue(new TestEventA());
 		input.enqueue(new TestEventB());
 		input.enqueue(new TestEventB());
@@ -179,6 +211,14 @@ public class AutomatenTest extends TestCase {
 		assertIstInZustand(automat, EndZustand.class);
 	}
 
+	/**
+	 * Prüft, ob der Automat sich im angegebenen Zustand befindet.
+	 * 
+	 * @param automat
+	 * 			Zu testender Automat.
+	 * @param zustand
+	 * 			Zustand, in dem sich der Automat befinden sollte.
+	 */
 	private void assertIstInZustand(Automat automat, Class<? extends Zustand> zustand) {
 		assertTrue("Prüfen ob sich der Automat " + automat + " "
 		         + "im Zustand " + zustand + " befindet.", automat.isZustand(zustand));
