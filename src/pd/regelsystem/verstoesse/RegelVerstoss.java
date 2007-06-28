@@ -28,6 +28,10 @@ public abstract class RegelVerstoss extends Exception {
 		return "Regelverstoss: " + getMessage();
 	}
 
+	/**
+	 * @return "Spezifität" des Verstosses; je höher die Spezifität, desto
+	 *         genauer ist der Verstoss
+	 */
 	public double getSpezifitaet() {
 		return spezifitaet;
 	}

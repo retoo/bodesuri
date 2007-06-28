@@ -24,9 +24,13 @@ import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 import pd.zugsystem.ZugEingabeAbnehmer;
 
+/**
+ * Regel der Karte Sieben, bei der der Zug auf mehrere Figuren aufgeteilt werden
+ * kann.
+ */
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
-		super(7); // Für kannZiehen gebraucht.
+		super(7);  /* Für kannZiehen gebraucht. */
 		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt heim");
 	}
 

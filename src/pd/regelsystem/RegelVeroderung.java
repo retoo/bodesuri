@@ -16,6 +16,11 @@ import pd.zugsystem.ZugEingabeAbnehmer;
 public class RegelVeroderung extends Regel {
 	private Vector<Regel> regeln = new Vector<Regel>();
 
+	/**
+	 * Füge eine Regel der Veroderung hinzu.
+	 *
+	 * @param regel Regel, die hinzugefügt wird
+	 */
 	public void fuegeHinzu(Regel regel) {
 		regeln.add(regel);
 	}
@@ -32,8 +37,9 @@ public class RegelVeroderung extends Regel {
 	/**
 	 * Beim Validieren werden alle enthaltenen Regeln durchgegangen und der
 	 * erste gültige Zug zurückgegeben.
-	 *
-	 * Wenn keine Regel gültig ist, wird eine RegelVerstoss geworfen.
+	 * 
+	 * Wenn keine Regel gültig ist, wird der RegelVerstoss mit der höchsten
+	 * Spezifität geworfen.
 	 */
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		RegelVerstoss verstoss = null;

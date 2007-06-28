@@ -17,6 +17,9 @@ import pd.zugsystem.ZugEingabeSammler;
 public abstract class Regel {
 	private String beschreibung;
 
+	/**
+	 * @return true, wenn Regel mit Weg arbeitet
+	 */
 	public boolean arbeitetMitWeg() {
 		return false;
 	}
