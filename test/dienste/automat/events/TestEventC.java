@@ -1,7 +1,7 @@
 package dienste.automat.events;
 import dienste.eventqueue.Event;
 
-
-public class TestEventC extends Event {
-
-}
+/**
+ * Leerer TestEvent für den TestAutomaten.
+ */
+public class TestEventC extends Event { }
