@@ -21,7 +21,11 @@ public abstract class ProblemDomainTestCase extends TestCase {
 	protected KartenGeber kartenGeber;
 	
 	protected void setUp() {
-		spiel = new Spiel();
+		ProblemDomain problemDomain = new ProblemDomain();
+
+		spiel = problemDomain.getSpiel();
+		kartenGeber = problemDomain.getKartenGeber();
+
 		brett = spiel.getBrett();
 
 		for (int i = 0; i < 4; ++i) {
@@ -33,8 +37,6 @@ public abstract class ProblemDomainTestCase extends TestCase {
 		spieler.get(2).setPartner(spieler.get(0));
 		spieler.get(1).setPartner(spieler.get(3));
 		spieler.get(3).setPartner(spieler.get(1));
-
-		kartenGeber = spiel.getKartenGeber();
 	}
 	
 	/**

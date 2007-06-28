@@ -3,6 +3,7 @@ package applikation.server.pd;
 import java.util.IdentityHashMap;
 import java.util.Vector;
 
+import pd.ProblemDomain;
 import pd.serialisierung.CodiererThreads;
 import pd.spieler.Partnerschaft;
 import applikation.nachrichten.ChatNachricht;
@@ -23,6 +24,7 @@ public class Spiel implements SerialisierungsKontext {
 	private Vector<Spieler> spielers = new Vector<Spieler>();
 	private Vector<Partnerschaft> partnerschaften;
 	private int anzahlSpieler;
+	private ProblemDomain problemDomain;
 	private pd.Spiel spiel;
 
 	public Server server;
@@ -30,7 +32,7 @@ public class Spiel implements SerialisierungsKontext {
 	public Runde runde;
 
 	public void registriere(Thread thread) {
-		CodiererThreads.registriere(thread, spiel.getCodierer());
+		CodiererThreads.registriere(thread, problemDomain.getCodierer());
 	}
 
 	/**
@@ -40,7 +42,8 @@ public class Spiel implements SerialisierungsKontext {
 	 *            Anzahl der Speielr
 	 */
 	public Spiel(int anzSpieler) {
-		this.spiel = new pd.Spiel();
+		this.problemDomain = new ProblemDomain();
+		this.spiel = problemDomain.getSpiel();
 		this.anzahlSpieler = anzSpieler;
 		this.spielers = new Vector<Spieler>();
 		this.partnerschaften = new Vector<Partnerschaft>();
@@ -131,9 +134,9 @@ public class Spiel implements SerialisierungsKontext {
 	 */
 	public Runde starteRunde() {
 		if (runde == null) {
-			runde = new Runde(0, spielers, spiel.getKartenGeber());
+			runde = new Runde(0, spielers, problemDomain.getKartenGeber());
 		} else {
-			runde = new Runde(runde.nummer + 1, spielers, spiel.getKartenGeber());
+			runde = new Runde(runde.nummer + 1, spielers, problemDomain.getKartenGeber());
 		}
 
 		return runde;

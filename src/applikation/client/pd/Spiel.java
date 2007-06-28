@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
+import pd.ProblemDomain;
 import pd.serialisierung.CodiererThreads;
 import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
@@ -20,6 +21,7 @@ import dienste.serialisierung.SerialisierungsKontext;
  * Brett aus der PD dekorieren.
  */
 public class Spiel extends Observable implements SerialisierungsKontext {
+	private ProblemDomain problemDomain;
 	private pd.Spiel spiel;
 	private Brett brett;
 	private Vector<Spieler> spieler;
@@ -50,7 +52,8 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public Spiel(Konfiguration konfig) {
 		this.konfiguration = konfig;
 
-		spiel = new pd.Spiel();
+		problemDomain = new ProblemDomain();
+		spiel = problemDomain.getSpiel();
 
 		// Assoziiere PD-Spieler nach App-Spieler
 		spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
@@ -128,6 +131,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	}
 
 	public void registriere(Thread thread) {
-		CodiererThreads.registriere(thread, spiel.getCodierer());
+		CodiererThreads.registriere(thread, problemDomain.getCodierer());
 	}
 }
