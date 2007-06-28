@@ -5,6 +5,7 @@ import java.util.Vector;
 
 import pd.brett.Brett;
 import pd.karten.KartenGeber;
+import pd.serialisierung.CodiererThreads;
 import pd.spieler.Spieler;
 import pd.spieler.SpielerFarbe;
 import dienste.serialisierung.Codierer;
@@ -27,7 +28,7 @@ public class Spiel {
 	 */
 	public Spiel() {
 		codierer = new Codierer();
-		SpielThreads.registriere(Thread.currentThread(), this);
+		CodiererThreads.registriere(Thread.currentThread(), codierer);
 
 		spieler = new Vector<Spieler>();
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {

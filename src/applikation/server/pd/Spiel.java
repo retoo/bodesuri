@@ -3,8 +3,8 @@ package applikation.server.pd;
 import java.util.IdentityHashMap;
 import java.util.Vector;
 
-import pd.SpielThreads;
 import pd.karten.KartenGeber;
+import pd.serialisierung.CodiererThreads;
 import pd.spieler.Partnerschaft;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielInfo;
@@ -31,7 +31,7 @@ public class Spiel implements SerialisierungsKontext {
 	public Runde runde;
 
 	public void registriere(Thread thread) {
-		SpielThreads.registriere(thread, this.spiel);
+		CodiererThreads.registriere(thread, spiel.getCodierer());
 	}
 
 	/**

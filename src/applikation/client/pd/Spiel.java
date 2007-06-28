@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
-import pd.SpielThreads;
+import pd.serialisierung.CodiererThreads;
 import applikation.client.events.VerbindungAbgebrochenEvent;
 import applikation.client.konfiguration.Konfiguration;
 import dienste.automat.Automat;
@@ -147,6 +147,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	}
 
 	public void registriere(Thread thread) {
-		SpielThreads.registriere(thread, spiel);
+		CodiererThreads.registriere(thread, spiel.getCodierer());
 	}
 }

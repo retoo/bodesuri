@@ -1,7 +1,5 @@
 package pd.serialisierung;
 
-import pd.Spiel;
-import pd.SpielThreads;
 import dienste.serialisierung.Codierer;
 import dienste.serialisierung.CodiertesObjekt;
 
@@ -11,11 +9,11 @@ public class BodesuriCodiertesObjekt extends CodiertesObjekt {
 	}
 
 	protected Codierer getCodierer() {
-		Spiel spiel = SpielThreads.getSpiel(Thread.currentThread());
-		if (spiel == null) {
+		Codierer codierer = CodiererThreads.getCodierer(Thread.currentThread());
+		if (codierer == null) {
 			throw new RuntimeException("Dem Thread ist kein Spiel zugewiesen.");
 		} else {
-			return spiel.getCodierer();
+			return codierer;
 		}
 	}
 }
