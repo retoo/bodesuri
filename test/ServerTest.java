@@ -15,7 +15,15 @@ import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.server.BriefkastenAdapter;
 import dienste.serialisierung.SerialisierungsKontext;
 
+/**
+ * Bietet Tests zur Prüfung der Funktionalität des Servers.
+ */
 public class ServerTest extends TestCase {
+	/**
+	 * Testet den Server auf korrektes Funktionieren, indem ein Server 
+	 * und vier Endpunkte erstellt werden und ein Beitritt der Spieler
+	 * simuliert wird.
+	 */
 	public void testServer() {
 
 		if (1 + 1 == 2) {
@@ -39,8 +47,7 @@ public class ServerTest extends TestCase {
 			EndPunktInterface client;
 			try {
 				client = new ClientEndPunkt("localhost", 7788,
-				                      new BriefkastenAdapter(eventQueue),
-				                      kontext);
+						new BriefkastenAdapter(eventQueue), kontext);
 			} catch (Exception e) {
 				throw new RuntimeException(e);
 			}
@@ -58,25 +65,37 @@ public class ServerTest extends TestCase {
 
 		for (TestSpieler ts : spielers) {
 			Nachricht beitrittBestaetigung = ts.getNachricht();
-			assertTrue("Prüfen ob brief vom Typ Beitrittsbestätigung: " + beitrittBestaetigung, beitrittBestaetigung instanceof BeitrittsInformation);
+			assertTrue("Prüfen ob brief vom Typ Beitrittsbestätigung: "
+					+ beitrittBestaetigung,
+					beitrittBestaetigung instanceof BeitrittsInformation);
 
-			/* TODO: Reto: hässlich reto, mach das besser !! --Reto*/
-	/*		Nachricht spielstart;
-			while( true ) {
-				 spielstart = ts.getNachricht();
-
-				 if (!(spielstart instanceof ChatNachricht))
-					 break;
-			}
-			assertTrue("Prüfen ob brief vom Typ Spielstart: " + spielstart, spielstart instanceof SpielStartNachricht);
-
-			assertFalse("Sicherstellen das Queue leer ist", ts.hatNachrichten());
-*/
+			/* TODO: Reto: hässlich reto, mach das besser !! --Reto */
+			/*
+			 * Nachricht spielstart; while( true ) { spielstart =
+			 * ts.getNachricht();
+			 * 
+			 * if (!(spielstart instanceof ChatNachricht)) break; }
+			 * assertTrue("Prüfen ob brief vom Typ Spielstart: " + spielstart,
+			 * spielstart instanceof SpielStartNachricht);
+			 * 
+			 * assertFalse("Sicherstellen das Queue leer ist",
+			 * ts.hatNachrichten());
+			 */
 		}
 	}
 
-	private void assertIstInZustand(Automat automat, Class<? extends Zustand> zustand) {
+	/**
+	 * Prüft, ob sich der Automat im angegebenen Zustand befindet.
+	 * 
+	 * @param automat
+	 * 			Zu testender Automat.
+	 * @param zustand
+	 * 			Zustand, in dem sich der Automat befinden sollte.
+	 */
+	private void assertIstInZustand(Automat automat,
+			Class<? extends Zustand> zustand) {
 		assertTrue("Prüfen ob sich der Automat " + automat + " "
-		         + "im Zustand " + zustand + " befindet.", automat.isZustand(zustand));
-    }
+				+ "im Zustand " + zustand + " befindet.", automat
+				.isZustand(zustand));
+	}
 }
