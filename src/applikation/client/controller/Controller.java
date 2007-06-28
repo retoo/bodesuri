@@ -130,5 +130,7 @@ public abstract class Controller implements Steuerung {
 
 	public void beenden() {
 		/* TODO: reto review (-reto) */
+		// TODO: reto oder pascal: richtig implementieren (-pascal)
+		System.exit(0);
 	}
 }
