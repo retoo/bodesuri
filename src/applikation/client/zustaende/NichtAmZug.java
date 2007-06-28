@@ -52,7 +52,6 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
 		spiel.setLetzterZug(zug);
-		spiel.zugHistory.addFirst(zug);
 		spiel.chat.meldeZug(zug);
 
 		try {

@@ -6,9 +6,14 @@ import pd.karten.Joker;
 import pd.karten.KartenFarbe;
 import pd.regelsystem.Regel;
 
+/**
+ * Dekoriert eine Karte aus der PD.
+ * Speichert zusätzlich zustandsabhängige Daten, wie ob die Karte ausgewählt ist.
+ */
 public class Karte extends Observable {
-	private boolean ausgewaehlt;
 	private pd.karten.Karte karte;
+	
+	private boolean ausgewaehlt;
 
 	public Karte(pd.karten.Karte karte) {
 		this.karte = karte;
@@ -25,18 +30,6 @@ public class Karte extends Observable {
 		notifyObservers(ausgewaehlt);
 	}
 
-	public KartenFarbe getKartenFarbe() {
-	    return karte.getKartenFarbe();
-    }
-
-	public String getRegelBeschreibung() {
-		return karte.getRegelBeschreibung();
-	}
-
-	public pd.karten.Karte getKarte() {
-		return karte;
-	}
-
 	public String getIconName() {
 		if (karte instanceof Joker) {
 			return "joker";
@@ -45,12 +38,24 @@ public class Karte extends Observable {
 			return name.toLowerCase();
 		}
 	}
-
-	public String toString() {
-		return karte.toString();
+	
+	public KartenFarbe getKartenFarbe() {
+		return karte.getKartenFarbe();
+	}
+	
+	public String getRegelBeschreibung() {
+		return karte.getRegelBeschreibung();
+	}
+	
+	public pd.karten.Karte getKarte() {
+		return karte;
 	}
 
 	public Regel getRegel() {
 		return karte.getRegel();
     }
+	
+	public String toString() {
+		return karte.toString();
+	}
 }

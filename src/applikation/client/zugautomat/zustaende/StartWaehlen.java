@@ -29,7 +29,7 @@ public class StartWaehlen extends ClientZugZustand {
 		Feld feld = event.feld;
 
 		Figur figur = feld.getFigur();
-		Spieler spieler = spielDaten.spiel.spielerIch.spieler;
+		Spieler spieler = spielDaten.spiel.spielerIch.getSpieler();
 		if (spieler.istFertig()) {
 			spieler = spieler.getPartner();
 		}

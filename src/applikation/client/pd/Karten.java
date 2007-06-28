@@ -6,6 +6,11 @@ import java.util.Observer;
 
 import dienste.observer.ObservableList;
 
+/**
+ * Speichert Karten sowohl aus der PD als auch aus der Applikaktionsschicht.
+ * Speichert zusätzlich zustandsabhängige Daten, wie ob die Kartenauswahl
+ * aktiviert ist.
+ */
 public class Karten extends Observable implements Observer, Iterable<Karte> {
 	private boolean aktiv;
 	private ObservableList<pd.karten.Karte> pdKarten;
@@ -16,11 +21,6 @@ public class Karten extends Observable implements Observer, Iterable<Karte> {
 		this.aktiv = false;
 		this.appKarten = new ObservableList<Karte>();
 		appKarten.addObserver(this);
-	}
-
-	public void update(Observable o, Object arg) {
-		setChanged();
-		notifyObservers(arg);
 	}
 
 	public void setAktiv(boolean aktiv) {
@@ -35,7 +35,7 @@ public class Karten extends Observable implements Observer, Iterable<Karte> {
 
 	public Karte get(int i) {
 		return appKarten.get(i);
-    }
+	}
 
 	public int size() {
 		return appKarten.size();
@@ -43,17 +43,17 @@ public class Karten extends Observable implements Observer, Iterable<Karte> {
 
 	public Iterator<Karte> iterator() {
 		return appKarten.iterator();
-    }
+	}
 
 	public void add(Karte karte) {
 		pdKarten.add(karte.getKarte());
-	    appKarten.add(karte);
-    }
+		appKarten.add(karte);
+	}
 
 	public void remove(Karte karte) {
 		pdKarten.remove(karte.getKarte());
 		appKarten.remove(karte);
-    }
+	}
 
 	public void clear() {
 		for (Karte karte : appKarten) {
@@ -63,5 +63,10 @@ public class Karten extends Observable implements Observer, Iterable<Karte> {
 		}
 		pdKarten.clear();
 		appKarten.clear();
+	}
+	
+	public void update(Observable o, Object arg) {
+		setChanged();
+		notifyObservers(arg);
 	}
 }

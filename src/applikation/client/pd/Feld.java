@@ -5,8 +5,15 @@ import java.util.Observer;
 
 import pd.spieler.Figur;
 
+/**
+ * Dekoriert ein Feld aus der PD.
+ * Speichert zusätzlich zustandsabhängige Daten, wie ob das Feld ausgewählt ist,
+ * das Feld gehovert ist, ein Geist auf dem Feld ist oder das Feld Teil eines
+ * markierten Weges ist.
+ */
 public class Feld extends Observable implements Observer {
 	private pd.brett.Feld feld;
+
 	private boolean ausgewaehlt;
 	private boolean hover;
 	private boolean geist;
@@ -21,11 +28,6 @@ public class Feld extends Observable implements Observer {
 		this.weg = false;
 
 		feld.addObserver(this);
-	}
-
-	public void update(Observable o, Object arg) {
-		setChanged();
-		notifyObservers();
 	}
 
 	public pd.brett.Feld getFeld() {
@@ -92,5 +94,10 @@ public class Feld extends Observable implements Observer {
 
 	public boolean istGeist() {
 		return geist;
+	}
+	
+	public void update(Observable o, Object arg) {
+		setChanged();
+		notifyObservers();
 	}
 }

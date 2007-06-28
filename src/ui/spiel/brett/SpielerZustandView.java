@@ -33,7 +33,7 @@ public class SpielerZustandView extends JPanel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (spieler.getAmZug()) {
+		if (spieler.amZug()) {
 			icon.setIcon(Icons.AM_ZUG);
 		} else if (spieler.hatAufgegeben()) {
 			icon.setIcon(Icons.FAHNE);

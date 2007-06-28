@@ -8,28 +8,45 @@ import pd.spieler.Figur;
 import pd.spieler.SpielerFarbe;
 import pd.zugsystem.ZugEingabe;
 
+/**
+ * Dekoriert einen Spieler aus der PD.
+ * Speichert zusätzlich zustandsabhängige Daten, wie ob der Spieler am Zug ist
+ * und ob er Aufgegeben hat.
+ * Verfügt ausserdem über eigene Karten welche die Karten aus der PD dekorieren.
+ */
 public class Spieler extends Observable implements Observer {
+	private pd.spieler.Spieler spieler;
+	private Karten karten;
+
 	private boolean amZug;
 	private boolean hatAufgegeben;
-	public pd.spieler.Spieler spieler;
-
-	private Karten karten;
 
 	public Spieler(pd.spieler.Spieler spieler) {
 		this.spieler = spieler;
+		this.karten = new Karten(spieler.getKarten());
 		this.amZug = false;
 		this.hatAufgegeben = false;
-		this.karten = new Karten(spieler.getKarten());
 		spieler.addObserver(this);
-	}
-
-	public void update(Observable o, Object arg) {
-		setChanged();
-		notifyObservers();
 	}
 
 	public boolean kannZiehen() {
 		return spieler.kannZiehen();
+	}
+
+	public void setAmZug(boolean amZug) {
+		this.amZug = amZug;
+		setChanged();
+		notifyObservers(amZug);
+	}
+
+	public boolean hatAufgegeben() {
+		return hatAufgegeben;
+	}
+
+	public void setHatAufgebeben(boolean hatAufgebeben) {
+		this.hatAufgegeben = hatAufgebeben;
+		setChanged();
+		notifyObservers();
 	}
 
 	public Karten getKarten() {
@@ -41,50 +58,39 @@ public class Spieler extends Observable implements Observer {
 	}
 
 	public String getName() {
-	    return spieler.getName();
-    }
+		return spieler.getName();
+	}
 
 	public List<Figur> getFiguren() {
-	    return spieler.getFiguren();
-    }
+		return spieler.getFiguren();
+	}
 
 	public SpielerFarbe getFarbe() {
 		return spieler.getFarbe();
 	}
 
-	public boolean getAmZug() {
+	public boolean amZug() {
 		return amZug;
-	}
-
-	public void setAmZug(boolean amZug) {
-		this.amZug = amZug;
-		setChanged();
-		notifyObservers(amZug);
-	}
-
-	public boolean hatAufgegeben() {
-    	return hatAufgegeben;
-    }
-
-	public void setHatAufgebeben(boolean hatAufgebeben) {
-    	this.hatAufgegeben = hatAufgebeben;
-		setChanged();
-		notifyObservers();
-    }
-
-	public String toString() {
-		return spieler.toString();
 	}
 
 	public void setPartner(pd.spieler.Spieler partner) {
 		spieler.setPartner(partner);
 	}
-	
+
 	public pd.spieler.Spieler getPartner() {
 		return spieler.getPartner();
 	}
 
 	public List<ZugEingabe> getMoeglicheZuege() {
-	    return spieler.getMoeglicheZuege();
-    }
+		return spieler.getMoeglicheZuege();
+	}
+
+	public void update(Observable o, Object arg) {
+		setChanged();
+		notifyObservers();
+	}
+
+	public String toString() {
+		return spieler.toString();
+	}
 }

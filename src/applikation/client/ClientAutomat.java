@@ -25,11 +25,6 @@ public class ClientAutomat extends Automat {
 	private Controller controller;
 	private Spiel spiel;
 
-
-	public ClientAutomat(Controller controller, Konfiguration konfig) {
-		this(controller, null, konfig);
-	}
-
 	/**
 	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
 	 *

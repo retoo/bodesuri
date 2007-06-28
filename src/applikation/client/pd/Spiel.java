@@ -17,30 +17,42 @@ import dienste.netzwerk.Nachricht;
 import dienste.netzwerk.VerbindungWegException;
 import dienste.serialisierung.SerialisierungsKontext;
 
+/**
+ * Dekoriert das Spiel aus der PD.
+ * Speichert zusätzlich zustandsabhängige Daten, wie der Spieler der am Zug ist,
+ * der Spieler bei dem der Client läuft, die ausgewählte Karte usw.
+ * Verfügt ausserdem über eigene Spieler und ein eigenes Brett, die Spieler und
+ * Brett aus der PD dekorieren.
+ */
 public class Spiel extends Observable implements SerialisierungsKontext {
 	private pd.Spiel spiel;
-
 	private Brett brett;
 	private Vector<Spieler> spieler;
 
 	public EventQueue queue;
 	public EndPunktInterface endpunkt;
 	public Automat zugAutomat;
-
-	public String spielerName;
-	public Spieler spielerIch;
-	public applikation.client.pd.Spieler aktuellerSpieler;
-	public SteuerungsZustand steuerungsZustand;
 	public Konfiguration konfiguration;
 
+	public String spielerName;
+	/** Der Spieler der den Client bedient */
+	public Spieler spielerIch;
+	/** Der Spieler der am Zug ist */
+	public applikation.client.pd.Spieler aktuellerSpieler;
+	/** Der Button welcher im Steuerungsview (rechts unten) angezeigt wird */
+	public SteuerungsZustand steuerungsZustand;
+	/** Der Inhalt des Hinweisfeldes in der Mittel des Spielbretts */
 	private String hinweis;
-	private ZugEingabe letzterZug;
+	/** Alle bis jetzt gemachten Züge */
+	private LinkedList<ZugEingabe> zugHistory;
+	/** Die ausgewälte Karte */
+	public Karte ausgewaehlteKarte;
+
+	/** Abbildung von PD-Spielern zu Applikations-Spielern */
 	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
 	public Chat chat;
-	public LinkedList<ZugEingabe> zugHistory;
+	/** TODO: Philippe: Was ist das? -philippe */
 	private int zaehler = -1;
-
-	public Karte ausgewaehlteKarte;
 
 	public Spiel(Konfiguration konfig) {
 		this.konfiguration = konfig;
@@ -51,9 +63,9 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		// Assoziiere PD-Spieler nach App-Spieler
 		spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
 		spieler = new Vector<Spieler>();
-		for (int i=0; i < spiel.getSpieler().size(); i++) {
+		for (int i = 0; i < spiel.getSpieler().size(); i++) {
 			pd.spieler.Spieler pdSpieler = spiel.getSpieler().get(i);
-			Spieler appSpieler = new Spieler( pdSpieler );
+			Spieler appSpieler = new Spieler(pdSpieler);
 			spieler.add(appSpieler);
 			spielerRegister.put(pdSpieler, appSpieler);
 		}
@@ -63,6 +75,14 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		steuerungsZustand = SteuerungsZustand.NICHTS;
 	}
 
+	/**
+	 * Sucht nach dem passenden {@link Spieler} zu einem
+	 * {@link pd.spieler.Spieler}.
+	 * 
+	 * @param spieler
+	 *            Der bekannte PD-Spieler
+	 * @return Der gesuchte Applikations-Spieler
+	 */
 	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
 		Spieler s = spielerRegister.get(spieler);
 
@@ -71,6 +91,23 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 			                           + spieler + " nicht finden!");
 		}
 		return s;
+	}
+
+	/**
+	 * Über den Endpunkt eine Nachricht an den Server senden. Dekoriert
+	 * {@link dienste.netzwerk.EndPunktInterface#sende(Nachricht)}, löst aber
+	 * im Fehlerfall einen {@link VerbindungAbgebrochenEvent} aus.
+	 * 
+	 * @param nachricht
+	 *            Zu sendende Nachricht
+	 */
+	// TODO: Reto: Bitte schöner machen -Philippe
+	public void sende(Nachricht nachricht) {
+		try {
+			endpunkt.sende(nachricht);
+		} catch (VerbindungWegException e) {
+			queue.enqueue(new VerbindungAbgebrochenEvent());
+		}
 	}
 
 	public Brett getBrett() {
@@ -106,11 +143,11 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	}
 
 	public ZugEingabe getLetzterZug() {
-		return letzterZug;
+		return zugHistory.getFirst();
 	}
 
 	public void setLetzterZug(ZugEingabe letzterZug) {
-		this.letzterZug = letzterZug;
+		zugHistory.addFirst(letzterZug);
 		setChanged();
 		notifyObservers();
 	}
@@ -127,14 +164,5 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	public void registriere(Thread thread) {
 		SpielThreads.registriere(thread, spiel);
-	}
-	
-	//TODO: Reto: Bitte schöner machen -Philippe
-	public void sende(Nachricht nachricht) {
-		try {
-			endpunkt.sende(nachricht);
-		} catch (VerbindungWegException e) {
-			queue.enqueue(new VerbindungAbgebrochenEvent());
-		}
 	}
 }
