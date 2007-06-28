@@ -196,7 +196,7 @@ public class Automat {
 	            System.out.println(this.toString() + ": " + aktuellerZustand);
 
 	        return aktuellerZustand != endzustand;
-    	} catch (Exception e) {
+    	} catch (RuntimeException e) {
     		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
     		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
     		aktuellerZustand.handleException(e);
@@ -234,7 +234,7 @@ public class Automat {
 	        System.out.println(this.toString() + ": " + aktuellerZustand);
 
 	        return aktuellerZustand != endzustand;
-    	} catch (Exception e) {
+    	} catch (RuntimeException e) {
     		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
     		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
     		aktuellerZustand.handleException(e);
