@@ -1,9 +1,10 @@
 package ui.verbinden;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.FocusEvent;
 
-import javax.swing.AbstractAction;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -13,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.border.EmptyBorder;
 
@@ -34,13 +34,14 @@ public class VerbindenView extends JFrame {
 	private final String DEFAULT_NAME;
 
 	// Components
-	private JTextField hostname;
-	private JTextField port;
-	private JTextField spielerName;
+	private LimitiertesTextField hostname;
+	private LimitiertesTextField port;
+	private LimitiertesTextField spielerName;
 	private JProgressBar progressBar;
 	private JPanel inputpanel;
 	private JPanel buttonpanel;
 	private JButton verbindenButton;
+	private JButton beendenButton;
 	private JButton abbrechenButton;
 	private JLabel verbindenIcon;
 	private JLabel bodesuriIcon;
@@ -61,7 +62,8 @@ public class VerbindenView extends JFrame {
 		inputpanel 			= new EingabePanel(hostname, port, spielerName);
 		progressBar 		= new JProgressBar(0, 100);
 		verbindenButton 	= new JButton("Verbinden");
-		abbrechenButton 	= new JButton("Abbrechen");
+		beendenButton 		= new JButton("Beenden");
+		abbrechenButton		= new JButton("Abbrechen");
 		verbindenIcon 		= new JLabel(Icons.VERBINDEN);
 		bodesuriIcon 		= new JLabel(Icons.BODESURI_START);
 		
@@ -79,25 +81,25 @@ public class VerbindenView extends JFrame {
 		buttonpanel.setBorder(new EmptyBorder(0, 0, 15, 15));
 
 		// Actions definieren und Tastenbefehle binden
-		AbstractAction abbrechenAction = new AbbrechenAction("Abbrechen", this);
-		AbstractAction verbindenAction = new VerbindenAction("Verbinden", this);
-		
-		verbindenButton.setAction( verbindenAction );
+		verbindenButton.setAction( new VerbindenAction("Verbinden", this) );
 		verbindenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ENTER"), "Verbinden");
-		verbindenButton.getActionMap().put("Verbinden", verbindenAction);
+		verbindenButton.getActionMap().put( "Verbinden", verbindenButton.getAction() );
 		getRootPane().setDefaultButton(verbindenButton);
 
-		abbrechenButton.setAction( abbrechenAction );
-		abbrechenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
-									KeyStroke.getKeyStroke("ESCAPE"), "Abbrechen");
-		abbrechenButton.getActionMap().put("Abbrechen", abbrechenAction);
+		beendenButton.setAction( new BeendenAction("Beenden", this) );
+		beendenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
+									KeyStroke.getKeyStroke("ESCAPE"), "Beenden");
+		beendenButton.getActionMap().put( "Beenden", beendenButton.getAction() );
+		
+		abbrechenButton.setEnabled(false);
+		abbrechenButton.setAction( new AbbrechenAction("Abbrechen", this) );
 
-		// Components hinzufügen
+		// Components hinzufügen und layouten
 		buttonpanel.add(Box.createHorizontalGlue());
 		buttonpanel.add(progressBar);
 		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
-		buttonpanel.add(abbrechenButton);
+		buttonpanel.add(beendenButton);
 		buttonpanel.add(Box.createRigidArea(new Dimension(15, 0)));
 		buttonpanel.add(verbindenButton);
 		add(bodesuriIcon, BorderLayout.NORTH);
@@ -117,37 +119,56 @@ public class VerbindenView extends JFrame {
 	/**
 	 * Beendet den Controller und somit die gesamte Applikation.
 	 */
-	public void abbrechen() {
+	public void beenden() {
 		steuerung.beenden();
 	}
 	
+	public void abbrechen() {
+		setzeEingabeSperre(false);
+	}
+	
 	/**
-	 * Verbindet zum Server.
+	 * Versucht die Verbindung zum Server herzustellen mit den angegebenen Parametern
+	 * Hostname, Port und Spielername.
 	 */
 	public void verbinden() {
 		String host = hostname.getText();
 		String spieler = spielerName.getText();
 		int port_raw = Integer.valueOf(port.getText());
 
-		// GUI in "Beschäftigt" Modus versetzen
-		verbindenButton.setEnabled(false);
-		hostname.setEnabled(false);
-		port.setEnabled(false);
-		spielerName.setEnabled(false);
-		progressBar.setVisible(true);
+		setzeEingabeSperre(true);
 		
-		// Verbindung herstellen
+		// Verbindung herstellen. Der Controller führt die Verbindung aus.
 		if (port_raw > 1024 && port_raw < 65536) {
 			VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
 		} else {
 			JOptionPane.showMessageDialog(null, "Es sind nur Ports zwischen 1024 und\n65535 zugelassen.");
 		}
+	}
+	
+	public void verbindungFehlgeschlagen() {
+		setzeEingabeSperre(false);
+	}
+	
+	/**
+	 * Das View in den Modus "Gesperrt" versetzen, indem keine Buttons und
+	 * Felder mehr aktiviert sind und eine Statusanzeige angezeigt wird oder
+	 * diese Sperre aufheben.
+	 * 
+	 * @param istGesperrt 
+	 * 				Falls true, wird das View gesperrt, bei false entsperrt.
+	 */
+	private void setzeEingabeSperre(boolean istGesperrt) {
+		Component zuWechseln = istGesperrt ? abbrechenButton : beendenButton;
+		buttonpanel.remove(3);
+		buttonpanel.add(zuWechseln, 3);
 		
-		// GUI wieder "aufwecken"
-		hostname.setEnabled(true);
-		port.setEnabled(true);
-		spielerName.setEnabled(true);
-		progressBar.setVisible(false);
-		verbindenButton.setEnabled(true);
+		verbindenButton.setEnabled( !istGesperrt );
+		hostname.setEnabled( !istGesperrt );
+		port.setEnabled( !istGesperrt );
+		spielerName.setEnabled( !istGesperrt );
+		progressBar.setVisible( istGesperrt );
+		
+		hostname.processFocusEvent( new FocusEvent(hostname, getDefaultCloseOperation(), istGesperrt) );
 	}
 }
