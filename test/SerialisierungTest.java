@@ -12,58 +12,96 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import dienste.serialisierung.UnbekannterCodeException;
 
+/**
+ * Führt Tests für die Serialisierungs-Funktionen der Problem-Domain durch,
+ * welche für die Netzwerkkommunikation verwendet wird.
+ */
 public class SerialisierungTest extends ProblemDomainTestCase {
 	private Feld feld1;
+
 	private Feld feld2;
-	
+
 	protected void setUp() {
 		super.setUp();
 		feld1 = bank(0);
 		feld2 = feld1.getNaechstes();
 		lager(0).versetzeFigurAuf(feld1);
 	}
-	
-	public void testFeldSerialisieren()
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Prüft, ob ein durch die Serialisierung geschicktes Feld noch identisch
+	 * mit seinem Original ist.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void testFeldSerialisieren() throws IOException,
+			ClassNotFoundException {
 		assertEquals(feld1, durchSerialisierung(feld1));
 	}
-	
-	public void testBewegungSerialisieren()
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Prüft, ob eine durch die Serialisierung geschickte Bewegung noch
+	 * identisch mit ihrem Original ist.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void testBewegungSerialisieren() throws IOException,
+			ClassNotFoundException {
 		Bewegung original = new Bewegung(feld1, feld2);
 		Bewegung neu = (Bewegung) durchSerialisierung(original);
 
 		assertEquals(feld1, neu.start);
 		assertEquals(feld2, neu.ziel);
 	}
-	
-	public void testZugEingabeSerialisieren()
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Prüft, ob eine durch die Serialisierung geschickte Zugeingabe noch
+	 * identisch mit dem Original ist.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void testZugEingabeSerialisieren() throws IOException,
+			ClassNotFoundException {
 		Bewegung bewegung = new Bewegung(feld1, feld2);
-		ZugEingabe ze = new ZugEingabe(spieler(0), kartenGeber.getKarte(), bewegung);
-		
+		ZugEingabe ze = new ZugEingabe(spieler(0), kartenGeber.getKarte(),
+				bewegung);
+
 		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
 		assertEquals(ze.getSpieler(), ze2.getSpieler());
-		assertEquals(ze.getBewegung().start,
-		             ze2.getBewegung().start);
-		assertEquals(ze.getBewegung().ziel,
-		             ze2.getBewegung().ziel);
+		assertEquals(ze.getBewegung().start, ze2.getBewegung().start);
+		assertEquals(ze.getBewegung().ziel, ze2.getBewegung().ziel);
 	}
-	
-	public void testKarteSerialisierung()
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Prüft, ob die Karten noch identisch sind, wenn sie durch die
+	 * Serialisierung geschickt wurden.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void testKarteSerialisierung() throws IOException,
+			ClassNotFoundException {
 		for (Karte karte : kartenGeber.getKarten(110)) {
 			assertEquals(karte, durchSerialisierung(karte));
 		}
 	}
-	
-	public void testUnbekannterCodeException()
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Prüft, ob <Code>UnbekannteCodeException</Code> korrekt geworfen wird.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	public void testUnbekannterCodeException() throws IOException,
+			ClassNotFoundException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);
 		oos.writeObject(new BodesuriCodiertesObjekt("Spieler 666"));
 		oos.close();
-		
+
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 		ObjectInputStream ois = new ObjectInputStream(bais);
 		try {
@@ -74,14 +112,24 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 			assertEquals("'Spieler 666' unbekannt", e.getMessage());
 		}
 	}
-	
-	private Object durchSerialisierung(Object original)
-			throws IOException, ClassNotFoundException {
+
+	/**
+	 * Schickt ein Objekt durch die Serialisierung und liesst es anschliessend
+	 * wieder aus.
+	 * 
+	 * @param original
+	 *            Objekt, das serialisert werden soll.
+	 * @return Aus Serialisierung zurückgelesenes Objek.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
+	private Object durchSerialisierung(Object original) throws IOException,
+			ClassNotFoundException {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(baos);
 		oos.writeObject(original);
 		oos.close();
-		
+
 		ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
 		ObjectInputStream ois = new ObjectInputStream(bais);
 		return ois.readObject();
