@@ -116,7 +116,7 @@ public class Verstoesse {
 
 	public static class UeberFigurAufBankFahren extends RegelVerstoss {
 		public UeberFigurAufBankFahren() {
-			super("Man kann nicht über eine Figur auf ihrer Bank fahren.");
+			super(2.0, "Man kann nicht über eine Figur auf ihrer Bank fahren.");
 		}
 	}
 
