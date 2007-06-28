@@ -22,9 +22,9 @@ public class Lobby extends ClientZustand {
 
     Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
     	for (int i = 0; i < bestaetigung.spielInfo.spielers.size(); i++) {
-    		spiel.getSpiel().getSpieler().get(i).setName(bestaetigung.spielInfo.spielers.get(i).name);
+    		spiel.getSpiel().getSpieler().get(i).setName(bestaetigung.spielInfo.spielers.get(i).spielername);
 
-    		if (bestaetigung.spielInfo.spielers.get(i).name.equals(spiel.spielerName)) {
+    		if (bestaetigung.spielInfo.spielers.get(i).spielername.equals(spiel.spielerName)) {
             	spiel.spielerIch = spiel.getSpieler().get(i);
             }
     	}

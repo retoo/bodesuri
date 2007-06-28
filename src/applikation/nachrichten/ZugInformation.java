@@ -4,17 +4,12 @@ import pd.zugsystem.ZugEingabe;
 import dienste.netzwerk.Nachricht;
 
 /**
- * Nachricht die die Informationen zu einem Zug beinhaltet
+ * Nachricht mit der Client dem Server und der Server dem Client gemachte Züge
+ * mitteilt.
  */
 public class ZugInformation extends Nachricht {
-	/**
-	 * Gefahrener Zug
-	 */
 	public final ZugEingabe zug;
 
-	/**
-	 * @param zug
-	 */
 	public ZugInformation(ZugEingabe zug) {
 		this.zug = zug;
 	}
