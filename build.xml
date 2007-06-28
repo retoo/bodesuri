@@ -4,7 +4,9 @@
 <!-- Variables -->
   <property name="tst-dir" location="test"/>
   <property name="src-dir" location="src"/>
-  
+  <property name="tex-dir" location="doc"/>
+  <property name="bld-dir" location="build"/>
+    
   <property name="lib-dir" location="lib"/>
   <property name="ext-dir" location="vendor"/>
   
@@ -139,7 +141,11 @@
     </javadoc>
   </target>
 <!-- documentation -->
-  <target name="tex" depends="init">
+  <target name="generate-doc" depends="init">
+    <exec executable="${bld-dir}/build-documents.sh" output="${doc-dir}/log.txt" />
+    <copy todir="${doc-dir}/">
+      <fileset dir="${tex-dir}" includes="**/**.pdf" />
+    </copy>
   </target>
 <!-- cleanup -->
   <target name="clean-init">
@@ -172,6 +178,6 @@
     </delete>
   </target>
   <target name="build-everything" depends="compile,test"/>
-  <target name="all" depends="clean,build-everything,cobertura-report,javadoc"/>
+  <target name="all" depends="clean,build-everything,cobertura-report,javadoc,generate-doc"/>
   <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>

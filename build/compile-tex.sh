@@ -5,7 +5,8 @@ if [ -z "$1" ]; then
   exit 99
 fi
 
-SRCPATH=$1
+SRCPATH=$PWD/$1
+SRCDIR=$(dirname $SRCPATH)
 DSTFILE=$(basename $SRCPATH .tex).pdf
 DSTPATH=$(dirname $SRCPATH)/$DSTFILE
 
@@ -20,7 +21,7 @@ if [ -e "$DSTPATH" -a ! "$SRCPATH" -nt "$DSTPATH" ]; then
 fi
 
 
-TMPDIR=$(mktemp -d -p tmp/)
+TMPDIR=$PWD/$(mktemp -d -p tmp/)
 
 echo "Temporary folder is $TMPDIR"
 
@@ -28,8 +29,14 @@ echo "Convert $SRCPATH to $DSTFILE"
 
 OPTS="-interaction=nonstopmode -file-line-error-style -output-directory  $TMPD"
 
+BASE=$PWD
+
+cd $SRCDIR
 pdflatex $OPTS $TMPDIR $SRCPATH
 pdflatex $OPTS $TMPDIR $SRCPATH
+cd $BASE
 
 cp $TMPDIR/$DSTFILE $DSTPATH
+
+rm -R $TMPDIR
 
