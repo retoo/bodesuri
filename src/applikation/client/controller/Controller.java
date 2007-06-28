@@ -33,6 +33,11 @@ public abstract class Controller implements Steuerung {
 	public abstract void zeigeVerbinden();
 
 	/**
+	 * Teilt dem Controller mit, dass der Verbindungsaufbau abgebrochen wurde.
+	 */
+	public abstract void verbindungsaufbauAbgebrochen();
+	
+	/**
 	 * Die Lobby anzeigen.
 	 *
 	 * @param spieler

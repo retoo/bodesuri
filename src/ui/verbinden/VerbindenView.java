@@ -3,7 +3,6 @@ package ui.verbinden;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.event.FocusEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -29,14 +28,12 @@ public class VerbindenView extends JFrame {
 	// Konstanten und Vorgabewerte
 	private final static int FRAME_WIDTH 	= 400;
 	private final static int FRAME_HEIGHT 	= 216;
-	private final String DEFAULT_PORT;
-	private final String DEFAULT_HOST;
-	private final String DEFAULT_NAME;
+	private Konfiguration konfiguration;
 
 	// Components
-	private LimitiertesTextField hostname;
-	private LimitiertesTextField port;
-	private LimitiertesTextField spielerName;
+	private LimitiertesTextField hostTextField;
+	private LimitiertesTextField portTextField;
+	private LimitiertesTextField spielerTextField;
 	private JProgressBar progressBar;
 	private JPanel inputpanel;
 	private JPanel buttonpanel;
@@ -50,16 +47,14 @@ public class VerbindenView extends JFrame {
 	public VerbindenView(final Steuerung steuerung, final Konfiguration konfiguration) {
 		// Instanzvariabeln initialisieren
 		this.steuerung 		= steuerung;
-		DEFAULT_PORT 		= String.valueOf( konfiguration.defaultPort );
-		DEFAULT_HOST 		= konfiguration.defaultHost;
-		DEFAULT_NAME 		= konfiguration.defaultName;
+		this.konfiguration	= konfiguration;
 		
-		hostname 			= new LimitiertesTextField(DEFAULT_HOST, 15);
-		spielerName 		= new LimitiertesTextField( DEFAULT_NAME, 20);
-		port 				= new LimitiertesTextField(DEFAULT_PORT, 5);
+		hostTextField 		= new LimitiertesTextField(konfiguration.defaultHost, 15);
+		spielerTextField 	= new LimitiertesTextField( konfiguration.defaultName, 20);
+		portTextField 		= new LimitiertesTextField(String.valueOf( konfiguration.defaultPort ), 5);
 	
 		buttonpanel 		= new JPanel();
-		inputpanel 			= new EingabePanel(hostname, port, spielerName);
+		inputpanel 			= new EingabePanel(hostTextField, portTextField, spielerTextField);
 		progressBar 		= new JProgressBar(0, 100);
 		verbindenButton 	= new JButton("Verbinden");
 		beendenButton 		= new JButton("Beenden");
@@ -132,22 +127,19 @@ public class VerbindenView extends JFrame {
 	 * Hostname, Port und Spielername.
 	 */
 	public void verbinden() {
-		String host = hostname.getText();
-		String spieler = spielerName.getText();
-		int port_raw = Integer.valueOf(port.getText());
+		String host = konfiguration.defaultHost = hostTextField.getText();
+		String spieler = konfiguration.defaultName = spielerTextField.getText();
+		int port = konfiguration.defaultPort = Integer.valueOf(portTextField.getText());
+		// TODO: Pascal: korrekte Validierung der Eingaben (-pascal)
 
 		setzeEingabeSperre(true);
 		
 		// Verbindung herstellen. Der Controller führt die Verbindung aus.
-		if (port_raw > 1024 && port_raw < 65536) {
-			VerbindenView.this.steuerung.verbinde(host, port_raw, spieler);
+		if (port > 1024 && port < 65536) {
+			VerbindenView.this.steuerung.verbinde(host, port, spieler);
 		} else {
 			JOptionPane.showMessageDialog(null, "Es sind nur Ports zwischen 1024 und\n65535 zugelassen.");
 		}
-	}
-	
-	public void verbindungFehlgeschlagen() {
-		setzeEingabeSperre(false);
 	}
 	
 	/**
@@ -158,17 +150,19 @@ public class VerbindenView extends JFrame {
 	 * @param istGesperrt 
 	 * 				Falls true, wird das View gesperrt, bei false entsperrt.
 	 */
-	private void setzeEingabeSperre(boolean istGesperrt) {
+	public void setzeEingabeSperre(boolean istGesperrt) {
 		Component zuWechseln = istGesperrt ? abbrechenButton : beendenButton;
 		buttonpanel.remove(3);
 		buttonpanel.add(zuWechseln, 3);
 		
 		verbindenButton.setEnabled( !istGesperrt );
-		hostname.setEnabled( !istGesperrt );
-		port.setEnabled( !istGesperrt );
-		spielerName.setEnabled( !istGesperrt );
+		hostTextField.setEnabled( !istGesperrt );
+		portTextField.setEnabled( !istGesperrt );
+		spielerTextField.setEnabled( !istGesperrt );
 		progressBar.setVisible( istGesperrt );
 		
-		hostname.processFocusEvent( new FocusEvent(hostname, getDefaultCloseOperation(), istGesperrt) );
+//		hostTextField.processFocusEvent( new FocusEvent(hostTextField, getDefaultCloseOperation(), !istGesperrt) );
+//		spielerTextField.processFocusEvent( new FocusEvent(spielerTextField, getDefaultCloseOperation(), !istGesperrt) );
+//		portTextField.processFocusEvent( new FocusEvent(portTextField, getDefaultCloseOperation(), !istGesperrt) );
 	}
 }

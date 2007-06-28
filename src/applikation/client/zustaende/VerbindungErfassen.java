@@ -35,6 +35,7 @@ public class VerbindungErfassen extends ClientZustand {
 		} catch (IOException e) {
 			controller.zeigeFehlermeldung("Verbindung konnte nicht hergestellt werden: "
 			                    + e.getMessage());
+			controller.verbindungsaufbauAbgebrochen();
 			spiel.endpunkt = null;
 			return VerbindungErfassen.class;
 		}

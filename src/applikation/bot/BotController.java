@@ -95,5 +95,8 @@ public class BotController extends Controller {
     public void zeigeJokerauswahl(boolean aktiv) {
     }
 
+	public void verbindungsaufbauAbgebrochen() {
+	}
+
 
 }
