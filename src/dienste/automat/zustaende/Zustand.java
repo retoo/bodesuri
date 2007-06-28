@@ -73,7 +73,7 @@ public abstract class Zustand implements ZustandsInterface {
 	 * @param exception die ursprüngliche Exception
 	 */
 	public void handleException(RuntimeException exception) {
-		throw new RuntimeException(exception);
+		throw exception;
 	}
 
 	/*
