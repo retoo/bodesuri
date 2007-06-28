@@ -1,14 +1,24 @@
 package initialisierung;
 
-
 import java.util.List;
 import java.util.Vector;
 
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
 
+/**
+ * Applikationsstart der Demo. Die Demo startet automatisch einen Server ({@link BodesuriServer}),
+ * drei Bots ({@link BodesuriBot}) und einen Client ({@link Bodesuri}). So
+ * ist es möglich das Spiel alleine zu spielen.
+ */
 public class BodesuriDemo {
-
+	/**
+	 * Die Demo starten.
+	 * 
+	 * @param args
+	 *            Wird nicht genutzt
+	 * @throws InterruptedException
+	 */
 	public static void main(String[] args) throws InterruptedException {
 		BodesuriServer server = new BodesuriServer();
 		server.start();
