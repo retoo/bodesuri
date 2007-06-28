@@ -5,7 +5,7 @@
       href="build/bodesuri-client.jnlp">
 	<information> 
 		<title>Bodesuri - Client</title> 
-		<vendor>Natürlich wir!</vendor>
+		<vendor>Edgar Danilo Couto, Philippe Eberli, Pascal Hobus, Reto Schüttel, Robin Stocker</vendor>
 		<homepage href="http://bodesuri.speedpc.ch/"/>
 		<description>Eine Version des Spieles "Dog" in Java.</description>
 		<description kind="short">Java Dog</description>

@@ -5,7 +5,7 @@
       href="build/bodesuri-server.jnlp">
 	<information> 
 		<title>Bodesuri - Server</title> 
-		<vendor>Natürlich wir!</vendor>
+		<vendor>Edgar Danilo Couto, Philippe Eberli, Pascal Hobus, Reto Schüttel, Robin Stocker</vendor>
 		<homepage href="http://bodesuri.speedpc.ch/"/>
 		<description>Der Server für das Spiel.</description>
 		<description kind="short">Java Dog</description>
