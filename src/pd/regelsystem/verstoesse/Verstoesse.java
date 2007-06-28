@@ -107,7 +107,7 @@ public class Verstoesse {
 
 	public static class AufOderUeberGeschuetzteFahren extends RegelVerstoss {
 		public AufOderUeberGeschuetzteFahren() {
-			super("Man kann nicht auf oder über eine geschützte Figur fahren.");
+			super(2.0, "Man kann nicht auf oder über eine geschützte Figur fahren.");
 		}
 	}
 
