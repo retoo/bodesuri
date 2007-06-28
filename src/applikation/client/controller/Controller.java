@@ -21,7 +21,7 @@ import dienste.eventqueue.EventQueue;
 
 /**
  * Der Controller dient zum Kanalisieren der Zugriffe zwischen der UI- und
- * Applikationsschicht. Er bietet dem UI Methoden Ereignisse an den Automaten
+ * Applikationsschicht. Er bietet dem UI Methoden um Ereignisse an den Automaten
  * weiterzuleiten und dem Automaten die Möglichkeit UI-Ereignisse unabhängig von
  * der Implementation des UIs auszulösen.
  */

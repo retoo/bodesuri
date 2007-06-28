@@ -26,7 +26,7 @@ public class ClientAutomat extends Automat {
 	private Spiel spiel;
 
 	/**
-	 * Im Konstruktor werden alle benötigten Zustände erstellt & registriert.
+	 * Alle für den Automat benötigten Zustände erstellen & registrieren.
 	 *
 	 * @param controller
 	 * @param queue EventQueue
