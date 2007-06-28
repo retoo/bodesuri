@@ -89,5 +89,5 @@ end
 
 
 #total = weeks.inject(0) {|sum, e| sum + e.last}
-puts
-puts "Total: #{total}"
+# puts
+# puts "Total: #{total}"
