@@ -219,14 +219,6 @@ public class Spiel implements SerialisierungsKontext {
     }
 
 	/**
-	 * Liefert den Kartengeber des Spiels. Siehe {@link pd.Spiel#getKartenGeber()}
-	 * @return Den {@link KartenGeber}
-	 */
-	public KartenGeber getKartenGeber() {
-	    return spiel.getKartenGeber();
-    }
-
-	/**
 	 * Zeigt an, ob das Spiel fertig ist oder nicht. Dies wird anhand der Partnerschaften
 	 * ermittelt (sobald eine Partnerschaft fertig ist, ist auch das Spiel fertig).
 	 *
