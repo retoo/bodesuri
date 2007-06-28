@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import pd.Spiel;
 import pd.spieler.Figur;
 import pd.spieler.Spieler;
 
@@ -29,7 +28,7 @@ public class Brett {
 	/**
 	 * Erstellt ein Brett.
 	 * 
-	 * @param spiel Spiel, zu dem Brett gehört
+	 * @param spieler Spieler, in dessen Namen die Felder erstellt werden sollen.
 	 */
 	public Brett(List<Spieler> spieler) {
 		erstelleFelder(spieler);
