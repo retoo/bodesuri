@@ -22,11 +22,11 @@ public class BankFeld extends SpielerFeld {
 	public boolean istBesetztVonBesitzer() {
 		return istBesetztVon(getSpieler());
 	}
-	
+
 	public boolean istBank() {
 		return true;
 	}
-	
+
 	public boolean istRing() {
 		return true;
 	}

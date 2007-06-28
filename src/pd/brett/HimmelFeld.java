@@ -14,7 +14,7 @@ public class HimmelFeld extends SpielerFeld {
 	public HimmelFeld(int nummer, Spieler spieler) {
 		super(nummer, spieler);
 	}
-	
+
 	public boolean istHimmel() {
 		return true;
 	}

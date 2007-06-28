@@ -23,10 +23,10 @@ public class Brett {
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
 	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
 	private Vector<Feld> alleFelder;
-	
+
 	private Spiel spiel;
 	private int feldNummer;
-	
+
 	/**
 	 * Erstellt ein Brett.
 	 * 
@@ -100,7 +100,11 @@ public class Brett {
 		himmelFelder.put(sp, himmel);
 		alleFelder.addAll(himmel);
 	}
-	
+
+	/*
+	 * Verkette die Felder, also setze Nächstes und Vorheriges. Wenn ringsum
+	 * gesetzt ist, wird auch das Letzte mit dem Ersten verkettet.
+	 */
 	private void verkette(List<? extends Feld> felder, boolean ringsum) {
 		int anzahl = ringsum ? felder.size() : felder.size() - 1;
 		for (int i = 0; i < anzahl; ++i) {

@@ -17,10 +17,19 @@ public abstract class SpielerFeld extends Feld {
 		this.spieler = spieler;
     }
 
+	/**
+	 * Prüft, ob das Feld dem Spieler gehört.
+	 *
+	 * @param spieler
+	 * @return true, wenn das Feld dem Spieler gehört
+	 */
 	public boolean istVon(Spieler spieler) {
 		return spieler == this.spieler;
 	}
-	
+
+	/**
+	 * @return Spieler, dem das Feld gehört
+	 */
 	public Spieler getSpieler() {
 		return spieler;
 	}

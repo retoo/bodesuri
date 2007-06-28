@@ -1,7 +1,7 @@
 package pd.brett;
 
 /**
- * Normales Feld, welches zwischen den BankFeldern liegt und auf einem Brett am
+ * Normales Feld, welches zwischen den Bankfeldern liegt und auf einem Brett am
  * meisten vorkommt.
  */
 public class NormalesFeld extends Feld {

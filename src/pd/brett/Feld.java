@@ -86,22 +86,37 @@ public abstract class Feld extends BodesuriCodierbaresObjekt {
 		return geschuetzt;
 	}
 
+	/**
+	 * @return true, wenn Feld ein Lagerfeld ist
+	 */
 	public boolean istLager() {
 		return false;
 	}
 
+	/**
+	 * @return true, wenn Feld ein Bankfeld ist
+	 */
 	public boolean istBank() {
 		return false;
 	}
 
+	/**
+	 * @return true, wenn Feld ein Himmelfeld ist
+	 */
 	public boolean istHimmel() {
 		return false;
 	}
 
+	/**
+	 * @return true, wenn Feld im Ring ist, also Bankfeld oder normales Feld ist
+	 */
 	public boolean istRing() {
 		return false;
 	}
 
+	/**
+	 * @return true, wenn Feld ein normales Feld ist
+	 */
 	public boolean istNormal() {
 		return false;
 	}
