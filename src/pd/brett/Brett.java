@@ -17,14 +17,13 @@ import pd.spieler.Spieler;
  * @see Feld
  */
 public class Brett {
-	public static final int ANZAHL_FELDER = 96; 
+	public static final int ANZAHL_FELDER = 96;
 
 	private Map<Spieler, BankFeld> bankFelder;
 	private Map<Spieler, Vector<LagerFeld>> lagerFelder;
 	private Map<Spieler, Vector<HimmelFeld>> himmelFelder;
 	private Vector<Feld> alleFelder;
 
-	private Spiel spiel;
 	private int feldNummer;
 
 	/**
@@ -32,9 +31,8 @@ public class Brett {
 	 * 
 	 * @param spiel Spiel, zu dem Brett gehört
 	 */
-	public Brett(Spiel spiel) {
-		this.spiel = spiel;
-		erstelleFelder();
+	public Brett(List<Spieler> spieler) {
+		erstelleFelder(spieler);
 	}
 
 	/*
@@ -45,7 +43,7 @@ public class Brett {
 	 * - Normale Felder von 9-23
 	 * Also 24 Felder pro "Ecke" von Spieler.
 	 */
-	private void erstelleFelder() {
+	private void erstelleFelder(List<Spieler> spieler) {
 		alleFelder   = new Vector<Feld>();
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
@@ -54,7 +52,7 @@ public class Brett {
 		feldNummer = 0;
 		Vector<Feld> felderInRing = new Vector<Feld>();
 		
-		for (Spieler sp : spiel.getSpieler()) {
+		for (Spieler sp : spieler) {
 			BankFeld bf = new BankFeld(feldNummer++, sp);
 			bankFelder.put(sp, bf);
 			alleFelder.add(bf);

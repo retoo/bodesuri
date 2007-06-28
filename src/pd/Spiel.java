@@ -38,7 +38,7 @@ public class Spiel {
 
 		kartenGeber = new KartenGeber();
 
-		brett = new Brett(this);
+		brett = new Brett(spieler);
 	}
 
 	/**
