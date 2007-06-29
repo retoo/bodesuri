@@ -23,6 +23,6 @@ public class AbbrechenAction extends AbstractAction {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		verbindenView.abbrechen();
+		verbindenView.setzeEingabeSperre(false);
 	}
 }

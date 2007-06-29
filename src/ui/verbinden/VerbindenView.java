@@ -133,10 +133,6 @@ public class VerbindenView extends JFrame {
 		steuerung.beenden();
 	}
 	
-	public void abbrechen() {
-		setzeEingabeSperre(false);
-	}
-	
 	/**
 	 * Versucht die Verbindung zum Server herzustellen mit den angegebenen Parametern
 	 * Hostname, Port und Spielername.
