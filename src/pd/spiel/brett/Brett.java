@@ -78,7 +78,6 @@ public class Brett {
 	    	lf.setFigur(figur);
 	    	figur.versetzeAuf(lf);
 	    	lf.setGeschuetzt(true);
-	    	lf.setNaechstes(bf);
 	    	lager.add(lf);
 	    }
 	    lagerFelder.put(sp, lager);
@@ -92,7 +91,6 @@ public class Brett {
 			himmel.add(hf);
 		}
 		bf.setHimmel(himmel.get(0));
-		himmel.get(0).setVorheriges(bf);
 		verkette(himmel, false);
 		himmelFelder.put(sp, himmel);
 		alleFelder.addAll(himmel);
