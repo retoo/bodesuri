@@ -15,8 +15,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pd.karten.Deck;
-import pd.karten.KartenFarbe;
+import pd.regelsystem.karten.Deck;
+import pd.regelsystem.karten.KartenFarbe;
 
 import ui.geteiltes.ClickMouseAdapter;
 import ui.ressourcen.BrettXML;
@@ -95,8 +95,8 @@ public class JokerView extends JPanel {
 
 	public void erstelleDeck() {
 		kartenDeck = new Vector<applikation.client.pd.Karte>();
-		List<pd.karten.Karte> karten = Deck.getKartenFuerFarbe(KartenFarbe.Herz);
-		for (pd.karten.Karte karte : karten) {
+		List<pd.regelsystem.karten.Karte> karten = Deck.getKartenFuerFarbe(KartenFarbe.Herz);
+		for (pd.regelsystem.karten.Karte karte : karten) {
 			kartenDeck.add(new Joker(new Karte(karte)));
 		}
 	}

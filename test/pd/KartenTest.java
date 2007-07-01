@@ -1,10 +1,10 @@
 package pd;
 import java.util.List;
 
-import pd.karten.Deck;
-import pd.karten.Karte;
-import pd.karten.KartenFarbe;
-import pd.karten.Sechs;
+import pd.regelsystem.karten.Deck;
+import pd.regelsystem.karten.Karte;
+import pd.regelsystem.karten.KartenFarbe;
+import pd.regelsystem.karten.Sechs;
 
 /**
  * Teste die Funktionalitäten der Karte.

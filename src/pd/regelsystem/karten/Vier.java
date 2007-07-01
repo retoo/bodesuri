@@ -1,4 +1,4 @@
-package pd.karten;
+package pd.regelsystem.karten;
 
 import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.RueckwaertsRegel;

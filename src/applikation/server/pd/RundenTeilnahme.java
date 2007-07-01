@@ -3,8 +3,8 @@ package applikation.server.pd;
 import java.util.List;
 import java.util.Vector;
 
-import pd.karten.Karte;
 import pd.regelsystem.ZugEingabe;
+import pd.regelsystem.karten.Karte;
 import applikation.nachrichten.KartenTausch;
 
 public class RundenTeilnahme {

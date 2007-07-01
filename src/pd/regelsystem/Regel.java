@@ -2,7 +2,7 @@ package pd.regelsystem;
 
 import java.util.List;
 
-import pd.karten.Karte;
+import pd.regelsystem.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Zug;

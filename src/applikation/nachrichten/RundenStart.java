@@ -2,7 +2,7 @@ package applikation.nachrichten;
 
 import java.util.List;
 
-import pd.karten.Karte;
+import pd.regelsystem.karten.Karte;
 
 import dienste.netzwerk.Nachricht;
 

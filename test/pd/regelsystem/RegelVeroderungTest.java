@@ -1,7 +1,7 @@
 package pd.regelsystem;
 
-import pd.karten.KartenFarbe;
-import pd.karten.Vier;
+import pd.regelsystem.karten.KartenFarbe;
+import pd.regelsystem.karten.Vier;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 
 /**

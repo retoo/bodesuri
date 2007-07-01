@@ -3,7 +3,7 @@ package pd.regelsystem;
 import java.util.LinkedList;
 import java.util.List;
 
-import pd.karten.Karte;
+import pd.regelsystem.karten.Karte;
 import pd.spiel.spieler.Spieler;
 
 public class Regelsystem {

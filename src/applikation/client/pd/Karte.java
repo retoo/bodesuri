@@ -2,20 +2,20 @@ package applikation.client.pd;
 
 import java.util.Observable;
 
-import pd.karten.Joker;
-import pd.karten.KartenFarbe;
 import pd.regelsystem.Regel;
+import pd.regelsystem.karten.Joker;
+import pd.regelsystem.karten.KartenFarbe;
 
 /**
  * Dekoriert eine Karte aus der PD.
  * Speichert zusätzlich zustandsabhängige Daten, wie ob die Karte ausgewählt ist.
  */
 public class Karte extends Observable {
-	private pd.karten.Karte karte;
+	private pd.regelsystem.karten.Karte karte;
 	
 	private boolean ausgewaehlt;
 
-	public Karte(pd.karten.Karte karte) {
+	public Karte(pd.regelsystem.karten.Karte karte) {
 		this.karte = karte;
 		ausgewaehlt = false;
 	}
@@ -47,7 +47,7 @@ public class Karte extends Observable {
 		return karte.getRegelBeschreibung();
 	}
 	
-	public pd.karten.Karte getKarte() {
+	public pd.regelsystem.karten.Karte getKarte() {
 		return karte;
 	}
 

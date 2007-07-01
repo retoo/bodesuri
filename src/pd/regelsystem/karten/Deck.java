@@ -1,4 +1,4 @@
-package pd.karten;
+package pd.regelsystem.karten;
 
 import java.util.HashMap;
 import java.util.List;

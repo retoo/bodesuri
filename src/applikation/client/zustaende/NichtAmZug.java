@@ -68,7 +68,7 @@ public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
 		spiel.chat.meldeRundenStart();
 		spiel.spielerIch.getKarten().clear();
-		for (pd.karten.Karte karte : rundenStart.neueKarten) {
+		for (pd.regelsystem.karten.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));
 		}
 

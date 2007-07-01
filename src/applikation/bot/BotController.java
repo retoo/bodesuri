@@ -4,8 +4,8 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Vector;
 
-import pd.karten.Karte;
 import pd.regelsystem.ZugEingabe;
+import pd.regelsystem.karten.Karte;
 import applikation.client.controller.Controller;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.konfiguration.Konfiguration;

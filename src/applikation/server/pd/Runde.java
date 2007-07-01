@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import pd.karten.Karte;
-import pd.karten.KartenGeber;
+import pd.regelsystem.karten.Karte;
+import pd.regelsystem.karten.KartenGeber;
 import applikation.nachrichten.KartenTausch;
 
 public class Runde {

@@ -5,8 +5,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import pd.ProblemDomainTestCase;
-import pd.karten.Karte;
 import pd.regelsystem.ZugEingabe;
+import pd.regelsystem.karten.Karte;
 import pd.serialisierung.BodesuriCodiertesObjekt;
 import pd.spiel.brett.Feld;
 import pd.zugsystem.Bewegung;

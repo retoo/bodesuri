@@ -1,8 +1,8 @@
 package pd;
 
-import pd.karten.Ass;
-import pd.karten.KartenFarbe;
 import pd.regelsystem.ZugEingabe;
+import pd.regelsystem.karten.Ass;
+import pd.regelsystem.karten.KartenFarbe;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;

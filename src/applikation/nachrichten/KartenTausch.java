@@ -1,6 +1,6 @@
 package applikation.nachrichten;
 
-import pd.karten.Karte;
+import pd.regelsystem.karten.Karte;
 import dienste.netzwerk.Nachricht;
 
 /**

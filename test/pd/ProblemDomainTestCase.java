@@ -3,7 +3,7 @@ package pd;
 import java.util.List;
 
 import junit.framework.TestCase;
-import pd.karten.KartenGeber;
+import pd.regelsystem.karten.KartenGeber;
 import pd.spiel.Spiel;
 import pd.spiel.brett.BankFeld;
 import pd.spiel.brett.Brett;

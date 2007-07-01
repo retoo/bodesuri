@@ -3,7 +3,7 @@ package pd.spiel.spieler;
 import java.util.List;
 import java.util.Vector;
 
-import pd.karten.Karte;
+import pd.regelsystem.karten.Karte;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 import pd.spiel.Spiel;
 import dienste.observer.ObservableList;

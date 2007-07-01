@@ -1,4 +1,4 @@
-package pd.karten;
+package pd.regelsystem.karten;
 
 /**
  * KartenFarbe, die zu einer {@link Karte} gehört.
