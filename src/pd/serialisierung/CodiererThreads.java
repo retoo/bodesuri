@@ -10,7 +10,7 @@ public class CodiererThreads {
 
 	public static void registriere(Thread thread, Codierer codierer) {
 		if (codierer == null) {
-			throw new RuntimeException("Registriertes Spiel darf nicht null sein");
+			throw new RuntimeException("Registrierter Codierer darf nicht null sein");
 		}
 		codiererThreads.put(thread, codierer);
 	}

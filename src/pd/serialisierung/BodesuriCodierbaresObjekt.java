@@ -12,7 +12,7 @@ public class BodesuriCodierbaresObjekt extends CodierbaresObjekt {
 	protected Codierer getCodierer() {
 		Codierer codierer = CodiererThreads.getCodierer(Thread.currentThread());
 		if (codierer == null) {
-			throw new RuntimeException("Dem Thread ist kein Spiel zugewiesen.");
+			throw new RuntimeException("Dem Thread ist kein Codierer zugewiesen.");
 		} else {
 			return codierer;
 		}
