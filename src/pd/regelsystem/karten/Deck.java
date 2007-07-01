@@ -16,6 +16,8 @@ public class Deck {
 			kartenFuerFarbe.put(farbe, erstelleKartenFuerFarbe(farbe));
 			karten.addAll(kartenFuerFarbe.get(farbe));
 		}
+
+		/* Karten müssen für Serialisierung unterscheidbar sein. */
 		karten.add(new Joker(KartenFarbe.Herz));
 		karten.add(new Joker(KartenFarbe.Karo));
 		karten.add(new Joker(KartenFarbe.Kreuz));
