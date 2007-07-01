@@ -1,11 +1,11 @@
-package pd;
+package pd.spiel;
 
 import java.util.List;
 import java.util.Vector;
 
-import pd.brett.Brett;
-import pd.spieler.Spieler;
-import pd.spieler.SpielerFarbe;
+import pd.spiel.brett.Brett;
+import pd.spiel.spieler.Spieler;
+import pd.spiel.spieler.SpielerFarbe;
 
 /**
  * Spiel, welches ein Brett und 4 Spieler umfasst.

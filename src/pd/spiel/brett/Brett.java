@@ -1,12 +1,12 @@
-package pd.brett;
+package pd.spiel.brett;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Spielbrett, das es pro Spiel gibt und alle Felder beinhaltet.

@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import pd.spieler.SpielerFarbe;
+import pd.spiel.spieler.SpielerFarbe;
 import applikation.client.pd.Karte;
 
 final public class Icons {

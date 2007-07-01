@@ -8,8 +8,8 @@ import java.util.Observer;
 
 import javax.swing.Icon;
 
-import pd.spieler.Figur;
-import pd.spieler.SpielerFarbe;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.SpielerFarbe;
 import ui.geteiltes.BLabel;
 import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;

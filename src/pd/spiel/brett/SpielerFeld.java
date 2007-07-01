@@ -1,6 +1,6 @@
-package pd.brett;
+package pd.spiel.brett;
 
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Feld, das zu einem Spieler gehört, wie zum Beispiel das {@link BankFeld}.

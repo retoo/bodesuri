@@ -1,5 +1,5 @@
 package pd;
-import pd.brett.Feld;
+import pd.spiel.brett.Feld;
 
 /**
  * Stellt Tests zur Überprüfung der Funktionalität eines Feldes zur Verfügung.

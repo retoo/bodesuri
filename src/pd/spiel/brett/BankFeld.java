@@ -1,6 +1,6 @@
-package pd.brett;
+package pd.spiel.brett;
 
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Bankfeld, das erste Feld, auf das eine Figur kommt, wenn sie das Lager

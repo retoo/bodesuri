@@ -7,7 +7,7 @@ import java.util.Vector;
 import pd.karten.Karte;
 import pd.regelsystem.Regel;
 import pd.regelsystem.verstoesse.RegelVerstoss;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Enthält Eingaben für Validierung und anschliessende Erstellung des Zuges.

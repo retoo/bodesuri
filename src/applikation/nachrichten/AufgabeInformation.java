@@ -1,7 +1,7 @@
 package applikation.nachrichten;
 
 import dienste.netzwerk.Nachricht;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Nachricht mit der Server dem Client mitteilt wenn jemand Aufgegeben hat.

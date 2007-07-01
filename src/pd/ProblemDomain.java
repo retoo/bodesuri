@@ -3,6 +3,7 @@ package pd;
 import dienste.serialisierung.Codierer;
 import pd.karten.KartenGeber;
 import pd.serialisierung.CodiererThreads;
+import pd.spiel.Spiel;
 
 /**
  * Einstiegspunkt der Problem-Domain, welcher den {@link Codierer}, das

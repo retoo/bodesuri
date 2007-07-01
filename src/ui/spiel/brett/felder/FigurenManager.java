@@ -2,7 +2,7 @@ package ui.spiel.brett.felder;
 
 import java.util.IdentityHashMap;
 
-import pd.spieler.Figur;
+import pd.spiel.spieler.Figur;
 
 public class FigurenManager {
 	private IdentityHashMap<Figur, Figur2d> figurMap;

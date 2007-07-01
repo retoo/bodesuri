@@ -2,10 +2,10 @@ package pd.zugsystem;
 
 import java.io.Serializable;
 
-import pd.brett.BankFeld;
-import pd.brett.Brett;
-import pd.brett.Feld;
-import pd.brett.SpielerFeld;
+import pd.spiel.brett.BankFeld;
+import pd.spiel.brett.Brett;
+import pd.spiel.brett.Feld;
+import pd.spiel.brett.SpielerFeld;
 
 /**
  * Hilfsklasse für eine Bewegung, die ein Start und ein Ziel hat.

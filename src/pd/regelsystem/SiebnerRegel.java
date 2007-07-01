@@ -8,14 +8,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Vector;
 
-import pd.brett.BankFeld;
-import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.brett.BankFeld;
+import pd.spiel.brett.Feld;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;

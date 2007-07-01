@@ -5,9 +5,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import pd.ProblemDomainTestCase;
-import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.serialisierung.BodesuriCodiertesObjekt;
+import pd.spiel.brett.Feld;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.ZugEingabe;
 import dienste.serialisierung.UnbekannterCodeException;

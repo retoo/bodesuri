@@ -1,8 +1,8 @@
-package pd.spieler;
+package pd.spiel.spieler;
 
 import java.util.Observable;
 
-import pd.brett.Feld;
+import pd.spiel.brett.Feld;
 
 /**
  * Figur, von der jeder {@link Spieler} 4 hat und die auf einem {@link Feld}

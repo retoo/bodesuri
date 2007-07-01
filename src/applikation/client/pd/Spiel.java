@@ -22,7 +22,7 @@ import dienste.serialisierung.SerialisierungsKontext;
  */
 public class Spiel extends Observable implements SerialisierungsKontext {
 	private ProblemDomain problemDomain;
-	private pd.Spiel spiel;
+	private pd.spiel.Spiel spiel;
 	private Brett brett;
 	private Vector<Spieler> spieler;
 
@@ -43,7 +43,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public Karte ausgewaehlteKarte;
 
 	/** Abbildung von PD-Spielern zu Applikations-Spielern */
-	private IdentityHashMap<pd.spieler.Spieler, Spieler> spielerRegister;
+	private IdentityHashMap<pd.spiel.spieler.Spieler, Spieler> spielerRegister;
 	public Chat chat;
 	/* TODO: Philippe: Was ist das? -philippe */
 	/* TODO: Philippe: das ist von mir, der Zähler im Hinweisfeld (-reto)*/
@@ -56,10 +56,10 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		spiel = problemDomain.getSpiel();
 
 		// Assoziiere PD-Spieler nach App-Spieler
-		spielerRegister = new IdentityHashMap<pd.spieler.Spieler, Spieler>();
+		spielerRegister = new IdentityHashMap<pd.spiel.spieler.Spieler, Spieler>();
 		spieler = new Vector<Spieler>();
 		for (int i = 0; i < spiel.getSpieler().size(); i++) {
-			pd.spieler.Spieler pdSpieler = spiel.getSpieler().get(i);
+			pd.spiel.spieler.Spieler pdSpieler = spiel.getSpieler().get(i);
 			Spieler appSpieler = new Spieler(pdSpieler);
 			spieler.add(appSpieler);
 			spielerRegister.put(pdSpieler, appSpieler);
@@ -72,13 +72,13 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	/**
 	 * Sucht nach dem passenden {@link Spieler} zu einem
-	 * {@link pd.spieler.Spieler}.
+	 * {@link pd.spiel.spieler.Spieler}.
 	 *
 	 * @param spieler
 	 *            Der bekannte PD-Spieler
 	 * @return Der gesuchte Applikations-Spieler
 	 */
-	public Spieler findeSpieler(pd.spieler.Spieler spieler) {
+	public Spieler findeSpieler(pd.spiel.spieler.Spieler spieler) {
 		Spieler s = spielerRegister.get(spieler);
 
 		if (s == null) {
@@ -96,7 +96,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		return spieler;
 	}
 
-	public pd.Spiel getSpiel() {
+	public pd.spiel.Spiel getSpiel() {
 		return spiel;
 	}
 

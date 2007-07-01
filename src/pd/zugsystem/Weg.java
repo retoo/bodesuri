@@ -2,7 +2,7 @@ package pd.zugsystem;
 
 import java.util.Vector;
 
-import pd.brett.Feld;
+import pd.spiel.brett.Feld;
 
 public class Weg extends Vector<Feld> {
 	private boolean vorwaerts;

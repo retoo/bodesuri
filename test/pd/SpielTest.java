@@ -1,6 +1,6 @@
 package pd;
 
-import pd.Spiel;
+import pd.spiel.Spiel;
 
 /**
  * Testet die Funktionalität des Spiels.

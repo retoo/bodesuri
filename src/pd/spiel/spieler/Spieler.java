@@ -1,13 +1,13 @@
-package pd.spieler;
+package pd.spiel.spieler;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import pd.Spiel;
 import pd.karten.Karte;
 import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
+import pd.spiel.Spiel;
 import pd.zugsystem.ZugEingabe;
 import dienste.observer.ObservableList;
 

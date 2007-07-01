@@ -1,6 +1,6 @@
 package applikation.server.zustaende;
 
-import pd.spieler.Partnerschaft;
+import pd.spiel.spieler.Partnerschaft;
 import applikation.nachrichten.SpielFertigNachricht;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;

@@ -29,13 +29,13 @@ public class Weg {
     }
 
 	private void markiere(pd.zugsystem.Weg aktuellerWeg) {
-		for (pd.brett.Feld f : aktuellerWeg) {
+		for (pd.spiel.brett.Feld f : aktuellerWeg) {
 			brett.getFeld(f).setWeg(true);
 		}
     }
 
 	private void unmarkiere(pd.zugsystem.Weg aktuellerWeg) {
-		for (pd.brett.Feld f : aktuellerWeg) {
+		for (pd.spiel.brett.Feld f : aktuellerWeg) {
 			brett.getFeld(f).setWeg(false);
 		}
     }

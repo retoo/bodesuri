@@ -3,7 +3,7 @@ package applikation.client.pd;
 import java.util.Observable;
 import java.util.Observer;
 
-import pd.spieler.Figur;
+import pd.spiel.spieler.Figur;
 
 /**
  * Dekoriert ein Feld aus der PD.
@@ -12,14 +12,14 @@ import pd.spieler.Figur;
  * markierten Weges ist.
  */
 public class Feld extends Observable implements Observer {
-	private pd.brett.Feld feld;
+	private pd.spiel.brett.Feld feld;
 
 	private boolean ausgewaehlt;
 	private boolean hover;
 	private boolean geist;
 	private boolean weg;
 
-	public Feld(pd.brett.Feld feld) {
+	public Feld(pd.spiel.brett.Feld feld) {
 		this.feld = feld;
 
 		this.hover = false;
@@ -30,7 +30,7 @@ public class Feld extends Observable implements Observer {
 		feld.addObserver(this);
 	}
 
-	public pd.brett.Feld getFeld() {
+	public pd.spiel.brett.Feld getFeld() {
 		return feld;
 	}
 

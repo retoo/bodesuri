@@ -3,7 +3,7 @@ package ui.spiel.brett.felder;
 
 import javax.swing.Icon;
 
-import pd.spieler.Figur;
+import pd.spiel.spieler.Figur;
 import ui.geteiltes.BLabel;
 
 /**

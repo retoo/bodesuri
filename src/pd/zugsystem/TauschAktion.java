@@ -1,7 +1,7 @@
 package pd.zugsystem;
 
-import pd.brett.Feld;
-import pd.spieler.Figur;
+import pd.spiel.brett.Feld;
+import pd.spiel.spieler.Figur;
 
 /**
  * Aktion, die zwei Figuren tauscht.

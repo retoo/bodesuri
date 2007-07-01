@@ -10,12 +10,12 @@ import java.util.Vector;
  */
 public class Brett {
 	private Vector<Feld> alleFelder = new Vector<Feld>();
-	private IdentityHashMap<pd.brett.Feld, Feld> feldMap;
+	private IdentityHashMap<pd.spiel.brett.Feld, Feld> feldMap;
 
-	public Brett(pd.brett.Brett brett) {
-		feldMap = new IdentityHashMap<pd.brett.Feld, Feld>();
+	public Brett(pd.spiel.brett.Brett brett) {
+		feldMap = new IdentityHashMap<pd.spiel.brett.Feld, Feld>();
 
-		for (pd.brett.Feld feld : brett.getAlleFelder()) {
+		for (pd.spiel.brett.Feld feld : brett.getAlleFelder()) {
 			Feld appFeld = new Feld(feld);
 			alleFelder.add(appFeld);
 			feldMap.put(feld, appFeld);
@@ -26,7 +26,7 @@ public class Brett {
 		return alleFelder;
 	}
 
-	public Feld getFeld(pd.brett.Feld f) {
+	public Feld getFeld(pd.spiel.brett.Feld f) {
 		return feldMap.get(f);
 	}
 

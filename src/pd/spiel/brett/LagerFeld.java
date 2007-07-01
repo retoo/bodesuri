@@ -1,6 +1,6 @@
-package pd.brett;
+package pd.spiel.brett;
 
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Lagerfeld, auf dem die Figur des Spieler am Anfang steht.

@@ -4,7 +4,7 @@ import java.util.List;
 
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;
 import pd.zugsystem.ZugEingabeAbnehmer;

@@ -3,8 +3,8 @@
    <property name="hide-externals" value="true" />
    <property name="detail-mode" value="true" />
    <classpath>
-      <classpathentry kind="lib" path="/Users/reto/scripts/bodesuri/lib/bodesuri.jar" />
-      <classpathentry kind="src" path="/Users/reto/scripts/bodesuri/src" />
+      <classpathentry kind="lib" path="/Users/HobusP/Software Engineering/Bodesuri/bodesuri.jar" />
+      <classpathentry kind="src" path="/Users/HobusP/Software Engineering/Bodesuri/Bodesuri/src" />
    </classpath>
    <transformations>
       <transformation in="pd.*.*" out="pd.{2}" />

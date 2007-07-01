@@ -1,6 +1,6 @@
 package applikation.client.zustaende;
 
-import pd.spieler.Partnerschaft;
+import pd.spiel.spieler.Partnerschaft;
 import applikation.client.controller.Controller;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;

@@ -1,14 +1,14 @@
 package pd.regelsystem;
 
-import pd.brett.BankFeld;
-import pd.brett.Brett;
-import pd.brett.Feld;
-import pd.brett.LagerFeld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.brett.BankFeld;
+import pd.spiel.brett.Brett;
+import pd.spiel.brett.Feld;
+import pd.spiel.brett.LagerFeld;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;

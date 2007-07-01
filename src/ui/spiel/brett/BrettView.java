@@ -12,9 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import pd.brett.SpielerFeld;
-import pd.spieler.Figur;
-import pd.spieler.SpielerFarbe;
+import pd.spiel.brett.SpielerFeld;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.SpielerFarbe;
 import ui.geteiltes.BLabel;
 import ui.geteiltes.SpielerView;
 import ui.ressourcen.BrettXML;

@@ -5,7 +5,7 @@ import java.util.Vector;
 
 import pd.ProblemDomain;
 import pd.serialisierung.CodiererThreads;
-import pd.spieler.Partnerschaft;
+import pd.spiel.spieler.Partnerschaft;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielInfo;
 import applikation.nachrichten.SpielerInfo;
@@ -25,7 +25,7 @@ public class Spiel implements SerialisierungsKontext {
 	private Vector<Partnerschaft> partnerschaften;
 	private int anzahlSpieler;
 	private ProblemDomain problemDomain;
-	private pd.Spiel spiel;
+	private pd.spiel.Spiel spiel;
 
 	public Server server;
 	public EventQueue queue;
@@ -198,7 +198,7 @@ public class Spiel implements SerialisierungsKontext {
 	 */
 	public Spieler fuegeHinzu(String spielerName, EndPunktInterface endpunkt) {
 		/* PD Spieler erstellen */
-		pd.spieler.Spieler pdSpieler = spiel.fuegeHinzu(spielerName);
+		pd.spiel.spieler.Spieler pdSpieler = spiel.fuegeHinzu(spielerName);
 
 		/* Mini PD Spieler erstellen */
 		Spieler spieler = new Spieler(endpunkt, pdSpieler);

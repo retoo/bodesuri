@@ -1,4 +1,4 @@
-package pd.spieler;
+package pd.spiel.spieler;
 
 import java.io.Serializable;
 

@@ -2,8 +2,8 @@ package applikation.client.zugautomat.zustaende;
 
 import pd.regelsystem.Regel;
 import pd.regelsystem.TauschRegel;
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 import applikation.client.controller.Controller;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;

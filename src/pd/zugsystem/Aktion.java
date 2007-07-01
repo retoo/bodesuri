@@ -1,6 +1,6 @@
 package pd.zugsystem;
 
-import pd.brett.Feld;
+import pd.spiel.brett.Feld;
 
 /**
  * Aktion, die eine Figur von einem Start- auf ein Zielfeld setzt.

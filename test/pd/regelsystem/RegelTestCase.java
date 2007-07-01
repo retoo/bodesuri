@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.ProblemDomainTestCase;
-import pd.brett.Feld;
 import pd.regelsystem.verstoesse.RegelVerstoss;
-import pd.spieler.Spieler;
+import pd.spiel.brett.Feld;
+import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
 import pd.zugsystem.ZugEingabe;

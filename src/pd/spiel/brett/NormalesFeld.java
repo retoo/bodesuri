@@ -1,4 +1,4 @@
-package pd.brett;
+package pd.spiel.brett;
 
 /**
  * Normales Feld, welches zwischen den Bankfeldern liegt und auf einem Brett am

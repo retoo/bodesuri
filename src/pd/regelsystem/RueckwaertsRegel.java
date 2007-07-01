@@ -1,11 +1,11 @@
 package pd.regelsystem;
 
-import pd.brett.Feld;
 import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.brett.Feld;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
 import pd.zugsystem.ZugEingabe;

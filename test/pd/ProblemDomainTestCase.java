@@ -3,13 +3,13 @@ package pd;
 import java.util.List;
 
 import junit.framework.TestCase;
-import pd.Spiel;
-import pd.brett.BankFeld;
-import pd.brett.Brett;
-import pd.brett.HimmelFeld;
-import pd.brett.LagerFeld;
 import pd.karten.KartenGeber;
-import pd.spieler.Spieler;
+import pd.spiel.Spiel;
+import pd.spiel.brett.BankFeld;
+import pd.spiel.brett.Brett;
+import pd.spiel.brett.HimmelFeld;
+import pd.spiel.brett.LagerFeld;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Ist Basis aller TestCases, welche die Problem-Domain abdecken. Initialisiert

@@ -15,7 +15,7 @@ public class Spieler {
 	 */
 	private Spieler partner;
 	private EndPunktInterface endpunkt;
-	public pd.spieler.Spieler spieler;
+	public pd.spiel.spieler.Spieler spieler;
 
 	/**
 	 * Erstellt einen neune Spieler
@@ -25,7 +25,7 @@ public class Spieler {
 	 * @param spieler
 	 *            Spieler-Objekt aus der PD
 	 */
-	public Spieler(EndPunktInterface absender, pd.spieler.Spieler spieler) {
+	public Spieler(EndPunktInterface absender, pd.spiel.spieler.Spieler spieler) {
 		this.endpunkt = absender;
 		this.spieler = spieler;
 

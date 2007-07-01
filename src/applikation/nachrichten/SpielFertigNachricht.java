@@ -1,6 +1,6 @@
 package applikation.nachrichten;
 
-import pd.spieler.Partnerschaft;
+import pd.spiel.spieler.Partnerschaft;
 import dienste.netzwerk.Nachricht;
 
 /**

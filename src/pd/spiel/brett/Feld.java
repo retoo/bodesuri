@@ -1,8 +1,8 @@
-package pd.brett;
+package pd.spiel.brett;
 
 import pd.serialisierung.BodesuriCodierbaresObjekt;
-import pd.spieler.Figur;
-import pd.spieler.Spieler;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.Spieler;
 
 /**
  * Basisklasse der Felder, die auf dem Spielbrett liegen.

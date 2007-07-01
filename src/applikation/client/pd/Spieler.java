@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-import pd.spieler.Figur;
-import pd.spieler.SpielerFarbe;
+import pd.spiel.spieler.Figur;
+import pd.spiel.spieler.SpielerFarbe;
 import pd.zugsystem.ZugEingabe;
 
 /**
@@ -15,13 +15,13 @@ import pd.zugsystem.ZugEingabe;
  * Verfügt ausserdem über eigene Karten welche die Karten aus der PD dekorieren.
  */
 public class Spieler extends Observable implements Observer {
-	private pd.spieler.Spieler spieler;
+	private pd.spiel.spieler.Spieler spieler;
 	private Karten karten;
 
 	private boolean amZug;
 	private boolean hatAufgegeben;
 
-	public Spieler(pd.spieler.Spieler spieler) {
+	public Spieler(pd.spiel.spieler.Spieler spieler) {
 		this.spieler = spieler;
 		this.karten = new Karten(spieler.getKarten());
 		this.amZug = false;
@@ -53,7 +53,7 @@ public class Spieler extends Observable implements Observer {
 		return karten;
 	}
 
-	public pd.spieler.Spieler getSpieler() {
+	public pd.spiel.spieler.Spieler getSpieler() {
 		return spieler;
 	}
 
@@ -73,11 +73,11 @@ public class Spieler extends Observable implements Observer {
 		return amZug;
 	}
 
-	public void setPartner(pd.spieler.Spieler partner) {
+	public void setPartner(pd.spiel.spieler.Spieler partner) {
 		spieler.setPartner(partner);
 	}
 
-	public pd.spieler.Spieler getPartner() {
+	public pd.spiel.spieler.Spieler getPartner() {
 		return spieler.getPartner();
 	}
 
