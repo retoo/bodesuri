@@ -64,6 +64,22 @@ public class ZugEingabe implements Serializable {
 		return regel.validiere(this);
 	}
 
+	public boolean equals(Object obj) {
+		if (obj instanceof ZugEingabe) {
+			ZugEingabe o = (ZugEingabe) obj;
+			return (areEqual(spieler, o.spieler) &&
+			        areEqual(karte, o.karte) &&
+			        areEqual(konkreteKarte, o.konkreteKarte) &&
+			        areEqual(bewegungen, o.bewegungen));
+		}
+
+		return false;
+	}
+
+	private boolean areEqual(Object o1, Object o2) {
+		return (o1 == null ? o2 == null : o1.equals(o2));
+	}
+
 	/*
 	 * Ist nur beim Joker nötig.
 	 */

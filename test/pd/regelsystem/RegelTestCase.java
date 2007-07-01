@@ -20,12 +20,12 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	protected Feld start;
 	protected Feld ziel;
 	protected Regel regel;
-	
+
 	protected void setUp() {
 		super.setUp();
 		spieler = spieler(0);
 	}
-	
+
 	/**
 	 * Validiert die standardmässig definierte Regel oder wirft
 	 * bei einem Fehlschlag eine Exception.
@@ -34,7 +34,7 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	protected void sollteValidieren() throws RegelVerstoss {
 		sollteValidieren(regel);
 	}
-	
+
 	/**
 	 * Validiert die angegebene Regel oder wirft bei einem Fehlschlag
 	 * eine Exception.
@@ -47,18 +47,23 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 		if (regel == null) {
 			throw new RuntimeException("Keine Regel zum Validieren angegeben.");
 		}
+
 		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
+
+		List<ZugEingabe> moeglicheZuege = regel.getMoeglicheZuege(spieler, null);
+		assertTrue(moeglicheZuege.contains(ze));
+
 		Zug zug = regel.validiere(ze);
 		zug.ausfuehren();
     }
-	
+
 	/**
 	 * Prüft, ob Standardregel einen Verstoss verursacht.
 	 */
 	protected void sollteVerstossGeben() {
 		sollteVerstossGeben(regel);
 	}
-	
+
 	/**
 	 * Prüft, ob eine angegebene Regel einen Verstoss verursacht.
 	 * 
@@ -67,6 +72,10 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
 	 */
 	protected void sollteVerstossGeben(Regel regel) {
 		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
+
+		List<ZugEingabe> moeglicheZuege = regel.getMoeglicheZuege(spieler, null);
+		assertFalse(moeglicheZuege.contains(ze));
+
         try {
 	        regel.validiere(ze);
 	        fail("Sollte RegelVerstoss geben.");
@@ -74,7 +83,7 @@ public abstract class RegelTestCase extends ProblemDomainTestCase {
         	assertNotNull(rv);
         }
 	}
-	
+
 	/**
 	 * Erstellt eine Liste mit eienr einzelnen Bewegung.
 	 * 

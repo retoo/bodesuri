@@ -21,6 +21,15 @@ public class Bewegung implements Serializable {
 		this.ziel = ziel;
 	}
 
+	public boolean equals(Object obj) {
+		if (obj instanceof Bewegung) {
+			Bewegung o = (Bewegung) obj;
+			return start == o.start && ziel == o.ziel;
+		}
+
+		return false;
+	}
+
 	public String toString() {
 		return "von " + start + " nach " + ziel;
 	}

@@ -7,6 +7,7 @@ import pd.regelsystem.SiebnerRegel;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spiel.brett.Feld;
 import pd.zugsystem.Bewegung;
+import pd.zugsystem.Zug;
 
 /**
  * Testet die Funktionalität der Siebnerregel.
@@ -70,8 +71,15 @@ public class SiebnerRegelTest extends RegelTestCase {
 		start[2] = ziel[1];
 		ziel[2]  = start[2].getNtesFeld(3);
 		lager(0).versetzeFigurAuf(start[0]);
-		sollteValidieren();
-		
+
+		/*
+		 * Nicht sollteValidieren verwenden, da dieser Zug nicht von
+		 * getMoeglicheZuege zurückgegeben wird.
+		 */
+		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
+		Zug zug = regel.validiere(ze);
+		zug.ausfuehren();
+
 		assertTrue(start[0].istFrei());
 		assertTrue(ziel[0].istFrei());
 		assertTrue(start[1].istFrei());
@@ -318,7 +326,13 @@ public class SiebnerRegelTest extends RegelTestCase {
 		start[1] = bank(0).getVorheriges();
 		ziel[1]  = bank(0).getVorheriges();
 		lager(0, 1).versetzeFigurAuf(start[1]);
-		sollteValidieren();
+
+		/*
+		 * Nicht sollteValidieren verwenden, da dieser Zug nicht von
+		 * getMoeglicheZuege zurückgegeben wird.
+		 */
+		ZugEingabe ze = new ZugEingabe(spieler, null, getBewegungen());
+		regel.validiere(ze);
 	}
 	
 	/**
