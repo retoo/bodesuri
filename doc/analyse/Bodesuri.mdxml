@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Sun Jul 01 11:15:51 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Sun Jul 01 11:29:34 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable/>
@@ -18872,6 +18872,7 @@
 						</ownedMember>
 						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429595_608012_1025' name='Regel' visibility='public'>
 							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183274430210_232587_4093' name='beschreibung' visibility='private' type='_10_0_622020d_1127400571649_174859_1552'/>
+							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183281980198_552785_22890' visibility='private' type='_11_6_7fe0252_1183274430214_342209_4129'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430211_957054_4094' name='arbeitetMitWeg' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430212_474416_4097' name='validiere' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430212_616745_4102' name='istZugMoeglich' visibility='public' concurrency='sequential'/>
@@ -20170,7 +20171,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>6d 1 3c 78 3 27 65 77 7b 5e 92 a8 aa c0 4 a 2a 95 7f 9 e0 1 7c 8c b3 51 c4 44 e3 6e da c f9 3b c6 b3 88 2 c1 f9 1c 7 c9 3e 5d 83 58 a1 73 48 e4 6e d6 63 c4 42 4e 31 b8 b2 dd 84 46 b9 bb 3d 45 2f 6e eb </value>
+						<value>6d 1 3c 78 3 27 65 77 7b 5e 92 a8 aa c0 4 a 2a 95 7f 9 e0 1 7c 8c b3 52 c8 44 e5 6b da c f9 3b c6 b3 88 2 c1 f9 1c 7 c9 3e 5d 83 58 a1 73 48 e4 6e d6 63 c4 42 4e 31 b8 b2 dd 84 46 b9 bb 3d 45 2f 6e eb </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
