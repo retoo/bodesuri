@@ -9,7 +9,6 @@ import pd.spiel.brett.Feld;
 import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
 
 /**
  * Ist Basis für alle TestCases des Regelsystems. Bietet zusätzlich zu

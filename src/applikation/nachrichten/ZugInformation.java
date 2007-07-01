@@ -1,6 +1,6 @@
 package applikation.nachrichten;
 
-import pd.zugsystem.ZugEingabe;
+import pd.regelsystem.ZugEingabe;
 import dienste.netzwerk.Nachricht;
 
 /**

@@ -6,10 +6,6 @@ import pd.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
-import pd.zugsystem.ZugEingabeHoffender;
-import pd.zugsystem.ZugEingabeSammler;
 
 /**
  * Basisklasse für Regeln.

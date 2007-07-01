@@ -13,8 +13,6 @@ import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für das Starten mit einer Figur vom {@link LagerFeld} auf das

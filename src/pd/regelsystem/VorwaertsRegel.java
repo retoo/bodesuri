@@ -17,8 +17,6 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für normales Vorwärtsfahren, mit Heimschicken von Figur auf Zielfeld.

@@ -21,8 +21,6 @@ import pd.zugsystem.Bewegung;
 import pd.zugsystem.HeimschickAktion;
 import pd.zugsystem.Weg;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel der Karte Sieben, bei der der Zug auf mehrere Figuren aufgeteilt werden

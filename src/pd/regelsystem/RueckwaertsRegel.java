@@ -8,8 +8,6 @@ import pd.spiel.spieler.Figur;
 import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.Weg;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Gleich wie {@link VorwaertsRegel}, aber Zugrichtung ist rückwärts.

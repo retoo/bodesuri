@@ -4,8 +4,8 @@ import java.util.IdentityHashMap;
 import java.util.List;
 
 import pd.karten.Karte;
+import pd.regelsystem.ZugEingabe;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 

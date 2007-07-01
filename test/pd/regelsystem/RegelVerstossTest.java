@@ -8,7 +8,6 @@ import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import pd.zugsystem.Aktion;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.ZugEingabe;
 
 /**
  * Testet die Funktionalität eines Regelverstosses.

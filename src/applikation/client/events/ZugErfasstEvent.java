@@ -3,8 +3,8 @@ package applikation.client.events;
 import java.util.List;
 import java.util.Vector;
 
+import pd.regelsystem.ZugEingabe;
 import pd.zugsystem.Bewegung;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spieler;
 import dienste.eventqueue.Event;

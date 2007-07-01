@@ -9,8 +9,6 @@ import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;
 import pd.zugsystem.TauschAktion;
 import pd.zugsystem.Zug;
-import pd.zugsystem.ZugEingabe;
-import pd.zugsystem.ZugEingabeAbnehmer;
 
 /**
  * Regel für das Tauschen zweier Figuren.

@@ -1,14 +1,11 @@
 package pd.spiel.spieler;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
 import pd.karten.Karte;
-import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 import pd.spiel.Spiel;
-import pd.zugsystem.ZugEingabe;
 import dienste.observer.ObservableList;
 
 /**
@@ -110,19 +107,6 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		return karten;
 	}
 
-	/**
-	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
-	 */
-	public boolean kannZiehen() {
-		for (Karte karte : getKarten()) {
-			Regel regel = karte.getRegel();
-			if (regel != null && regel.istZugMoeglich(this)) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 	public boolean istFertig() {
 		for (Figur figur : figuren) {
 			if (!figur.getFeld().istHimmel()) {
@@ -140,17 +124,4 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	public void setPartner(Spieler partner) {
 		this.partner = partner;
 	}
-	
-	public List<ZugEingabe> getMoeglicheZuege() {
-		List<ZugEingabe> moegliche = new LinkedList<ZugEingabe>();
-
-		for (Karte karte : getKarten()) {
-			Regel regel = karte.getRegel();
-			if (regel != null) {
-				moegliche.addAll(regel.getMoeglicheZuege(this, karte));
-			}
-		}
-
-		return moegliche;
-    }
 }

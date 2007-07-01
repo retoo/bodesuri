@@ -1,8 +1,8 @@
 package applikation.client.zustaende;
 
 
+import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.verstoesse.RegelVerstoss;
-import pd.zugsystem.ZugEingabe;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spieler;
 import applikation.nachrichten.AktuellerSpielerInformation;

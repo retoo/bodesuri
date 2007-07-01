@@ -1,4 +1,5 @@
-package pd.zugsystem;
+package pd.regelsystem;
+
 
 
 /**

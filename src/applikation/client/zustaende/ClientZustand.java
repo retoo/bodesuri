@@ -198,7 +198,7 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
 	}
 
-	Class<? extends Zustand> zugWurdeGemacht(pd.zugsystem.ZugEingabe zug) {
+	Class<? extends Zustand> zugWurdeGemacht(pd.regelsystem.ZugEingabe zug) {
 		return keinUebergang();
 	}
 

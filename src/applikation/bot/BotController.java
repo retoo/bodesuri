@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Vector;
 
 import pd.karten.Karte;
-import pd.zugsystem.ZugEingabe;
+import pd.regelsystem.ZugEingabe;
 import applikation.client.controller.Controller;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.konfiguration.Konfiguration;

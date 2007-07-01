@@ -1,13 +1,14 @@
-package pd.zugsystem;
+package pd.regelsystem;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
 
 import pd.karten.Karte;
-import pd.regelsystem.Regel;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spiel.spieler.Spieler;
+import pd.zugsystem.Bewegung;
+import pd.zugsystem.Zug;
 
 /**
  * Enthält Eingaben für Validierung und anschliessende Erstellung des Zuges.

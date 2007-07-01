@@ -2,7 +2,7 @@ package applikation.client.controller;
 
 import java.util.List;
 
-import pd.zugsystem.ZugEingabe;
+import pd.regelsystem.ZugEingabe;
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.ChatEingabeEvent;
 import applikation.client.events.FeldAbgewaehltEvent;

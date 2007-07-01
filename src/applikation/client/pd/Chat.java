@@ -5,7 +5,7 @@ import java.util.Date;
 
 import applikation.nachrichten.AufgabeInformation;
 
-import pd.zugsystem.ZugEingabe;
+import pd.regelsystem.ZugEingabe;
 
 import dienste.observer.ObservableList;
 

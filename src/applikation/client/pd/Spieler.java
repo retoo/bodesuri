@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
+import pd.regelsystem.Regelsystem;
+import pd.regelsystem.ZugEingabe;
 import pd.spiel.spieler.Figur;
 import pd.spiel.spieler.SpielerFarbe;
-import pd.zugsystem.ZugEingabe;
 
 /**
  * Dekoriert einen Spieler aus der PD.
@@ -30,7 +31,7 @@ public class Spieler extends Observable implements Observer {
 	}
 
 	public boolean kannZiehen() {
-		return spieler.kannZiehen();
+		return Regelsystem.kannZiehen(spieler);
 	}
 
 	public void setAmZug(boolean amZug) {
@@ -82,7 +83,7 @@ public class Spieler extends Observable implements Observer {
 	}
 
 	public List<ZugEingabe> getMoeglicheZuege() {
-		return spieler.getMoeglicheZuege();
+		return Regelsystem.getMoeglicheZuege(spieler);
 	}
 
 	public void update(Observable o, Object arg) {

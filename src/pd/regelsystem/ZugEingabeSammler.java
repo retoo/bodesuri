@@ -1,7 +1,8 @@
-package pd.zugsystem;
+package pd.regelsystem;
 
 import java.util.List;
 import java.util.Vector;
+
 
 
 /**
