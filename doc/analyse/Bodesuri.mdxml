@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Sun Jul 01 10:43:01 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Sun Jul 01 11:03:51 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UseCase_Description_Profile='http://www.magicdraw.com/shemas/UseCase_Description_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable/>
@@ -18667,6 +18667,8 @@
 							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183274430177_912188_3932' name='farbe' visibility='private' type='_11_6_7fe0252_1183274429580_671568_973'/>
 							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183274430178_679722_3935' name='regel' visibility='private' type='_11_6_7fe0252_1183274429595_608012_1025'/>
 							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183274430179_63979_3938' name='name' visibility='private' type='_10_0_622020d_1127400571649_174859_1552'/>
+							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183280360737_255590_20724' visibility='private' type='_11_6_7fe0252_1183274430183_424528_3972'/>
+							<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183280561631_698793_20790' visibility='private' type='_11_6_7fe0252_1183274430153_771042_3899'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430179_233756_3939' name='Karte' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430180_292475_3946' name='toString' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430180_107162_3948' name='getName' visibility='public' concurrency='sequential'/>
@@ -20090,7 +20092,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>DIAGRAMS_LAYOUT</propertyID>
 						<propertyDescriptionID>DIAGRAMS_LAYOUT_DESCRIPTION</propertyDescriptionID>
-						<value>0 0 0 14 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 38 0 31 0 31 0 36 0 33 0 32 0 34 0 38 0 5f 0 36 0 31 0 31 0 30 0 39 0 32 0 5f 0 36 0 30 0 30 0 36 0 0 0 1 0 0 0 ca 0 0 0 e3 0 0 0 0 0 0 0 6 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 38 0 31 0 31 0 36 0 33 0 32 0 34 0 38 0 5f 0 36 0 31 0 31 0 30 0 39 0 32 0 5f 0 36 0 30 0 30 0 36 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 32 0 38 0 37 0 34 0 31 0 35 0 30 0 37 0 33 0 5f 0 37 0 32 0 30 0 38 0 33 0 31 0 5f 0 32 0 36 0 39 0 30 0 34 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 32 0 37 0 36 0 31 0 37 0 36 0 30 0 33 0 34 0 5f 0 38 0 35 0 38 0 36 0 36 0 33 0 5f 0 32 0 31 0 36 0 39 0 30 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 39 0 39 0 36 0 36 0 31 0 38 0 33 0 5f 0 36 0 33 0 33 0 35 0 37 0 30 0 5f 0 34 0 32 0 35 0 36 0 0 0 26 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 33 0 38 0 30 0 30 0 32 0 31 0 32 0 39 0 30 0 5f 0 37 0 37 0 36 0 30 0 35 0 39 0 5f 0 38 0 31 0 38 </value>
+						<value>0 0 0 14 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 1 0 0 0 ca 0 0 0 e3 0 0 0 0 0 0 0 5 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 36 0 39 0 35 0 31 0 33 0 38 0 33 0 5f 0 36 0 35 0 30 0 39 0 39 0 39 0 5f 0 31 0 31 0 32 0 34 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 32 0 38 0 37 0 34 0 31 0 35 0 30 0 37 0 33 0 5f 0 37 0 32 0 30 0 38 0 33 0 31 0 5f 0 32 0 36 0 39 0 30 0 34 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 32 0 37 0 36 0 31 0 37 0 36 0 30 0 33 0 34 0 5f 0 38 0 35 0 38 0 36 0 36 0 33 0 5f 0 32 0 31 0 36 0 39 0 30 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 37 0 39 0 30 0 37 0 39 0 39 0 36 0 36 0 31 0 38 0 33 0 5f 0 36 0 33 0 33 0 35 0 37 0 30 0 5f 0 34 0 32 0 35 0 36 0 0 0 26 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 37 0 66 0 65 0 30 0 32 0 35 0 32 0 5f 0 31 0 31 0 38 0 30 0 33 0 38 0 30 0 30 0 32 0 31 0 32 0 39 0 30 0 5f 0 37 0 37 0 36 0 30 0 35 0 39 0 5f 0 38 0 31 0 38 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='StringProperty'>
@@ -20168,7 +20170,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>6d 1 3c 78 3 27 65 77 7b 5e 92 a8 aa c0 4 a 2a 95 7f 9 e0 1 7c 8d b3 54 c2 44 e6 6e da c f9 3b c6 b3 88 2 c1 f9 1c 7 c9 3e 5d 83 58 a1 73 48 e4 6e d6 63 c4 42 4e 31 b8 b2 dd 84 46 b9 bb 3d 45 2f 6e eb </value>
+						<value>6d 1 3c 78 3 27 65 77 7b 5e 92 a8 aa c0 4 a 2a 95 7f 9 e0 1 7c 8c b3 50 c2 44 e3 6e da c f9 3b c6 b3 88 2 c1 f9 1c 7 c9 3e 5d 83 58 a1 73 48 e4 6e d6 63 c4 42 4e 31 b8 b2 dd 84 46 b9 bb 3d 45 2f 6e eb </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
@@ -20181,7 +20183,7 @@
 					<mdElement elementClass='ChoiceProperty'>
 						<propertyID>RECENT_DIAGRAMS</propertyID>
 						<propertyDescriptionID>RECENT_DIAGRAMS_DESCRIPTION</propertyDescriptionID>
-						<choice xmi:value='_11_6_7fe0252_1180384737520_288831_810^_11_6_7fe0252_1180388474427_670959_3069^_11_6_7fe0252_1179944396206_521269_1882^_11_6_7fe0252_1180115455851_497982_1813'/>
+						<choice xmi:value='_11_6_7fe0252_1179081163248_611092_6006^_11_6_7fe0252_1180384737520_288831_810^_11_6_7fe0252_1180388474427_670959_3069^_11_6_7fe0252_1179944396206_521269_1882^_11_6_7fe0252_1180115455851_497982_1813'/>
 						<index xmi:value='-1'/>
 					</mdElement>
 					<mdElement elementClass='StringProperty'>
