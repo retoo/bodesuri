@@ -20,6 +20,9 @@ class LimitiertesTextField extends JTextField {
 	/**
 	 * Erstellt ein TextField, das auf eine Anzahl angegebener Zeichen limitiert
 	 * wird (durch setzen des Documents).
+	 *
+	 * @param text Text des Feldes
+	 * @param limit Anzahl Zeichen, die maximal erlaubt sind
 	 */
 	public LimitiertesTextField(String text, final int limit) {
 		super();

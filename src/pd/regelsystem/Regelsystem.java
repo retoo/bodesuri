@@ -8,6 +8,7 @@ import pd.spiel.spieler.Spieler;
 
 public class Regelsystem {
 	/**
+	 * @param spieler Spieler, der überprüft wird
 	 * @return true, wenn der Spieler mit seinen Karten ziehen kann
 	 */
 	public static boolean kannZiehen(Spieler spieler) {
@@ -19,7 +20,11 @@ public class Regelsystem {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * @param spieler Spieler, der überprüft wird
+	 * @return Liste von allen möglichen Zügen als ZugEingaben
+	 */
 	public static List<ZugEingabe> getMoeglicheZuege(Spieler spieler) {
 		List<ZugEingabe> moegliche = new LinkedList<ZugEingabe>();
 
