@@ -78,6 +78,7 @@ public abstract class ServerZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
+		/* Spieler aus dem Spiel entfernen, falls vorhanden */
 		spiel.entferne(absender);
 
 		spiel.broadcast(new SpielAbbruch("Die Verbindung zu einem der Spieler (" + absender

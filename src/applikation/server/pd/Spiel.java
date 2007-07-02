@@ -149,7 +149,14 @@ public class Spiel implements SerialisierungsKontext {
 	 * @param endpunkt
 	 */
 	public void sicherStellenIstAktuellerSpieler(EndPunktInterface endpunkt) {
-		if (runde.getAktuellerSpieler() != getSpieler(endpunkt)) {
+		Spieler spieler = getSpieler(endpunkt);
+
+		if (spieler == null) {
+			throw new RuntimeException("Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes "
+			                                   + endpunkt + " auflösen");
+		}
+
+		if (runde.getAktuellerSpieler() != spieler) {
 
 			broadcast("HAH.. huere michi, de " + endpunkt
 			          + " wott voll bschisse");
@@ -160,10 +167,6 @@ public class Spiel implements SerialisierungsKontext {
 
 	public Spieler getSpieler(EndPunktInterface endpunkt) {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
-
-		if (spieler == null)
-			throw new RuntimeException("Unbekannter Spieler, kann Spieler nicht anhand des Endpunktes "
-			                                   + endpunkt + " auflösen");
 
 		return spieler;
 	}
@@ -213,9 +216,6 @@ public class Spiel implements SerialisierungsKontext {
 	 */
 	public void entferne(EndPunktInterface absender) {
 		Spieler s = getSpieler(absender);
-
-		if (s == null)
-			throw new RuntimeException("Unbekannter absender " + absender);
 
 		spielers.remove(s);
     }
