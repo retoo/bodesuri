@@ -18,7 +18,6 @@ import dienste.serialisierung.UnbekannterCodeException;
  */
 public class SerialisierungTest extends ProblemDomainTestCase {
 	private Feld feld1;
-
 	private Feld feld2;
 
 	protected void setUp() {
@@ -72,7 +71,7 @@ public class SerialisierungTest extends ProblemDomainTestCase {
 		ZugEingabe ze2 = (ZugEingabe) durchSerialisierung(ze);
 		assertEquals(ze.getSpieler(), ze2.getSpieler());
 		assertEquals(ze.getBewegung().start, ze2.getBewegung().start);
-		assertEquals(ze.getBewegung().ziel, ze2.getBewegung().ziel);
+		assertEquals(ze.getBewegung().ziel,  ze2.getBewegung().ziel);
 	}
 
 	/**

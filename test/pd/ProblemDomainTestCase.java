@@ -2,6 +2,8 @@ package pd;
 
 import java.util.List;
 
+import dienste.serialisierung.Codierer;
+
 import junit.framework.TestCase;
 import pd.regelsystem.karten.KartenGeber;
 import pd.spiel.Spiel;
@@ -17,14 +19,16 @@ import pd.spiel.spieler.Spieler;
  */
 public abstract class ProblemDomainTestCase extends TestCase {
 	protected Spiel spiel;
-	protected Brett brett;
 	protected KartenGeber kartenGeber;
+	protected Brett brett;
+	protected Codierer codierer;
 	
 	protected void setUp() {
 		ProblemDomain problemDomain = new ProblemDomain();
 
-		spiel = problemDomain.getSpiel();
+		spiel       = problemDomain.getSpiel();
 		kartenGeber = problemDomain.getKartenGeber();
+		codierer    = problemDomain.getCodierer();
 
 		brett = spiel.getBrett();
 
