@@ -12,7 +12,7 @@ public class SpielTest extends ProblemDomainTestCase {
 	}
 
 	/**
-	 * Prüft auf konsistentes Verhalten des Spielers innerhalb
+	 * Prüft auf konsistentes Verhalten des Spielers innerhalb
 	 * des Spiels. 
 	 */
 	public void testSpieler() {
