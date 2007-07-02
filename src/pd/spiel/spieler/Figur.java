@@ -25,11 +25,18 @@ public class Figur extends Observable {
 	public Spieler getSpieler() {
 		return spieler;
 	}
-	
+
+	/**
+	 * @param spieler Spieler, der überprüft wird
+	 * @return true, wenn Figur dem Spieler gehört
+	 */
 	public boolean istVon(Spieler spieler) {
 		return this.spieler == spieler;
 	}
-	
+
+	/**
+	 * @return Feld, auf dem die Figur steht
+	 */
 	public Feld getFeld() {
 		return feld;
 	}

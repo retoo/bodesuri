@@ -22,6 +22,11 @@ public class Spiel {
 	 * werden den Spielern noch Namen gegeben, dann kann das Spiel beginnen!
 	 */
 	public Spiel() {
+		/*
+		 * Die Spieler müssen vor dem Brett erstellt werden, da sie für die
+		 * Erstellung des Bretts bereits vorhanden sein müssen. Namen werden
+		 * ihnen später mit fuegeHinzu zugewiesen.
+		 */
 		spieler = new Vector<Spieler>();
 		for (int i = 0; i < ANZAHL_SPIELER; ++i) {
 			Spieler sp = new Spieler(i, this, SpielerFarbe.values()[i]);

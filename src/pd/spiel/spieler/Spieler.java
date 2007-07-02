@@ -20,7 +20,6 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	private Vector<Figur> figuren = new Vector<Figur>();
 	private ObservableList<Karte> karten = new ObservableList<Karte>();
 	private Spieler partner;
-	
 
 	/**
 	 * Erstellt einen Spieler.
@@ -107,6 +106,9 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 		return karten;
 	}
 
+	/**
+	 * @return true, wenn alle Figuren des Spielers im Himmel sind
+	 */
 	public boolean istFertig() {
 		for (Figur figur : figuren) {
 			if (!figur.getFeld().istHimmel()) {
@@ -116,11 +118,11 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 
 		return true;
 	}
-	
+
 	public Spieler getPartner() {
 		return partner;
 	}
-	
+
 	public void setPartner(Spieler partner) {
 		this.partner = partner;
 	}

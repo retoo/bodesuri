@@ -16,6 +16,7 @@ import pd.spiel.spieler.Spieler;
  * @see Feld
  */
 public class Brett {
+	/** Die Anzahl der Felder, die sich auf dem Brett befinden */
 	public static final int ANZAHL_FELDER = 96;
 
 	private Map<Spieler, BankFeld> bankFelder;
