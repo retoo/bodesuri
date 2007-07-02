@@ -6,6 +6,10 @@ import java.util.List;
 import pd.regelsystem.karten.Karte;
 import pd.spiel.spieler.Spieler;
 
+/**
+ * Beinhaltet Methoden, die das Abfragen von Regeln mit den Daten eines Spielers
+ * vereinfachen.
+ */
 public class Regelsystem {
 	/**
 	 * @param spieler Spieler, der überprüft wird

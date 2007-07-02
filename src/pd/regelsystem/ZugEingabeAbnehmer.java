@@ -1,12 +1,11 @@
 package pd.regelsystem;
 
-
-
 /**
  * Abnehmer von ZugEingaben, die geliefert werden.
  * 
- * Er macht mit den ZugEingaben was er will und sagt dem Lieferer, wann er keine
- * ZugEingaben mehr entgegennehmen mehr will.
+ * Dieser kann mit den ZugEingaben machen, was er will. Nach jeder "Lieferung"
+ * muss er dem Lieferer sagen, ob er noch mehr ZugEingaben entgegennehmen will
+ * oder nicht.
  */
 public interface ZugEingabeAbnehmer {
 	/**

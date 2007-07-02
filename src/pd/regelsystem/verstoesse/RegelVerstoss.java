@@ -8,15 +8,18 @@ public abstract class RegelVerstoss extends Exception {
 	private double spezifitaet;
 
 	/**
-	 * @param meldung
-	 *            Grund, warum der RegelVerstoss auftrat
+	 * @param erklaerung Erklärung des Verstosses
 	 */
-	public RegelVerstoss(String meldung) {
-		this(0.0, meldung);
+	public RegelVerstoss(String erklaerung) {
+		this(0.0, erklaerung);
 	}
 
-	public RegelVerstoss(double spezifitaet, String meldung) {
-		super(meldung);
+	/**
+	 * @param spezifitaet Spezifität des Verstosses, ungefähr von 0.0 bis 2.0
+	 * @param erklaerung Erklärung des Verstosses
+	 */
+	public RegelVerstoss(double spezifitaet, String erklaerung) {
+		super(erklaerung);
 		this.spezifitaet = spezifitaet;
 	}
 

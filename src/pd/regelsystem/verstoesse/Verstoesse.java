@@ -1,7 +1,7 @@
 package pd.regelsystem.verstoesse;
 
 /**
- * Sammelklasse für alle Verstösse, die nur eine Meldung haben.
+ * Sammelklasse für alle Verstösse, die nur eine Erklärung haben.
  */
 public class Verstoesse {
 	/* Allgemein */

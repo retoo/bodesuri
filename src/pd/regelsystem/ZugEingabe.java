@@ -28,12 +28,9 @@ public class ZugEingabe implements Serializable {
 	/**
 	 * Erstellt eine Zugeingabe.
 	 *
-	 * @param spieler
-	 *            Spieler, der diesen Zug ausführt
-	 * @param karte
-	 *            Karte, mit der gespielt wird
-	 * @param bewegung
-	 *            Bewegung (Start, Ziel) des Zuges
+	 * @param spieler Spieler, der diesen Zug ausführt
+	 * @param karte Karte, mit der gespielt wird
+	 * @param bewegung Bewegung (Start, Ziel) des Zuges
 	 */
 	public ZugEingabe(Spieler spieler, Karte karte, Bewegung bewegung) {
 		this(spieler, karte);
@@ -41,6 +38,13 @@ public class ZugEingabe implements Serializable {
 		this.bewegungen.add(bewegung);
 	}
 
+	/**
+	 * Erstellt eine Zugeingabe mit mehreren Bewegungen.
+	 * 
+	 * @param spieler Spieler, der diesen Zug ausführt
+	 * @param karte Karte, mit der gespielt wird
+	 * @param bewegungen Liste von Bewegungen des Zuges
+	 */
 	public ZugEingabe(Spieler spieler, Karte karte, List<Bewegung> bewegungen) {
 		this(spieler, karte);
 		this.bewegungen = bewegungen;

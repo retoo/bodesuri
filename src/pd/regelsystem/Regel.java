@@ -56,6 +56,15 @@ public abstract class Regel {
 		return sammler.getZugEingaben();
 	}
 
+	/**
+	 * Muss dem Abnehmer alle möglichen ZugEingaben über
+	 * {@link ZugEingabeAbnehmer#nehmeEntgegen} liefern. Wenn dieses true
+	 * zurückgibt, kann abgebrochen werden.
+	 * 
+	 * @param spieler Spieler, für den ZugEingaben gesucht werden
+	 * @param karte Karte, mit der die ZugEingaben assoziiert werden
+	 * @param abnehmer Abnehmer der ZugEingaben
+	 */
 	protected abstract void liefereZugEingaben(Spieler spieler, Karte karte,
 	                                           ZugEingabeAbnehmer abnehmer);
 

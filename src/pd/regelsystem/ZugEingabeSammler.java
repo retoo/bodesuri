@@ -3,8 +3,6 @@ package pd.regelsystem;
 import java.util.List;
 import java.util.Vector;
 
-
-
 /**
  * ZugEingabeAbnehmer, der alle ZugEingaben sammelt.
  */
