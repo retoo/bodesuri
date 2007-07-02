@@ -49,10 +49,14 @@ public interface Steuerung {
 	 */
 	public abstract void aufgeben();
 
+	/**
+	 * Dem Automaten mitteilen, dass er das Spiel beenden soll.
+	 */
+	public abstract void beenden();
+	
 	public abstract void hoverStart(Feld feld);
 	public abstract void hoverEnde(Feld feld);
 
 	public abstract void chatNachricht(String text);
 
-	public abstract void beenden();
 }

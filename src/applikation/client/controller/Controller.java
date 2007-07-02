@@ -79,6 +79,11 @@ public abstract class Controller implements Steuerung {
 	 *            anzuzeigende Meldung
 	 */
 	public abstract void zeigeMeldung(String meldung);
+	
+	/**
+	 * Das UI beenden.
+	 */
+	public abstract void herunterfahren();
 
 	public void verbinde(String host, int port_raw, String spieler) {
 		VerbindeEvent ve = new VerbindeEvent(host, port_raw, spieler);
@@ -138,6 +143,4 @@ public abstract class Controller implements Steuerung {
 
 	public void karteTauschenAuswaehlen() {
     }
-
-	public abstract void herunterfahren();
 }
