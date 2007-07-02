@@ -835,6 +835,29 @@ Eine zweite Variante wäre, das Ergebnis der letzten Validierung in einer ständ
 
 Die dritte und schliesslich implementierte Variante ist, bei Gültigkeit einen Zug zurückzugeben und andernfalls eine Exception des Typs \texttt{RegelVerstoss} zu werfen. Damit sind die Nachteile beider oben genannten Varianten beseitigt, die beiden verschiedenen Resultate sind sauber getrennt und aufrufender Code wird zudem noch gezwungen, den Fehlerfall zu behandeln (\texttt{RegelVerstoss} ist \emph{checked}).
 
+\subsection{Mögliche Züge in Regel}
+
+Die folgenden beiden Methoden in \texttt{Regel} haben ganz ähnliche Funktionen:
+
+\begin{itemize}
+	\item \texttt{istZugMoeglich} findet heraus, ob mit dieser Regel für den übergebenen Spieler noch ein Zug möglich ist.
+	\item \texttt{getMoeglicheZuege} findet alle möglichen ZugEingaben mit dieser Regel für den übergebenen Spieler.
+\end{itemize}
+
+Wie werden diese implementiert? Es wäre natürlich möglich, \texttt{istZugMoeglich} anhand von \texttt{getMoeglicheZuege} zu definieren, indem geschaut wird, ob diese eine leere Liste zurückgibt. Dies kann aber rechenintensiv sein, da in jedem Fall alle Möglichkeiten durchgegangen werden, obwohl das nicht nötig ist.
+
+Eine andere Variante wäre, den Code einfach zu kopieren und jeweils einen kleinen Teil darin anzupassen, um den Anforderungen an die beiden Methoden gerecht zu werden. Dies hätte aber duplizierten Code zur Folge und eine erschwerte Anpassbarkeit, da jeweils in zwei Funktionen der gleiche Code angepasst werden müsste.
+
+% TODO: Wie heisst das Pattern, das ähnlich ist?
+
+Deshalb entschieden wir uns, die folgende Variante zu implementieren. Es wird eine interne (\emph{protected}) dritte Methode erstellt, die \texttt{liefereZugEingaben} heisst. Diese übernimmt die gleichen Argumente wie die beiden obengenannten Methoden und zusätzlich noch ein Objekt des neuen Typs \texttt{ZugEingabeAbnehmer}. Die Methode liefert dem Abnehmer über \texttt{nehmeEntgegen} eine Zugeingabe und stellt anhand des Rückgabewertes fest, ob mit der Suche abgebrochen werden soll.
+
+Die Methode \texttt{istZugMoeglich} ruft \texttt{liefereZugEingaben} mit einem Abnehmer auf, der nur auf die erste Zugeingabe wartet, einen Wert setzt, und signalisiert, dass abgebrochen werden kann. Danach wird der Wert ausgelesen und je nachdem zurückgegeben, ob ein Zug möglich ist oder nicht.
+
+Für \texttt{getMoeglicheZuege} wird ein Abnehmer verwendet, der alle Zugeingaben speichert und immer zurückgibt, dass er weitere wünscht.
+
+Mit dieser Lösung ist der Code zur Findung von Zugeingaben nur einmal vorhanden und die beiden Methoden laufen trotzdem nur so lange wie nötig.
+
 \clearpage
 \section{Eingetretene Risiken}
 \label{eingetretene_risiken}
