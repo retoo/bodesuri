@@ -720,6 +720,20 @@ Die Applikationsschicht wurde eingeführt, weil es wegen der Netzwerkfähigkeit 
 		\item Controller-Komponente des MVC-Konzeptes, welche die Ereignisse im UI abfängt und verarbeitet, sowie Änderungen in der Problem-Domain an das UI weiterleitet.
 	\end{itemize}
 
+\subsection{Regelverstoss als Exception}
+
+Wenn eine Zug getätigt werden soll, wird zuerst mit den Angaben des Benutzers eine ZugEingabe zusammengestellt. Diese wird dann vom Regelsystem auf Gültigkeit geprüft (Methode \texttt{validieren}), wobei es zwei mögliche Ergebnisse gibt:
+\begin{itemize}
+	\item Die ZugEingabe ist gültig und das Resultat ist ein ausführbarer Zug, der von der Regel zusammengestellt wurde.
+	\item Die ZugEingabe ist ungültig und das Resultat ist ein Verstoss mit einer Erklärung, warum die ZugEingabe ungültig ist.
+\end{itemize}
+
+Eine Möglichkeit, diese beiden Ergebnisse von einer Methode zurückzugeben ist, eine Klasse zu machen, die beides beinhalten kann, oder eine Basisklasse mit zwei sehr unterschiedlichen Resultat-Unterklassen. Mit dieser Variante wird jedoch sowohl der Code der \texttt{validieren}-Methode als auch der aufrufende Code komplizierter als nötig, da immer eine Fallunterscheidung gemacht werden muss. Wird zum Beispiel der Code von \texttt{validieren} in mehrere kleine Untermethoden zerlegt, muss bei jedem Aufruf der Rückgabewert geprüft werden und je nachdem mit der Validierung weitergemacht oder aufgehört werden.
+
+Eine zweite Variante wäre, das Ergebnis der letzten Validierung in einer ständig vorhandenen Klasse zu speichern, wo es bei Bedarf abgerufen werden kann. Der Nachteil daran ist, dass das Ergebniss entkoppelt vom Aufruf von \texttt{validieren} an einem anderen Ort abgeholt werden muss, was nicht intuitiv ist und die beiden Klassen sehr stark voneinander Abhängig macht.
+
+Die dritte und schliesslich implementierte Variante ist, bei Gültigkeit einen Zug zurückzugeben und andernfalls eine Exception des Typs \texttt{RegelVerstoss} zu werfen. Damit sind die Nachteile beider oben genannten Varianten beseitigt, die beiden verschiedenen Resultate sind sauber getrennt und aufrufender Code wird zudem noch gezwungen, den Fehlerfall zu behandeln (\texttt{RegelVerstoss} ist \emph{checked}).
+
 \clearpage
 \section{Eingetretene Risiken}
 \label{eingetretene_risiken}
