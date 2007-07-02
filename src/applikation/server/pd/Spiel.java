@@ -6,7 +6,6 @@ import java.util.Vector;
 import pd.ProblemDomain;
 import pd.serialisierung.CodiererThreads;
 import pd.spiel.spieler.Partnerschaft;
-import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.SpielInfo;
 import applikation.nachrichten.SpielerInfo;
 import dienste.eventqueue.EventQueue;
@@ -97,16 +96,6 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Sendet den übergebenen String als Chatnachricht an alle Spieler
-	 *
-	 * @param msg
-	 *            zu sendende Textmitteilung
-	 */
-	public void broadcast(String msg) {
-		broadcast(new ChatNachricht("Server", msg));
-	}
-
-	/**
 	 * Anzahl der Spieler
 	 *
 	 * @return Anzahl der Spieler
@@ -157,9 +146,6 @@ public class Spiel implements SerialisierungsKontext {
 		}
 
 		if (runde.getAktuellerSpieler() != spieler) {
-
-			broadcast("HAH.. huere michi, de " + endpunkt
-			          + " wott voll bschisse");
 			throw new RuntimeException("Beschiss von " + endpunkt + " an "
 			                     + runde.getAktuellerSpieler());
 		}

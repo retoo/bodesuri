@@ -60,6 +60,21 @@ public abstract class ServerZustand extends Zustand {
 		return super.handle(event);
 	}
 
+	public void handleException(RuntimeException exception) {
+		/* Es trat ein schwerer Serverfehler auf. Nun werden alle Clients informiert
+		 * und anschliessend beendet sich der Server
+		 */
+
+		Nachricht sa = new SpielAbbruch(
+				"Auf dem Server ist ein Fehler aufgetreten ("
+						+ exception.getMessage()
+						+ "). Das Spiel wird abgebrochen");
+
+		spiel.broadcast(sa);
+
+		super.handleException(exception);
+	}
+
 	/* Die Handler sind bereits in den jeweiligen Event-Klassen beschrieben */
 
 	private Class<? extends Zustand> chatnachricht(EndPunktInterface absender,

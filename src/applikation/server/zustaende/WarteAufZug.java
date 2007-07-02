@@ -29,7 +29,6 @@ public class WarteAufZug extends ServerZustand {
         } catch (RegelVerstoss e) {
         	/* Ungültiger Zug */
         	String msg = "Ungültige Nachricht von Spieler " + spieler + " " + e;
-        	spiel.broadcast(msg);
         	throw new RuntimeException(msg);
         }
 
