@@ -10,7 +10,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Validiert den erfassten Zug.
  * <ul>
- * <li>Ist die Karte eine Sieben und es sind noch nicht 7 Felder gefahren,
+ * <li>Ist die Karte eine Sieben und es wurde noch keine 7 Felder gefahren,
  * wechseln wir zurück nach {@link StartWaehlen} um eine weitere Bewegung zu
  * erfassen.</li>
  * <li>Ist der Zug ungültig wird eine Fehlermeldung gezeigt, das Ziel

@@ -6,7 +6,7 @@ import dienste.automat.zustaende.Zustand;
 
 /**
  * Zustand wenn eine neue Runde gestartet wird. Alle Eigenschaften der Spieler
- * werden zurückgesetzt (am Zug, hat Aufgegeben) und Automat geht nach
+ * werden zurückgesetzt (am Zug, hat Aufgegeben). Der Automat geht nach
  * {@link KarteTauschenAuswaehlen} über.
  */
 public class StarteRunde extends ClientZustand implements PassiverZustand {
