@@ -213,11 +213,12 @@ public class Spiel implements SerialisierungsKontext {
 
 	/**
 	 * @param absender Zu entfernenden Spieler
+	 * @return true falls es einen solchen Spieler hatte
 	 */
-	public void entferne(EndPunktInterface absender) {
+	public boolean entferne(EndPunktInterface absender) {
 		Spieler s = getSpieler(absender);
 
-		spielers.remove(s);
+		return spielers.remove(s);
     }
 
 	/**
