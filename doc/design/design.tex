@@ -812,6 +812,31 @@ In einem zweiten Versuch erstellten wir das selbe Spielbrett mit Swing und wir k
 
 Aus diesen Gründen haben wir uns dazu entschlossen, für das GUI als einzige Technologie Swing einzusetzen. Insgesamt gingen 7.5 Stunden Arbeit für diese Umstellung verloren.
 
+\clearpage
+\section{Besser als erwartet}
+
+Einige Dinge, von denen wir dachten, sie würden viel Zeit brauchen, waren einfacher zu implementieren als erwartet.
+
+\subsection{Serialisierung}
+
+Um Objekte über das Netzwerk zu schicken, müssen sie serialisiert werden, das heisst den Zustand eines Objektes so in eine binäre Form zu bringen, dass es an einem anderen Ort oder zu einem anderen Zeitpunkt eingelesen werden kann, um wieder den ursprüngliche Zustand des Objektes zu erhalten.
+
+Normalerweise ist das Objekt an einem Ort vorhanden und am anderen nicht. In unserem Fall müssen aber alle Objekte der Problem-Domain sowohl auf jedem Client als auch auf dem Server bereits existieren. Wenn nun ein Objekt übertragen wird, wird am empfangenden Ort ein neues Objekt erstellt, das zwar die gleichen Daten hat, aber nicht die gleiche Identität (gleiche Speicheradresse) wie das bereits vorhandene Objekt. Wenn dann mit dem empfangenen Objekt etwas gemacht wird, wird das z.\,B. vom GUI, welches das bereits vorhandene Objekt observiert, nicht bemerkt.
+
+Für diese Problemstellung wird also ein Mechanismus gebraucht, der bei der Deserialisierung nicht neue Objekte, sondern die bereits vorhandenen zurückliefert. Dies ist bei der Java-Serialisierung mit den beiden Methoden \texttt{writeReplace} (beim zu schreibenden Objekt) und \texttt{readResolve} (beim einzulesenden Objekt) möglich, wo jeweils Objekte zurückgegeben werden können, die dann anstelle der ursprünglichen verwendet werden.
+
+Damit ist die Grundlage für eine Serialisierung wie wir sie brauchen vorhanden. Darauf aufbauend ist nun noch eine eindeutige Codierung der Objekte nötig, die auf jedem Rechner gleich sein muss. Der Ablauf einer Übertragung eines Objektes ist dann wie folgt:
+
+\begin{enumerate}
+	\item Beim zu schreibenden Objekt (zum Beispiel \texttt{Feld}) wird in \texttt{writeReplace} ein \texttt{CodiertesObjekt} zurückgeliefert, welches nur einen Code enthält, der dieses Objekt eindeutig identifiziert (zum Beispiel \texttt{Feld 47}).
+	\item Das stellvertretende Objekt wird über das Netzwerk geschickt.
+	\item Beim Einlesen von \texttt{CodiertesObjekt} wird von Java die Methode \texttt{readResolve} aufgerufen, welche in einer Tabelle zum Code das dazugehörige Objekt nachschaut und zurückgibt.
+\end{enumerate}
+
+Dank der Serialisierungsschnittstelle von Java ist diese Lösung transparent. Der Vorgang ist in Abbildung~\vref{fig:dienste_serialisierung} detailliert als Sequenzdiagramm dargestellt.
+
+
+\clearpage
 \listoffigures
 
 \end{document}
