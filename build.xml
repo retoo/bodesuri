@@ -143,6 +143,7 @@
 <!-- documentation -->
   <target name="generate-doc" depends="init">
     <exec executable="${bld-dir}/build-documents.sh" output="${doc-dir}/log.txt" />
+    <exec executable="${bld-dir}/docu-todos.sh" output="${doc-dir}/todo-report.txt" />
     <copy todir="${doc-dir}/">
       <fileset dir="${tex-dir}" includes="**/**.pdf" />
     </copy>
