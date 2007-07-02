@@ -4,6 +4,10 @@ import dienste.serialisierung.CodierbaresObjekt;
 import dienste.serialisierung.Codierer;
 import dienste.serialisierung.CodiertesObjekt;
 
+/**
+ * CodierbaresObjekt für Bodesuri, welches den Codierer von
+ * {@link CodiererThreads} holt.
+ */
 public class BodesuriCodierbaresObjekt extends CodierbaresObjekt {
 	public BodesuriCodierbaresObjekt(String code) {
 		super(code);
@@ -21,5 +25,4 @@ public class BodesuriCodierbaresObjekt extends CodierbaresObjekt {
 	protected CodiertesObjekt getCodiertesObjekt(String code) {
 		return new BodesuriCodiertesObjekt(code);
 	}
-
 }

@@ -3,6 +3,10 @@ package pd.serialisierung;
 import dienste.serialisierung.Codierer;
 import dienste.serialisierung.CodiertesObjekt;
 
+/**
+ * CodiertesObjekt für Bodesuri, welches den Codierer von
+ * {@link CodiererThreads} holt.
+ */
 public class BodesuriCodiertesObjekt extends CodiertesObjekt {
 	public BodesuriCodiertesObjekt(String code) {
 		super(code);
