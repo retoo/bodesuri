@@ -51,13 +51,7 @@ public class VorwaertsRegel extends Regel {
 		Feld start = bewegung.start;
 		Feld ziel  = bewegung.ziel;
 
-		if (!start.istBesetzt()) {
-			throw new Verstoesse.MitFigurFahren();
-		}
-
-		if (!start.istBesetztVon(spieler)) {
-			throw new Verstoesse.MitEigenerFigurFahren();
-		}
+		pruefeFahrenMit(start.getFigur(), spieler);
 
 		pruefeBewegung(bewegung, spieler);
 
@@ -128,6 +122,17 @@ public class VorwaertsRegel extends Regel {
 		int wegLaenge = weg.size() - 1;
 		if (wegLaenge != schritte) {
 			throw new WegLaengeVerstoss(schritte, wegLaenge);
+		}
+	}
+
+	protected void pruefeFahrenMit(Figur figur, Spieler spieler)
+			throws RegelVerstoss {
+		if (figur == null) {
+			throw new Verstoesse.MitFigurFahren();
+		}
+
+		if (!figur.istVon(spieler)) {
+			throw new Verstoesse.MitEigenerFigurFahren();
 		}
 	}
 

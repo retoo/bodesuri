@@ -3,6 +3,7 @@ package pd.regelsystem;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,7 +29,7 @@ import pd.zugsystem.Zug;
  */
 public class SiebnerRegel extends VorwaertsRegel {
 	public SiebnerRegel() {
-		super(7);  /* Für kannZiehen gebraucht. */
+		super(0);  /* Wird hier nicht gebraucht. */
 		setBeschreibung("7 vorwärts auf mehrere Figuren aufteilbar, Überholen schickt heim");
 	}
 
@@ -36,7 +37,6 @@ public class SiebnerRegel extends VorwaertsRegel {
 		return true;
 	}
 
-	@SuppressWarnings("null")
 	public Zug validiere(ZugEingabe zugEingabe) throws RegelVerstoss {
 		if (zugEingabe.getAnzahlBewegungen() <= 0) {
 			throw new Verstoesse.AnzahlBewegungen();
@@ -44,71 +44,110 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 		Spieler spieler = zugEingabe.getBetroffenerSpieler();
 
-		int wegLaenge = 0;
-		HashMap<Feld, Figur> figuren = new HashMap<Feld, Figur>();
-		Set<Feld> geschuetzt = new HashSet<Feld>();
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
 			pruefeBewegung(bewegung, spieler);
-			Weg weg = bewegung.getWeg();
-			if (weg == null) {
-				throw new Verstoesse.SoNichtFahren();
-			}
-			pruefeWegRichtung(weg);
-			wegLaenge += weg.size() - 1;
-			for (Feld feld : weg) {
-				figuren.put(feld, feld.getFigur());
-				if (feld.istGeschuetzt()) {
-					geschuetzt.add(feld);
-				}
-			}
 		}
 
-		if (wegLaenge != 7) {
-			throw new WegLaengeVerstoss(7, wegLaenge);
-		}
+		List<Weg> wege = getWege(zugEingabe.getBewegungen());
+		pruefeWege(wege);
+
+		Map<Feld, Figur> figuren = getFeldFigurenMap(wege);
+		Set<Feld> geschuetzt = getFeldGeschuetztSet(wege);
 
 		Zug zug = new Zug();
 
 		for (Bewegung bewegung : zugEingabe.getBewegungen()) {
+			Feld start = bewegung.start;
+			Feld ziel  = bewegung.ziel;
+
 			for (Feld feld : bewegung.getWeg()) {
 				Figur figur = figuren.get(feld);
-				boolean hatFigur = (figur != null);
 
-				if (feld == bewegung.start) {
-					if (!hatFigur) {
-						throw new Verstoesse.MitFigurFahren();
-					} else if (!figur.istVon(spieler)) {
-						throw new Verstoesse.MitEigenerFigurFahren();
-					}
+				if (feld == start) {
+					pruefeFahrenMit(figur, spieler);
 					continue;
 				}
 
-				if (geschuetzt.contains(feld) ||
-				    (hatFigur && feld.istHimmel())) {
+				if (geschuetzt.contains(feld)) {
 					throw new Verstoesse.AufOderUeberGeschuetzteFahren();
 				}
 
-				if (hatFigur) {
+				if (figur != null) {
 					zug.fuegeHinzu(new HeimschickAktion(feld));
 					figuren.put(feld, null);
 				}
 			}
 
-			if (bewegung.start == bewegung.ziel) {
+			/* Leere Bewegungen ignorieren. */
+			if (start == ziel) {
 				continue;
 			}
 
-			Figur figur = figuren.get(bewegung.start);
-			figuren.put(bewegung.start, null);
-			figuren.put(bewegung.ziel, figur);
-			geschuetzt.remove(bewegung.start);
+			/* Figuren nachführen. */
+			Figur figur = figuren.get(start);
+			figuren.put(start, null);
+			figuren.put(ziel, figur);
 
-			zug.fuegeHinzu(new Aktion(bewegung.start, bewegung.ziel));
+			/* Geschützte Felder nachführen. */
+			geschuetzt.remove(start);
+			if (ziel.istHimmel()) {
+				geschuetzt.add(ziel);
+			}
+
+			zug.fuegeHinzu(new Aktion(start, ziel));
 		}
 
 		return zug;
 	}
 
+	private List<Weg> getWege(List<Bewegung> bewegungen) {
+		List<Weg> wege = new LinkedList<Weg>();
+		for (Bewegung bewegung : bewegungen) {
+			wege.add(bewegung.getWeg());
+		}
+		return wege;
+	}
+
+	private void pruefeWege(List<Weg> wege) throws RegelVerstoss {
+		int laenge = 0;
+
+		for (Weg weg : wege) {
+			if (weg == null) {
+				throw new Verstoesse.SoNichtFahren();
+			}
+			pruefeWegRichtung(weg);
+			laenge += weg.getWegLaenge();
+		}
+
+		if (laenge != 7) {
+			throw new WegLaengeVerstoss(7, laenge);
+		}
+	}
+
+	private Map<Feld, Figur> getFeldFigurenMap(List<Weg> wege) {
+		Map<Feld, Figur> figuren = new HashMap<Feld, Figur>();
+		for (Weg weg : wege) {
+			for (Feld feld : weg) {
+				figuren.put(feld, feld.getFigur());
+			}
+		}
+		return figuren;
+	}
+
+	private Set<Feld> getFeldGeschuetztSet(List<Weg> wege) {
+		Set<Feld> geschuetzt = new HashSet<Feld>();
+		for (Weg weg : wege) {
+			for (Feld feld : weg) {
+				if (feld.istGeschuetzt()) {
+					geschuetzt.add(feld);
+				}
+			}
+		}
+		return geschuetzt;
+	}
+
+
+	/* Einstiegsmethode */
 	protected void liefereZugEingaben(Spieler spieler, Karte karte,
 	                                  ZugEingabeAbnehmer abnehmer) {
 		Map<Figur, Feld> positionen = new IdentityHashMap<Figur, Feld>();
@@ -116,17 +155,21 @@ public class SiebnerRegel extends VorwaertsRegel {
 			positionen.put(figur, figur.getFeld());
 		}
 		List<Figur> reihenfolge = new Vector<Figur>();
+
+		/* Rekursive Methode starten */
 		liefereZugEingaben(spieler, karte, abnehmer, positionen, reihenfolge, 7);
 	}
 
+	/* Rekursiv aufgerufene Methode */
 	private boolean liefereZugEingaben(Spieler spieler, Karte karte,
 	                                   ZugEingabeAbnehmer abnehmer,
 	                                   Map<Figur, Feld> positionen,
 	                                   List<Figur> reihenfolge, int schritte) {
 		if (schritte == 0) {
-			ZugEingabe ze = getMoeglicheZugEinabe(spieler, karte,
-			                                      positionen, reihenfolge);
+			ZugEingabe ze = getMoeglicheZugEingabe(spieler, karte,
+			                                       positionen, reihenfolge);
 			if (ze == null) {
+				/* Noch nicht abbrechen. */
 				return false;
 			}
 			boolean abbrechen = abnehmer.nehmeEntgegen(ze);
@@ -135,20 +178,23 @@ public class SiebnerRegel extends VorwaertsRegel {
 
 		for (Figur figur : spieler.getZiehbareFiguren()) {
 			Feld feld = positionen.get(figur);
-			
+
+			/* Vom Lager aus kann man nicht fahren. */
 			if (feld.istLager()) {
 				continue;
 			}
 
-			Feld feldNeu;
 			List<Feld> kandidaten = new Vector<Feld>();
+
+			/* In Himmel möglich? */
 			if (feld.istBank() && ((BankFeld) feld).istVon(figur.getSpieler())) {
-				feldNeu = ((BankFeld) feld).getHimmel();
-				kandidaten.add(feldNeu);
+				Feld himmel = ((BankFeld) feld).getHimmel();
+				kandidaten.add(himmel);
 			}
-			feldNeu = feld.getNaechstes();
-			if (feldNeu != null) {
-				kandidaten.add(feldNeu);
+
+			/* Nächstes Feld möglich? */
+			if (feld.getNaechstes() != null) {
+				kandidaten.add(feld.getNaechstes());
 			}
 
 			boolean figurInReihenfolge = reihenfolge.contains(figur);
@@ -158,6 +204,7 @@ public class SiebnerRegel extends VorwaertsRegel {
 			for (Feld kandidat : kandidaten) {
 				positionen.put(figur, kandidat);
 
+				/* Nächsten Schritt versuchen. */
 				boolean abbrechen;
 				abbrechen = liefereZugEingaben(spieler, karte, abnehmer,
 				                               positionen, reihenfolge,
@@ -173,13 +220,13 @@ public class SiebnerRegel extends VorwaertsRegel {
 			}
 		}
 
-		/* Noch nicht abbrechen */
+		/* Noch nicht abbrechen. */
 		return false;
 	}
 
-	private ZugEingabe getMoeglicheZugEinabe(Spieler spieler, Karte karte,
-	                                         Map<Figur, Feld> positionen,
-	                                         List<Figur> reihenfolge) {
+	private ZugEingabe getMoeglicheZugEingabe(Spieler spieler, Karte karte,
+	                                          Map<Figur, Feld> positionen,
+	                                          List<Figur> reihenfolge) {
 		List<Bewegung> bewegungen = new Vector<Bewegung>();
 		for (Figur figur : reihenfolge) {
 			Feld start = figur.getFeld();
