@@ -16,6 +16,10 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * Diese Klasse dient zum auslesen der Koordinatenpunkte aus der XML-Datei.
+ * Diese Koordinaten werden für die Platzierung der verschiedenen Grafikelementen benötigt.
+ */
 public class BrettXML {
 	private Map<Integer, Point> felder;
 	private Map<Integer, Point> spielerViews;
@@ -32,6 +36,11 @@ public class BrettXML {
 		lade(document);
 	}
 	
+	/**
+	 * Benötigte XML-Datei laden.
+	 * 
+	 * @param document XML-Datei
+	 */
 	private void lade(Document document) {
 		Element brett = document.getDocumentElement();
 		felder = positionenAuslesen("feld", brett);
@@ -41,6 +50,13 @@ public class BrettXML {
 		jokerKarten = positionenAuslesen("jokerKarten", brett);
 	}
 	
+	/**
+	 * Hier werden die einzelnen Koordinatenpünkte nach den Parametern ausgelesen.
+	 * 
+	 * @param element auszulesende Felder
+	 * @param brett Dokument welches durchiteriert werden soll.
+	 * @return HashMap mit den jeweiligen Koordinatenpünkten
+	 */
 	private static Map<Integer, Point> positionenAuslesen(String element, Element brett) {
 		Map<Integer, Point> map = new HashMap<Integer, Point>();
 		NodeList felder = brett.getElementsByTagName(element);

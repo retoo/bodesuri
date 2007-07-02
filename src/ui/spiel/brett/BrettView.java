@@ -78,13 +78,8 @@ public class BrettView extends JPanel implements Observer {
 			Feld2d feld2d;
 			Point position = brettXML.getFelder().get(feld.getNummer());
 
-
 			Feld2dKonfiguration konfig = new Feld2dKonfiguration(position,
-			                                                     feld,
-			                                                     mouseAdapter,
-			                                                     hover,
-			                                                     farbeIch,
-			                                                     figurenManager);
+					feld, mouseAdapter, hover, farbeIch, figurenManager);
 
 			if (feld.istNormal()) {
 				feld2d = new NormalesFeld2d(konfig);
@@ -97,7 +92,6 @@ public class BrettView extends JPanel implements Observer {
 
 			this.setComponentZOrder(feld2d, this.getComponentCount());
 		}
-
 
 		// Views für Spieler
 		erstelleSpielerViews(spiel.getSpieler());
@@ -115,6 +109,12 @@ public class BrettView extends JPanel implements Observer {
 		spiel.addObserver(this);
 	}
 
+	/**
+	 * Dient zur Darstellung des Spielerviews, welches die Informationen des
+	 * Spielers auf dem Spielbrett enhält.
+	 * 
+	 * @param spielers
+	 */
 	private void erstelleSpielerViews(List<Spieler> spielers) {
 		for (int i = 0; i < spielers.size(); ++i) {
 			Spieler spieler = spielers.get(i);
@@ -138,11 +138,16 @@ public class BrettView extends JPanel implements Observer {
 
 			// SpielerZustandsView
 			Point zustandPos = brettXML.getSpielerZustandsViews().get(i);
-			JPanel spielerZustandsView = new SpielerZustandView(spieler, zustandPos);
+			JPanel spielerZustandsView = new SpielerZustandView(spieler,
+					zustandPos);
 			add(spielerZustandsView);
 		}
 	}
 
+	/**
+	 * Dient zur Darstellung des Hinweisfeldes auf dem Spielbrett, welches die
+	 * Informationen des Spielablaufs enthält.
+	 */
 	private void erstelleHinweis() {
 		Point pos = brettXML.getHinweis();
 
@@ -161,6 +166,13 @@ public class BrettView extends JPanel implements Observer {
 		add(hinweisVertiefung);
 	}
 
+	/**
+	 * OBSERVER-PATTERN: OBSERVER 
+	 * Überschreibt <code>update()</code> Methode des Observer.
+	 * 
+	 * @param o Zu observierendes Objekt
+	 * @param arg Objekt
+	 */
 	public void update(Observable o, Object arg) {
 		String zaehlerString = "";
 		int zaehler = spiel.getZaehler();

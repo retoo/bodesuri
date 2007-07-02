@@ -36,6 +36,13 @@ public class KarteView extends JLabel implements Observer {
 		setMinimumSize(groesse);
 	}
 
+	/**
+	 * OBSERVER-PATTERN: OBSERVER 
+	 * Überschreibt <code>update()</code> Methode des Observer.
+	 * 
+	 * @param o zu observierendes Objekt
+	 * @param arg Objekt
+	 */
 	public void update(Observable o, Object arg) {
 		if (karte.istAusgewaehlt()) {
 			kartenAuswahl.setPosition(position);

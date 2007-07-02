@@ -156,6 +156,14 @@ public class VerbindenView extends JFrame {
 		}
 	}
 
+	/**
+	 * Validiert die Eingabe, der einzelnen Felder.
+	 * 
+	 * @param host Hostname oder IP-Adresse des Servers.
+	 * @param spieler Spielername
+	 * @param port_raw Port auf dem der Server horcht.
+	 * @return
+	 */
 	private EingabeInfo validiereEingaben(String host, String spieler, String port_raw) {
 		String hinweis = "";
 		boolean istGueltig = true;

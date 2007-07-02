@@ -11,15 +11,23 @@ import ui.ressourcen.Icons;
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
+/**
+ * Dient zur Darstellung der erweiteren Steuerung des Spielverlaufs. Die Karten,
+ * Informationstext und die Buttons zum "Tauschen" und "Aufgeben" werden in
+ * dieser Klasse instanziert.
+ */
 public class SteuerungsView extends JPanel {
 	public SteuerungsView(Steuerung steuerung, Spiel spiel) {
 		setLayout(new GridBagLayout());
 		setOpaque(false);
 
 		// Views
-		DeckView deckView = new DeckView(steuerung, spiel.spielerIch.getKarten());
-		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(steuerung, spiel.spielerIch.getKarten());
-		SteuerungsButtonView steuerungsButtonView = new SteuerungsButtonView(steuerung, spiel);
+		DeckView deckView = new DeckView(steuerung, spiel.spielerIch
+				.getKarten());
+		KarteGewaehltView karteGewaehltView = new KarteGewaehltView(steuerung,
+				spiel.spielerIch.getKarten());
+		SteuerungsButtonView steuerungsButtonView = new SteuerungsButtonView(
+				steuerung, spiel);
 		JLabel logo = new JLabel(Icons.LOGO);
 
 		// Layout zusammenstellen

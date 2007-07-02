@@ -23,7 +23,6 @@ public class ChatView extends JPanel implements Observer {
 	private JTextArea chatArea;
 	private JTextField eingabe;
 	private Steuerung steuerung;
-
 	private Chat chat;
 
 	public ChatView(Chat chat, Steuerung steuerung) {
@@ -39,9 +38,8 @@ public class ChatView extends JPanel implements Observer {
 		chatArea = new JTextArea();
 		// Dialog-Schrift setzen. Unter Windows haben wir sonst Courier als
 		// Schriftart.
-		Font chatAreaFont = new Font("Dialog",
-		                                 chatArea.getFont().getStyle(),
-		                                 chatArea.getFont().getSize());
+		Font chatAreaFont = new Font("Dialog", chatArea.getFont().getStyle(),
+				chatArea.getFont().getSize());
 		chatArea.setFont(chatAreaFont);
 		chatArea.setEditable(false);
 		chatArea.setRows(3);
@@ -60,11 +58,19 @@ public class ChatView extends JPanel implements Observer {
 		add(eingabe, BorderLayout.SOUTH);
 	}
 
+	/**
+	 * OBSERVER-PATTERN: OBSERVER 
+	 * Überschreibt <code>update()</code> Methode des Observer.
+	 * 
+	 * @param o Zu observierendes Objekt
+	 * @param arg Objekt
+	 */
 	public void update(Observable o, Object arg) {
 		StringBuilder text = new StringBuilder();
 
 		for (int i = 0; i < chat.size(); ++i) {
-			if (i != 0) text.append("\n");
+			if (i != 0)
+				text.append("\n");
 			text.append(chat.get(i));
 		}
 

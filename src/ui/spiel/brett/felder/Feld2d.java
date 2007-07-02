@@ -64,10 +64,17 @@ public abstract class Feld2d extends BLabel implements Observer {
         return feld;
     }
 
+	/**
+	 * OBSERVER-PATTERN: OBSERVER 
+	 * Überschreibt <code>update()</code> Methode des Observer.
+	 * 
+	 * @param o Zu observierendes Objekt
+	 * @param arg Objekt
+	 */
     public void update(Observable os, Object arg) {
         positioniereFigur(true);
 
-        /* prüfen wir ob hoern */
+        /* prüfen wir ob hovern */
         if (feld.istHover()) {
 
             hover.setVisible(true);
@@ -81,6 +88,11 @@ public abstract class Feld2d extends BLabel implements Observer {
         geist.setVisible(feld.istGeist());
     }
 
+    /** 
+     * Die Figur wird auf die Position eines bestimmten Feldes positioniert.
+     * 
+     * @param animation true, die Figur wird anniemiert verschoben.
+     */
     private void positioniereFigur(boolean animation) {
         Figur figur = feld.getFigur();
 
@@ -93,7 +105,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 
                 /*
                  * wenn nur ein oder zwei Spieler mitspielen können einige
-                 * figuren null sein. Dann zeichnen wir einfach ni.
+                 * figuren null sein. Dann zeichnen wir einfach nichts.
                  */
                 if (figur2d != null) {
                     if (animation)
@@ -109,6 +121,9 @@ public abstract class Feld2d extends BLabel implements Observer {
         }
     }
 
+    /**
+     * Eigenschaften welches ein Feld2d annimmt werden in dieser Klasse gesetzt.
+     */
     public static class Feld2dKonfiguration {
         public final Point position;
         public final Feld feld;

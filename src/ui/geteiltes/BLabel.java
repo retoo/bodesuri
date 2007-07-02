@@ -5,6 +5,10 @@ import java.awt.Point;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
+/**
+ * Diese Klasse kümmert sich um die Positionierung der Bildelemente auf dem Spielfeld.
+ * Es ermöglicht ein Bild zentriert auf einen Koordinatenpunkt zu setzten.
+ */
 public class BLabel extends JLabel {
 	private final int dxFinal;
 	private final int dyFinal;
@@ -15,6 +19,13 @@ public class BLabel extends JLabel {
 		this(icon, 0, 0);
 	}
 
+	/**
+	 * Konstrukor mit Icon, X-Koordinaten und Y-Koordinaten
+	 * 
+	 * @param icon Bild des Labels
+	 * @param dx X-Koordinate des Labels
+	 * @param dy Y-Koordinate des Labels
+	 */
 	public BLabel(Icon icon, int dx, int dy) {
 		super(icon);
 		int width = icon.getIconWidth();
@@ -29,22 +40,43 @@ public class BLabel extends JLabel {
 		this.relativerMittelpunkt = new Point(width / 2, height /2);
 	}
 
+	/**
+	 * Konstruktor mit Icon und Point(x,y)
+	 * 
+	 * @param icon Bild des Labels
+	 * @param p Koordinatenpunkt als Point(x,y)
+	 */
 	public BLabel(Icon icon, Point p) {
 	    this(icon, 0, 0);
 	    zentriereAuf(p);
     }
 
+	/**
+	 * Das Labeld wird auf diesen Punkt zentriert platziert.
+	 * 
+	 * @param position Position, auf dem das Bild zentriert wird.
+	 */
 	public void zentriereAuf(Point position) {
 		absoluterMittelpunkt = position;
 		setLocation(position.x - dxFinal, position.y - dyFinal);
 	}
 
-
+	/**
+	 * Das Label wird auf diesem Punkt zentriert platziert.
+	 * 
+	 * @param x X-Koordinate der Positionierung.
+	 * @param y Y-Koordinate der Positionierung.
+	 */
 	private void zentriereAuf(int x, int y) {
 		absoluterMittelpunkt = new Point(x, y);
 		setLocation(x - dxFinal, y - dyFinal);
     }
 
+	/**
+	 * Das Label wird zur Koordinate Point(x,y) bewegt.
+	 * 
+	 * @param ziel Koordinatenpunkt, wohin das Label bewegt wird.
+	 */
 	public void bewegeNach(Point ziel) {
 		Point start = absoluterMittelpunkt;
 
@@ -71,7 +103,7 @@ public class BLabel extends JLabel {
 
 		zentriereAuf(ziel);
 	}
-
+	
 	public Point getRelativerMittelpunkt() {
 		return relativerMittelpunkt;
 	}

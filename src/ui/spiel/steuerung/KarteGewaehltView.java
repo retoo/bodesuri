@@ -35,9 +35,8 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		beschreibung = new JTextArea();
 		// Dialog-Schrift setzen. Unter Windows haben wir sonst Courier als
 		// Schriftart.
-		Font beschreibungFont = new Font("Dialog",
-        		                         beschreibung.getFont().getStyle(),
-        		                         beschreibung.getFont().getSize());
+		Font beschreibungFont = new Font("Dialog", beschreibung.getFont()
+				.getStyle(), beschreibung.getFont().getSize());
 		beschreibung.setFont(beschreibungFont);
 		beschreibung.setLineWrap(true);
 		beschreibung.setOpaque(false);
@@ -57,6 +56,13 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		karten.addObserver(this);
 	}
 
+	/**
+	 * OBSERVER-PATTERN: OBSERVER Überschreibt <code>update()</code> Methode
+	 * des Observer.
+	 * 
+	 * @param o zu observierendes Objekt
+	 * @param arg Objekt
+	 */
 	public void update(Observable observable, Object arg) {
 		if (arg instanceof ListChangeEvent) {
 			ListChangeEvent change = (ListChangeEvent) arg;
@@ -71,13 +77,23 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		}
 	}
 
+	/**
+	 * Name und Beschreibung der jeweiligen ausgewählten Karte darstellen.
+	 * 
+	 * @param karte Karte, die ausgewählt wurde.
+	 */
 	private void zeigeKarte(Karte karte) {
 		name.setText(karte.toString());
 		beschreibung.setText(karte.getRegelBeschreibung());
 	}
 
+	/**
+	 * Wenn keine Karte ausgewählt wurde, wird ein leerer Informationsbereich
+	 * dargestellt.
+	 */
 	private void zeigeKeineKarte() {
-		// Zeilenumbrüche sind ein Hack, damit die Grösse richtig berechnet wird.
+		// Zeilenumbrüche sind ein Hack, damit die Grösse richtig berechnet
+		// wird.
 		name.setText("\n");
 		beschreibung.setText("\n\n");
 	}

@@ -28,22 +28,27 @@ import applikation.client.controller.Steuerung;
 import applikation.client.pd.Joker;
 import applikation.client.pd.Karte;
 
+/**
+ * JPanel, es dient zur Darstellung des JokerViews, welches alle Karten
+ * darstellt.
+ */
 public class JokerView extends JPanel {
 	private Vector<Karte> kartenDeck;
+
 	private BrettXML brettXML;
 
 	public JokerView(Steuerung steuerung) {
 		setLayout(new BorderLayout());
 		setBackground(new Color(0, 0, 0, 100));
 		setOpaque(false);
-		
+
 		JPanel kartenPanel = new JPanel();
 		kartenPanel.setLayout(null);
 		kartenPanel.setMinimumSize(new Dimension(490, 430));
 		kartenPanel.setPreferredSize(new Dimension(490, 430));
 		kartenPanel.setMaximumSize(new Dimension(490, 430));
-		kartenPanel.setOpaque(false);		
-		
+		kartenPanel.setOpaque(false);
+
 		erstelleDeck();
 
 		try {
@@ -55,16 +60,16 @@ public class JokerView extends JPanel {
 
 		KarteMouseAdapter kma = new KarteMouseAdapter(steuerung);
 		KartenAuswahl ka = new KartenAuswahl();
-		
+
 		Vector<KarteView> karteViews = new Vector<KarteView>();
 		for (int i = 0; i < kartenDeck.size(); i++) {
-			KarteView kv = new KarteView(brettXML.getJokerKarten().get(i),
-					kma, ka);
+			KarteView kv = new KarteView(brettXML.getJokerKarten().get(i), kma,
+					ka);
 			karteViews.add(kv);
 			kv.setKarte(kartenDeck.get(i));
 			kartenPanel.add(kv);
 		}
-		
+
 		JLabel jokerSchliessen = new JLabel();
 		jokerSchliessen.setIcon(Icons.JOKERSCHLIESSEN);
 		Point pos = brettXML.getJokerKarten().get(13);
@@ -76,14 +81,14 @@ public class JokerView extends JPanel {
 			}
 		});
 		kartenPanel.add(jokerSchliessen);
-		
+
 		JPanel hintergrund = new JPanel();
 		hintergrund.setLayout(new BoxLayout(hintergrund, BoxLayout.PAGE_AXIS));
 		hintergrund.setBackground(new Color(0, 0, 0, 178));
 		hintergrund.setOpaque(true);
 		kartenPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		kartenPanel.setAlignmentY(Component.CENTER_ALIGNMENT);
-		
+
 		hintergrund.add(Box.createVerticalGlue());
 		hintergrund.add(kartenPanel);
 		hintergrund.add(Box.createVerticalGlue());
@@ -93,9 +98,13 @@ public class JokerView extends JPanel {
 		});
 	}
 
+	/**
+	 * Dient zur erstellung des Decks, welches in der JockerView benötigt wird.
+	 */
 	public void erstelleDeck() {
 		kartenDeck = new Vector<applikation.client.pd.Karte>();
-		List<pd.regelsystem.karten.Karte> karten = Deck.getKartenFuerFarbe(KartenFarbe.Herz);
+		List<pd.regelsystem.karten.Karte> karten = Deck
+				.getKartenFuerFarbe(KartenFarbe.Herz);
 		for (pd.regelsystem.karten.Karte karte : karten) {
 			kartenDeck.add(new Joker(new Karte(karte)));
 		}

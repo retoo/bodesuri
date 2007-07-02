@@ -24,7 +24,7 @@ import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
 /**
- * Das GUI des Spiels.
+ * Das Haupt-GUI des Spiels.
  */
 public class SpielView extends JFrame {
 	private static final int RAND = 8;
@@ -53,7 +53,9 @@ public class SpielView extends JFrame {
 		c.weighty = 1.0;
 		panel.add(chatView, c);
 
-		panel.setBorder(BorderFactory.createEmptyBorder(RAND, RAND, RAND, RAND));
+		panel
+				.setBorder(BorderFactory.createEmptyBorder(RAND, RAND, RAND,
+						RAND));
 
 		setContentPane(panel);
 
@@ -80,6 +82,10 @@ public class SpielView extends JFrame {
 	}
 }
 
+/**
+ * Dient zur Darstellung des Hintergrunds, welches sich im Hindergrund des
+ * gesamten Spiels befindet.
+ */
 class BodesuriViewPanel extends JPanel {
 	private Paint paint;
 
@@ -100,7 +106,8 @@ class BodesuriViewPanel extends JPanel {
 		int width = filz.getWidth(null);
 		int height = filz.getHeight(null);
 
-		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		BufferedImage bi = new BufferedImage(width, height,
+				BufferedImage.TYPE_INT_RGB);
 		Graphics bg = bi.getGraphics();
 		bg.drawImage(filz, 0, 0, null);
 		bg.dispose();
