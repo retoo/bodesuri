@@ -74,6 +74,7 @@
     <javac srcdir="${src-dir}" destdir="${obj-dir}" verbose="${TALK}" encoding="utf8" debug="true">
       <classpath refid="classpath.base"/>
     </javac>
+    <exec executable="${bld-dir}/check-signs.rb" output="${rep-dir}/signierungs-report.txt" />
   </target>
   <target name="compile-test" depends="jar">
     <javac srcdir="${tst-dir}" destdir="${obt-dir}" verbose="${TALK}" encoding="utf8">

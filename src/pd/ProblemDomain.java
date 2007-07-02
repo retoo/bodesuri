@@ -5,6 +5,8 @@ import pd.regelsystem.karten.KartenGeber;
 import pd.serialisierung.CodiererThreads;
 import pd.spiel.Spiel;
 
+/* Signiert durch: rschuett */
+
 /**
  * Einstiegspunkt der Problem-Domain, welcher den {@link Codierer}, das
  * {@link Spiel} und den {@link KartenGeber} erstellt.
