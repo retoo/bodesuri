@@ -20,12 +20,12 @@ import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
 import applikation.nachrichten.RundenStart;
+import applikation.nachrichten.SpielAbbruch;
 import applikation.nachrichten.SpielFertigNachricht;
 import applikation.nachrichten.SpielStartNachricht;
 import applikation.nachrichten.SpielVollNachricht;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.eventqueue.Event;
 import dienste.netzwerk.Brief;
@@ -35,7 +35,7 @@ import dienste.netzwerk.VerbindungGeschlossen;
 import dienste.netzwerk.server.NetzwerkEvent;
 
 /**
- * Spezifischer aktiver Zustand des ClientAutomaten.Enthält alle Events die
+ * Spezifischer aktiver Zustand des ClientAutomaten. Enthält alle Events die
  * Auftreten können.
  */
 public class ClientZustand extends Zustand {
@@ -108,6 +108,8 @@ public class ClientZustand extends Zustand {
 	    	return chatNachricht(brief.absender, (ChatNachricht) nachricht);
 	    else if (nachricht instanceof SpielFertigNachricht)
 	    	return spielFertig((SpielFertigNachricht) nachricht);
+	    else if (nachricht instanceof SpielAbbruch)
+	    	return spielAbbruch((SpielAbbruch) nachricht);
 	    else
 	    	System.out.println("Nachricht " + nachricht.getClass()
 	    	                   + " ist (noch) nicht implementiert!");
@@ -120,21 +122,15 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> verbindungAbgebrochen() {
 		controller.zeigeFehlermeldung("Die Verbindung zum Server ist "
 		                              + "abgebrochen. Das Spiel wird beendet.");
-		controller.herunterfahren();
-		return EndZustand.class;
+		return SpielEnde.class;
 	}
 
-	/* TODO: Philippe: Please review (-reto) */
 	public void handleException(Exception e) {
-		controller.zeigeFehlermeldung("Es trat ein schwerer Fehler auf. " +
-				"Spiel wird beendet: " + e.getMessage());
+		controller.zeigeFehlermeldung("Es trat ein schwerer Fehler auf. "
+		                              + "Das Spiel wird beendet. ("
+		                              + e.getMessage() + ")");
 		e.printStackTrace();
 		controller.herunterfahren();
-	}
-
-	Class<? extends Zustand> beende() {
-		controller.herunterfahren();
-		return EndZustand.class;
 	}
 
 	/* GUI Handler - Global */
@@ -145,6 +141,10 @@ public class ClientZustand extends Zustand {
 
 		return this.getClass();
     }
+	
+	Class<? extends Zustand> beende() {
+		return SpielEnde.class;
+	}
 
 	/* GUI Handler - Verbinden */
 
@@ -197,6 +197,12 @@ public class ClientZustand extends Zustand {
 
 		return this.getClass();
 	}
+	
+	Class<? extends Zustand> spielAbbruch(SpielAbbruch nachricht) {
+		controller.zeigeFehlermeldung(nachricht.nachricht);
+		
+		return SpielEnde.class;
+	}
 
 	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetitigung) {
 		return keinUebergang();
@@ -229,11 +235,9 @@ public class ClientZustand extends Zustand {
 		return keinUebergang();
     }
 
-
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
 		return keinUebergang();
 	}
-
 
 	/* Sonstiges */
 	public void setController(Controller controller) {

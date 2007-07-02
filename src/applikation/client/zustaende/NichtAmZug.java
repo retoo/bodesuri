@@ -10,7 +10,6 @@ import applikation.nachrichten.AufgabeInformation;
 import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.SpielFertigNachricht;
 import applikation.nachrichten.ZugAufforderung;
-import dienste.automat.zustaende.EndZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
@@ -27,7 +26,7 @@ import dienste.automat.zustaende.Zustand;
  * <li>Wenn eine {@link AufgabeInformation} eintrifft, wird der Spieler welcher
  * aufgegeben hat im UI angepasst. Der Zustand wird nicht gewechselt.</li>
  * <li>Wenn eine {@link SpielFertigNachricht} eintrifft, wird der Gewinner
- * angezeigt und der {@link EndZustand} aufgerufen.</li>
+ * angezeigt und {@link SpielEnde} aufgerufen.</li>
  * </ul>
  */
 public class NichtAmZug extends ClientZustand {
@@ -85,8 +84,6 @@ public class NichtAmZug extends ClientZustand {
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
 		controller.zeigeMeldung("Das Spiel ist fertig, gewonnen haben "  + nachricht.gewinner);
 
-		spiel.endpunkt.ausschalten();
-
-		return EndZustand.class;
+		return SpielEnde.class;
 	}
 }

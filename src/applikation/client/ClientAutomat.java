@@ -11,6 +11,7 @@ import applikation.client.zustaende.Lobby;
 import applikation.client.zustaende.NichtAmZug;
 import applikation.client.zustaende.ProgrammStart;
 import applikation.client.zustaende.SchwererFehler;
+import applikation.client.zustaende.SpielEnde;
 import applikation.client.zustaende.SpielStart;
 import applikation.client.zustaende.StarteRunde;
 import applikation.client.zustaende.VerbindungErfassen;
@@ -53,6 +54,7 @@ public class ClientAutomat extends Automat {
 		registriere(new KarteTauschenBekommen());
 		registriere(new NichtAmZug());
 		registriere(new AmZug());
+		registriere(new SpielEnde());
 
 		setStart(ProgrammStart.class);
 
