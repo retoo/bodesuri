@@ -2,14 +2,19 @@ package applikation.client.zustaende;
 
 import pd.spiel.spieler.Partnerschaft;
 import applikation.client.controller.Controller;
+import applikation.nachrichten.BeitrittVerweigert;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand wennn der Spieler in der Lobby ist. Wenn eine
- * {@link SpielStartNachricht} eintrifft wird der Zustand {@link SpielStart}
- * aufgerufen.
+ * Zustand wennn der Spieler in der Lobby ist.
+ * <ul>
+ * <li>Wenn eine {@link SpielStartNachricht} eintrifft wird der Zustand
+ * {@link SpielStart} aufgerufen.</li>
+ * <li>Wenn eine {@link BeitrittVerweigert}Nachricht eintrifft wird das Spiel
+ * beendet.</li>
+ * </ul>
  */
 public class Lobby extends ClientZustand {
 	public Lobby(Controller controller) {
@@ -19,8 +24,13 @@ public class Lobby extends ClientZustand {
 	public void onEntry() {
 		controller.zeigeLobby(spiel.getSpieler(), spiel.chat);
 	}
+	
+    Class<? extends Zustand> beitrittVerweigert() {
+    	controller.zeigeFehlermeldung("Das Spiel ist bereits voll.");
+    	return SpielEnde.class;
+    }
 
-    Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
+	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
     	for (int i = 0; i < bestaetigung.spielInfo.spielers.size(); i++) {
     		spiel.getSpiel().getSpieler().get(i).setName(bestaetigung.spielInfo.spielers.get(i).spielername);
 

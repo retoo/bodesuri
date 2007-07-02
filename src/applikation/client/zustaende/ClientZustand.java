@@ -16,6 +16,7 @@ import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 import applikation.nachrichten.AktuellerSpielerInformation;
 import applikation.nachrichten.AufgabeInformation;
+import applikation.nachrichten.BeitrittVerweigert;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.ChatNachricht;
 import applikation.nachrichten.KartenTausch;
@@ -23,7 +24,6 @@ import applikation.nachrichten.RundenStart;
 import applikation.nachrichten.SpielAbbruch;
 import applikation.nachrichten.SpielFertigNachricht;
 import applikation.nachrichten.SpielStartNachricht;
-import applikation.nachrichten.SpielVollNachricht;
 import applikation.nachrichten.ZugAufforderung;
 import applikation.nachrichten.ZugInformation;
 import dienste.automat.zustaende.Zustand;
@@ -84,9 +84,7 @@ public class ClientZustand extends Zustand {
 	    Brief brief = be.brief;
 	    Nachricht nachricht = brief.nachricht;
 
-	    if (nachricht instanceof SpielVollNachricht)
-	    	return spielVoll(brief.absender, (SpielVollNachricht) nachricht);
-	    else if (nachricht instanceof BeitrittsInformation)
+	    if (nachricht instanceof BeitrittsInformation)
 	    	return beitrittsBestaetitigung((BeitrittsInformation) nachricht);
 	    else if (nachricht instanceof SpielStartNachricht)
 	    	return spielStarten((SpielStartNachricht) nachricht);
@@ -110,6 +108,8 @@ public class ClientZustand extends Zustand {
 	    	return spielFertig((SpielFertigNachricht) nachricht);
 	    else if (nachricht instanceof SpielAbbruch)
 	    	return spielAbbruch((SpielAbbruch) nachricht);
+	    else if (nachricht instanceof BeitrittVerweigert)
+	    	return beitrittVerweigert();
 	    else
 	    	System.out.println("Nachricht " + nachricht.getClass()
 	    	                   + " ist (noch) nicht implementiert!");
@@ -188,10 +188,6 @@ public class ClientZustand extends Zustand {
 
 	/* Netzwerk Handler */
 
-	Class<? extends Zustand> spielVoll(EndPunktInterface absender, SpielVollNachricht nachricht) {
-		return keinUebergang();
-	}
-
 	Class<? extends Zustand> chatNachricht(EndPunktInterface absender, ChatNachricht nachricht) {
 		spiel.chat.neueNachricht(nachricht.sender, nachricht.text);
 
@@ -236,6 +232,10 @@ public class ClientZustand extends Zustand {
     }
 
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
+		return keinUebergang();
+	}
+	
+	Class<? extends Zustand> beitrittVerweigert() {
 		return keinUebergang();
 	}
 
