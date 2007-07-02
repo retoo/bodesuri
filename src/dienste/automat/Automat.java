@@ -89,9 +89,9 @@ public class Automat {
     }
 
     /**
-     * Startet den Zustandsautomaten und führt ihn so lange bis ein
-     * {@link EndZustand} eintritt.
-     */
+	 * Startet den Zustandsautomaten und führt ihn so lange aus bis ein
+	 * {@link EndZustand} eintritt.
+	 */
     public void run() {
         pruefeAutomat(true);
         isInit = true;
@@ -103,10 +103,9 @@ public class Automat {
     }
 
     /**
-     * Verarbeitet einen einzigen Zustand. Bei Aktiven Zuständen bedeutet dies,
+     * Verarbeitet einen einzigen Zustand. Bei aktiven Zuständen bedeutet dies,
      * dass auf neue Events gewartetw wird. Passive hingegen werden direkt
      * ausgeführt.
-     *
      *
      * Methode sollte ausser für Testcases nicht direkt verwendet werden. Der
      * Zustandsuatomat sollte stattdesssen mit {@link Automat#run} abgearbeitet
@@ -166,15 +165,11 @@ public class Automat {
     }
 
     /**
-     * Verarbeitet einen 'Aktiven' Zustand.
+     * Verarbeitet einen 'aktiven' Zustand.
      *
      * @param event
      *            Zu verarbeitende event
      * @return false falls sich der Automat im Endzustand befindet
-     */
-    /* TODO: Robin: Kannst du bitte in stepAktiv und stepPassiv mein neues
-     * Exceptionahdnling reviewen. Siehst du irgendwelche 'Gefahren' in Form
-     * von verändertem Verhalten? (-reto)
      */
     private boolean stepAktiv(Event event) {
     	try {
@@ -197,19 +192,22 @@ public class Automat {
 
 	        return aktuellerZustand != endzustand;
     	} catch (RuntimeException e) {
-    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
-    		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
+    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte
+			 * immer auf den 'verantworltichen' Zustand zeigen, egal wo genau
+			 * der Fehler Auftritt
+			 */
     		aktuellerZustand.handleException(e);
 
-    		/* Nach einem Fehler beendet sich der Automat zwangsläufig. Idealerweise
-    		 * würde der Automat noch die Chance kriegen irgendwas zu machen. Für unsere
-    		 * Zwecke wäre das aber zu kompliziert. */
+    		/* Nach einem Fehler beendet sich der Automat zwangsläufig.
+			 * Idealerweise würde der Automat noch die Chance kriegen irgendwas
+			 * zu machen. Für unsere Zwecke wäre das aber zu kompliziert.
+			 */
     		return false;
     	}
     }
 
     /**
-     * Verarbeitet einen einzelnen Passiven Zustand
+     * Verarbeitet einen einzelnen passiven Zustand
      *
      * @return false falls sich der Automat im Endzustand befindet
      */
@@ -235,19 +233,22 @@ public class Automat {
 
 	        return aktuellerZustand != endzustand;
     	} catch (RuntimeException e) {
-    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte immer auf den 'verantworltichen'
-    		 * Zustand zeigen, egal wo genau der Fehler Auftritt */
+    		/* Fehlerbehandlung, falls noch möglich. AktuellerZustand sollte
+			 * immer auf den 'verantworltichen' Zustand zeigen, egal wo genau
+			 * der Fehler Auftritt
+			 */
     		aktuellerZustand.handleException(e);
 
-    		/* Nach einem Fehler beendet sich der Automat zwangsläufig. Idealerweise
-    		 * würde der Automat noch die Chance kriegen irgendwas zu machen. Für unsere
-    		 * Zwecke wäre das aber zu kompliziert. */
+    		/* Nach einem Fehler beendet sich der Automat zwangsläufig.
+			 * Idealerweise würde der Automat noch die Chance kriegen irgendwas
+			 * zu machen. Für unsere Zwecke wäre das aber zu kompliziert.
+			 */
     		return false;
     	}
     }
 
     /**
-     * Verarbeitet alle anstehenden passiven Zustnde
+     * Verarbeitet alle anstehenden passiven Zustände
      *
      * @return false falls sich der Automat im Endzustand befindet
      */
@@ -260,7 +261,6 @@ public class Automat {
     }
 
     /**
-     *
      * Prüft den Automaten auf Fehler
      */
     private void pruefeAutomat(boolean hatQuelle) {
