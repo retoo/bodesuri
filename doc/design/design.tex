@@ -387,7 +387,7 @@ Der Server ist für die Koordination der einzelnen Clients zuständig.
 \paragraph{Daemon}
 \label{ssub:daemon}
 
-Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegegen und meldet diese über das BriefkastenInterface (via EventQueue) an den Nutzer des Servers.
+Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegen und meldet diese über das BriefkastenInterface (via EventQueue) an den Nutzer des Servers.
 
 \begin{tabular}{@{} l p{12.5cm}}
 \textbf{Klasse}       & Daemon \\
@@ -415,6 +415,7 @@ Es wird pro offene Verbindung ein Empfänger gestartet.
 \label{spielzustaende_nachrichten}
 \subsection{Zustände Client}
 \label{sub:zustände_client}
+Abbildung~\vref{fig:zd_applikation_bodesuriclient} zeigt den Ablauf der Zustände des Clients. Zustände in grün sind passive Zustände.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{zd_applikation_bodesuriclient}
@@ -429,57 +430,103 @@ Zustand in welchem der Automat beim Start ist. Öffnet den VerbindenView und geh
 
 \subsubsection{VerbindungErfassen}
 \label{ssub:verbinungerfassen}
-Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein VerbindeEvent eintrifft wird der Zustand VerbindungSteht aufgerufen.
-
-\subsubsection{VerbindungSteht}
-\label{ssub:verbindungsteht}
-Zustand wenn der Client auf die BeitrittsBestaetigung vom Server wartet. Wenn sie eintrifft wir der Zustand LobbyStart aufgerufen.
-
-\subsubsection{LobbyStart}
-\label{ssub:lobbystart}
-Zustand in welchem die Lobby (LobbyView) gestartet wird. Geht direkt in Lobby über.
+Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein VerbindeEvent eintrifft wird der Zustand Lobby aufgerufen.
 
 \subsubsection{Lobby}
 \label{ssub:lobby}
-Zustand wennn der Spieler in der Lobby ist. Wenn eine SpielStartNachricht eintrifft, wird der Zustand SpielStart aufgerufen.
+Zustand wenn der Spieler in der Lobby ist.
+\begin{itemize}
+	\item Wenn eine SpielStartNachricht eintrifft wird der Zustand SpielStart aufgerufen.
+	\item Wenn eine BeitrittsInformation eintrifft wird werden die Informationen über beigetretenen Spieler aktualisiert. Der Zustand wird nicht gewechselt.
+	\item Wenn eine BeitrittVerweigertNachricht eintrifft wird das Spiel beendet.
+\end{itemize}
 
 \subsubsection{SpielStart}
 \label{ssub:spielstart}
-Zustand in welchem das Spiel (BodesuriView) gestartet wird. Geht direkt in StarteRunde über.
-
-\subsubsection{StarteRunde}
-\label{ssub:starterunde}
-Zustand in welchem eine neue Runde beginnt. Zeigt die Karten an und geht in den Zustand KarteTauschen über.
-
-\subsubsection{KarteTauschen}
-\label{ssub:kartetauschen}
-Zustand in welchem der Client wartet bis der Spieler gewählt hat, welche Karte er seinem Mitspieler geben will und die Karte vom Mitspieler erhält. Geht in den Zustand NichtAmZug über.
+Zustand in welchem das Spiel(BodesuriView) gestartet wird. Geht direkt in NichtAmZug über.
 
 \subsubsection{NichtAmZug}
 \label{ssub:nichtamzug}
 Zustand wenn der Spieler nicht am Zug ist.
 \begin{itemize}
-	\item Wenn eine ZugAufforderung eintrifft wird der Zustand AmZug aufgerufen.
-	\item Wenn eine ZugInformation eintrifft wird der Zug ausgeführt, der Zustand aber nicht gewechselt.
-	\item Wenn ein RundeAbgeschlossenEvent eintrifft wird der Zustand StarteRunde aufgerufen.
-	\item Wenn eine SpielEnde eintrifft wird der Zustand SpielEnde aufgerufen.
+	\item 	Wenn eine ZugAufforderung eintrifft, wird der Zustand AmZug aufgerufen.
+	\item 	Wenn eine AktuellerSpielerInformation eintrifft, wird der aktuelle Spieler dargestellt, der Zustand aber nicht gewechselt.
+	\item 	Wenn eine ZugEingabe eintrifft, wird Zug aus der Eingabe visualisiert. Der Zustand wird nicht gewechselt.
+	\item 	Wenn eine RundenStart-Nachricht eintrifft, werden die erhaltenen Karten gespeichert und der Zustand StarteRunde aufgerufen.
+	\item 	Wenn eine AufgabeInformation eintrifft, wird der Spieler welcher aufgegeben hat im UI angepasst. Der Zustand wird nicht gewechselt.
+	\item 	Wenn eine SpielFertigNachricht eintrifft, wird der Gewinner angezeigt und SpielEnde aufgerufen.
 \end{itemize}
+
+\subsubsection{StarteRunde}
+\label{ssub:starterunde}
+Zustand wenn eine neue Runde gestartet wird. Alle Eigenschaften der Spieler werden zurückgesetzt. Der Automat geht nach KarteTauschenAuswaehlen über.
+
+\subsubsection{KarteTauschenAuswaehlen}
+\label{ssub:kartetauschenauswaehlen}
+Zustand in dem wir warten bis der Spieler die Karte die er tauschen möchte ausgewählt hat. Tritt KarteGewaehltEvent ein gehen wir in den Zustand KarteTauschenBekommen über.
+
+\subsubsection{KarteTauschenBekommen}
+\label{ssub:kartetauschenbekommen}
+Zustand wenn wir auf die Karte, die wir von unserem Mitspieler erhalten, warten. Wenn sie eintrifft wird der Zustand NichtAmZug aufgerufen.
 
 \subsubsection{AmZug}
 \label{ssub:amzug}
-Zustand in welchem der Spieler zum Zug kommt. Geht direkt in KarteWaehlen über.
-
-\subsubsection{KarteWaehlen}
-\label{ssub:kartewaehlen}
-Zustand wenn der Spieler eine Karte auswählen muss. Wenn der KarteGewaehltEvent eintritt, wird der Zustand Ziehen aufgerufen.
-
-\subsubsection{Ziehen}
-\label{ssub:ziehen}
-Zustand wenn der Spieler eine Bewegung machen muss. Wenn ein BewegungEingegebenEvent eintrifft wird der gesamte Zug validiert und der Zustand NichtAmZug aufgerufen.
+Zustand in welchem der Spieler am Zug ist. Erstellt einen ZugAutomat der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende Events werden direkt an den ZugAutomaten weitergeleitet. Dieser sendet eine ZugErfasstEvent wenn er fertig ist. Der Event wird versandt und der Automat geht nach NichtAmZug über.
 
 \subsubsection{SpielEnde}
 \label{ssub:spielende}
-Der letzte Zustand des Automaten. Zeigt den Gewinner an und geht in den EndZustand über.
+Zustand in welchem sich dem Automat befindet wenn wir das Spiel beenden wollen. In diesem Zustand werden Events die möglicherweise noch in der Queue warten konsumiert, das UI heruntergefahren, die Verbindung zum Server geschlossen und der Automat beendet.
+
+\subsection{Zustände ZugAutomat}
+\label{sub:zustände_zugautomat}
+Die Erfassung eines Zuges wurde aus dem Client-Automaten ausgelagert. Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zustände des ZugAutomaten. Zustände in grün sind passive Zustände.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{zd_applikation_zugautomat}
+	\caption{Zustandsdiagramm ZugAutomat}
+	\label{fig:zd_applikation_zugautomat}
+\end{figure}
+
+\subsubsection{KarteWaehlen}
+\label{ssub:kartewaehlen}
+Zustand wenn der Spieler eine Karte auswählen muss. Wenn der KarteGewaehltEvent eintritt, wird der Zustand StartWaehlen aufgerufen.
+
+\subsubsection{StartWaehlen}
+\label{ssub:startwaehlen}
+Zustand wenn der Spieler das Startfeld wählen muss.
+\begin{itemize}
+	\item Trifft ein FeldGewaehltEvent ein wird das Feld überprüft. Macht die Wahl Sinn wird nach ZielWaehlen gewechselt. Sonst bleiben wir in diesem Zustand.
+	\item Trifft ein KarteGewaehltEvent ein (der Spieler hat eine andere Karte ausgewählt) wird nach KarteWaehlen gewechselt.
+	\item Trifft ein FeldAbgewaehltEvent ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
+\end{itemize}
+
+\subsubsection{ZielWaehlen}
+\label{ssub:zielwaehlen}
+Zustand wenn der Spieler das Zielfeld wählen muss.
+\begin{itemize}
+	\item Trifft ein FeldGewaehltEvent ein wird das Feld überprüft. Macht die Wahl Sinn wird nach ZugValidieren gewechselt. Wurde das Startfeld ausgewählt wird das Startfeld wieder deaktiviert und nach StartWaehlen gewechselt.
+	\item Trifft ein KarteGewaehltEvent ein (der Spieler hat eine andere Karte ausgewählt) wird nach KarteWaehlen gewechselt.
+	\item Trifft ein FeldAbgewaehltEvent ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
+	\item HoverStartEvent und HoverEndeEvent aktiveren bzw. deaktiviern das Markieren des Weges
+\end{itemize}
+
+\subsubsection{ZugValidieren}
+\label{ssub:zugvalidieren}
+Validiert den erfassten Zug.
+\begin{itemize}
+	\item Ist die Karte eine Sieben und es wurden noch keine 7 Felder gefahren, wechseln wir zurück nach StartWaehlen um eine weitere Bewegung zu erfassen.
+	\item Ist der Zug ungültig wird eine Fehlermeldung gezeigt und zurück nach ZielWaehlen gewechselt.
+	\item Ist der Zug gültig wird er zurück an den ClientAutomat übermittelt und nach ZugautomatAbschluss gewechselt.
+\end{itemize}
+
+\subsubsection{ZugautomatAbschluss}
+\label{ssub:zugautomatabschluss}
+Räumt den Zugautomaten auf. Alle Bewegungen werden zurückgesetzt, die Kartenauswahl deaktiviert, die SteuerungsButtons ausgeblendet und in ZugautomatEndZustand übergegangen.
+
+\subsubsection{ZugautomatEndZustand}
+\label{ssub:zugautomatendzustand}
+Endzustand des Zugautomaten. Ignoriert alle eingehenden Events.
+
 
 \subsection{Zustände Server}
 \label{sub:zustände_server}
