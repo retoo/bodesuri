@@ -11,6 +11,10 @@ public class StartRegelTest extends RegelTestCase {
 		regel = new StartRegel();
 	}
 
+	public void testArbeitetMitWeg() {
+		assertFalse(regel.arbeitetMitWeg());
+	}
+
 	/**
 	 * Prüft, ob die Startregel korrekt angewendet wird, und ob
 	 * danach normal mit der Figur gefahren werden kann.

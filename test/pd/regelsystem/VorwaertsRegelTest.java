@@ -6,6 +6,10 @@ import pd.regelsystem.verstoesse.RegelVerstoss;
  * Testet die Funktionalität der VorwärtsRegel.
  */
 public class VorwaertsRegelTest extends RegelTestCase {
+	public void testArbeitetMitWeg() {
+		assertTrue(new VorwaertsRegel(2).arbeitetMitWeg());
+	}
+
 	/**
 	 * Testet die Vorwärtsregel, wenn beim Zug auch eine
 	 * Figur gefressen wird (Figur auf Zielfeld).

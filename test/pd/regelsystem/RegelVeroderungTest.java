@@ -13,7 +13,11 @@ public class RegelVeroderungTest extends RegelTestCase {
 		super.setUp();
 		regel = new Vier(KartenFarbe.Herz).getRegel();
 	}
-	
+
+	public void testArbeitetMitWeg() {
+		assertTrue(regel.arbeitetMitWeg());
+	}
+
 	/**
 	 * Validiert die Viererregel, indem ein gültiger Vorwärtszug
 	 * ausgeführt wird.

@@ -10,7 +10,11 @@ public class TauschRegelTest extends RegelTestCase {
 		super.setUp();
 		regel = new TauschRegel();
 	}
-	
+
+	public void testArbeitetMitWeg() {
+		assertFalse(regel.arbeitetMitWeg());
+	}
+
 	/**
 	 * Prüft, ob ein simpler Tausch funktioniert.
 	 * 

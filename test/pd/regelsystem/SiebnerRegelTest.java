@@ -22,7 +22,11 @@ public class SiebnerRegelTest extends RegelTestCase {
 		start = new Feld[7];
 		ziel  = new Feld[7];
 	}
-	
+
+	public void testArbeitetMitWeg() {
+		assertTrue(regel.arbeitetMitWeg());
+	}
+
 	/**
 	 * Ein aufteilbarer Zug darf nur immer vom gleichen Spieler 
 	 * durchgeführt werden.
