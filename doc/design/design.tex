@@ -714,6 +714,8 @@ Damit ist es möglich, den Programmablauf, der sonst in komplexem nacheinander a
 
 \subsection{Synchronisation UI / Automat}
 
+% TODO: bitte korrekturlesen (-reto)
+
 Bodesuri verwendet für die Ablaufsteuerung und die interne Zustandssynchronisierung zwischen Client und Server Zustandsautomaten. Der Zustandsautomat des Clienten ist zusätzlich noch für die saubere Einbindung der darüber liegenden Schicht verantwortlich, zurzeit das GUI mit seinem Controller. Es stellte sich früh heraus, dass auch GUI und Automat gut synchronisieret werden müssen, so muss z.B. die Kartenauswahl im GUI deaktiviert werden sobald eine Karte gewählt wurde. Wird dies nicht gemacht kann der Automat bei Fehleingaben (der User wählt eine weitere Karte obwohl bereits getauscht) Events erhalten welche in einem anderen Zustand gar keinen Sinn mehr machen und zu einer Exception führen.
 
 Die offensichtliche Lösung für das Problem wäre eine kontrollierte Aktivierung und Deaktivierung aller GUI-Elemente in den betroffenen Zuständen, sprich das GUI in den Zustandsablauf einbinden. Zum Beispiel könnte der Zustand Kartenwahl bei Zustandseintritt die Auswahl aktivieren und beim verlasen des Zustandes wieder deaktivieren. Eine solche Lösung ist aber leider auch mit Problemen verbunden. Das GUI und seine Komponenten laufen in eigenen Threads und können noch während der Verarbeitung des Zustandes weiter agieren. Zum Beispiel könnte sich der Automat in der Verarbeitung der Kartenwahl befinden während das GUI, im Glauben es sei immer noch in dem Zustand, einen weiteren Kartenwahl Event auslösen. Passiert dies führt dies höchstwahrscheinlich zu einem unerwarteten Event (Out-Of-State Event) und somit zum kontrollierten, aber sinnlosen, Absturz.
@@ -737,7 +739,6 @@ Folgende Varianten standen zur Auswahl:
 
 Ein ganz anderer Ansatz bestünde darin das GUI ganz von den Zuständen zu entkoppeln. Das GUI könnte jederzeit Events auslösen und es wäre die Aufgabe des Zustandsautomaten zu erkennen ob diese Events im gegebenen Zustand Sinn machen oder halt eben nicht. Natürlich könnten einzelnen Bedien-Elemente trotzdem Zustandsabhängig aktiviert \& deaktiviert werden (z.B: um die Benutzerfreundlichkeit zu erhöhen) aber die korrekte Funktion des Automaten wäre davon unabhängig, er könnte  problemlos mit "<Out-Of-State events"> umgehen.
 
-
 \textbf{Vorteil:}
 \begin{itemize}
 	\item GUI simpler, entkoppelt von Zuständen
@@ -748,6 +749,24 @@ Ein ganz anderer Ansatz bestünde darin das GUI ganz von den Zuständen zu entko
 \begin{itemize}
 	\item Automat ist bei GUI-Events weniger strikt\footnote{Der Automat ist in allen anderen Bereichen sehr strikt, was eine frühe Fehlererkennung mit sich bringt. Zum Beispiel bei Events zur Synchronisation mit dem Server können keine \emph{Fehler} toleriert werden.}
 \end{itemize}
+
+Wir entschieden uns aufgrund der genannten Vorteile für die Implementation der dritten Variante.
+
+\subsection{Kommunikation GUI / Automat}
+
+% TODO: bitte korrekturlesen (-reto)
+
+Im Laufe der Phase \emph{Construction 1} zeigten sich erste Schwierigkeiten mit der Implementation des Controllers. Ursprünglich war geplant, dass sich alle UI Elemente, die direkt durch den Automaten kontrolliert werden müssen, sich beim Controller registrieren. Der Controller hätte dann die Elemente, je nach Anweisung des Automaten, direkt manipulieren können. Leider hatte dies verschiedene Nachteile. Einerseits war mit diesem System das GUI und der Controller extrem eng verknüpft. Dies zeigte sich in verschiedensten Zyklischen Abhängigkeiten. Andererseits war aber auch der Code teilweise schwer nachvollziehbar, weil plötzlich gewisse Gui-Handling Logik in Mouse-Adaptern und ähnlichen Klassen steckte. Zusätzlich wurde, da jede auch noch so kleine UI-relevante Zustandsänderung gemeldet werden musste, der Controller immer komplizierter und war schwer zu durchschauen.
+
+Wir analysierten die Situation und kamen nach einigen Diskussionen zum Schluss, dass ein alternatives Kommunikations-Modell die Kommunikation vereinfachen könnte. Zusätzlich setzen wir uns das Ziel, dass das GUI nichts mehr direkt über den GUIController wissen muss. 
+
+Das neue Modell sah vor, dass der grosse Teil der Kommunikation über Observer passieren sollte. Also z.B. das Feld weiss von sich selber ob es zurzeit ausgewählt ist und meldet eine etwaiger Zustandswechsel über Observer-Event an das GUI. Dieses neue Konzept stellte uns plötzlich vor ein weiteres Problem. Wir sahen, dass wir plötzlich ganz viele, für die PD nicht relevante, \emph{Informationen} in der Problem-Domain hätten ablegen müssen. Auf Grund der komplexen Regel-Logik war die Problem-Domain jedoch bereits relativ kompliziert. 
+
+Um eine Vergrösserung der Problem-Domain zu verhindern begannen wir einige ihrer Teile in Form von \emph{Dekoratoren} in der Applikation-Schick abzubilden. Diese Dekoratoren bildeten mehr oder minder dieselbe Funktionalität\footnote{hierfür leiteten sie die Methodenaufrufe einfach direkt in die darunterliegende Schicht weiter} ab und observierten die jeweils dekorierten Objekte in der Problem-Domain. Zusätzlich beinhalteten sie aber Felder und Logik die nur für die Applikationschicht relevant sind, so zum Beispiel der aktueller Selektierungszustand. 
+
+Mit diesem System wird das User-Interface über so oder so Änderungen informiert, sei es nun eine Änderung am Objekt in der PD oder am Dekorator in der Applikationsschicht. Sollte eine alternative GUI Implementation kein Interesse an diesen Events haben kann es diese entweder ignorieren oder sich gar nicht erst als Observer registrieren.
+
+Diese Änderungen zog grössere Arbeiten nach sich, aber unter dem Strich hat sie die Logik bedeutend einfacher gemacht. Es hätte sich jedoch gelohnt, wenn dies bessere Kommunikationslösung früher erkannt worden wäre, einige doppelte Arbeit hätte erspart werden können.
 
 \subsection{Multitier-Architektur des Servers}
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
