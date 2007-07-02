@@ -7,11 +7,11 @@ import java.util.Vector;
  */
 public class Zug {
 	private Vector<Aktion> aktionen;
-	
+
 	public Zug() {
 		this.aktionen = new Vector<Aktion>();
 	}
-	
+
 	/**
 	 * Füge Aktion dem Zug hinzu.
 	 * 
@@ -20,9 +20,9 @@ public class Zug {
 	public void fuegeHinzu(Aktion aktion) {
 		aktionen.add(aktion);
 	}
-	
+
 	/**
-	 * Führt den Zug aus. Es werden alle gespeicherten Aktionen der Reihe nach
+	 * Führe den Zug aus. Es werden alle gespeicherten Aktionen der Reihe nach
 	 * ausgeführt.
 	 */
 	public void ausfuehren() {

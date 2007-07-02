@@ -8,11 +8,14 @@ import pd.spiel.brett.Feld;
 import pd.spiel.brett.SpielerFeld;
 
 /**
- * Hilfsklasse für eine Bewegung, die ein Start und ein Ziel hat.
+ * Hilfsklasse für eine Bewegung, die ein Start- und ein Zielfeld hat.
+ * 
+ * Aus ihr kann ein {@link Weg} berechnet werden.
  */
 public class Bewegung implements Serializable {
 	/** Start der Bewegung. */
 	public final Feld start;
+
 	/** Ziel der Bewegung. */
 	public final Feld ziel;
 
@@ -33,7 +36,13 @@ public class Bewegung implements Serializable {
 	public String toString() {
 		return "von " + start + " nach " + ziel;
 	}
-	
+
+	/**
+	 * Berechne den Weg dieser Bewegung. Dieser enthält alle Felder, die bei der
+	 * Bewegung "berührt" werden, also inklusive Start- und Zielfeld.
+	 * 
+	 * @return Weg, über den diese Bewegung geht
+	 */
 	public Weg getWeg() {
 		boolean vorwaerts;
 		
@@ -62,6 +71,7 @@ public class Bewegung implements Serializable {
 				    && ((SpielerFeld) feld).getSpieler() ==
 				       ((SpielerFeld) ziel).getSpieler())
 				{
+					/* In Himmel eintreten */
 					feld = ((BankFeld) feld).getHimmel();
 				} else {
 					feld = feld.getNaechstes();
@@ -71,6 +81,7 @@ public class Bewegung implements Serializable {
 			}
 			
 			if (feld == null) {
+				/* Kein Weg gefunden */
 				return null;
 			}
 		}

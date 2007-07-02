@@ -8,12 +8,12 @@ import pd.spiel.brett.Feld;
 public class Aktion {
 	protected Feld start;
 	protected Feld ziel;
-	
+
 	public Aktion(Feld start, Feld ziel) {
 		this.start = start;
 		this.ziel  = ziel;
 	}
-	
+
 	/**
 	 * Führt Aktion aus, die Figur wird vom Start- aufs Zielfeld versetzt.
 	 */
@@ -21,6 +21,7 @@ public class Aktion {
 		if (ziel.istBesetzt()) {
 			throw new RuntimeException("Ziel von Aktion sollte leer sein.");
 		}
+
 		start.versetzeFigurAuf(ziel);
 		start.setGeschuetzt(false);
 		if (ziel.istHimmel() || (start.istLager() && ziel.istBank())) {
