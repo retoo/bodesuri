@@ -4,6 +4,7 @@ import java.util.List;
 
 import pd.regelsystem.ZugEingabe;
 import applikation.client.events.AufgegebenEvent;
+import applikation.client.events.BeendeEvent;
 import applikation.client.events.ChatEingabeEvent;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
@@ -36,7 +37,7 @@ public abstract class Controller implements Steuerung {
 	 * Teilt dem Controller mit, dass der Verbindungsaufbau abgebrochen wurde.
 	 */
 	public abstract void verbindungsaufbauAbgebrochen();
-	
+
 	/**
 	 * Die Lobby anzeigen.
 	 *
@@ -73,7 +74,7 @@ public abstract class Controller implements Steuerung {
 	/**
 	 * Meldungen, die vom Automaten an den Controller gereicht werden,
 	 * darstellen.
-	 * 
+	 *
 	 * @param meldung
 	 *            anzuzeigende Meldung
 	 */
@@ -124,6 +125,11 @@ public abstract class Controller implements Steuerung {
 		eventQueue.enqueue(cee);
     }
 
+	public void beenden() {
+		BeendeEvent be = new BeendeEvent();
+		eventQueue.enqueue(be);
+	}
+
 	public void zugWurdeGemacht(ZugEingabe zug) {
     }
 
@@ -133,9 +139,5 @@ public abstract class Controller implements Steuerung {
 	public void karteTauschenAuswaehlen() {
     }
 
-	public void beenden() {
-		/* TODO: reto review (-reto) */
-		// TODO: reto oder pascal: richtig implementieren (-pascal)
-		System.exit(0);
-	}
+	public abstract void herunterfahren();
 }

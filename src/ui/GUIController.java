@@ -33,11 +33,11 @@ public class GUIController extends Controller {
 		verbindenView = new VerbindenView(this, konfiguration);
 		verbindenView.setVisible(true);
 	}
-	
+
 	public void verbindungsaufbauAbgebrochen() {
 		verbindenView.setzeEingabeSperre(false);
 	}
-	
+
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
 		verbindenView.setVisible(false);
 		lobbyView = new LobbyView(spieler, this, chat);
@@ -74,7 +74,7 @@ public class GUIController extends Controller {
     	JOptionPane.showMessageDialog(null, meldung);
     }
 
-	public void beenden() {
+	public void herunterfahren() {
 		if (verbindenView != null) {
 			verbindenView.setVisible(false);
 			verbindenView.dispose();
@@ -92,8 +92,6 @@ public class GUIController extends Controller {
 			spielView.dispose();
 			spielView = null;
 		}
-
-		super.beenden();
 	}
 
 	/**

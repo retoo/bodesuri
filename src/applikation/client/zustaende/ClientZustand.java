@@ -3,6 +3,7 @@ package applikation.client.zustaende;
 import pd.regelsystem.karten.Karte;
 import applikation.client.controller.Controller;
 import applikation.client.events.AufgegebenEvent;
+import applikation.client.events.BeendeEvent;
 import applikation.client.events.ChatEingabeEvent;
 import applikation.client.events.FeldAbgewaehltEvent;
 import applikation.client.events.FeldGewaehltEvent;
@@ -70,6 +71,9 @@ public class ClientZustand extends Zustand {
 	    	return hoverEnde((HoverEndeEvent) event);
 	    else if (event instanceof ChatEingabeEvent)
 	    	return chatEingabe((ChatEingabeEvent) event);
+	    else if (event instanceof BeendeEvent) {
+	    	return beende();
+	    }
 
 	    return super.handle(event);
     }
@@ -116,7 +120,7 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> verbindungAbgebrochen() {
 		controller.zeigeFehlermeldung("Die Verbindung zum Server ist "
 		                              + "abgebrochen. Das Spiel wird beendet.");
-		controller.beenden();
+		controller.herunterfahren();
 		return EndZustand.class;
 	}
 
@@ -125,9 +129,13 @@ public class ClientZustand extends Zustand {
 		controller.zeigeFehlermeldung("Es trat ein schwerer Fehler auf. " +
 				"Spiel wird beendet: " + e.getMessage());
 		e.printStackTrace();
-		controller.beenden();
+		controller.herunterfahren();
 	}
 
+	Class<? extends Zustand> beende() {
+		controller.herunterfahren();
+		return EndZustand.class;
+	}
 
 	/* GUI Handler - Global */
 

@@ -56,6 +56,11 @@ public class BotController extends Controller {
 			verbinde(konfig.defaultHost, konfig.defaultPort, konfig.defaultName	);
 	}
 
+	public void herunterfahren() {
+		if (gui != null)
+			gui.herunterfahren();
+	}
+
 	public void karteTauschenAuswaehlen() {
 		Karten karten = spiel.spielerIch.getKarten();
 
@@ -98,5 +103,6 @@ public class BotController extends Controller {
 	public void verbindungsaufbauAbgebrochen() {
 	}
 
-
+	public void beenden() {
+	}
 }
