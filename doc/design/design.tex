@@ -165,12 +165,10 @@ Der Automat bietet zwei Betriebsmodi an:
 \subparagraph{Beschreibung}
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, welche anschliessend über das Netzwerk versendet werden. 
 
-% TODO: Robin/Reto: kann man das ein bisschen umformulieren, der ', welche ...' Teil gefällt mir irgendwie nicht.(Reto)
-
 \subparagraph{Schnittstellen}
 \begin{itemize}
-	\item Die abstrakte Klasse CodierbaresObjekt muss vom Benutzer dieses Packages implementiert werden. Dabei müssen die Methoden getCodierer() und getCodiertesObjekt() überschrieben werden. getCodiertesObjekt() sollte ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen.
-	\item Die zweite abstrakte Klasse CodiertesObjekt muss auch implementiert werden. Dort muss nur getCodierer() überschrieben werden, welches den gleichen Codierer zurückgeben sollte, wie bei CodierbaresObjekt.
+	\item Die abstrakte Klasse CodierbaresObjekt muss vom Benutzer dieses Packages implementiert werden. Dabei müssen die Methoden \texttt{getCodierer} und \texttt{getCodiertesObjekt} überschrieben werden. \texttt{getCodiertesObjekt} sollte ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen.
+	\item Die zweite abstrakte Klasse CodiertesObjekt muss auch implementiert werden. Es muss nur \texttt{getCodierer} überschrieben werden, um den gleichen Codierer zurückzugeben wie bei CodierbaresObjekt.
 \end{itemize}
 
 \begin{figure}[h]
@@ -245,7 +243,7 @@ Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch 
 \subparagraph{Schnittstellen}
 \label{ssub:schnittstellen}
 \begin{itemize}
-	\item Bietet die Methode ziehen() an, welche die Zugentgegennahme in einen neuen Status versetzt.
+	\item Bietet die Methode \texttt{ziehen} an, welche die Zugentgegennahme in einen neuen Status versetzt.
 \end{itemize}
 
 \begin{figure}[h]
