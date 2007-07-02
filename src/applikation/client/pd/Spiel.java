@@ -45,8 +45,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	/** Abbildung von PD-Spielern zu Applikations-Spielern */
 	private IdentityHashMap<pd.spiel.spieler.Spieler, Spieler> spielerRegister;
 	public Chat chat;
-	/* TODO: Philippe: Was ist das? -philippe */
-	/* TODO: Philippe: das ist von mir, der Zähler im Hinweisfeld (-reto)*/
+	/** Der Zähler der Zugweite im Hinweisfeld */
 	private int zaehler = -1;
 
 	public Spiel(Konfiguration konfig) {
