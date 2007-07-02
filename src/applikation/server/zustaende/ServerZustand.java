@@ -80,8 +80,8 @@ public abstract class ServerZustand extends Zustand {
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
 		spiel.entferne(absender);
 
-		spiel.broadcast(new SpielAbbruch("Verbindung zu Client " + absender
-                + " wurde unerwartet beendet. Server wird beendet."));
+		spiel.broadcast(new SpielAbbruch("Die Verbindung zu einem der Spieler (" + absender
+                + ") ist abgebrochen. Das Spiel wird geschlossen."));
 
 		return ServerStoppen.class;
 	}
