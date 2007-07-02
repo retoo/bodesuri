@@ -712,45 +712,43 @@ Unser Spiel hat einen komplexen Ablauf, sowohl auf der Client- als auch auf der 
 
 Damit ist es möglich, den Programmablauf, der sonst in komplexem nacheinander aufzurufendem Programmcode verpackt wäre, in verschiedene Klassen auszulagern und den \emph{Gap} zwischen dem Code und den in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
 
-\subsection{Synchronisation UI / Automat}
+\subsection{Synchronisation UI/Automat}
 
-% TODO: bitte korrekturlesen (-reto)
+Bodesuri verwendet für die Ablaufsteuerung und die interne Zustandssynchronisation zwischen Client und Server Zustandsautomaten. Der Zustandsautomat des Clients ist zusätzlich noch für die saubere Einbindung der darüber liegenden Schicht verantwortlich, zurzeit das GUI mit seinem Controller. Es stellte sich früh heraus, dass auch GUI und Automat gut synchronisiert werden müssen, so muss z.\,B. die Kartenauswahl im GUI deaktiviert werden, sobald eine Karte gewählt wurde. Wird dies nicht gemacht, kann der Automat bei Fehleingaben (der Benutzer wählt eine weitere Karte obwohl bereits getauscht) Events erhalten, welche in einem anderen Zustand gar keinen Sinn mehr ergeben und zu einer Exception führen.
 
-Bodesuri verwendet für die Ablaufsteuerung und die interne Zustandssynchronisierung zwischen Client und Server Zustandsautomaten. Der Zustandsautomat des Clienten ist zusätzlich noch für die saubere Einbindung der darüber liegenden Schicht verantwortlich, zurzeit das GUI mit seinem Controller. Es stellte sich früh heraus, dass auch GUI und Automat gut synchronisieret werden müssen, so muss z.B. die Kartenauswahl im GUI deaktiviert werden sobald eine Karte gewählt wurde. Wird dies nicht gemacht kann der Automat bei Fehleingaben (der User wählt eine weitere Karte obwohl bereits getauscht) Events erhalten welche in einem anderen Zustand gar keinen Sinn mehr machen und zu einer Exception führen.
+Die offensichtliche Lösung für das Problem wäre eine kontrollierte Aktivierung und Deaktivierung aller GUI-Elemente in den betroffenen Zuständen, sprich das GUI in den Zustandsablauf einzubinden. Zum Beispiel könnte der Zustand Kartenwahl bei Zustandseintritt die Auswahl aktivieren und beim Verlassen des Zustands wieder deaktivieren. Eine solche Lösung ist aber leider auch mit Problemen verbunden. Das GUI und seine Komponenten laufen in eigenen Threads und können noch während der Verarbeitung des Zustands weiter agieren. Zum Beispiel könnte sich der Automat in der Verarbeitung der Kartenwahl befinden während das GUI, im Glauben es sei immer noch im gleichen Zustand, einen weiteren Kartenwahl-Event auslösen. Passiert dies, führt es höchstwahrscheinlich zu einem unerwarteten Event (Out-Of-State-Event) und somit zum kontrollierten, aber sinnlosen, Absturz.
 
-Die offensichtliche Lösung für das Problem wäre eine kontrollierte Aktivierung und Deaktivierung aller GUI-Elemente in den betroffenen Zuständen, sprich das GUI in den Zustandsablauf einbinden. Zum Beispiel könnte der Zustand Kartenwahl bei Zustandseintritt die Auswahl aktivieren und beim verlasen des Zustandes wieder deaktivieren. Eine solche Lösung ist aber leider auch mit Problemen verbunden. Das GUI und seine Komponenten laufen in eigenen Threads und können noch während der Verarbeitung des Zustandes weiter agieren. Zum Beispiel könnte sich der Automat in der Verarbeitung der Kartenwahl befinden während das GUI, im Glauben es sei immer noch in dem Zustand, einen weiteren Kartenwahl Event auslösen. Passiert dies führt dies höchstwahrscheinlich zu einem unerwarteten Event (Out-Of-State Event) und somit zum kontrollierten, aber sinnlosen, Absturz.
-
-Damit diese offensichtliche Lösung (Zustandsbewusstes GUI) funktionieren könnte müsste die Event-Verarbeitung von GUI und Automaten irgendwie koordinierte werden.
+Damit diese offensichtliche Lösung (zustandsbewusstes GUI) funktionieren könnte, müsste die Event-Verarbeitung von GUI und Automaten irgendwie koordiniert werden.
 
 Folgende Varianten standen zur Auswahl:
 
 \begin{itemize}
-	\item GUI Elemente werden bereits im ActionHandler des GUIs deaktiviert
-	\begin{description}
-		\item[Vorteil] Keine Race-Conditions möglich
-		\item[Nachteil] Viel Zustandslogik im GUI, Erweiterungen sind aufwändig ("<in welchen Handlers muss ich das noch deaktiveren">)
-	\end{description}
+	\item GUI-Elemente werden bereits im ActionHandler des GUIs deaktiviert
+	\begin{itemize}
+		\item \textbf{Vorteil:} Keine Race-Conditions möglich
+		\item \textbf{Nachteil:} Viel Zustandslogik im GUI, Erweiterungen sind aufwändig ("<in welchen Handlers muss ich das noch deaktivieren">)
+	\end{itemize}
 	\item GUI blockiert bis Automat abgearbeitet wird / Synchrone Event-Verarbeitung
-	\begin{description}
-		\item[Vorteil] Keine Race-Conditions möglich, einfache Handhabung seitens GUI
-		\item[Nachteil] GUI könnte unter Umständen weniger responsive wirken, komplizierte Umsetzung
-	\end{description}
+	\begin{itemize}
+		\item \textbf{Vorteil:} Keine Race-Conditions möglich, einfache Handhabung seitens GUI
+		\item \textbf{Nachteil:} GUI könnte unter Umständen träge wirken, komplizierte Umsetzung
+	\end{itemize}
 \end{itemize}
 
-Ein ganz anderer Ansatz bestünde darin das GUI ganz von den Zuständen zu entkoppeln. Das GUI könnte jederzeit Events auslösen und es wäre die Aufgabe des Zustandsautomaten zu erkennen ob diese Events im gegebenen Zustand Sinn machen oder halt eben nicht. Natürlich könnten einzelnen Bedien-Elemente trotzdem Zustandsabhängig aktiviert \& deaktiviert werden (z.B: um die Benutzerfreundlichkeit zu erhöhen) aber die korrekte Funktion des Automaten wäre davon unabhängig, er könnte  problemlos mit "<Out-Of-State events"> umgehen.
+Ein ganz anderer Ansatz besteht darin, das GUI ganz von den Zuständen zu entkoppeln. Das GUI könnte jederzeit Events auslösen und es wäre die Aufgabe des Zustandsautomaten zu erkennen, ob diese Events im gegebenen Zustand Sinn ergeben oder halt eben nicht. Natürlich könnten einzelne Bedienelemente trotzdem Zustandsabhängig aktiviert \& deaktiviert werden (z.\,B. um die Benutzerfreundlichkeit zu erhöhen) aber die korrekte Funktion des Automaten wäre davon unabhängig, er könnte problemlos mit "<Out-Of-State-Events"> umgehen.
 
-\textbf{Vorteil:}
+\textbf{Vorteile:}
 \begin{itemize}
 	\item GUI simpler, entkoppelt von Zuständen
 	\item Keine komplizierte Synchronisation mit Swing
 \end{itemize}
 
-\textbf{Nachteil:}
+\textbf{Nachteile:}
 \begin{itemize}
-	\item Automat ist bei GUI-Events weniger strikt\footnote{Der Automat ist in allen anderen Bereichen sehr strikt, was eine frühe Fehlererkennung mit sich bringt. Zum Beispiel bei Events zur Synchronisation mit dem Server können keine \emph{Fehler} toleriert werden.}
+	\item Automat ist bei GUI-Events weniger strikt\footnote{Der Automat ist in allen anderen Bereichen sehr strikt, was eine frühe Fehlererkennung mit sich bringt. Zum Beispiel können bei Events zur Synchronisation mit dem Server keine \emph{Fehler} toleriert werden.}
 \end{itemize}
 
-Wir entschieden uns aufgrund der genannten Vorteile für die Implementation der dritten Variante.
+Wir entschieden uns aufgrund der genannten Vorteile für die Implementierung der dritten Variante.
 
 \subsection{Kommunikation GUI / Automat}
 
