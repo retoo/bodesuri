@@ -81,8 +81,10 @@ public abstract class ServerZustand extends Zustand {
 		/* Spieler aus dem Spiel entfernen, falls vorhanden */
 		spiel.entferne(absender);
 
-		spiel.broadcast(new SpielAbbruch("Die Verbindung zu einem der Spieler (" + absender
-                + ") ist abgebrochen. Das Spiel wird geschlossen."));
+		spiel.broadcast(new SpielAbbruch("Die Verbindung zu "
+		                                 + spiel.getSpieler(absender).spieler
+		                                 + " ist abgebrochen. Das Spiel"
+		                                 + " wird geschlossen."));
 
 		return ServerStoppen.class;
 	}
