@@ -8,10 +8,13 @@ import applikation.nachrichten.SpielStartNachricht;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand wennn der Spieler in der Lobby ist.
+ * Zustand wenn der Spieler in der Lobby ist.
  * <ul>
  * <li>Wenn eine {@link SpielStartNachricht} eintrifft wird der Zustand
  * {@link SpielStart} aufgerufen.</li>
+ * <li>Wenn eine {@link BeitrittsInformation} eintrifft wird werden die
+ * Informationen über beigetretenen Spieler aktualisiert. Der Zustand wird nicht
+ * gewechselt.</li>
  * <li>Wenn eine {@link BeitrittVerweigert}Nachricht eintrifft wird das Spiel
  * beendet.</li>
  * </ul>
