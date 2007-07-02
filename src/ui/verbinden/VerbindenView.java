@@ -28,14 +28,14 @@ public class VerbindenView extends JFrame {
 	private final static int FRAME_WIDTH 	= 400;
 	private final static int FRAME_HEIGHT 	= 216;
 	private final Konfiguration konfiguration;
-	
+
 	private class EingabeInfo {
 		public String host = "";
 		public int port = 0;
 		public String spieler = "";
 		public boolean istEingabeGueltig = true;
 		public String hinweis = "";
-		public EingabeInfo(String hinweis, boolean istEingabeGueltig, 
+		public EingabeInfo(String hinweis, boolean istEingabeGueltig,
 							String host, String spieler, int port) {
 			this.hinweis = hinweis;
 			this.istEingabeGueltig = istEingabeGueltig;
@@ -63,11 +63,11 @@ public class VerbindenView extends JFrame {
 		// Instanzvariabeln initialisieren
 		this.steuerung 		= steuerung;
 		this.konfiguration	= konfiguration;
-		
+
 		hostTextField 		= new LimitiertesTextField(konfiguration.defaultHost, 15);
 		spielerTextField 	= new LimitiertesTextField( konfiguration.defaultName, 20);
 		portTextField 		= new LimitiertesTextField(String.valueOf( konfiguration.defaultPort ), 5);
-	
+
 		buttonpanel 		= new JPanel();
 		inputpanel 			= new EingabePanel(hostTextField, portTextField, spielerTextField);
 		progressBar 		= new JProgressBar(0, 100);
@@ -76,7 +76,7 @@ public class VerbindenView extends JFrame {
 		abbrechenButton		= new JButton("Abbrechen");
 		verbindenIcon 		= new JLabel(Icons.VERBINDEN);
 		bodesuriIcon 		= new JLabel(Icons.BODESURI_START);
-		
+
 		// View initialisieren
 		progressBar.setVisible(false);
 		progressBar.setIndeterminate(true);
@@ -97,11 +97,11 @@ public class VerbindenView extends JFrame {
 		verbindenButton.getActionMap().put( "Verbinden", verbindenButton.getAction() );
 		getRootPane().setDefaultButton(verbindenButton);
 
-		beendenButton.setAction( new BeendenAction("Beenden", this) );
+		beendenButton.setAction( new BeendenAction("Beenden", steuerung) );
 		beendenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ESCAPE"), "Beenden");
 		beendenButton.getActionMap().put( "Beenden", beendenButton.getAction() );
-		
+
 		abbrechenButton.setEnabled(false);
 		abbrechenButton.setAction( new AbbrechenAction("Abbrechen", this) );
 
@@ -132,14 +132,14 @@ public class VerbindenView extends JFrame {
 	public void beenden() {
 		steuerung.beenden();
 	}
-	
+
 	/**
 	 * Versucht die Verbindung zum Server herzustellen mit den angegebenen Parametern
 	 * Hostname, Port und Spielername.
 	 */
 	public void verbinden() {
-		EingabeInfo info = validiereEingaben( hostTextField.getText(), 
-											  spielerTextField.getText(), 
+		EingabeInfo info = validiereEingaben( hostTextField.getText(),
+											  spielerTextField.getText(),
 											  portTextField.getText());
 
 		if ( info.istEingabeGueltig ) {
@@ -148,25 +148,25 @@ public class VerbindenView extends JFrame {
 			konfiguration.defaultHost = info.host;
 			konfiguration.defaultName = info.spieler;
 			konfiguration.defaultPort = info.port;
-			
+
 			// Verbindung herstellen. Der Controller führt die Verbindung aus.
 			VerbindenView.this.steuerung.verbinde(info.host, info.port, info.spieler);
 		} else {
 			JOptionPane.showMessageDialog(null, info.hinweis);
 		}
 	}
-	
+
 	private EingabeInfo validiereEingaben(String host, String spieler, String port_raw) {
 		String hinweis = "";
 		boolean istGueltig = true;
 		int port = 0;
-		
+
 		// Überprüfung des Hostnamens
 		if (host.equals("")) {
 			istGueltig = false;
 			hinweis += "\n - Der Hostname darf nicht leer sein.";
 		}
-		
+
 		// Überprüfung der Port-Eingabe
 		try {
 			port = Integer.parseInt(port_raw);
@@ -176,25 +176,25 @@ public class VerbindenView extends JFrame {
 			istGueltig = false;
 			hinweis += "\n - Der Port muss zwischen 1 und 65535 liegen.";
 		}
-		
+
 		// Überprüfung des Spielernamens
 		if (spieler.equals("")) {
 			istGueltig = false;
 			hinweis += "\n - Der Spielername darf nicht leer sein.";
 		}
-		
+
 		if ( !istGueltig )
 			hinweis = "Folgende Eingaben waren nicht korrekt:" + hinweis;
-		
+
 		return new EingabeInfo(hinweis, istGueltig, host, spieler, port);
 	}
-	
+
 	/**
 	 * Das View in den Modus "Gesperrt" versetzen, indem keine Buttons und
 	 * Felder mehr aktiviert sind und eine Statusanzeige angezeigt wird oder
 	 * diese Sperre aufheben.
-	 * 
-	 * @param istGesperrt 
+	 *
+	 * @param istGesperrt
 	 * 				Falls true, wird das View gesperrt, bei false entsperrt.
 	 */
 	public void setzeEingabeSperre(boolean istGesperrt) {
@@ -202,7 +202,7 @@ public class VerbindenView extends JFrame {
 //		buttonpanel.remove(3);
 //		buttonpanel.add(zuWechseln, 3);
 		beendenButton.setEnabled(!istGesperrt);
-		
+
 		verbindenButton.setEnabled( !istGesperrt );
 		hostTextField.setEnabled( !istGesperrt );
 		portTextField.setEnabled( !istGesperrt );
