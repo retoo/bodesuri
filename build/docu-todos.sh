@@ -13,7 +13,6 @@ echo
 for FILE in $(find doc -name '*.tex'); do 
 	echo $FILE
 	grep --ignore-case \
-	 	--context 2 \
 		--line-number \
 		TODO $FILE
 	echo
