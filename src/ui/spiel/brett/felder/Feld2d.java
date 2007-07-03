@@ -64,14 +64,7 @@ public abstract class Feld2d extends BLabel implements Observer {
         return feld;
     }
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>update()</code> Methode des Observer.
-	 * 
-	 * @param o Zu observierendes Objekt
-	 * @param arg Objekt
-	 */
-    public void update(Observable os, Object arg) {
+    public void update(Observable o, Object arg) {
         positioniereFigur(true);
 
         /* prüfen wir ob hovern */

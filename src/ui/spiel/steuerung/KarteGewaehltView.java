@@ -56,14 +56,7 @@ public class KarteGewaehltView extends JPanel implements Observer {
 		karten.addObserver(this);
 	}
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER Überschreibt <code>update()</code> Methode
-	 * des Observer.
-	 * 
-	 * @param o zu observierendes Objekt
-	 * @param arg Objekt
-	 */
-	public void update(Observable observable, Object arg) {
+	public void update(Observable o, Object arg) {
 		if (arg instanceof ListChangeEvent) {
 			ListChangeEvent change = (ListChangeEvent) arg;
 			if (change.changeType == ListChangeType.CHANGED) {

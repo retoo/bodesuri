@@ -166,13 +166,6 @@ public class BrettView extends JPanel implements Observer {
 		add(hinweisVertiefung);
 	}
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>update()</code> Methode des Observer.
-	 * 
-	 * @param o Zu observierendes Objekt
-	 * @param arg Objekt
-	 */
 	public void update(Observable o, Object arg) {
 		String zaehlerString = "";
 		int zaehler = spiel.getZaehler();

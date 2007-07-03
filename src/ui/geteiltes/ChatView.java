@@ -58,13 +58,6 @@ public class ChatView extends JPanel implements Observer {
 		add(eingabe, BorderLayout.SOUTH);
 	}
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>update()</code> Methode des Observer.
-	 * 
-	 * @param o Zu observierendes Objekt
-	 * @param arg Objekt
-	 */
 	public void update(Observable o, Object arg) {
 		StringBuilder text = new StringBuilder();
 

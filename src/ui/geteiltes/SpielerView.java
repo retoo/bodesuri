@@ -33,14 +33,7 @@ public class SpielerView extends JPanel implements Observer {
 		spieler.addObserver(this);
 	}
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>update()</code> Methode des Observer.
-	 * 
-	 * @param o Zu observierendes Objekt
-	 * @param arg Objekt
-	 */
-	public void update(Observable observable, Object arg) {
+	public void update(Observable o, Object arg) {
 		if (name.getText() != spieler.getName()) {
 			name.setText(spieler.getName());
 		}
@@ -55,13 +48,7 @@ public class SpielerView extends JPanel implements Observer {
 	}
 
 	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>removeNotify</code> Methode des Observer.
-	 * Es wird auch dafür gesorgt, dass alle zugehörigen Objekt sich vom
-	 * Observer abmelden.
-	 * 
-	 * @param o Zu observierendes Objekt
-	 * @param arg Objekt
+	 * Sorge dafür, dass der Observer ausgetragen wird.
 	 */
 	public void removeNotify() {
 		spieler.deleteObserver(this);

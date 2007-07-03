@@ -36,13 +36,6 @@ public class SpielerZustandView extends JPanel implements Observer {
 		spieler.addObserver(this);
 	}
 
-	/**
-	 * OBSERVER-PATTERN: OBSERVER 
-	 * Überschreibt <code>update()</code> Methode des Observer.
-	 * 
-	 * @param o zu observierendes Objekt
-	 * @param arg Objekt
-	 */
 	public void update(Observable o, Object arg) {
 		if (spieler.amZug()) {
 			icon.setIcon(Icons.AM_ZUG);
