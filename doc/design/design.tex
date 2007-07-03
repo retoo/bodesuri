@@ -229,9 +229,49 @@ Die UI-Schicht ist fÃ¼r die graphische Darstellung verantwortlich. Sie kommunizi
 \end{figure}
 
 \clearpage
+\subsubsection{Package ui.geteiltes}
+\label{ssub:package_ui_geteiltes}
+\subparagraph{Beschreibung}
+\label{ssub:beschreibung}
+Dieses Package enthält KLassen, die in verschiedenen Views verwendet werden. Sie dienen als Vereinheitlichung des Spielverhaltens.
+
+\subparagraph{Schnittstellen}
+\label{ssub:schnittstellen}
+\begin{itemize}
+	\item BLabel dient zur Positionierung der Labels zentriert auf einen Koordinatenpunkt.
+	\item ClickMouseAdapter ist ein MouseAdapter, der das gleiche Klickverhalten wie ein JButton hat.
+\end{itemize}
+
+\clearpage
+\subsubsection{Package ui.spiel}
+\label{ssub:package_ui_spiel}
+\subparagraph{Beschreibung}
+\label{ssub:beschreibung}
+Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen für die Darstellung des Spielbrettes, sowie auch der Steuerung der Spielkarten und der Sonderfunktionen.
+
+\begin{itemize}
+	\item Das Package brett kümmert sich um die Darstellung des Spielbrettes, auf dem sich die Figuren, Felder und Spielernamen befinden.
+	\item Das Package steuerung dient zum Ziehen der Karten und "`Tauschen"' der Spielkarten mit dem Partner oder das "`Aufgeben"' in einer Runde.
+\end{itemize}
+
+\clearpage
+\subsubsection{Package ui.verbinden}
+\label{ssub:package_ui_verbinden}
+\subparagraph{Beschreibung}
+\label{ssub:beschreibung}
+Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
+
+\begin{itemize}
+	\item Die Aktion Abbrechen kümmert sich um das Schliessen des Frames.
+	\item Die Aktion Beenden kümmert sich um das kontrollierte Beenden aller Threads.
+	\item Die Aktion Verbinden kümmert sich umd das Verbinden zum Server.
+\end{itemize}
+
+\clearpage
 \subsubsection{Package applikation}
 \label{ssub:package_applikation}
 \subparagraph{Beschreibung}
+\label{ssub:beschreibung}
 Die Applikationsschicht ist fÃ¼r die Zustandssynchronisation (SpielstÃ¤nde usw.) verantwortlich.
 
 \subsubsection{Package applikation.zugentgegennahme}
