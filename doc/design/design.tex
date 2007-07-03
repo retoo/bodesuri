@@ -261,39 +261,47 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 \subparagraph{Beschreibung}
 Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
-\subsubsection{Package applikation.zugentgegennahme}
-\label{ssub:package_applikation_zugentgegennahme}
+\subsubsection{Package applikation.bot}
+\label{ssub:package_applikation_bot}
 \subparagraph{Beschreibung}
-Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch das Klicken (ziehen der Figur) im UI werden Züge an die Problem-Domain weitergeleitet und die Validierung eingeleitet.
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
-	\item Bietet die Methode \texttt{ziehen} an, welche die Zugentgegennahme in einen neuen Status versetzt.
+	\item 
+\end{itemize}
+
+\subsubsection{Package applikation.client.pd}
+\subparagraph{Beschreibung}
+Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
+
+\subparagraph{Schnittstellen}
+\begin{itemize}
+	\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler und das Brett enthält.
 \end{itemize}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{applikation_zugentgegennahme}
-	\caption{Klassendiagramm Zugentgegennahme}
-	\label{fig:applikation_zugentgegennahme}
+	\includegraphics[width=\textwidth]{kd_client_pd}
+	\caption{Klassendiagramm clientspezifische PD}
+	\label{fig:kd_client_pd}
 \end{figure}
 
-\clearpage
-\subsubsection{Package applikation.client}
+\subsubsection{Package applikation.client.controller}
 \label{ssub:package_applikation_client}
 \subparagraph{Beschreibung}
-Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Client-Seite. Verarbeitet die eintretenden Events von GUI und Netzwerk und löst entsprechende Aktionen aus.
+Der Controller für den Client und das zugehörige Interface. Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt.
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
-	\item Bietet verschiedenste Instanzvariablen für das GUI und die zum Server gehörenden Zustände an.
+	\item Der Controller bietet dem UI über das Steuerungs-Interface Methoden an um Events für den Automaten abzusetzen.
+	\item Die abstrakten Methoden des Controllers (Methodennamen beginnen mit zeige), werden in der UI Schicht implementiert. Sie werden vom Automaten genutzt um das UI zu manipulieren.
 \end{itemize}
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{kd_applikation_client}
-	\caption{Klassendiagramm Client in Applikation}
-	\label{fig:kd_applikation_client}
+	\includegraphics[width=\textwidth]{kd_client_controller}
+	\caption{Klassendiagramm Controller}
+	\label{fig:kd_client_controller}
 \end{figure}
 
 \clearpage
