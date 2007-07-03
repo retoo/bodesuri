@@ -54,7 +54,6 @@ Für die logische Strukturierung des Projektes wird eine vierschichtige Architek
 In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Package pd.zugsystem wird von applikation.zugentgegennahme verwendet, um Züge zu verarbeiten.
 \end{itemize}
@@ -65,7 +64,6 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber. 
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Als Einstiegspunkt für die Karten wird der Kartengeber verwendet, der das Mischen und das Ziehen einer Karte vom Stapel bereitstellt.
 \end{itemize}
@@ -84,7 +82,6 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnen die daraus resultierenden Aktionen in der Problem-Domain (Figur von Feld X auf Feld Y verschieben).
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug als Ergebnis hat.
 \end{itemize}
@@ -146,7 +143,6 @@ Der Automat bietet zwei Betriebsmodi an:
 \end{itemize}
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
 \end{itemize}	
@@ -155,7 +151,7 @@ Der Automat bietet zwei Betriebsmodi an:
 	\centering
 	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
 	\caption{Klassendiagramm Automat}
-	\label{fig:dienste_serialisierung}
+	\label{fig:dienste_automat_klassendiagramm}
 \end{figure}
 
 \clearpage
@@ -184,7 +180,6 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für die Netzwerkkommunikation an.
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
 % FIXME: Reto stimmt so nümm (Reto)
@@ -231,11 +226,9 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 \subsubsection{Package ui.geteiltes}
 \label{ssub:package_ui_geteiltes}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Dieses Package enthält Klassen, die in verschiedenen Views verwendet werden. Sie dienen als Vereinheitlichung des Spielverhaltens.
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item BLabel dient zur Positionierung der Labels zentriert auf einen Koordinatenpunkt.
 	\item ClickMouseAdapter ist ein MouseListener, der das gleiche Klickverhalten wie ein ActionListener hat.
@@ -244,7 +237,6 @@ Dieses Package enthält Klassen, die in verschiedenen Views verwendet werden. Si
 \subsubsection{Package ui.spiel}
 \label{ssub:package_ui_spiel}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen für die Darstellung des Spielbrettes, sowie auch der Steuerung der Spielkarten und der Sonderfunktionen.
 
 \begin{itemize}
@@ -255,7 +247,6 @@ Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen f�
 \subsubsection{Package ui.verbinden}
 \label{ssub:package_ui_verbinden}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 \begin{itemize}
@@ -268,17 +259,14 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 \subsubsection{Package applikation}
 \label{ssub:package_applikation}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsubsection{Package applikation.zugentgegennahme}
 \label{ssub:package_applikation_zugentgegennahme}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch das Klicken (ziehen der Figur) im UI werden Züge an die Problem-Domain weitergeleitet und die Validierung eingeleitet.
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Bietet die Methode \texttt{ziehen} an, welche die Zugentgegennahme in einen neuen Status versetzt.
 \end{itemize}
@@ -294,11 +282,9 @@ Die Zugentgegennahme sorgt für die Verbindung vom UI zur Problem-Domain. Durch 
 \subsubsection{Package applikation.client}
 \label{ssub:package_applikation_client}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Client-Seite. Verarbeitet die eintretenden Events von GUI und Netzwerk und löst entsprechende Aktionen aus.
 
 \subparagraph{Schnittstellen}
-\label{ssub:schnittstellen}
 \begin{itemize}
 	\item Bietet verschiedenste Instanzvariablen für das GUI und die zum Server gehörenden Zustände an.
 \end{itemize}
@@ -314,7 +300,6 @@ Der Zustandsautomat des Clients und dessen Zustände. Sorgt für den korrekten A
 \subsubsection{Package applikation.server}
 \label{ssub:package_applikation_server}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
 
 \begin{figure}[h]
@@ -328,7 +313,6 @@ Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten A
 \subsubsection{Package applikation.events}
 \label{ssub:package_applikation_events}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 \begin{figure}[h]
 	\centering
@@ -340,7 +324,6 @@ Dieses Package beinhaltet die Events, die eintreten können und um deren Behandl
 \subsubsection{Package applikation.nachrichten}
 \label{ssub:package_applikation_nachrichten}
 \subparagraph{Beschreibung}
-\label{ssub:beschreibung}
 Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
 \begin{figure}[h]
 	\centering
@@ -380,7 +363,6 @@ Der Main-Thread des Clients ist für die geordnete Koordination zwischen dem Spi
 \end{tabular}
 
 \paragraph{Empfänger-Thread}
-\label{ssub:empfänger_thread}
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
 
@@ -432,7 +414,6 @@ Der Daemon ist ein Teil des Servers. Er nimmt eingehende Verbindungen entgegen u
 \end{tabular}
 
 \paragraph{Empfänger-Thread}
-\label{ssub:empfänger_thread}
 
 Der Empfänger-Thread ist für den Empfang von Netzwerk-Nachrichten zuständig. Er liest aus einem java.net.Socket und speichert die eingegangenen Nachrichten über das Briefkasten-Interface in der EventQueue.
 
@@ -509,7 +490,6 @@ Zustand wenn wir auf die Karte, die wir von unserem Mitspieler erhalten, warten.
 Zustand in welchem der Spieler am Zug ist. Erstellt einen \textbf{ZugAutomaten}, der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende Events werden direkt an den \textbf{ZugAutomaten} weitergeleitet. Dieser sendet einen \textbf{ZugErfasstEvent} wenn er fertig ist. Der Event wird versandt und der Automat geht nach \textbf{NichtAmZug} über.
 
 \subsubsection{SpielEnde}
-\label{ssub:spielende}
 Zustand in welchem sich dem Automat befindet wenn wir das Spiel beenden wollen. In diesem Zustand werden Events, die möglicherweise noch in der Queue warten, konsumiert, das UI heruntergefahren, die Verbindung zum Server geschlossen und der Automat beendet.
 
 \subsection{Zustände ZugAutomat}
@@ -626,7 +606,6 @@ Server schliesst den Zug formell ab. Es wird geprüft, ob das Spiel beziehungswe
 Bei Spielende wird der Gewinner mittels der Nachricht \textbf{SpielFertigNachricht} allen Spielern mitgeteilt.
 	
 \subsubsection{ServerStoppen}
-\label{ssub:spielende}
 Es wird geprüft ob noch irgendwelche \textbf{Spieler} mit dem Server verbunden sind. Ist dies der Fall wird in den Zustand \textbf{WarteBisAlleVerbindungenWeg} gewechselt. Ansonsten wird der \textbf{ServerAutomat} in den \textbf{Endzustand} überführt und beendet sich selber.
 
 \subsubsection{WarteBisAlleVerbindungenWeg}
