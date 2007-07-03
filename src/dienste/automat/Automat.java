@@ -81,9 +81,9 @@ public class Automat {
     }
 
     /**
-     * Initiert den Automaten. Diese Methode muss unbedingt vor dem Aufruf von
-     * run() oder dem ersten step(Event) Aufruf durchgeführt werden.
-     */
+	 * Initiiert den Automaten. Diese Methode muss unbedingt vor dem Aufruf von
+	 * run() oder dem ersten step(Event) durchgeführt werden.
+	 */
     public void init() {
         pruefeAutomat(false);
         start.onEntry();
