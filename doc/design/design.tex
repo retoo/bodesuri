@@ -460,53 +460,53 @@ Abbildung~\vref{fig:zd_applikation_bodesuriclient} zeigt den Ablauf der Zuständ
 
 \subsubsection{ProgrammStart}
 \label{ssub:programmstart}
-Zustand in welchem der Automat beim Start ist. Öffnet den VerbindenView und geht direkt in den Zustand VerbindungErfassen über.
+Zustand in welchem der Automat beim Start ist. Öffnet den \textbf{VerbindenView} und geht direkt in den Zustand \textbf{VerbindungErfassen} über.
 
 
 \subsubsection{VerbindungErfassen}
 \label{ssub:verbinungerfassen}
-Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein VerbindeEvent eintrifft, wird der Zustand Lobby aufgerufen.
+Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein \textbf{VerbindeEvent} eintrifft, wird der Zustand \textbf{Lobby} aufgerufen.
 
 \subsubsection{Lobby}
 \label{ssub:lobby}
 Zustand wenn der Spieler in der Lobby ist.
 \begin{itemize}
-	\item Wenn eine SpielStartNachricht eintrifft, wird der Zustand SpielStart aufgerufen.
-	\item Wenn eine BeitrittsInformation eintrifft, werden die Informationen über die beigetretenen Spieler aktualisiert. Der Zustand wird nicht gewechselt.
-	\item Wenn eine BeitrittVerweigertNachricht eintrifft, wird das Spiel beendet.
+	\item Wenn eine \textbf{SpielStartNachricht} eintrifft, wird der Zustand \textbf{SpielStart} aufgerufen.
+	\item Wenn eine \textbf{BeitrittsInformation} eintrifft, werden die Informationen über die beigetretenen Spieler aktualisiert. Der Zustand wird nicht gewechselt.
+	\item Wenn eine \textbf{BeitrittVerweigertNachricht} eintrifft, wird das Spiel beendet.
 \end{itemize}
 
 \subsubsection{SpielStart}
 \label{ssub:spielstart}
-Zustand in welchem das Spiel (BodesuriView) gestartet wird. Geht direkt in NichtAmZug über.
+Zustand in welchem das Spiel (\textbf{BodesuriView}) gestartet wird. Geht direkt in \textbf{NichtAmZug} über.
 
 \subsubsection{NichtAmZug}
 \label{ssub:nichtamzug}
 Zustand wenn der Spieler nicht am Zug ist.
 \begin{itemize}
-	\item 	Wenn eine ZugAufforderung eintrifft, wird der Zustand AmZug aufgerufen.
-	\item 	Wenn eine AktuellerSpielerInformation eintrifft, wird der aktuelle Spieler dargestellt, der Zustand aber nicht gewechselt.
-	\item 	Wenn eine ZugEingabe eintrifft, wird Zug aus der Eingabe visualisiert. Der Zustand wird nicht gewechselt.
-	\item 	Wenn eine RundenStart-Nachricht eintrifft, werden die erhaltenen Karten gespeichert und der Zustand StarteRunde aufgerufen.
-	\item 	Wenn eine AufgabeInformation eintrifft, wird der Spieler, welcher aufgegeben hat, im UI angepasst. Der Zustand wird nicht gewechselt.
-	\item 	Wenn eine SpielFertigNachricht eintrifft, wird der Gewinner angezeigt und SpielEnde aufgerufen.
+	\item 	Wenn eine \textbf{ZugAufforderung} eintrifft, wird der Zustand \textbf{AmZug} aufgerufen.
+	\item 	Wenn eine \textbf{AktuellerSpielerInformation} eintrifft, wird der aktuelle Spieler dargestellt, der Zustand aber nicht gewechselt.
+	\item 	Wenn eine \textbf{ZugEingabe} eintrifft, wird Zug aus der Eingabe visualisiert. Der Zustand wird nicht gewechselt.
+	\item 	Wenn eine \textbf{RundenStart}-Nachricht eintrifft, werden die erhaltenen Karten gespeichert und der Zustand \textbf{StarteRunde} aufgerufen.
+	\item 	Wenn eine \textbf{AufgabeInformation} eintrifft, wird der Spieler, welcher aufgegeben hat, im UI angepasst. Der Zustand wird nicht gewechselt.
+	\item 	Wenn eine \textbf{SpielFertigNachricht} eintrifft, wird der Gewinner angezeigt und \textbf{SpielEnde} aufgerufen.
 \end{itemize}
 
 \subsubsection{StarteRunde}
 \label{ssub:starterunde}
-Zustand wenn eine neue Runde gestartet wird. Alle Eigenschaften der Spieler werden zurückgesetzt. Der Automat geht nach KarteTauschenAuswaehlen über.
+Zustand wenn eine neue Runde gestartet wird. Alle Eigenschaften der Spieler werden zurückgesetzt. Der Automat geht nach \textbf{KarteTauschenAuswaehlen} über.
 
 \subsubsection{KarteTauschenAuswaehlen}
 \label{ssub:kartetauschenauswaehlen}
-Zustand in dem wir warten bis der Spieler die Karte, die er tauschen möchte, ausgewählt hat. Tritt KarteGewaehltEvent ein, gehen wir in den Zustand KarteTauschenBekommen über.
+Zustand in dem wir warten bis der Spieler die Karte, die er tauschen möchte, ausgewählt hat. Tritt \textbf{KarteGewaehltEvent} ein, gehen wir in den Zustand \textbf{KarteTauschenBekommen} über.
 
 \subsubsection{KarteTauschenBekommen}
 \label{ssub:kartetauschenbekommen}
-Zustand wenn wir auf die Karte, die wir von unserem Mitspieler erhalten, warten. Wenn sie eintrifft, wird der Zustand NichtAmZug aufgerufen.
+Zustand wenn wir auf die Karte, die wir von unserem Mitspieler erhalten, warten. Wenn sie eintrifft, wird der Zustand \textbf{NichtAmZug} aufgerufen.
 
 \subsubsection{AmZug}
 \label{ssub:amzug}
-Zustand in welchem der Spieler am Zug ist. Erstellt einen ZugAutomaten, der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende Events werden direkt an den ZugAutomaten weitergeleitet. Dieser sendet einen ZugErfasstEvent wenn er fertig ist. Der Event wird versandt und der Automat geht nach NichtAmZug über.
+Zustand in welchem der Spieler am Zug ist. Erstellt einen \textbf{ZugAutomaten}, der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende Events werden direkt an den \textbf{ZugAutomaten} weitergeleitet. Dieser sendet einen \textbf{ZugErfasstEvent} wenn er fertig ist. Der Event wird versandt und der Automat geht nach \textbf{NichtAmZug} über.
 
 \subsubsection{SpielEnde}
 \label{ssub:spielende}
@@ -514,7 +514,7 @@ Zustand in welchem sich dem Automat befindet wenn wir das Spiel beenden wollen. 
 
 \subsection{Zustände ZugAutomat}
 \label{sub:zustände_zugautomat}
-Die Erfassung eines Zuges wurde aus dem Client-Automaten ausgelagert. Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zustände des ZugAutomaten. Zustände in grün sind passive Zustände.
+Die Erfassung eines Zuges wurde aus dem Client-Automaten ausgelagert. Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zustände des \textbf{ZugAutomat}. Zustände in grün sind passive Zustände.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{zd_applikation_zugautomat}
@@ -524,39 +524,39 @@ Die Erfassung eines Zuges wurde aus dem Client-Automaten ausgelagert. Abbildung~
 
 \subsubsection{KarteWaehlen}
 \label{ssub:kartewaehlen}
-Zustand wenn der Spieler eine Karte auswählen muss. Wenn der KarteGewaehltEvent eintritt, wird der Zustand StartWaehlen aufgerufen.
+Zustand wenn der Spieler eine Karte auswählen muss. Wenn der \textbf{KarteGewaehltEvent} eintritt, wird der Zustand \textbf{StartWaehlen} aufgerufen.
 
 \subsubsection{StartWaehlen}
 \label{ssub:startwaehlen}
 Zustand wenn der Spieler das Startfeld wählen muss.
 \begin{itemize}
-	\item Trifft ein FeldGewaehltEvent ein, wird das Feld überprüft. Ergibt die Wahl Sinn, wird nach ZielWaehlen gewechselt. Sonst bleiben wir in diesem Zustand.
-	\item Trifft ein KarteGewaehltEvent ein (der Spieler hat eine andere Karte ausgewählt) wird nach KarteWaehlen gewechselt.
-	\item Trifft ein FeldAbgewaehltEvent ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
+	\item Trifft ein \textbf{FeldGewaehltEvent} ein, wird das Feld überprüft. Ergibt die Wahl Sinn, wird nach \textbf{ZielWaehlen} gewechselt. Sonst bleiben wir in diesem Zustand.
+	\item Trifft ein \textbf{KarteGewaehltEvent} ein (der Spieler hat eine andere Karte ausgewählt) wird nach \textbf{KarteWaehlen} gewechselt.
+	\item Trifft ein \textbf{FeldAbgewaehltEvent} ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
 \end{itemize}
 
 \subsubsection{ZielWaehlen}
 \label{ssub:zielwaehlen}
 Zustand wenn der Spieler das Zielfeld wählen muss.
 \begin{itemize}
-	\item Trifft ein FeldGewaehltEvent ein, wird das Feld überprüft. Ergibt die Wahl Sinn, wird nach ZugValidieren gewechselt. Wurde das Startfeld ausgewählt, wird das Startfeld wieder deaktiviert und nach StartWaehlen gewechselt.
-	\item Trifft ein KarteGewaehltEvent ein (der Spieler hat eine andere Karte ausgewählt), wird nach KarteWaehlen gewechselt.
-	\item Trifft ein FeldAbgewaehltEvent ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
-	\item HoverStartEvent und HoverEndeEvent aktiveren bzw. deaktivieren das Hervorheben des Weges.
+	\item Trifft ein \textbf{FeldGewaehltEvent} ein, wird das Feld überprüft. Ergibt die Wahl Sinn, wird nach \textbf{ZugValidieren} gewechselt. Wurde das Startfeld ausgewählt, wird das Startfeld wieder deaktiviert und nach \textbf{StartWaehlen} gewechselt.
+	\item Trifft ein \textbf{KarteGewaehltEvent} ein (der Spieler hat eine andere Karte ausgewählt), wird nach \textbf{KarteWaehlen} gewechselt.
+	\item Trifft ein \textbf{FeldAbgewaehltEvent} ein, wird das Brett zurückgesetzt. Wir bleiben aber in diesem Zustand.
+	\item \textbf{HoverStartEvent} und \textbf{HoverEndeEvent} aktiveren bzw. deaktivieren das Hervorheben des Weges.
 \end{itemize}
 
 \subsubsection{ZugValidieren}
 \label{ssub:zugvalidieren}
 Validiert den erfassten Zug.
 \begin{itemize}
-	\item Ist die Karte eine Sieben und es wurden noch keine 7 Felder gefahren, wechseln wir zurück nach StartWaehlen um eine weitere Bewegung zu erfassen.
-	\item Ist der Zug ungültig, wird eine Fehlermeldung gezeigt und zurück nach ZielWaehlen gewechselt.
-	\item Ist der Zug gültig, wird er zurück an den ClientAutomat übermittelt und nach ZugautomatAbschluss gewechselt.
+	\item Ist die Karte eine Sieben und es wurden noch keine 7 Felder gefahren, wechseln wir zurück nach \textbf{StartWaehlen} um eine weitere Bewegung zu erfassen.
+	\item Ist der Zug ungültig, wird eine Fehlermeldung gezeigt und zurück nach \textbf{ZielWaehlen} gewechselt.
+	\item Ist der Zug gültig, wird er zurück an den \textbf{ClientAutomat} übermittelt und nach \textbf{ZugautomatAbschluss} gewechselt.
 \end{itemize}
 
 \subsubsection{ZugautomatAbschluss}
 \label{ssub:zugautomatabschluss}
-Räumt den Zugautomaten auf. Alle Bewegungen werden zurückgesetzt, die Kartenauswahl deaktiviert, die SteuerungsButtons ausgeblendet und in ZugautomatEndZustand übergegangen.
+Räumt den Zugautomaten auf. Alle Bewegungen werden zurückgesetzt, die Kartenauswahl deaktiviert, die \textbf{SteuerungsButtons} ausgeblendet und in \textbf{ZugautomatEndZustand} übergegangen.
 
 \subsubsection{ZugautomatEndZustand}
 \label{ssub:zugautomatendzustand}
