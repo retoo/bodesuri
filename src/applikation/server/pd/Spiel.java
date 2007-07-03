@@ -1,6 +1,7 @@
 package applikation.server.pd;
 
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Vector;
 
 import pd.ProblemDomain;
@@ -151,13 +152,22 @@ public class Spiel implements SerialisierungsKontext {
 		}
 	}
 
+	/**
+	 * Liefert den Spieler zu einem gegebenen Endpunkt.
+	 *
+	 * @param endpunkt Der Endpunkt des gesuchten Spielers
+	 * @return Der Spieler oder null falls dieser nicht gefunden wurde
+	 */
 	public Spieler getSpieler(EndPunktInterface endpunkt) {
 		Spieler spieler = endpunktZuSpieler.get(endpunkt);
 
 		return spieler;
 	}
 
-	public Vector<Partnerschaft> getPartnerschaften() {
+	/**
+	 * @return Liste aller Partnerschaften
+	 */
+	public List<Partnerschaft> getPartnerschaften() {
 		return partnerschaften;
 	}
 
@@ -174,7 +184,7 @@ public class Spiel implements SerialisierungsKontext {
 
 
 	/*
-	 * Façade für pd.Spiel
+	 * Decorator für pd.Spiel
 	 */
 
 

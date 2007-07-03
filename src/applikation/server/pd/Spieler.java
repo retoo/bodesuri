@@ -1,7 +1,5 @@
 package applikation.server.pd;
 
-import applikation.nachrichten.BeitrittsInformation;
-import applikation.nachrichten.SpielInfo;
 import applikation.nachrichten.SpielerInfo;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
@@ -31,10 +29,11 @@ public class Spieler {
 
 	}
 
-	public void sendeBeitrittsBestaetigung(SpielInfo spielInfo) {
-		sende(new BeitrittsInformation(spielInfo));
-	}
-
+	/**
+	 * Sendet die übergebene Nachricht an den Endpunkt
+	 *
+	 * @param nachricht zu sendende Nachricht
+	 */
 	public void sende(Nachricht nachricht) {
 		endpunkt.sende(nachricht);
 	}
@@ -48,6 +47,11 @@ public class Spieler {
 		return new SpielerInfo(spieler.getName());
 	}
 
+	/**
+	 * @return true falls der Spieler fertig ist
+	 *
+	 * @see pd.spiel.spieler.Spieler#istFertig()
+	 */
 	public boolean istFertig() {
 		return spieler.istFertig();
 	}

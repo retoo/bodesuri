@@ -23,6 +23,9 @@ public class ServerAutomat extends Automat {
 	private static final int ANZ_SPIELER = 4;
 	private Spiel spiel;
 
+	/**
+	 * Initialisiert den Server-Automaten mit vier Spielernö
+	 */
 	public ServerAutomat() {
 		this(ANZ_SPIELER);
 	}
@@ -60,6 +63,11 @@ public class ServerAutomat extends Automat {
 		super.registriere(zustand);
 	}
 
+	/**
+	 * Prüft ob der Server bereit ist um Spieler zu empfangen.
+	 *
+	 * @return true falls der Server bereit ist
+	 */
 	public boolean istBereitFuerSpieler() {
 		return isZustand(EmpfangeSpieler.class);
 	}

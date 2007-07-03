@@ -29,7 +29,7 @@ public class KartenTauschen extends ServerZustand {
 		runde.tausche(spieler, tausch);
 
 		if (runde.isFertigGetauscht()) {
-			runde.tauscheKarten();
+			runde.tauscheAbschluss();
 			return StarteZug.class;
 		}
 
