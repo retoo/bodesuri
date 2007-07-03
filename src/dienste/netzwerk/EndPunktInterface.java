@@ -2,7 +2,8 @@ package dienste.netzwerk;
 
 
 /**
- * Inerface eines Endpunktes. Wird durch die Klasse {@link EndPunkt} implementiert.
+ * Interface eines Endpunktes. Wird durch die Klasse {@link EndPunkt}
+ * implementiert.
  */
 public interface EndPunktInterface {
 

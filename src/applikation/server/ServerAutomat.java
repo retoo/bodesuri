@@ -24,7 +24,7 @@ public class ServerAutomat extends Automat {
 	private Spiel spiel;
 
 	/**
-	 * Initialisiert den Server-Automaten mit vier Spielernö
+	 * Initialisiert den Server-Automaten mit vier Spielern.
 	 */
 	public ServerAutomat() {
 		this(ANZ_SPIELER);

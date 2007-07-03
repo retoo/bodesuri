@@ -8,9 +8,8 @@ import java.net.Socket;
 import dienste.serialisierung.SerialisierungsKontext;
 
 /**
- * Dient dem Server und dem Client zur Kommunikation mit dem jewiligen
+ * Dient dem Server und dem Client zur Kommunikation mit dem jeweiligen
  * Kommunikationspartner.
- *
  */
 public abstract class EndPunkt implements EndPunktInterface {
 	protected Socket socket;

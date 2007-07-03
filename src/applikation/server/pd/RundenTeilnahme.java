@@ -31,8 +31,8 @@ public class RundenTeilnahme {
 	}
 
 	/**
-	 * Schliesst den Tausch der Karte entgültig ab indem die bekommene Karte
-	 * der Kartenliste hinzugefügt wird und dem Spieler mitegeteilt wird.
+	 * Schliesst den Tausch der Karte entgültig ab indem die erhaltene Karte der
+	 * Kartenliste hinzugefügt wird und dies dem Spieler mitgeteilt wird.
 	 */
 	public void tauschAbschluss() {
 		karten.add(karteVomPartner);
@@ -60,7 +60,7 @@ public class RundenTeilnahme {
 
 
 	/**
-	 * @return true falls der Spieler keine Karten mehr ha
+	 * @return true falls der Spieler keine Karten mehr hat
 	 */
 	public boolean hatKeineKartenMehr() {
 		return karten.isEmpty();

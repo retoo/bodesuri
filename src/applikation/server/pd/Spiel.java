@@ -16,7 +16,7 @@ import dienste.netzwerk.server.Server;
 import dienste.serialisierung.SerialisierungsKontext;
 
 /**
- * Repräsentiert eine Gruppe von Spieler die in einem Spiel auf dem Server
+ * Repräsentiert eine Gruppe von Spielern, die in einem Spiel auf dem Server
  * mitspielen.
  */
 public class Spiel implements SerialisierungsKontext {
@@ -51,9 +51,10 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Bildet die Partnerschaften, die im Spiel benötigt werden. Die zuordnung der Spieler zu
-	 * den Partnerschaften erfolgt nach einem vorgegebenen Schema. Das Bilden der Partnerschaften
-	 * funktioniert für 1, 2 oder 4 Spieler.
+	 * Bildet die Partnerschaften, die im Spiel benötigt werden. Die Zuordnung
+	 * der Spieler zu den Partnerschaften erfolgt nach einem vorgegebenen
+	 * Schema. Das Bilden der Partnerschaften funktioniert für 1, 2 oder 4
+	 * Spieler.
 	 */
 	public void partnerschaftenBilden() {
 		if (anzahlSpieler != spielers.size())
@@ -133,7 +134,7 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * Anti-Cheat Funktion die sicherstellt, dass der Endpunkt auch immer der
+	 * Anti-Cheat-Funktion die sicherstellt, dass der Endpunkt auch immer der
 	 * aktuelle Spieler der Runde ist.
 	 *
 	 * @param endpunkt
@@ -208,7 +209,7 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * @param absender Zu entfernenden Spieler
+	 * @param absender Zu entfernender Spieler
 	 * @return true falls es einen solchen Spieler hatte
 	 */
 	public boolean entferne(EndPunktInterface absender) {
@@ -218,9 +219,10 @@ public class Spiel implements SerialisierungsKontext {
     }
 
 	/**
-	 * Zeigt an, ob das Spiel fertig ist oder nicht. Dies wird anhand der Partnerschaften
-	 * ermittelt (sobald eine Partnerschaft fertig ist, ist auch das Spiel fertig).
-	 *
+	 * Zeigt an, ob das Spiel fertig ist oder nicht. Dies wird anhand der
+	 * Partnerschaften ermittelt (sobald eine Partnerschaft fertig ist, ist auch
+	 * das Spiel fertig).
+	 * 
 	 * @return Ob Spiel fertig ist oder nicht
 	 */
 	public boolean istFertig() {
@@ -229,8 +231,9 @@ public class Spiel implements SerialisierungsKontext {
 
 	/**
 	 * Gibt die siegreiche Partnerschaft zurück.
-	 *
-	 * @return Siegreiche Partnerschaft. Falls noch nicht bekannt wird null zurückgegeben.
+	 * 
+	 * @return Siegreiche Partnerschaft. Falls noch nicht bekannt wird null
+	 *         zurückgegeben.
 	 */
 	public Partnerschaft getGewinner() {
 		for (Partnerschaft p : partnerschaften) {

@@ -16,7 +16,7 @@ public class Spieler {
 	public pd.spiel.spieler.Spieler spieler;
 
 	/**
-	 * Erstellt einen neune Spieler
+	 * Erstellt einen neuen Spieler
 	 *
 	 * @param absender
 	 *            Endpunkt des Spielers

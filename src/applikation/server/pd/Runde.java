@@ -10,8 +10,8 @@ import pd.regelsystem.karten.KartenGeber;
 import applikation.nachrichten.KartenTausch;
 
 /**
- * Representiert eine aktuelle Runde. Eine Runde bestet immer aus einer gewissen
- * Anzahl von{@link RundenTeilnahme}n
+ * Repräsentiert eine aktuelle Runde. Eine Runde besteht immer aus einer
+ * gewissen Anzahl von {@link RundenTeilnahme}n.
  */
 public class Runde {
 	private HashMap<Spieler, RundenTeilnahme> teilnahmen;
@@ -78,7 +78,7 @@ public class Runde {
 
 	/**
 	 * Markiert den nächsten Spieler als 'aktuellerSpieler'. Methode darf erst
-	 * aufgerufen ewrden nachdem mindestens ein Spieler hinzugefügt wurde.
+	 * aufgerufen werden, nachdem mindestens ein Spieler hinzugefügt wurde.
 	 */
 	public void rotiereSpieler() {
 		int anzahlSpieler = teilnahmen.size();
@@ -158,7 +158,7 @@ public class Runde {
 	}
 
 	/**
-	 * Liefert das {@link RundenTeilnahme} Objekt für einen gewissen Spieler
+	 * Liefert das {@link RundenTeilnahme}-Objekt für einen gewissen Spieler
 	 *
 	 * @param spieler Spieler der in den Teilnahmen gesucht werden soll
 	 * @return RundenTeilname des übergebenen Spielers

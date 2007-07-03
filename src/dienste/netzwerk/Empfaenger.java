@@ -12,7 +12,7 @@ import dienste.threads.BodesuriThread;
 /**
  * Der Empfänger ist für das Empfangen von {@link Nachricht} über einen
  * {@link EndPunkt} zuständig. Die eingehenden Nachrichten werden der
- * Applikation über das {@link BriefKastenInterface} gemldet. Hinter einem
+ * Applikation über das {@link BriefKastenInterface} gemeldet. Hinter einem
  * solchen Interface steht in den meisten Fällen eine {@link EventQueue}.
  */
 public class Empfaenger extends BodesuriThread {
