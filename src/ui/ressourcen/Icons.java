@@ -10,6 +10,10 @@ import javax.swing.ImageIcon;
 import pd.spiel.spieler.SpielerFarbe;
 import applikation.client.pd.Karte;
 
+/**
+ * Dient zum Laden der einzelnen Icons, die für die grafische Darstellung des
+ * Spieles benötigt werden.
+ */
 final public class Icons {
 	public static final Icon BRETT = ladeBild("/ui/ressourcen/brett.png");
 	public static final Icon HINWEIS = ladeBild("/ui/ressourcen/hinweis_vertiefung.png");
@@ -31,13 +35,13 @@ final public class Icons {
 	public static final Icon KARTEN_AUSWAHL = ladeBild("/ui/ressourcen/karten_auswahl.png");
 	public static final Icon FILZ = ladeBild("/ui/ressourcen/filz.png");
 	public static final Icon KARTEN_PLATZHALTER = ladeBild("/ui/ressourcen/karten/karte_platzhalter.png");
-
 	private static Map<String, Icon> icons = new HashMap<String, Icon>();
 
 	/**
 	 * Lädt das angegeben Icon.
-	 *
-	 * @param pfad Pfad des zu ladenden Icons.
+	 * 
+	 * @param pfad
+	 *            Pfad des zu ladenden Icons.
 	 * @return icon
 	 */
 	private static Icon ladeBild(String pfad) {
@@ -68,7 +72,7 @@ final public class Icons {
 	public static Icon getSpielerGeist(SpielerFarbe farbe) {
 		String name = "figur_geist_" + farbe.toString().toLowerCase() + ".png";
 		return getIcon(name);
-    }
+	}
 
 	public static Icon getFigurIcon(SpielerFarbe farbe) {
 		String name = "figur_" + farbe.toString().toLowerCase() + ".png";
