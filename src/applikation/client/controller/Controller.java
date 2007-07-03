@@ -134,9 +134,15 @@ public abstract class Controller implements Steuerung {
 		eventQueue.enqueue(be);
 	}
 
+	/**
+	 * Den implementierenden Controller zum Zug auffordern.
+	 */
 	public void zugAufforderung() {
     }
 
+	/**
+	 * Karten für den Tausch auswählen.
+	 */
 	public void karteTauschenAuswaehlen() {
     }
 }
