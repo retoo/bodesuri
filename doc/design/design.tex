@@ -913,6 +913,10 @@ Mit dieser Lösung ist der Code zur Findung von Zugeingaben nur einmal vorhanden
 \section{Eingetretene Risiken}
 \label{eingetretene_risiken}
 
+Im Projektplan hatten wir zu Beginn des Projekts einige Risiken aufgezählt, die während des Projekts eintreten könnten. Die folgenden Risiken aus dem Bereich "<Probleme mit Technologien"> sind tatsächlich eingetreten und werden nachfolgend erklärt.
+
+% TODO: Vielleicht noch über das Risiko "Fehlerhafte Zeitplanung"  schreiben, von wegen "Reserven einplanen" und so. Dann ginge diese Sektion über eineinhalb Seiten anstatt über eine und eine verquetschte :).
+
 \subsection{RMI}
 \label{sub:rmi}
 
@@ -952,6 +956,15 @@ Damit ist die Grundlage für eine Serialisierung wie wir sie brauchen vorhanden.
 
 Dank der Serialisierungsschnittstelle von Java ist diese Lösung transparent. Der Vorgang ist in Abbildung~\vref{fig:dienste_serialisierung} detailliert als Sequenzdiagramm dargestellt.
 
+\subsection{Handhabung des Jokers in Bot und Server}
+
+Wenn man die Joker-Karte spielt, kann man auswählen, als welche andere Karte man sie einsetzen möchte. Darum ist die Regel des Jokers eine RegelVeroderung aller Regeln der anderen Karten.
+
+Für den Bot müssen alle Züge gefunden werden, die mit einer Karte möglich sind. Um den Joker einsetzen zu können, muss keine Spezialbehandlung gemacht werden, da die RegelVeroderung einfach alle möglichen Züge der enthaltenen Regeln sammelt und zurückgibt.
+
+Auch auf dem Server ist der Joker kein Spezialfall. Er erhält vom Client eine ZugEingabe mit dem Joker als Karte und einer Bewegung (oder einer Liste von Bewegungen im Falle der Sieben). Daraufhin validiert er die ZugEingabe, was einen Aufruf von \texttt{validieren} der RegelVeroderung zur Folge hat. Diese ist gültig, sobald eine ihrer enthaltenen Regeln gültig ist. Nach der Validierung trägt der Server die Joker-Karte aus den Karten des Spielers aus.
+
+% TODO: Vielleicht noch etwas über die Behandlung des Jokers im GUI schreiben.
 
 \clearpage
 \listoffigures
