@@ -2,7 +2,6 @@ package applikation.client.controller;
 
 import java.util.List;
 
-import pd.regelsystem.ZugEingabe;
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.BeendeEvent;
 import applikation.client.events.ChatEingabeEvent;
@@ -134,9 +133,6 @@ public abstract class Controller implements Steuerung {
 		BeendeEvent be = new BeendeEvent();
 		eventQueue.enqueue(be);
 	}
-
-	public void zugWurdeGemacht(ZugEingabe zug) {
-    }
 
 	public void zugAufforderung() {
     }

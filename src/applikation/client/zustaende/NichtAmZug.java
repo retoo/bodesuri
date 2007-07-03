@@ -60,7 +60,6 @@ public class NichtAmZug extends ClientZustand {
 			return SchwererFehler.class;
 		}
 
-		controller.zugWurdeGemacht(zug);
 		return this.getClass();
 	}
 
