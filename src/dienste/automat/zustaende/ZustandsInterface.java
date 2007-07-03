@@ -1,13 +1,17 @@
 package dienste.automat.zustaende;
 
+/**
+ * Definiert das Interface eines Zustandes. Alle Zustände können, falls gewünscht, einen
+ * onEntry() bzw. onExit() hook implementieren.
+ */
 public interface ZustandsInterface {
 	/**
-	 * onEntry wird augefrufen bevor die Events verarbeitet werden.
+	 * onEntry wird bei eintritt in einen neuen Zustand aufgerufen.
 	 */
 	public void onEntry();
 
 	/**
-	 * onExit wird nach der Verarbeitung der Events aufgerufen.
+	 * onExit wird bei austritt aus einem Zustand aufgerufen
 	 */
 	public void onExit();
 }

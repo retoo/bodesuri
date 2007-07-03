@@ -14,9 +14,8 @@ import dienste.eventqueue.Event;
  *
  * Die Erstellung eines Automaten besteht aus folgenden Schritten:
  * <ul>
- * <il>Situationsabhänige aktive Zustandsklasse erstellen</li>
- * <il>Situationsabhänige passive Zustandsklasse erstellen</li>
- * <il>Zustände erstellen die die beiden obigen Klassen als Basis-Klasse
+ * <il>Situationsabhänige Zustandsklasse erstellen</li>
+ * <il>Zustände erstellen die die obige Klassen als Basis-Klasse
  * verwenden</li>
  * <il>Automat erstellen und alle Zustände mit
  * {@link Automat#registriere(Zustand)} registrieren</li>
@@ -25,6 +24,7 @@ import dienste.eventqueue.Event;
  * verwendet werden.</li>
  * <il>Automat mit run() starten</li>
  * </ul>
+ *
  *
  */
 public class Automat {
@@ -80,6 +80,10 @@ public class Automat {
         eventQuelle = quelle;
     }
 
+    /**
+     * Initiert den Automaten. Diese Methode muss unbedingt vor dem Aufruf von
+     * run() oder dem ersten step(Event) Aufruf durchgeführt werden.
+     */
     public void init() {
         pruefeAutomat(false);
         start.onEntry();
