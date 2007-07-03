@@ -53,10 +53,26 @@ public interface Steuerung {
 	 * Dem Automaten mitteilen, dass er das Spiel beenden soll.
 	 */
 	public abstract void beenden();
-	
+
+	/**
+	 * Teilt dem Automat mit, dass er dass das übergebene Feld gerade gehovered wird.
+	 *
+	 * @param feld betroffenes Feld
+	 */
 	public abstract void hoverStart(Feld feld);
+
+	/**
+	 * Teilt dem Automat mit, dass er dass das übergebene Feld nicht mehr gehoveredwird.
+	 *
+	 * @param feld betroffenes Feld
+	 */
 	public abstract void hoverEnde(Feld feld);
 
+	/**
+	 * Meldet dem Automaten die Eingabe des übergebenen Textes.
+	 *
+	 * @param text zu versendender Text
+	 */
 	public abstract void chatNachricht(String text);
 
 }
