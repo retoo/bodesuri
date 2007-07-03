@@ -2,10 +2,10 @@ package applikation.bot;
 
 import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Vector;
 
 import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.karten.Karte;
+import ui.GUIController;
 import applikation.client.controller.Controller;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.konfiguration.Konfiguration;
@@ -13,16 +13,29 @@ import applikation.client.pd.Chat;
 import applikation.client.pd.Karten;
 import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
-import applikation.nachrichten.SpielerInfo;
 import dienste.eventqueue.EventQueue;
 
+/**
+ * Dieser {@link Controller} ist auf die Bedürfnissse eines Botes zugeschnieden.
+ * Falls gewünscht kann er alle eingehenden Events einem richtigen {@link GUIController}
+ * weiterleiten.
+ */
 public class BotController extends Controller {
 	private Spiel spiel;
 	private Controller gui;
 	private Konfiguration konfig;
 	private Bot bot;
 
-	public BotController(Konfiguration konfig, EventQueue queue, Controller guiController, Bot bot) {
+	/**
+	 * Erstellt einen neuen Botcontroller
+	 *
+	 * @param konfig
+	 * @param queue
+	 * @param guiController
+	 * @param bot
+	 */
+	public BotController(Konfiguration konfig, EventQueue queue,
+			Controller guiController, Bot bot) {
 		this.gui = guiController;
 		this.eventQueue = queue;
 		this.konfig = konfig;
@@ -33,10 +46,10 @@ public class BotController extends Controller {
 		throw new RuntimeException(fehlermeldung);
 	}
 
-    public void zeigeMeldung(String meldung) {
-    	if (gui != null)
-    		gui.zeigeMeldung(meldung);
-    }
+	public void zeigeMeldung(String meldung) {
+		if (gui != null)
+			gui.zeigeMeldung(meldung);
+	}
 
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
 		if (gui != null)
@@ -53,7 +66,7 @@ public class BotController extends Controller {
 		if (gui != null)
 			gui.zeigeVerbinden();
 		else
-			verbinde(konfig.defaultHost, konfig.defaultPort, konfig.defaultName	);
+			verbinde(konfig.defaultHost, konfig.defaultPort, konfig.defaultName);
 	}
 
 	public void herunterfahren() {
@@ -92,11 +105,8 @@ public class BotController extends Controller {
 			aufgeben();
 	}
 
-    public void zeigeSpielerInLobby(Vector<SpielerInfo> spielers) {
-    }
-
-    public void zeigeJokerauswahl(boolean aktiv) {
-    }
+	public void zeigeJokerauswahl(boolean aktiv) {
+	}
 
 	public void verbindungsaufbauAbgebrochen() {
 	}

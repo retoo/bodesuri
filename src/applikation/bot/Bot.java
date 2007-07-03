@@ -1,13 +1,26 @@
 package applikation.bot;
 
-import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 
 import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.karten.Karte;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 
+/**
+ * Interface eins normalen Botes. Botklassen die dieses Interface impelemntieren müssen
+ * fähig sein aus einer Liste möglichen Züge einen intelligenten Zug auszuwählen.
+ */
 public interface Bot {
-	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich, IdentityHashMap<Karte, applikation.client.pd.Karte> karten);
+	/**
+	 * Liefert den gewünschten Zug des Botes zurück.
+	 *
+	 * @param spiel Das Spiel in welchem der Zug gemacht werden soll
+	 * @param moeglich Eine Liste aller möglichen Züge
+	 * @param kartenMap Eine Map die alle pd.Karten nach app.client.pd.Karten mapt.
+	 * @return Der zu machende Zug oder null sollte kein Zug möglich sein.
+	 */
+	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich,
+			Map<Karte, applikation.client.pd.Karte> kartenMap);
 }

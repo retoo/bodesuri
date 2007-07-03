@@ -1,7 +1,7 @@
 package applikation.bot;
 
-import java.util.IdentityHashMap;
 import java.util.List;
+import java.util.Map;
 
 import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.karten.Karte;
@@ -9,11 +9,14 @@ import pd.zugsystem.Bewegung;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 
+/**
+ * Ziemlich dummer Bot der zufällig aus einem der möglichen Züge auswählt.
+ */
 public class Stupidbot implements Bot {
 	public ZugErfasstEvent macheZug(
 					Spiel spiel,
 					List<ZugEingabe> moeglicheZuege,
-					IdentityHashMap<Karte, applikation.client.pd.Karte> kartenRegister) {
+					Map<Karte, applikation.client.pd.Karte> kartenRegister) {
 		if (moeglicheZuege.isEmpty()) {
 			return null;
 		} else {
