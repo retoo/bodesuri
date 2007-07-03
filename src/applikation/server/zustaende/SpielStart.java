@@ -6,7 +6,11 @@ import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Passiver Zustand der das Spiel initialisiert.
+ * Den Spielern wird der Spielstart mit der Nachricht {@link SpielStartNachricht}
+ * angekündet. Die Nachricht {@link SpielStartNachricht} enthält die Namen aller
+ * Spieler und die gebildeten Partnerschaften.
+ *
+ * Geht direkt in den Zustand {@link StartRunde} über.
  */
 public class SpielStart extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {

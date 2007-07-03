@@ -12,10 +12,22 @@ import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 
 /**
- * Zustand während des Spieles. Eingende ZugInformationen werden an
- * alle Spieler verteilt.
+ * Der Server wartet, bis der {@link Spieler} seinen {@link Zug} erfasst hat. Der Spieler kann
+ * entweder den erfassten Zug mittels der Nachricht {@link ZugInformation} melden oder
+ * mittels der Nachricht {@link Aufgabe} aufgeben. Die restlichen {@link Spieler} werden über
+ * die durchgeführte Aktion informiert.
+ *
+ * Hat der Spieler aufgegeben oder keine Karten mehr wird er aus der aktuellen
+ * {@link Runde} entfernt.
+ *
+ * Hat der Server eine Spieler-Reaktion erhalten, sei es {@link ZugInformation} oder {@link Aufgabe}, wird
+ * in den Zustand {@link ZugAbschluss} gewechselt.
  */
 public class WarteAufZug extends ServerZustand {
+	/**
+	 * Verarbeitet die ZugInfo eines Spielers. Ist der Zug gültig wird
+	 * er allen Spielern mitgeteilt.
+	 */
 	Class<? extends Zustand> zugInfo(EndPunktInterface absender, ZugInformation zugInfo) {
 		spiel.sicherStellenIstAktuellerSpieler(absender);
 
@@ -23,6 +35,8 @@ public class WarteAufZug extends ServerZustand {
 		Spieler spieler = runde.getAktuellerSpieler();
 		RundenTeilnahme teilnahme = runde.getTeilname(spieler);
 
+
+		/* Zug validieren */
 		try {
 			Zug zug = zugInfo.zug.validiere();
 			zug.ausfuehren();
@@ -32,26 +46,32 @@ public class WarteAufZug extends ServerZustand {
         	throw new RuntimeException(msg);
         }
 
-
         teilnahme.neuerZug(zugInfo.zug);
         spiel.broadcast(zugInfo);
 
+        /* Sollte der betreffende Spieler keine Karte mehr haben wird er
+         * aus der aktuellen Runde entfernt.
+         */
 		if (teilnahme.hatKeineKartenMehr()) {
 			runde.entferneSpieler(spieler);
 		}
 
-		return VersendeZug.class;
+		return ZugAbschluss.class;
 	}
 
+	/**
+	 * Sollte der Spieler aufgeben wird dies in diesem Handle verarbeitet.
+	 */
 	Class<? extends Zustand> aufgabe(EndPunktInterface absender, Aufgabe aufgabe) {
+		spiel.sicherStellenIstAktuellerSpieler(absender);
+
 		Runde runde = spiel.runde;
 		Spieler spieler = runde.getAktuellerSpieler();
 
-		spiel.sicherStellenIstAktuellerSpieler(absender);
+		/* Spieler aus der aktuellen Runde entfernen */
 		runde.entferneSpieler(spieler);
-
 		spiel.broadcast(new AufgabeInformation(spieler.spieler));
 
-		return VersendeZug.class;
+		return ZugAbschluss.class;
 	}
 }

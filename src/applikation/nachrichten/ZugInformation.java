@@ -4,7 +4,7 @@ import pd.regelsystem.ZugEingabe;
 import dienste.netzwerk.Nachricht;
 
 /**
- * Nachricht mit der Client dem Server und der Server dem Client gemachte Züge
+ * Nachricht mit welcher der Client dem Server und der Server dem Client gemachte Züge
  * mitteilt.
  */
 public class ZugInformation extends Nachricht {

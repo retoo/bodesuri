@@ -19,7 +19,7 @@ import dienste.netzwerk.server.NeueVerbindung;
 import dienste.netzwerk.server.SchwererDaemonFehler;
 
 /**
- * Spezifischer aktiver Server-Zustand
+ * Spezifischer Server-Zustand
  */
 public abstract class ServerZustand extends Zustand {
 	protected Spiel spiel;
@@ -115,7 +115,6 @@ public abstract class ServerZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> neueVerbindung(NeueVerbindung verbindung) {
-		System.out.println("Neue Verbindung von " + verbindung.endpunkt);
 		return this.getClass();
 	}
 

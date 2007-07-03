@@ -3,12 +3,21 @@ package applikation.server.zustaende;
 import applikation.nachrichten.BeitrittVerweigert;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielBeitreten;
+import applikation.server.pd.Spiel;
+import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.EndPunktInterface;
 
 /**
- * Zustand in welchem neue Spieler empfangen werden. Sobald das Spiel komplett
- * ist wird der Zustand {@link SpielStart} aufgerufen.
+ * Der Server empfängt solange neue {@link Spieler} bis das {@link Spiel} vollzählig ist.
+ *
+ * Erhält der Server die Nachricht {@link SpielBeitreten} prüft er ob bereits ein
+ * Spieler dem angegebenen Namen im Spiel vorhanden ist. Falls nicht, bestätigt
+ * er den Beitritt mit der Nachricht {@link SpielBeitreten} und informiert die
+ * restlichen Spieler über den Neuling mit der Nachricht {@link BeitrittsInformation}.
+ *
+ * Sobald alle Spieler komplett sind, wird in den Zustand {@link SpielStart}
+ * gewechselt.
  */
 public class EmpfangeSpieler extends ServerZustand {
 	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,

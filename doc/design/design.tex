@@ -580,45 +580,61 @@ Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zuständ
 
 \subsubsection{ServerStart}
 \label{ssub:serverStart}
-Server wird gestartet. Der TCP-Daemon wird initialisiert und es werden die notwenigen Vorbereitungen getroffen um Spieler zu akzeptieren.
+Server wird gestartet. Der TCP-Daemon wird initialisiert und es werden die notwendigen Vorbereitungen getroffen um Spieler zu akzeptieren. Geht direkt in den Zustand \textbf{EmpfangeSpieler} über.
 
 \subsubsection{EmpfangeSpieler}
 \label{ssub:empfangespieler}
-Neue Spieler können mittels der Nachricht SpielBeitreten dem Spiel beitreten. Dem beigetretenen Spieler wird mit der Nachricht BeitrittBestätigung der Beitritt bestätigt.
+Der Server empfängt solange neue Spieler bis das Spiel vollzählig ist.
 
-Sobald alle Spieler komplett sind, wird in den Zustand StarteSpiel gewechselt.
+Erhält der Server die Nachricht \textbf{SpielBeitreten} prüft er ob bereits ein Spieler dem angegebenen Namen im Spiel vorhanden ist. Falls nicht, bestätigt er den Beitritt mit der Nachricht \textbf{SpielBeitreten} und informiert die restlichen Spieler über den Neuling mit der Nachricht \textbf{BeitrittsInformation}
 
-\subsubsection{StarteSpiel}
+Sobald alle Spieler komplett sind, wird in den Zustand \textbf{SpielStart} gewechselt.
+
+\subsubsection{SpielStart}
 \label{ssub:startespiel}
-Den Spielern wird der Spielstart mit der Nachricht SpielStart angekündet. Die Partnerschaften werden, wie auf Abbildung~\vref{fig:dienste_partner} gezeigt, zwischen den Spielern ausgehandelt.\footnote{Wurde nicht implementiert.}
+Den Spielern wird der Spielstart mit der Nachricht \textbf{SpielStartNachricht} angekündet. Die Partnerschaften werden, wie auf Abbildung~\vref{fig:dienste_partner} gezeigt, zwischen den Spielern ausgehandelt.\footnote{Wurde nicht implementiert.}
+
+Die Nachricht \textbf{SpielStartNachricht} enthält die Namen aller Spieler und die gebildeten Partnerschaften.
+
+Geht direkt in den Zustand \textbf{StartRunde} über.
 
 \subsubsection{StartRunde}
 \label{ssub:startrunde}
-Eine neue Runde wird gestartet und mit der Nachricht RundenStart den Spielern mitgeteilt. Es werden allen Spielern Karten ausgeteilt.
+Eine neue Runde wird gestartet und mit der Nachricht \textbf{RundenStart} den Spielern mitgeteilt. Es werden allen Spielern Karten ausgeteilt.
 
 \subsubsection{KartenTauschen}
 \label{ssub:kartentauschen}
-Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht KartenTausch gemeldet haben. Anschliessend wird die getauschte Karte mit derselben Nachricht dem Partner gemeldet.
+Alle Spieler müssen mit ihrem Partner eine Karte tauschen. Der Server wartet bis alle Spieler die zu tauschende Karte mit der Nachricht \textbf{KartenTausch} gemeldet haben. Anschliessend wird die getauschte Karte mit derselben Nachricht dem Partner gemeldet und es wird in den Zustand \textbf{StarteZug} gewechselt.
 
 \subsubsection{StarteZug}
 \label{ssub:startezug}
-Ein Zug wird gestartet. Der Server bestimmt welcher Spieler an der Reihe ist und teilt ihm dies mit der Nachricht Zugaufforderung mit. 
+Ein neuer Zug wird gestartet. Hierfür bestimmt der Server zuerst wer an der Reihe ist und teilt dies dem betroffenen Spieler mittels der Nachricht \textbf{ZugAufforderung} mit. 
+
+Die restlichen Spielern werden mit der Nachricht \textbf{AktuellerSpielerInformation} darüber informiert wer gerade am Zug ist.
+
+Anschliessend wird direkt in den Zustand \textbf{WarteAufZug} gewechselt.
 
 \subsubsection{WarteAufZug}
 \label{ssub:warteaufzug}
-Der Server wartet, bis der Spieler seinen Zug erfasst hat. Sobald dieser mitgeteilt wurde, wechselt der Server in den Zustand VersendeZug.
+Der Server wartet, bis der \textbf{Spieler} seinen \textbf{Zug} erfasst hat. Der Spieler kann entweder den erfassten \textbf{Zug} mittels der Nachricht \textbf{ZugInformation} melden oder mittels der Nachricht \textbf{Aufgabe} aufgeben. Die restlichen Spieler werden über die durchgeführte Aktion informiert.
 
-\subsubsection{SendeZug}
-\label{ssub:sendezug}
-Der erfasste Zug wird auf Richtigkeit geprüft und anschliessend allen Spielern mitgeteilt.
+Hat der Spieler aufgegeben oder keine Karten mehr wird er aus der aktuellen \textbf{Runde} entfernt.
+
+Hat der Server eine Spieler-Reaktion erhalten, sei es \textbf{ZugInformation} oder Aufgaben, wird in den Zustand \textbf{ZugAbschluss} gewechselt.
 
 \subsubsection{ZugAbschluss}
 \label{ssub:zugabschluss}
-Server schliesst den Zug formell ab. Es wird geprüft, ob das Spiel beziehungsweise die Runde abgeschlossen ist und in den Zustand SpielEnde respektive RundenStart gewechselt. Ist weder das Spiel noch die Runde fertig wird in den Zustand StartZug gewechselt.
+Server schliesst den Zug formell ab. Es wird geprüft, ob das Spiel beziehungsweise die Runde abgeschlossen ist und in den Zustand \textbf{ServerStoppen} respektive \textbf{StartRunde} gewechselt. Ist weder das Spiel noch die Runde fertig wird in den Zustand \textbf{StarteZug} gewechselt.
 
-\subsubsection{Spielende}
+Bei Spielende wird der Gewinner mittels der Nachricht \textbf{SpielFertigNachricht} allen Spielern mitgeteilt.
+	
+\subsubsection{ServerStoppen}
 \label{ssub:spielende}
-Das Ende des Spieles wird mittels der Nachricht SpielEnde den Spielern mitgeteilt.
+Es wird geprüft ob noch irgendwelche \textbf{Spieler} mit dem Server verbunden sind. Ist dies der Fall wird in den Zustand \textbf{WarteBisAlleVerbindungenWeg} gewechselt. Ansonsten wird der \textbf{ServerAutomat} in den \textbf{Endzustand} überführt und beendet sich selber.
+
+\subsubsection{WarteBisAlleVerbindungenWeg}
+
+Der Server wartet bis alle verbleibenden Verbindungen beendet sind. Sobald dies der Fall ist wird der \textbf{ServerAutomat} in den \textbf{Endzustand} überführt und beendet sich selber.
 
 \clearpage
 \subsection{Nachrichten \& Events}

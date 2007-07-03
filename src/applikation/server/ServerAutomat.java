@@ -1,17 +1,16 @@
 package applikation.server;
 
 import applikation.server.pd.Spiel;
-import applikation.server.zustaende.ServerStoppen;
-import applikation.server.zustaende.ServerZustand;
 import applikation.server.zustaende.EmpfangeSpieler;
 import applikation.server.zustaende.KartenTauschen;
-import applikation.server.zustaende.WarteBisAlleVerbindungenWeg;
 import applikation.server.zustaende.ServerStart;
-import applikation.server.zustaende.StartRunde;
+import applikation.server.zustaende.ServerStoppen;
+import applikation.server.zustaende.ServerZustand;
 import applikation.server.zustaende.SpielStart;
+import applikation.server.zustaende.StartRunde;
 import applikation.server.zustaende.StarteZug;
-import applikation.server.zustaende.VersendeZug;
 import applikation.server.zustaende.WarteAufZug;
+import applikation.server.zustaende.WarteBisAlleVerbindungenWeg;
 import applikation.server.zustaende.ZugAbschluss;
 import dienste.automat.Automat;
 import dienste.automat.EventQuelleAdapter;
@@ -44,7 +43,6 @@ public class ServerAutomat extends Automat {
 		registriere(new StartRunde());
 		registriere(new StarteZug());
 		registriere(new WarteAufZug());
-		registriere(new VersendeZug());
 		registriere(new ZugAbschluss());
 		registriere(new WarteBisAlleVerbindungenWeg());
 		registriere(new KartenTauschen());
