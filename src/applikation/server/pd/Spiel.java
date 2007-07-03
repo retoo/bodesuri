@@ -231,4 +231,19 @@ public class Spiel implements SerialisierungsKontext {
 
 	    return null;
     }
+
+	/**
+	 * Prüft ob es bereits einen Spieler mit dem übergebenen Namen im Spiel hat.
+	 *
+	 * @param spielerName
+	 * @return true solle es bereis einen solchen Spieler haben
+	 */
+	public boolean hatBereitsSpieler(String spielerName) {
+		for (Spieler s : spielers) {
+			if (s.getName().equals(spielerName)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

@@ -27,9 +27,9 @@ public class Lobby extends ClientZustand {
 	public void onEntry() {
 		controller.zeigeLobby(spiel.getSpieler(), spiel.chat);
 	}
-	
-    Class<? extends Zustand> beitrittVerweigert() {
-    	controller.zeigeFehlermeldung("Das Spiel ist bereits voll.");
+
+    Class<? extends Zustand> beitrittVerweigert(BeitrittVerweigert bv) {
+    	controller.zeigeFehlermeldung(bv.meldung);
     	return SpielEnde.class;
     }
 

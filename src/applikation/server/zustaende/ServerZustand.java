@@ -133,9 +133,7 @@ public abstract class ServerZustand extends Zustand {
 	 */
 	Class<? extends Zustand> spielBeitreten(EndPunktInterface absender,
 	                                        SpielBeitreten beitreten) {
-
-		/* TODO: Philippe: kannst du das noch im Client einbauen (-reto) */
-		absender.sende(new BeitrittVerweigert());
+		absender.sende(new BeitrittVerweigert("Der Server ist bereits voll."));
 		absender.ausschalten();
 		return this.getClass();
 	}

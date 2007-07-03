@@ -52,14 +52,18 @@ public class Spieler {
 		return spieler.istFertig();
 	}
 
+	public String getName() {
+		return spieler.getName();
+	}
+
 	public String toString() {
 		return spieler.getName() + " (" + endpunkt + ")";
 	}
-	
+
 	public Spieler getPartner() {
 		return partner;
 	}
-	
+
 	public void setPartner(Spieler partner) {
 		this.partner = partner;
 		if (partner != null) {

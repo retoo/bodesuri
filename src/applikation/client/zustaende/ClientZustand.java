@@ -109,7 +109,7 @@ public class ClientZustand extends Zustand {
 	    else if (nachricht instanceof SpielAbbruch)
 	    	return spielAbbruch((SpielAbbruch) nachricht);
 	    else if (nachricht instanceof BeitrittVerweigert)
-	    	return beitrittVerweigert();
+	    	return beitrittVerweigert((BeitrittVerweigert) nachricht);
 	    else
 	    	System.out.println("Nachricht " + nachricht.getClass()
 	    	                   + " ist (noch) nicht implementiert!");
@@ -141,7 +141,7 @@ public class ClientZustand extends Zustand {
 
 		return this.getClass();
     }
-	
+
 	Class<? extends Zustand> beende() {
 		return SpielEnde.class;
 	}
@@ -193,10 +193,10 @@ public class ClientZustand extends Zustand {
 
 		return this.getClass();
 	}
-	
+
 	Class<? extends Zustand> spielAbbruch(SpielAbbruch nachricht) {
 		controller.zeigeFehlermeldung(nachricht.nachricht);
-		
+
 		return SpielEnde.class;
 	}
 
@@ -234,8 +234,8 @@ public class ClientZustand extends Zustand {
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
 		return keinUebergang();
 	}
-	
-	Class<? extends Zustand> beitrittVerweigert() {
+
+	Class<? extends Zustand> beitrittVerweigert(BeitrittVerweigert bv) {
 		return keinUebergang();
 	}
 
