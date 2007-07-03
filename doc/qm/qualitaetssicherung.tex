@@ -182,6 +182,14 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		\midrule
 		*a & Verbindung abgebrochen & Serverprozess beenden (Absturz simulieren). & [Ok|Err]  \\
 		\cline{3-4} & & Das Spiel wird mit einer Fehlermeldung abgebrochen. Alle Parteien werden über das Ende informiert. & \\
+		\midrule
+		*a & Server starten, vier Clients starten. Spiel beginnen und einen Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok|Err] \\
+		\midrule
+		*a & Client Starten und verbinden. Kein Server gestartet. & Client meldet Fehler beim Verbindungsaufbau und beendet sich nach der Bestätigung. & [Ok|Err] \\
+		\midrule
+		*a & Server starten, Client starten. Client beenden. & Server bricht mit einer Fehlermeldung sauber ab. & [Ok|Err] \\
+		\midrule
+		*a & Server starten, zwei Clients starten, ein Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok|Err]  \\
 		\bottomrule
 	\end{tabular}
 	
@@ -260,8 +268,8 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		\bottomrule
 	\end{tabular}
 	
-\subsection{Tests anhand konkreter Spielsituationen}
-
+\subsection{Weiterführende Tests}
+	
 \section{Verbesserungsmöglichkeiten}
 
 \subsection{Bekannte Einschränkungen}
