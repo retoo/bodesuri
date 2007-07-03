@@ -941,8 +941,7 @@ Wenn ein Spieler mit all seinen Figuren in den Himmel ziehen konnte, wird im Spi
 
 Zu Beginn gingen wir von der Annahme aus, dass man dieses Verhalten im Regel- und Zugssystem als separat zu behandelnden Spezialfall implementieren muss. Bei der Umsetzung hat sich dann jedoch gezeigt, dass ein Spieler einfach in die Rolle des Partners schlüpfen kann und so das vorhandene Regel- und Zugsystem genau gleich auf diese Zugeingaben reagiert.
 
-Ein wichter Bestandteil der Lösung ist es, die Partnerschaften, welche auf dem Server gebildet werden, konsistent auf die Clients zu synchronisieren. Dies ist darum sehr wichtig, da beide Teile -- der Client und der Server -- die Zugeingaben validieren und es darum ansonsten entweder auf einem Client oder dem Server zu einem Regelverstoss (fehlgeschlagene Validierung) führen würde. Bei der Validierung eines Zuges wird nun zuerst der betroffene Spieler ermittelt. Dies ist immer der Spieler, für den der Zug ausgeführt wird oder anders ausgedrückt der Spieler, dem die Figur gehört. Im Normalfall ist dies der Spieler selbst. Ist der Spieler jedoch fertig, so wird der Zug automatisch für seinen Partner ausgeführt.
-
+Ein wichtiger Bestandteil der Lösung ist es, die Partnerschaften, welche auf dem Server gebildet werden, konsistent auf die Clients zu synchronisieren. Dies ist darum sehr wichtig, da beide Teile -- der Client und der Server -- die Zugeingaben validieren und es darum ansonsten entweder auf einem Client oder dem Server zu einem Regelverstoss (fehlgeschlagene Validierung) führen würde. Bei der Validierung eines Zuges wird nun zuerst der betroffene Spieler ermittelt. Dies ist immer der Spieler, für den der Zug ausgeführt wird oder anders ausgedrückt der Spieler, dem die Figur gehört. Im Normalfall ist dies der Spieler selbst. Ist der Spieler jedoch fertig, so wird der Zug automatisch für seinen Partner ausgeführt.
 
 \subsection{Handhabung des Jokers in Bot und Server}
 
@@ -953,6 +952,21 @@ Für den Bot müssen alle Züge gefunden werden, die mit einer Karte möglich si
 Auch auf dem Server ist der Joker kein Spezialfall. Er erhält vom Client eine ZugEingabe mit dem Joker als Karte und einer Bewegung (oder einer Liste von Bewegungen im Falle der Sieben). Daraufhin validiert er die ZugEingabe, was einen Aufruf von \texttt{validieren} der RegelVeroderung zur Folge hat. Diese ist gültig, sobald eine ihrer enthaltenen Regeln gültig ist. Nach der Validierung trägt der Server die Joker-Karte aus den Karten des Spielers aus.
 
 % TODO: Vielleicht noch etwas über die Behandlung des Jokers im GUI schreiben.
+
+\subsection{Bot}
+
+Als das erste Mal die Idee, einen Bot implementieren, auftauchte schien dies ein Ding der Unmöglichkeit zu sein. Im Laufe der Weiterentwicklungen der Problem-Domain entdeckten wir aber eine Funktionalität die wir auch für den Bot relativ gut brauchen konnten. Und zwar schreiben die Dog-Regeln vor, dass die aktuelle Runde nur aufgegeben werden darf wenn kein Zug mehr möglich. Also selbst wenn nur noch für den Spieler \emph{negative} Züge möglich sind, er muss die Züge ausführen. Hierfür muss die PD herausfinden prüfen ob und welche Züge noch möglich sind. 
+
+Dieselbe Logik konnte nun auch für den Bot verwendet werden. Anstatt den erst-besten möglichen Zug zu suchen muss sie alle möglichen Züge zusammensammeln und anschliessend dem Bot zur Auswahl stellen. 
+
+Der aktuelle Bot (Klasse StupidBot) wählt von diesen Zügen zufällig irgend einen Zug aus und verwendet ansonsten keine weitere Logik. Interessanterweise wird aber eine Partie mit vier solchen Bots trotzdem innerhalb brauchbarer Zeit (ca 900 Züge) durchgespielt. Gegen einen Menschen haben sie natürlich keine Chance, aber sie erwiesen sich in zwei Situationen als erstaunlich nützlich:
+
+% TODO: Robin: wollen wir da noch deinen Text zum thema möglicheZuege/Kannziehen miteinabinden? (-reto)
+
+\begin{enumerate}
+	\item \textbf{BodesuriDemo} Die mainMethode der Klasse BodesuriDemo startet einen Server, drei Bots und einen normalen Client. Die Demo ist eine einfacher und bequemer Weg um das Spiel auszurpobieren. Für reine Demo-Zwecke genügt der Bot vollkommen.
+	\item \textbf{ServerTest} Eine Bot-Partie ohne GUI dauert ungefähr 20 Sekunden und eignet sich überraschenderweise erstaunlich gut um grosse Teile der Codebasis zu testen. Der Test ist relativ simpel, er ist nur erfolgreich wenn sich das Spiel in brauchbarer Zeit erfolgreich beendet. Da die ganze Client/Server Logik relativ strikt ist führt ein kleiner Fehler in der Regel sofort zu einem Absturz und somit zu einem Fehlschlagen des tests
+\end{enumerate}
 
 \clearpage
 \listoffigures
