@@ -9,12 +9,12 @@ import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;
 
 /**
- * Interface eins normalen Botes. Botklassen die dieses Interface impelemntieren müssen
+ * Interface eins normalen Bots. Botklassen die dieses Interface impelemntieren müssen
  * fähig sein aus einer Liste möglichen Züge einen intelligenten Zug auszuwählen.
  */
 public interface Bot {
 	/**
-	 * Liefert den gewünschten Zug des Botes zurück.
+	 * Liefert den gewünschten Zug des Bots zurück.
 	 *
 	 * @param spiel Das Spiel in welchem der Zug gemacht werden soll
 	 * @param moeglich Eine Liste aller möglichen Züge

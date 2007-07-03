@@ -8,7 +8,7 @@ import java.util.Vector;
  * KartenGeber, der einen KartenStapel verwaltet und Karten verteilt.
  */
 public class KartenGeber {
-	/*
+	/**
 	 * 13 * 4 Farben + 3 Joker = 55 Karten = ein Deck
 	 * 55 Karten * 2 = 110 Karten
 	 */
@@ -20,7 +20,7 @@ public class KartenGeber {
 		mischen();
 	}
 
-	/*
+	/**
 	 * Initialisert Kartenstapel und Karten. Eine Karten wird über die
 	 * Farbe erzeugt. Die Farbe ist nachher nur noch als Attribut in den
 	 * Karten vorhanden. Das Deck wird gemischelt.
@@ -37,7 +37,7 @@ public class KartenGeber {
 		}
 	}
 
-	/*
+	/**
 	 * Wechselt zwei Karten innerhalb des Decks, sofern die Indizes innerhalb des
 	 * gültigen Bereichs liegen.
 	 */

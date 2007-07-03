@@ -16,6 +16,10 @@ import applikation.client.pd.Spiel;
 import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 
+/**
+ * Der GUIController implementiert das Verhalten des Controllers für das Swing-GUI
+ * und stellt sicher, dass das passende Look-And-Feel für das jeweilige OS geladen wird.
+ */
 public class GUIController extends Controller {
 	private VerbindenView verbindenView;
 	private LobbyView lobbyView;

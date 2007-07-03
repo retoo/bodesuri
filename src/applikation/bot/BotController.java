@@ -5,7 +5,6 @@ import java.util.List;
 
 import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.karten.Karte;
-import ui.GUIController;
 import applikation.client.controller.Controller;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.konfiguration.Konfiguration;
@@ -16,9 +15,8 @@ import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 
 /**
- * Dieser {@link Controller} ist auf die Bedürfnissse eines Botes zugeschnieden.
- * Falls gewünscht kann er alle eingehenden Events einem richtigen {@link GUIController}
- * weiterleiten.
+ * Der BotController leitet die Ausgabe an den GUIController weiter und nimmt 
+ * als Eingabe-Daten die Outputs des Bots um einen Computer-Spieler zu simulieren.
  */
 public class BotController extends Controller {
 	private Spiel spiel;
@@ -27,15 +25,18 @@ public class BotController extends Controller {
 	private Bot bot;
 
 	/**
-	 * Erstellt einen neuen Botcontroller
-	 *
+	 * Erstellt einen neuen BotController.
+	 * 
 	 * @param konfig
+	 * 			Defaultkonfiguration.
 	 * @param queue
+	 * 			Ereignis-Warteschlange des Automaten.
 	 * @param guiController
+	 * 			GUIController.
 	 * @param bot
+	 * 			Bot.
 	 */
-	public BotController(Konfiguration konfig, EventQueue queue,
-			Controller guiController, Bot bot) {
+	public BotController(Konfiguration konfig, EventQueue queue, Controller guiController, Bot bot) {
 		this.gui = guiController;
 		this.eventQueue = queue;
 		this.konfig = konfig;
