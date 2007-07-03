@@ -118,9 +118,6 @@ public class BotController extends Controller {
 	public void verbindungsaufbauAbgebrochen() {
 	}
 
-	public void beenden() {
-	}
-
 	/**
 	 * @return Anzahlzuege die dieser Bot gemacht hat.
 	 */
