@@ -11,6 +11,16 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	}
 
 	/**
+	 * Die Weglänge muss stimmen.
+	 */
+	public void testVorwaertsFalscheWegLaenge() {
+		start = bank(0);
+		ziel  = start.getNtesFeld(4);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(5));
+	}
+
+	/**
 	 * Testet die Vorwärtsregel, wenn beim Zug auch eine
 	 * Figur gefressen wird (Figur auf Zielfeld).
 	 * 
@@ -64,7 +74,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	 * 
 	 * @throws RegelVerstoss
 	 */
-	public void testVorwaertsAufBankFeldBesetztVonBesitzer()
+	public void testVorwaertsAufVonBesitzerBesetzteBank()
 			throws RegelVerstoss {
 		start = bank(0).getVorheriges().getVorheriges();
 		ziel  = bank(0);
@@ -104,7 +114,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	 * 
 	 * @throws RegelVerstoss
 	 */
-	public void testVorwaertsUeberBankFeldBesetzt() throws RegelVerstoss {
+	public void testVorwaertsUeberBesetzteBank() throws RegelVerstoss {
 		start = bank(0).getVorheriges();
 		ziel  = bank(0).getNaechstes();
 		lager(0).versetzeFigurAuf(start);
@@ -119,7 +129,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	/**
 	 * Über geschützte Bankfelder kann nicht gezogen werden.
 	 */
-	public void testVorwaertsUeberBankFeldBesetztVonBesitzer() {
+	public void testVorwaertsUeberVonBesitzerBesetzteBank() {
 		start = bank(0).getVorheriges();
 		ziel  = bank(0).getNaechstes();
 		lager(0).versetzeFigurAuf(bank(0));
@@ -133,7 +143,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	 * 
 	 * @throws RegelVerstoss
 	 */
-	public void testVorwaertsAufHimmelFeld() throws RegelVerstoss {
+	public void testVorwaertsInHimmel() throws RegelVerstoss {
 		start = bank(0).getVorheriges();
 		ziel  = himmel(0);
 		lager(0).versetzeFigurAuf(start);
@@ -143,7 +153,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	/**
 	 * Vorwärtszug in fremden Himmel ist nicht möglich.
 	 */
-	public void testVorwaertsAufFremdesHimmelFeld() {
+	public void testVorwaertsInFremdenHimmel() {
 		start = himmel(0);
 		ziel  = himmel(0).getNtesFeld(2);
 		lager(1).versetzeFigurAuf(start);
@@ -157,7 +167,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	 * 
 	 * @throws RegelVerstoss
 	 */
-	public void testVorwaertsAufHimmelFeldNachStart() throws RegelVerstoss {
+	public void testVorwaertsInHimmelNachStart() throws RegelVerstoss {
 		start = lager(0);
 		ziel  = bank(0);
 		sollteValidieren(new StartRegel());
@@ -182,7 +192,7 @@ public class VorwaertsRegelTest extends RegelTestCase {
 	/**
 	 * In ein LagerFeld kann nicht gezogen werden.
 	 */
-	public void testVorwaertsAufLagerFeld() {
+	public void testVorwaertsAufLager() {
 		start = bank(0);
 		ziel  = lager(0);
 		lager(0).versetzeFigurAuf(start);

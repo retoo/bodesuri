@@ -9,6 +9,16 @@ import pd.regelsystem.verstoesse.RegelVerstoss;
  */
 public class RueckwaertsRegelTest extends RegelTestCase {
 	/**
+	 * Die Weglänge muss stimmen.
+	 */
+	public void testRueckwaertsFalscheWegLaenge() {
+		start = bank(0).getNtesFeld(4);
+		ziel  = bank(0);
+		lager(0).versetzeFigurAuf(start);
+		sollteVerstossGeben(new VorwaertsRegel(5));
+	}
+
+	/**
 	 * Validiert einen Rückwärtszug, dessen Ziel ein Bankfeld ist.
 	 * Bankfeld.
 	 * @throws RegelVerstoss
