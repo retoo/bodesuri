@@ -15,6 +15,13 @@ public abstract class Event {
 		return getClass().getSimpleName();
 	}
 
+	/**
+	 * Subklassen können diese Methode überschreiben und false zurückliefern
+	 * wenn die betroffenen Evens nicht mittels Debug-Meldungen gemeldet werden sollen.
+	 *
+	 * @return liefert true zurück wenn es sich bei diesem Event um einen
+	 *         'leisen' Event handeln soll.
+	 */
 	public boolean istLeise() {
 		return false;
 	}
