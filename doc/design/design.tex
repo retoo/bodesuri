@@ -3,7 +3,6 @@
 \newcommand{\dokumenttitel}{Design}
 \usepackage{../bodesuri}
 
-
 \begin{document}
 
 \input{../titelseite}
@@ -87,7 +86,7 @@ Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufg
 \subparagraph{Schnittstellen}
 \label{ssub:schnittstellen}
 \begin{itemize}
-	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden und über sie wird validiert, was zu einem ausführbaren Zug führt.
+	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug als Ergebnis hat.
 \end{itemize}
 
 \begin{figure}[h]
@@ -138,12 +137,12 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 \subsubsection{Package dienste.automat}
 \label{ssub:package_dienste}
 \subparagraph{Beschreibung}
-Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her. 
+Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her.
 
 Der Automat bietet zwei Betriebsmodi an:
 \begin{itemize}
-	\item Eigenständiger automatischer Betrieb in einem dedizierte Thread. Der Automat liest neue Ereiggnise aus einer Synched Queue und verarbeitet diese. Sind keine Ereignisse anstehend blockiert der Automat
-	\item Ferngesteuerter integrierter Betrieb. Der Automat wird vom Caller bei anstehnenden Ereignissen  aufgerufen und verarbeitet dieser exkat ein Ereignis (inklusive den dazugehörenden Zuständen) und übergibt anschliessend die Kontrolle wieder dem Caller. Der Modus eignet sich speziell für Unterautomaten bei welchen man keinen zusätzlichen Thread und eine seperate Ereignisqueue einsetzen möchte. Der Hauptautomat liest die Events ein und gibt sie direkt dem Unterautomaten weiter. 
+	\item Eigenständiger automatischer Betrieb in einem dedizierten Thread. Der Automat liest neue Ereignisse aus einer synchronisierten Queue und verarbeitet diese. Sind keine Ereignisse anstehend, blockiert der Automat.
+	\item Ferngesteuerter integrierter Betrieb. Der Automat wird vom Caller bei anstehenden Ereignissen aufgerufen, verarbeitet exakt ein Ereignis (inklusive den dazugehörigen Zuständen) und übergibt anschliessend die Kontrolle wieder dem Caller. Der Modus eignet sich speziell für Unterautomaten bei welchen man keinen zusätzlichen Thread und eine seperate Ereignisqueue einsetzen möchte. Der Hauptautomat liest die Events ein und gibt sie direkt dem Unterautomaten weiter. 
 \end{itemize}
 
 \subparagraph{Schnittstellen}
@@ -809,7 +808,7 @@ Das Spiel besteht aus verschiedenen Views:
 \section{Designentscheidungen}
 
 \subsection{Zustandsautomat}
-Unser Spiel hat einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite. Der grösste Teil der Abläufe wird von Events im Userinterface oder von Netzwerk-Nachrichten ausgelöst. Darum haben wir uns entschlossen, den Spielablauf in einem Zustandsautomaten zu verpacken.
+Unser Spiel hat einen komplexen Ablauf, sowohl auf der Client- als auch auf der Serverseite. Der grösste Teil der Abläufe wird von Events im UI oder von Netzwerk-Nachrichten ausgelöst. Darum haben wir uns entschlossen, den Spielablauf in einem Zustandsautomaten zu verpacken.
 
 Damit ist es möglich, den Programmablauf, der sonst in komplexem nacheinander aufzurufendem Programmcode verpackt wäre, in verschiedene Klassen auszulagern und den \emph{Gap} zwischen dem Code und den in der Elaboration gezeichneten Zustandsdiagrammen klein zu halten.
 
@@ -861,7 +860,7 @@ Das neue Modell sah vor, dass der grosse Teil der Kommunikation über Observer p
 
 Um eine Vergrösserung der Problem-Domain zu verhindern begannen wir, einige ihrer Teile in Form von \emph{Dekoratoren} in der Applikationsschicht abzubilden. Diese Dekoratoren bildeten mehr oder minder dieselbe Funktionalität\footnote{Dafür leiteten sie die Methodenaufrufe einfach direkt in die darunterliegende Schicht weiter.} ab und observierten die jeweils dekorierten Objekte in der Problem-Domain. Zusätzlich beinhalteten sie aber Felder und Logik, die nur für die Applikationschicht relevant sind, so zum Beispiel den aktuellen Selektierungszustand.
 
-Mit diesem System wird das User-Interface über alle Änderungen informiert, sei es nun eine Änderung am PD-Objekt oder am Dekorator in der Applikationsschicht. Sollte eine alternative GUI-Implementierung kein Interesse an diesen Events haben, kann es diese entweder ignorieren oder sich gar nicht erst als Observer registrieren.
+Mit diesem System wird das UI über alle Änderungen informiert, sei es nun eine Änderung am PD-Objekt oder am Dekorator in der Applikationsschicht. Sollte eine alternative GUI-Implementierung kein Interesse an diesen Events haben, kann es diese entweder ignorieren oder sich gar nicht erst als Observer registrieren.
 
 Diese Änderungen zog grössere Arbeiten nach sich, aber unter dem Strich hat sie die Logik bedeutend einfacher gemacht. Es hätte jedoch einige doppelte Arbeit erspart werden können, wenn diese bessere Lösung früher erkannt worden wäre.
 
