@@ -26,8 +26,10 @@ public class BodesuriArena {
 			Konfiguration konfig = new Konfiguration();
 			konfig.defaultName = nicks.get(i);
 			konfig.debugAutoLogin = true;
+			konfig.debugMeldungen = true;
+			konfig.debugBotsZoegernNicht = true;
 
-			Thread t = new BodesuriBot(konfig, Stupidbot.class, false);
+			Thread t = new BodesuriBot(konfig, Stupidbot.class, true);
 
 			t.start();
 			clients.add(t);
