@@ -71,8 +71,6 @@ public class BotController extends Controller {
 	}
 
 	public void zugAufforderung() {
-		System.out.println("Berechne möglichkeiten");
-
 		List<ZugEingabe> moeglich = spiel.spielerIch.getMoeglicheZuege();
 
 		try {

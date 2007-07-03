@@ -15,11 +15,8 @@ public class Stupidbot implements Bot {
 					List<ZugEingabe> moeglicheZuege,
 					IdentityHashMap<Karte, applikation.client.pd.Karte> kartenRegister) {
 		if (moeglicheZuege.isEmpty()) {
-			System.out.println("nix möglich");
 			return null;
 		} else {
-			System.out.println("möglich sind: " + moeglicheZuege.size());
-
 			int rand = (int) Math.floor(Math.random() * moeglicheZuege.size());
 			ZugEingabe ze = moeglicheZuege.get(rand);
 			List<Bewegung> bewegungen = ze.getBewegungen();

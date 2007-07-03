@@ -24,13 +24,9 @@ public class ClientEndPunkt extends EndPunkt{
 	public ClientEndPunkt(String hostname, int port, BriefKastenInterface briefkasten,
 	                SerialisierungsKontext sk)
 	        throws UnknownHostException, IOException {
-		System.out.println("Verbinde zu " + hostname + ":" + port);
-
 		serialisierungsKontext = sk;
 		socket = new Socket(hostname, port);
 
 		startVerhandlung(briefkasten);
-
-		System.out.println("Verbindungsaufbau erfolgreich");
 	}
 }

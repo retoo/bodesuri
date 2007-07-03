@@ -75,7 +75,6 @@ public class Daemon extends BodesuriThread {
 				queue.enqueue(new SchwererDaemonFehler(e));
 			} catch (Exception e_nested) {
 				/* sogar das Fehler-Melden geht nicht mehr */
-				System.out.println("Doppel-Fehler");
 				e_nested.printStackTrace();
 				throw new RuntimeException(e);
 			}
