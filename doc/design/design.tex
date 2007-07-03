@@ -203,7 +203,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \clearpage
 \subsubsection{Package ui}
 \label{ssub:package_ui}
-Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer.
+Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Es enthält als wichtigen Bestandteil auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
 
 \begin{figure}[h]
 	\centering
@@ -263,93 +263,130 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 \clearpage
 \subsubsection{Package applikation}
-\label{ssub:package_applikation}
-\subparagraph{Beschreibung}
-Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
+	\subparagraph{Beschreibung}
+	Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsubsection{Package applikation.bot}
-\label{ssub:package_applikation_bot}
-\subparagraph{Beschreibung}
+	\subparagraph{Beschreibung}
 
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item 
-\end{itemize}
+	\subparagraph{Schnittstellen}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+\subsubsection{Package applikation.client}
+	\subparagraph{Beschreibung}
 
-\subsubsection{Package applikation.client.pd}
-\subparagraph{Beschreibung}
-Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
+	\subparagraph{Schnittstellen}
+	\begin{itemize}
+		\item 
+	\end{itemize}
+	
+	\subsubsection{Package applikation.client.controller}
+		\subparagraph{Beschreibung}
+		Der Controller für den Client und das zugehörige Interface. Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt.
 
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler und das Brett enthält.
-\end{itemize}
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item Der Controller bietet dem UI über das Steuerungs-Interface Methoden an um Events für den Automaten abzusetzen.
+			\item Die abstrakten Methoden des Controllers (Methodennamen beginnen mit zeige), werden in der UI Schicht implementiert. Sie werden vom Automaten genutzt um das UI zu manipulieren.
+		\end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kd_client_pd}
-	\caption{Klassendiagramm clientspezifische PD}
-	\label{fig:kd_client_pd}
-\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{kd_client_controller}
+			\caption{Klassendiagramm Controller}
+			\label{fig:kd_client_controller}
+		\end{figure}
+		
+	\subsubsection{Package applikation.client.events}
+		\subparagraph{Beschreibung}
+		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{kd_applikation_events}
+			\caption{Klassendiagramm Events}
+			\label{fig:kd_applikation_events}
+		\end{figure}
+		
+	\subsubsection{Package applikation.client.konfiguration}
+		\subparagraph{Beschreibung}
 
-\subsubsection{Package applikation.client.controller}
-\label{ssub:package_applikation_client}
-\subparagraph{Beschreibung}
-Der Controller für den Client und das zugehörige Interface. Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt.
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	
+	\subsubsection{Package applikation.client.pd}
+		\subparagraph{Beschreibung}
+		Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
 
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item Der Controller bietet dem UI über das Steuerungs-Interface Methoden an um Events für den Automaten abzusetzen.
-	\item Die abstrakten Methoden des Controllers (Methodennamen beginnen mit zeige), werden in der UI Schicht implementiert. Sie werden vom Automaten genutzt um das UI zu manipulieren.
-\end{itemize}
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler und das Brett enthält.
+		\end{itemize}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kd_client_controller}
-	\caption{Klassendiagramm Controller}
-	\label{fig:kd_client_controller}
-\end{figure}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{kd_client_pd}
+			\caption{Klassendiagramm clientspezifische PD}
+			\label{fig:kd_client_pd}
+		\end{figure}
+		
+	\subsubsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
+		\subparagraph{Beschreibung}
 
-\clearpage
-\subsubsection{Package applikation.server}
-\label{ssub:package_applikation_server}
-\subparagraph{Beschreibung}
-Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+		
+	\subsubsection{Package applikation.client.zustaende}
+		\subparagraph{Beschreibung}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kd_applikation_server}
-	\caption{Klassendiagramm Server in Applikation}
-	\label{fig:kd_applikation_server}
-\end{figure}
-
-\clearpage
-\subsubsection{Package applikation.events}
-\label{ssub:package_applikation_events}
-\subparagraph{Beschreibung}
-Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kd_applikation_events}
-	\caption{Klassendiagramm Events}
-	\label{fig:kd_applikation_events}
-\end{figure}
-
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	
 \subsubsection{Package applikation.nachrichten}
-\label{ssub:package_applikation_nachrichten}
-\subparagraph{Beschreibung}
-Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{kd_applikation_nachricht}
-	\caption{Klassendiagramm Nachrichten}
-	\label{fig:kd_applikation_nachricht}
-\end{figure}
-\clearpage
+	\subparagraph{Beschreibung}
+	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{kd_applikation_nachricht}
+		\caption{Klassendiagramm Nachrichten}
+		\label{fig:kd_applikation_nachricht}
+	\end{figure}
+
+\subsubsection{Package applikation.server}
+	\subparagraph{Beschreibung}
+	Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{kd_applikation_server}
+		\caption{Klassendiagramm Server in Applikation}
+		\label{fig:kd_applikation_server}
+	\end{figure}
+	
+	\subsubsection{Package applikation.server.pd}
+		\subparagraph{Beschreibung}
+
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item 
+		\end{itemize}
+	
+	\subsubsection{Package applikation.server.zustaende}
+		\subparagraph{Beschreibung}
+
+		\subparagraph{Schnittstellen}
+		\begin{itemize}
+			\item 
+		\end{itemize}	
 
 \subsection{Prozesse \& Threads}
-\label{sub:prozesse_threads}
-
 Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Zwischen den Clients und dem Server besteht je ein TCP Socket. 
 
 \begin{figure}[h]
