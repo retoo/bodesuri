@@ -45,6 +45,9 @@ public class Server {
     }
 
 
+	/**
+	 * Schaltet den Server komplett aus.
+	 */
 	public void ausschalten() {
 	    daemon.auschalten();
     }

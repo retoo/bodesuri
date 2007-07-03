@@ -7,6 +7,9 @@ import dienste.netzwerk.BriefKastenInterface;
 import dienste.netzwerk.EndPunkt;
 import dienste.serialisierung.SerialisierungsKontext;
 
+/**
+ * Erstellt eine ClientVerbindung.
+ */
 public class ServerEndPunkt extends EndPunkt {
 
 	/**

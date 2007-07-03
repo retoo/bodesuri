@@ -81,6 +81,9 @@ public class Daemon extends BodesuriThread {
 		}
 	}
 
+	/**
+	 * Deaktivert den Sever.
+	 */
 	public void auschalten() {
 		try {
 			istBeendet = true;

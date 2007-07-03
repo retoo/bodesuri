@@ -7,7 +7,10 @@ import dienste.netzwerk.Brief;
  * Event der ausgelöst wird wenn eine Netzwerknachricht eintrifft.
  */
 public class NetzwerkEvent extends Event {
-	final public Brief brief;
+	/**
+	 * Im Event enthaltene Brief
+	 */
+	public final Brief brief;
 
 	/**
 	 * Ein Netzwerkevent ist eingetroffen
@@ -17,6 +20,9 @@ public class NetzwerkEvent extends Event {
 		this.brief = brief;
 	}
 
+	/* (non-Javadoc)
+	 * @see dienste.eventqueue.Event#toString()
+	 */
 	public String toString() {
 		return super.toString() + " " + brief.nachricht;
 	}
