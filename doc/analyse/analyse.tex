@@ -9,6 +9,9 @@
 
 \input{../titelseite}
 
+\section{Einleitung}
+In diesem Dokument werden die Use-Cases und die Nichtfunktionalen Anforderungen ausführlich beschrieben. Zudem geben das Domainmodell und die Systemsequenzdiagramme eine gute Übersicht über die Problemstellung des zu entwerfenden Softwaresystem.
+
 \section{Use-Cases und Funktionale Anforderungen} 
 \subsection{Use-Case-Diagramm}\label{sub:use_case_diagramm} 
 \begin{figure}
@@ -97,7 +100,7 @@ Der Spieler gibt einen Server an, zu welchem das System eine Netzverbindung erst
 	\item[2] System verbindet sich mit dem Server
 	\item[3] System bestätigt erfolgreiche Verbindung und wartet bis der Server meldet, dass das Spiel vollständig ist.
 	\item[4] System bietet Benutzer die Wahl des Spielpartners.\footnote{Wurde nicht realisiert.}
-	\item[] \vspace{1 \lineheight}	
+	\item[] \vspace{1 \lineheight}
 	\item[6] System teilt den ausgewählten Spielpartner dem Server mit.
 	\item[7] System erhält vom Server die Meldung, dass das Spiel beginnt.
 \end{enumerate}
@@ -125,7 +128,6 @@ Das System verteilt allen Spielern Karten. Jeder Spieler tauscht mit seinem Part
 	\textbf{Nachbedingungen:}									& Der Server ist korrekt beendet \\
 	\textbf{Häufigkeit des Auftretens:}				& Von einmal pro Woche bis 2--3 Mal pro Jahr \\
 \end{tabular}
-\newpage
 
 \begin{multicols}{3}
 \raggedcolumns \centering
@@ -223,7 +225,7 @@ Das System verteilt allen Spielern Karten. Jeder Spieler tauscht mit seinem Part
 \paragraph{Benutzerschnittstelle}\label{ssub:benutzerschnittstelle} % (fold)
 \begin{itemize}
 	\item Das GUI soll so weit wie möglich nur mit der Maus bedienbar sein.
-	\item Das GUI repräsentiert jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren.
+	\item Das GUI stellt jeweils ein Dog-Spielbrett mit den daraufliegenden Figuren dar.
 	\item Die Karten und der Kartenstapel werden im GUI visuell dargestellt.
 \end{itemize}
 % paragraph benutzerschnittstelle (end)
@@ -243,8 +245,8 @@ Es wird keine persistente Datenhaltung benötigt. Alle Daten werden jeweils nur 
 \begin{itemize}
 	\item Die Client/Server-Kommunikation wird mit Java-Sockets realisiert.
 	\item Daten bzw. Objekte werden über Java-Sockets serialisiert.
-	\item Für ein Spiel ist ein Server unabdingbar.
 	\item Jeder teilnehmende Spieler stellt einen Client dar.
+	\item Für ein Spiel muss ein Bodesuri-Server auf einem von allen Clients im Netzwerk erreichbaren Rechner gestartet werden.
 \end{itemize}
 % paragraph kommunikationsschnittstelle (end)
 % subsubsection anforderungen_an_schnittstellen (end)
