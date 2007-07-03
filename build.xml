@@ -108,6 +108,7 @@
     <cobertura-instrument todir="${ins-dir}" datafile="${tmp-dir}/cobertura.ser">
         <fileset dir="${obj-dir}">
             <include name="**/*.class"/>
+            <exclude name="ui/**" />
         </fileset>
     </cobertura-instrument>
   </target>
