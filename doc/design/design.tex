@@ -855,6 +855,13 @@ Mit diesem System wird das UI über alle Änderungen informiert, sei es nun eine
 
 Diese Änderungen zog grössere Arbeiten nach sich, aber unter dem Strich hat sie die Logik bedeutend einfacher gemacht. Es hätte jedoch einige doppelte Arbeit erspart werden können, wenn diese bessere Lösung früher erkannt worden wäre.
 
+Der Kontroller erstreckt sich nun über folgende Klassen. Diese Verteilung wurde so gewählt, um alle zyklischen Abhängigkeiten zu eliminieren. Damit ist es nun möglich, völlig unabhängige Kontroller zu implementieren.
+\begin{enumerate}
+	\item Interface applikation.client.controller.Steuerung.
+	\item Abstrakte Klasse applikation.client.controller.Controller.
+	\item Implementierende Klassen ui.GUIController und applikation.bot.BotController.
+\end{enumerate}
+
 \subsection{Multitier-Architektur des Servers}
 Der Server wurde in mehrere Schichten und vertikal angeordnete Partitions aufgeteilt. Diese Hierarchie hat sich deshalb als erforderlich erwiesen, da sonst Abhängigkeiten von tieferliegenden zu höherliegenden Schichten entstehen würden.
 
