@@ -109,6 +109,8 @@
         <fileset dir="${obj-dir}">
             <include name="**/*.class"/>
             <exclude name="ui/**" />
+            <exclude name="spielplatz/**" />
+            <exclude name="initialisierung/**" />  
         </fileset>
     </cobertura-instrument>
   </target>
