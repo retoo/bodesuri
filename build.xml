@@ -30,6 +30,7 @@
   </path>
   <path id="classpath.cobertura">
     <pathelement location="${ext-dir}/cobertura/asm-2.2.1.jar"/>
+    <pathelement location="${ext-dir}/cobertura/asm-tree-2.2.1.jar"/>
     <pathelement location="${ext-dir}/cobertura/cobertura.jar"/>
     <pathelement location="${ext-dir}/cobertura/jakarta-oro-2.0.8.jar"/>
     <pathelement location="${ext-dir}/cobertura/log4j-1.2.9.jar"/>

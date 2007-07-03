@@ -25,17 +25,20 @@ public class ServerAutomat extends Automat {
 
 	/**
 	 * Initialisiert den Server-Automaten mit vier Spielern.
+	 * @param debug
 	 */
-	public ServerAutomat() {
-		this(ANZ_SPIELER);
+	public ServerAutomat(boolean debug) {
+		this(ANZ_SPIELER, debug);
 	}
 
 	/**
 	 * Initialisiert den Server-Automaten
 	 *
 	 * @param anzSpieler Anzahl der Spieler
+	 * @param debug
 	 */
-	public ServerAutomat(int anzSpieler) {
+	public ServerAutomat(int anzSpieler, boolean debug) {
+		super(debug);
 		EventQueue queue = new EventQueue();
 		spiel = new Spiel(anzSpieler);
 		spiel.queue = queue;

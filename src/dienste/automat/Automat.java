@@ -34,11 +34,14 @@ public class Automat {
     private Zustand aktuellerZustand;
     private final EndZustand endzustand;
     private boolean isInit;
+	private boolean debug;
 
     /**
      * Erstellt einen neuen Automaten
+     * @param debug flag ob debug-meldung ausgegeben werden sollen
      */
-    public Automat() {
+    public Automat(boolean debug) {
+    	this.debug = debug;
         zustaende = new IdentityHashMap<Class<? extends Zustand>, Zustand>();
 
         endzustand = new EndZustand();
@@ -132,12 +135,12 @@ public class Automat {
         } else {
             Event event = eventQuelle.getEvent();
             if (!event.istLeise())
-                System.out.println(this + ": Event - " + event);
+                debug(this + ": Event - " + event);
             return stepAktiv(event);
         }
     }
 
-    /**
+	/**
      * Ermöglicht das verarbeiten von Zuständen mit extern eingelesenen Events.
      * Kann z.B. für Unterautomaten verwendet werden
      *
@@ -150,7 +153,7 @@ public class Automat {
             throw new RuntimeException("Automat ist noch nicht initialisiert, ruf init() auf vor dem ersten step()");
 
         if (!event.istLeise())
-            System.out.println(this + ": Event - " + event);
+            debug(this + ": Event - " + event);
 
         if (aktuellerZustand instanceof PassiverZustand) {
             throw new RuntimeException(
@@ -192,7 +195,7 @@ public class Automat {
 	        }
 
 	        if (!event.istLeise())
-	            System.out.println(this.toString() + ": " + aktuellerZustand);
+	            debug(this.toString() + ": " + aktuellerZustand);
 
 	        return aktuellerZustand != endzustand;
     	} catch (RuntimeException e) {
@@ -233,7 +236,7 @@ public class Automat {
 	            aktuellerZustand.onEntry();
 	        }
 
-	        System.out.println(this.toString() + ": " + aktuellerZustand);
+	        debug(this.toString() + ": " + aktuellerZustand);
 
 	        return aktuellerZustand != endzustand;
     	} catch (RuntimeException e) {
@@ -305,6 +308,11 @@ public class Automat {
     public boolean isZustand(Class<? extends Zustand> zustand) {
         return aktuellerZustand.getClass() == zustand;
     }
+
+    private void debug(String meldung) {
+    	if (debug)
+    		System.out.println(meldung);
+	}
 
     public String toString() {
         return "Automat: ";

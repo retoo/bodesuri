@@ -34,6 +34,8 @@ public class ClientAutomat extends Automat {
 	 * @param konfig Basiskonfiguration
 	 */
 	public ClientAutomat(Controller controller, EventQueue queue, Konfiguration konfig) {
+		super(konfig.debugMeldungen);
+
 		this.controller = controller;
 		this.spiel = new Spiel(konfig);
 

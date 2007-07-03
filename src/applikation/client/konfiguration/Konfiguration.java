@@ -5,6 +5,11 @@ package applikation.client.konfiguration;
  */
 public class Konfiguration {
 	/**
+	 * Deubg-Option: Sollen Debug-Meldungen auf der Konsole ausgegben werden.
+	 */
+	public boolean debugMeldungen = false;
+
+	/**
 	 * Debug-Option: Ob man, obwohl noch Züge möglich sind, aufgeben darf.
 	 */
 	public boolean debugAufgabeImmerMoeglich = false;
@@ -19,6 +24,11 @@ public class Konfiguration {
 	 * Debug-Option: Keine Verzögerung beim Schliessen der Lobby.
 	 */
 	public boolean debugKeineLobbyVerzoegerung = false;
+
+	/**
+	 * Debug-Option: Keine Verzögerung beim Bot-Denken
+	 */
+	public boolean debugBotsZoegernNicht = false;
 
 	/**
 	 * Default-Hostname

@@ -29,6 +29,8 @@ public class ZugAutomat extends Automat {
 	private SpielDaten spielDaten;
 
 	public ZugAutomat(Controller controller, Spiel spiel) {
+		super(spiel.konfiguration.debugMeldungen);
+
 		this.controller = controller;
 		spielDaten = new SpielDaten(spiel);
 

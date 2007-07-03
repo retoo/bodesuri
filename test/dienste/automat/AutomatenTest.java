@@ -52,7 +52,7 @@ public class AutomatenTest extends TestCase {
 	 * Testet den Automaten, wenn bei ihm keine Zustände registriert wurden.
 	 */
 	public void testKeineZustaende() {
-		Automat autmat = new Automat();
+		Automat autmat = new Automat(false);
 
 		boolean fehlerAufgetreten = false;
 
@@ -70,7 +70,7 @@ public class AutomatenTest extends TestCase {
 	 * Testet den Automaten, wenn ihm kein StartZustand angegeben wurde.
 	 */
 	public void testKeinStart() {
-		Automat automat = new Automat();
+		Automat automat = new Automat(false);
 		automat.registriere(new DummyZustand());
 
 		boolean fehlerAufgetreten = false;
@@ -90,7 +90,7 @@ public class AutomatenTest extends TestCase {
 	 * angegeben wurde.
 	 */
 	public void testKeineEventQuelle() {
-		Automat automat = new Automat();
+		Automat automat = new Automat(false);
 		automat.registriere(new DummyZustand());
 		automat.setStart(DummyZustand.class);
 
@@ -132,11 +132,11 @@ public class AutomatenTest extends TestCase {
 		input.enqueue(new TestEventA());
 		assertTrue(automat.step());
 		assertIstInZustand(automat, TestZustandAlpha.class);
-		
+
 		input.enqueue(new TestEventB());
 		assertTrue(automat.step());
 		assertIstInZustand(automat, TestZustandBeta.class);
-		
+
 		input.enqueue(new TestEventB());
 		assertTrue(automat.step());
 		assertIstInZustand(automat, TestZustandBeta.class);
@@ -213,7 +213,7 @@ public class AutomatenTest extends TestCase {
 
 	/**
 	 * Prüft, ob der Automat sich im angegebenen Zustand befindet.
-	 * 
+	 *
 	 * @param automat
 	 * 			Zu testender Automat.
 	 * @param zustand

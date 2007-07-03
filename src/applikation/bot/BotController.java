@@ -15,7 +15,7 @@ import applikation.client.pd.Spieler;
 import dienste.eventqueue.EventQueue;
 
 /**
- * Der BotController leitet die Ausgabe an den GUIController weiter und nimmt 
+ * Der BotController leitet die Ausgabe an den GUIController weiter und nimmt
  * als Eingabe-Daten die Outputs des Bots um einen Computer-Spieler zu simulieren.
  */
 public class BotController extends Controller {
@@ -23,10 +23,11 @@ public class BotController extends Controller {
 	private Controller gui;
 	private Konfiguration konfig;
 	private Bot bot;
+	private int anzahlZuege;
 
 	/**
 	 * Erstellt einen neuen BotController.
-	 * 
+	 *
 	 * @param konfig
 	 * 			Defaultkonfiguration.
 	 * @param queue
@@ -41,6 +42,7 @@ public class BotController extends Controller {
 		this.eventQueue = queue;
 		this.konfig = konfig;
 		this.bot = bot;
+		this.anzahlZuege = 0;
 	}
 
 	public void zeigeFehlermeldung(String fehlermeldung) {
@@ -85,11 +87,15 @@ public class BotController extends Controller {
 	}
 
 	public void zugAufforderung() {
+		anzahlZuege++;
+
 		List<ZugEingabe> moeglich = spiel.spielerIch.getMoeglicheZuege();
 
-		try {
-			Thread.sleep(1000); // "denken"
-		} catch (InterruptedException e) {
+		if (!konfig.debugBotsZoegernNicht) {
+			try {
+				Thread.sleep(1000); // "denken"
+			} catch (InterruptedException e) {
+			}
 		}
 
 		IdentityHashMap<Karte, applikation.client.pd.Karte> karten = new IdentityHashMap<Karte, applikation.client.pd.Karte>();
@@ -113,5 +119,12 @@ public class BotController extends Controller {
 	}
 
 	public void beenden() {
+	}
+
+	/**
+	 * @return Anzahlzuege die dieser Bot gemacht hat.
+	 */
+	public int getAnzahlZuege() {
+		return anzahlZuege;
 	}
 }

@@ -24,7 +24,7 @@ public class BodesuriServer extends BodesuriThread {
 	}
 
 	public void run() {
-		server = new ServerAutomat(anzahlSpieler);
+		server = new ServerAutomat(anzahlSpieler, false);
 		server.run();
 	}
 
@@ -57,7 +57,7 @@ public class BodesuriServer extends BodesuriThread {
 
 	/**
 	 * Den Server starten.
-	 * 
+	 *
 	 * @param args
 	 *            Wird nicht genutzt
 	 * @throws InterruptedException
