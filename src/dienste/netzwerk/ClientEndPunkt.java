@@ -6,6 +6,9 @@ import java.net.UnknownHostException;
 
 import dienste.serialisierung.SerialisierungsKontext;
 
+/**
+ * Erstellt eine TCP Verbindung zu einem Server.
+ */
 public class ClientEndPunkt extends EndPunkt{
 	/**
 	 * Startet die Kommunikation mit dem übergebenen System (Hostname & Port).
