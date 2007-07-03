@@ -13,11 +13,11 @@ import dienste.automat.zustaende.Zustand;
  * <li>Ist die Karte eine Sieben und es wurde noch keine 7 Felder gefahren,
  * wechseln wir zurück nach {@link StartWaehlen} um eine weitere Bewegung zu
  * erfassen.</li>
- * <li>Ist der Zug ungültig wird eine Fehlermeldung gezeigt, das Ziel
+ * <li>Ist der Zug ungültig, wird eine Fehlermeldung gezeigt, das Ziel
  * deaktiviert und zurück nach {@link ZielWaehlen} gewechselt.</li>
- * <li> Ist der Zug gültig wird er zurück an den ClientAutomat übermittelt und
+ * <li> Ist der Zug gültig, wird er zurück an den ClientAutomat übermittelt und
  * nach {@link ZugautomatAbschluss} gewechselt.</li>
- * 
+ * </ul>
  */
 public class ZugValidieren extends ClientZugZustand implements PassiverZustand {
 

@@ -12,7 +12,7 @@ import dienste.netzwerk.server.BriefkastenAdapter;
 
 /**
  * Zustand wenn der Spieler die Verbindungsdaten eingeben muss. Wenn ein
- * {@link VerbindeEvent} eintrifft wir der Zustand {@link Lobby}
+ * {@link VerbindeEvent} eintrifft, wird der Zustand {@link Lobby}
  * aufgerufen.
  */
 public class VerbindungErfassen extends ClientZustand {

@@ -23,8 +23,8 @@ import dienste.automat.zustaende.Zustand;
  * visualisiert. Der Zustand wird nicht gewechselt.</li>
  * <li>Wenn eine {@link RundenStart}-Nachricht eintrifft, werden die
  * erhaltenen Karten gespeichert und der Zustand {@link StarteRunde} aufgerufen.</li>
- * <li>Wenn eine {@link AufgabeInformation} eintrifft, wird der Spieler welcher
- * aufgegeben hat im UI angepasst. Der Zustand wird nicht gewechselt.</li>
+ * <li>Wenn eine {@link AufgabeInformation} eintrifft, wird der Spieler, welcher
+ * aufgegeben hat, im UI angepasst. Der Zustand wird nicht gewechselt.</li>
  * <li>Wenn eine {@link SpielFertigNachricht} eintrifft, wird der Gewinner
  * angezeigt und {@link SpielEnde} aufgerufen.</li>
  * </ul>

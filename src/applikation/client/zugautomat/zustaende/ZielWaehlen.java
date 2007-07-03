@@ -15,10 +15,10 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustand wenn der Spieler das Zielfeld wählen muss.
  * <ul>
- * <li>Trifft ein {@link FeldGewaehltEvent} ein wird das Feld überprüft.
+ * <li>Trifft ein {@link FeldGewaehltEvent} ein, wird das Feld überprüft.
  * <ul>
- * <li>Macht die Wahl Sinn wird nach {@link ZugValidieren} gewechselt.</li>
- * <li>Wurde das Startfeld ausgewählt wird das Startfeld wieder deaktiviert und
+ * <li>Macht die Wahl Sinn, wird nach {@link ZugValidieren} gewechselt.</li>
+ * <li>Wurde das Startfeld ausgewählt, wird das Startfeld wieder deaktiviert und
  * nach {@link StartWaehlen} gewechselt.</li>
  * </ul>
  * </li>
@@ -27,7 +27,7 @@ import dienste.automat.zustaende.Zustand;
  * <li>Trifft ein {@link FeldAbgewaehltEvent} ein, wird das Brett
  * zurückgesetzt. Wir bleiben aber in diesem Zustand.</li>
  * <li>{@link HoverStartEvent} und {@link HoverEndeEvent} aktiveren bzw.
- * deaktiviern das Markieren des Weges</li>
+ * deaktivieren das Hervorheben des Weges</li>
  * </ul>
  */
 public class ZielWaehlen extends ClientZugZustand {

@@ -7,8 +7,8 @@ import applikation.nachrichten.KartenTausch;
 import dienste.automat.zustaende.Zustand;
 
 /**
- * Zustand in dem wir warten bis der Spieler die Karte die er tauschen möchte
- * ausgewählt hat. Tritt {@link KarteGewaehltEvent} ein gehen wir in den Zustand
+ * Zustand in dem wir warten bis der Spieler die Karte, die er tauschen möchte
+ * ausgewählt hat. Tritt {@link KarteGewaehltEvent} ein, gehen wir in den Zustand
  * {@link KarteTauschenBekommen} über.
  */
 public class KarteTauschenAuswaehlen extends ClientZustand {

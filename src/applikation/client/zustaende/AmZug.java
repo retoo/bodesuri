@@ -16,7 +16,7 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustand in welchem der Spieler am Zug ist. Erstellt einen {@link ZugAutomat}
  * der sich um das Erfassen und Validieren eines Zuges kümmert. Eintreffende
- * Events werden direkt an den ZugAutomaten weitergeleitet. Dieser sendet eine
+ * Events werden direkt an den ZugAutomaten weitergeleitet. Dieser sendet einen
  * {@link ZugErfasstEvent} wenn er fertig ist. Der Event wird versandt und der
  * Automat geht nach {@link NichtAmZug} über.
  */

@@ -10,12 +10,12 @@ import dienste.automat.zustaende.Zustand;
 /**
  * Zustand wenn der Spieler in der Lobby ist.
  * <ul>
- * <li>Wenn eine {@link SpielStartNachricht} eintrifft wird der Zustand
+ * <li>Wenn eine {@link SpielStartNachricht} eintrifft, wird der Zustand
  * {@link SpielStart} aufgerufen.</li>
- * <li>Wenn eine {@link BeitrittsInformation} eintrifft wird werden die
+ * <li>Wenn eine {@link BeitrittsInformation} eintrifft, werden die
  * Informationen über beigetretenen Spieler aktualisiert. Der Zustand wird nicht
  * gewechselt.</li>
- * <li>Wenn eine {@link BeitrittVerweigert}Nachricht eintrifft wird das Spiel
+ * <li>Wenn eine {@link BeitrittVerweigert}Nachricht eintrifft, wird das Spiel
  * beendet.</li>
  * </ul>
  */
