@@ -321,6 +321,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 			\caption{Klassendiagramm Events}
 			\label{fig:kd_client_events}
 		\end{figure}
+		\clearpage
 		
 	\subsubsection{Package applikation.client.konfiguration}
 		\subparagraph{Beschreibung}
@@ -349,11 +350,19 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		
 	\subsubsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
 		\subparagraph{Beschreibung}
+		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomat gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
-			\item 
+			\item Der Zugautomat kommuniziert über Events mit dem ClientAutomaten.
 		\end{itemize}
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{kd_client_zugautomat}
+			\caption{Klassendiagramm der Zugerfassung}
+			\label{fig:kd_client_zugautomat}
+		\end{figure}
 		
 	\subsubsection{Package applikation.client.zustaende}
 		\subparagraph{Beschreibung}
