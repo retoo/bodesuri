@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Wed Jul 04 20:37:36 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Wed Jul 04 20:41:21 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable>
@@ -2439,12 +2439,12 @@
 								<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_45201bb_1180386831490_942473_3562'>
 									<editable xmi:value='false'/>
 									<visible xmi:value='false'/>
-									<geometry>231, 294, 28, 15</geometry>
+									<geometry>231, 295, 28, 15</geometry>
 								</mdElement>
 								<mdElement elementClass='TextBox' xmi:id='_11_6_45201bb_1180386831490_980877_3565'>
 									<editable xmi:value='false'/>
 									<visible xmi:value='false'/>
-									<geometry>246, 284, 28, 14</geometry>
+									<geometry>245, 284, 28, 14</geometry>
 								</mdElement>
 							</mdOwnedViews>
 							<linkConstraintID xmi:idref='_11_6_45201bb_1180386831490_908870_3560'/>
@@ -2854,7 +2854,7 @@
 							<nameVisible xmi:value='true'/>
 							<mdOwnedViews>
 								<mdElement elementClass='TextBox' xmi:id='_11_6_45201bb_1183573545830_442301_265'>
-									<geometry>448, 553, 42, 15</geometry>
+									<geometry>406, 532, 42, 15</geometry>
 									<text>zugInfo</text>
 								</mdElement>
 								<mdElement elementClass='TextBox' xmi:id='_11_6_45201bb_1183573545830_649878_267'>
@@ -2876,10 +2876,6 @@
 							<linkConstraintID xmi:idref='_11_6_45201bb_1183573545830_649878_267'/>
 							<linkStereotypeID xmi:idref='_11_6_45201bb_1183573545830_842698_269'/>
 							<linkTaggedValuesID xmi:idref='_11_6_45201bb_1183573545830_560031_272'/>
-						</mdElement>
-						<mdElement elementClass='State' xmi:id='_11_6_45201bb_1183574013601_711137_289'>
-							<elementID xmi:idref='_11_6_45201bb_1183574013594_831188_288'/>
-							<geometry>749, 350, 77, 24</geometry>
 						</mdElement>
 						<mdElement elementClass='Transition' xmi:id='_11_6_45201bb_1183574013603_819289_291'>
 							<elementID xmi:idref='_11_6_45201bb_1183574016887_880540_312'/>
@@ -3394,7 +3390,7 @@
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>10 4d 66 70 38 45 40 29 1 15 a9 c6 30 ea e5 8e 5a a8 90 9d e7 82 ec d5 29 88 bf fc e0 b3 22 e8 6e d0 95 2e 8a 3a a3 e0 37 6d 61 9 6a 3c 27 8b 8f 2 cc 8c 79 76 84 81 fd 3 ef 5a 75 48 30 39 11 f 4e 46 a6 37 </value>
+						<value>10 4d 66 70 38 45 40 29 1 15 a9 c6 30 ea e5 8e 5a a8 90 9d e7 82 ec d5 29 8f b9 fc e1 b4 22 e8 6e d0 95 2e 8a 3a a3 e0 37 6d 61 9 6a 3c 27 8b 8f 2 cc 8c 79 76 84 81 fd 3 ef 5a 75 48 30 39 11 f 4e 46 a6 37 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
