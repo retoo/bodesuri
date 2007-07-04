@@ -42,8 +42,7 @@ Für die logische Strukturierung des Projektes wird eine vierschichtige Architek
 \clearpage
 
 \subsubsection{Package pd}
-\label{ssub:package_pd}
-\subparagraph{Beschreibung}
+
 In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
 
 \subparagraph{Schnittstellen}
@@ -54,7 +53,7 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7 \textwidth]{kd_pd}
+	\includegraphics[width=0.6 \textwidth]{kd_pd}
 	\caption{Klassendiagramm ProblemDomain}
 	\label{fig:kd_pd}
 \end{figure}
@@ -62,7 +61,6 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \clearpage
 \subsubsection{Package pd.spiel}
 
-\subparagraph{Beschreibung}
 Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackages:
 
 \begin{itemize}
@@ -85,7 +83,7 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 
 \clearpage
 \subsubsection{Package pd.regelsystem}
-\subparagraph{Beschreibung}
+
 Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie die Validierung der Züge sicherstellt und die daraus resultierenden Aktionen in der Problem-Domain berechnet (Figur von Feld X auf Feld Y verschieben). Beinhaltet zwei Subpackages:
 
 \begin{itemize}
@@ -107,7 +105,7 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 
 \clearpage
 \subsubsection{Package pd.zugsystem}
-\subparagraph{Beschreibung}
+
 Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwendet werden. So wird zum Beispiel vom Regelsystem aus einer Zugeingabe ein Zug mit Aktionen erstellt. Bewegung und Weg sind Hilfsklassen für die Validierung.
 
 \begin{figure}[h]
@@ -120,7 +118,6 @@ Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwende
 \clearpage
 \subsubsection{Package pd.serialisierung}
 
-\subparagraph{Beschreibung}
 Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung von Klassen der Problem-Domain zu ermöglichen.
 
 \subparagraph{Schnittstellen}
@@ -138,8 +135,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 
 \clearpage
 \subsubsection{Package dienste.automat}
-\label{ssub:package_dienste}
-\subparagraph{Beschreibung}
+
 Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her.
 
 Der Automat bietet zwei Betriebsmodi an:
@@ -163,7 +159,6 @@ Der Automat bietet zwei Betriebsmodi an:
 \clearpage
 \subsubsection{Package dienste.serialisierung}
 
-\subparagraph{Beschreibung}
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, die anschliessend über das Netzwerk versendet werden.
 
 \subparagraph{Schnittstellen}
@@ -181,8 +176,7 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 
 \clearpage
 \subsubsection{Package dienste.netzwerk}
-\label{ssub:package_dienste_netzwerk}
-\subparagraph{Beschreibung}
+
 Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für die Netzwerkkommunikation an.
 
 \subparagraph{Schnittstellen}
@@ -255,8 +249,7 @@ Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klass
 
 \clearpage
 \subsubsection{Package ui.geteiltes}
-\label{ssub:package_ui_geteiltes}
-\subparagraph{Beschreibung}
+
 Dieses Package enthält Klassen, welche in verschiedenen Views verwendet werden. Sie dienen als Vereinheitlichung des Spielverhaltens.
 
 \subparagraph{Schnittstellen}
@@ -266,13 +259,11 @@ Dieses Package enthält Klassen, welche in verschiedenen Views verwendet werden.
 \end{itemize}
 
 \subsubsection{Package ui.lobby}
-\label{ssub:package_ui_lobby}
-\subparagraph{Beschreibung}
+
 In der Lobby werden die Spieler aufgelistet, die mit dem Server verbunden sind. Sobald sich alle vier Spieler in der Lobby befinden, kann das Spiel begonnen werden.
 
 \subsubsection{Package ui.ressourcen}
-\label{ssub:package_ui_ressourcen}
-\subparagraph{Beschreibung}
+
 Hier befinden sich die grafischen Ressourcen für das Spiel. Die einzelnen Grafiken werden von der Klasse Icons geladen und sind dann im gesamten Projekt über Konstanten erreichbar. Um die Grafiken per Koordinaten platzieren zu können, steht dafür ein XML-Dokument zur Verfügung, welches die Koordinaten der einzelnen Grafiken enthält. Anhand der Klasse BrettXML werden alle Koordinaten ausgelesen, um die Grafiken entsprechend zu platzieren.
 
 \subparagraph{Schnittstellen}
@@ -282,8 +273,7 @@ Hier befinden sich die grafischen Ressourcen für das Spiel. Die einzelnen Grafi
 \end{itemize}
 
 \subsubsection{Package ui.spiel}
-\label{ssub:package_ui_spiel}
-\subparagraph{Beschreibung}
+
 Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen für die Darstellung des Spielbrettes, sowie auch der Steuerung der Spielkarten und der Sonderfunktionen.
 
 \begin{itemize}
@@ -292,8 +282,7 @@ Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen f�
 \end{itemize}
 
 \subsubsection{Package ui.verbinden}
-\label{ssub:package_ui_verbinden}
-\subparagraph{Beschreibung}
+
 Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 \begin{itemize}
@@ -304,11 +293,10 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 \clearpage
 \subsubsection{Package applikation}
-	\subparagraph{Beschreibung}
-	Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
+
+Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsubsection{Package applikation.bot}
-	\subparagraph{Beschreibung}
 
 	\subparagraph{Schnittstellen}
 	\begin{itemize}
@@ -316,11 +304,11 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	\end{itemize}
 	
 \subsubsection{Package applikation.client}
-	\subparagraph{Beschreibung}
+
 	Die Client-Applikationsschicht ist für die Zustandsverwaltung des Clients und die Kommunikation mit dem UI verantwortlich. Die beiden Automaten (ClientAutomat \& ZugAutomat) und die clientspezifische PD bilden die Zustände des Clients ab. Der Controller dient als Kommunikationsschnittstelle zwischen dem Automaten und dem UI.
 	
 	\subsubsection{Package applikation.client.controller}
-		\subparagraph{Beschreibung}
+
 		Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt. Andere Schichten nutzen bloss das Steuerungsinterface welches vom Controller implementiert wird.
 
 		\subparagraph{Schnittstellen}
@@ -337,7 +325,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{figure}
 		
 	\subsubsection{Package applikation.client.events}
-		\subparagraph{Beschreibung}
+
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 		\begin{figure}[h]
 			\centering
@@ -347,7 +335,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{figure}
 		
 	\subsubsection{Package applikation.client.konfiguration}
-		\subparagraph{Beschreibung}
+
 		Beinhaltet Standardwerte und Debugeinstellungen für die Konfiguration des Clients.	
 
 		\subparagraph{Schnittstellen}
@@ -356,7 +344,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{itemize}
 	
 	\subsubsection{Package applikation.client.pd}
-		\subparagraph{Beschreibung}
+
 		Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
 
 		\subparagraph{Schnittstellen}
@@ -373,7 +361,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{figure}
 		
 	\subsubsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
-		\subparagraph{Beschreibung}
+
 		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomaten gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
 
 		\subparagraph{Schnittstellen}
@@ -389,7 +377,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{figure}
 		
 	\subsubsection{Package applikation.client.zustaende}
-		\subparagraph{Beschreibung}
+
 		Dieses Package gruppiert die Zustände die der ClientAutomat annehmen kann.
 
 		\subparagraph{Schnittstellen}
@@ -405,7 +393,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{figure}
 	
 \subsubsection{Package applikation.nachrichten}
-	\subparagraph{Beschreibung}
+
 	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
 	\begin{figure}[h]
 		\centering
@@ -415,7 +403,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	\end{figure}
 
 \subsubsection{Package applikation.server}
-	\subparagraph{Beschreibung}
+
 	Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
 
 	\begin{figure}[h]
@@ -426,7 +414,6 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	\end{figure}
 	
 	\subsubsection{Package applikation.server.pd}
-		\subparagraph{Beschreibung}
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
@@ -434,13 +421,13 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		\end{itemize}
 	
 	\subsubsection{Package applikation.server.zustaende}
-		\subparagraph{Beschreibung}
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
 			\item 
 		\end{itemize}	
 
+\clearpage
 \subsection{Prozesse \& Threads}
 Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Zwischen den Clients und dem Server besteht je ein TCP Socket. 
 
