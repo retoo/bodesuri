@@ -292,7 +292,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	
 	\subsubsection{Package applikation.client.controller}
 		\subparagraph{Beschreibung}
-		Der Controller für den Client und das zugehörige Interface. Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt.
+		Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt. Andere Schichten nutzen bloss das Steuerungsinterface welches vom Controller implementiert wird.
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
@@ -316,7 +316,6 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 			\caption{Klassendiagramm Events}
 			\label{fig:kd_client_events}
 		\end{figure}
-		\clearpage
 		
 	\subsubsection{Package applikation.client.konfiguration}
 		\subparagraph{Beschreibung}
@@ -333,7 +332,8 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
-			\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler und das Brett enthält.
+			\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler, das Brett und die Karten enthält.
+			\item Die Felder, die Karten, die Spieler und das Spiel sind \emph{Observeable}.
 		\end{itemize}
 
 		\begin{figure}[h]
@@ -345,7 +345,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		
 	\subsubsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
 		\subparagraph{Beschreibung}
-		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomat gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
+		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomaten gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
@@ -1041,8 +1041,6 @@ Wenn man die Joker-Karte spielt, kann man auswählen, als welche andere Karte ma
 Für den Bot müssen alle Züge gefunden werden, die mit einer Karte möglich sind. Um den Joker einsetzen zu können, muss keine Spezialbehandlung gemacht werden, da die RegelVeroderung einfach alle möglichen Züge der enthaltenen Regeln sammelt und zurückgibt.
 
 Auch auf dem Server ist der Joker kein Spezialfall. Er erhält vom Client eine ZugEingabe mit dem Joker als Karte und einer Bewegung (oder einer Liste von Bewegungen im Falle der Sieben). Daraufhin validiert er die ZugEingabe, was einen Aufruf von \texttt{validieren} der RegelVeroderung zur Folge hat. Diese ist gültig, sobald eine ihrer enthaltenen Regeln gültig ist. Nach der Validierung trägt der Server die Joker-Karte aus den Karten des Spielers aus.
-
-% TODO: Vielleicht noch etwas über die Behandlung des Jokers im GUI schreiben.
 
 \subsection{Bot}
 

@@ -2,7 +2,7 @@
 <!-- This xmi file is optimized for MagicDraw UML. Some references are not saved. -->
 <!-- Change MagicDraw UML environment options property General->.Save Rich XMI -->
 
-<xmi:XMI xmi:version='2.1' timestamp='Wed Jul 04 18:05:40 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi'>
+<xmi:XMI xmi:version='2.1' timestamp='Wed Jul 04 19:55:35 CEST 2007' xmlns:uml='http://schema.omg.org/spec/UML/2.0' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:UML_Profile_for_Java='http://www.magicdraw.com/shemas/UML_Profile_for_Java.xmi' xmlns:statements='http://www.magicdraw.com/shemas/statements.xmi' xmlns:MagicDraw_Profile='http://www.magicdraw.com/shemas/MagicDraw_Profile.xmi' xmlns:UML_Standard_Profile='http://www.magicdraw.com/shemas/UML_Standard_Profile.xmi' xmlns:deployment='http://www.magicdraw.com/shemas/deployment.xmi'>
 	<xmi:Documentation xmi:Exporter='MagicDraw UML' xmi:ExporterVersion='11.6'/>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 		<shareTable>
@@ -27,7 +27,7 @@
 			<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 				<moduleExtension moduleRoot='::peberli'/>
 			</xmi:Extension>
-			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_f2b035c_1180105582988_955410_303' name='ClientVerbindetZuServer' visibility='public'>
+			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_f2b035c_1180105582988_955410_303' name='sd_verbindung_erstellen_clientALT' visibility='public'>
 				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_f2b035c_1180105582977_898633_302' name='ClientVerbindetZuServer' visibility='public' context='_11_6_f2b035c_1180105582988_955410_303'>
 					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 						<modelExtension>
@@ -430,8 +430,8 @@
 					</fragment>
 				</ownedBehavior>
 			</ownedMember>
-			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_f2b035c_1180367180816_67151_243' name='ClientVerbindetZuServer2' visibility='public'>
-				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_f2b035c_1180367180808_355093_242' name='ClientVerbindetZuServer2' visibility='public' context='_11_6_f2b035c_1180367180816_67151_243'>
+			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_f2b035c_1180367180816_67151_243' name='sd_verbindung_erstellen_server' visibility='public'>
+				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_f2b035c_1180367180808_355093_242' name='sd_verbindung_erstellen_server' visibility='public' context='_11_6_f2b035c_1180367180816_67151_243'>
 					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 						<modelExtension>
 							<event xmi:idref='_11_6_f2b035c_1180367207440_852683_276'/>
@@ -1075,7 +1075,7 @@
 					</transition>
 				</region>
 			</ownedMember>
-			<ownedMember xmi:type='uml:StateMachine' xmi:id='_11_6_f2b035c_1183415650201_404665_606' name='ZugAutomat' visibility='public'>
+			<ownedMember xmi:type='uml:StateMachine' xmi:id='_11_6_f2b035c_1183415650201_404665_606' name='zd_applikation_zugautomat' visibility='public'>
 				<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
 					<modelExtension>
 						<event xmi:idref='_11_6_f2b035c_1183416244800_260841_874'/>
@@ -1248,6 +1248,225 @@
 					</type>
 				</ownedEnd>
 			</ownedMember>
+			<ownedMember xmi:type='uml:Collaboration' xmi:id='_11_6_f2b035c_1183569918725_480258_11352' name='sd_verbindung_erstellen_client' visibility='public'>
+				<ownedBehavior xmi:type='uml:Interaction' xmi:id='_11_6_f2b035c_1183569918723_159288_11351' name='sd_verbindung_erstellen_client' visibility='public' context='_11_6_f2b035c_1183569918725_480258_11352'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<modelExtension>
+							<event xmi:idref='_11_6_f2b035c_1183570315789_941511_11421'/>
+							<event xmi:idref='_11_6_f2b035c_1183570367198_802018_11436'/>
+							<event xmi:idref='_11_6_f2b035c_1183570430286_32462_11463'/>
+							<event xmi:idref='_11_6_f2b035c_1183570566623_847412_11515'/>
+							<event xmi:idref='_11_6_f2b035c_1183570595404_789881_11532'/>
+							<event xmi:idref='_11_6_f2b035c_1183570687326_608483_11553'/>
+							<event xmi:idref='_11_6_f2b035c_1183570837126_520030_11591'/>
+							<event xmi:idref='_11_6_f2b035c_1183570890527_295778_11616'/>
+							<event xmi:idref='_11_6_f2b035c_1183570952189_275799_11642'/>
+							<event xmi:idref='_11_6_f2b035c_1183570980070_504422_11658'/>
+							<event xmi:idref='_11_6_f2b035c_1183571079501_918705_11683'/>
+						</modelExtension>
+					</xmi:Extension>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570211481_292686_11361' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429653_144649_1192'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::ui::verbinden::VerbindenView' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570226795_868303_11372' visibility='private'>
+						<type xmi:type='uml:Interface' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429475_822339_570'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::client::controller::Steuerung' referentType='Interface'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570284598_820046_11383' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429474_804876_567'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::client::controller::Controller' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570295704_426453_11394' name='ve' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429481_853936_597'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::client::events::VerbindeEvent' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570412129_127493_11447' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429540_90517_839'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::eventqueue::EventQueue' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570557268_371509_11499' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429507_167442_710'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::client::ClientAutomat' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570678551_27085_11537' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429507_608587_707'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::client::zustaende::VerbindungErfassen' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570830491_347082_11575' name='endpunkt' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429547_704682_869'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::dienste::netzwerk::ClientEndPunkt' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<ownedAttribute xmi:type='uml:Property' xmi:id='_11_6_f2b035c_1183570944443_206852_11626' name='sb' visibility='private'>
+						<type xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429514_340888_739'>
+							<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+								<referenceExtension referentPath='Design::applikation::nachrichten::SpielBeitreten' referentType='Class'/>
+							</xmi:Extension>
+						</type>
+					</ownedAttribute>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570211447_385502_11360' visibility='public' represents='_11_6_f2b035c_1183570211481_292686_11361'>
+						<events xmi:idref='_11_6_f2b035c_1183570309625_596059_11406'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570226795_628830_11371' visibility='public' represents='_11_6_f2b035c_1183570226795_868303_11372'/>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570284598_139072_11382' visibility='public' represents='_11_6_f2b035c_1183570284598_820046_11383'>
+						<events xmi:idref='_11_6_f2b035c_1183570309625_733613_11407'/>
+						<events xmi:idref='_11_6_f2b035c_1183570367197_966227_11432'/>
+						<events xmi:idref='_11_6_f2b035c_1183570430285_167608_11459'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570295703_218468_11393' visibility='public' represents='_11_6_f2b035c_1183570295704_426453_11394'>
+						<events xmi:idref='_11_6_f2b035c_1183570367197_24466_11433'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570412129_610325_11446' visibility='public' represents='_11_6_f2b035c_1183570412129_127493_11447'>
+						<events xmi:idref='_11_6_f2b035c_1183570430285_478256_11460'/>
+						<events xmi:idref='_11_6_f2b035c_1183570566622_189393_11512'/>
+						<events xmi:idref='_11_6_f2b035c_1183570595403_797932_11530'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570557268_811020_11498' visibility='public' represents='_11_6_f2b035c_1183570557268_371509_11499'>
+						<events xmi:idref='_11_6_f2b035c_1183570566621_853424_11511'/>
+						<events xmi:idref='_11_6_f2b035c_1183570595403_319102_11531'/>
+						<events xmi:idref='_11_6_f2b035c_1183570687325_105534_11549'/>
+						<events xmi:idref='_11_6_f2b035c_1183571079500_990296_11680'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570678551_475538_11536' visibility='public' represents='_11_6_f2b035c_1183570678551_27085_11537'>
+						<events xmi:idref='_11_6_f2b035c_1183570687325_518987_11550'/>
+						<events xmi:idref='_11_6_f2b035c_1183570837125_753030_11587'/>
+						<events xmi:idref='_11_6_f2b035c_1183570885900_982182_11603'/>
+						<events xmi:idref='_11_6_f2b035c_1183570885901_867178_11604'/>
+						<events xmi:idref='_11_6_f2b035c_1183570952188_848238_11638'/>
+						<events xmi:idref='_11_6_f2b035c_1183570980069_674837_11654'/>
+						<events xmi:idref='_11_6_f2b035c_1183571079500_972233_11679'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570830491_877175_11574' visibility='public' represents='_11_6_f2b035c_1183570830491_347082_11575'>
+						<events xmi:idref='_11_6_f2b035c_1183570837125_995909_11588'/>
+						<events xmi:idref='_11_6_f2b035c_1183570980069_716162_11655'/>
+					</lifeline>
+					<lifeline xmi:type='uml:Lifeline' xmi:id='_11_6_f2b035c_1183570944443_242977_11625' visibility='public' represents='_11_6_f2b035c_1183570944443_206852_11626'>
+						<events xmi:idref='_11_6_f2b035c_1183570952189_378182_11639'/>
+					</lifeline>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570309622_852204_11405' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570309625_733613_11407' sendEvent='_11_6_f2b035c_1183570309625_596059_11406'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183571171076_270871_11698' visibility='public' body='name'/>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183571171078_596623_11699' visibility='public' body='portNr'/>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183571171080_969758_11700' visibility='public' body='spielerName'/>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183571171084_712251_11701' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570367195_791699_11431' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570367197_24466_11433' sendEvent='_11_6_f2b035c_1183570367197_966227_11432'/>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570430283_690683_11458' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570430285_478256_11460' sendEvent='_11_6_f2b035c_1183570430285_167608_11459'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183570516702_625899_11496' visibility='public' body='ve'/>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183570516705_739875_11497' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570566620_151344_11510' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570566622_189393_11512' sendEvent='_11_6_f2b035c_1183570566621_853424_11511' replyMessage='_11_6_f2b035c_1183570595401_688038_11529'>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183570595410_297485_11535' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570595401_688038_11529' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570595403_319102_11531' sendEvent='_11_6_f2b035c_1183570595403_797932_11530'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183570595405_26030_11533' visibility='public' body='ve'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570687323_295079_11548' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570687325_518987_11550' sendEvent='_11_6_f2b035c_1183570687325_105534_11549'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183570699518_1437_11570' visibility='public' body='ve'/>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183570699520_223445_11571' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570837124_573313_11586' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570837125_995909_11588' sendEvent='_11_6_f2b035c_1183570837125_753030_11587'/>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570885898_344941_11602' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570885901_867178_11604' sendEvent='_11_6_f2b035c_1183570885900_982182_11603'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183570907437_247871_11623' visibility='public' body='ve'/>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183570907440_591052_11624' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570952187_905029_11637' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570952189_378182_11639' sendEvent='_11_6_f2b035c_1183570952188_848238_11638'/>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183570980067_754245_11653' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183570980069_716162_11655' sendEvent='_11_6_f2b035c_1183570980069_674837_11654'>
+						<argument xmi:type='uml:OpaqueExpression' xmi:id='_11_6_f2b035c_1183570993149_158382_11675' visibility='public' body='sb'/>
+						<argument xmi:type='uml:LiteralString' xmi:id='_11_6_f2b035c_1183570993151_722221_11676' visibility='public' value='-'/>
+					</message>
+					<message xmi:type='uml:Message' xmi:id='_11_6_f2b035c_1183571079499_783433_11678' visibility='public' messageSort='synchCall' receiveEvent='_11_6_f2b035c_1183571079500_990296_11680' sendEvent='_11_6_f2b035c_1183571079500_972233_11679'/>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570309625_596059_11406' visibility='public' message='_11_6_f2b035c_1183570309622_852204_11405'>
+						<covered xmi:idref='_11_6_f2b035c_1183570211447_385502_11360'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570309625_733613_11407' visibility='public' event='_11_6_f2b035c_1183570315789_941511_11421' message='_11_6_f2b035c_1183570309622_852204_11405'>
+						<covered xmi:idref='_11_6_f2b035c_1183570284598_139072_11382'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570367197_966227_11432' visibility='public' message='_11_6_f2b035c_1183570367195_791699_11431'>
+						<covered xmi:idref='_11_6_f2b035c_1183570284598_139072_11382'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570367197_24466_11433' visibility='public' event='_11_6_f2b035c_1183570367198_802018_11436' message='_11_6_f2b035c_1183570367195_791699_11431'>
+						<covered xmi:idref='_11_6_f2b035c_1183570295703_218468_11393'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570430285_167608_11459' visibility='public' message='_11_6_f2b035c_1183570430283_690683_11458'>
+						<covered xmi:idref='_11_6_f2b035c_1183570284598_139072_11382'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570430285_478256_11460' visibility='public' event='_11_6_f2b035c_1183570430286_32462_11463' message='_11_6_f2b035c_1183570430283_690683_11458'>
+						<covered xmi:idref='_11_6_f2b035c_1183570412129_610325_11446'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570566621_853424_11511' visibility='public' message='_11_6_f2b035c_1183570566620_151344_11510'>
+						<covered xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570566622_189393_11512' visibility='public' event='_11_6_f2b035c_1183570566623_847412_11515' message='_11_6_f2b035c_1183570566620_151344_11510'>
+						<covered xmi:idref='_11_6_f2b035c_1183570412129_610325_11446'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570595403_797932_11530' visibility='public' event='_11_6_f2b035c_1183570595404_789881_11532' message='_11_6_f2b035c_1183570595401_688038_11529'>
+						<covered xmi:idref='_11_6_f2b035c_1183570412129_610325_11446'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570595403_319102_11531' visibility='public' message='_11_6_f2b035c_1183570595401_688038_11529'>
+						<covered xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570687325_105534_11549' visibility='public' message='_11_6_f2b035c_1183570687323_295079_11548'>
+						<covered xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570687325_518987_11550' visibility='public' event='_11_6_f2b035c_1183570687326_608483_11553' message='_11_6_f2b035c_1183570687323_295079_11548'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570837125_753030_11587' visibility='public' message='_11_6_f2b035c_1183570837124_573313_11586'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570837125_995909_11588' visibility='public' event='_11_6_f2b035c_1183570837126_520030_11591' message='_11_6_f2b035c_1183570837124_573313_11586'>
+						<covered xmi:idref='_11_6_f2b035c_1183570830491_877175_11574'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570885900_982182_11603' visibility='public' message='_11_6_f2b035c_1183570885898_344941_11602'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570885901_867178_11604' visibility='public' event='_11_6_f2b035c_1183570890527_295778_11616' message='_11_6_f2b035c_1183570885898_344941_11602'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570952188_848238_11638' visibility='public' message='_11_6_f2b035c_1183570952187_905029_11637'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570952189_378182_11639' visibility='public' event='_11_6_f2b035c_1183570952189_275799_11642' message='_11_6_f2b035c_1183570952187_905029_11637'>
+						<covered xmi:idref='_11_6_f2b035c_1183570944443_242977_11625'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570980069_674837_11654' visibility='public' message='_11_6_f2b035c_1183570980067_754245_11653'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183570980069_716162_11655' visibility='public' event='_11_6_f2b035c_1183570980070_504422_11658' message='_11_6_f2b035c_1183570980067_754245_11653'>
+						<covered xmi:idref='_11_6_f2b035c_1183570830491_877175_11574'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183571079500_972233_11679' visibility='public' event='_11_6_f2b035c_1183571079501_918705_11683' message='_11_6_f2b035c_1183571079499_783433_11678'>
+						<covered xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+					</fragment>
+					<fragment xmi:type='uml:MessageOccurrenceSpecification' xmi:id='_11_6_f2b035c_1183571079500_990296_11680' visibility='public' message='_11_6_f2b035c_1183571079499_783433_11678'>
+						<covered xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+					</fragment>
+				</ownedBehavior>
+			</ownedMember>
 			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_f2b035c_1180105944358_558281_388' visibility='public'/>
 			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1180106052010_454539_416' visibility='public'/>
 			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1180106299337_306910_474' visibility='public'>
@@ -1416,6 +1635,53 @@
 			<ownedMember xmi:type='uml:SignalEvent' xmi:id='_11_6_f2b035c_1183416244800_260841_874' visibility='public' signal='_11_6_f2b035c_1183416244797_624274_873'/>
 			<ownedMember xmi:type='uml:SignalEvent' xmi:id='_11_6_f2b035c_1183416418898_934803_879' visibility='public' signal='_11_6_f2b035c_1183416418894_683531_878'/>
 			<ownedMember xmi:type='uml:SignalEvent' xmi:id='_11_6_f2b035c_1183416432815_298765_882' visibility='public' signal='_11_6_f2b035c_1183416432812_681822_881'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570315789_941511_11421' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429739_238753_1588'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::applikation::client::controller::Controller::verbinde' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_f2b035c_1183570367198_802018_11436' visibility='public'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570430286_32462_11463' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274430036_304769_3143'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::dienste::eventqueue::EventQueue::enqueue' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570566623_847412_11515' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274430037_542773_3148'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::dienste::eventqueue::EventQueue::dequeue' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570595404_789881_11532' visibility='public'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570687326_608483_11553' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429891_55656_2390'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::applikation::client::zustaende::ClientZustand::handle' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_f2b035c_1183570837126_520030_11591' visibility='public'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570890527_295778_11616' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429917_136066_2532'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::applikation::client::zustaende::VerbindungErfassen::verbinden' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CreationEvent' xmi:id='_11_6_f2b035c_1183570952189_275799_11642' visibility='public'/>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183570980070_504422_11658' visibility='public'>
+				<operation xmi:type='uml:Operation' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274430071_457102_3318'>
+					<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+						<referenceExtension referentPath='Design::dienste::netzwerk::EndPunkt::sende' referentType='Operation'/>
+					</xmi:Extension>
+				</operation>
+			</ownedMember>
+			<ownedMember xmi:type='uml:CallEvent' xmi:id='_11_6_f2b035c_1183571079501_918705_11683' visibility='public'/>
 		</ownedMember>
 		<ownedMember xmi:type='uml:Package' href='UML_Standard_Profile.xml#magicdraw_uml_standard_profile_v_0001'>
 			<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
@@ -1435,98 +1701,6 @@
 	</uml:Model>
 	<xmi:Extension xmi:Extender='MagicDraw UML 11.6'>
 		<mdOwnedDiagrams>
-			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1183477273032_356938_1572' name='kd_client_controller' visibility='public' ownerOfDiagram='_11_6_7fe0252_1179921682013_868002_491'>
-				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1183477273035_16532_1573'>
-					<elementID xmi:idref='_11_6_f2b035c_1183477273032_356938_1572'/>
-					<type>Class Diagram</type>
-					<umlType>Class Diagram</umlType>
-					<zoomFactor xmi:value='1.0'/>
-					<diagramOpened xmi:value='true'/>
-					<diagramWindowBounds>0, 25, 953, 733</diagramWindowBounds>
-					<diagramScrollPositionX xmi:value='0'/>
-					<diagramScrollPositionY xmi:value='0'/>
-					<maximized xmi:value='false'/>
-					<active xmi:value='true'/>
-					<mdOwnedViews>
-						<mdElement elementClass='Class' xmi:id='_11_6_f2b035c_1183477284723_921053_1581'>
-							<elementID xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429474_804876_567'>
-								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-									<referenceExtension referentPath='Design::applikation::client::controller::Controller' referentType='Class'/>
-								</xmi:Extension>
-							</elementID>
-							<properties>
-								<mdElement elementClass='BooleanProperty'>
-									<propertyID>SUPPRESS_CLASS_OPERATIONS</propertyID>
-									<propertyGroup>OPERATIONS</propertyGroup>
-									<propertyDescriptionID>SUPPRESS_CLASS_OPERATIONS_DESCRIPTION</propertyDescriptionID>
-									<value xmi:value='false'/>
-								</mdElement>
-							</properties>
-							<geometry>469, 14, 363, 333</geometry>
-						</mdElement>
-						<mdElement elementClass='Interface' xmi:id='_11_6_f2b035c_1183477287469_380258_1618'>
-							<elementID xmi:type='uml:Interface' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429475_822339_570'>
-								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-									<referenceExtension referentPath='Design::applikation::client::controller::Steuerung' referentType='Interface'/>
-								</xmi:Extension>
-							</elementID>
-							<properties>
-								<mdElement elementClass='ColorProperty'>
-									<propertyID>FILL_COLOR</propertyID>
-									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
-									<value xmi:value='-52276'/>
-								</mdElement>
-							</properties>
-							<geometry>42, 91, 363, 183</geometry>
-						</mdElement>
-						<mdElement elementClass='InterfaceRealization' xmi:id='_11_6_f2b035c_1183477327528_709807_1645'>
-							<elementID xmi:type='uml:InterfaceRealization' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429656_169927_1201'>
-								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
-									<referenceExtension referentPath='Design::applikation::client::controller::Controller::' referentType='InterfaceRealization' referentSupplier='Design::applikation::client::controller::Steuerung' referentClient='Design::applikation::client::controller::Controller'/>
-								</xmi:Extension>
-							</elementID>
-							<properties>
-								<mdElement elementClass='ChoiceProperty'>
-									<propertyID>LINK_LINE_STYLE</propertyID>
-									<propertyDescriptionID>LINK_LINE_STYLE_DESCRIPTION</propertyDescriptionID>
-									<value>OBLIQUE</value>
-									<choice xmi:value='RECTILINEAR^OBLIQUE^BEZIER'/>
-									<index xmi:value='1'/>
-								</mdElement>
-							</properties>
-							<linkFirstEndID xmi:idref='_11_6_f2b035c_1183477287469_380258_1618'/>
-							<linkSecondEndID xmi:idref='_11_6_f2b035c_1183477284723_921053_1581'/>
-							<geometry>405, 182; 469, 181; </geometry>
-							<linkNameID xmi:idref='_11_6_f2b035c_1183477327528_765943_1646'/>
-							<nameVisible xmi:value='true'/>
-							<mdOwnedViews>
-								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_765943_1646'>
-									<visible xmi:value='false'/>
-									<geometry>420, 168, 28, 15</geometry>
-								</mdElement>
-								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_305472_1648'>
-									<editable xmi:value='false'/>
-									<visible xmi:value='false'/>
-									<geometry>420, 169, 28, 14</geometry>
-								</mdElement>
-								<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183477327528_737252_1650'>
-									<editable xmi:value='false'/>
-									<visible xmi:value='false'/>
-									<geometry>423, 192, 28, 15</geometry>
-								</mdElement>
-								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_848313_1653'>
-									<editable xmi:value='false'/>
-									<visible xmi:value='false'/>
-									<geometry>421, 207, 28, 14</geometry>
-								</mdElement>
-							</mdOwnedViews>
-							<linkConstraintID xmi:idref='_11_6_f2b035c_1183477327528_305472_1648'/>
-							<linkStereotypeID xmi:idref='_11_6_f2b035c_1183477327528_737252_1650'/>
-							<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183477327528_848313_1653'/>
-						</mdElement>
-					</mdOwnedViews>
-				</mdElement>
-			</mdElement>
 			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1180105582968_895533_300' name='Verbindung Erstellen - Client' visibility='public' ownerOfDiagram='_11_6_f2b035c_1180105582977_898633_302'>
 				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1180105582977_548390_301'>
 					<elementID xmi:idref='_11_6_f2b035c_1180105582968_895533_300'/>
@@ -2620,7 +2794,7 @@ aktuellerSpielerInformation</text>
 									<value xmi:value='-2490420'/>
 								</mdElement>
 							</properties>
-							<geometry>595, 496, 101, 41</geometry>
+							<geometry>595, 496, 196, 41</geometry>
 						</mdElement>
 						<mdElement elementClass='Transition' xmi:id='_11_6_f2b035c_1183417402920_618038_1180'>
 							<elementID xmi:idref='_11_6_f2b035c_1183417402919_452104_1179'/>
@@ -2689,7 +2863,7 @@ aktuellerSpielerInformation</text>
 					</mdOwnedViews>
 				</mdElement>
 			</mdElement>
-			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1180367180799_661287_240' name='Verbindung Erstellen - Server' visibility='public' ownerOfDiagram='_11_6_f2b035c_1180367180808_355093_242'>
+			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1180367180799_661287_240' name='sd_verbindung_erstellen_server' visibility='public' ownerOfDiagram='_11_6_f2b035c_1180367180808_355093_242'>
 				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1180367180804_993888_241'>
 					<elementID xmi:idref='_11_6_f2b035c_1180367180799_661287_240'/>
 					<type>Sequence Diagram</type>
@@ -9405,6 +9579,93 @@ aktuellerSpielerInformation</text>
 					</mdOwnedViews>
 				</mdElement>
 			</mdElement>
+			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1183477273032_356938_1572' name='kd_client_controller' visibility='public' ownerOfDiagram='_11_6_7fe0252_1179921682013_868002_491'>
+				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1183477273035_16532_1573'>
+					<elementID xmi:idref='_11_6_f2b035c_1183477273032_356938_1572'/>
+					<type>Class Diagram</type>
+					<umlType>Class Diagram</umlType>
+					<zoomFactor xmi:value='1.0'/>
+					<diagramOpened xmi:value='false'/>
+					<mdOwnedViews>
+						<mdElement elementClass='Class' xmi:id='_11_6_f2b035c_1183477284723_921053_1581'>
+							<elementID xmi:type='uml:Class' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429474_804876_567'>
+								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+									<referenceExtension referentPath='Design::applikation::client::controller::Controller' referentType='Class'/>
+								</xmi:Extension>
+							</elementID>
+							<properties>
+								<mdElement elementClass='BooleanProperty'>
+									<propertyID>SUPPRESS_CLASS_OPERATIONS</propertyID>
+									<propertyGroup>OPERATIONS</propertyGroup>
+									<propertyDescriptionID>SUPPRESS_CLASS_OPERATIONS_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='false'/>
+								</mdElement>
+							</properties>
+							<geometry>469, 14, 363, 333</geometry>
+						</mdElement>
+						<mdElement elementClass='Interface' xmi:id='_11_6_f2b035c_1183477287469_380258_1618'>
+							<elementID xmi:type='uml:Interface' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429475_822339_570'>
+								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+									<referenceExtension referentPath='Design::applikation::client::controller::Steuerung' referentType='Interface'/>
+								</xmi:Extension>
+							</elementID>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>42, 91, 363, 183</geometry>
+						</mdElement>
+						<mdElement elementClass='InterfaceRealization' xmi:id='_11_6_f2b035c_1183477327528_709807_1645'>
+							<elementID xmi:type='uml:InterfaceRealization' href='Bodesuri Design.mdxml#_11_6_7fe0252_1183274429656_169927_1201'>
+								<xmi:Extension xmi:Extender='MagicDraw UML 11.6' xmi:ExtenderID='MagicDraw UML 11.6'>
+									<referenceExtension referentPath='Design::applikation::client::controller::Controller::' referentType='InterfaceRealization' referentSupplier='Design::applikation::client::controller::Steuerung' referentClient='Design::applikation::client::controller::Controller'/>
+								</xmi:Extension>
+							</elementID>
+							<properties>
+								<mdElement elementClass='ChoiceProperty'>
+									<propertyID>LINK_LINE_STYLE</propertyID>
+									<propertyDescriptionID>LINK_LINE_STYLE_DESCRIPTION</propertyDescriptionID>
+									<value>OBLIQUE</value>
+									<choice xmi:value='RECTILINEAR^OBLIQUE^BEZIER'/>
+									<index xmi:value='1'/>
+								</mdElement>
+							</properties>
+							<linkFirstEndID xmi:idref='_11_6_f2b035c_1183477287469_380258_1618'/>
+							<linkSecondEndID xmi:idref='_11_6_f2b035c_1183477284723_921053_1581'/>
+							<geometry>405, 182; 469, 181; </geometry>
+							<linkNameID xmi:idref='_11_6_f2b035c_1183477327528_765943_1646'/>
+							<nameVisible xmi:value='true'/>
+							<mdOwnedViews>
+								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_765943_1646'>
+									<visible xmi:value='false'/>
+									<geometry>420, 168, 28, 15</geometry>
+								</mdElement>
+								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_305472_1648'>
+									<editable xmi:value='false'/>
+									<visible xmi:value='false'/>
+									<geometry>420, 169, 28, 14</geometry>
+								</mdElement>
+								<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183477327528_737252_1650'>
+									<editable xmi:value='false'/>
+									<visible xmi:value='false'/>
+									<geometry>423, 192, 28, 15</geometry>
+								</mdElement>
+								<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183477327528_848313_1653'>
+									<editable xmi:value='false'/>
+									<visible xmi:value='false'/>
+									<geometry>421, 207, 28, 14</geometry>
+								</mdElement>
+							</mdOwnedViews>
+							<linkConstraintID xmi:idref='_11_6_f2b035c_1183477327528_305472_1648'/>
+							<linkStereotypeID xmi:idref='_11_6_f2b035c_1183477327528_737252_1650'/>
+							<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183477327528_848313_1653'/>
+						</mdElement>
+					</mdOwnedViews>
+				</mdElement>
+			</mdElement>
 			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1183553241554_294717_8044' name='kd_client_events' visibility='public' ownerOfDiagram='_11_6_7fe0252_1179921682013_868002_491'>
 				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1183553241631_827953_8045'>
 					<elementID xmi:idref='_11_6_f2b035c_1183553241554_294717_8044'/>
@@ -14159,6 +14420,509 @@ aktuellerSpielerInformation</text>
 					</mdOwnedViews>
 				</mdElement>
 			</mdElement>
+			<mdElement elementClass='Diagram' xmi:id='_11_6_f2b035c_1183569918720_833078_11349' name='sd_verbindung_erstellen_client' visibility='public' ownerOfDiagram='_11_6_f2b035c_1183569918723_159288_11351'>
+				<mdElement elementClass='DiagramPresentationElement' xmi:id='_11_6_f2b035c_1183569918722_172785_11350'>
+					<elementID xmi:idref='_11_6_f2b035c_1183569918720_833078_11349'/>
+					<type>Sequence Diagram</type>
+					<umlType>Sequence Diagram</umlType>
+					<zoomFactor xmi:value='1.0'/>
+					<diagramOpened xmi:value='false'/>
+					<mdOwnedViews>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570212043_471412_11362'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570211447_385502_11360'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-10066277'/>
+								</mdElement>
+							</properties>
+							<geometry>21, 75, 115, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570212044_315920_11370'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570211447_385502_11360'/>
+									<editable xmi:value='false'/>
+									<geometry>78, 99, 0, 510</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570309646_745443_11420'>
+											<geometry>73, 124, 10, 159</geometry>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570309627_665311_11408'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570309622_852204_11405'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570309646_78853_11419'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570309646_745443_11420'/>
+											<geometry>213, 124; 83, 124; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570309627_922739_11409'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570309645_836408_11410'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>132, 96, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570309645_440729_11412'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>132, 138, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570309645_527326_11415'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>132, 152, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570309627_922739_11409'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570309622_852204_11405'/>
+													<geometry>87, 109, 378, 15</geometry>
+													<text>verbinde(host=name, port_raw=portNr, spieler=spielerName)</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570309645_836408_11410'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570309645_440729_11412'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570309645_527326_11415'/>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570285184_62793_11384'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570284598_139072_11382'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>175, 75, 86, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570285185_687042_11392'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570284598_139072_11382'/>
+									<editable xmi:value='false'/>
+									<geometry>218, 99, 0, 510</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570309646_78853_11419'>
+											<geometry>213, 124, 10, 139</geometry>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570367198_466930_11434'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570367195_791699_11431'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570296690_568579_11395'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570309646_78853_11419'/>
+											<geometry>280, 155; 223, 155; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570367198_107914_11435'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570367219_193729_11437'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>237, 133, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570367219_715369_11439'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>237, 163, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570367220_390889_11442'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>237, 181, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570367198_107914_11435'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570367195_791699_11431'/>
+													<geometry>223, 141, 56, 15</geometry>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570367219_193729_11437'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570367219_715369_11439'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570367220_390889_11442'/>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570430286_170911_11461'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570430283_690683_11458'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570430305_434036_11473'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570309646_78853_11419'/>
+											<geometry>470, 193; 223, 193; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570430286_764049_11462'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570430304_209660_11464'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>332, 165, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570430304_418576_11466'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>332, 207, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570430304_300690_11469'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>332, 222, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570430286_764049_11462'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570430283_690683_11458'/>
+													<geometry>282, 178, 128, 15</geometry>
+													<text>enqueue(event=ve)</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570430304_209660_11464'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570430304_418576_11466'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570430304_300690_11469'/>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570296690_568579_11395'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570295703_218468_11393'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>280, 143, 126, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570296690_105031_11403'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570295703_218468_11393'/>
+									<editable xmi:value='false'/>
+									<geometry>343, 167, 0, 442</geometry>
+								</mdElement>
+							</mdOwnedViews>
+							<isCreated xmi:value='true'/>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570413385_704345_11448'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570412129_610325_11446'/>
+							<geometry>427, 75, 97, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570413385_813497_11456'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570412129_610325_11446'/>
+									<editable xmi:value='false'/>
+									<geometry>475, 99, 0, 510</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570430305_434036_11473'>
+											<geometry>470, 193, 10, 50</geometry>
+										</mdElement>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570566640_254854_11525'>
+											<geometry>470, 273, 10, 50</geometry>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570558314_153035_11500'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>546, 75, 114, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570558314_828079_11508'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570557268_811020_11498'/>
+									<editable xmi:value='false'/>
+									<geometry>603, 99, 0, 510</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570566640_728774_11526'>
+											<geometry>598, 273, 10, 236</geometry>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570566622_185359_11513'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570566620_151344_11510'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570566640_254854_11525'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570566640_728774_11526'/>
+											<geometry>480, 273; 598, 273; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570566622_237728_11514'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570566640_817090_11516'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>525, 245, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570566640_806462_11518'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>525, 287, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570566640_527466_11521'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>525, 302, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570566622_237728_11514'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570566620_151344_11510'/>
+													<geometry>486, 258, 106, 15</geometry>
+													<text>ve = dequeue()</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570566640_817090_11516'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570566640_806462_11518'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570566640_527466_11521'/>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570687325_730612_11551'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570687323_295079_11548'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570566640_728774_11526'/>
+											<geometry>748, 289; 608, 289; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570687326_791356_11552'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570687344_621391_11554'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 261, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570687344_761588_11556'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 303, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570687344_636183_11559'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 318, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570687326_791356_11552'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570687323_295079_11548'/>
+													<geometry>620, 274, 117, 15</geometry>
+													<text>handle(event=ve)</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570687344_621391_11554'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570687344_761588_11556'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570687344_636183_11559'/>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570679869_671552_11538'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>679, 75, 148, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570679869_376255_11546'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570678551_475538_11536'/>
+									<editable xmi:value='false'/>
+									<geometry>753, 99, 0, 510</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570687344_512837_11563'>
+											<geometry>748, 289, 10, 170</geometry>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570837126_318068_11589'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570837124_573313_11586'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570831748_1289_11576'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<geometry>847, 339; 758, 339; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570837126_387550_11590'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570837144_881440_11592'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>788, 311, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570837144_900944_11594'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>788, 353, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570837144_732833_11597'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>788, 368, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570837126_387550_11590'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570837124_573313_11586'/>
+													<geometry>774, 324, 56, 15</geometry>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570837144_881440_11592'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570837144_900944_11594'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570837144_732833_11597'/>
+										</mdElement>
+										<mdElement elementClass='SeqSelfMessage' xmi:id='_11_6_f2b035c_1183570885901_899301_11605'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570885898_344941_11602'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<geometry>758, 320; 798, 320; 798, 295; 758, 295; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570885901_592251_11606'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570885920_552331_11607'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>764, 267, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570885920_792226_11609'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>764, 320, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570885920_904378_11612'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>764, 335, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570885901_592251_11606'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570885898_344941_11602'/>
+													<geometry>768, 280, 118, 15</geometry>
+													<text>verbinden(ve=ve)</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570885920_552331_11607'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570885920_792226_11609'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570885920_904378_11612'/>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570952189_179106_11640'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570952187_905029_11637'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570945440_477228_11627'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<geometry>1043, 378; 758, 378; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570952189_976610_11641'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570952208_555594_11643'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>886, 350, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570952208_422458_11645'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>886, 392, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570952209_755744_11648'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>886, 407, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570952189_976610_11641'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570952187_905029_11637'/>
+													<geometry>872, 363, 56, 15</geometry>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570952208_555594_11643'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570952208_422458_11645'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570952209_755744_11648'/>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183570980070_757780_11656'>
+											<elementID xmi:idref='_11_6_f2b035c_1183570980067_754245_11653'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570980089_55714_11668'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<geometry>931, 404; 758, 404; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183570980070_42272_11657'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570980088_743631_11659'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>830, 376, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183570980088_986611_11661'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>830, 418, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183570980088_620944_11664'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>830, 433, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183570980070_42272_11657'>
+													<elementID xmi:idref='_11_6_f2b035c_1183570980067_754245_11653'/>
+													<geometry>777, 389, 135, 15</geometry>
+													<text>sende(nachricht=sb)</text>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183570980088_743631_11659'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183570980088_986611_11661'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183570980088_620944_11664'/>
+										</mdElement>
+										<mdElement elementClass='SeqMessage' xmi:id='_11_6_f2b035c_1183571079501_273539_11681'>
+											<elementID xmi:idref='_11_6_f2b035c_1183571079499_783433_11678'/>
+											<linkFirstEndID xmi:idref='_11_6_f2b035c_1183570566640_728774_11526'/>
+											<linkSecondEndID xmi:idref='_11_6_f2b035c_1183570687344_512837_11563'/>
+											<geometry>608, 459; 748, 459; </geometry>
+											<linkNameID xmi:idref='_11_6_f2b035c_1183571079501_760074_11682'/>
+											<nameVisible xmi:value='true'/>
+											<mdOwnedViews>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183571079520_211949_11684'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 441, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBoxWithIcon' xmi:id='_11_6_f2b035c_1183571079520_991960_11686'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 483, 28, 15</geometry>
+												</mdElement>
+												<mdElement elementClass='TextBox' xmi:id='_11_6_f2b035c_1183571079520_134282_11689'>
+													<editable xmi:value='false'/>
+													<visible xmi:value='false'/>
+													<geometry>664, 488, 28, 14</geometry>
+												</mdElement>
+												<mdElement elementClass='MessageSignature' xmi:id='_11_6_f2b035c_1183571079501_760074_11682'>
+													<elementID xmi:idref='_11_6_f2b035c_1183571079499_783433_11678'/>
+													<geometry>650, 444, 56, 15</geometry>
+												</mdElement>
+											</mdOwnedViews>
+											<linkConstraintID xmi:idref='_11_6_f2b035c_1183571079520_211949_11684'/>
+											<linkStereotypeID xmi:idref='_11_6_f2b035c_1183571079520_991960_11686'/>
+											<linkTaggedValuesID xmi:idref='_11_6_f2b035c_1183571079520_134282_11689'/>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570831748_1289_11576'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570830491_877175_11574'/>
+							<geometry>847, 327, 179, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570831748_472004_11584'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570830491_877175_11574'/>
+									<editable xmi:value='false'/>
+									<geometry>936, 351, 0, 258</geometry>
+									<mdOwnedViews>
+										<mdElement elementClass='Activation' xmi:id='_11_6_f2b035c_1183570980089_55714_11668'>
+											<geometry>931, 404, 10, 50</geometry>
+										</mdElement>
+									</mdOwnedViews>
+								</mdElement>
+							</mdOwnedViews>
+							<isCreated xmi:value='true'/>
+						</mdElement>
+						<mdElement elementClass='SequenceLifeline' xmi:id='_11_6_f2b035c_1183570945440_477228_11627'>
+							<elementID xmi:idref='_11_6_f2b035c_1183570944443_242977_11625'/>
+							<properties>
+								<mdElement elementClass='ColorProperty'>
+									<propertyID>FILL_COLOR</propertyID>
+									<propertyDescriptionID>FILL_COLOR_DESCRIPTION</propertyDescriptionID>
+									<value xmi:value='-52276'/>
+								</mdElement>
+							</properties>
+							<geometry>1043, 366, 124, 24</geometry>
+							<mdOwnedViews>
+								<mdElement elementClass='LifeLineLine' xmi:id='_11_6_f2b035c_1183570945440_501505_11635'>
+									<elementID xmi:idref='_11_6_f2b035c_1183570944443_242977_11625'/>
+									<editable xmi:value='false'/>
+									<geometry>1105, 390, 0, 219</geometry>
+								</mdElement>
+							</mdOwnedViews>
+							<isCreated xmi:value='true'/>
+						</mdElement>
+					</mdOwnedViews>
+				</mdElement>
+			</mdElement>
 		</mdOwnedDiagrams>
 		<proxies>
 			<proxy xmi:type='uml:Profile' xmi:id='rimvydas_1048688023274_104450_1422' name='UML Profile for Java' visibility='public'>
@@ -15255,6 +16019,10 @@ aktuellerSpielerInformation</text>
 								<ownedEnd xmi:type='uml:Property' xmi:id='_11_6_7fe0252_1183274429890_599613_2388' visibility='private' type='_11_6_7fe0252_1183274429500_998123_677'/>
 							</ownedMember>
 						</ownedMember>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429507_167442_710' name='ClientAutomat' visibility='public'/>
+					</ownedMember>
+					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429508_342844_713' name='nachrichten' visibility='public'>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429514_340888_739' name='SpielBeitreten' visibility='public'/>
 					</ownedMember>
 				</ownedMember>
 				<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429532_539371_808' name='dienste' visibility='public'>
@@ -15297,6 +16065,16 @@ aktuellerSpielerInformation</text>
 						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429539_764460_836' name='Event' visibility='public'>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430034_60082_3129' name='toString' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430034_39079_3131' name='istLeise' visibility='public' concurrency='sequential'/>
+						</ownedMember>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429540_90517_839' name='EventQueue' visibility='public'>
+							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430036_304769_3143' name='enqueue' visibility='public' concurrency='sequential'/>
+							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430037_542773_3148' name='dequeue' visibility='public' concurrency='sequential'/>
+						</ownedMember>
+					</ownedMember>
+					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429541_158556_842' name='netzwerk' visibility='public'>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429547_704682_869' name='ClientEndPunkt' visibility='public'/>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429549_645573_873' name='EndPunkt' visibility='public'>
+							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430071_457102_3318' name='sende' visibility='public' concurrency='sequential'/>
 						</ownedMember>
 					</ownedMember>
 					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429554_362986_887' name='observer' visibility='public'>
@@ -15381,6 +16159,11 @@ aktuellerSpielerInformation</text>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430294_236760_4650' name='getBrett' visibility='public' concurrency='sequential'/>
 							<ownedOperation xmi:type='uml:Operation' xmi:id='_11_6_7fe0252_1183274430294_762008_4654' name='getSpieler' visibility='public' concurrency='sequential'/>
 						</ownedMember>
+					</ownedMember>
+				</ownedMember>
+				<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429613_985202_1100' name='ui' visibility='public'>
+					<ownedMember xmi:type='uml:Package' xmi:id='_11_6_7fe0252_1183274429651_411079_1176' name='verbinden' visibility='public'>
+						<ownedMember xmi:type='uml:Class' xmi:id='_11_6_7fe0252_1183274429653_144649_1192' name='VerbindenView' visibility='public'/>
 					</ownedMember>
 				</ownedMember>
 			</proxy>
@@ -15723,7 +16506,7 @@ aktuellerSpielerInformation</text>
 					<mdElement elementClass='StringProperty'>
 						<propertyID>DIAGRAMS_LAYOUT</propertyID>
 						<propertyDescriptionID>DIAGRAMS_LAYOUT_DESCRIPTION</propertyDescriptionID>
-						<value>0 0 0 14 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 66 0 32 0 62 0 30 0 33 0 35 0 63 0 5f 0 31 0 31 0 38 0 33 0 34 0 37 0 37 0 32 0 37 0 33 0 30 0 33 0 32 0 5f 0 33 0 35 0 36 0 39 0 33 0 38 0 5f 0 31 0 35 0 37 0 32 0 0 0 1 0 0 0 c8 0 0 0 e1 0 0 0 0 0 0 0 1 0 0 0 27 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 66 0 32 0 62 0 30 0 33 0 35 0 63 0 5f 0 31 0 31 0 38 0 33 0 34 0 37 0 37 0 32 0 37 0 33 0 30 0 33 0 32 0 5f 0 33 0 35 0 36 0 39 0 33 0 38 0 5f 0 31 0 35 0 37 0 32 </value>
+						<value>0 0 0 14 0 0 0 1 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 66 0 32 0 62 0 30 0 33 0 35 0 63 0 5f 0 31 0 31 0 38 0 33 0 35 0 36 0 39 0 39 0 31 0 38 0 37 0 32 0 30 0 5f 0 38 0 33 0 33 0 30 0 37 0 38 0 5f 0 31 0 31 0 33 0 34 0 39 0 0 0 1 0 0 0 e7 0 0 0 e1 0 0 0 1 0 0 0 2 0 0 0 26 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 66 0 32 0 62 0 30 0 33 0 35 0 63 0 5f 0 31 0 31 0 38 0 30 0 31 0 30 0 35 0 35 0 38 0 32 0 39 0 36 0 38 0 5f 0 38 0 39 0 35 0 35 0 33 0 33 0 5f 0 33 0 30 0 30 0 0 0 28 0 5f 0 31 0 31 0 5f 0 36 0 5f 0 66 0 32 0 62 0 30 0 33 0 35 0 63 0 5f 0 31 0 31 0 38 0 33 0 35 0 36 0 39 0 39 0 31 0 38 0 37 0 32 0 30 0 5f 0 38 0 33 0 33 0 30 0 37 0 38 0 5f 0 31 0 31 0 33 0 34 0 39 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='StringProperty'>
@@ -15801,7 +16584,7 @@ aktuellerSpielerInformation</text>
 					<mdElement elementClass='StringProperty'>
 						<propertyID>INFO_PROPERTY</propertyID>
 						<propertyDescriptionID>INFO_PROPERTY_DESCRIPTION</propertyDescriptionID>
-						<value>4c 4 1c 74 30 0 c 36 61 12 7b 0 db b 94 75 22 e6 ad 47 4a 63 73 6d 73 f a2 75 b bf b0 b6 53 56 f7 78 28 46 a1 de dc 69 42 9 a2 b6 f1 74 5b be 35 93 3c 8d cb d6 48 aa ad 20 dd cf 9e c6 e 1 3a 43 1 4 </value>
+						<value>4c 4 1c 74 30 0 c 36 61 12 7b 0 db b 94 75 22 e6 ad 47 4a 63 73 6c 73 a a2 75 c ba b0 b6 53 56 f7 78 28 46 a1 de dc 69 42 9 a2 b6 f1 74 5b be 35 93 3c 8d cb d6 48 aa ad 20 dd cf 9e c6 e 1 3a 43 1 4 </value>
 						<multiline xmi:value='false'/>
 					</mdElement>
 					<mdElement elementClass='LIST_PROPERTY'>
@@ -15812,7 +16595,7 @@ aktuellerSpielerInformation</text>
 					<mdElement elementClass='ChoiceProperty'>
 						<propertyID>RECENT_DIAGRAMS</propertyID>
 						<propertyDescriptionID>RECENT_DIAGRAMS_DESCRIPTION</propertyDescriptionID>
-						<choice xmi:value='_11_6_f2b035c_1183561463665_556511_9358^_11_6_f2b035c_1183468997845_532919_264^_11_6_f2b035c_1183562606741_989028_10116^_11_6_f2b035c_1183553241554_294717_8044^_11_6_f2b035c_1180105582968_895533_300^_11_6_7fe0252_1179944396206_521269_1882^_11_6_7fe0252_1180115455851_497982_1813^_11_6_f2b035c_1180395013579_816305_21291^_11_6_f2b035c_1180385406375_561219_18027^_11_6_f2b035c_1180367180799_661287_240^_11_6_f2b035c_1183415650199_500133_604'/>
+						<choice xmi:value='_11_6_f2b035c_1180367180799_661287_240^_11_6_f2b035c_1183569918720_833078_11349^_11_6_f2b035c_1180395013579_816305_21291^_11_6_f2b035c_1183415650199_500133_604^_11_6_f2b035c_1180105582968_895533_300^_11_6_f2b035c_1183477273032_356938_1572^_11_6_f2b035c_1183561463665_556511_9358^_11_6_f2b035c_1183468997845_532919_264^_11_6_f2b035c_1183562606741_989028_10116^_11_6_f2b035c_1183553241554_294717_8044^_11_6_7fe0252_1179944396206_521269_1882^_11_6_7fe0252_1180115455851_497982_1813^_11_6_f2b035c_1180385406375_561219_18027'/>
 						<index xmi:value='-1'/>
 					</mdElement>
 				</mdElement>
@@ -25549,6 +26332,7 @@ aktuellerSpielerInformation</text>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1183468997856_875716_266' base_Diagram='_11_6_f2b035c_1183468997845_532919_264' Author='philippe' Modification_date='03.07.07 15:23' Creation_date='03.07.07 15:23'/>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1183477273042_869914_1574' base_Diagram='_11_6_f2b035c_1183477273032_356938_1572' Author='philippe' Modification_date='03.07.07 17:41' Creation_date='03.07.07 17:41'/>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1183415650211_334509_608' base_Diagram='_11_6_f2b035c_1183415650199_500133_604' Author='philippe' Modification_date='03.07.07 00:34' Creation_date='03.07.07 00:34'/>
+	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1183569918733_445053_11353' base_Diagram='_11_6_f2b035c_1183569918720_833078_11349' Author='philippe' Modification_date='04.07.07 19:25' Creation_date='04.07.07 19:25'/>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1180367180848_790380_244' base_Diagram='_11_6_f2b035c_1180367180799_661287_240' Author='philippe' Modification_date='28.05.07 17:46' Creation_date='28.05.07 17:46'/>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1183562606744_834026_10118' base_Diagram='_11_6_f2b035c_1183562606741_989028_10116' Author='philippe' Modification_date='04.07.07 17:23' Creation_date='04.07.07 17:23'/>
 	<MagicDraw_Profile:DiagramInfo xmi:id='_11_6_f2b035c_1180385406397_469142_18029' base_Diagram='_11_6_f2b035c_1180385406375_561219_18027' Author='philippe' Modification_date='28.05.07 22:50' Creation_date='28.05.07 22:50'/>
