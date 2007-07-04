@@ -51,42 +51,37 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 	\item Der Einstiegspunkt ist die Klasse ProblemDomain, welche für das Erstellen eines Spiels (pd.spiel), eines KartenGebers (pd.regelsystem.karten) und eines Codierers (dienste.serialisierung).
 \end{itemize}
 
-% TODO: Robin: KD ProblemDomain
+\label{ssub:diagramme}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{kd_pd}
+	\caption{Klassendiagramm ProblemDomain}
+	\label{fig:kd_pd}
+\end{figure}
 
 \clearpage
 \subsubsection{Package pd.spiel}
 
 \subparagraph{Beschreibung}
-Das Package pd.spiel beinhaltet die beiden Unterpackages pd.spiel.brett und pd.spiel.spieler und die Spiel-Klasse.
+Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackages:
+
+\begin{itemize}
+	\item \textbf{pd.spiel.brett} Brett und alle Feldtypen.
+	\item \textbf{pd.spiel.spieler} Spieler, SpielerFarbe, Figuren und Partnerschaft
+\end{itemize}
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
 	\item Ein Spiel beinhaltet ein Brett und die Spieler. Es sollte nie direkt erstellt werden sondern nur von der Klasse ProblemDomain (pd).
 \end{itemize}
 
-% TODO: Robin: KD Spiel
-
-\clearpage
-\subsubsection{Package pd.spiel.brett}
-
-\subparagraph{Beschreibung}
-Umfasst das Brett und alle Feldtypen.
-
 \label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{pd_brett}
-	\caption{Klassendiagramm Brett und Figuren}
-	\label{fig:pd_brett}
+	\includegraphics[width=0.9 \textwidth]{kd_pd_spiel}
+	\caption{Klassendiagramm Spiel in PD}
+	\label{fig:kd_pd_spiel}
 \end{figure}
-
-\clearpage
-\subsubsection{Package pd.spiel.spieler}
-
-\subparagraph{Beschreibung}
-Beinhaltet den Spieler und was dazugehört, also die Figuren, die Partnerschaft und die SpielerFarbe.
-
-% TODO: Robin: KD
 
 \clearpage
 \subsubsection{Package pd.regelsystem}
