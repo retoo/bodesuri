@@ -940,6 +940,12 @@ Für \texttt{getMoeglicheZuege} wird ein Abnehmer verwendet, der alle Zugeingabe
 
 Mit dieser Lösung ist der Code zur Findung von Zugeingaben nur einmal vorhanden und die beiden Methoden laufen trotzdem nur so lange wie nötig.
 
+\subsection{Siebnerzug}
+
+Da die Karte Sieben beliebig auf die eigenen Figuren aufgeteilt werden kann, befürchteten wir zu Beginn, dass es sich bei der Erfassung eines Zuges mit der Sieben um eine schwierige Angelegenheit handelt. Ein Beispiel für ein Problem beim Erfassen eines solchen Zuges ist, dass unter Umständen eine Figur nach Hause geschickt werden muss, damit sie für weitere Teilzüge nicht mehr zur Verfügung steht. Dazu müsste der erfasste Teilzug bereits validiert werden, was das Zurücknehmen von bereits erfassten Teilzügen und somit das Abbrechen eines Siebnerzuges verunmöglicht. Eine mögliche Lösung wäre, beim Beginn eines Siebnerzuges, das ganze Brett zu klonen und bei einem Abbruch wieder zurück zu holen. Da verschiedene Observer, welche Teile des Brettes überwachen, umgeleitet werden müssten, ist diese Lösung zu komplex.
+
+Es bot sich aber eine viel einfachere und beinahe gleich flexible Lösung an. Ein Siebnerzug wird erst validiert, wenn insgesamt Sieben Felder gefahren wurden. Um die erfassten Teilzüge trotzdem visualisieren zu können, werden beim Ziel jedes Teilzuges halbtransparente Spielfiguren (wir nennen sie "<Geister">) platziert. Damit kann der Spieler sehen, dass sein Zug erfasst aber noch nicht komplett ist. Theoretisch ist es damit zwar möglich mit einer Figur, die nicht mehr auf dem Feld sein sollte, zu Fahren, dieser Fehler wird vom Regelsystem bei der Validierung aber erkannt und mit einer Fehlermeldung gemeldet.
+
 \clearpage
 \section{Eingetretene Risiken}
 \label{eingetretene_risiken}
@@ -1017,12 +1023,6 @@ Der aktuelle Bot (Klasse StupidBot) wählt von diesen Zügen zufällig irgendein
 	\item \textbf{BodesuriDemo:} Die main-Methode der Klasse BodesuriDemo startet einen Server, drei Bots und einen normalen Client. Die Demo ist ein einfacher und bequemer Weg um das Spiel auszuprobieren. Für reine Demo-Zwecke genügt der Bot vollkommen.
 	\item \textbf{ServerTest:} Eine Bot-Partie ohne GUI dauert ungefähr 20 Sekunden und eignet sich überraschenderweise erstaunlich gut um grosse Teile der Codebasis zu testen. Der Test ist relativ simpel, er ist nur erfolgreich wenn sich das Spiel in brauchbarer Zeit erfolgreich beendet. Da die ganze Client/Server Logik relativ strikt ist, führt ein kleiner Fehler in der Regel sofort zu einem Absturz und somit zu einem Fehlschlagen des Tests.
 \end{itemize}
-
-\subsection{Siebnerzug}
-
-Da die Karte Sieben beliebig auf die eigenen Figuren aufgeteilt werden kann, befürchteten wir zu Beginn, dass es sich bei der Erfassung eines Zuges mit der Sieben um eine schwierige Angelegenheit handelt. Ein Beispiel für ein Problem beim Erfassen eines solchen Zuges ist, dass unter Umständen eine Figur nach Hause geschickt werden muss, damit sie für weitere Teilzüge nicht mehr zur Verfügung steht. Dazu müsste der erfasste Teilzug bereits validiert werden, was das Zurücknehmen von bereits erfassten Teilzügen und somit das Abbrechen eines Siebnerzuges verunmöglicht. Eine mögliche Lösung wäre, beim Beginn eines Siebnerzuges, das ganze Brett zu klonen und bei einem Abbruch wieder zurück zu holen. Da verschiedene Observer, welche Teile des Brettes überwachen, umgeleitet werden müssten, ist diese Lösung zu komplex.
-
-Es bot sich aber eine viel einfachere und beinahe gleich flexible Lösung an. Ein Siebnerzug wird erst validiert, wenn insgesamt Sieben Felder gefahren wurden. Um die erfassten Teilzüge trotzdem visualisieren zu können, werden beim Ziel jedes Teilzuges halbtransparente Spielfiguren (wir nennen sie "<Geister">) platziert. Damit kann der Spieler sehen, dass sein Zug erfasst aber noch nicht komplett ist. Theoretisch ist es damit zwar möglich mit einer Figur, die nicht mehr auf dem Feld sein sollte, zu Fahren, dieser Fehler wird vom Regelsystem bei der Validierung aber erkannt und mit einer Fehlermeldung gemeldet.
 
 \clearpage
 \listoffigures
