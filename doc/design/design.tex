@@ -219,6 +219,41 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 \end{figure}
 
 \clearpage
+\subparagraph{Views Übersicht}
+Das untere Bild stellt den Aufbau des GUI's dar. Das GUI besteht aus mehereren verschachtelten JPanels, welche in der Grafik gelb umranded sind. Die blau umrandeten Komponente sind JLabels, welches f�r Texte wie auch f�r Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind. Beim erstellen des GUI's werden diese Koordinaten anhand der Klasse BrettXML ausgelesen und entsprechden die Grafiken positioniert.
+
+\subparagraph{JPanels (Views)}
+Die gross geschriebenen Namen der Views sind zugleich Klassen, die von der Klasse JPanel ableiten.
+\begin{enumerate}
+	\item SpielView
+	\item topPanel
+	\item chatView
+	\item BrettView
+	\item SteuerungsView
+	\item DeckView
+	\item karteGewaehltView
+	\item steuerungsView
+\end{enumerate}
+
+\subparagraph{JLabels}
+Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klasse BLabel ableiten. Die Klasse BLabel ist ebenfals eine abgeleitet Klasse von JLabel, sie erm�glicht das zentrieren der Grafiken auf einem Koordinatenpunkt.
+
+\begin{enumerate}
+	\item hinweisLabel
+	\item NormalesFeld2d
+	\item SpielerFeld2d
+	\item Figur2d
+	\item spielerView
+\end{enumerate}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{views_uebersicht}
+	\caption{Views Übersicht}
+	\label{fig:views_uebersicht}
+\end{figure}
+
+\clearpage
 \subsubsection{Package ui.geteiltes}
 \label{ssub:package_ui_geteiltes}
 \subparagraph{Beschreibung}
