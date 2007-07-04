@@ -5,5 +5,159 @@
    <classpath>
       <classpathentry kind="lib" path="/Users/HobusP/Eigene Dokumente/Ausbildung/HSR Rapperswil/Software Engineering/Bodesuri/Bodesuri/lib/bodesuri.jar" />
    </classpath>
+   <grid-set>
+      <grid name="Diagram 1" enforce="true">
+         <row>
+            <cell name="ui" pattern="ui.*">
+               <grid>
+                  <row>
+                     <cell name="verbinden" pattern="ui.verbinden.?" />
+                     <cell name="spiel" pattern="ui.spiel.*">
+                        <grid>
+                           <row>
+                              <cell name="steuerung" pattern="ui.spiel.steuerung.?" />
+                              <cell name="brett" pattern="ui.spiel.brett.*">
+                                 <grid>
+                                    <row>
+                                       <cell name="felder" pattern="ui.spiel.brett.felder.?" />
+                                    </row>
+                                 </grid>
+                              </cell>
+                           </row>
+                        </grid>
+                     </cell>
+                     <cell name="lobby" pattern="ui.lobby.?" />
+                  </row>
+                  <row>
+                     <cell name="geteiltes" pattern="ui.geteiltes.?" />
+                  </row>
+                  <row>
+                     <cell name="ressourcen" pattern="ui.ressourcen.?" />
+                  </row>
+               </grid>
+            </cell>
+         </row>
+         <row>
+            <cell name="applikation" pattern="applikation.*">
+               <grid>
+                  <row>
+                     <cell name="server" pattern="applikation.server.*">
+                        <grid>
+                           <row>
+                              <cell name="zustaende" pattern="applikation.server.zustaende.?" />
+                           </row>
+                           <row>
+                              <cell name="pd" pattern="applikation.server.pd.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                     <cell name="bot" pattern="applikation.bot.?" />
+                  </row>
+                  <row>
+                     <cell name="client" pattern="applikation.client.*">
+                        <grid>
+                           <row>
+                              <cell name="zustaende" pattern="applikation.client.zustaende.?" />
+                           </row>
+                           <row>
+                              <cell name="zugautomat" pattern="applikation.client.zugautomat.*">
+                                 <grid>
+                                    <row>
+                                       <cell name="zustaende" pattern="applikation.client.zugautomat.zustaende.?" />
+                                    </row>
+                                    <row>
+                                       <cell name="pd" pattern="applikation.client.zugautomat.pd.?" />
+                                    </row>
+                                 </grid>
+                              </cell>
+                           </row>
+                           <row>
+                              <cell name="controller" pattern="applikation.client.controller.?" />
+                           </row>
+                           <row>
+                              <cell name="events" pattern="applikation.client.events.?" />
+                           </row>
+                           <row>
+                              <cell name="pd" pattern="applikation.client.pd.?" />
+                           </row>
+                           <row>
+                              <cell name="konfiguration" pattern="applikation.client.konfiguration.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                  </row>
+                  <row>
+                     <cell name="nachrichten" pattern="applikation.nachrichten.?" />
+                  </row>
+               </grid>
+            </cell>
+         </row>
+         <row>
+            <cell name="pd" pattern="pd.*">
+               <grid>
+                  <row>
+                     <cell name="regelsystem" pattern="pd.regelsystem.*">
+                        <grid>
+                           <row>
+                              <cell name="karten" pattern="pd.regelsystem.karten.?" />
+                           </row>
+                           <row>
+                              <cell name="verstoesse" pattern="pd.regelsystem.verstoesse.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                  </row>
+                  <row>
+                     <cell name="zugsystem" pattern="pd.zugsystem.?" />
+                  </row>
+                  <row>
+                     <cell name="spiel" pattern="pd.spiel.*">
+                        <grid>
+                           <row>
+                              <cell name="brett" pattern="pd.spiel.brett.?" />
+                           </row>
+                           <row>
+                              <cell name="spieler" pattern="pd.spiel.spieler.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                  </row>
+                  <row>
+                     <cell name="serialisierung" pattern="pd.serialisierung.?" />
+                  </row>
+               </grid>
+            </cell>
+         </row>
+         <row>
+            <cell name="dienste" pattern="dienste.*">
+               <grid>
+                  <row>
+                     <cell name="netzwerk" pattern="dienste.netzwerk.*">
+                        <grid>
+                           <row>
+                              <cell name="server" pattern="dienste.netzwerk.server.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                     <cell name="automat" pattern="dienste.automat.*">
+                        <grid>
+                           <row>
+                              <cell name="zustaende" pattern="dienste.automat.zustaende.?" />
+                           </row>
+                        </grid>
+                     </cell>
+                     <cell name="observer" pattern="dienste.observer.?" />
+                  </row>
+                  <row>
+                     <cell name="threads" pattern="dienste.threads.?" />
+                     <cell name="serialisierung" pattern="dienste.serialisierung.?" />
+                     <cell name="eventqueue" pattern="dienste.eventqueue.?" />
+                  </row>
+               </grid>
+            </cell>
+         </row>
+         <description>Top-level breakout (depth=2147483647)</description>
+      </grid>
+   </grid-set>
 </local-project>
 
