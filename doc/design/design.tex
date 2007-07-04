@@ -213,10 +213,10 @@ Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommunizi
 \end{figure}
 
 \clearpage
-\subparagraph{Views Übersicht}
-Das untere Bild stellt den Aufbau des GUI's dar. Das GUI besteht aus mehereren verschachtelten JPanels, welche in der Grafik gelb umranded sind. Die blau umrandeten Komponente sind JLabels, welches f�r Texte wie auch f�r Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind. Beim erstellen des GUI's werden diese Koordinaten anhand der Klasse BrettXML ausgelesen und entsprechden die Grafiken positioniert.
+\paragraph{Übersicht der Views}
+Das untere Bild stellt den Aufbau des GUIs dar. Das GUI besteht aus mehreren verschachtelten JPanels, welche in der Grafik gelb umrandet sind. Die blau umrandeten Komponenten sind JLabels, welche für Texte wie auch für Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind. Beim Erstellen des GUIs werden diese Koordinaten anhand der Klasse BrettXML ausgelesen und entsprechend die Grafiken positioniert.
 
-\subparagraph{JPanels (Views)}
+\paragraph{JPanels (Views)}
 Die gross geschriebenen Namen der Views sind zugleich Klassen, die von der Klasse JPanel ableiten.
 \begin{enumerate}
 	\item SpielView
@@ -229,8 +229,8 @@ Die gross geschriebenen Namen der Views sind zugleich Klassen, die von der Klass
 	\item steuerungsView
 \end{enumerate}
 
-\subparagraph{JLabels}
-Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klasse BLabel ableiten. Die Klasse BLabel ist ebenfals eine abgeleitet Klasse von JLabel, sie erm�glicht das zentrieren der Grafiken auf einem Koordinatenpunkt.
+\paragraph{JLabels}
+Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klasse BLabel ableiten. Die Klasse BLabel ist ebenfals eine abgeleitet Klasse von JLabel, sie ermöglicht das Zentrieren der Grafiken auf einem Koordinatenpunkt.
 
 \begin{enumerate}
 	\item hinweisLabel
@@ -243,7 +243,7 @@ Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klass
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{views_uebersicht}
-	\caption{Views Übersicht}
+	\caption{Übersicht der Views}
 	\label{fig:views_uebersicht}
 \end{figure}
 
