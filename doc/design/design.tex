@@ -23,14 +23,10 @@ Zwischen Client und Server werden Nachrichten verschiedener Typen zur Synchronis
 Die Validierung der gespielten Züge geschieht sowohl auf dem Client als auch auf dem Server. Der Server ist ausserdem noch zuständig für die Koordination des Spielablaufs und für die Kommunikation zwischen den Spielern.
 
 \clearpage
-\section{Design Pakete}
-\label{design_pakete}
+\section{Logische Sicht}
 
-\subsection{Logische Sicht}
-\label{sub:logische_sicht}
+\subsection{Schichtenarchitektur}
 
-\subsubsection{Schichtenarchitektur}
-\label{sub:schichtenarchitektur}
 Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet, wie in Abbildung~\vref{fig:architektur_schichten} dargestellt. Dabei setzt jede Schicht direkt auf den Diensten der darunterliegenden Schichten auf. Schichten können transparent sein. Dadurch ergeben sich wenige Indirektionen und eine einfache Nutzung der Dienste einer Schicht. Wo möglich und sinnvoll, werden Schnittstellen zwischen Schichten durch eine Fassade gebündelt, um die Kopplung zwischen den Schichten zu verringern. Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen. Im UI wird das MVC-Konzept verwendet, da eine komplexe Darstellungslogik durch das Spiel gegeben ist.
 \begin{figure}
 	\centering
@@ -41,11 +37,11 @@ Für die logische Strukturierung des Projektes wird eine vierschichtige Architek
 
 \clearpage
 
-\subsubsection{Package pd}
+\subsection{Package pd}
 
 In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird direkt von der darüberliegenden Applikationsschicht verwendet.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Der Einstiegspunkt ist die Klasse ProblemDomain, welche für das Erstellen eines Spiels (pd.spiel), eines KartenGebers (pd.regelsystem.karten) und eines Codierers (dienste.serialisierung).
 \end{itemize}
@@ -59,7 +55,7 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 \end{figure}
 
 \clearpage
-\subsubsection{Package pd.spiel}
+\subsection{Package pd.spiel}
 
 Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackages:
 
@@ -68,7 +64,7 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 	\item \textbf{pd.spiel.spieler} Spieler, SpielerFarbe, Figuren und Partnerschaft
 \end{itemize}
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Ein Spiel beinhaltet ein Brett und die Spieler. Es sollte nie direkt erstellt werden sondern nur von der Klasse ProblemDomain (pd).
 \end{itemize}
@@ -82,7 +78,7 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 \end{figure}
 
 \clearpage
-\subsubsection{Package pd.regelsystem}
+\subsection{Package pd.regelsystem}
 
 Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie die Validierung der Züge sicherstellt und die daraus resultierenden Aktionen in der Problem-Domain berechnet (Figur von Feld X auf Feld Y verschieben). Beinhaltet zwei Subpackages:
 
@@ -91,7 +87,7 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 	\item \textbf{pd.regelsystem.verstoesse} RegelVerstoss und abgeleitete Klassen
 \end{itemize}
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug (in pd.zugsystem) als Ergebnis hat.
 \end{itemize}
@@ -104,7 +100,7 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 \end{figure}
 
 \clearpage
-\subsubsection{Package pd.zugsystem}
+\subsection{Package pd.zugsystem}
 
 Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwendet werden. So wird zum Beispiel vom Regelsystem aus einer Zugeingabe ein Zug mit Aktionen erstellt. Bewegung und Weg sind Hilfsklassen für die Validierung.
 
@@ -116,11 +112,11 @@ Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwende
 \end{figure}
 
 \clearpage
-\subsubsection{Package pd.serialisierung}
+\subsection{Package pd.serialisierung}
 
 Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialisierung von Klassen der Problem-Domain zu ermöglichen.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Bietet eine Basisklasse (BodesuriCodierbaresObjekt) für die Klassen der Problem-Domain an, die serialisiert werden können.
 \end{itemize}
@@ -134,7 +130,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 
 
 \clearpage
-\subsubsection{Package dienste.automat}
+\subsection{Package dienste.automat}
 
 Beinhaltet einen Zustandsautomaten der im Client und im Server für eine gezielte Abarbeitung des Spielablaufs sorgt. Der Automat wechselt aufgrund externer Events auf vorher definierten Bahnen zwischen den Zuständen hin und her.
 
@@ -144,7 +140,7 @@ Der Automat bietet zwei Betriebsmodi an:
 	\item Ferngesteuerter integrierter Betrieb. Der Automat wird vom Caller bei anstehenden Ereignissen aufgerufen, verarbeitet exakt ein Ereignis (inklusive den dazugehörigen Zuständen) und übergibt anschliessend die Kontrolle wieder dem Caller. Der Modus eignet sich speziell für Unterautomaten bei welchen man keinen zusätzlichen Thread und eine seperate Ereignisqueue einsetzen möchte. Der Hauptautomat liest die Events ein und gibt sie direkt dem Unterautomaten weiter. 
 \end{itemize}
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
 \end{itemize}	
@@ -157,11 +153,11 @@ Der Automat bietet zwei Betriebsmodi an:
 \end{figure}
 
 \clearpage
-\subsubsection{Package dienste.serialisierung}
+\subsection{Package dienste.serialisierung}
 
 Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte zuständig, die anschliessend über das Netzwerk versendet werden.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Die abstrakte Klasse CodierbaresObjekt muss vom Benutzer dieses Packages implementiert werden. Dabei müssen die Methoden \texttt{getCodierer} und \texttt{getCodiertesObjekt} überschrieben werden. \texttt{getCodiertesObjekt} sollte ein neues konkretes CodiertesObjekt (z.\,B. BodesuriCodiertesObjekt) erstellen.
 	\item Die zweite abstrakte Klasse CodiertesObjekt muss auch implementiert werden. Es muss nur \texttt{getCodierer} überschrieben werden, um den gleichen Codierer zurückzugeben wie bei CodierbaresObjekt.
@@ -175,11 +171,11 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 \end{figure}
 
 \clearpage
-\subsubsection{Package dienste.netzwerk}
+\subsection{Package dienste.netzwerk}
 
 Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für die Netzwerkkommunikation an.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
 % FIXME: Reto stimmt so nümm (Reto)
@@ -201,8 +197,8 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \end{figure}
 
 \clearpage
-\subsubsection{Package ui}
-\label{ssub:package_ui}
+\subsection{Package ui}
+
 Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
 
 \begin{figure}[h]
@@ -248,31 +244,31 @@ Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klass
 \end{figure}
 
 \clearpage
-\subsubsection{Package ui.geteiltes}
+\subsection{Package ui.geteiltes}
 
 Dieses Package enthält Klassen, welche in verschiedenen Views verwendet werden. Sie dienen als Vereinheitlichung des Spielverhaltens.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item BLabel dient zur Positionierung der Labels zentriert auf einen Koordinatenpunkt.
 	\item ClickMouseAdapter ist ein MouseListener, der das gleiche Klickverhalten wie ein ActionListener hat.
 \end{itemize}
 
-\subsubsection{Package ui.lobby}
+\subsection{Package ui.lobby}
 
 In der Lobby werden die Spieler aufgelistet, die mit dem Server verbunden sind. Sobald sich alle vier Spieler in der Lobby befinden, kann das Spiel begonnen werden.
 
-\subsubsection{Package ui.ressourcen}
+\subsection{Package ui.ressourcen}
 
 Hier befinden sich die grafischen Ressourcen für das Spiel. Die einzelnen Grafiken werden von der Klasse Icons geladen und sind dann im gesamten Projekt über Konstanten erreichbar. Um die Grafiken per Koordinaten platzieren zu können, steht dafür ein XML-Dokument zur Verfügung, welches die Koordinaten der einzelnen Grafiken enthält. Anhand der Klasse BrettXML werden alle Koordinaten ausgelesen, um die Grafiken entsprechend zu platzieren.
 
-\subparagraph{Schnittstellen}
+\paragraph{Schnittstellen}
 \begin{itemize}
 	\item Icons dient zum Laden und Ansprechen der einzelnen Grafiken.
 	\item BrettXML dient zum Auslesen der Koordinaten für die einzelnen Grafiken.
 \end{itemize}
 
-\subsubsection{Package ui.spiel}
+\subsection{Package ui.spiel}
 
 Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen für die Darstellung des Spielbrettes, sowie auch der Steuerung der Spielkarten und der Sonderfunktionen.
 
@@ -281,7 +277,7 @@ Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen f�
 	\item Das Package steuerung dient zum Ziehen der Karten und "<Tauschen"> der Spielkarten mit dem Partner oder das "<Aufgeben"> in einer Runde.
 \end{itemize}
 
-\subsubsection{Package ui.verbinden}
+\subsection{Package ui.verbinden}
 
 Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
@@ -292,26 +288,26 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 \end{itemize}
 
 \clearpage
-\subsubsection{Package applikation}
+\subsection{Package applikation}
 
 Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
-\subsubsection{Package applikation.bot}
+\subsection{Package applikation.bot}
 
-	\subparagraph{Schnittstellen}
+	\paragraph{Schnittstellen}
 	\begin{itemize}
 		\item 
 	\end{itemize}
 	
-\subsubsection{Package applikation.client}
+\subsection{Package applikation.client}
 
 	Die Client-Applikationsschicht ist für die Zustandsverwaltung des Clients und die Kommunikation mit dem UI verantwortlich. Die beiden Automaten (ClientAutomat \& ZugAutomat) und die clientspezifische PD bilden die Zustände des Clients ab. Der Controller dient als Kommunikationsschnittstelle zwischen dem Automaten und dem UI.
 	
-	\subsubsection{Package applikation.client.controller}
+	\subsection{Package applikation.client.controller}
 
 		Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt. Andere Schichten nutzen bloss das Steuerungsinterface welches vom Controller implementiert wird.
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item Der Controller bietet dem UI über das Steuerungs-Interface Methoden an um Events für den Automaten abzusetzen.
 			\item Die abstrakten Methoden des Controllers (Methodennamen beginnen mit zeige), werden in der UI Schicht implementiert. Sie werden vom Automaten genutzt um das UI zu manipulieren.
@@ -324,7 +320,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_controller}
 		\end{figure}
 		
-	\subsubsection{Package applikation.client.events}
+	\subsection{Package applikation.client.events}
 
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 		\begin{figure}[h]
@@ -334,7 +330,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_events}
 		\end{figure}
 		
-	\subsubsection{Package applikation.client.konfiguration}
+	\subsection{Package applikation.client.konfiguration}
 
 		Beinhaltet Standardwerte und Debugeinstellungen für die Konfiguration des Clients.	
 
@@ -343,11 +339,11 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\item Werden in der clientspezifischen PD gespeichert und dann vom Automaten, dem Controller und dem UI genutzt.
 		\end{itemize}
 	
-	\subsubsection{Package applikation.client.pd}
+	\subsection{Package applikation.client.pd}
 
 		Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item Die clientspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an. Einstiegspunkt ist das Spiel, da es die Spieler, das Brett und die Karten enthält.
 			\item Die Felder, die Karten, die Spieler und das Spiel sind \emph{Observeable}.
@@ -360,11 +356,11 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_pd}
 		\end{figure}
 		
-	\subsubsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
+	\subsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
 
 		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomaten gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item Der Zugautomat kommuniziert über Events mit dem ClientAutomaten.
 		\end{itemize}
@@ -376,11 +372,11 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_zugautomat}
 		\end{figure}
 		
-	\subsubsection{Package applikation.client.zustaende}
+	\subsection{Package applikation.client.zustaende}
 
 		Dieses Package gruppiert die Zustände die der ClientAutomat annehmen kann.
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item Die Zustände werden vom ClientAutomaten genutzt.
 		\end{itemize}
@@ -392,7 +388,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_zustaende}
 		\end{figure}
 	
-\subsubsection{Package applikation.nachrichten}
+\subsection{Package applikation.nachrichten}
 
 	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
 	\begin{figure}[h]
@@ -402,7 +398,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 		\label{fig:kd_applikation_nachricht}
 	\end{figure}
 
-\subsubsection{Package applikation.server}
+\subsection{Package applikation.server}
 
 	Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
 
@@ -413,22 +409,23 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 		\label{fig:kd_applikation_server}
 	\end{figure}
 	
-	\subsubsection{Package applikation.server.pd}
+	\subsection{Package applikation.server.pd}
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item 
 		\end{itemize}
 	
-	\subsubsection{Package applikation.server.zustaende}
+	\subsection{Package applikation.server.zustaende}
 
-		\subparagraph{Schnittstellen}
+		\paragraph{Schnittstellen}
 		\begin{itemize}
 			\item 
 		\end{itemize}	
 
+
 \clearpage
-\subsection{Prozesse \& Threads}
+\section{Prozesse \& Threads}
 Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Dies sind die vier Clients und der zentrale Server. Zwischen den Clients und dem Server besteht je ein TCP Socket. 
 
 \begin{figure}[h]
@@ -439,7 +436,7 @@ Ein reguläres Bodesuri-Spiel besteht aus fünf eigenständigen Komponenten. Die
 \end{figure}
 
 \clearpage
-\subsubsection{Client-Threads}
+\subsection{Client-Threads}
 \label{ssub:client_threads}
 
 \paragraph{Main-Thread}
@@ -482,7 +479,7 @@ Swing startet intern verschiedene Threads. Die genauen Abläufe und Struktur die
 \end{tabular}
 
 \clearpage
-\subsubsection{Server Threads}
+\subsection{Server Threads}
 \label{ssub:server}
 
 Der Server ist für die Koordination der einzelnen Clients zuständig.
