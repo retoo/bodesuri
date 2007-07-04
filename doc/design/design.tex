@@ -48,10 +48,65 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
-	\item Package pd.zugsystem wird von applikation.zugentgegennahme verwendet, um Züge zu verarbeiten.
+	\item Der Einstiegspunkt ist die Klasse ProblemDomain, welche für das Erstellen eines Spiels (pd.spiel), eines KartenGebers (pd.regelsystem.karten) und eines Codierers (dienste.serialisierung).
 \end{itemize}
 
-\subsubsection{Package pd.karten}
+% TODO: Robin: KD ProblemDomain
+
+\clearpage
+\subsubsection{Package pd.spiel}
+
+\subparagraph{Beschreibung}
+Das Package pd.spiel beinhaltet die beiden Unterpackages pd.spiel.brett und pd.spiel.spieler und die Spiel-Klasse.
+
+\subparagraph{Schnittstellen}
+\begin{itemize}
+	\item Ein Spiel beinhaltet ein Brett und die Spieler. Es sollte nie direkt erstellt werden sondern nur von der Klasse ProblemDomain (pd).
+\end{itemize}
+
+% TODO: Robin: KD Spiel
+
+\clearpage
+\subsubsection{Package pd.spiel.brett}
+
+\subparagraph{Beschreibung}
+Umfasst das Brett und alle Feldtypen.
+
+\label{ssub:diagramme}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{pd_brett}
+	\caption{Klassendiagramm Brett und Figuren}
+	\label{fig:pd_brett}
+\end{figure}
+
+\clearpage
+\subsubsection{Package pd.spiel.spieler}
+
+\subparagraph{Beschreibung}
+Beinhaltet den Spieler und was dazugehört, also die Figuren, die Partnerschaft und die SpielerFarbe.
+
+% TODO: Robin: KD
+
+\clearpage
+\subsubsection{Package pd.regelsystem}
+\subparagraph{Beschreibung}
+Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie die Validierung der Züge sicherstellt und die daraus resultierenden Aktionen in der Problem-Domain berechnet (Figur von Feld X auf Feld Y verschieben).
+
+\subparagraph{Schnittstellen}
+\begin{itemize}
+	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug (in pd.zugsystem) als Ergebnis hat.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{pd_regelsystem}
+	\caption{Klassendiagramm Regelsystem}
+	\label{fig:pd_regelsystem}
+\end{figure}
+
+\clearpage
+\subsubsection{Package pd.regelsystem.karten}
 \label{ssub:package_pd_karten}
 \subparagraph{Beschreibung}
 Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber. 
@@ -69,41 +124,9 @@ Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber.
 \end{figure}
 
 \clearpage
-\subsubsection{Package pd.regelsystem, pd.zugsystem}
-\label{ssub:package_pd_regelsystem}
+\subsubsection{Package pd.zugsystem}
 \subparagraph{Beschreibung}
-Das Regel- und das Zugsystem sind eng miteinander verbunden. Sie nehmen die Aufgaben der Problem-Domain-Schicht wahr und stellen die Validierung der Züge sicher und berechnen die daraus resultierenden Aktionen in der Problem-Domain (Figur von Feld X auf Feld Y verschieben).
-
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug als Ergebnis hat.
-\end{itemize}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{pd_regelsystem}
-	\caption{Klassendiagramm Regelsystem}
-	\label{fig:pd_regelsystem}
-\end{figure}
-
-\clearpage
-\subsubsection{Package pd.brett, pd.spieler}
-\label{ssub:package_pd_brett}
-\subparagraph{Beschreibung}
-Die beiden Packages sind eng miteinander verbunden und stellen die Abstraktion des Bretts (welches die Felder enthält), der Figuren und des Spielers in der Problem-Domain dar.
-
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item Der Einstiegspunkt ist das Spiel, da es das Brett, den Kartengeber und die Spieler enthält.
-\end{itemize}
-
-\label{ssub:diagramme}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\textwidth]{pd_brett}
-	\caption{Klassendiagramm Brett und Figuren}
-	\label{fig:pd_brett}
-\end{figure}
+Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwendet werden. So wird zum Beispiel vom Regelsystem aus einer Zugeingabe ein Zug mit Aktionen erstellt. Bewegung und Weg sind Hilfsklassen für die Validierung.
 
 \clearpage
 \subsubsection{Package pd.serialisierung}
@@ -122,6 +145,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 	\caption{Klassendiagramm Serialisierung in PD}
 	\label{fig:kd_pd_serialisierung}
 \end{figure}
+
 
 \clearpage
 \subsubsection{Package dienste.automat}
@@ -297,7 +321,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=\textwidth]{kd_applikation_events}
+%			\includegraphics[width=\textwidth]{kd_applikation_events}
 			\caption{Klassendiagramm Events}
 			\label{fig:kd_applikation_events}
 		\end{figure}
