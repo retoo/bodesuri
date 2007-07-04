@@ -6,6 +6,10 @@ class Lizenzierer
   
   def initialize(pfad, pfadZuLizenz) #Konstruktor
     @pfad = pfad
+    
+    # @lizenztext = File.read(@path) 
+    
+    
     File.open(pfadZuLizenz, 'r+') do |lizenzdatei|
       @lizenztext = lizenzdatei.readlines
     end
@@ -18,6 +22,11 @@ class Lizenzierer
     # Gehe den Verzeichnisbaum durch
     Find.find(@pfad) do |datei|
       next unless datei =~ /\.java$/    # wendet den RegExp an (=~)
+      
+      # *schuddr* 
+      # verwend temporäre dateien in solchen fällen :) das ist viel schöner und im fehler fall geht dir
+      # szeugs ned futsch
+      
       File.open(datei, 'r+') do |f|
         zeilen = f.readlines
         f.pos = 0
@@ -34,3 +43,5 @@ end
 
 lizenzierer = Lizenzierer.new("pfad_zum_source_verzeichnis", "pfad_zur_lizenz");
 lizenzierer.lizenziere
+
+# nice :)
