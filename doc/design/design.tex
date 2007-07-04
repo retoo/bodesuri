@@ -86,7 +86,12 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 \clearpage
 \subsubsection{Package pd.regelsystem}
 \subparagraph{Beschreibung}
-Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie die Validierung der Züge sicherstellt und die daraus resultierenden Aktionen in der Problem-Domain berechnet (Figur von Feld X auf Feld Y verschieben).
+Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie die Validierung der Züge sicherstellt und die daraus resultierenden Aktionen in der Problem-Domain berechnet (Figur von Feld X auf Feld Y verschieben). Beinhaltet zwei Subpackages:
+
+\begin{itemize}
+	\item \textbf{pd.regelsystem.karten} Karten, KartenFarbe, Deck und KartenGeber
+	\item \textbf{pd.regelsystem.verstoesse} RegelVerstoss und abgeleitete Klassen
+\end{itemize}
 
 \subparagraph{Schnittstellen}
 \begin{itemize}
@@ -95,27 +100,9 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{pd_regelsystem}
+	\includegraphics[width=\textwidth]{kd_pd_regelsystem}
 	\caption{Klassendiagramm Regelsystem}
-	\label{fig:pd_regelsystem}
-\end{figure}
-
-\clearpage
-\subsubsection{Package pd.regelsystem.karten}
-\label{ssub:package_pd_karten}
-\subparagraph{Beschreibung}
-Beinhaltet alle Karten, die Kartenfarben, das Deck und den Kartengeber. 
-
-\subparagraph{Schnittstellen}
-\begin{itemize}
-	\item Als Einstiegspunkt für die Karten wird der Kartengeber verwendet, der das Mischen und das Ziehen einer Karte vom Stapel bereitstellt.
-\end{itemize}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8 \textwidth]{pd_kartengeber}
-	\caption{Klassendiagramm Kartengeber}
-	\label{fig:pd_kartengeber}
+	\label{fig:kd_pd_regelsystem}
 \end{figure}
 
 \clearpage
