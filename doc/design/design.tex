@@ -220,7 +220,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \clearpage
 \subsubsection{Package ui}
 \label{ssub:package_ui}
-Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Es enthält als wichtigen Bestandteil auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
+Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
 
 \begin{figure}[h]
 	\centering
@@ -293,11 +293,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	
 \subsubsection{Package applikation.client}
 	\subparagraph{Beschreibung}
-
-	\subparagraph{Schnittstellen}
-	\begin{itemize}
-		\item 
-	\end{itemize}
+	Die Client-Applikationsschicht ist für die Zustandsverwaltung des Clients und die Kommunikation mit dem UI verantwortlich. Die beiden Automaten (ClientAutomat \& ZugAutomat) und die clientspezifische PD bilden die Zustände des Clients ab. Der Controller dient als Kommunikationsschnittstelle zwischen dem Automaten und dem UI.
 	
 	\subsubsection{Package applikation.client.controller}
 		\subparagraph{Beschreibung}
@@ -321,17 +317,18 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
 		\begin{figure}[h]
 			\centering
-%			\includegraphics[width=\textwidth]{kd_applikation_events}
+			\includegraphics[width=\textwidth]{kd_client_events}
 			\caption{Klassendiagramm Events}
-			\label{fig:kd_applikation_events}
+			\label{fig:kd_client_events}
 		\end{figure}
 		
 	\subsubsection{Package applikation.client.konfiguration}
 		\subparagraph{Beschreibung}
+		Beinhaltet Standardwerte und Debugeinstellungen für die Konfiguration des Clients.	
 
 		\subparagraph{Schnittstellen}
 		\begin{itemize}
-			\item 
+			\item Werden in der clientspezifischen PD gespeichert und dann vom Automaten, dem Controller und dem UI genutzt.
 		\end{itemize}
 	
 	\subsubsection{Package applikation.client.pd}
