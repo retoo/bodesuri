@@ -48,20 +48,16 @@ Abschliessend kann ich sagen, dass ich mit dem Projekt sehr zufrieden bin und au
 \section{Team-Erfahrungsbericht}
 
 \subsection{Statistiken}
+\subsubsection{Testabdeckung aller Packages}
+Unsere JUnit-Tests erreichen über das gesamte Projekt gesehen eine relativ hohe Abdeckung von 79 Prozent. Dabei muss noch berücksichtigt werden, dass das UI nicht durch JUnit-Tests getestet wird. Durch die Zuhilfenahme des Bots stieg die Abdeckung auch noch um ein grosses Stück, da dieser beinahe alle Teile des Codes benötigt. Wenn dann ein Spiel mit Bots zuende gespielt wurde, so verläuft der Test erfolgreich.
+
+Markant ist, dass die Problem-Domain eine sehr hohe Testabdeckung aufweist und auch während des ganzen Projektes aufgewiesen hat. Diese konnte so immer als sehr stabile Grundlage für die Entwicklungen dienen.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8 \textwidth]{anzahl_zeilen_pro_package}
-	\caption{Anzahl Zeilen Code pro Package}
-	\label{fig:anzahl_zeilen_pro_package}
+	\includegraphics[width=0.8 \textwidth]{test_abdeckung_gesamt}
+	\caption{Testabdeckung aller Packages}
+	\label{fig:test_abdeckung_gesamt}
 \end{figure}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8 \textwidth]{code_qualitaet}
-	\caption{Aussagen zur Code Qualität}
-	\label{fig:code_qualitaet}
-\end{figure}
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{test_abdeckung_pd}
@@ -69,11 +65,22 @@ Abschliessend kann ich sagen, dass ich mit dem Projekt sehr zufrieden bin und au
 	\label{fig:test_abdeckung_pd}
 \end{figure}
 
+\subsubsection{Analyse der Anzahl von Zeilen pro Package}
+Wenn man sich die Anzahl der Zeilen im Verhältnis zu den Packages anschaut, so stellt man fest, dass fundametale Packages wie die Dienstschicht oder die Problem-Domain über längere Zeit relativ konstant blieben. Andere Packages wie der Server, der Client oder das GUI wuchsen gegen Projektende markant schneller.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.8 \textwidth]{test_abdeckung_gesamt}
-	\caption{Testabdeckung aller Packages, ausser der UI-Schicht}
-	\label{fig:test_abdeckung_gesamt}
+	\includegraphics[width=0.8 \textwidth]{anzahl_zeilen_pro_package}
+	\caption{Anzahl Zeilen Code pro Package}
+	\label{fig:anzahl_zeilen_pro_package}
+\end{figure}
+
+\subsubsection{Aussagen zur Code-Qualität}
+Mit dem Tool "<Structure 101"> waren wir in der Lage, Aussagen über die Code-Qualität zu treffen. Im Diagramm sieht man als negativen Wert "<Fette Instruktionen">. Damit sind fette Methoden und Klassen gemeint.
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{code_qualitaet}
+	\caption{Aussagen zur Code-Qualität}
+	\label{fig:code_qualitaet}
 \end{figure}
 
 \end{document}
