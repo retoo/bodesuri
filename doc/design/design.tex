@@ -198,18 +198,10 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \clearpage
 \subsection{Package ui}
 
-Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
+Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als Schnittstelle vom GUI zum Automaten agiert.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{ui_alle}
-	\caption{Klassendiagramm UI}
-	\label{fig:ui_alle}
-\end{figure}
-
-\clearpage
 \paragraph{Übersicht der Views}
-Das untere Bild stellt den Aufbau des GUIs dar. Das GUI besteht aus mehreren verschachtelten JPanels, welche in der Grafik gelb umrandet sind. Die blau umrandeten Komponenten sind JLabels, welche für Texte wie auch für Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind. Beim Erstellen des GUIs werden diese Koordinaten anhand der Klasse BrettXML ausgelesen und entsprechend die Grafiken positioniert.
+Die Abbildung~\vref{fig:views_uebersicht} stellt den Aufbau des GUIs dar. Das GUI besteht aus mehreren verschachtelten JPanels, welche in der Grafik gelb umrandet sind. Die blau umrandeten sind JLabels, welche für Texte und  Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind und von der Klasse BrettXML ausgelesen werden.
 
 \paragraph{JPanels (Views)}
 Die gross geschriebenen Namen der Views sind zugleich Klassen, die von der Klasse JPanel ableiten.
@@ -276,8 +268,28 @@ Die Views des eigentlichen Spiels befinden sich in diesem Package. Sie sorgen f�
 	\item Das Package steuerung dient zum Ziehen der Karten und "<Tauschen"> der Spielkarten mit dem Partner oder das "<Aufgeben"> in einer Runde.
 \end{itemize}
 
-\subsection{Package ui.verbinden}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{kd_ui_spiel}
+	\caption{Klassendiagramm UI Spiel}
+	\label{fig:kd_ui_spiel}
+\end{figure}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{kd_ui_spiel_brett}
+	\caption{Klassendiagramm UI Spiel Brett}
+	\label{fig:kd_ui_spiel_brett}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5 \textwidth]{kd_ui_spiel_steuerung}
+	\caption{Klassendiagramm UI}
+	\label{fig:kd_ui_spiel_steuerung}
+\end{figure}
+
+\subsection{Package ui.verbinden}
 Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 
 \begin{itemize}
@@ -285,6 +297,13 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 	\item Die Aktion Beenden kümmert sich um das kontrollierte Beenden aller Threads.
 	\item Die Aktion Verbinden kümmert sich um das Verbinden zum Server.
 \end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{kd_ui_verbinden}
+	\caption{Klassendiagramm UI}
+	\label{fig:kd_ui_verbinden}
+\end{figure}
 
 \clearpage
 \subsection{Package applikation}
@@ -355,7 +374,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\label{fig:kd_client_pd}
 		\end{figure}
 		
-	\subsection{Package applikation.client.zugautomat, applikation.client.zugautomat.pd, applikation.client.zugautomat.zustaende}
+	\subsection{Package applikation.client.zugautomat}
 
 		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomaten gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
 
