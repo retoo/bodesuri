@@ -2,6 +2,7 @@
 
 \newcommand{\dokumenttitel}{Design}
 \usepackage{../bodesuri}
+\usepackage{float}
 
 \begin{document}
 
@@ -46,7 +47,7 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 	\item Der Einstiegspunkt ist die Klasse ProblemDomain, welche für das Erstellen eines Spiels (pd.spiel), eines KartenGebers (pd.regelsystem.karten) und eines Codierers (dienste.serialisierung).
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.6 \textwidth]{kd_pd}
 	\caption{Klassendiagramm ProblemDomain}
@@ -68,7 +69,7 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 	\item Ein Spiel beinhaltet ein Brett und die Spieler. Es sollte nie direkt erstellt werden sondern nur von der Klasse ProblemDomain (pd).
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{kd_pd_spiel}
 	\caption{Klassendiagramm Spiel in PD}
@@ -90,7 +91,7 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 	\item Die Zugeingabe fasst die Informationen zusammen, die für einen Zug benötigt werden. Sie wird von einer Regel validiert, was einen ausführbaren Zug (in pd.zugsystem) als Ergebnis hat.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{kd_pd_regelsystem}
 	\caption{Klassendiagramm Regelsystem}
@@ -102,7 +103,7 @@ Das Regelsystem nimmt die Aufgaben der Problem-Domain-Schicht wahr, indem sie di
 
 Das Zugsystem stellt hauptsächlich Klassen bereit, die vom Regelsystem verwendet werden. So wird zum Beispiel vom Regelsystem aus einer Zugeingabe ein Zug mit Aktionen erstellt. Bewegung und Weg sind Hilfsklassen für die Validierung.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{kd_pd_zugsystem}
 	\caption{Klassendiagramm Zugsystem}
@@ -119,7 +120,7 @@ Implementiert die abstrakten Klassen von dienste.serialisierung, um die Serialis
 	\item Bietet eine Basisklasse (BodesuriCodierbaresObjekt) für die Klassen der Problem-Domain an, die serialisiert werden können.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7 \textwidth]{kd_pd_serialisierung}
 	\caption{Klassendiagramm Serialisierung in PD}
@@ -143,7 +144,7 @@ Der Automat bietet zwei Betriebsmodi an:
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
 \end{itemize}	
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
 	\caption{Klassendiagramm Automat}
@@ -161,7 +162,7 @@ Dieses Package ist für die Serialisierung und Deserialisierung der Java-Objekte
 	\item Die zweite abstrakte Klasse CodiertesObjekt muss auch implementiert werden. Es muss nur \texttt{getCodierer} überschrieben werden, um den gleichen Codierer zurückzugeben wie bei CodierbaresObjekt.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{kd_dienste_serialisierung}
 	\caption{Klassendiagramm Serialisierung in Dienste}
@@ -180,14 +181,14 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 	\item Die Kommunikation mit dem Netzwerk findet über die Bibliotheken java.net statt.
 \end{itemize}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{dienste_netzwerk_client}
 	\caption{Klassendiagramm Client in Netzwerk}
 	\label{fig:dienste_netzwerk_client}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{dienste_netzwerk_server}
 	\caption{Klassendiagramm Server in Netzwerk}
@@ -199,7 +200,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 
 Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als konkrete Schnittstelle vom GUI zum Automaten des Systems agiert.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{ui_alle}
 	\caption{Klassendiagramm UI}
@@ -234,7 +235,7 @@ Die gross geschrieben Namen der JLabels sind zugleich Klassen, die von der Klass
 	\item spielerView
 \end{enumerate}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{views_uebersicht}
 	\caption{Übersicht der Views}
@@ -311,7 +312,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\item Die abstrakten Methoden des Controllers (Methodennamen beginnen mit zeige), werden in der UI Schicht implementiert. Sie werden vom Automaten genutzt um das UI zu manipulieren.
 		\end{itemize}
 
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_client_controller}
 			\caption{Klassendiagramm Controller}
@@ -321,7 +322,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 	\subsection{Package applikation.client.events}
 
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_client_events}
 			\caption{Klassendiagramm Events}
@@ -347,7 +348,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\item Die Felder, die Karten, die Spieler und das Spiel sind \emph{Observeable}.
 		\end{itemize}
 
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_client_pd}
 			\caption{Klassendiagramm clientspezifische PD}
@@ -363,7 +364,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\item Der Zugautomat kommuniziert über Events mit dem ClientAutomaten.
 		\end{itemize}
 		
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_client_zugautomat}
 			\caption{Klassendiagramm der Zugerfassung}
@@ -379,7 +380,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 			\item Die Zustände werden vom ClientAutomaten genutzt.
 		\end{itemize}
 		
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_client_zustaende}
 			\caption{Klassendiagramm Zustände des Clients}
@@ -389,7 +390,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 \subsection{Package applikation.nachrichten}
 
 	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{kd_applikation_nachricht}
 		\caption{Klassendiagramm Nachrichten}
@@ -400,7 +401,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 
 	Der Zustandsautomat des Servers und dessen Zustände. Sorgt für den korrekten Ablauf des Spiels auf der Server-Seite. Verarbeitet die eintretenden Events vom Netzwerk und löst entsprechende Aktionen aus, um den Spielablauf zu steuern.
 
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{kd_applikation_server}
 		\caption{Klassendiagramm Server in Applikation}
@@ -409,7 +410,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 	
 	\subsection{Package applikation.server.pd}
 
-		\begin{figure}[h]
+		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_server_pd}
 			\caption{Klassendiagramm clientspezifische PD}
