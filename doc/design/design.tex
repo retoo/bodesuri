@@ -739,40 +739,35 @@ Es wird geprüft ob noch irgendwelche \textbf{Spieler} mit dem Server verbunden 
 Der Server wartet bis alle verbleibenden Verbindungen beendet sind. Sobald dies der Fall ist wird der \textbf{ServerAutomat} in den \textbf{Endzustand} überführt und beendet sich selber.
 
 \clearpage
-\subsection{Nachrichten \& Events}
-\label{sub:nachrichten_und_events}
+\subsection{Nachrichten}
 
-
-\subsubsection{Events}
-\label{ssub:events}
+Die folgenden Nachrichten dienen der Kommunikation zwischen Client und Server und lösen in den Automaten Zustandsübergänge aus.
 
 \begin{itemize}
-	\item VerbindeEvent
-	\item KarteGewaehltEvent
-	\item BewegungEingegebenEvent
-\end{itemize}
-
-\subsubsection{Nachrichten}
-\label{ssub:nachrichten}
-
-\begin{itemize}
-	\item SpielBeitreten
-	\item BeitrittsBestaetigung
-	\item SpielStartNachricht
-	\item SpielVollNachricht
-	\item ZugAuffoderung
-	\item ZugInformation
+	\item AktuellerSpielerInformation
+	\item Aufgabe
+	\item AufgabeInformation
+	\item BeitrittVerweigert
+	\item BeitrittsInformation
 	\item ChatNachricht
-	\item RundenStart
 	\item KartenTausch
-	\item SpielEnde
+	\item RundenStart
+	\item SpielAbbruch
+	\item SpielBeitreten
+	\item SpielFertigNachricht
+	\item SpielInfo
+	\item SpielStartNachricht
+	\item SpielerInfo
+	\item ZugAufforderung
+	\item ZugInformation
 \end{itemize}
+
 
 \clearpage
 \section{Dynamische Abläufe}
-\label{dynamische_ablauefe}
+
 \subsection{Nachrichtenfluss durch die Schichten}
-\label{sub:nachrichtenfluss_durch_die_schichten}
+
 Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbindung_erstellen_server} zeigen den Schnitt durch die Architektur von Bodesuri. Sie zeigen die Aufrufe durch die Architekturschichten beim Erstellen einer neuen Verbindung auf der Seite des Clients und des Servers.
 \begin{figure}[h]
 	\centering
