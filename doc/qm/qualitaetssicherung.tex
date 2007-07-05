@@ -112,8 +112,8 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 
 \htmladdnormallink{http://www.bodesuri.ch/trac/wiki/Review\%202007-05-11\%20Philippe/Robin}{http://www.bodesuri.ch/trac/wiki/Review\%202007-05-11\%20Philippe/Robin}
 
-\section{Tests}\label{sec:tests}
-\subsubsection{Voraussetzungen}
+\section{Tests}
+\subsection{Voraussetzungen}
 \begin{itemize}
 	\item Die Tests werden alle im Vierspielermodus durchgeführt.
 	\item Bots werden nur für Tests eingesetzt, welche sie reproduzierbar ein weiteres Mal durchlaufen können.
@@ -122,7 +122,7 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 	\item Ein Test wird erst begonnen, wenn sein Vorgänger erfolgreich durchgeführt wurde.
 \end{itemize}
 
-\subsubsection{Vorbereitungen}
+\subsection{Vorbereitungen}
 \paragraph{Vor allen Tests}\label{ssub:vorbereitungen_vor_allen_tests} 
 	\begin{itemize}
 		\item Auf den PCs, auf denen der Server und die Clients laufen, werden alle Firewalls deaktiviert oder die verwendeten Ports explizit freigeschaltet.
@@ -133,7 +133,7 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 		\item Testprotokoll zur Ausfüllung vorbereiten.
 	\end{itemize}
 
-\section{Nachbearbeitungen}\label{sec:nachbearbeitungen}
+\subsection{Nachbearbeitungen}\label{sec:nachbearbeitungen}
 	\paragraph{Nach allen Tests}\label{ssub:nach_allen_tests}
 		\begin{itemize}
 			\item Alle Tests müssen erfolgreich absolviert worden sein.
@@ -145,14 +145,14 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 			\item Alle gefundenen Fehler wurden korrigiert.
 			\item Alle Unit-Tests funktionieren (Green Bar).
 			\item Testprotokoll wurde vollständig ausgefüllt.
-		\end{itemize}
-		
-\subsubsection{JUnit-Tests}
+		\end{itemize}		
+
+\subsection{JUnit-Tests}
 Die JUnit Tests, welche hauptsächlich die Dienste- und Problem-Domain-Klassen sowie weite Teile der Applikationsschicht abdecken wurden mit JavaDoc dokumentiert. Die UI-Schicht wird nicht explizit und nur punktuell durch JUnit-Tests abgedeckt. Sie wird hauptsächlich durch die Use-Case-Tests manuell getestet.
 
 Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 
-\subsubsection{Systemtests}
+\subsection{Systemtests}
 \subsubsection{Use-Case Test: UC1 Spiel erstellen}
 	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
@@ -164,6 +164,8 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		1, 2 & Mehrere Server-Instanzen & Es wird eine Fehlermeldung auf der Konsole ausgegeben und der Server beendet sich vollständig. & [Ok] \\
 		\bottomrule
 	\end{tabular}
+	
+\newpage
 
 \subsubsection{UC2: Spiel beitreten}
 	\begin {tabular}{r | p{3cm} | p{8cm} | l}
@@ -180,13 +182,13 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		*a & Verbindung abgebrochen & Serverprozess beenden (Absturz simulieren). & [Ok]  \\
 		\cline{3-4} & & Das Spiel wird mit einer Fehlermeldung abgebrochen. Alle Parteien werden über das Ende informiert. & [Ok] \\
 		\midrule
-		*a & Server starten, vier Clients starten. Spiel beginnen und einen Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok] \\
+		*a & Server und vier Clients starten. Spiel beginnen und einen Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok] \\
 		\midrule
-		*a & Client Starten und verbinden. Kein Server gestartet. & Client meldet Fehler beim Verbindungsaufbau und kehrt zum Verndinden-Dialog zurück. & [Ok] \\
+		*a & Client (ohne Server) starten und verbinden. & Client meldet Fehler beim Verbindungsaufbau und kehrt zum Verndinden-Dialog zurück. & [Ok] \\
 		\midrule
-		*a & Server starten, Client starten. Client beenden. & Server und Clients beenden kontrolliert mit einer Fehlermeldung. & [Ok] \\
+		*a & Server und Client starten. Client beenden. & Server und Clients beenden kontrolliert mit einer Fehlermeldung. & [Ok] \\
 		\midrule
-		*a & Server starten, zwei Clients starten, ein Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok]  \\
+		*a & Server und zwei Clients starten, ein Client beenden. & Server meldet Fehler, und wartet bis alle Clients stoppen Client melden im GUI den Fehler und beenden die Netzwerkverbindung. & [Ok]  \\
 		\bottomrule
 	\end{tabular}
 	
@@ -280,14 +282,22 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		\bottomrule
 	\end{tabular}
 	
-\section{Verbesserungsmöglichkeiten}
-- PD Siebnerzug (sauber fahren ohne Geister)
-- Auswahl der Partnerschaften
-- Intelligenterer Bot
-- GUI für Server
-- Server aus Client steuerbar
-\subsection{Bekannte Einschränkungen}
+%TODO: Pascal: fertig machen (-pascal)
+\section{Bekannte Einschränkungen und Verbesserungsmöglichkeiten}
+\subsection{Der Siebnerzug}
+Der Siebnerzug ist aktuell so implementiert, dass man eine Figur nur genau einmal <<anfassen>> kann, das heisst sobald ein Teilzug gemacht wurde wird eine Geisterfigur auf das Zielfeld gesetzt und der Gesamtzug muss mit einer anderen Figur des gleichen Spielers weitergeführt werden.
 - Siebnerverhalten am Schluss 
 - Siebnerzug ist generell einschränkbar
+- PD Siebnerzug (sauber fahren ohne Geister)
+
+\subsection{Partnerschaften}
+- Auswahl der Partnerschaften
+
+\subsection{Der Computergegner (Bot)}
+- Intelligenterer Bot
+
+\subsection{Steuerung und Konfiguration des Servers}
+- GUI für Server
+- Server aus Client steuerbar
 
 \end{document}
