@@ -1012,8 +1012,6 @@ Wie werden diese implementiert? Es wäre natürlich möglich, \texttt{istZugMoeg
 
 Eine andere Variante wäre, den Code einfach zu kopieren und jeweils einen kleinen Teil darin anzupassen, um den Anforderungen an die beiden Methoden gerecht zu werden. Dies hätte aber duplizierten Code zur Folge und eine erschwerte Anpassbarkeit, da jeweils in zwei Funktionen der gleiche Code angepasst werden müsste.
 
-% TODO: Wie heisst das Pattern, das ähnlich ist?
-
 Deshalb entschieden wir uns, die folgende Variante zu implementieren. Es wird eine interne (\emph{protected}) dritte Methode erstellt, die \texttt{liefereZugEingaben} heisst. Diese übernimmt die gleichen Argumente wie die beiden obengenannten Methoden und zusätzlich noch ein Objekt des neuen Typs \texttt{ZugEingabeAbnehmer}. Die Methode liefert dem Abnehmer über \texttt{nehmeEntgegen} eine Zugeingabe und stellt anhand des Rückgabewertes fest, ob mit der Suche abgebrochen werden soll.
 
 Die Methode \texttt{istZugMoeglich} ruft \texttt{liefereZugEingaben} mit einem Abnehmer auf, der nur auf die erste Zugeingabe wartet, einen Wert setzt, und signalisiert, dass abgebrochen werden kann. Danach wird der Wert ausgelesen und je nachdem zurückgegeben, ob ein Zug möglich ist oder nicht.
@@ -1033,8 +1031,6 @@ Es bot sich aber eine viel einfachere und beinahe gleich flexible Lösung an. Ei
 \label{eingetretene_risiken}
 
 Im Projektplan hatten wir zu Beginn des Projekts einige Risiken aufgezählt, die während des Projekts eintreten könnten. Die folgenden Risiken aus dem Bereich "<Probleme mit Technologien"> sind tatsächlich eingetreten und werden nachfolgend erklärt.
-
-% TODO: Philippe: Vielleicht noch über das Risiko "Fehlerhafte Zeitplanung"  schreiben, von wegen "Reserven einplanen" und so. Dann ginge diese Sektion über eineinhalb Seiten anstatt über eine und eine verquetschte :).
 
 \subsection{RMI}
 \label{sub:rmi}
