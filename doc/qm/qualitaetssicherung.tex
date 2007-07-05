@@ -1,10 +1,9 @@
 \documentclass[12pt,halfparskip]{scrartcl}
 
-\newcommand{\dokumenttitel}{Code}
 \usepackage{../bodesuri}
-\usepackage{multicol}
 \usepackage{float}
 
+\newcommand{\dokumenttitel}{Qualitätssicherung}
 
 \begin{document}
 
@@ -125,13 +124,13 @@ Im Laufe des Projektes zeigten sich im Design und im Code verschiedene zyklische
 	\label{fig:zugautomat-client-pd}
 \end{figure}
 
-Der Zug-Automat (in Package app.zugautomat) und der Client teilen sich miteinander die Client-Problemdomain (app.pd). Da aber diese zusätzlich noch eine Referenz auf den Zug-Automaten beinhaltet ist die Beziehung zwischen den beiden Packages zyklisch. Ersichtlich auf der Abbildung~\vref{fig:zugautomat-client-pd}
+Der Zug-Automat (in Package app.zugautomat) und der Client teilen sich miteinander die Client-Problem-Domain (app.pd). Da aber diese zusätzlich noch eine Referenz auf den Zug-Automaten beinhaltet, ist die Beziehung zwischen den beiden Packages zyklisch. Ersichtlich auf der Abbildung~\vref{fig:zugautomat-client-pd}
 
 \textbf{Lösung:} Die Referenz in app.pd muss nicht zwingend vom Typ \textbf{Zugautomat} sein, es genügt auch die Basiskasse \textbf{Automat}.
 
-\subsection{Zyklische Beziehung den Klassen Feld2d und FeldMausAdpater}
+\subsection{Zyklische Beziehung zwischen den Klassen Feld2d und FeldMausAdpater}
 
-Jedes Feld auf dem Spielbrett besitzt seinen eignen FeldMouseAdapter welcher für die Verarbeitung der Click-Events zuständig ist. Dieser muss natürlich eine Referenz auf das Feld besitzen damit er etwaige Klicks an den Automaten melden kann. Das Feld (in Form der Klasse Feld2d) hingegen muss den FeldMouseAdapter als MouseAdapter registieren und muss somit diesen auch als Referenz besitzen. Dies führt, wie auf der Abbildung ~\vref{fig:feld2d-feldmouseadapter} ersichtlich, zu einer zyklischen Beziehung zwischen den beiden Klassen. 
+Jedes Feld auf dem Spielbrett besitzt seinen eigenen FeldMouseAdapter welcher für die Verarbeitung der Click-Events zuständig ist. Dieser muss natürlich eine Referenz auf das Feld besitzen damit er etwaige Klicks an den Automaten melden kann. Das Feld (in Form der Klasse Feld2d) hingegen muss den FeldMouseAdapter als MouseAdapter registrieren und muss somit diesen auch als Referenz besitzen. Dies führt, wie auf der Abbildung ~\vref{fig:feld2d-feldmouseadapter} ersichtlich, zu einer zyklischen Beziehung zwischen den beiden Klassen.
 
 \textbf{Lösung:} Das \textbf{Feld2d} muss gar nichts genaueres über den \textbf{FeldMouseadapter} wissen, es genügt für ihn zu wissen das es sich dabei um einen \textbf{MouseAdapter} handelt.
 
