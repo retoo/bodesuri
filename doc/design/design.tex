@@ -46,7 +46,6 @@ In der Problem-Domain-Schicht wird die gesamte Spiellogik gekapselt. Sie wird di
 	\item Der Einstiegspunkt ist die Klasse ProblemDomain, welche für das Erstellen eines Spiels (pd.spiel), eines KartenGebers (pd.regelsystem.karten) und eines Codierers (dienste.serialisierung).
 \end{itemize}
 
-\label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6 \textwidth]{kd_pd}
@@ -69,7 +68,6 @@ Das Package pd.spiel beinhaltet die Spiel-Klasse und die folgenden  Unterpackage
 	\item Ein Spiel beinhaltet ein Brett und die Spieler. Es sollte nie direkt erstellt werden sondern nur von der Klasse ProblemDomain (pd).
 \end{itemize}
 
-\label{ssub:diagramme}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.9 \textwidth]{kd_pd_spiel}
@@ -410,6 +408,14 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 	\end{figure}
 	
 	\subsection{Package applikation.server.pd}
+
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=\textwidth]{kd_server_pd}
+			\caption{Klassendiagramm clientspezifische PD}
+			\label{fig:kd_server_pd}
+		\end{figure}
+
 
 		\paragraph{Schnittstellen}
 		\begin{itemize}
