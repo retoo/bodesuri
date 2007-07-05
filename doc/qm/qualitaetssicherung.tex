@@ -3,6 +3,7 @@
 \newcommand{\dokumenttitel}{Code}
 \usepackage{../bodesuri}
 \usepackage{multicol}
+\usepackage{float}
 
 
 \begin{document}
@@ -112,6 +113,67 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 
 \htmladdnormallink{http://www.bodesuri.ch/trac/wiki/Review\%202007-05-11\%20Philippe/Robin}{http://www.bodesuri.ch/trac/wiki/Review\%202007-05-11\%20Philippe/Robin}
 
+\section{Auflösung zyklischer Abhängikeiten}
+Im Laufe des Projektes zeigten sich im Design und im Code verschiedene zyklische Abhängigkeiten. Unter Verwendung des Tools \emph{Structure 101} konnten wir diese zyklischen Relationen einfach aufdecken und analysieren. Nachfolgend möchten wir dieses Vorgehen an einigen konkreten Beispielen aufzeigen.
+
+\subsection{Zyklische Beziehung zwischen app.zugautomat und app.pd}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5 \textwidth]{../design/probleme/zugautomat-client-pd}
+	\caption{Zyklische Beziehung zwischen app.zugautomat und app.pd}
+	\label{fig:zugautomat-client-pd}
+\end{figure}
+
+Der Zug-Automat (in Package app.zugautomat) und der Client teilen sich miteinander die Client-Problemdomain (app.pd). Da aber diese zusätzlich noch eine Referenz auf den Zug-Automaten beinhaltet ist die Beziehung zwischen den beiden Packages zyklisch. Ersichtlich auf der Abbildung~\vref{fig:zugautomat-client-pd}
+
+\textbf{Lösung:} Die Referenz in app.pd muss nicht zwingend vom Typ \textbf{Zugautomat} sein, es genügt auch die Basiskasse \textbf{Automat}.
+
+\subsection{Zyklische Beziehung den Klassen Feld2d und FeldMausAdpater}
+
+Jedes Feld auf dem Spielbrett besitzt seinen eignen FeldMouseAdapter welcher für die Verarbeitung der Click-Events zuständig ist. Dieser muss natürlich eine Referenz auf das Feld besitzen damit er etwaige Klicks an den Automaten melden kann. Das Feld (in Form der Klasse Feld2d) hingegen muss den FeldMouseAdapter als MouseAdapter registieren und muss somit diesen auch als Referenz besitzen. Dies führt, wie auf der Abbildung ~\vref{fig:feld2d-feldmouseadapter} ersichtlich, zu einer zyklischen Beziehung zwischen den beiden Klassen. 
+
+\textbf{Lösung:} Das \textbf{Feld2d} muss gar nichts genaueres über den \textbf{FeldMouseadapter} wissen, es genügt für ihn zu wissen das es sich dabei um einen \textbf{MouseAdapter} handelt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3 \textwidth]{../design/probleme/feld2d-feldmouseadapter}
+	\caption{Zyklische Beziehung zwischen den Klassen Feld2d und FeldMouseAdapter}
+	\label{fig:feld2d-feldmouseadapter}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{../design/probleme/feld2d-feldmouseadapter-nachher}
+	\caption{Beziehung zwischen den Klassen Feld2d und FeldMouseAdapter nach Refactoring}
+	\label{fig:feld2d-feldmouseadapter-nachher}
+\end{figure}
+
+
+\subsection{Zyklische Beziehungen in der Problem-Domain}
+Die Problem-Domain war schon seit Beginn in verschiedenste zyklische Beziehungen verwickelt. Figuren kennen Felder, Felder kennen Figuren. Die Karten kennen die Regeln und umgekehrt. Wir fanden relativ spät im Projekt noch einen mögliche Verbesserung die aus folgenden Schritten bestand:
+
+\begin{itemize}
+	\item Neues Package \textbf{pd.spiel}
+	\item \textbf{pd.brett}, \textbf{pd.spieler} und \textbf{pd.Spiel} ins Package \textbf{pd.spiel} verschieben
+	\item Alle Klassen "<Zugeingabe*">  ins Package \textbf{pd.regelsystem} verschieben
+	\item Die Methoden \textbf{Spieler\#kannZiehen()} und \textbf{Spieler\#moeglicheZuege()} in eine neue Klasse \textbf{pd.regelsystem.Regelsystem} verschieben
+	\item \textbf{pd.karten} nach umbenennen \textbf{pd.regelsystem.karten}
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{../design/probleme/package-level-vorher}
+	\caption{Zyklische Beziehung PD}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5 \textwidth]{../design/probleme/package-level-nachher}
+	\caption{Beziehung PD nach Refactoring}
+\end{figure}
+
 \section{Tests}
 \subsection{Voraussetzungen}
 \begin{itemize}
@@ -151,6 +213,8 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 Die JUnit Tests, welche hauptsächlich die Dienste- und Problem-Domain-Klassen sowie weite Teile der Applikationsschicht abdecken wurden mit JavaDoc dokumentiert. Die UI-Schicht wird nicht explizit und nur punktuell durch JUnit-Tests abgedeckt. Sie wird hauptsächlich durch die Use-Case-Tests manuell getestet.
 
 Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
+
+% TODO: ??: werden javadocs überhaupt generiert von den tests? (-reto)
 
 \subsection{Systemtests}
 \subsubsection{Use-Case Test: UC1 Spiel erstellen}
