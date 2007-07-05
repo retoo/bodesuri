@@ -199,7 +199,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 \clearpage
 \subsection{Package ui}
 
-Die UI-Schicht ist für die graphische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als Schnittstelle vom GUI zum Automaten agiert.
+Die UI-Schicht ist für die grafische Darstellung verantwortlich. Sie kommuniziert mit der Applikationsschicht top-down über direkte Assoziationen und bottom-up über Observer. Als weiteren wichtigen Bestandteil enthält die UI-Schicht auch den GUIController, welcher als Schnittstelle vom GUI zum Automaten agiert.
 
 \paragraph{Übersicht der Views}
 Die Abbildung~\vref{fig:views_uebersicht} stellt den Aufbau des GUIs dar. Das GUI besteht aus mehreren verschachtelten JPanels, welche in der Grafik gelb umrandet sind. Die blau umrandeten sind JLabels, welche für Texte und  Bilder verwendet wurden. Die einzelnen Grafiken werden mittels Koordinaten platziert, die in einem XML-Dokument erfasst sind und von der Klasse BrettXML ausgelesen werden.
@@ -312,7 +312,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsection{Package applikation.bot}
-Zu Demonstration und Testzwecken wurde ein simpler Bot entwickelt. Dieser stellt für einen menschlichen Spieler keine Herausfoderung dar, er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie.
+Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stellt für einen menschlichen Spieler keine Herausfoderung dar, er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie.
 	
 \subsection{Package applikation.client}
 
@@ -405,7 +405,7 @@ Zu Demonstration und Testzwecken wurde ein simpler Bot entwickelt. Dieser stellt
 	
 \subsection{Package applikation.nachrichten}
 
-	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden. Alle Nachrichten Müssen von der Basisklasse Nachricht ableiten.
+	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden. Alle Nachrichten müssen von der Basisklasse Nachricht ableiten.
 	
 	Eine Liste der Nachrichten kann unter \vref{sub:nachrichten}
 
@@ -431,7 +431,7 @@ Zu Demonstration und Testzwecken wurde ein simpler Bot entwickelt. Dieser stellt
 
 		\paragraph{Schnittstellen}
 		\begin{itemize}
-			\item Die serverspezfische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an.
+			\item Die serverspezifische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an.
 		\end{itemize}
 
 \clearpage

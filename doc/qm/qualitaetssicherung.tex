@@ -495,7 +495,7 @@ Als Verbesserung würde es sich anbieten, den Siebnerzug bereits in der Problem-
 Im Spiel werden die Partnerschaften fix durch den Server vorgeschrieben. Für den Spielspass ist dies nicht die optimale Lösung, da es sich bei Dog ja um ein Gesellschaftsspiel handelt. Wünschenswert wäre, wenn ein Spieler schon in der Lobby bestimmen kann, mit wem er eine Partnerschaft eingehen möchte.
 
 \subsection{Der Computergegner (Bot)}
-Der aktuell implementierte "<StupidBot"> stellt für die meisten Spieler keinen würdigen Gegner dar. Er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie. Zu Beginn war dieser Bot auch lediglich zu Testzwecke gedacht. Da er aber sehr einfach zu implementieren war und uns doch gezeigt hatte, dass er das Spiel unter Anwendung aller möglichen Regeln zu Ende spielen konnte, haben wir beschlossen ihn in eine Demo zu integrieren um so ein Einzelspielermodus zu ermöglichen.
+Der aktuell implementierte "<StupidBot"> stellt für die meisten Spieler keinen würdigen Gegner dar. Er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie. Zu Beginn war dieser Bot auch lediglich zu Testzwecken gedacht. Da er aber sehr einfach zu implementieren war und uns doch gezeigt hatte, dass er das Spiel unter Anwendung aller möglichen Regeln zu Ende spielen konnte, haben wir beschlossen ihn in eine Demo zu integrieren um so einen Einzelspielermodus zu ermöglichen.
 
 Da der Bot auf der Gesamtlösung aufsetzt -- er interagiert mit dem System anstelle des Spielers -- kann er in Zukunft einfach verändert werden, ohne dass etwaige Abhängigkeiten berücksichtigt werden müssen. Wir haben auch für intelligentere Bots schon einige Ideen angedacht:
 \begin{itemize}
@@ -511,12 +511,12 @@ Einen intelligenten Bot zu programmieren ist jedoch nicht so einfach wie es auf 
 	\item Ist es besser, dem Partner eine Karte zuzuschieben und dafür eigene Nachteile zu kassieren?
 	\item Werden beim aktuellen Zug Figuren von mir oder meinem Partner gefressen?
 	\item Welche Karte soll am Anfang einer Runde getauscht werden?
-	\item Wie ist die Situation einer Figuren in zukünftigen Runden (Vorhersage)?
+	\item Wie ist die Situation der Figuren in zukünftigen Runden? (Vorhersage)
 \end{itemize}
 
 Um eine Strategie statisch abzubilden hatten wir schon grob einige Ideen aufgeschrieben:
 \begin{itemize}
-	\item Strategien können Gewichtet werden.
+	\item Strategien können gewichtet werden.
 	\item Bots können die Strategie zur Laufzeit ändern.
 	\item Die Gewichtungen der verschiedenen Strategien werden durch das Verhalten der Gegner immer neu angepasst um die optimale Strategie zu finden.
 \end{itemize}
