@@ -139,6 +139,13 @@ Der Automat bietet zwei Betriebsmodi an:
 	\item Ferngesteuerter integrierter Betrieb. Der Automat wird vom Caller bei anstehenden Ereignissen aufgerufen, verarbeitet exakt ein Ereignis (inklusive den dazugehörigen Zuständen) und übergibt anschliessend die Kontrolle wieder dem Caller. Der Modus eignet sich speziell für Unterautomaten bei welchen man keinen zusätzlichen Thread und eine seperate Ereignisqueue einsetzen möchte. Der Hauptautomat liest die Events ein und gibt sie direkt dem Unterautomaten weiter. 
 \end{itemize}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7 \textwidth]{kd_dienste_automat}
+	\caption{Klassendiagramm Automat}
+	\label{fig:kd_dienste_automat}
+\end{figure}
+
 \paragraph{Schnittstellen}
 \begin{itemize}
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
@@ -176,8 +183,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 
 \paragraph{Schnittstellen}
 \begin{itemize}
-	\item dienste.netzwerk verwendet die Klassen Event und EventQueue für die Kommunikation mit den darüberliegenden Schichten.
-% FIXME: Reto stimmt so nümm (Reto)
+	\item dienste.netzwerk verwendet das Interface \textbf{BriefkastenInterface} für die Kommunikation mit der darüberliegenden Schicht. Das \textbf{BriefkastenInterface} wird im Fall Bodesuri vom \textbf{BriefkastenAdaper} implementiert welches die eingehenden Nachrichten in eine EventQueue ablegt.
 	\item Die Kommunikation mit dem Netzwerk findet über die Bibliotheken java.net statt.
 \end{itemize}
 
@@ -432,7 +438,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=\textwidth]{kd_server_pd}
-			\caption{Klassendiagramm clientspezifische PD}
+			\caption{Klassendiagramm serverspezifische PD}
 			\label{fig:kd_server_pd}
 		\end{figure}
 
@@ -500,7 +506,7 @@ Swing startet intern verschiedene Threads. Die genauen Abläufe und Struktur die
 \textbf{Anzahl}       & 1..* \\
 \textbf{Gestartet}    & Durch Swing \\
 \textbf{Beendet}      & N/A
-% TODO: Reto: Abklären da gibts doch sicher ne methode oder so (reto)
+
 
 \end{tabular}
 
