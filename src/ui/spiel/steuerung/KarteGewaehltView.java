@@ -38,6 +38,9 @@ import applikation.client.pd.Karten;
 import dienste.observer.ListChangeEvent;
 import dienste.observer.ListChangeEvent.ListChangeType;
 
+/**
+ * Informationen über die ausgewählte Karte.
+ */
 public class KarteGewaehltView extends JPanel implements Observer {
 	private JLabel name;
 	private JTextArea beschreibung;
