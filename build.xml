@@ -20,6 +20,7 @@
   
   <property name="cov-dir" location="${rep-dir}/test-coverage-report"/>
   <property name="jdc-dir" location="${rep-dir}/javadoc"/>
+  <property name="tdc-dir" location="${rep-dir}/junitdoc"/>
   <property name="doc-dir" location="${rep-dir}/doc"/>
   
   <path id="classpath.base">
@@ -145,6 +146,14 @@
       <fileset dir="${src-dir}" />
     </javadoc>
   </target>
+<!-- junitdoc -->
+  <target name="junitdoc" depends="init">
+    <javadoc 
+          charset="utf-8"
+          destdir="${tdc-dir}">
+      <fileset dir="${tst-dir}" />
+    </javadoc>
+  </target>
 <!-- documentation -->
   <target name="generate-doc" depends="init">
     <exec executable="${bld-dir}/build-documents.sh" output="${doc-dir}/log.txt" />
@@ -184,6 +193,6 @@
     </delete>
   </target>
   <target name="build-everything" depends="compile,test"/>
-  <target name="all" depends="clean,build-everything,cobertura-report,javadoc,generate-doc"/>
+  <target name="all" depends="clean,build-everything,cobertura-report,javadoc,junitdoc,generate-doc"/>
   <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>
