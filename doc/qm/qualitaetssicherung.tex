@@ -288,7 +288,7 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		\cline{3-4} & Rückwärtszug & Der Spieler wählt das Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
 		\cline{3-4} & Zug mit Joker & Nach anklicken der Joker-Karte wird eine Auswahl angezeigt, in der der Spieler die Karte wählen kann, mit der gespielt werden soll. Danach wählt der Spieler Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
 		\cline{3-4} & Aufteilbarer Zug & Der Spieler wählt das Start- und das Zielfeld für jede Figur aus, mit der er einen Teilzug durchführen möchte. & [Ok] \\
-		\cline{3-4} & Aufteilbarer Zug (Spezialfall) & Wenn ein Spieler nur noch eine Figur hat, die noch nicht im Himmel steht und welche weniger als sieben Felder vom Himmel entfernt ist, so ist der Zug nicht auf seine Figur und der <<Rest>> der Teilzüge auf eine Figur des Partners anwendbar. Der Spieler kann in dieser Situation nur aufgeben. & [Ok] \\
+		\cline{3-4} & Aufteilbarer Zug (Spezialfall) & Wenn ein Spieler nur noch eine Figur hat, die noch nicht im Himmel steht und welche weniger als sieben Felder vom Himmel entfernt ist, so ist der Zug nicht auf seine Figur und der "<Rest"> der Teilzüge auf eine Figur des Partners anwendbar. Der Spieler kann in dieser Situation nur aufgeben. & [Ok] \\
 		\cline{3-4} & Fressen fremder Figuren & Eine beliebige Figur (auch eine eigene) wird auf ihr Lagerfeld zurückgeschickt, sofern es nicht geschützt ist. & [Ok] \\
 		\cline{3-4} & Ziehen mit Partnerfiguren & Wenn der Spieler all seine Figuren in den Himmel platzieren konnte, so kann er mit den Figuren des Partners fahren, als wären es seine eigenen. Alle Züge werden vom Client korrekt validiert. & [Ok] \\
 		\cline{3-4} & Startzug & Die Figur wird vom Lagerfeld auf das Bankfeld des Spielers verschoben. & [Ok] \\
@@ -349,17 +349,17 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 
 \section{Bekannte Einschränkungen und Verbesserungsmöglichkeiten}
 \subsection{Der Siebnerzug}
-Der Siebnerzug ist aktuell so implementiert, dass man eine Figur nur genau einmal <<anfassen>> kann, das heisst sobald ein Teilzug gemacht wurde wird eine Geisterfigur auf das Zielfeld gesetzt und der Gesamtzug muss mit einer anderen Figur des gleichen Spielers weitergeführt werden.
+Der Siebnerzug ist aktuell so implementiert, dass man eine Figur nur genau einmal "<anfassen"> kann, das heisst sobald ein Teilzug gemacht wurde wird eine Geisterfigur auf das Zielfeld gesetzt und der Gesamtzug muss mit einer anderen Figur des gleichen Spielers weitergeführt werden.
 
 Vom Spielgefühl her ist dies jedoch nicht das korrekte Verhalten. Logisch gesehen gibt es keinen Grund, warum man dies so einschränken sollte. Auch von den Spielregeln her ist es erlaubt, eine Figur beim Siebnerzug mehrmals zu bewegen. Dies bestätigt auch ein Testerfeedback einer sehr erfahrenen Dog-Spielerin, die dieses Verhalten relativ schnell erkannt und bemängelt hat.
 
-Als Verbesserung würde es sich anbieten, den Siebnerzug bereits in der Problem-Domain speziell zu behandeln, um ein <<Rollback>> einer bereits durchgeführten Aktion durchführen zu können. So würde jeder Teilzug als separater Zug ablaufen. Würde ein Zug dann jedoch nicht mehr validiert werden können, wäre es möglich alle ausgeführten Aktionen wieder rückgängig zu machen.
+Als Verbesserung würde es sich anbieten, den Siebnerzug bereits in der Problem-Domain speziell zu behandeln, um ein "<Rollback"> einer bereits durchgeführten Aktion durchführen zu können. So würde jeder Teilzug als separater Zug ablaufen. Würde ein Zug dann jedoch nicht mehr validiert werden können, wäre es möglich alle ausgeführten Aktionen wieder rückgängig zu machen.
 
 \subsection{Partnerschaften}
 Im Spiel werden die Partnerschaften fix durch den Server vorgeschrieben. Für den Spielspass ist dies nicht die optimale Lösung, da es sich bei Dog ja um ein Gesellschaftsspiel handelt. Wünschenswert wäre, wenn ein Spieler schon in der Lobby bestimmen kann, mit wem er eine Partnerschaft eingehen möchte.
 
 \subsection{Der Computergegner (Bot)}
-Der aktuell implementierte <<StupidBot>> stellt für die meisten Spieler keinen würdigen Gegner dar. Er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie. Zu Beginn war dieser Bot auch lediglich zu Testzwecke gedacht. Da er aber sehr einfach zu implementieren war und uns doch gezeigt hatte, dass er das Spiel unter Anwendung aller möglichen Regeln zu Ende spielen konnte, haben wir beschlossen ihn in eine Demo zu integrieren um so ein Einzelspielermodus zu ermöglichen.
+Der aktuell implementierte "<StupidBot"> stellt für die meisten Spieler keinen würdigen Gegner dar. Er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie. Zu Beginn war dieser Bot auch lediglich zu Testzwecke gedacht. Da er aber sehr einfach zu implementieren war und uns doch gezeigt hatte, dass er das Spiel unter Anwendung aller möglichen Regeln zu Ende spielen konnte, haben wir beschlossen ihn in eine Demo zu integrieren um so ein Einzelspielermodus zu ermöglichen.
 
 Da der Bot auf der Gesamtlösung aufsetzt -- er interagiert mit dem System anstelle des Spielers -- kann er in Zukunft einfach verändert werden, ohne dass etwaige Abhängigkeiten berücksichtigt werden müssen. Wir haben auch für intelligentere Bots schon einige Ideen angedacht:
 \begin{itemize}
@@ -388,7 +388,7 @@ Um eine Strategie statisch abzubilden hatten wir schon grob einige Ideen aufgesc
 Diese Thematik wird von uns sicherlich noch weiterverfolgt und auch implementiert werden, da es uns sehr interessiert.
 
 \subsection{Steuerung und Konfiguration des Servers}
-Der Server ist so implementiert worden, dass er für einen ungeübten Computerbenutzer möglichst einfach in der Handhabung ist. Aktuell ist es so gelöst, dass ein Spieler den Server <<per Doppelklick>> startet und ihn als normale Anwendung in der Taskleiste sieht. Dies funktioniert in den meisten Fällen sehr gut und ist für unsere Zwecke völlig ausreichend. Für den Benutzer gäbe es natürlich auch konfortablere Lösungen. Einige Ideen möchten wir hier kurz anreissen:
+Der Server ist so implementiert worden, dass er für einen ungeübten Computerbenutzer möglichst einfach in der Handhabung ist. Aktuell ist es so gelöst, dass ein Spieler den Server "<per Doppelklick"> startet und ihn als normale Anwendung in der Taskleiste sieht. Dies funktioniert in den meisten Fällen sehr gut und ist für unsere Zwecke völlig ausreichend. Für den Benutzer gäbe es natürlich auch konfortablere Lösungen. Einige Ideen möchten wir hier kurz anreissen:
 \begin{itemize}
 	\item Rudimentäres GUI zur Konfiguration (z.\,B. die Portnummer).
 	\item Konsole zur Anzeige aktueller Infos und Fehlermeldungen.

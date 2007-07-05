@@ -8,9 +8,6 @@
 
 \input{../titelseite}
 
-\section{Team-Erfahrungsbericht}
-
-
 \section{Erfahrungsbericht von Edgar Danilo Couto}
 
 In einem solch grossen Entwicklungs-Projekt war ich bis jetzt noch nicht involviert gewesen. Wie auch schon in anderen Projekten habe ich in diesem wieder viele neue Erfahrungen gesammelt. Die wichtigste Erkenntnis war, wie wichtig die Kommunikation zwischen den einzelnen Projektmitgliedern ist und wie gross der Overhead bei einem grossen Team sein kann. Die Kommunikation zwischen den einzelnen Projektmitgliedern haben wir mittels Sitzungen, E-Mails, Chatclient und IRC sehr gut gemeistert.
@@ -32,9 +29,9 @@ Zusammenfassend kann ich dazu sagen, dass das Projekt sehr lehrreich war und tro
 
 Als wir ganz am Anfang eine Arbeit suchten, die zu fünft gut umsetzbar und auch noch interessant sein soll, war ich noch etwas skeptisch und wusste nicht so recht was denn nun genau geeignet wäre. Als wir dann auf die Idee kamen das Dog-Spiel auf den Computer zu bringen war das für mich gleich ein grosser Motivationsschub, da ich das Spiel regelmässig mit meinen Freunden zuhause spiele und sehr spannend finde. Nachdem wir das Spiel auch einige male unter uns gespielt hatten und bei allen die gleiche Motivation erkennbar war machte es auch gleich doppelt Spass, da alle immer an einem Strang zogen.
 
-Am Ende der <<Elaboration>> und zu Beginn der <<Constructioin 1>> Phase habe ich mich sehr stark um die Architektur des Systems gekümmert. Das Modellieren der Architektur hat mir sehr gefallen, da man schnell auf Schwachstellen und zyklische Abhängikeiten gestossen ist, die man flicken konnte und so die Qualität der Software markant verbessern konnte. Je weiter die Impelentierung jedoch voranschritt, desto mehr und desto grössere Refactorings gab es. Es zeigte sich dann, dass man im UML-Tool das Modell mit dem Sourcecode hätte verlinken müssen, damit diese Refactorings erkannt worden wären. Dies war auch ein Grund dafür, warum ich dann nicht mehr in so kurzen Zeitintervallen ein Codereverse durchgeführt habe. Mit der Einführung des Tools Structe 101 hat Reto jedoch eine super Alternative gefunden, um die Package- und Klassenhierarchien zu durchforsten und auf Designfehler zu untersuchen.
+Am Ende der "<Elaboration"> und zu Beginn der "<Constructioin 1"> Phase habe ich mich sehr stark um die Architektur des Systems gekümmert. Das Modellieren der Architektur hat mir sehr gefallen, da man schnell auf Schwachstellen und zyklische Abhängikeiten gestossen ist, die man flicken konnte und so die Qualität der Software markant verbessern konnte. Je weiter die Impelentierung jedoch voranschritt, desto mehr und desto grössere Refactorings gab es. Es zeigte sich dann, dass man im UML-Tool das Modell mit dem Sourcecode hätte verlinken müssen, damit diese Refactorings erkannt worden wären. Dies war auch ein Grund dafür, warum ich dann nicht mehr in so kurzen Zeitintervallen ein Codereverse durchgeführt habe. Mit der Einführung des Tools Structe 101 hat Reto jedoch eine super Alternative gefunden, um die Package- und Klassenhierarchien zu durchforsten und auf Designfehler zu untersuchen.
 
-Was mich etwas gestört hat war, dass ich nicht immer implementieren konnte. Ich hatte oft Lust jetzt <<endlich>> etwas in Java zu implementieren, musste dann aber feststellen dass schon an allen Baustellen gebaut wurde und es keinen Sinn machte, zu zweit den selben Code zu bearbeiten. Und eine neue Baustelle für ein niedriger priorisiertes Arbeitspaket zu erstellen erschien mir dann auch nicht korrekt. Vor allem in den Phasen <<Construction 2>> und <<Construction 3>> gab es dann aber genug Arbeit um auch interessante Sachen zu implementieren (zum Beispiel Teile des Controllers, die Feldauswahl, das VerbindenView und die Lobby oder die Steuerung der Partnerfiguren).
+Was mich etwas gestört hat war, dass ich nicht immer implementieren konnte. Ich hatte oft Lust jetzt "<endlich"> etwas in Java zu implementieren, musste dann aber feststellen dass schon an allen Baustellen gebaut wurde und es keinen Sinn machte, zu zweit den selben Code zu bearbeiten. Und eine neue Baustelle für ein niedriger priorisiertes Arbeitspaket zu erstellen erschien mir dann auch nicht korrekt. Vor allem in den Phasen "<Construction 2"> und "<Construction 3"> gab es dann aber genug Arbeit um auch interessante Sachen zu implementieren (zum Beispiel Teile des Controllers, die Feldauswahl, das VerbindenView und die Lobby oder die Steuerung der Partnerfiguren).
 
 Mit der Dokumentation in LaTeX hatte ich Anfangs eher mühe. Ich finde das Prinzip einer einfachen Textverarbeitung die mit Subversion verwaltbar ist sehr gut. Wir hatten keine Probleme zu fünft am gleichen Dokument zu schreiben. Sobald ich jedoch meine Gedanken zu Papier bringen wollte, musste ich mich stark mit der Syntax (nur am Anfang) und Formatierungsproblemen auseinandersetzen. Ein WYSIWIG Editor ist für mich an dieser Stelle sehr viel effizienter, da ich mich auf das Wesentliche -- die Dokumentierung -- konzentrieren. Für eine Studienarbeit sehe ich LaTeX nicht als geeignetes Instrument, da ich damit einfach zu ineffizient dokumentieren kann. Mein Wunschwerkzeug wäre ein guter WYSIWYG Editor der LaTeX generiert.
 
@@ -47,5 +44,36 @@ Abschliessend kann ich sagen, dass ich mit dem Projekt sehr zufrieden bin und au
 \section{Erfahrungsbericht von Reto Schüttel}
 
 \section{Erfahrungsbericht von Robin Stocker}
+
+\section{Team-Erfahrungsbericht}
+
+\subsection{Statistiken}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{anzahl_zeilen_pro_package}
+	\caption{Anzahl Zeilen Code pro Package}
+	\label{fig:anzahl_zeilen_pro_package}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{code_qualitaet}
+	\caption{Aussagen zur Code Qualität}
+	\label{fig:code_qualitaet}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{test_abdeckung_pd}
+	\caption{Testabdeckung der Problem-Domain}
+	\label{fig:test_abdeckung_pd}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8 \textwidth]{test_abdeckung_gesamt}
+	\caption{Testabdeckung aller Packages, ausser der UI-Schicht}
+	\label{fig:test_abdeckung_gesamt}
+\end{figure}
 
 \end{document}
