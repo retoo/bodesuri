@@ -27,14 +27,18 @@ echo "Temporary folder is $TMPDIR"
 
 echo "Convert $SRCPATH to $DSTFILE"
 
-OPTS="-interaction=nonstopmode -file-line-error-style -output-directory  $TMPD"
+OPTS="-interaction=nonstopmode -file-line-error-style -output-directory "
 
 BASE=$PWD
+
+GLO_FILE=$TMPDIR/$(basename $SRCPATH .tex).glo
+GLS_FILE=$TMPDIR/$(basename $SRCPATH .tex).gls
 
 cd $SRCDIR
 pdflatex $OPTS $TMPDIR $SRCPATH
 pdflatex $OPTS $TMPDIR $SRCPATH
-cd $BASE
+makeindex $GLO_FILE -s nomencl.ist -o $GLS_FILE
+pdflatex $OPTS $TMPDIR $SRCPATH
 
 cp $TMPDIR/$DSTFILE $DSTPATH
 
