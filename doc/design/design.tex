@@ -26,6 +26,8 @@ Die Validierung der gespielten Züge geschieht sowohl auf dem Client als auch au
 \clearpage
 \section{Logische Sicht}
 
+Die logische Sicht zeigt die Aufteilung des Designs in Schichten und Packages.
+
 \subsection{Schichtenarchitektur}
 
 Für die logische Strukturierung des Projektes wird eine vierschichtige Architektur verwendet, wie in Abbildung~\vref{fig:architektur_schichten} dargestellt. Dabei setzt jede Schicht direkt auf den Diensten der darunterliegenden Schichten auf. Schichten können transparent sein. Dadurch ergeben sich wenige Indirektionen und eine einfache Nutzung der Dienste einer Schicht. Wo möglich und sinnvoll, werden Schnittstellen zwischen Schichten durch eine Fassade gebündelt, um die Kopplung zwischen den Schichten zu verringern. Dadurch lassen sich die Schnittstellen für die Schichten auch klarer definieren und sind einfacher zu nutzen. Im UI wird das MVC-Konzept verwendet, da eine komplexe Darstellungslogik durch das Spiel gegeben ist.
@@ -550,9 +552,11 @@ Es wird pro offene Verbindung ein Empfänger gestartet.
 
 \clearpage
 \section{Spielablauf \& -zustände}
-\label{spielzustaende_nachrichten}
+
+Das Spiel verfügt über einen komplexen Ablauf, den wir mit Hilfe eines Zustandsautomaten implementiert haben. Nachfolgend werden die Automaten für den Client und den Server inklusive der Events erklärt.
+
 \subsection{Zustände Client}
-\label{sub:zustände_client}
+
 Abbildung~\vref{fig:zd_applikation_bodesuriclient} zeigt den Ablauf der Zustände des Clients. Zustände in grün sind passive Zustände.
 \begin{figure}[h]
 	\centering
