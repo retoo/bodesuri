@@ -153,13 +153,6 @@ Der Automat bietet zwei Betriebsmodi an:
 	\item Der Automat muss von den darüberliegenden Klassen abgeleitet und spezifisch implementiert werden.
 \end{itemize}	
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{dienste_automat_klassendiagramm}
-	\caption{Klassendiagramm Automat}
-	\label{fig:dienste_automat_klassendiagramm}
-\end{figure}
-
 \clearpage
 \subsection{Package dienste.serialisierung}
 
@@ -191,7 +184,7 @@ Dieses Package kapselt die Socket-Schnittstelle von Java und bietet Dienste für
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9 \textwidth]{dienste_netzwerk_client}
+	\includegraphics[width=0.5 \textwidth]{dienste_netzwerk_client}
 	\caption{Klassendiagramm Client in Netzwerk}
 	\label{fig:dienste_netzwerk_client}
 \end{figure}
@@ -319,11 +312,7 @@ Es regelt das kontrollierte Verbinden des Spielers zu einem angegebenen Server.
 Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.) verantwortlich.
 
 \subsection{Package applikation.bot}
-
-	\paragraph{Schnittstellen}
-	\begin{itemize}
-		\item 
-	\end{itemize}
+Zu Demonstration und Testzwecken wurde ein simpler Bot entwickelt. Dieser stellt für einen menschlichen Spieler keine Herausfoderung dar, er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie.
 	
 \subsection{Package applikation.client}
 
@@ -377,7 +366,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{kd_client_pd}
+			\includegraphics[width=0.7 \textwidth]{kd_client_pd}
 			\caption{Klassendiagramm clientspezifische PD}
 			\label{fig:kd_client_pd}
 		\end{figure}
@@ -416,13 +405,9 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 	
 \subsection{Package applikation.nachrichten}
 
-	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{kd_applikation_nachricht}
-		\caption{Klassendiagramm Nachrichten}
-		\label{fig:kd_applikation_nachricht}
-	\end{figure}
+	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden. Alle Nachrichten Müssen von der Basisklasse Nachricht ableiten.
+	
+	Eine Liste der Nachrichten kann unter \vref{sub:nachrichten}
 
 \subsection{Package applikation.server}
 
@@ -430,7 +415,7 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\textwidth]{kd_applikation_server}
+		\includegraphics[width=0.5 \textwidth]{kd_applikation_server}
 		\caption{Klassendiagramm Server in Applikation}
 		\label{fig:kd_applikation_server}
 	\end{figure}
@@ -439,24 +424,15 @@ Die Applikationsschicht ist für die Zustandssynchronisation (Spielstände usw.)
 
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=\textwidth]{kd_server_pd}
+			\includegraphics[width=0.5 \textwidth]{kd_server_pd}
 			\caption{Klassendiagramm serverspezifische PD}
 			\label{fig:kd_server_pd}
 		\end{figure}
 
-
 		\paragraph{Schnittstellen}
 		\begin{itemize}
-			\item 
+			\item Die serverspezfische PD bietet eine Teilmenge der Funktionen der PD sowie einige zusätzliche Funktionen an.
 		\end{itemize}
-	
-	\subsection{Package applikation.server.zustaende}
-
-		\paragraph{Schnittstellen}
-		\begin{itemize}
-			\item 
-		\end{itemize}	
-
 
 \clearpage
 \section{Prozesse \& Threads}
@@ -740,6 +716,7 @@ Der Server wartet bis alle verbleibenden Verbindungen beendet sind. Sobald dies 
 
 \clearpage
 \subsection{Nachrichten}
+\label{sub:nachrichten}
 
 Die folgenden Nachrichten dienen der Kommunikation zwischen Client und Server und lösen in den Automaten Zustandsübergänge aus.
 
