@@ -19,7 +19,7 @@ Grundsätzlich folgen wir den "<Sun Coding Quidelines">. Zusätzlich gelten die 
   \item 1 Tabulator hat die Breite 4
   \item Maximal 80 Zeichen pro Zeile
   \item Sprache: Deutsch mit vernünftigen Ausnahmen (get und nicht gib...)
-  \item Mit Javadoc kommentieren wo sinnvoll (z. B. keine Getter/Setter kommentieren)
+  \item Mit Javadoc kommentieren wo sinnvoll (z.\,B. keine Getter/Setter kommentieren)
   \item Paketnamen klein schreiben
   \item Copyright-Header\footnote{Die Möglichkeit einer Veröffentlichung des Projekts unter einer FOSS-Lizenz wird nach Abschluss des Projektes geprüft werden.} in allen Dateien:
     \begin{verbatim}
@@ -105,7 +105,7 @@ Ein Review dauerte in der Regel eine Stunde und wurde in wechselnden Paaren durc
 \label{ssub:user_feeling_philippe_amp_robin}
 
 \begin{itemize}
-	\item Kleinere Bugs gefunden und behoben (z.B. falsche Reihenfolge)
+	\item Kleinere Bugs gefunden und behoben (z.\,B. falsche Reihenfolge)
 	\item GUI-Handling an verschiedenen durch kleine Massnahmen verbessert
 	\item Verschiedene Meldungen und Fehlermeldungen verbessert
 \end{itemize}
@@ -172,6 +172,8 @@ Die Problem-Domain war schon seit Beginn in verschiedenste zyklische Beziehungen
 	\includegraphics[width=0.5 \textwidth]{../design/probleme/package-level-nachher}
 	\caption{Beziehung PD nach Refactoring}
 \end{figure}
+
+\newpage
 
 \section{Tests}
 \subsection{Voraussetzungen}
@@ -344,23 +346,54 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		NF9 & Ausser des Spielernamens und der Serverkonfiguration müssen keine Konfigurationen eingegeben werden. & [Ok] \\
 		\bottomrule
 	\end{tabular}
-	
-%TODO: Pascal: fertig machen (-pascal)
+
 \section{Bekannte Einschränkungen und Verbesserungsmöglichkeiten}
 \subsection{Der Siebnerzug}
 Der Siebnerzug ist aktuell so implementiert, dass man eine Figur nur genau einmal <<anfassen>> kann, das heisst sobald ein Teilzug gemacht wurde wird eine Geisterfigur auf das Zielfeld gesetzt und der Gesamtzug muss mit einer anderen Figur des gleichen Spielers weitergeführt werden.
-- Siebnerverhalten am Schluss 
-- Siebnerzug ist generell einschränkbar
-- PD Siebnerzug (sauber fahren ohne Geister)
+
+Vom Spielgefühl her ist dies jedoch nicht das korrekte Verhalten. Logisch gesehen gibt es keinen Grund, warum man dies so einschränken sollte. Auch von den Spielregeln her ist es erlaubt, eine Figur beim Siebnerzug mehrmals zu bewegen. Dies bestätigt auch ein Testerfeedback einer sehr erfahrenen Dog-Spielerin, die dieses Verhalten relativ schnell erkannt und bemängelt hat.
+
+Als Verbesserung würde es sich anbieten, den Siebnerzug bereits in der Problem-Domain speziell zu behandeln, um ein <<Rollback>> einer bereits durchgeführten Aktion durchführen zu können. So würde jeder Teilzug als separater Zug ablaufen. Würde ein Zug dann jedoch nicht mehr validiert werden können, wäre es möglich alle ausgeführten Aktionen wieder rückgängig zu machen.
 
 \subsection{Partnerschaften}
-- Auswahl der Partnerschaften
+Im Spiel werden die Partnerschaften fix durch den Server vorgeschrieben. Für den Spielspass ist dies nicht die optimale Lösung, da es sich bei Dog ja um ein Gesellschaftsspiel handelt. Wünschenswert wäre, wenn ein Spieler schon in der Lobby bestimmen kann, mit wem er eine Partnerschaft eingehen möchte.
 
 \subsection{Der Computergegner (Bot)}
-- Intelligenterer Bot
+Der aktuell implementierte <<StupidBot>> stellt für die meisten Spieler keinen würdigen Gegner dar. Er wählt aus allen möglichen Zügen, die ihm zur Verfügung stehen einen zufälligen aus und verfolgt somit keine gezielte Strategie. Zu Beginn war dieser Bot auch lediglich zu Testzwecke gedacht. Da er aber sehr einfach zu implementieren war und uns doch gezeigt hatte, dass er das Spiel unter Anwendung aller möglichen Regeln zu Ende spielen konnte, haben wir beschlossen ihn in eine Demo zu integrieren um so ein Einzelspielermodus zu ermöglichen.
+
+Da der Bot auf der Gesamtlösung aufsetzt -- er interagiert mit dem System anstelle des Spielers -- kann er in Zukunft einfach verändert werden, ohne dass etwaige Abhängigkeiten berücksichtigt werden müssen. Wir haben auch für intelligentere Bots schon einige Ideen angedacht:
+\begin{itemize}
+	\item Bot-Klasse als Interface oder abstrakte Klasse extrahieren.
+	\item Bots implementieren verschiedene Strategien (z.\,B. aggressiv oder passiv).
+	\item Mehrere Bot-Implementierungen sind möglich.
+\end{itemize}
+
+Einen intelligenten Bot zu programmieren ist jedoch nicht so einfach wie es auf den ersten Blick aussieht. Um aus seinen möglichen Zügen den Besten auszuwählen muss er verschiedene Varianten durchprobieren und vergleichen können. Er muss z.\,B. bei jedem Zug verschiedene Faktoren berücksichtigen:
+\begin{itemize}
+	\item Welchem Spieler gehört eine Figur?
+	\item Ist es besser einen Gegner heimzuschicken, bevor dieser in seinen Himmel ziehen kann?
+	\item Ist es besser, dem Partner eine Karte zuzuschieben und dafür eigene Nachteile zu kassieren?
+	\item Werden beim aktuellen Zug Figuren von mir oder meinem Partner gefressen?
+	\item Welche Karte soll am Anfang einer Runde getauscht werden?
+	\item Wie ist die Situation einer Figuren in zukünftigen Runden (Vorhersage)?
+\end{itemize}
+
+Um eine Strategie statisch abzubilden hatten wir schon grob einige Ideen aufgeschrieben:
+\begin{itemize}
+	\item Strategien können Gewichtet werden.
+	\item Bots können die Strategie zur Laufzeit ändern.
+	\item Die Gewichtungen der verschiedenen Strategien werden durch das Verhalten der Gegner immer neu angepasst um die optimale Strategie zu finden.
+\end{itemize}
+
+Diese Thematik wird von uns sicherlich noch weiterverfolgt und auch implementiert werden, da es uns sehr interessiert.
 
 \subsection{Steuerung und Konfiguration des Servers}
-- GUI für Server
-- Server aus Client steuerbar
+Der Server ist so implementiert worden, dass er für einen ungeübten Computerbenutzer möglichst einfach in der Handhabung ist. Aktuell ist es so gelöst, dass ein Spieler den Server <<per Doppelklick>> startet und ihn als normale Anwendung in der Taskleiste sieht. Dies funktioniert in den meisten Fällen sehr gut und ist für unsere Zwecke völlig ausreichend. Für den Benutzer gäbe es natürlich auch konfortablere Lösungen. Einige Ideen möchten wir hier kurz anreissen:
+\begin{itemize}
+	\item Rudimentäres GUI zur Konfiguration (z.\,B. die Portnummer).
+	\item Konsole zur Anzeige aktueller Infos und Fehlermeldungen.
+	\item Buttons zum Beenden des Servers.
+	\item Server aus Client startbar/steuerbar.
+\end{itemize}
 
 \end{document}
