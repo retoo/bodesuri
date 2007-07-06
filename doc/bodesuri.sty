@@ -3,7 +3,7 @@
 \usepackage{ngerman} % Deutsche Ueberschriften, Silbentrennung
 \usepackage[utf8]{inputenc}
 \usepackage[pdftex]{graphicx}
-\graphicspath{{img/}}
+\graphicspath{{img/}{../}{../../}}
 
 % Schrift
 \usepackage[sc]{mathpazo} % Schriftart Palatino
@@ -20,33 +20,28 @@
 \hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
 
 % Kopf- und Fusszeile
-\usepackage[headsepline]{scrpage2}
-%\pagestyle{scrheadings} 
-
-\clearscrheadfoot
-% \chead{\normalfont\sffamily \headmark} % Kopfzeile serif
-\cfoot{\pagemark} % Seitennummer in Fusszeile
-
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\unitlength}{-1pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
 
-% Header
+% Bild Kopfzeile
 \fancyhead[L]{% left
   \begin{picture}(0,0)
     \includegraphics*[width=\textwidth]{../document_header.png}% irgendeine GrafikDatei
   \end{picture}
 }
-% Linie entfernen
-\renewcommand{\headrulewidth}{0pt}
 
-% Text für Header hinzufügen
-\fancyhead[C]{\Large \rightmark
+% Text Kopfzeile
+\fancyhead[C]{\rightmark
   \vspace{0.3cm}
 }
 
-% Footer
+% Bild Fusszeile
 \fancyfoot[L]{% left
   \vspace{0.1cm}
   \begin{picture}(0,0)
@@ -54,12 +49,9 @@
   \end{picture}
 }
 
-% Seitennummer
+% Text Fusszeile
 \fancyfoot[C]{\footnotesize \textcolor{white}{\thepage}}
 
-\renewcommand{\sectionmark}[1]{}
-\renewcommand{\subsectionmark}[1]{}
-\renewcommand*{\chapterpagestyle}{fancy}
 
 % Anderes
 \usepackage{booktabs}
