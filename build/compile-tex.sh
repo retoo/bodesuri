@@ -15,10 +15,10 @@ if [ ! -e "$SRCPATH" ]; then
   exit 10
 fi
 
-if [ -e "$DSTPATH" -a ! "$SRCPATH" -nt "$DSTPATH" ]; then
-  echo "$DSTPATH is already up to date"
-  exit 0
-fi
+#if [ -e "$DSTPATH" -a ! "$SRCPATH" -nt "$DSTPATH" ]; then
+#  echo "$DSTPATH is already up to date"
+#  exit 0
+#fi
 
 
 TMPDIR=$PWD/$(mktemp -d -p tmp/)
