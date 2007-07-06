@@ -29,20 +29,36 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\fancyhf{}
 \setlength{\unitlength}{-1pt}
+
+% Header
 \fancyhead[L]{% left
   \begin{picture}(0,0)
     \includegraphics*[width=\textwidth]{../document_header.png}% irgendeine GrafikDatei
   \end{picture}
 }
+% Linie entfernen
+\renewcommand{\headrulewidth}{0pt}
+
+% Text für Header hinzufügen
+\fancyhead[C]{\Large \rightmark
+  \vspace{0.3cm}
+}
+
+% Footer
+\fancyfoot[L]{% left
+  \vspace{0.1cm}
+  \begin{picture}(0,0)
+    \includegraphics*[width=\textwidth]{../document_footer.png}% irgendeine GrafikDatei
+  \end{picture}
+}
+
+% Seitennummer
+\fancyfoot[C]{\footnotesize \textcolor{white}{\thepage}}
 
 \renewcommand{\sectionmark}[1]{}
 \renewcommand{\subsectionmark}[1]{}
-
-\fancyhead[C]{\Large \rightmark
-\vspace{0.3cm}
-}
-
 \renewcommand*{\chapterpagestyle}{fancy}
 
 % Anderes
