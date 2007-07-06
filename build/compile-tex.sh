@@ -37,8 +37,6 @@ GLS_FILE=$TMPDIR/$(basename $SRCPATH .tex).gls
 cd $SRCDIR
 pdflatex $OPTS $TMPDIR $SRCPATH
 pdflatex $OPTS $TMPDIR $SRCPATH
-makeindex $GLO_FILE -s nomencl.ist -o $GLS_FILE
-pdflatex $OPTS $TMPDIR $SRCPATH
 
 cp $TMPDIR/$DSTFILE $DSTPATH
 
