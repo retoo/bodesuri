@@ -15,12 +15,13 @@ Bei dem Build-Server handelt es sich um ein virtueller Server welcher freundlich
 
 
 \section{Wichtige Passwörter} % (fold)
-\label{sec:wichtige_passwörter}
+\label{sec:wichtige_passwoerter}
+
+\textbf{Die Passwörter wurden vor der Veröffentlichung geändert!}
 
 \begin{description}
   \item[mysql] Benutzer: \emph{root} Passwort: \emph{bodesuri}
   \item[svn cruisecontrol] Benutzer: \emph{cruisecontrol} Passwort: \emph{bodesuri321}
-%FIXME: cruisecontrol
 \end{description}
 
 % section wichtige_passwörter (end)
@@ -404,7 +405,7 @@ Einrichtung von MySQL.
 \begin{verbatim}
 # mysql -u root
 > use mysql;
-> update user set password = password("bodesuri") where user = "root";
+> update user set password = password("_____") where user = "root";
 > flush privileges;
 \end{verbatim}
 
@@ -427,15 +428,6 @@ memory_limit = 50M
 \end{verbatim}
 
 % section php_4 (end)
-
-\section{Dot-Project} % (fold)
-\label{sec:dot_project}
-
-Dotproject kann von \url{http://www.dotproject.net/} heruntergeladen werden.
-
-% section dot_project (end)
-
-% chapter tools (end)
 
 \section{Trac}
 
@@ -477,12 +469,13 @@ Apache-Konfiguration mit folgendem Text in \textbf{/etc/apache2/conf.d/trac} ers
 ScriptAlias /trac /usr/share/trac/cgi-bin/trac.fcgi
 DefaultInitEnv TRAC_ENV /home/trac
 DefaultInitEnv LC_ALL de_CH.UTF-8
-<Location /trac>
+
+<LocationMatch ^/trac/(login|timeline|changeset)>
         AuthType Basic
-        AuthName "Bodesuri Trac"
+        AuthName "Bodesuri"
         AuthUserFile /etc/apache2/dav_svn.passwd
         Require valid-user
-</Location>
+</LocationMatch>
 \end{verbatim}
 
 Die Tracseite soll als Startseite angezeigt werden (beim Besuch von bodesuri.speedpc.ch). Dies wird erreicht indem in der Datei \textbf{/etc/apache2/sites-enabled/000-default} die \emph{RewriteRule} auf trac umgeändert wird:
@@ -503,6 +496,24 @@ Damit Trac in der Diff-Ansicht UTF-8 verwendet und somit Umlaute richtig darstel
 \chapter{Backup} % (fold)
 \label{cha:backup}
 
-% chapter backup (end)
+Das Script \textbf{/home/backup.sh} erstellt ein Tarball des aller Projektrelevanten Daten (ganzes \textbf{/home/}) und lädt diese auf zwei Servern herauf. Das Script wird nächtlich um halb eins aufgerufen.
+
+Die Tarballs werden auch lokal im Ordner \textbf{/var/tmp/} und stehen da für lokale Restores zur Verfügung. Der Ordner \textbf{/var/tmp/} sollte in regelmässigen Abständen aufgeräumt werden.
+
+\begin{verbatim}
+#!/bin/bash
+
+DIR=/home/
+OUT=/var/tmp/
+
+DATE=$(date '+%y-%m-%d_%H:%M:%S')
+
+OUTFILE=$OUT/backup-$DATE.tbz2 
+
+tar cjf $OUTFILE $DIR
+
+scp -i /root/.ssh/id_rsa $OUTFILE bodesuri@85.25.1.250:~/
+scp -i /root/.ssh/id_rsa $OUTFILE bodesuri@morki.ch:~/
+\end{verbatim}
 
 \end{document}
