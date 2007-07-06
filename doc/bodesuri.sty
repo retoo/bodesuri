@@ -21,11 +21,29 @@
 
 % Kopf- und Fusszeile
 \usepackage[headsepline]{scrpage2}
-\pagestyle{scrheadings}
-% \renewcommand*{\chapterpagestyle}{scrheadings}
+%\pagestyle{scrheadings} 
+
 \clearscrheadfoot
-\chead{\normalfont\sffamily \headmark} % Kopfzeile serif
+% \chead{\normalfont\sffamily \headmark} % Kopfzeile serif
 \cfoot{\pagemark} % Seitennummer in Fusszeile
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\unitlength}{-1pt}
+\fancyhead[L]{% left
+  \begin{picture}(0,0)
+    \includegraphics*[width=\textwidth]{../document_header.png}% irgendeine GrafikDatei
+  \end{picture}
+}
+
+\renewcommand{\sectionmark}[1]{}
+\renewcommand{\subsectionmark}[1]{}
+
+\fancyhead[C]{\Large \rightmark
+\vspace{0.3cm}
+}
+
+\renewcommand*{\chapterpagestyle}{fancy}
 
 % Anderes
 \usepackage{booktabs}
