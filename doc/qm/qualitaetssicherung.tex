@@ -235,7 +235,7 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 \subsubsection{Use-Case Test: UC1 Spiel erstellen}
 	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
-		\textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 		\midrule
 		1, 2, 3 & Server-Start \newline erfolgreich & Der Server ist gestartet, funktioniert und ist betriebsbereit. & [Ok] \\
 		 \cline{3-4} & & Für den Benutzer ist gut ersichtlich, dass der Server läuft und betriebsbereit ist. & [Ok] \\
@@ -249,7 +249,7 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 \subsubsection{UC2: Spiel beitreten}
 	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
-		\textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 		\midrule
 		1, 2, 3, 4 & Client verbunden & Der Client hat sich auf den Server verbunden und der Server kennt den Client. & [Ok] \\
 		 \cline{3-4} & & Der Benutzer ist informiert worden, dass er dem Spiel erfolgreich beigetreten ist. In der Lobby kann er sich und seine Mitspieler erkennen und mit ihnen chatten. & [Ok] \\
@@ -272,9 +272,9 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 	\end{tabular}
 	
 \subsubsection{UC3: Spiel spielen}
-	\begin {tabular}{r | p{3cm} | p{9cm} | l}
+	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
-		\textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 		\midrule
 		1 & Spielbrett initialisiert & Das Spielbrett ist initialisiert und auf allen Clients innerhalb der Zeitlimite von 3\,s synchronisiert. & [Ok] \\
 		 \cline{3-4} & & Alle Clients und der Server befinden sich in einem wohldefinierten Zustand. & [Ok] \\
@@ -294,30 +294,43 @@ Details zu den JUnit Tests können aus der JavaDoc entnommen werden.
 		\midrule
 	\end{tabular}
 		
-	\begin {tabular}{r | p{3cm} | p{9cm} | l}
+	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
-		\textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
 		\midrule
 		6 & Vorwärtszug erfassen & Der Spieler wählt das Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
-		\cline{3-4} & Rückwärtszug & Der Spieler wählt das Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
-		\cline{3-4} & Zug mit Joker & Nach anklicken der Joker-Karte wird eine Auswahl angezeigt, in der der Spieler die Karte wählen kann, mit der gespielt werden soll. Danach wählt der Spieler Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
-		\cline{3-4} & Aufteilbarer Zug & Der Spieler wählt das Start- und das Zielfeld für jede Figur aus, mit der er einen Teilzug durchführen möchte. & [Ok] \\
-		\cline{3-4} & Aufteilbarer Zug (Spezialfall) & Wenn ein Spieler nur noch eine Figur hat, die noch nicht im Himmel steht und welche weniger als sieben Felder vom Himmel entfernt ist, so ist der Zug nicht auf seine Figur und der "<Rest"> der Teilzüge auf eine Figur des Partners anwendbar. Der Spieler kann in dieser Situation nur aufgeben. & [Ok] \\
-		\cline{3-4} & Fressen fremder Figuren & Eine beliebige Figur (auch eine eigene) wird auf ihr Lagerfeld zurückgeschickt, sofern es nicht geschützt ist. & [Ok] \\
-		\cline{3-4} & Ziehen mit Partnerfiguren & Wenn der Spieler all seine Figuren in den Himmel platzieren konnte, so kann er mit den Figuren des Partners fahren, als wären es seine eigenen. Alle Züge werden vom Client korrekt validiert. & [Ok] \\
-		\cline{3-4} & Startzug & Die Figur wird vom Lagerfeld auf das Bankfeld des Spielers verschoben. & [Ok] \\
-		\cline{3-4} & Figurentausch & Der Tausch wird sofort angezeigt und korrekt validiert. & [Ok] \\
-		\cline{3-4} & Vorwärtszug (gesch. Bank) & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
-		\cline{3-4} & Rückwärtszug (gesch. Bank) & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
-		\cline{3-4} & Vorwärtszug in Himmel & Der erfasste Zug wird korrekt validiert, ausgeführt und dargestellt. & [Ok] \\
-		\cline{3-4} & Vorwärtszug im Himmel & Der erfasste Zug wird korrekt validiert, ausgeführt und dargestellt. & [Ok] \\
-		\cline{3-4} & Rückwärtszug im Himmel & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
+		\midrule
+		6 & Rückwärtszug & Der Spieler wählt das Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
+		\midrule
+		6 & Zug mit Joker & Nach anklicken der Joker-Karte wird eine Auswahl angezeigt, in der der Spieler die Karte wählen kann, mit der gespielt werden soll. Danach wählt der Spieler Start- und das Zielfeld aus und der Client validiert den Zug erfolgreich. & [Ok] \\
+		\midrule
+		6 & Aufteilbarer Zug & Der Spieler wählt das Start- und das Zielfeld für jede Figur aus, mit der er einen Teilzug durchführen möchte. & [Ok] \\
+		\midrule
+		6 & Aufteilbarer Zug (Spezialfall) & Wenn ein Spieler nur noch eine Figur hat, die noch nicht im Himmel steht und welche weniger als sieben Felder vom Himmel entfernt ist, so ist der Zug nicht auf seine Figur und der "<Rest"> der Teilzüge auf eine Figur des Partners anwendbar. Der Spieler kann in dieser Situation nur aufgeben. & [Ok] \\
+		\midrule
+		6 & Fressen fremder Figuren & Eine beliebige Figur (auch eine eigene) wird auf ihr Lagerfeld zurückgeschickt, sofern es nicht geschützt ist. & [Ok] \\
+		\midrule
+		6 & Ziehen mit Partnerfiguren & Wenn der Spieler all seine Figuren in den Himmel platzieren konnte, so kann er mit den Figuren des Partners fahren, als wären es seine eigenen. Alle Züge werden vom Client korrekt validiert. & [Ok] \\
+		\midrule
+		6 & Startzug & Die Figur wird vom Lagerfeld auf das Bankfeld des Spielers verschoben. & [Ok] \\
+		\midrule
+		6 & Figurentausch & Der Tausch wird sofort angezeigt und korrekt validiert. & [Ok] \\
+		\midrule
+		6 & Vorwärtszug (gesch. Bank) & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
+		\midrule
+		6 & Rückwärtszug (gesch. Bank) & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
 		\bottomrule
 	\end{tabular}
 	
 	\begin {tabular}{r | p{3cm} | p{8cm} | l}
 		\toprule
-		\textbf{UC} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\textbf{Schritt} & \textbf{Beschreibung} & \textbf{Erwartetes Verhalten} & \textbf{Ergebnis} \\
+		\midrule
+		6 & Vorwärtszug in Himmel & Der erfasste Zug wird korrekt validiert, ausgeführt und dargestellt. & [Ok] \\
+		\midrule
+		6 & Vorwärtszug im Himmel & Der erfasste Zug wird korrekt validiert, ausgeführt und dargestellt. & [Ok] \\
+		\midrule
+		6 & Rückwärtszug im Himmel & Der Client registriert bei der Validierung einen Regelverstoss und informiert den Spieler. & [Ok] \\
 		\midrule
 		7, 8, 9 & Spielzug übermitteln & Spielzug ist vom Client validiert worden und gültig. & [Ok] \\
 		 \cline{3-4} & & Spielzug ist an Server übermittelt. & [Ok] \\
