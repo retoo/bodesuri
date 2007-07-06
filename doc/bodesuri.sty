@@ -5,19 +5,22 @@
 \usepackage[pdftex]{graphicx}
 \graphicspath{{img/}{../}{../../}}
 
+% Farben
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\definecolor{sectioncolor}{rgb}{.02,0.15,0.25}
+
 % Schrift
 \usepackage{lmodern}
 \usepackage[sc]{mathpazo} % Schriftart Palatino
 \usepackage[T1]{fontenc}
 \linespread{1.05}
 \typearea[current]{12} % Satzspiegel (Groesse der Raender)
-\setkomafont{sectioning}{\rmfamily \bfseries} % Ueberschriften serif und fett
+\setkomafont{sectioning}{\rmfamily \bfseries \color{sectioncolor}} % Ueberschriften serif und fett
 
 % Referenzen
 \usepackage[ngerman]{varioref} % Referenzen mit "auf Seite X"
 \usepackage[pdftex]{hyperref}
-\usepackage{color}
-\definecolor{darkblue}{rgb}{0,0,.5}
 \hypersetup{colorlinks, linkcolor=darkblue, urlcolor=darkblue}
 
 % Kopf- und Fusszeile
