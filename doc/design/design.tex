@@ -317,8 +317,9 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 \subsection{Package applikation.client}
 
 	Die Client-Applikationsschicht ist für die Zustandsverwaltung des Clients und die Kommunikation mit dem UI verantwortlich. Die beiden Automaten (ClientAutomat \& ZugAutomat) und die clientspezifische PD bilden die Zustände des Clients ab. Der Controller dient als Kommunikationsschnittstelle zwischen dem Automaten und dem UI.
-	
-	\subsection{Package applikation.client.controller}
+
+\clearpage	
+\subsection{Package applikation.client.controller}
 
 		Der Controller kanalisiert die Zugriffe der UI- auf die Applikationsschicht und umgekehrt. Andere Schichten nutzen bloss das Steuerungsinterface welches vom Controller implementiert wird.
 
@@ -334,7 +335,8 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 			\caption{Klassendiagramm Controller}
 			\label{fig:kd_client_controller}
 		\end{figure}
-		
+	
+\clearpage	
 	\subsection{Package applikation.client.events}
 
 		Dieses Package beinhaltet die Events, die eintreten können und um deren Behandlung sich der Automat kümmert.
@@ -354,6 +356,7 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 			\item Werden in der clientspezifischen PD gespeichert und dann vom Automaten, dem Controller und dem UI genutzt.
 		\end{itemize}
 	
+\clearpage
 	\subsection{Package applikation.client.pd}
 
 		Die clientspezifische PD erweitert die PD um zustandsabhängige Eigenschaften.
@@ -370,7 +373,8 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 			\caption{Klassendiagramm clientspezifische PD}
 			\label{fig:kd_client_pd}
 		\end{figure}
-		
+
+\clearpage
 	\subsection{Package applikation.client.zugautomat}
 
 		Ein eigener Automat inklusive einer kleinen clientspezifischen PD. Wird jede Runde für die Erfassung eines Zuges vom ClientAutomaten gestartet und gibt dem Automaten einen fertig erfassten Zug zurück.
@@ -387,6 +391,7 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 			\label{fig:kd_client_zugautomat}
 		\end{figure}
 		
+\clearpage
 	\subsection{Package applikation.client.zustaende}
 
 		Dieses Package gruppiert die Zustände die der ClientAutomat annehmen kann.
@@ -402,7 +407,8 @@ Zu Demonstrations- und Testzwecken wurde ein simpler Bot entwickelt. Dieser stel
 			\caption{Klassendiagramm Zustände des Clients}
 			\label{fig:kd_client_zustaende}
 		\end{figure}
-	
+
+\clearpage
 \subsection{Package applikation.nachrichten}
 
 	Dieses Package beinhaltet alle möglichen Nachrichtentypen, die zur Kommunikation zwischen Client und Server verwendet werden. Alle Nachrichten müssen von der Basisklasse Nachricht ableiten.
@@ -594,6 +600,7 @@ Zustand in welchem der Spieler am Zug ist. Erstellt einen \textbf{ZugAutomaten},
 \subsubsection{SpielEnde}
 Zustand in welchem sich dem Automat befindet wenn wir das Spiel beenden wollen. In diesem Zustand werden Events, die möglicherweise noch in der Queue warten, konsumiert, das UI heruntergefahren, die Verbindung zum Server geschlossen und der Automat beendet.
 
+\clearpage
 \subsection{Zustände ZugAutomat}
 \label{sub:zustände_zugautomat}
 Die Erfassung eines Zuges wurde aus dem Client-Automaten ausgelagert. Abbildung~\vref{fig:zd_applikation_bodesuriserver} zeigt den Ablauf der Zustände des \textbf{ZugAutomat}. Zustände in grün sind passive Zustände.
@@ -773,7 +780,7 @@ Die Abbildungen~\vref{fig:sd_verbindung_erstellen_client} und~\vref{fig:sd_verbi
 Die Abbildung~\vref{fig:dienste_rundenstart} zeigt den Ablauf beim Start einer neuen Runde.
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7 \textwidth]{dienste_rundenstart}
+	\includegraphics[width=\textwidth]{dienste_rundenstart}
 	\caption{Sequenzdiagramm Rundenstart}
 	\label{fig:dienste_rundenstart}
 \end{figure}
