@@ -55,6 +55,14 @@ Die Zusammenarbeit empfand ich als sehr gut. Jeder in unserem Team hat individue
 
 \section{Erfahrungsbericht von Reto Schüttel}
 
+Ein solch grosses Projekt mithilfe von fünf Personen langsam aber stetig entstehen zu entstehen war eine ganz neue Erfahrung für mich. Die relativ grosse Gruppe war bestimmt ein Faktor der nicht immer zu unseren Gusten war. Die Zeit, die die Team-Meetings und sonstige Koordinationen auffrassen, war meines Erachtens imens. Es ist aber nicht so, dass ich usnere Sitzungen als unproduktiv oder ineffizient empfunden habe, aber bei fünf Personen scheint einfach ein viel grösserer Kommunikationsaufwand notwendig zu sein.
+
+Sehr gut gefallen hat mir die Entwicklungsumgebung die wir im Laufe der Zeit aufgebaut haben. Seit etwa Woche 5 oder 6 war eigentlich fast immer einen funktionsfähiges Produkt vom Build-Server erhältlich, seit etwa zwei Wochen ist dieses auch immer auf der Homepage verlinkt und somit quasi "<veröffentlicht">.  Ähnliche wiederholende Aufgaben, zum Beispiel das generieren des Test-Coverage Reportes oder der Dokumenten TODO Liste waren ebenfalls in diesen Prozess eingebunden und standen uns quasi nach commit fast sofort zur Verfügung. Beim nächsten Projekt würde ich vermutlich sgoar noch mehr Zeit von Anfang an in eine solche Infrastruktur investieren. Zum Beispiel ging die Anzahl der defekten Builds massiv zurück als wir begannen, bei fehlgeschlagenen Builds, Mails zu versenden. Eine anderes Thema war die Erstellung von Statistiken, ich musste dieserückwirkend generieren was relativ mühsam war. Zwar ging dies dank svn und dem Scripting Support von Structure 101 recht gut, aber ich denke nächstes Projekt werd ich dies von Anfang an so einrichten und die Statistik vor zu generieren lassen.
+
+Während ich in vielen Bereichen positive Erfahrungen mit den Methoden und Tools gemacht habe und diese auch in ähnlicher Form in zukünftigen Projekten weiterverwenden werde, sticht doch das Thema Zeiterfassung negativ heraus. In der von uns verwendeten Form war die Zeiterfassung und Planung nicht nur aufwändig sondern meiner Meinung nach auch ziemlich sinnlos. Wie sollen wir in der Inception/Elaboration Phase wissen wie lange die Implmentation des Siebnerzuges geht? Bei der konkreten Planung des Features gab es zudem mehrere Varianten mit unterschiedlichem Zeitaufwand. Ich verstehe dass der Kunde von Anfang an eine ungefähre Zeitabschätzung benötigt, aber ich würde in meinem nächsten Projekt die Detailzeitplanung (Soll Stunden pro Paket) erst wirklich in der jeweiligen Phase machen. Vorher müsste man unter Umständen einfach einem ganzen Themenbereich (z.B. Regelsystem) einen Total-Stunden Wert zuordnen der anschliessend für die Implementation der einzelnen Features verbucht werden könnte. Geht in einem Bereich die Zeit aus muss auf die Implementaiton weiterer Features verzichtet werden. So oder so, die Zeitplaung und Erfassung war meines Erachtens unbefriedigend und frustrierend.
+
+Mir hat das Team und das Projekt im allgemeinen viel Spass gemacht. Man konnte viel lernen und ich denke das Endprodukt kann sich sehen lassen. Ich möchte meinen Teammitgliedern für die tolle Zusammenarbeit danken, gerne wieder!
+
 \section{Erfahrungsbericht von Robin Stocker}
 
 \section{Team-Erfahrungsbericht}
@@ -76,8 +84,10 @@ Was bei dem Diagramm der Zeitabweichung gut ersichtlich ist, ist der Umstand, da
 	\label{fig:zeitbeachspruchung_arbeiten}
 \end{figure}
 
-\subsection{Statistiken}
-\subsubsection{Testabdeckung aller Packages}
+\section{Statistiken}
+\subsection{Testabdeckung aller Packages}
+
+% TODO: Robin: kann man Bilder Seiten irgendwie mit clearpage und H und clearpage querformat machen? Das geht doch sicher? (-reto)
 Unsere JUnit-Tests erreichen über das gesamte Projekt gesehen eine relativ hohe Abdeckung von 79 Prozent. Dabei muss noch berücksichtigt werden, dass das UI nicht durch JUnit-Tests getestet wird. Durch die Zuhilfenahme des Bots stieg die Abdeckung auch noch um ein grosses Stück, da dieser beinahe alle Teile des Codes benötigt. Wenn dann ein Spiel mit Bots zu Ende gespielt wurde, so verläuft der Test erfolgreich.
 
 Markant ist, dass die Problem-Domain eine sehr hohe Testabdeckung aufweist und auch während des ganzen Projektes aufgewiesen hat. Diese konnte so immer als sehr stabile Grundlage für die Entwicklungen dienen.
@@ -94,7 +104,7 @@ Markant ist, dass die Problem-Domain eine sehr hohe Testabdeckung aufweist und a
 	\label{fig:test_abdeckung_pd}
 \end{figure}
 
-\subsubsection{Analyse der Anzahl von Zeilen pro Package}
+\subsection{Analyse der Anzahl von Zeilen pro Package}
 Wenn man sich die Anzahl der Zeilen im Verhältnis zu den Packages anschaut, so stellt man fest, dass fundametale Packages wie die Dienstschicht oder die Problem-Domain über längere Zeit relativ konstant blieben. Andere Packages wie der Server, der Client oder das GUI wuchsen gegen Projektende markant schneller.
 \begin{figure}[h]
 	\centering
@@ -103,8 +113,8 @@ Wenn man sich die Anzahl der Zeilen im Verhältnis zu den Packages anschaut, so 
 	\label{fig:anzahl_zeilen_pro_package}
 \end{figure}
 
-\subsubsection{Aussagen zur Code-Qualität}
-Mit dem Tool "<Structure 101"> waren wir in der Lage, Aussagen über die Code-Qualität zu treffen. Im Diagramm sieht man als negativen Wert "<Fette Instruktionen">. Damit sind fette Methoden und Klassen gemeint.
+\subsection{Aussagen zur Code-Qualität}
+Mit dem Tool "<Structure 101"> waren wir in der Lage, Aussagen über die Code-Qualität zu treffen. Im Diagramm sieht man als negativen Wert "<Fette Instruktionen">. Damit sind zyklische Paketabhängkeiten, fette Methoden und Klassen gemeint.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.8 \textwidth]{code_qualitaet}
