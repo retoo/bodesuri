@@ -48,9 +48,11 @@ public class BodesuriEntwickler {
 		a.start();
 		b.start();
 
-		server.join();
-
 		a.join();
 		b.join();
+
+		/* Hat sich der Client nie verbunden ist kriegt Server nie mit über
+		 * dass er sich beenden sollte. */
+		System.exit(0);
 	}
 }

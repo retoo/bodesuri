@@ -35,7 +35,7 @@ import applikation.client.konfiguration.Konfiguration;
 public class BodesuriDemo {
 	/**
 	 * Die Demo starten.
-	 * 
+	 *
 	 * @param args
 	 *            Wird nicht genutzt
 	 * @throws InterruptedException
@@ -68,11 +68,10 @@ public class BodesuriDemo {
 		Bodesuri b = new Bodesuri();
 		b.start();
 
-		server.join();
 		b.join();
 
-		for (Thread t : clients) {
-			t.join();
-		}
+		/* Hat sich der Client nie verbunden ist kriegt Server nie mit über
+		 * dass er sich beenden sollte. */
+		System.exit(0);
 	}
 }
