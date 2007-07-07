@@ -19,13 +19,19 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
+import pd.regelsystem.RegelVeroderung;
+import pd.regelsystem.StartRegel;
 import pd.regelsystem.VorwaertsRegel;
 
-public class Acht extends AbstrakteKarte {
-	public Acht(KartenFarbe farbe) {
-		super("Acht", farbe);
-		setRegel(new VorwaertsRegel(8));
+public class Ass extends AbstrakteKarte {
+	public Ass(KartenFarbe farbe) {
+		super("Ass", farbe);
+		RegelVeroderung r = new RegelVeroderung();
+		r.fuegeHinzu(new VorwaertsRegel(1));
+		r.fuegeHinzu(new VorwaertsRegel(11));
+		r.fuegeHinzu(new StartRegel());
+		setRegel(r);
 	}
 }

@@ -19,13 +19,13 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
-import pd.regelsystem.VorwaertsRegel;
+import pd.regelsystem.SiebnerRegel;
 
-public class Drei extends AbstrakteKarte {
-	public Drei(KartenFarbe farbe) {
-		super("Drei", farbe);
-		setRegel(new VorwaertsRegel(3));
+public class Sieben extends AbstrakteKarte {
+	public Sieben(KartenFarbe farbe) {
+		super("Sieben", farbe);
+		setRegel(new SiebnerRegel());
 	}
 }

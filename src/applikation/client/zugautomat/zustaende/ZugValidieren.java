@@ -21,7 +21,7 @@
 
 package applikation.client.zugautomat.zustaende;
 
-import pd.regelsystem.karten.Sieben;
+import pd.karten.Sieben;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;
 import applikation.client.events.ZugErfasstEvent;

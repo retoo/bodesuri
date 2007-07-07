@@ -19,7 +19,7 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
 import pd.regelsystem.Karte;
 import pd.regelsystem.Regel;

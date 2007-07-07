@@ -26,7 +26,7 @@ import java.util.List;
 import dienste.serialisierung.Codierer;
 
 import junit.framework.TestCase;
-import pd.regelsystem.karten.KartenGeber;
+import pd.karten.KartenGeber;
 import pd.spiel.Spiel;
 import pd.spiel.brett.BankFeld;
 import pd.spiel.brett.Brett;

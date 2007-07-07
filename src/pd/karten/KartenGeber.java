@@ -19,7 +19,7 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
 import java.util.List;
 import java.util.Stack;

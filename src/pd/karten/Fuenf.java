@@ -19,13 +19,13 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
 import pd.regelsystem.VorwaertsRegel;
 
-public class Dame extends AbstrakteKarte {
-	public Dame(KartenFarbe farbe) {
-		super("Dame", farbe);
-		setRegel(new VorwaertsRegel(12));
+public class Fuenf extends AbstrakteKarte {
+	public Fuenf(KartenFarbe farbe) {
+		super("Fünf", farbe);
+		setRegel(new VorwaertsRegel(5));
 	}
 }

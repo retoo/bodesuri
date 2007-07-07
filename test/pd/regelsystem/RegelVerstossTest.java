@@ -21,8 +21,8 @@
 
 package pd.regelsystem;
 
-import pd.regelsystem.karten.Ass;
-import pd.regelsystem.karten.KartenFarbe;
+import pd.karten.Ass;
+import pd.karten.KartenFarbe;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;

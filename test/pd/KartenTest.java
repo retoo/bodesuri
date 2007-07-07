@@ -22,10 +22,10 @@
 package pd;
 import java.util.List;
 
+import pd.karten.Deck;
+import pd.karten.KartenFarbe;
+import pd.karten.Sechs;
 import pd.regelsystem.Karte;
-import pd.regelsystem.karten.Deck;
-import pd.regelsystem.karten.KartenFarbe;
-import pd.regelsystem.karten.Sechs;
 
 /**
  * Teste die Funktionalitäten der Karte.

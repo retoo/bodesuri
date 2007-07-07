@@ -19,13 +19,13 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
-import pd.regelsystem.VorwaertsRegel;
+import pd.regelsystem.TauschRegel;
 
-public class Zehn extends AbstrakteKarte {
-	public Zehn(KartenFarbe farbe) {
-		super("Zehn", farbe);
-		setRegel(new VorwaertsRegel(10));
+public class Bube extends AbstrakteKarte {
+	public Bube(KartenFarbe farbe) {
+		super("Bube", farbe);
+		setRegel(new TauschRegel());
 	}
 }

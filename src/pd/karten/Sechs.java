@@ -19,13 +19,13 @@
  */
 
 
-package pd.regelsystem.karten;
+package pd.karten;
 
-import pd.regelsystem.Karte;
+import pd.regelsystem.VorwaertsRegel;
 
-/**
- * KartenFarbe, die zu einer {@link Karte} gehört.
- */
-public enum KartenFarbe {
-	Herz, Karo, Kreuz, Pik
+public class Sechs extends AbstrakteKarte {
+	public Sechs(KartenFarbe farbe) {
+		super("Sechs", farbe);
+		setRegel(new VorwaertsRegel(6));
+	}
 }

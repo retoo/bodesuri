@@ -43,7 +43,7 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	Class<? extends Zustand> karteGewaehlt(KarteGewaehltEvent event) {
-		if (event.karte.getKarte() instanceof pd.regelsystem.karten.Joker) {
+		if (event.karte.getKarte() instanceof pd.karten.Joker) {
 			// Wenn der Spieler aus seinen Karten einen Joker auswählt die
 			// Jokerauswahl anzeigen.
 			controller.zeigeJokerauswahl(true);

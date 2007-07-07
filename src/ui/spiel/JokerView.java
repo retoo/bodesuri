@@ -36,8 +36,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import pd.regelsystem.karten.Deck;
-import pd.regelsystem.karten.KartenFarbe;
+import pd.karten.Deck;
+import pd.karten.KartenFarbe;
 
 import ui.geteiltes.ClickMouseAdapter;
 import ui.ressourcen.BrettXML;

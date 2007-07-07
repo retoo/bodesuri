@@ -23,8 +23,8 @@ package applikation.client.pd;
 
 import java.util.Observable;
 
+import pd.karten.Joker;
 import pd.regelsystem.Regel;
-import pd.regelsystem.karten.Joker;
 
 /**
  * Dekoriert eine Karte aus der PD.

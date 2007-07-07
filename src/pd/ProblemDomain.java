@@ -22,7 +22,7 @@
 package pd;
 
 import dienste.serialisierung.Codierer;
-import pd.regelsystem.karten.KartenGeber;
+import pd.karten.KartenGeber;
 import pd.serialisierung.CodiererThreads;
 import pd.spiel.Spiel;
 

@@ -24,8 +24,8 @@ package pd.regelsystem;
 import java.util.List;
 
 import pd.ProblemDomainTestCase;
-import pd.regelsystem.karten.Ass;
-import pd.regelsystem.karten.KartenFarbe;
+import pd.karten.Ass;
+import pd.karten.KartenFarbe;
 
 public class RegelsystemTest extends ProblemDomainTestCase {
 	public void testKannZiehen() {
