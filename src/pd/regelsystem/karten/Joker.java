@@ -21,18 +21,25 @@
 
 package pd.regelsystem.karten;
 
-import java.util.List;
-
 import pd.regelsystem.RegelVeroderung;
+import pd.regelsystem.RueckwaertsRegel;
+import pd.regelsystem.SiebnerRegel;
+import pd.regelsystem.StartRegel;
+import pd.regelsystem.TauschRegel;
+import pd.regelsystem.VorwaertsRegel;
 
 public class Joker extends Karte {
 	public Joker(KartenFarbe farbe) {
 		super("Joker", farbe);
 		RegelVeroderung regel = new RegelVeroderung();
-		List<Karte> karten = Deck.getKartenFuerFarbe(KartenFarbe.Herz);
-		for (Karte karte : karten) {
-			regel.fuegeHinzu(karte.getRegel());
+		for (int i = 1; i <= 13; ++i) {
+			if (i == 7) continue;
+			regel.fuegeHinzu(new VorwaertsRegel(i));
 		}
+		regel.fuegeHinzu(new RueckwaertsRegel(4));
+		regel.fuegeHinzu(new SiebnerRegel());
+		regel.fuegeHinzu(new TauschRegel());
+		regel.fuegeHinzu(new StartRegel());
 		setRegel(regel);
 	}
 
