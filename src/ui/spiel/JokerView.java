@@ -124,9 +124,9 @@ public class JokerView extends JPanel {
 	 */
 	public void erstelleDeck() {
 		kartenDeck = new Vector<applikation.client.pd.Karte>();
-		List<pd.regelsystem.karten.Karte> karten = Deck
+		List<pd.regelsystem.Karte> karten = Deck
 				.getKartenFuerFarbe(KartenFarbe.Herz);
-		for (pd.regelsystem.karten.Karte karte : karten) {
+		for (pd.regelsystem.Karte karte : karten) {
 			kartenDeck.add(new Joker(new Karte(karte)));
 		}
 	}

@@ -25,7 +25,7 @@ import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.StartRegel;
 import pd.regelsystem.VorwaertsRegel;
 
-public class Koenig extends Karte {
+public class Koenig extends AbstrakteKarte {
 	public Koenig(KartenFarbe farbe) {
 		super("König", farbe);
 		RegelVeroderung r = new RegelVeroderung();

@@ -34,7 +34,7 @@ public class KarteTauschenBekommen extends ClientZustand {
 		spiel.spielerIch.setAmZug(false);
 	}
 
-	Class<? extends Zustand> kartenTausch(pd.regelsystem.karten.Karte karte) {
+	Class<? extends Zustand> kartenTausch(pd.regelsystem.Karte karte) {
 		/*
 		 * Wir erstellen hier die app.karte neu, diese wird dann nur für die
 		 * jeweilige Runde verwendet (siehe auch rundenstart)

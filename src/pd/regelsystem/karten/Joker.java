@@ -28,7 +28,7 @@ import pd.regelsystem.StartRegel;
 import pd.regelsystem.TauschRegel;
 import pd.regelsystem.VorwaertsRegel;
 
-public class Joker extends Karte {
+public class Joker extends AbstrakteKarte {
 	public Joker(KartenFarbe farbe) {
 		super("Joker", farbe);
 		RegelVeroderung regel = new RegelVeroderung();

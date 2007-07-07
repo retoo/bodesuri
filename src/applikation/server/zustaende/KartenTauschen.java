@@ -21,7 +21,7 @@
 
 package applikation.server.zustaende;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 import applikation.nachrichten.KartenTausch;
 import applikation.server.pd.Runde;
 import applikation.server.pd.Spieler;

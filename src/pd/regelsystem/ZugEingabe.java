@@ -25,7 +25,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
 
-import pd.regelsystem.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.spiel.spieler.Spieler;
 import pd.zugsystem.Bewegung;

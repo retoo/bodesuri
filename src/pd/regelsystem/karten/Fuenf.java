@@ -23,7 +23,7 @@ package pd.regelsystem.karten;
 
 import pd.regelsystem.VorwaertsRegel;
 
-public class Fuenf extends Karte {
+public class Fuenf extends AbstrakteKarte {
 	public Fuenf(KartenFarbe farbe) {
 		super("Fünf", farbe);
 		setRegel(new VorwaertsRegel(5));

@@ -24,7 +24,6 @@ package pd.regelsystem;
 import java.util.List;
 import java.util.Vector;
 
-import pd.regelsystem.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
 import pd.regelsystem.verstoesse.WegLaengeVerstoss;

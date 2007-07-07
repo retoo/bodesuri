@@ -25,7 +25,6 @@ import java.util.List;
 
 import pd.ProblemDomainTestCase;
 import pd.regelsystem.karten.Ass;
-import pd.regelsystem.karten.Karte;
 import pd.regelsystem.karten.KartenFarbe;
 
 public class RegelsystemTest extends ProblemDomainTestCase {

@@ -21,6 +21,8 @@
 
 package pd.regelsystem.karten;
 
+import pd.regelsystem.Karte;
+
 /**
  * KartenFarbe, die zu einer {@link Karte} gehört.
  */

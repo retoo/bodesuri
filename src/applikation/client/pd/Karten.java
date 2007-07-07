@@ -34,10 +34,10 @@ import dienste.observer.ObservableList;
  */
 public class Karten extends Observable implements Observer, Iterable<Karte> {
 	private boolean aktiv;
-	private ObservableList<pd.regelsystem.karten.Karte> pdKarten;
+	private ObservableList<pd.regelsystem.Karte> pdKarten;
 	private ObservableList<Karte> appKarten;
 
-	public Karten(ObservableList<pd.regelsystem.karten.Karte> karten) {
+	public Karten(ObservableList<pd.regelsystem.Karte> karten) {
 		this.pdKarten = karten;
 		this.aktiv = false;
 		this.appKarten = new ObservableList<Karte>();

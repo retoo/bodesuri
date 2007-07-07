@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 import pd.regelsystem.karten.KartenGeber;
 import applikation.nachrichten.KartenTausch;
 

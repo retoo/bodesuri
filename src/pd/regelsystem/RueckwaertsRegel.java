@@ -21,7 +21,6 @@
 
 package pd.regelsystem;
 
-import pd.regelsystem.karten.Karte;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import pd.regelsystem.verstoesse.Verstoesse;
 import pd.spiel.brett.Feld;

@@ -25,6 +25,8 @@ import java.util.List;
 import java.util.Stack;
 import java.util.Vector;
 
+import pd.regelsystem.Karte;
+
 /**
  * KartenGeber, der einen KartenStapel verwaltet und Karten verteilt.
  */

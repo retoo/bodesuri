@@ -23,7 +23,7 @@ package pd.regelsystem.karten;
 
 import pd.regelsystem.SiebnerRegel;
 
-public class Sieben extends Karte {
+public class Sieben extends AbstrakteKarte {
 	public Sieben(KartenFarbe farbe) {
 		super("Sieben", farbe);
 		setRegel(new SiebnerRegel());

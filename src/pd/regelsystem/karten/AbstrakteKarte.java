@@ -21,6 +21,7 @@
 
 package pd.regelsystem.karten;
 
+import pd.regelsystem.Karte;
 import pd.regelsystem.Regel;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 
@@ -29,7 +30,8 @@ import pd.serialisierung.BodesuriCodierbaresObjekt;
  *
  * Eine Karte hat einen Namen, eine {@link KartenFarbe} und eine {@link Regel}.
  */
-public abstract class Karte extends BodesuriCodierbaresObjekt {
+public abstract class AbstrakteKarte
+		extends BodesuriCodierbaresObjekt implements Karte {
 	private KartenFarbe farbe;
 	private Regel regel;
 	private String name;
@@ -40,22 +42,22 @@ public abstract class Karte extends BodesuriCodierbaresObjekt {
 	 * @param name Name der Karte, wie z. B. "Ass"
 	 * @param farbe Farbe der Karte, wie z. B. KartenFarbe.Herz
 	 */
-	public Karte(String name, KartenFarbe farbe) {
+	public AbstrakteKarte(String name, KartenFarbe farbe) {
 		super("Karte " + farbe + " " + name);
 		this.farbe = farbe;
 		this.name = name;
 	}
 
 	public String toString() {
-		return getKartenFarbe() + " " + getName();
+		return getFarbe() + " " + getName();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public KartenFarbe getKartenFarbe() {
-		return farbe;
+	public String getFarbe() {
+		return farbe.toString();
 	}
 
 	public String getRegelBeschreibung() {

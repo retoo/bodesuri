@@ -25,8 +25,8 @@ package applikation.bot;
 import java.util.List;
 import java.util.Map;
 
+import pd.regelsystem.Karte;
 import pd.regelsystem.ZugEingabe;
-import pd.regelsystem.karten.Karte;
 import pd.zugsystem.Bewegung;
 import applikation.client.events.ZugErfasstEvent;
 import applikation.client.pd.Spiel;

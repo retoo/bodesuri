@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
+import pd.regelsystem.Karte;
+
 public class Deck {
 	private static Map<KartenFarbe, List<Karte>> kartenFuerFarbe = 
 		new HashMap<KartenFarbe, List<Karte>>();

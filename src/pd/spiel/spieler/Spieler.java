@@ -24,7 +24,7 @@ package pd.spiel.spieler;
 import java.util.List;
 import java.util.Vector;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 import pd.serialisierung.BodesuriCodierbaresObjekt;
 import pd.spiel.Spiel;
 import dienste.observer.ObservableList;

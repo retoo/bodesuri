@@ -21,7 +21,7 @@
 
 package applikation.nachrichten;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 import dienste.netzwerk.Nachricht;
 
 /**

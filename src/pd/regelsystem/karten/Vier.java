@@ -25,7 +25,7 @@ import pd.regelsystem.RegelVeroderung;
 import pd.regelsystem.RueckwaertsRegel;
 import pd.regelsystem.VorwaertsRegel;
 
-public class Vier extends Karte {
+public class Vier extends AbstrakteKarte {
 	public Vier(KartenFarbe farbe) {
 		super("Vier", farbe);
 		RegelVeroderung regelVeroderung = new RegelVeroderung();

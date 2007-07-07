@@ -22,8 +22,8 @@
 package pd;
 import java.util.List;
 
+import pd.regelsystem.Karte;
 import pd.regelsystem.karten.Deck;
-import pd.regelsystem.karten.Karte;
 import pd.regelsystem.karten.KartenFarbe;
 import pd.regelsystem.karten.Sechs;
 
@@ -36,8 +36,7 @@ public class KartenTest extends ProblemDomainTestCase {
 	 */
 	public void testKarte() {
 		Karte sechs = new Sechs(KartenFarbe.Herz);
-		assertEquals("Sechs", sechs.getName());
-		assertEquals(KartenFarbe.Herz, sechs.getKartenFarbe());
+		assertEquals("Herz", sechs.getFarbe());
 		assertEquals("Herz Sechs", sechs.toString());
 	}
 	

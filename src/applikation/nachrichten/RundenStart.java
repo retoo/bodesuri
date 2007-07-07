@@ -23,7 +23,7 @@ package applikation.nachrichten;
 
 import java.util.List;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 
 import dienste.netzwerk.Nachricht;
 

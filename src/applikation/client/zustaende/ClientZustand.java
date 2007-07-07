@@ -21,7 +21,7 @@
 
 package applikation.client.zustaende;
 
-import pd.regelsystem.karten.Karte;
+import pd.regelsystem.Karte;
 import applikation.client.controller.Controller;
 import applikation.client.events.AufgegebenEvent;
 import applikation.client.events.BeendeEvent;
