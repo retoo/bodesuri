@@ -23,6 +23,8 @@ package ui.verbinden;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -44,7 +46,7 @@ import applikation.client.konfiguration.Konfiguration;
  * JFrame, dient zur Eingabe der Informationen für den Server auf den verbindet
  * werden soll, sowie auch zur Erfassung der Spielerinformationen.
  */
-public class VerbindenView extends JFrame {
+public class VerbindenView extends JFrame implements ActionListener {
 	// Konstanten und Vorgabewerte
 	private final static int FRAME_WIDTH 	= 400;
 	private final static int FRAME_HEIGHT 	= 216;
@@ -112,19 +114,19 @@ public class VerbindenView extends JFrame {
 		buttonpanel.setBorder(new EmptyBorder(0, 0, 15, 15));
 
 		// Actions definieren und Tastenbefehle binden
-		verbindenButton.setAction( new VerbindenAction("Verbinden", this) );
+		verbindenButton.addActionListener(this);
 		verbindenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ENTER"), "Verbinden");
 		verbindenButton.getActionMap().put( "Verbinden", verbindenButton.getAction() );
 		getRootPane().setDefaultButton(verbindenButton);
 
-		beendenButton.setAction( new BeendenAction("Beenden", steuerung) );
+		beendenButton.addActionListener(this);
 		beendenButton.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(
 									KeyStroke.getKeyStroke("ESCAPE"), "Beenden");
 		beendenButton.getActionMap().put( "Beenden", beendenButton.getAction() );
 
 		abbrechenButton.setEnabled(false);
-		abbrechenButton.setAction( new AbbrechenAction("Abbrechen", this) );
+		abbrechenButton.addActionListener(this);
 
 		// Components hinzufügen und layouten
 		buttonpanel.add(Box.createHorizontalGlue());
@@ -179,7 +181,7 @@ public class VerbindenView extends JFrame {
 
 	/**
 	 * Validiert die Eingabe, der einzelnen Felder.
-	 * 
+	 *
 	 * @param host Hostname oder IP-Adresse des Servers.
 	 * @param spieler Spielername
 	 * @param port_raw Port auf dem der Server horcht.
@@ -237,5 +239,17 @@ public class VerbindenView extends JFrame {
 		portTextField.setEnabled( !istGesperrt );
 		spielerTextField.setEnabled( !istGesperrt );
 		progressBar.setVisible( istGesperrt );
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+
+		if (source == verbindenButton) {
+			verbinden();
+		} else if (source == beendenButton) {
+			steuerung.beenden();
+		} else {
+			setzeEingabeSperre(false);
+		}
 	}
 }
