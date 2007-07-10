@@ -52,7 +52,7 @@ public class VerbindenView extends JFrame implements ActionListener {
 	private final static int FRAME_HEIGHT 	= 216;
 	private final Konfiguration konfiguration;
 
-	private class EingabeInfo {
+	private static class EingabeInfo {
 		public String host = "";
 		public int port = 0;
 		public String spieler = "";
