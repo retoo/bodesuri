@@ -55,8 +55,7 @@ public class SpielerView extends JPanel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		/* TODO: Robin: Sollte das nicht equals() sein ? */
-		if (name.getText() != spieler.getName()) {
+		if (!name.getText().equals(spieler.getName())) {
 			name.setText(spieler.getName());
 		}
 
