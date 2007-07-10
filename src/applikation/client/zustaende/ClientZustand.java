@@ -146,7 +146,7 @@ public class ClientZustand extends Zustand {
 		return SpielEnde.class;
 	}
 
-	public void handleException(Exception e) {
+	public void handleException(RuntimeException e) {
 		controller.zeigeFehlermeldung("Es trat ein schwerer Fehler auf. "
 		                              + "Das Spiel wird beendet. ("
 		                              + e.getMessage() + ")");
