@@ -377,7 +377,7 @@ public class SiebnerRegelTest extends RegelTestCase {
 		assertTrue(regel.istZugMoeglich(spieler(0)));
 	}
 
-	// TODO: Robin Mehr und kompliziertere Tests schreiben, z.B. mit Himmel. --Robin
+	// TODO: Robin Mehr und kompliziertere Tests schreiben, z. B. mit Himmel. --Robin
 
 	/**
 	 * @return Liefert eine Liste mit allen Bewegungen

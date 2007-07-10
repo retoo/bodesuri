@@ -78,7 +78,7 @@ public class Brett {
 			bankFelder.put(sp, bf);
 			alleFelder.add(bf);
 
-			erstelleLager(sp, bf);
+			erstelleLager(sp);
 			erstelleHimmel(sp, bf);
 
 			felderInRing.add(bf);
@@ -92,8 +92,7 @@ public class Brett {
 		verkette(felderInRing, true);
 	}
 
-	/* TODO: Robin: bf wird nie verwendet (-reto) */
-	private void erstelleLager(Spieler sp, BankFeld bf) {
+	private void erstelleLager(Spieler sp) {
 	    Vector<LagerFeld> lager = new Vector<LagerFeld>();
 	    for (int i = 0; i < 4; ++i) {
 	    	LagerFeld lf = new LagerFeld(feldNummer++, sp);
