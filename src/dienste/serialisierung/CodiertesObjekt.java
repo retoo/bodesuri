@@ -46,14 +46,12 @@ public abstract class CodiertesObjekt implements Serializable {
 
 	/*
 	 * Wird von ObjectInputStream aufgerufen, um herauszufinden, welches Objekt
-	 * diesem codierten Objekt zugeordnet ist. Dies wird über den Codierer des
-	 * aktuellen Spiels herausgefunden.
+	 * diesem codierten Objekt zugeordnet ist.
 	 *
 	 * Wenn der Codierer den Code nicht kennt, ihm also kein Objekt zugeordnet
 	 * worden ist, wird eine UnbekannterCodeException geworfen.
 	 */
 	protected Object readResolve() throws ObjectStreamException {
-		/* Spiel.aktuelles ist leider global. */
 		Object obj = getCodierer().get(code);
 		if (obj == null) {
 			throw new UnbekannterCodeException(code);
@@ -61,5 +59,8 @@ public abstract class CodiertesObjekt implements Serializable {
 		return obj;
 	}
 
+	/**
+	 * @return Codierer, der die Objekte zu den Codes gespeichert hat
+	 */
 	protected abstract Codierer getCodierer();
 }

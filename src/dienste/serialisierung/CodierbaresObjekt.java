@@ -43,7 +43,7 @@ public abstract class CodierbaresObjekt extends Observable implements Serializab
 		this.code = code;
 	}
 
-	/**
+	/*
 	 * Wird von ObjectOutputStream aufgerufen, um herauszufinden, was für ein
 	 * Objekt anstelle dieses Objekts in den ObjectOutputStream geschrieben
 	 * werden soll. Es soll ein CodiertesObjekt mit dem Code geschrieben werden.
@@ -52,7 +52,17 @@ public abstract class CodierbaresObjekt extends Observable implements Serializab
 		return getCodiertesObjekt(code);
 	}
 
+	/**
+	 * @return Codierer, der für das Codieren der Objekte zuständig ist
+	 */
 	protected abstract Codierer getCodierer();
 
+	/**
+	 * Gib ein konkretes codiertes Objekt zurück, das anstelle dieses Objekts
+	 * serialisiert wird.
+	 * 
+	 * @param code Code des Objekts
+	 * @return CodiertesObjekt zu diesem Code
+	 */
 	protected abstract CodiertesObjekt getCodiertesObjekt(String code);
 }
