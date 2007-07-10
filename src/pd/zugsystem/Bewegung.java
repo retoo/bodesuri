@@ -30,7 +30,7 @@ import pd.spiel.brett.SpielerFeld;
 
 /**
  * Hilfsklasse für eine Bewegung, die ein Start- und ein Zielfeld hat.
- * 
+ *
  * Aus ihr kann ein {@link Weg} berechnet werden.
  */
 public class Bewegung implements Serializable {
@@ -45,6 +45,7 @@ public class Bewegung implements Serializable {
 		this.ziel = ziel;
 	}
 
+	/* TODO: robin: siehe ZugEingabe#equals() (-reto) */
 	public boolean equals(Object obj) {
 		if (obj instanceof Bewegung) {
 			Bewegung o = (Bewegung) obj;
@@ -61,12 +62,12 @@ public class Bewegung implements Serializable {
 	/**
 	 * Berechne den Weg dieser Bewegung. Dieser enthält alle Felder, die bei der
 	 * Bewegung "berührt" werden, also inklusive Start- und Zielfeld.
-	 * 
+	 *
 	 * @return Weg, über den diese Bewegung geht
 	 */
 	public Weg getWeg() {
 		boolean vorwaerts;
-		
+
 		if ((start.istRing() && ziel.istRing())) {
 			int startNr = start.getNummer();
 			int zielNr  =  ziel.getNummer();
@@ -80,13 +81,13 @@ public class Bewegung implements Serializable {
 		} else {
 			return null;
 		}
-		
+
 		Weg weg = new Weg(vorwaerts);
-		
+
 		Feld feld = start;
 		while (feld != ziel) {
 			weg.add(feld);
-			
+
 			if (vorwaerts) {
 				if (feld.istBank() && ziel.istHimmel()
 				    && ((SpielerFeld) feld).getSpieler() ==
@@ -100,14 +101,14 @@ public class Bewegung implements Serializable {
 			} else {
 				feld = feld.getVorheriges();
 			}
-			
+
 			if (feld == null) {
 				/* Kein Weg gefunden */
 				return null;
 			}
 		}
 		weg.add(feld);
-		
+
 		return weg;
 	}
 }

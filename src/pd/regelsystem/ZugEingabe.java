@@ -60,7 +60,7 @@ public class ZugEingabe implements Serializable {
 
 	/**
 	 * Erstellt eine Zugeingabe mit mehreren Bewegungen.
-	 * 
+	 *
 	 * @param spieler Spieler, der diesen Zug ausführt
 	 * @param karte Karte, mit der gespielt wird
 	 * @param bewegungen Liste von Bewegungen des Zuges
@@ -88,6 +88,11 @@ public class ZugEingabe implements Serializable {
 		return regel.validiere(this);
 	}
 
+	/* TODO: Robin: Findbugs meckert das man, wenn man equals() überschreibt auch
+	 * hashCode() überschreiben sollte, da man ja das 'vergleichs'-verhalten verändert hat
+	 * (was für HashMaps relevant ist). Ich weiss aber nicht ob wir die Objekte irgendwo
+	 * in nem Hash haben... (-reto)
+	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof ZugEingabe) {
 			ZugEingabe o = (ZugEingabe) obj;
@@ -117,7 +122,7 @@ public class ZugEingabe implements Serializable {
 	public Spieler getSpieler() {
 		return spieler;
 	}
-	
+
 	public Spieler getBetroffenerSpieler() {
 		return spieler.istFertig() ? spieler.getPartner() : spieler;
 	}
@@ -128,7 +133,7 @@ public class ZugEingabe implements Serializable {
 	public Karte getKarte() {
 		return karte;
 	}
-	
+
 	public Karte getKonkreteKarte() {
 		return konkreteKarte;
 	}
@@ -152,7 +157,7 @@ public class ZugEingabe implements Serializable {
 		return "ZugEingabe: " + getSpieler() + " mit " + getKarte() + " "
 		       + getBewegung();
 	}
-	
+
 	public String getKurzBeschreibung() {
 		return getSpieler().getName() + " spielt " + getKarte();
 	}
