@@ -31,6 +31,7 @@ import ui.geteiltes.BLabel;
  * JLabel, wird zur Darstellung der Spielfiguren verwendet.
  */
 public class Figur2d extends BLabel {
+	/* TODO: Reto: figur wird nie verwendet */
 	public Figur2d(Figur figur, Icon icon) {
 		super(icon, -1, -1);
 	}

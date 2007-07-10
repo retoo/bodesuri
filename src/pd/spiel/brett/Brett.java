@@ -31,9 +31,9 @@ import pd.spiel.spieler.Spieler;
 
 /**
  * Spielbrett, das es pro Spiel gibt und alle Felder beinhaltet.
- * 
+ *
  * Die Felder bilden eine verkettete Liste.
- * 
+ *
  * @see Feld
  */
 public class Brett {
@@ -69,18 +69,18 @@ public class Brett {
 		bankFelder   = new HashMap<Spieler, BankFeld>();
 		lagerFelder  = new HashMap<Spieler, Vector<LagerFeld>>();
 		himmelFelder = new HashMap<Spieler, Vector<HimmelFeld>>();
-		
+
 		feldNummer = 0;
 		Vector<Feld> felderInRing = new Vector<Feld>();
-		
+
 		for (Spieler sp : spieler) {
 			BankFeld bf = new BankFeld(feldNummer++, sp);
 			bankFelder.put(sp, bf);
 			alleFelder.add(bf);
-			
+
 			erstelleLager(sp, bf);
 			erstelleHimmel(sp, bf);
-			
+
 			felderInRing.add(bf);
 			for (int i = 0; i < 15; ++i) {
 				NormalesFeld nf = new NormalesFeld(feldNummer++);
@@ -88,10 +88,11 @@ public class Brett {
 				alleFelder.add(nf);
 			}
 		}
-		
+
 		verkette(felderInRing, true);
 	}
 
+	/* TODO: Robin: bf wird nie verwendet (-reto) */
 	private void erstelleLager(Spieler sp, BankFeld bf) {
 	    Vector<LagerFeld> lager = new Vector<LagerFeld>();
 	    for (int i = 0; i < 4; ++i) {
@@ -132,10 +133,10 @@ public class Brett {
 			f2.setVorheriges(f1);
 		}
 	}
-	
+
 	/**
 	 * Bankfeld eines Spielers herausfinden.
-	 * 
+	 *
 	 * @param spieler Spieler
 	 * @return Bankfeld des Spielers
 	 */
@@ -145,27 +146,27 @@ public class Brett {
 
 	/**
 	 * Lagerfelder eines Spielers herausfinden.
-	 * 
+	 *
 	 * @param spieler Spieler
 	 * @return Lagerfelder des Spielers
 	 */
 	public List<LagerFeld> getLagerFelderVon(Spieler spieler) {
 	    return lagerFelder.get(spieler);
     }
-	
+
 	/**
 	 * Himmelfelder eines Spielers herausfinden.
-	 * 
+	 *
 	 * @param spieler Spieler
 	 * @return Himmelfelder des Spielers
 	 */
 	public List<HimmelFeld> getHimmelFelderVon(Spieler spieler) {
 		return himmelFelder.get(spieler);
 	}
-	
+
 	/**
 	 * Erstes freies Lagerfeld eines Spielers herausfinden.
-	 * 
+	 *
 	 * @param spieler Spieler
 	 * @return Erstes freies Lagerfeld
 	 */
@@ -178,10 +179,10 @@ public class Brett {
 		throw new RuntimeException("getFreiesLagerFeldVon wurde aufgerufen, " +
 				"aber es sind keine freien Lagerfelder mehr vorhanden.");
 	}
-	
+
 	/**
 	 * Gibt alle Felder, die auf dem Brett sind, zurück.
-	 * 
+	 *
 	 * @return Eine Liste aller Felder
 	 */
 	public List<Feld> getAlleFelder() {
