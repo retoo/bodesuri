@@ -41,13 +41,6 @@ public class ZugErfasstEvent extends Event {
 	List<Bewegung> bewegungen;
 
 	public ZugErfasstEvent(Spieler spieler, Karte karte, Karte konkreteKarte,
-	        Bewegung bewegung) {
-		List<Bewegung> bewegungen = new Vector<Bewegung>();
-		bewegungen.add(bewegung);
-		initialisiere(spieler, karte, konkreteKarte, bewegungen);
-	}
-
-	public ZugErfasstEvent(Spieler spieler, Karte karte, Karte konkreteKarte,
 	        List<Bewegung> bewegung) {
 		initialisiere(spieler, karte, konkreteKarte, bewegung);
 	}
