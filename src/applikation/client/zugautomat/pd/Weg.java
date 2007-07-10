@@ -35,10 +35,6 @@ public class Weg {
     	this.brett = brett;
     }
 
-	public pd.zugsystem.Weg getAktuellerWeg() {
-    	return aktuellerWeg;
-    }
-
     public void setAktuellerWeg(pd.zugsystem.Weg neuerWeg) {
     	if (aktuellerWeg != null)
     		unmarkiere(aktuellerWeg);

@@ -131,13 +131,6 @@ public class Spiel implements SerialisierungsKontext {
 	}
 
 	/**
-	 * @return Anzahl der noch offenen Spielslots
-	 */
-	public int getAnzahlOffen() {
-		return anzahlSpieler - getAnzahlSpieler();
-	}
-
-	/**
 	 * @return true falls Spiel komplett
 	 */
 	public boolean isKomplett() {

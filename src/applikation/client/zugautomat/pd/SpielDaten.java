@@ -28,11 +28,8 @@ import java.util.Vector;
 import applikation.client.pd.Feld;
 import applikation.client.pd.Karte;
 import applikation.client.pd.Spiel;
-import dienste.netzwerk.EndPunktInterface;
 
 public class SpielDaten {
-	public EndPunktInterface endpunkt;
-
 	public Karte karte;
 	/**
 	 * Wenn der Joker ausgewählt ist, wird hier die Karte für die der Joker
@@ -96,19 +93,6 @@ public class SpielDaten {
 	public void felderDeaktivieren() {
 		deaktivereAuswahl(getStart());
 		deaktivereAuswahl(getZiel());
-	}
-
-	public List<Feld> getAlleFelder() {
-		List<Feld> felder = new Vector<Feld>();
-		for (Bewegung bewegung : bewegungen) {
-			if (bewegung.getStart() != null) {
-				felder.add(bewegung.getStart());
-			}
-			if (bewegung.getZiel() != null) {
-				felder.add(bewegung.getZiel());
-			}
-		}
-		return felder;
 	}
 
 	public List<pd.zugsystem.Bewegung> getPdBewegungen() {

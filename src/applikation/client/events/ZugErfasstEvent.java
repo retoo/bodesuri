@@ -22,7 +22,6 @@
 package applikation.client.events;
 
 import java.util.List;
-import java.util.Vector;
 
 import pd.regelsystem.ZugEingabe;
 import pd.zugsystem.Bewegung;

@@ -68,15 +68,6 @@ public class Spieler {
 		return new SpielerInfo(spieler.getName());
 	}
 
-	/**
-	 * @return true falls der Spieler fertig ist
-	 *
-	 * @see pd.spiel.spieler.Spieler#istFertig()
-	 */
-	public boolean istFertig() {
-		return spieler.istFertig();
-	}
-
 	public String getName() {
 		return spieler.getName();
 	}

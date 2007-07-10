@@ -26,14 +26,7 @@ package applikation.client.pd;
  * für die der Joker steht.
  */
 public class Joker extends Karte {
-	private Karte konkreteKarte;
-
 	public Joker(Karte karte) {
 		super(karte.getKarte());
-		konkreteKarte = karte;
-	}
-
-	public Karte getKonkreteKarte() {
-		return konkreteKarte;
 	}
 }

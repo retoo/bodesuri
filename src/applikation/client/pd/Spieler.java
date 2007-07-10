@@ -95,14 +95,6 @@ public class Spieler extends Observable implements Observer {
 		return amZug;
 	}
 
-	public void setPartner(pd.spiel.spieler.Spieler partner) {
-		spieler.setPartner(partner);
-	}
-
-	public pd.spiel.spieler.Spieler getPartner() {
-		return spieler.getPartner();
-	}
-
 	public List<ZugEingabe> getMoeglicheZuege() {
 		return Regelsystem.getMoeglicheZuege(spieler);
 	}
