@@ -55,9 +55,7 @@ public class SpielerView extends JPanel implements Observer {
 	}
 
 	public void update(Observable o, Object arg) {
-		if (!name.getText().equals(spieler.getName())) {
-			name.setText(spieler.getName());
-		}
+		name.setText(spieler.getName());
 
 		if (spieler.amZug()) {
 			this.name.setForeground(Color.WHITE);
