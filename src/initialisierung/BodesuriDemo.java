@@ -24,7 +24,7 @@ package initialisierung;
 import java.util.List;
 import java.util.Vector;
 
-import applikation.bot.Stupidbot;
+import applikation.bot.IntelliBot;
 import applikation.client.konfiguration.Konfiguration;
 
 /**
@@ -58,7 +58,7 @@ public class BodesuriDemo {
 			konfig.defaultName = namen.get(i);
 			konfig.debugAutoLogin = true;
 
-			BodesuriBot b = new BodesuriBot(konfig, Stupidbot.class, false);
+			BodesuriBot b = new BodesuriBot(konfig, IntelliBot.class, false);
 
 			b.start();
 

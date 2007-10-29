@@ -26,6 +26,7 @@ import initialisierung.BodesuriServer;
 
 import java.util.Vector;
 
+import applikation.bot.IntelliBot;
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
 
@@ -50,10 +51,12 @@ public class BodesuriArena {
 			konfig.debugMeldungen = true;
 			konfig.debugBotsZoegernNicht = true;
 
-			Thread t = new BodesuriBot(konfig, Stupidbot.class, true);
+			Thread t = new BodesuriBot(konfig, i % 2 == 0 ? IntelliBot.class : Stupidbot.class, true);
 
 			t.start();
 			clients.add(t);
+			
+			Thread.sleep(1000);
 		}
 
 		server.join();

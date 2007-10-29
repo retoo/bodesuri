@@ -25,7 +25,7 @@ import initialisierung.BodesuriServer;
 import java.util.Vector;
 
 import junit.framework.TestCase;
-import applikation.bot.Stupidbot;
+import applikation.bot.IntelliBot;
 import applikation.client.konfiguration.Konfiguration;
 
 /**
@@ -48,8 +48,11 @@ public class ServerTest extends TestCase {
 		nicks.add("Joseph Manderley");
 		nicks.add("Walton Simons");
 
-		Thread server = new BodesuriServer();
+		BodesuriServer server = new BodesuriServer();
 		server.start();
+		
+		server.warteAufBereitschaft();
+		
 
 		Vector<BodesuriBot> clients = new Vector<BodesuriBot>();
 
@@ -59,7 +62,7 @@ public class ServerTest extends TestCase {
 			konfig.debugKeineLobbyVerzoegerung = true;
 			konfig.debugBotsZoegernNicht = true;
 
-			BodesuriBot t = new BodesuriBot(konfig, Stupidbot.class, false);
+			BodesuriBot t = new BodesuriBot(konfig, IntelliBot.class, false);
 
 			t.start();
 			clients.add(t);
