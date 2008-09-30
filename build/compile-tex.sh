@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -e 
+
+OS=`uname`
+
 if [ -z "$1" ]; then
   echo "Usage: $0 <tex-file>"
   exit 99
@@ -21,7 +25,11 @@ fi
 #fi
 
 
-TMPDIR=$PWD/$(mktemp -d -p tmp/)
+if [ "$OS" == "Darwin" ]; then
+  TMPDIR=$PWD/$(mktemp -d tmp/doc-gen.XXXXXX)
+else
+  TMPDIR=$PWD/$(mktemp -d -p tmp/)
+fi
 
 echo "Temporary folder is $TMPDIR"
 
@@ -40,5 +48,5 @@ pdflatex $OPTS $TMPDIR $SRCPATH
 
 cp $TMPDIR/$DSTFILE $DSTPATH
 
-rm -R $TMPDIR
+echo rm -R $TMPDIR
 
