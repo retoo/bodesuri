@@ -42,6 +42,7 @@
   <path id="classpath.test-compile">
     <pathelement location="${obj-dir}"/>
     <path refid="classpath.base"/>
+    <path refid="classpath.junit"/>
   </path>
   <path id="classpath.test">
     <pathelement location="${ins-dir}"/>
@@ -104,6 +105,26 @@
         <fileset dir="lib" includes="**/*.jar" />
     </signjar>
   </target>
+  <!-- create a source distribution -->
+  <target name="dist" depends="jar">
+    <zip destfile="${lib-dir}/temp-bodesuri-src.zip">
+      <zipfileset dir="." prefix="bodesuri">
+        <exclude name="lib/**" />
+        <exclude name="junit*" />
+        <exclude name="tmp/**" />
+        <exclude name="report/**" />
+        <exclude name="**/*.pdf" />
+        <exclude name="**/*.ai" />
+        <exclude name="**/*.mdxml" />
+        <exclude name="**/*.psd" />
+        <exclude name="doc/misc/stanser_dog_turnier/**" />
+        
+        <exclude name="key.properties" /> <!-- psst! -->
+      </zipfileset>
+    </zip>
+    <!-- atomic move when we are ready --> 
+    <move file="${lib-dir}/temp-bodesuri-src.zip" tofile="${lib-dir}/bodesuri-src.zip" />
+  </target> 
 <!-- instrumentations -->
   <target name="generate-instrument" depends="clean-cobertura">
     <cobertura-instrument todir="${ins-dir}" datafile="${tmp-dir}/cobertura.ser">
@@ -120,6 +141,7 @@
     <junit fork="true">
        <sysproperty key="net.sourceforge.cobertura.datafile"
          file="${tmp-dir}/cobertura.ser" />
+      <classpath refid="classpath.junit" />
       <classpath refid="classpath.cobertura"/>
       <classpath refid="classpath.test"/>
       <formatter type="xml"/>
@@ -193,6 +215,6 @@
     </delete>
   </target>
   <target name="build-everything" depends="compile,test"/>
-  <target name="all" depends="clean,build-everything,cobertura-report,javadoc,junitdoc,generate-doc"/>
+  <target name="all" depends="clean,build-everything,cobertura-report,javadoc,junitdoc,generate-doc,dist"/>
   <target name="clean" depends="clean-compile-test,clean-init,clean-jar"/>
 </project>
