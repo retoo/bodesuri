@@ -48,5 +48,5 @@ pdflatex $OPTS $TMPDIR $SRCPATH
 
 cp $TMPDIR/$DSTFILE $DSTPATH
 
-echo rm -R $TMPDIR
+rm -R $TMPDIR
 
