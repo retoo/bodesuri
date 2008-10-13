@@ -60,6 +60,7 @@ public class IntelliBot implements Bot {
 				List<Bewegung> bewegungen = ze.getBewegungen();
 				Karte karte = ze.getKarte();
 				Spieler spieler = ze.getSpieler();
+				Spieler partner = spieler.getPartner();
 
 				
 				for (Bewegung bewegung : bewegungen) {
@@ -88,8 +89,10 @@ public class IntelliBot implements Bot {
 						}
 					}
 					
-					/* Wir könenn jemanden fressen */
-					if (ziel.istBesetzt() && ! ziel.istBesetztVon(spieler) && !(karte instanceof Bube)) {
+					/* Wir können einen Spielstein fressen, der nicht uns selber gehört oder unserem Partner */
+					if (ziel.istBesetzt() && 
+							!((ziel.istBesetztVon(spieler) || ziel.istBesetztVon(partner))) && 
+							!(karte instanceof Bube)) {
 						score += 50;
 					}
 				
@@ -115,7 +118,7 @@ public class IntelliBot implements Bot {
 							if (feld.istBesetzt()) {
 								
 								/* Wer wird gefressen? wir selber oder jemand anders ? */
-								if (feld.istBesetztVon(spieler)) {
+								if (feld.istBesetztVon(spieler) || feld.istBesetztVon(partner)) {
 									score -= 5;
 								} else {
 									score += 5;
