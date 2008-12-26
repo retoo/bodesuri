@@ -118,7 +118,7 @@ public abstract class ServerZustand extends Zustand {
 		boolean res = spiel.entferne(absender);
 
 		if (!res) {
-			/* Endpunkt war nicht bekannt. Das Spiel muss somit nicht abegbrochen werden */
+			/* Endpunkt war nicht bekannt. Das Spiel muss somit nicht abgebrochen werden */
 			return this.getClass();
 		}
 

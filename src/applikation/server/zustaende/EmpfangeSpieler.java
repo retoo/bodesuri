@@ -24,6 +24,7 @@ package applikation.server.zustaende;
 import applikation.nachrichten.BeitrittVerweigert;
 import applikation.nachrichten.BeitrittsInformation;
 import applikation.nachrichten.SpielBeitreten;
+import applikation.nachrichten.SpielerInfo;
 import applikation.server.pd.Spiel;
 import applikation.server.pd.Spieler;
 import dienste.automat.zustaende.Zustand;
@@ -61,6 +62,13 @@ public class EmpfangeSpieler extends ServerZustand {
 
 		spiel.fuegeHinzu(beitreten.spielerName, absender);
 		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
+
+		String status = "Verbundene Spieler:\n<ul>\n";
+		for (SpielerInfo spielerInfo : spiel.getSpielInfo().spielers) {
+			status += "<li>" + spielerInfo.spielername + "</li>\n";
+		}
+		status += "</ul>\n";
+		spiel.status.schreibeStatus(status);
 
 		if (spiel.isKomplett()) {
 			spiel.partnerschaftenBilden();

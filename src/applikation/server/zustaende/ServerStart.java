@@ -21,6 +21,7 @@
 
 package applikation.server.zustaende;
 
+import dienste.ServerStatus;
 import dienste.automat.zustaende.PassiverZustand;
 import dienste.automat.zustaende.Zustand;
 import dienste.netzwerk.server.Server;
@@ -47,6 +48,8 @@ public class ServerStart extends ServerZustand implements PassiverZustand {
 		SerialisierungsKontext kontext = spiel;
 
 		spiel.server = new Server(spiel.queue, kontext, port);
+		spiel.status = new ServerStatus(port);
+		spiel.status.schreibeStatus("<p>Kein Spieler verbunden.</p>");
 
 		return EmpfangeSpieler.class;
 	}

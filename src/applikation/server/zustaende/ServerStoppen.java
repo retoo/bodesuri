@@ -38,6 +38,7 @@ import dienste.netzwerk.server.Server;
 public class ServerStoppen extends ServerZustand implements PassiverZustand {
 	public Class<? extends Zustand> handle() {
 		spiel.server.ausschalten();
+		spiel.status.loescheDatei();
 
 		if (spiel.getAnzahlSpieler() == 0) {
 			return EndZustand.class;

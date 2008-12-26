@@ -30,6 +30,7 @@ import pd.serialisierung.CodiererThreads;
 import pd.spiel.spieler.Partnerschaft;
 import applikation.nachrichten.SpielInfo;
 import applikation.nachrichten.SpielerInfo;
+import dienste.ServerStatus;
 import dienste.eventqueue.EventQueue;
 import dienste.netzwerk.EndPunktInterface;
 import dienste.netzwerk.Nachricht;
@@ -51,6 +52,7 @@ public class Spiel implements SerialisierungsKontext {
 	public Server server;
 	public EventQueue queue;
 	public Runde runde;
+	public ServerStatus status;
 
 	/* (non-Javadoc)
 	 * @see dienste.serialisierung.SerialisierungsKontext#registriere(java.lang.Thread)
@@ -63,7 +65,7 @@ public class Spiel implements SerialisierungsKontext {
 	 * Erstellt eine neue Spielerschaft.
 	 *
 	 * @param anzSpieler
-	 *            Anzahl der Speielr
+	 *            Anzahl der Spieler
 	 */
 	public Spiel(int anzSpieler) {
 		this.problemDomain = new ProblemDomain();

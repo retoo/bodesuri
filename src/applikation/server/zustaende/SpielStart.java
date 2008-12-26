@@ -39,6 +39,8 @@ public class SpielStart extends ServerZustand implements PassiverZustand {
 
 		SpielStartNachricht ssn = new SpielStartNachricht(spielerschaft.getSpielInfo(), spielerschaft.getPartnerschaften());
 		spielerschaft.broadcast(ssn);
+		
+		spiel.status.schreibeStatus("<p>Das Spiel ist bereits voll.</p>");
 
 		return StartRunde.class;
 	}
