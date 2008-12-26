@@ -18,10 +18,10 @@
  * Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 package initialisierung;
 
 import applikation.server.ServerAutomat;
+import dienste.ArgumentParser;
 import dienste.threads.BodesuriThread;
 
 /**
@@ -31,6 +31,7 @@ import dienste.threads.BodesuriThread;
 public class BodesuriServer extends BodesuriThread {
 	private ServerAutomat server;
 	private int anzahlSpieler = 4;
+	private int port = 7788;
 	private static final int VERZOEGERUNG = 100;
 	private static final int VERSUCHE = 55;
 
@@ -38,14 +39,15 @@ public class BodesuriServer extends BodesuriThread {
 		super("Bodesuri Server");
 	}
 
-	public BodesuriServer(int anzahlSpieler) {
+	public BodesuriServer(int anzahlSpieler, int port) {
 		this();
 
 		this.anzahlSpieler = anzahlSpieler;
+		this.port = port;
 	}
 
 	public void run() {
-		server = new ServerAutomat(anzahlSpieler, false);
+		server = new ServerAutomat(anzahlSpieler, port, false);
 		server.run();
 	}
 
@@ -78,13 +80,18 @@ public class BodesuriServer extends BodesuriThread {
 
 	/**
 	 * Den Server starten.
-	 *
-	 * @param args
-	 *            Wird nicht genutzt
+	 * 
+	 * @param args Der Port des Servers.
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		BodesuriServer server = new BodesuriServer();
+		BodesuriServer server;
+		if (args.length == 1) {
+			int port = ArgumentParser.parsePort(args[0]);
+			server = new BodesuriServer(4, port);
+		} else {
+			server = new BodesuriServer();
+		}
 
 		server.start();
 		server.join();

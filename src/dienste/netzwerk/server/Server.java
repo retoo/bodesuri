@@ -35,7 +35,6 @@ import dienste.serialisierung.SerialisierungsKontext;
  *
  */
 public class Server {
-	private static final int PORT = 7788;
 	private BriefKastenInterface serverBriefkasten;
 	private Daemon daemon;
 
@@ -50,26 +49,25 @@ public class Server {
 	 *
 	 * @param queue EventQueue in welche die eingehenden {@link NetzwerkEvent} gelegt werden
 	 * @param sk Serialisierungskontext
+	 * @param port TCP-Port auf welchem gelauscht werden soll
 	 */
-	public Server(EventQueue queue, SerialisierungsKontext sk) {
+	public Server(EventQueue queue, SerialisierungsKontext sk, int port) {
 		this.queue = queue;
 		serverBriefkasten = new BriefkastenAdapter(queue);
 
-		daemon = new Daemon(PORT, serverBriefkasten, queue, sk);
+		daemon = new Daemon(port, serverBriefkasten, queue, sk);
 
 		starteDaemon();
 	}
 
-
 	private void starteDaemon() {
 		daemon.start();
-    }
-
+	}
 
 	/**
 	 * Schaltet den Server komplett aus.
 	 */
 	public void ausschalten() {
-	    daemon.auschalten();
-    }
+		daemon.auschalten();
+	}
 }

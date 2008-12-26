@@ -32,10 +32,21 @@ import dienste.serialisierung.SerialisierungsKontext;
  * den Zustand {@link EmpfangeSpieler} über.
  */
 public class ServerStart extends ServerZustand implements PassiverZustand {
+	private final int port;
+
+	/**
+	 * Den Server starten.
+	 * 
+	 * @param port TCP-Port auf welchem gelauscht werden soll
+	 */
+	public ServerStart(int port) {
+		this.port = port;
+	}
+
 	public Class<? extends Zustand> handle() {
 		SerialisierungsKontext kontext = spiel;
 
-		spiel.server = new Server(spiel.queue, kontext);
+		spiel.server = new Server(spiel.queue, kontext, port);
 
 		return EmpfangeSpieler.class;
 	}

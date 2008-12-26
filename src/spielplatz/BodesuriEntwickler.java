@@ -26,7 +26,7 @@ import initialisierung.BodesuriServer;
 
 public class BodesuriEntwickler {
 	public static void main(String[] args) throws InterruptedException {
-		BodesuriServer server = new BodesuriServer(2);
+		BodesuriServer server = new BodesuriServer(2, 7788);
 		server.start();
 		server.warteAufBereitschaft();
 

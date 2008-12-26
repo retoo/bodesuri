@@ -25,6 +25,7 @@ import ui.GUIController;
 import applikation.client.ClientAutomat;
 import applikation.client.controller.Controller;
 import applikation.client.konfiguration.Konfiguration;
+import dienste.ArgumentParser;
 import dienste.eventqueue.EventQueue;
 import dienste.threads.BodesuriThread;
 
@@ -60,7 +61,12 @@ public class Bodesuri extends BodesuriThread {
 	 * @throws InterruptedException
 	 */
 	public static void main(String[] args) throws InterruptedException {
-		Bodesuri bodesuri = new Bodesuri();
+		Konfiguration konfiguration = new Konfiguration();
+		if (args.length == 2) {
+			konfiguration.defaultHost = ArgumentParser.parseHostname(args[0]);
+			konfiguration.defaultPort = ArgumentParser.parsePort(args[1]);
+		}
+		Bodesuri bodesuri = new Bodesuri(konfiguration);
 		bodesuri.start();
 		bodesuri.join();
 	}

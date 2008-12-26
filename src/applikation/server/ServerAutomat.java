@@ -41,16 +41,7 @@ import dienste.eventqueue.EventQueue;
  * Der Server. Wird vom Benutzer gestartet.
  */
 public class ServerAutomat extends Automat {
-	private static final int ANZ_SPIELER = 4;
 	private Spiel spiel;
-
-	/**
-	 * Initialisiert den Server-Automaten mit vier Spielern.
-	 * @param debug
-	 */
-	public ServerAutomat(boolean debug) {
-		this(ANZ_SPIELER, debug);
-	}
 
 	/**
 	 * Initialisiert den Server-Automaten
@@ -58,13 +49,13 @@ public class ServerAutomat extends Automat {
 	 * @param anzSpieler Anzahl der Spieler
 	 * @param debug
 	 */
-	public ServerAutomat(int anzSpieler, boolean debug) {
+	public ServerAutomat(int anzSpieler, int port, boolean debug) {
 		super(debug);
 		EventQueue queue = new EventQueue();
 		spiel = new Spiel(anzSpieler);
 		spiel.queue = queue;
 
-		registriere(new ServerStart());
+		registriere(new ServerStart(port));
 		registriere(new EmpfangeSpieler());
 		registriere(new SpielStart());
 		registriere(new StartRunde());
