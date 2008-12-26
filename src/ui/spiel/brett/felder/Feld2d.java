@@ -105,12 +105,12 @@ public abstract class Feld2d extends BLabel implements Observer {
     /** 
      * Die Figur wird auf die Position eines bestimmten Feldes positioniert.
      * 
-     * @param animation true, die Figur wird anniemiert verschoben.
+     * @param animation true, die Figur wird animiert verschoben.
      */
     private void positioniereFigur(boolean animation) {
         Figur figur = feld.getFigur();
 
-        /* Prüfen ob Feld mit einer Figur bestückt weden muss */
+        /* Prüfen ob Feld mit einer Figur bestückt werden muss */
         if (feld.istBesetzt()) {
             if (aktuelleFigur != figur) {
 
@@ -119,7 +119,7 @@ public abstract class Feld2d extends BLabel implements Observer {
 
                 /*
                  * wenn nur ein oder zwei Spieler mitspielen können einige
-                 * figuren null sein. Dann zeichnen wir einfach nichts.
+                 * Figuren null sein. Dann zeichnen wir einfach nichts.
                  */
                 if (figur2d != null) {
                     if (animation)
