@@ -50,7 +50,8 @@ public class VerbindungErfassen extends ClientZustand {
 			spiel.endpunkt.sende(new SpielBeitreten(ve.spielerName));
 			spiel.spielerName = ve.spielerName;
 		} catch (UnknownHostException e) {
-			controller.zeigeFehlermeldung("Unbekannter Hostname: " + ve.hostname);
+			controller.zeigeFehlermeldung("Unbekannter Server: " + ve.hostname);
+			controller.verbindungsaufbauAbgebrochen();
 			spiel.endpunkt = null;
 			return VerbindungErfassen.class;
 		} catch (IOException e) {
