@@ -2,7 +2,7 @@
 
 <jnlp spec="0.2 1.0"
       codebase="http://bodesuri.speedpc.ch/"
-      href="build/bodesuri-client.jnlp">
+      href="build/bodesuri-client-vonserver.jnlp">
 	<information> 
 		<title>Bodesuri - Client</title> 
 		<vendor>Edgar Danilo Couto, Philippe Eberli, Pascal Hobus, Reto Schüttel, Robin Stocker</vendor>
