@@ -47,13 +47,13 @@ public class Weg {
 
 	private void markiere(pd.zugsystem.Weg aktuellerWeg) {
 		for (pd.spiel.brett.Feld f : aktuellerWeg) {
-			brett.getFeld(f).setWeg(true);
+			brett.getFeld(f).setWegLange(aktuellerWeg.getWegLaenge());
 		}
     }
 
 	private void unmarkiere(pd.zugsystem.Weg aktuellerWeg) {
 		for (pd.spiel.brett.Feld f : aktuellerWeg) {
-			brett.getFeld(f).setWeg(false);
+			brett.getFeld(f).setWegLange(0);
 		}
     }
 }

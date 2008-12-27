@@ -37,7 +37,7 @@ public class KarteWaehlen extends ClientZugZustand {
 	}
 
 	public void onEntry() {
-		spielDaten.spiel.setHinweis("Wähle eine Karte.");
+		spielDaten.spiel.hinweis.neuerHinweis("Wähle eine Karte.", true, spielDaten.spiel.spielerIch.getFarbe());
 		spielDaten.spiel.spielerIch.getKarten().setAktiv(true);
 		bewegungenZuruecksetzen();
 	}

@@ -689,12 +689,12 @@
 			<y>490</y>
 		</koordinaten>
 	</spielerZustandsView>
-	<hinweis nummer="0">
+	<zentrum nummer="0">
 		<koordinaten>
 			<x>300</x>
 			<y>300</y>
 		</koordinaten>
-	</hinweis>
+	</zentrum>
 	<jokerKarten nummer="0">
 		<koordinaten>
 			<x>180</x>

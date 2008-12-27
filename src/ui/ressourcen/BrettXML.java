@@ -46,7 +46,7 @@ public class BrettXML {
 	private Map<Integer, Point> spielerViews;
 	private Map<Integer, Point> spielerZustandsViews;
 	private Map<Integer, Point> jokerKarten;
-	private Point hinweis;
+	private Point zentrum;
 
 	public BrettXML(String pfad)
 			throws ParserConfigurationException, SAXException, IOException {
@@ -67,7 +67,7 @@ public class BrettXML {
 		felder = positionenAuslesen("feld", brett);
 		spielerViews = positionenAuslesen("spielerView", brett);
 		spielerZustandsViews = positionenAuslesen("spielerZustandsView", brett);
-		hinweis = positionenAuslesen("hinweis", brett).get(0);
+		zentrum = positionenAuslesen("zentrum", brett).get(0);
 		jokerKarten = positionenAuslesen("jokerKarten", brett);
 	}
 	
@@ -101,8 +101,8 @@ public class BrettXML {
 		return felder;
 	}
 
-	public Point getHinweis() {
-		return hinweis;
+	public Point getZentrum() {
+		return zentrum;
 	}
 
 	public Map<Integer, Point> getSpielerViews() {

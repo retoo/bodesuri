@@ -30,7 +30,7 @@ import dienste.automat.zustaende.Zustand;
  */
 public class KarteTauschenBekommen extends ClientZustand {
 	public void onEntry() {
-		spiel.setHinweis("Warte auf Karte des Partners.");
+		spiel.hinweis.neuerHinweis("Warte auf Karte des Partners.", true, null);
 		spiel.spielerIch.setAmZug(false);
 	}
 

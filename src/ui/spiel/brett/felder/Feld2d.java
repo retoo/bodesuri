@@ -28,6 +28,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.Icon;
+import javax.swing.ToolTipManager;
 
 import pd.spiel.spieler.Figur;
 import pd.spiel.spieler.SpielerFarbe;
@@ -36,7 +37,7 @@ import ui.ressourcen.Icons;
 import applikation.client.pd.Feld;
 
 /**
- * JLabel, ist die Oberklase aller Felder. Von dieser Klasse leiten alle
+ * JLabel, ist die Oberklasse aller Felder. Von dieser Klasse leiten alle
  * weiteren Typen von Feldern ab.
  */
 public abstract class Feld2d extends BLabel implements Observer {
@@ -49,6 +50,8 @@ public abstract class Feld2d extends BLabel implements Observer {
     private BLabel geist;
     private BLabel wegNormal;
     private Figur aktuelleFigur;
+    /** Der Tooltipdelay, wird für das Hoovern angepasst und hier zwischengespeichert **/
+	private int standardTooltipDelay;
 
     public Feld2d(Icon icon, Feld2dKonfiguration konfig) {
         super(icon, konfig.position);
@@ -85,20 +88,28 @@ public abstract class Feld2d extends BLabel implements Observer {
         return feld;
     }
 
-    public void update(Observable o, Object arg) {
-        positioniereFigur(true);
+	public void update(Observable o, Object arg) {
+		positioniereFigur(true);
 
-        /* prüfen wir ob hovern */
-        if (feld.istHover()) {
+		/* prüfen wir ob hovern */
+		if (feld.istHover()) {
+			hover.setVisible(true);
+			hover.zentriereAuf(this.position);
+		} else {
+			hover.setVisible(false);
+		}
+		
+		if (feld.istHover() && feld.getWegLaenge() > 0) {
+			standardTooltipDelay = ToolTipManager.sharedInstance().getInitialDelay();
+			ToolTipManager.sharedInstance().setInitialDelay(0);
+			setToolTipText(Integer.toString(feld.getWegLaenge()));
+		} else {
+			ToolTipManager.sharedInstance().setInitialDelay(standardTooltipDelay);
+			setToolTipText(null);
+		}
 
-            hover.setVisible(true);
-            hover.zentriereAuf(this.position);
-        } else {
-            hover.setVisible(false);
-        }
-
-        ausgewaehlt.setVisible(feld.istAusgewaehlt());
-        wegNormal.setVisible(feld.istWeg());
+		ausgewaehlt.setVisible(feld.istAusgewaehlt());
+        wegNormal.setVisible(feld.getWegLaenge() > 0);
         geist.setVisible(feld.istGeist());
     }
 

@@ -50,7 +50,7 @@ public class StartWaehlen extends ClientZugZustand {
     }
 
 	public void onEntry() {
-		spielDaten.spiel.setHinweis("Wähle das Startfeld.");
+		spielDaten.spiel.hinweis.neuerHinweis("Wähle das Startfeld.", true, spielDaten.spiel.spielerIch.getFarbe());
 	}
 
 	Class<? extends Zustand> feldGewaehlt(FeldGewaehltEvent event) {

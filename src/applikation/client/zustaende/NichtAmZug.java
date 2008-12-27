@@ -66,12 +66,12 @@ public class NichtAmZug extends ClientZustand {
 		neuerSpieler.setAmZug(true);
 		spiel.aktuellerSpieler = neuerSpieler;
 
-		spiel.setHinweis(neuerSpieler + " ist am Zug.");
+		spiel.hinweis.neuerHinweis(neuerSpieler + " ist am Zug.", true, neuerSpieler.getFarbe());
 		return this.getClass();
 	}
 
 	Class<? extends Zustand> zugWurdeGemacht(ZugEingabe zug) {
-		spiel.chat.meldeZug(zug);
+		spiel.hinweis.neuerHinweis(zug.getSpieler() + " spielt " + zug.getKarte(), false, zug.getSpieler().getFarbe());
 
 		try {
 			zug.validiere().ausfuehren();
@@ -85,7 +85,7 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> rundenStart(RundenStart rundenStart) {
-		spiel.chat.meldeRundenStart();
+		spiel.hinweis.neuerHinweis("Start einer neuen Runde", false, null);
 		spiel.spielerIch.getKarten().clear();
 		for (pd.regelsystem.Karte karte : rundenStart.neueKarten) {
 			spiel.spielerIch.getKarten().add(new Karte(karte));
@@ -96,7 +96,7 @@ public class NichtAmZug extends ClientZustand {
 
 	Class<? extends Zustand> aufgabe(AufgabeInformation aufgabe) {
 		Spieler spieler = spiel.findeSpieler(aufgabe.spieler);
-		spiel.chat.meldeAufgabe(aufgabe);
+		spiel.hinweis.neuerHinweis(aufgabe.spieler + " gibt auf.", false, spieler.getFarbe());
 		spieler.setHatAufgebeben(true);
 		return this.getClass();
 	}

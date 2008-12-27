@@ -57,12 +57,10 @@ public class ZielWaehlen extends ClientZugZustand {
 	}
 
 	public void onEntry() {
-		spielDaten.spiel.setHinweis("Wähle das Zielfeld.");
-		spielDaten.spiel.setZaehler(0);
+		spielDaten.spiel.hinweis.neuerHinweis("Wähle das Zielfeld.", true, spielDaten.spiel.spielerIch.getFarbe());
 	}
 
 	public void onExit() {
-		spielDaten.spiel.setZaehler(-1);
 		spielDaten.weg.setAktuellerWeg(null);
 	}
 
@@ -112,7 +110,6 @@ public class ZielWaehlen extends ClientZugZustand {
 
 			if (weg != null) {
 				spielDaten.weg.setAktuellerWeg(weg);
-				spielDaten.spiel.setZaehler(weg.getWegLaenge());
 			}
 		}
 

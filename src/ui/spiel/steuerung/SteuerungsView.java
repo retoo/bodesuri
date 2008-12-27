@@ -24,18 +24,16 @@ package ui.spiel.steuerung;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import ui.ressourcen.Icons;
+import javax.swing.JScrollPane;
 
 import applikation.client.controller.Steuerung;
 import applikation.client.pd.Spiel;
 
 /**
- * Dient zur Darstellung der erweiteren Steuerung des Spielverlaufs. Die Karten,
+ * Dient zur Darstellung der erweiterten Steuerung des Spielverlaufs. Die Karten,
  * Informationstext und die Buttons zum "Tauschen" und "Aufgeben" werden in
- * dieser Klasse instanziert.
+ * dieser Klasse instantiiert.
  */
 public class SteuerungsView extends JPanel {
 	public SteuerungsView(Steuerung steuerung, Spiel spiel) {
@@ -49,7 +47,7 @@ public class SteuerungsView extends JPanel {
 				spiel.spielerIch.getKarten());
 		SteuerungsButtonView steuerungsButtonView = new SteuerungsButtonView(
 				steuerung, spiel);
-		JLabel logo = new JLabel(Icons.LOGO);
+		HinweisView historyView = new HinweisView(spiel);
 
 		// Layout zusammenstellen
 		GridBagConstraints c = new GridBagConstraints();
@@ -64,10 +62,10 @@ public class SteuerungsView extends JPanel {
 		c.weighty = 0.0;
 		add(karteGewaehltView, c);
 
-		c.weighty = 1.0;
+		c.weighty = 0.0;
 		add(steuerungsButtonView, c);
 
-		c.weighty = 0.0;
-		add(logo, c);
+		c.weighty = 1.0;
+		add(new JScrollPane(historyView), c);
 	}
 }

@@ -30,7 +30,7 @@ import pd.spiel.spieler.Figur;
  * Dekoriert ein Feld aus der PD.
  * Speichert zusätzlich zustandsabhängige Daten, wie ob das Feld ausgewählt ist,
  * das Feld gehovert ist, ein Geist auf dem Feld ist oder das Feld Teil eines
- * markierten Weges ist.
+ * markierten Weges ist, und wie lange der Weg ist.
  */
 public class Feld extends Observable implements Observer {
 	private pd.spiel.brett.Feld feld;
@@ -38,7 +38,7 @@ public class Feld extends Observable implements Observer {
 	private boolean ausgewaehlt;
 	private boolean hover;
 	private boolean geist;
-	private boolean weg;
+	private int wegLaenge;
 
 	public Feld(pd.spiel.brett.Feld feld) {
 		this.feld = feld;
@@ -46,7 +46,7 @@ public class Feld extends Observable implements Observer {
 		this.hover = false;
 		this.ausgewaehlt = false;
 		this.geist = false;
-		this.weg = false;
+		this.wegLaenge = 0;
 
 		feld.addObserver(this);
 	}
@@ -88,9 +88,9 @@ public class Feld extends Observable implements Observer {
 		setChanged();
 		notifyObservers(ausgewaehlt);
 	}
-
-	public void setWeg(boolean zustand) {
-		this.weg = zustand;
+	
+	public void setWegLange(int wegLaenge){
+		this.wegLaenge = wegLaenge;
 		setChanged();
 		notifyObservers();
 	}
@@ -108,9 +108,9 @@ public class Feld extends Observable implements Observer {
 	public boolean istHover() {
 		return hover;
 	}
-
-	public boolean istWeg() {
-		return weg;
+	
+	public int getWegLaenge() {
+		return wegLaenge;
 	}
 
 	public boolean istGeist() {

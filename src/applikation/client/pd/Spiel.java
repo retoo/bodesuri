@@ -59,15 +59,13 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 	public applikation.client.pd.Spieler aktuellerSpieler;
 	/** Der Button welcher im Steuerungsview (rechts unten) angezeigt wird */
 	public SteuerungsZustand steuerungsZustand;
-	/** Der Inhalt des Hinweisfeldes in der Mittel des Spielbretts */
-	private String hinweis;
+	/** Der Inhalt des Hinweisliste rechts unten */
+	public HinweisSender hinweis;
 	public Karte ausgewaehlteKarte;
 
 	/** Abbildung von PD-Spielern zu Applikations-Spielern */
 	private IdentityHashMap<pd.spiel.spieler.Spieler, Spieler> spielerRegister;
 	public Chat chat;
-	/** Der Zähler der Zugweite im Hinweisfeld */
-	private int zaehler = -1;
 
 	public Spiel(Konfiguration konfig) {
 		this.konfiguration = konfig;
@@ -87,6 +85,7 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 		brett = new Brett(spiel.getBrett());
 		chat = new Chat();
+		hinweis = new HinweisSender();
 		steuerungsZustand = SteuerungsZustand.NICHTS;
 	}
 
@@ -118,26 +117,6 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 
 	public pd.spiel.Spiel getSpiel() {
 		return spiel;
-	}
-
-	public String getHinweis() {
-		return hinweis;
-	}
-
-	public void setHinweis(String hinweis) {
-		this.hinweis = hinweis;
-		setChanged();
-		notifyObservers();
-	}
-
-	public int getZaehler() {
-		return zaehler;
-	}
-
-	public void setZaehler(int i) {
-		this.zaehler = i;
-		setChanged();
-		notifyObservers();
 	}
 
 	public SteuerungsZustand getSteuerungsZustand() {

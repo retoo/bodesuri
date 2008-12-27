@@ -25,13 +25,9 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Point;
 import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
 
 import javax.swing.Icon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import pd.spiel.brett.SpielerFeld;
 import pd.spiel.spieler.Figur;
@@ -55,15 +51,11 @@ import applikation.client.pd.Spieler;
 /**
  * JPanel, Graphische Darstellung des Spielbrettes.
  */
-public class BrettView extends JPanel implements Observer {
+public class BrettView extends JPanel {
 	private BrettXML brettXML;
 	private FigurenManager figurenManager;
-	private JLabel hinweisLabel;
-	private Spiel spiel;
 
 	public BrettView(Steuerung steuerung, Spiel spiel) {
-		this.spiel = spiel;
-
 		setLayout(null);
 		setOpaque(false);
 
@@ -117,22 +109,21 @@ public class BrettView extends JPanel implements Observer {
 		// Views für Spieler
 		erstelleSpielerViews(spiel.getSpieler());
 
-		erstelleHinweis();
+		// Das Logo in die Mitte des Spielfeldes platzieren
+		platziereLogo();
 
 		BrettMouseAdapter brettAdapter = new BrettMouseAdapter(steuerung);
 		Brett2d brett2d = new Brett2d(brettAdapter);
 		setPreferredSize(brett2d.getPreferredSize());
 		setMinimumSize(brett2d.getMinimumSize());
 		setMaximumSize(brett2d.getMaximumSize());
-
+		
 		add(brett2d);
-
-		spiel.addObserver(this);
 	}
 
 	/**
 	 * Dient zur Darstellung des Spielerviews, welches die Informationen des
-	 * Spielers auf dem Spielbrett enhält.
+	 * Spielers auf dem Spielbrett enthält.
 	 * 
 	 * @param spielers
 	 */
@@ -166,37 +157,12 @@ public class BrettView extends JPanel implements Observer {
 	}
 
 	/**
-	 * Dient zur Darstellung des Hinweisfeldes auf dem Spielbrett, welches die
-	 * Informationen des Spielablaufs enthält.
+	 * Dient zur Darstellung des Logos auf dem Spielbrett.
 	 */
-	private void erstelleHinweis() {
-		Point pos = brettXML.getHinweis();
-
-		hinweisLabel = new JLabel();
-		hinweisLabel.setFont(hinweisLabel.getFont().deriveFont(1));
-		hinweisLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
-		int w = 210;
-		int h = 40;
-		hinweisLabel.setSize(w, h);
-		hinweisLabel.setLocation(pos.x - (w / 2), pos.y - (h / 2));
-		add(hinweisLabel);
-
-		BLabel hinweisVertiefung = new BLabel(Icons.HINWEIS);
-		hinweisVertiefung.zentriereAuf(pos);
-		add(hinweisVertiefung);
-	}
-
-	public void update(Observable o, Object arg) {
-		String zaehlerString = "";
-		int zaehler = spiel.getZaehler();
-		if (zaehler == 0) {
-			zaehlerString = "      ";
-		} else if (zaehler > 0) {
-			zaehlerString = " (" + zaehler + ")";
-		}
-
-		/* Hinweisfeld updaten */
-		hinweisLabel.setText(spiel.getHinweis() + zaehlerString);
+	private void platziereLogo() {
+		Point pos = brettXML.getZentrum();
+		BLabel logo = new BLabel(Icons.LOGO);
+		logo.zentriereAuf(pos);
+		add(logo);
 	}
 }
