@@ -21,6 +21,9 @@ import applikation.client.pd.HinweisSender.Hinweis;
  * Zeit die letzten Aktionen/Hinweise des Spiels an.
  */
 public class HinweisView extends JList implements Observer {
+	private static final Color dunkelGelb = new Color(255, 200, 0);
+	private static final Color dunkelGruen = new Color(0, 200, 0);
+
 	private HinweisListModel listModel;
 
 	public HinweisView(Spiel spiel) {
@@ -74,10 +77,11 @@ public class HinweisView extends JList implements Observer {
 					lcrc.setForeground(Color.blue);
 					break;
 				case gelb:
-					lcrc.setForeground(Color.yellow);
+					
+					lcrc.setForeground(dunkelGelb);
 					break;
 				case gruen:
-					lcrc.setForeground(Color.green);
+					lcrc.setForeground(dunkelGruen);
 					break;
 				case rot:
 					lcrc.setForeground(Color.red);
