@@ -1,6 +1,6 @@
 package intelliDOG.ai.bots;
 
-import applikation.bot.Bot;
+import ch.bodesuri.applikation.bot.Bot;
 import intelliDOG.ai.evaluators.Evaluator;
 import intelliDOG.ai.framework.BotBoard;
 import intelliDOG.ai.framework.InformationGatherer;

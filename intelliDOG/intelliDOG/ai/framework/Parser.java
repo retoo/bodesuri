@@ -8,12 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Feld;
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Feld;
+import ch.bodesuri.pd.karten.*;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.zugsystem.Bewegung;
 
-import pd.karten.*;
-import pd.regelsystem.Karte;
-import pd.zugsystem.Bewegung;
+
 
 
 /**
@@ -31,7 +32,7 @@ public class Parser {
 	private static int ORIG_HOMEFIELD_P4 = 72;
 	
 
-	private applikation.client.pd.Spiel actualGame;
+	private ch.bodesuri.applikation.client.pd.Spiel actualGame;
 	
 	private byte[] board = new byte [80];
 	private byte[] players = new byte[4]; 
@@ -40,7 +41,7 @@ public class Parser {
 	private byte myPlayer = 0; 
 	private int nrOfIteration = 0; 
 	//pretty mean hack to overcome the bodesuris object style..
-	private applikation.client.pd.Karte[] myCards = new applikation.client.pd.Karte[101];
+	private ch.bodesuri.applikation.client.pd.Karte[] myCards = new ch.bodesuri.applikation.client.pd.Karte[101];
 	
 	List<Feld> orig_fields = null; 
 	
@@ -54,7 +55,7 @@ public class Parser {
 		players[3] = Players.P4; // Nr. 4
 	}
 	
-	public void convert(applikation.client.pd.Spiel game, Map<Karte, applikation.client.pd.Karte> cardMap, BotBoard botBoard, InformationGatherer ig)
+	public void convert(ch.bodesuri.applikation.client.pd.Spiel game, Map<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap, BotBoard botBoard, InformationGatherer ig)
 	{
 		playerOnTurn = (byte)players[game.aktuellerSpieler.getSpieler().getNummer()]; 
 		myPlayer = 	    (byte)players[game.spielerIch.getSpieler().getNummer()];  
@@ -76,7 +77,7 @@ public class Parser {
 	 * convert every field on the board from bodesuri to our board array 
 	 * @param game the game to be converted
 	 */
-	public void convertBoard(applikation.client.pd.Spiel game)
+	public void convertBoard(ch.bodesuri.applikation.client.pd.Spiel game)
 	{
 		orig_fields = game.getBrett().getAlleFelder(); 
 		int boardIndex = 0; 
@@ -336,7 +337,7 @@ public class Parser {
 	 * 
 	 * @param cardMap
 	 */
-	public void convertCards(Map<Karte, applikation.client.pd.Karte> cardMap)
+	public void convertCards(Map<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap)
 	{
 		int cardIndex = 0;
 		Collection c = cardMap.values(); 
@@ -346,7 +347,7 @@ public class Parser {
 		while(it.hasNext())
 		{
 			countCards++; 
-			applikation.client.pd.Karte k = (applikation.client.pd.Karte)it.next(); 
+			ch.bodesuri.applikation.client.pd.Karte k = (ch.bodesuri.applikation.client.pd.Karte)it.next(); 
 
 			if(k.getKarte() instanceof Joker) {
 				cards[cardIndex++] = Cards.JOKER;
@@ -376,7 +377,7 @@ public class Parser {
 		}
 	}
 	
-	private int hearts(applikation.client.pd.Karte card, int cardIndex)
+	private int hearts(ch.bodesuri.applikation.client.pd.Karte card, int cardIndex)
 	{
 		//because the bodesuri uses the standard equals method to check if 2 cards are the same, we have to adapt..
 		//in this case, we store the object information in a mapping array to recover it easily. 
@@ -396,7 +397,7 @@ public class Parser {
 		return cardIndex;
 	}
 	
-	private int diamonds(applikation.client.pd.Karte card, int cardIndex)
+	private int diamonds(ch.bodesuri.applikation.client.pd.Karte card, int cardIndex)
 	{
 		if (card.getKarte() instanceof Ass) { cards[cardIndex++] = Cards.DIAMONDS_ACE;  myCards[Cards.DIAMONDS_ACE] = card; }
 		else if (card.getKarte() instanceof Zwei) { cards[cardIndex++] = Cards.DIAMONDS_TWO;  myCards[Cards.DIAMONDS_TWO] = card; }
@@ -414,7 +415,7 @@ public class Parser {
 		return cardIndex;
 	}
 	
-	private int clubs(applikation.client.pd.Karte card, int cardIndex)
+	private int clubs(ch.bodesuri.applikation.client.pd.Karte card, int cardIndex)
 	{
 		if (card.getKarte() instanceof Ass) { cards[cardIndex++] = Cards.CLUBS_ACE;  myCards[Cards.CLUBS_ACE] = card;  }
 		else if (card.getKarte() instanceof Zwei) { cards[cardIndex++] = Cards.CLUBS_TWO; myCards[Cards.CLUBS_TWO] = card;  }
@@ -432,7 +433,7 @@ public class Parser {
 		return cardIndex;
 	}
 	
-	private int spades(applikation.client.pd.Karte card, int cardIndex)
+	private int spades(ch.bodesuri.applikation.client.pd.Karte card, int cardIndex)
 	{
 		if (card.getKarte() instanceof Ass) { cards[cardIndex++] = Cards.SPADES_ACE; myCards[Cards.SPADES_ACE] = card;  }
 		else if (card.getKarte() instanceof Zwei) { cards[cardIndex++] = Cards.SPADES_TWO; myCards[Cards.SPADES_TWO] = card;  }
@@ -484,9 +485,9 @@ public class Parser {
 	 * @param card the card which will be played
 	 * @return a card
 	 */
-	public applikation.client.pd.Karte convertCardBack(int card)
+	public ch.bodesuri.applikation.client.pd.Karte convertCardBack(int card)
 	{
-		applikation.client.pd.Karte chosenOne = new applikation.client.pd.Karte(unconvertCard(card));
+		ch.bodesuri.applikation.client.pd.Karte chosenOne = new ch.bodesuri.applikation.client.pd.Karte(unconvertCard(card));
 		chosenOne.setAusgewaehlt(true);
 		return chosenOne;
 	}
@@ -546,7 +547,7 @@ public class Parser {
 			//get the first occoupied field and return it
 			for(int i = 0; i < 4; i++)
 			{
-				pd.spiel.brett.Feld field = actualGame.getSpiel().getBrett().getAlleFelder().get(temp + i);
+				ch.bodesuri.pd.spiel.brett.Feld field = actualGame.getSpiel().getBrett().getAlleFelder().get(temp + i);
 				if(field.istBesetzt())
 				{
 					return (temp + i); 
@@ -562,7 +563,7 @@ public class Parser {
 			temp = ((newPlayer -1) * 24) + 1;
 			for(int i = 0; i < 4; i++)
 			{
-				pd.spiel.brett.Feld field = actualGame.getSpiel().getBrett().getAlleFelder().get(temp + i);
+				ch.bodesuri.pd.spiel.brett.Feld field = actualGame.getSpiel().getBrett().getAlleFelder().get(temp + i);
 				if(field.istBesetzt())
 				{
 					return (temp + i); 
@@ -647,7 +648,7 @@ public class Parser {
 			msg.debug(this, "our fieldnr: " + targetPosResult[i]+ " their fieldnr: "+ move[2*i+1]);
 		}
 		
-		applikation.client.pd.Karte cardResult; 
+		ch.bodesuri.applikation.client.pd.Karte cardResult; 
 		//convert the played card when it is a joker
 		if(card>52 && card != 100)
 			 cardResult = convertCardBack(card);
@@ -658,8 +659,8 @@ public class Parser {
 		List<Bewegung> moves = new Vector<Bewegung>();
 		for(int i = 0; i< startPosResult.length; i++)
 		{
-			pd.spiel.brett.Feld startFeld = actualGame.getSpiel().getBrett().getAlleFelder().get(startPosResult[i]);
-			pd.spiel.brett.Feld endFeld = actualGame.getSpiel().getBrett().getAlleFelder().get(targetPosResult[i]);
+			ch.bodesuri.pd.spiel.brett.Feld startFeld = actualGame.getSpiel().getBrett().getAlleFelder().get(startPosResult[i]);
+			ch.bodesuri.pd.spiel.brett.Feld endFeld = actualGame.getSpiel().getBrett().getAlleFelder().get(targetPosResult[i]);
 			Bewegung bew = new Bewegung(startFeld, endFeld);
 			moves.add(bew);
 		}
@@ -672,7 +673,7 @@ public class Parser {
 		else //if a joker was played, convert the joker also
 		{
 			msg.debug(this, "joker was played, concrete card is: " + cardResult.getClass());
-			applikation.client.pd.Karte cardJoker = myCards[100];
+			ch.bodesuri.applikation.client.pd.Karte cardJoker = myCards[100];
 			zee = new ZugErfasstEvent(actualGame.aktuellerSpieler,cardJoker, cardResult, moves); 
 		}
 		return zee;

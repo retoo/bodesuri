@@ -2,8 +2,6 @@
 
 package intelliDOG.ai.utils;
 
-import initialisierung.BodesuriBot;
-import initialisierung.BodesuriServer;
 import intelliDOG.ai.bots.IBot;
 import intelliDOG.ai.bots.N_StepBot;
 import intelliDOG.ai.bots.RandomBot;
@@ -24,11 +22,14 @@ import intelliDOG.ai.ui.IntelliDOGStarter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
 
-import applikation.bot.BotController;
-import applikation.bot.IntelliBot;
-import applikation.bot.Stupidbot;
-import applikation.client.konfiguration.Konfiguration;
-import applikation.client.zustaende.NichtAmZug;
+import ch.bodesuri.applikation.bot.BotController;
+import ch.bodesuri.applikation.bot.IntelliBot;
+import ch.bodesuri.applikation.bot.Stupidbot;
+import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
+import ch.bodesuri.applikation.client.zustaende.NichtAmZug;
+import ch.bodesuri.initialisierung.BodesuriBot;
+import ch.bodesuri.initialisierung.BodesuriServer;
+
 
 /**
  * Based on the bodesuri arena. Use this class to test your bot 

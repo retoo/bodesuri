@@ -3,19 +3,19 @@ package intelliDOG.ai.test;
 import java.util.IdentityHashMap;
 import java.util.List;
 
-import applikation.client.pd.Karten;
+import ch.bodesuri.applikation.client.pd.Karten;
+import ch.bodesuri.dienste.observer.ObservableList;
+import ch.bodesuri.dienste.serialisierung.Codierer;
+import ch.bodesuri.pd.ProblemDomain;
+import ch.bodesuri.pd.karten.*;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.spiel.Spiel;
+import ch.bodesuri.pd.spiel.brett.*;
+import ch.bodesuri.pd.spiel.spieler.Spieler;
 
-import pd.karten.KartenFarbe;
-import dienste.observer.ObservableList;
-import dienste.serialisierung.Codierer;
+
 import intelliDOG.ai.framework.Cards;
 import intelliDOG.ai.framework.Parser;
-import pd.ProblemDomain;
-import pd.karten.*;
-import pd.regelsystem.Karte;
-import pd.spiel.Spiel;
-import pd.spiel.spieler.Spieler;
-import pd.spiel.brett.*;
 import junit.framework.TestCase;
 
 /**
@@ -25,7 +25,7 @@ import junit.framework.TestCase;
  */
 public class ParserTest extends TestCase {
 
-	protected applikation.client.pd.Spiel game; 
+	protected ch.bodesuri.applikation.client.pd.Spiel game; 
 	protected Parser parser; 
 	protected Spiel spiel;
 	protected KartenGeber kartenGeber;
@@ -59,7 +59,7 @@ public class ParserTest extends TestCase {
 		spieler.get(1).setPartner(spieler.get(3));
 		spieler.get(3).setPartner(spieler.get(1));
 	
-		game = new applikation.client.pd.Spiel(problemDomain);
+		game = new ch.bodesuri.applikation.client.pd.Spiel(problemDomain);
 	
 		parser = new Parser(); 
 		
@@ -324,7 +324,7 @@ public class ParserTest extends TestCase {
 		for(Spieler s_xx : spieler)
 		{
 			BankFeld homefield = s_xx.getSpiel().getBrett().getBankFeldVon(s_xx);
-			pd.spiel.brett.Feld fig = s_xx.getFiguren().get(0).getFeld(); 
+			ch.bodesuri.pd.spiel.brett.Feld fig = s_xx.getFiguren().get(0).getFeld(); 
 			fig.versetzeFigurAuf(homefield);
 		}
 	}
@@ -333,7 +333,7 @@ public class ParserTest extends TestCase {
 	{
 		Spieler sp = game.getSpiel().getSpieler().get(player); 
 		BankFeld homefield = sp.getSpiel().getBrett().getBankFeldVon(sp);
-		pd.spiel.brett.Feld fig = sp.getFiguren().get(pawn).getFeld(); 
+		ch.bodesuri.pd.spiel.brett.Feld fig = sp.getFiguren().get(pawn).getFeld(); 
 		fig.versetzeFigurAuf(homefield);
 	}
 	
@@ -347,7 +347,7 @@ public class ParserTest extends TestCase {
 	{
 		for(Spieler s_xx : spieler)
 		{
-			pd.spiel.brett.Feld p = s_xx.getFiguren().get(pawn).getFeld(); 
+			ch.bodesuri.pd.spiel.brett.Feld p = s_xx.getFiguren().get(pawn).getFeld(); 
 			p.versetzeFigurAuf(p.getNaechstes());
 		}
 	}
@@ -368,7 +368,7 @@ public class ParserTest extends TestCase {
 			{	
 				// get j-th heaven field and j-th pawn
 				HimmelFeld heaven_field = player.getSpiel().getBrett().getHimmelFelderVon(player).get(j);
-				pd.spiel.brett.Feld fig = player.getFiguren().get(j).getFeld(); 
+				ch.bodesuri.pd.spiel.brett.Feld fig = player.getFiguren().get(j).getFeld(); 
 				fig.versetzeFigurAuf(heaven_field);
 			}
 		}
@@ -388,7 +388,7 @@ public class ParserTest extends TestCase {
 	    // move players pawn i-th fields forward
 		for(int j=0; j<nbr_fields; j++) 
 		{
-			pd.spiel.brett.Feld p = player.getFiguren().get(pawn).getFeld();
+			ch.bodesuri.pd.spiel.brett.Feld p = player.getFiguren().get(pawn).getFeld();
 			p.versetzeFigurAuf(p.getNaechstes()); 
 		}
 	}
@@ -404,7 +404,7 @@ public class ParserTest extends TestCase {
 	public void testconvertCards_01()
 	{
 		
-		IdentityHashMap<Karte, applikation.client.pd.Karte> cardMap = initCards(); 
+		IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap = initCards(); 
 		
 		parser.convertCards(cardMap); 
 		int[] cards = parser.getCards(); 
@@ -434,7 +434,7 @@ public class ParserTest extends TestCase {
 	 */
 	public void testconvertCards_02()
 	{
-		IdentityHashMap<Karte, applikation.client.pd.Karte> cardMap = initCards(); 
+		IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap = initCards(); 
 		
 		parser.convertCards(cardMap); 
 		int[] cards = parser.getCards(); 
@@ -464,7 +464,7 @@ public class ParserTest extends TestCase {
 	 */
 	public void testconvertCards_03()
 	{
-		IdentityHashMap<Karte, applikation.client.pd.Karte> cardMap = initCards(); 
+		IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap = initCards(); 
 		
 		parser.convertCards(cardMap); 
 		int[] cards = parser.getCards(); 
@@ -490,7 +490,7 @@ public class ParserTest extends TestCase {
 	 * 
 	 * @return card HashMap with set of cards
 	 */
-	private IdentityHashMap<Karte, applikation.client.pd.Karte> initCards()
+	private IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte> initCards()
 	{
 		Karte two_sp = new Zwei(KartenFarbe.Pik); 
 		Karte three_sp = new Drei(KartenFarbe.Pik); 
@@ -521,34 +521,34 @@ public class ParserTest extends TestCase {
 		Karte king_h = new Koenig(KartenFarbe.Herz); 
 		Karte ace_h = new Ass(KartenFarbe.Herz); 
 		
-		applikation.client.pd.Karte app_two_sp = new applikation.client.pd.Karte(two_sp); 
-		applikation.client.pd.Karte app_three_sp = new applikation.client.pd.Karte(three_sp); 
-		applikation.client.pd.Karte app_four_sp = new applikation.client.pd.Karte(four_sp); 
-		applikation.client.pd.Karte app_five_sp = new applikation.client.pd.Karte(five_sp); 
-		applikation.client.pd.Karte app_six_sp = new applikation.client.pd.Karte(six_sp); 
-		applikation.client.pd.Karte app_seven_sp = new applikation.client.pd.Karte(seven_sp); 
-		applikation.client.pd.Karte app_eight_sp = new applikation.client.pd.Karte(eight_sp); 
-		applikation.client.pd.Karte app_nine_sp = new applikation.client.pd.Karte(nine_sp); 
-		applikation.client.pd.Karte app_ten_sp = new applikation.client.pd.Karte(ten_sp); 
-		applikation.client.pd.Karte app_jack_sp = new applikation.client.pd.Karte(jack_sp); 
-		applikation.client.pd.Karte app_queen_sp = new applikation.client.pd.Karte(queen_sp); 
-		applikation.client.pd.Karte app_king_sp = new applikation.client.pd.Karte(king_sp); 
-		applikation.client.pd.Karte app_ace_sp = new applikation.client.pd.Karte(ace_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_two_sp = new ch.bodesuri.applikation.client.pd.Karte(two_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_three_sp = new ch.bodesuri.applikation.client.pd.Karte(three_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_four_sp = new ch.bodesuri.applikation.client.pd.Karte(four_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_five_sp = new ch.bodesuri.applikation.client.pd.Karte(five_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_six_sp = new ch.bodesuri.applikation.client.pd.Karte(six_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_seven_sp = new ch.bodesuri.applikation.client.pd.Karte(seven_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_eight_sp = new ch.bodesuri.applikation.client.pd.Karte(eight_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_nine_sp = new ch.bodesuri.applikation.client.pd.Karte(nine_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_ten_sp = new ch.bodesuri.applikation.client.pd.Karte(ten_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_jack_sp = new ch.bodesuri.applikation.client.pd.Karte(jack_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_queen_sp = new ch.bodesuri.applikation.client.pd.Karte(queen_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_king_sp = new ch.bodesuri.applikation.client.pd.Karte(king_sp); 
+		ch.bodesuri.applikation.client.pd.Karte app_ace_sp = new ch.bodesuri.applikation.client.pd.Karte(ace_sp); 
 		
 		
-		applikation.client.pd.Karte app_two_h = new applikation.client.pd.Karte(two_h); 
-		applikation.client.pd.Karte app_three_h = new applikation.client.pd.Karte(three_h); 
-		applikation.client.pd.Karte app_four_h = new applikation.client.pd.Karte(four_h); 
-		applikation.client.pd.Karte app_five_h = new applikation.client.pd.Karte(five_h); 
-		applikation.client.pd.Karte app_six_h = new applikation.client.pd.Karte(six_h); 
-		applikation.client.pd.Karte app_seven_h = new applikation.client.pd.Karte(seven_h); 
-		applikation.client.pd.Karte app_eight_h = new applikation.client.pd.Karte(eight_h); 
-		applikation.client.pd.Karte app_nine_h = new applikation.client.pd.Karte(nine_h); 
-		applikation.client.pd.Karte app_ten_h = new applikation.client.pd.Karte(ten_h); 
-		applikation.client.pd.Karte app_jack_h = new applikation.client.pd.Karte(jack_h); 
-		applikation.client.pd.Karte app_queen_h = new applikation.client.pd.Karte(queen_h); 
-		applikation.client.pd.Karte app_king_h = new applikation.client.pd.Karte(king_h); 
-		applikation.client.pd.Karte app_ace_h = new applikation.client.pd.Karte(ace_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_two_h = new ch.bodesuri.applikation.client.pd.Karte(two_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_three_h = new ch.bodesuri.applikation.client.pd.Karte(three_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_four_h = new ch.bodesuri.applikation.client.pd.Karte(four_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_five_h = new ch.bodesuri.applikation.client.pd.Karte(five_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_six_h = new ch.bodesuri.applikation.client.pd.Karte(six_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_seven_h = new ch.bodesuri.applikation.client.pd.Karte(seven_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_eight_h = new ch.bodesuri.applikation.client.pd.Karte(eight_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_nine_h = new ch.bodesuri.applikation.client.pd.Karte(nine_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_ten_h = new ch.bodesuri.applikation.client.pd.Karte(ten_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_jack_h = new ch.bodesuri.applikation.client.pd.Karte(jack_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_queen_h = new ch.bodesuri.applikation.client.pd.Karte(queen_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_king_h = new ch.bodesuri.applikation.client.pd.Karte(king_h); 
+		ch.bodesuri.applikation.client.pd.Karte app_ace_h = new ch.bodesuri.applikation.client.pd.Karte(ace_h); 
 		
 		Karten pd_cards = null; 
 
@@ -609,10 +609,10 @@ public class ParserTest extends TestCase {
 		// Not important which player's cards. Always use player 1 to test cards. 
 		game.getSpieler().get(0).setKarten(pd_cards); 
 
-		IdentityHashMap<Karte, applikation.client.pd.Karte> cardMap	
-				= new IdentityHashMap<Karte, applikation.client.pd.Karte>();
+		IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap	
+				= new IdentityHashMap<Karte, ch.bodesuri.applikation.client.pd.Karte>();
 
-		for (applikation.client.pd.Karte k : game.getSpieler().get(0).getKarten()) {
+		for (ch.bodesuri.applikation.client.pd.Karte k : game.getSpieler().get(0).getKarten()) {
 			cardMap.put(k.getKarte(), k);
 		}
 		

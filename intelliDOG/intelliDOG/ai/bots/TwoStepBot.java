@@ -12,10 +12,11 @@ import intelliDOG.ai.utils.DebugMsg;
 import java.util.List;
 import java.util.Map;
 
-import pd.regelsystem.Karte;
-import pd.regelsystem.ZugEingabe;
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Spiel;
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Spiel;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.regelsystem.ZugEingabe;
+
 /**
  * TwoStepBot - spawns all immediate successor states and their successor
  * The second step is weighted as 25% compared to the first step
@@ -52,7 +53,7 @@ public class TwoStepBot implements IBot {
 
 	@Override
 	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich,
-			Map<Karte, applikation.client.pd.Karte> kartenMap) {
+			Map<Karte, ch.bodesuri.applikation.client.pd.Karte> kartenMap) {
 		if(moeglich.size() < 1)
 		{
 			msg.debug(this,"SimpleBot: They don't even give me possibilities to choose from!");

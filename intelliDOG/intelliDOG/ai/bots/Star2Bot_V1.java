@@ -17,11 +17,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import pd.regelsystem.Karte;
-import pd.regelsystem.ZugEingabe;
-import pd.zugsystem.Bewegung;
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Spiel;
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Spiel;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.regelsystem.ZugEingabe;
+import ch.bodesuri.pd.zugsystem.Bewegung;
+
 
 /**
  * Another variation of of Star2 algorithm.
@@ -450,7 +451,7 @@ public class Star2Bot_V1 implements IBot {
 	
 	@Override
 	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich,
-			Map<Karte, applikation.client.pd.Karte> kartenMap) {
+			Map<Karte, ch.bodesuri.applikation.client.pd.Karte> kartenMap) {
 		
 		if(moeglich.size() < 1)
 		{

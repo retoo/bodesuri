@@ -15,11 +15,12 @@ import intelliDOG.ai.utils.DebugMsg;
 import java.util.List;
 import java.util.Map;
 
-import pd.regelsystem.Karte;
-import pd.regelsystem.ZugEingabe;
-import pd.zugsystem.Bewegung;
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Spiel;
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Spiel;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.regelsystem.ZugEingabe;
+import ch.bodesuri.pd.zugsystem.Bewegung;
+
 
 /**
  * This Bot uses the ComplexEvaluator. Single Evaluators are added and make up 
@@ -56,7 +57,7 @@ public class ComplexBot implements IBot {
 
 	@Override
 	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich,
-			Map<Karte, applikation.client.pd.Karte> kartenMap) {
+			Map<Karte, ch.bodesuri.applikation.client.pd.Karte> kartenMap) {
 		if(moeglich.size() < 1)
 		{
 			msg.debug(this, "ComplexBot: They don't even give me possibilities to choose from!");

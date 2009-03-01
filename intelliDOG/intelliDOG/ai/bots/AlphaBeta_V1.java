@@ -4,11 +4,12 @@ import intelliDOG.ai.evaluators.*;
 import intelliDOG.ai.framework.*;
 import intelliDOG.ai.utils.DebugMsg;
 import java.util.*;
-import pd.regelsystem.Karte;
-import pd.regelsystem.ZugEingabe;
-import pd.zugsystem.Bewegung;
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Spiel;
+
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Spiel;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.regelsystem.ZugEingabe;
+import ch.bodesuri.pd.zugsystem.Bewegung;
 
 public class AlphaBeta_V1 implements IBot {
 	
@@ -45,7 +46,7 @@ public class AlphaBeta_V1 implements IBot {
 	
 	@Override
 	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich,
-			Map<Karte, applikation.client.pd.Karte> kartenMap) {
+			Map<Karte, ch.bodesuri.applikation.client.pd.Karte> kartenMap) {
 		
 		if(moeglich.size() < 1)
 		{

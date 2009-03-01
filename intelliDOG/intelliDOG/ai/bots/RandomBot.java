@@ -10,10 +10,11 @@ import intelliDOG.ai.framework.Players;
 import java.util.List;
 import java.util.Map;
 
-import pd.regelsystem.Karte;
-import pd.regelsystem.ZugEingabe;
-import applikation.client.events.ZugErfasstEvent;
-import applikation.client.pd.Spiel;
+import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
+import ch.bodesuri.applikation.client.pd.Spiel;
+import ch.bodesuri.pd.regelsystem.Karte;
+import ch.bodesuri.pd.regelsystem.ZugEingabe;
+
 
 public class RandomBot implements IBot {
 
@@ -41,7 +42,7 @@ public class RandomBot implements IBot {
 	}
 	
 	@Override
-	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich, Map<Karte, applikation.client.pd.Karte> kartenMap) 
+	public ZugErfasstEvent macheZug(Spiel spiel, List<ZugEingabe> moeglich, Map<Karte, ch.bodesuri.applikation.client.pd.Karte> kartenMap) 
 	{
 		if(moeglich.size() < 1)
 		{
