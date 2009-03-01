@@ -52,6 +52,16 @@ public class Konfiguration {
 	public boolean debugBotsZoegernNicht = false;
 
 	/**
+	 * Debug-Option: kein GUI
+	 */
+	public boolean aiKeinGui = false; 
+	
+	/**
+	 * AI option: ai debug messages aus
+	 */
+	public boolean aiDebugMsg = false;
+	
+	/**
 	 * Default-Hostname
 	 */
 	public String defaultHost = "localhost";

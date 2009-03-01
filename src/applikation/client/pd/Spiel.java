@@ -88,6 +88,26 @@ public class Spiel extends Observable implements SerialisierungsKontext {
 		hinweis = new HinweisSender();
 		steuerungsZustand = SteuerungsZustand.NICHTS;
 	}
+	
+	/**
+	 *  Ctor used by JUnit test: ParserTest 
+	 */ 
+	public Spiel(ProblemDomain pd) 
+	{
+		this.problemDomain = pd; 
+		this.spiel = pd.getSpiel(); 
+		
+		spielerRegister = new IdentityHashMap<pd.spiel.spieler.Spieler, Spieler>();
+		spieler = new Vector<Spieler>();
+		for (int i = 0; i < spiel.getSpieler().size(); i++) {
+			pd.spiel.spieler.Spieler pdSpieler = spiel.getSpieler().get(i);
+			Spieler appSpieler = new Spieler(pdSpieler);
+			spieler.add(appSpieler);
+			spielerRegister.put(pdSpieler, appSpieler);
+		}
+		this.brett = new Brett(spiel.getBrett());
+		
+	}
 
 	/**
 	 * Sucht nach dem passenden {@link Spieler} zu einem

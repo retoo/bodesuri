@@ -154,7 +154,7 @@ public class ZugEingabe implements Serializable {
 	}
 
 	public String toString() {
-		return "ZugEingabe: " + getSpieler() + " mit " + getKarte() + " "
+		return "ZugEingabe: " + getSpieler() + " (Nr. " + getSpieler().getNummer()+") mit " + getKarte() + " "
 		       + getBewegung();
 	}
 

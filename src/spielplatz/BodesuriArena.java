@@ -23,10 +23,10 @@ package spielplatz;
 
 import initialisierung.BodesuriBot;
 import initialisierung.BodesuriServer;
+import intelliDOG.ai.bots.SimpleBot;
 
 import java.util.Vector;
 
-import applikation.bot.IntelliBot;
 import applikation.bot.Stupidbot;
 import applikation.client.konfiguration.Konfiguration;
 
@@ -48,10 +48,12 @@ public class BodesuriArena {
 			Konfiguration konfig = new Konfiguration();
 			konfig.defaultName = nicks.get(i);
 			konfig.debugAutoLogin = true;
-			konfig.debugMeldungen = true;
-			konfig.debugBotsZoegernNicht = true;
+			konfig.debugMeldungen = false;
+			konfig.debugBotsZoegernNicht = false;
+			konfig.aiKeinGui = false;
+			konfig.aiDebugMsg = true;
 
-			Thread t = new BodesuriBot(konfig, i % 2 == 0 ? IntelliBot.class : Stupidbot.class, true);
+			Thread t = new BodesuriBot(konfig, (i % 2 == 0) ? Stupidbot.class : SimpleBot.class, true);
 
 			t.start();
 			clients.add(t);

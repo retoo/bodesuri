@@ -71,6 +71,16 @@ public class Spieler extends Observable implements Observer {
 		notifyObservers();
 	}
 
+	/** 
+	 *  for junit tests
+	 */
+	public void setKarten(Karten c) {
+		this.karten = c; 
+		setChanged();
+		notifyObservers();
+		
+	}
+	
 	public Karten getKarten() {
 		return karten;
 	}

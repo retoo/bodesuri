@@ -128,6 +128,16 @@ public class Spieler extends BodesuriCodierbaresObjekt {
 	}
 
 	/**
+	 * helper method for JUnit test
+	 *
+	 */
+	public void setKarten(ObservableList<Karte> cards) {
+		this.karten = cards; 
+		setChanged();
+		notifyObservers();
+	}
+	
+	/**
 	 * @return true, wenn alle Figuren des Spielers im Himmel sind
 	 */
 	public boolean istFertig() {

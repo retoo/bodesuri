@@ -22,6 +22,7 @@
 package applikation.client.zustaende;
 
 
+import intelliDOG.ai.utils.DebugMsg;
 import pd.regelsystem.ZugEingabe;
 import pd.regelsystem.verstoesse.RegelVerstoss;
 import applikation.client.pd.Karte;
@@ -102,7 +103,9 @@ public class NichtAmZug extends ClientZustand {
 	}
 
 	Class<? extends Zustand> spielFertig(SpielFertigNachricht nachricht) {
+//		System.out.println("hallo ich bin fertisch");
 		controller.zeigeMeldung("Das Spiel ist fertig, gewonnen haben "  + nachricht.gewinner);
+		DebugMsg.getInstance().log2file(this, "gewonnen haben" + nachricht.gewinner.toString());
 
 		return SpielEnde.class;
 	}

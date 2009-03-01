@@ -85,10 +85,12 @@ public class VorwaertsRegel extends Regel {
 		for (Feld feld : weg) {
 			if (feld == start) continue;
 
-			if (feld.istBank() && feld != ziel &&
-			    ((BankFeld)feld).istBesetztVonBesitzer()) {
-				throw new Verstoesse.UeberFigurAufBankFahren();
-			}
+			// TODO bugfix wegen unklaren regeln.. 
+			
+//			if (feld.istBank() && feld != ziel &&
+//			    ((BankFeld)feld).istBesetztVonBesitzer()) {
+//				throw new Verstoesse.UeberFigurAufBankFahren();
+//			}
 
 			if (feld.istGeschuetzt()) {
 				throw new Verstoesse.AufOderUeberGeschuetzteFahren();
