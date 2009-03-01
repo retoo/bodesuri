@@ -85,12 +85,14 @@ public class VorwaertsRegel extends Regel {
 		for (Feld feld : weg) {
 			if (feld == start) continue;
 
-			// TODO bugfix wegen unklaren regeln.. 
+			// Die folgende Zeilen wurden von den IntelliDogentwicklern
+			// auskommentiert. Wir denken aber dass sie sich in diesem Fall
+			// irren :)
 			
-//			if (feld.istBank() && feld != ziel &&
-//			    ((BankFeld)feld).istBesetztVonBesitzer()) {
-//				throw new Verstoesse.UeberFigurAufBankFahren();
-//			}
+			if (feld.istBank() && feld != ziel &&
+			    ((BankFeld)feld).istBesetztVonBesitzer()) {
+				throw new Verstoesse.UeberFigurAufBankFahren();
+			}
 
 			if (feld.istGeschuetzt()) {
 				throw new Verstoesse.AufOderUeberGeschuetzteFahren();
