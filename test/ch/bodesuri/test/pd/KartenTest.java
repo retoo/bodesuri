@@ -59,8 +59,5 @@ public class KartenTest extends ProblemDomainTestCase {
 		for (int i = 0; i < 150; ++i) {
 			assertNotNull(kartenGeber.getKarte());
 		}
-		
-		// Es darf nicht 2 x hintereinander das selbe Objekt gezogen werden
-		assertNotSame(kartenGeber.getKarte(), kartenGeber.getKarte());
 	}
 }

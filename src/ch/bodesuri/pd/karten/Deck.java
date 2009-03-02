@@ -30,6 +30,7 @@ import ch.bodesuri.pd.regelsystem.Karte;
 
 
 public class Deck {
+	/* FIXME: diese map wird bei jedem aufruf von erstelleKarte() überschrieben */
 	private static Map<KartenFarbe, List<Karte>> kartenFuerFarbe = 
 		new HashMap<KartenFarbe, List<Karte>>();
 
