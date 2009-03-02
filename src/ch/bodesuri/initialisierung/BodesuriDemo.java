@@ -21,10 +21,11 @@
 
 package ch.bodesuri.initialisierung;
 
+import intelliDOG.ai.bots.SimpleBot;
+
 import java.util.List;
 import java.util.Vector;
 
-import ch.bodesuri.applikation.bot.IntelliBot;
 import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
 
 
@@ -59,7 +60,7 @@ public class BodesuriDemo {
 			konfig.defaultName = namen.get(i);
 			konfig.debugAutoLogin = true;
 
-			BodesuriBot b = new BodesuriBot(konfig, IntelliBot.class, false);
+			BodesuriBot b = new BodesuriBot(konfig, SimpleBot.class, false);
 
 			b.start();
 

@@ -25,7 +25,8 @@ import intelliDOG.ai.bots.SimpleBot;
 
 import java.util.Vector;
 
-import ch.bodesuri.applikation.bot.Stupidbot;
+import ch.bodesuri.applikation.bot.Bot;
+import ch.bodesuri.applikation.bot.IntelliBot;
 import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
 import ch.bodesuri.initialisierung.BodesuriBot;
 import ch.bodesuri.initialisierung.BodesuriServer;
@@ -40,25 +41,29 @@ public class BodesuriArena {
 		Vector<Thread> clients = new Vector<Thread>();
 
 		Vector<String> nicks = new Vector<String>();
-		nicks.add("Anna Navarre ");
-		nicks.add("JC Denton");
-		nicks.add("Joseph Manderley");
-		nicks.add("Walton Simons");
+		nicks.add("Anna");
+		nicks.add("JC");
+		nicks.add("Joseph");
+		nicks.add("Walton");
 
 		for (int i = 0; i < 4; i++) {
+			Class<? extends Bot> botType = (i % 2 == 0) ? IntelliBot.class : SimpleBot.class;
+
 			Konfiguration konfig = new Konfiguration();
-			konfig.defaultName = nicks.get(i);
+			String botName = botType.getSimpleName();
+
+			konfig.defaultName = nicks.get(i) + " " + botName;
 			konfig.debugAutoLogin = true;
 			konfig.debugMeldungen = false;
 			konfig.debugBotsZoegernNicht = false;
 			konfig.aiKeinGui = false;
 			konfig.aiDebugMsg = true;
 
-			Thread t = new BodesuriBot(konfig, (i % 2 == 0) ? Stupidbot.class : SimpleBot.class, true);
+			Thread t = new BodesuriBot(konfig, botType, true);
 
 			t.start();
 			clients.add(t);
-			
+
 			Thread.sleep(1000);
 		}
 
