@@ -2,7 +2,6 @@ package intelliDOG.ai.ui;
 
 import intelliDOG.ai.init.Init;
 import intelliDOG.ai.utils.AIArena;
-import intelliDOG.ai.utils.IntelliOnlyArena;
 import intelliDOG.ai.utils.Statistics;
 
 import java.awt.BorderLayout;

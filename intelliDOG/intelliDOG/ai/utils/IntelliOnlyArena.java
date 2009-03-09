@@ -1,7 +1,5 @@
 package intelliDOG.ai.utils;
 
-import intelliDOG.ai.ui.IntelliDOGStarter;
-
 
 /**
  * the starting class for games over the intelliDOG framework

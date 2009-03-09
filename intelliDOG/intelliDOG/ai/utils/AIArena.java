@@ -3,30 +3,14 @@
 package intelliDOG.ai.utils;
 
 import intelliDOG.ai.bots.IBot;
-import intelliDOG.ai.bots.N_StepBot;
-import intelliDOG.ai.bots.RandomBot;
-import intelliDOG.ai.bots.SimpleBot;
-import intelliDOG.ai.bots.TwoStepBot;
-import intelliDOG.ai.evaluators.Evaluator;
-import intelliDOG.ai.evaluators.SimpleEvaluatorV2;
-import intelliDOG.ai.evaluators.SimpleEvaluatorV4;
-import intelliDOG.ai.framework.Board;
-import intelliDOG.ai.framework.BotBoard;
-import intelliDOG.ai.framework.Game;
 import intelliDOG.ai.framework.InformationGatherer;
-import intelliDOG.ai.framework.Parser;
 import intelliDOG.ai.framework.Players;
 import intelliDOG.ai.ui.GameWindow;
 import intelliDOG.ai.ui.IntelliDOGStarter;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
 
-import ch.bodesuri.applikation.bot.BotController;
-import ch.bodesuri.applikation.bot.IntelliBot;
-import ch.bodesuri.applikation.bot.Stupidbot;
 import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
-import ch.bodesuri.applikation.client.zustaende.NichtAmZug;
 import ch.bodesuri.initialisierung.BodesuriBot;
 import ch.bodesuri.initialisierung.BodesuriServer;
 
