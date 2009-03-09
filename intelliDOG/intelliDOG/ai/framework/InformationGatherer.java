@@ -11,7 +11,6 @@ import java.util.List;
 public class InformationGatherer {
 
 	private DebugMsg msg = DebugMsg.getInstance(); 
-	private  int totalCards = 112; 
 	private int cardsLeft = 112; 
 	private int[][] cards;
 	private byte myPlayer;

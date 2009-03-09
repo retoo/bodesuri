@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 import intelliDOG.ai.evaluators.Evaluator;
 import intelliDOG.ai.evaluators.NbrPawnsEvaluator;
 import intelliDOG.ai.framework.Players;
-import intelliDOG.ai.utils.DebugMsg;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,8 +15,6 @@ public class NbrPawnsEvaluatorTest {
 	private Evaluator evaluator;
 	private byte[] board; 
 	private byte player; 
-	private DebugMsg msg = DebugMsg.getInstance(); 
-	
 	
 	@Before
 	public void setUp() throws Exception {

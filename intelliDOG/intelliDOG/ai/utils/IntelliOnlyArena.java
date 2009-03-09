@@ -9,9 +9,6 @@ public class IntelliOnlyArena extends Thread{
 	
 	
 	public IntelliOnlyArena(){}
-
-	private static DebugMsg msg = DebugMsg.getInstance();
-	
 	
 	public static void main(String[] args) {
 		

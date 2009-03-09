@@ -3,7 +3,6 @@ package intelliDOG.ai.test;
 import intelliDOG.ai.evaluators.BlockEvaluator;
 import intelliDOG.ai.evaluators.Evaluator;
 import intelliDOG.ai.framework.Players;
-import intelliDOG.ai.utils.DebugMsg;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -15,7 +14,6 @@ public class BlockEvaluatorTest {
 
 	private Evaluator evaluator;  
 	private byte[] board; 
-	private DebugMsg msg = DebugMsg.getInstance(); 
 	
 	@Before
 	public void setUp() throws Exception {

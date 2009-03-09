@@ -1,7 +1,5 @@
 package intelliDOG.ai.framework;
 
-import intelliDOG.ai.utils.DebugMsg;
-
 /**
  * This class represents and holds the board state in a game.
  *
@@ -10,9 +8,6 @@ public class Board {
 
 	private byte [] board;
 	private byte playerOnTurn;
-	
-	private DebugMsg msg = DebugMsg.getInstance();
-	
 	
 	public Board(){
 		this.board = new byte[80];

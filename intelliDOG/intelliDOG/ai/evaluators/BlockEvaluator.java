@@ -76,7 +76,6 @@ public class BlockEvaluator implements Evaluator {
 			
 			//consider fields from 5 to 14
 			// The probability that an enemy has to give up is higher. 
-			int q = 0; 
 			for(int j = 5; j<15; j++)
 			{
 				int playerBehind = targetState[(64 + myHome - j) %64];
@@ -117,7 +116,6 @@ public class BlockEvaluator implements Evaluator {
 			
 			//consider fields from 5 to 14
 			// The probability that an enemy has to give up is higher. 
-			int q = 0; 
 			for(int j = 5; j<15; j++)
 			{
 				

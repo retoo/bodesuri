@@ -134,68 +134,6 @@ public class BotBoard {
 		return legal_moves;
 	}
 	
-	
-	/**
-	 * This method is not yet used but will introduce some more optimised
-	 * search for possible moves
-	 * @param player the player to get it's pieces
-	 * @return an int[] containing only pieces that are not yet on an end position
-	 */
-	private int[] getPiecesNotYetFinishedForPlayer(byte player){
-		//TODO: test and then use this!
-		int[] finishedPieces = getFinishedPiecesForPlayer(player);
-		int[] tempPieces = Rules.getInstance().getPiecesInGameForPlayer(board, player);
-		int[] pieces = new int[tempPieces.length];
-		int x = 0;
-		if(finishedPieces.length > 0){
-			for(int i = 0; i < tempPieces.length; i++){
-				boolean finished = false;
-				for(int j = 0; j < finishedPieces.length; j++){
-					if(tempPieces[i] == finishedPieces[j]){
-						finished = true;
-						break;
-					}
-				}
-				if(!finished){
-					pieces[x++] = tempPieces[i];
-				}
-			}
-		}
-		if(x == tempPieces.length){
-			return pieces;
-		}else{
-			int[] notFinished = new int[x];
-			for(int i = 0; i < x; i++){
-				notFinished[i] = pieces[i];
-			}
-			return notFinished;
-		}
-	}
-	
-	/**
-	 * this method is not yet finished, will be used in future for some optimisation
-	 * @param player the player to get it's pieces
-	 * @return an int[] containing all pieces that have reached an end position
-	 */
-	private int[] getFinishedPiecesForPlayer(byte player){
-		//TODO umbauen nach getPiecesInHeaven (aufpassen auf struktur die da zurück kommt)
-		int[] piecesInHeaven = Rules.getInstance().getPiecesInGameForPlayer(board, player);
-		int maxHeavenPos = 63 + (4 * player);
-		int[] finishedTemp = new int[4];
-		int x = 0;
-		for(int i = piecesInHeaven.length - 1; i >= 0; i--){
-			if(piecesInHeaven[i] == maxHeavenPos){
-				finishedTemp[x++] = piecesInHeaven[i];
-				maxHeavenPos--;
-			}
-		}
-		int[] finishedPieces = new int[x];
-		for(int i = 0; i < x; i++){
-			finishedPieces[i] = finishedTemp[i];
-		}
-		return finishedPieces;
-	}
-	
 	/**
 	 * this method calculates all possible moves for one card
 	 * @param card the card to use

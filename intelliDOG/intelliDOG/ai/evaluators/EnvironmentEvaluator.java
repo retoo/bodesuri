@@ -11,7 +11,6 @@ public class EnvironmentEvaluator implements Evaluator {
 	
 	private int enemyInFrontUpTo7 = 10;
 	private int enemyInFrontUpTo13 = 5;
-	private float distanceToHeaven = 1.2f;
 	private int allyInFrontNear = 5;
 	private int allyInFrontFar = 3; 
 	private int allyBehindNear = 5;

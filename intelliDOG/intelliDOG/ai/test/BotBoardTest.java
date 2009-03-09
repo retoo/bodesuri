@@ -9,7 +9,6 @@ import intelliDOG.ai.framework.Cards;
 import intelliDOG.ai.framework.InformationGatherer;
 import intelliDOG.ai.framework.Move;
 import intelliDOG.ai.framework.Players;
-import intelliDOG.ai.framework.Rules;
 import intelliDOG.ai.utils.DebugMsg;
 
 import java.lang.reflect.InvocationTargetException;
@@ -300,9 +299,9 @@ public class BotBoardTest {
 		ig = new InformationGatherer(Players.P1);
 		ig.setCardsForPlayer(new int[] { Cards.CLUBS_SEVEN, -1, -1, -1, -1, -1 }, Players.P1);
 		board = new BotBoard(boardArray, ig);
-		int[] pieces = new int[0];
-		pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
-		byte [] heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
+		//int[] pieces = new int[0];
+		//pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
+		//byte [] heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
 		//ArrayList<Move> possible = board.getPossibleMovesForSevenSplit(Cards.CLUBS_SEVEN, 7, pieces, 0, new int[7], new int[7], new boolean[7], Players.P1, heavenPieces, new boolean[pieces.length]);
 		List<Move> possible = board.getPossibleMovesForCard(Cards.CLUBS_SEVEN, Players.P1);
 		int size = possible.size();
@@ -312,8 +311,8 @@ public class BotBoardTest {
 		boardArray[8] = 1;
 		
 		board.setBoard(boardArray);
-		pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
-		heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
+		//pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
+		//heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
 		//possible = board.getPossibleMovesForSevenSplit(Cards.CLUBS_SEVEN, 7, pieces, 0, new int[7], new int[7], new boolean[7], Players.P1, heavenPieces, new boolean[pieces.length]);
 		possible = board.getPossibleMovesForCard(Cards.CLUBS_SEVEN, Players.P1);
 		msg.debug(this, "-----------------------RECURSIVE TWO-----------------------");
@@ -326,8 +325,8 @@ public class BotBoardTest {
 		boardArray[14] = 1;
 		
 		board.setBoard(boardArray);
-		pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
-		heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
+		//pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
+		//heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
 		//possible = board.getPossibleMovesForSevenSplit(Cards.CLUBS_SEVEN, 7, pieces, 0, new int[7], new int[7], new boolean[7], Players.P1, heavenPieces, new boolean[pieces.length]);
 		possible = board.getPossibleMovesForCard(Cards.CLUBS_SEVEN, Players.P1);
 		msg.debug(this, "-----------------------RECURSIVE THREE-----------------------");
@@ -340,8 +339,8 @@ public class BotBoardTest {
 		boardArray[26] = 1;
 		
 		board.setBoard(boardArray);
-		pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
-		heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
+		//pieces = Rules.getInstance().getPiecesInGameForPlayer(this.board.getBoard(), Players.P1);
+		//heavenPieces = Rules.getInstance().getPiecesInHeavenOfPlayer(this.board.getBoard(), Players.P1);
 		//possible = board.getPossibleMovesForSevenSplit(Cards.CLUBS_SEVEN, 7, pieces, 0, new int[7], new int[7], new boolean[7], Players.P1, heavenPieces, new boolean[pieces.length]);
 		possible = board.getPossibleMovesForCard(Cards.CLUBS_SEVEN, Players.P1);
 		msg.debug(this, "-----------------------RECURSIVE FOUR-----------------------");
@@ -709,8 +708,8 @@ public class BotBoardTest {
         	expectedArray[i] = boardArray[i];
         }
         
-        Move highestMove = null;
-        int highest = 0;
+        //Move highestMove = null;
+        //int highest = 0;
         for(int i = 0; i < possible.size(); i++)
         {
             board.makeMove(possible.get(i), player);

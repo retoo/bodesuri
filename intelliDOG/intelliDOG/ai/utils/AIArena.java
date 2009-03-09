@@ -2,10 +2,6 @@
 
 package intelliDOG.ai.utils;
 
-import intelliDOG.ai.bots.IBot;
-import intelliDOG.ai.framework.InformationGatherer;
-import intelliDOG.ai.framework.Players;
-import intelliDOG.ai.ui.GameWindow;
 import intelliDOG.ai.ui.IntelliDOGStarter;
 
 import java.util.Vector;
@@ -61,11 +57,7 @@ public class AIArena extends Thread
 	public void startGame(boolean ui, int nrOfGames, String[] botClassNames, String [] botNames){
 		assert botClassNames.length == 4 && botNames.length == 4;
 		
-		GameWindow gw = null;
-		
-		IBot[] bots = new IBot[4];
 		try {
-			InformationGatherer ig0 = new InformationGatherer(Players.P1);
 			Class [] botClasses = new Class[4];
 			for(int i = 0; i < 4; i++){
 				botClasses[i] = Class.forName(botClassNames[i]);
@@ -75,7 +67,6 @@ public class AIArena extends Thread
 			boolean mitgui = ui; 
 			//how many rounds would you like to play?
 			int times = nrOfGames;
-			DebugMsg msg = DebugMsg.getInstance();
 			//add here the class which you want to debug 
 //			msg.addItemForWhiteList(NichtAmZug.class.getCanonicalName());
 //			msg.addItemForWhiteList(Parser.class.getCanonicalName());
