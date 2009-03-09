@@ -390,7 +390,7 @@ public class AlphaBeta_V2 implements IBot {
 	/**
 	 * Compare two objects by in descending  orders
 	 */
-	class ReverseComperator implements Comparator
+	class ReverseComperator implements Comparator<MoveEvalPair>
 	{
 		
 		/**
@@ -398,13 +398,11 @@ public class AlphaBeta_V2 implements IBot {
 		 * @param b second object to be compared
 		 * @return -1 if a>b, 0 if a=b, +1 if a<b
 		 */
-		public int compare( Object a, Object b)
+		public int compare( MoveEvalPair a, MoveEvalPair b)
 		{
-			MoveEvalPair val1 = (MoveEvalPair)a;
-			MoveEvalPair val2 = (MoveEvalPair)b;
-			if(val1.value > val2.value)
+			if(a.value > b.value)
 			  return -1; 
-			else if(val1.value < val2.value)
+			else if(a.value < b.value)
 			  return 1; 
 			else 
 			  return 0; 

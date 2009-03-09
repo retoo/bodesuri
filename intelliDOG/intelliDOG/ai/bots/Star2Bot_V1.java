@@ -119,11 +119,11 @@ public class Star2Bot_V1 implements IBot {
 		}
 		prob = prob / realNbrSucc; 
 		
-		Iterator iter = realMoves.keySet().iterator(); 
+		Iterator<Integer> iter = realMoves.keySet().iterator(); 
 
 		while(iter.hasNext())
 		{
-			int i = (Integer)iter.next(); 
+			int i = iter.next(); 
 			List<Move> moves = realMoves.get(i); 
 		
 			chance++; 
@@ -498,7 +498,6 @@ public class Star2Bot_V1 implements IBot {
 	public List<Move> getSortedMoves(List<Move> moves)
 	{
 		List<MoveEvalPair> c = new ArrayList<MoveEvalPair>(); 
-		int[] tmpCards = new int[] {-1, -1, -1, -1, -1, -1}; 
 		int result = 0; 
 		
 		List<Move> sortedMoves = null; 		
@@ -535,7 +534,7 @@ public class Star2Bot_V1 implements IBot {
 	/**
 	 * Compare two objects by in descending  orders
 	 */
-	class ReverseComperator implements Comparator
+	class ReverseComperator implements Comparator<MoveEvalPair>
 	{
 		
 		/**
@@ -543,13 +542,11 @@ public class Star2Bot_V1 implements IBot {
 		 * @param b second object to be compared
 		 * @return -1 if a>b, 0 if a=b, +1 if a<b
 		 */
-		public int compare( Object a, Object b)
+		public int compare( MoveEvalPair a, MoveEvalPair b)
 		{
-			MoveEvalPair val1 = (MoveEvalPair)a;
-			MoveEvalPair val2 = (MoveEvalPair)b;
-			if(val1.value > val2.value)
+			if(a.value > b.value)
 			  return -1; 
-			else if(val1.value < val2.value)
+			else if(a.value < b.value)
 			  return 1; 
 			else 
 			  return 0; 

@@ -755,7 +755,7 @@ public class BotBoardTest {
 		List<Move> possible = board.getAllPossibleMoves(player);
 		
 		msg.debug(this, "--------------------testMakeAndUndoMove3--------------------");
-		msg.debugLegalMoves(this, (ArrayList)possible);
+		msg.debugLegalMoves(this, (ArrayList<Move>)possible);
 		msg.debug(this, "------------------End testMakeAndUndoMove3------------------");
 		
 		assertEquals(184, possible.size());

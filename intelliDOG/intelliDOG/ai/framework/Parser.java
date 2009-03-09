@@ -2,7 +2,6 @@ package intelliDOG.ai.framework;
 
 import intelliDOG.ai.utils.DebugMsg;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -340,14 +339,13 @@ public class Parser {
 	public void convertCards(Map<Karte, ch.bodesuri.applikation.client.pd.Karte> cardMap)
 	{
 		int cardIndex = 0;
-		Collection c = cardMap.values(); 
-		Iterator it = c.iterator(); 
+		Iterator<ch.bodesuri.applikation.client.pd.Karte> it = cardMap.values().iterator(); 
 		int countCards = 0; 
 		
 		while(it.hasNext())
 		{
 			countCards++; 
-			ch.bodesuri.applikation.client.pd.Karte k = (ch.bodesuri.applikation.client.pd.Karte)it.next(); 
+			ch.bodesuri.applikation.client.pd.Karte k = it.next(); 
 
 			if(k.getKarte() instanceof Joker) {
 				cards[cardIndex++] = Cards.JOKER;
