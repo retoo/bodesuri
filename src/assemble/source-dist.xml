@@ -1,0 +1,19 @@
+<assembly>
+  <id>src</id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <fileSets>
+    <fileSet>
+      <excludes>
+        <exclude>.git/**</exclude>
+        <exclude>target/**</exclude>
+        <exclude>**/*.psd</exclude>
+        <exclude>**/*.ai</exclude>
+        <exclude>**/*.mdxml</exclude>
+      </excludes>
+      <useDefaultExcludes>true</useDefaultExcludes>
+    </fileSet>
+  </fileSets>
+</assembly>
+

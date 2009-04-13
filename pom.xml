@@ -6,6 +6,7 @@
 	<name>Bodesuri</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>Umsetzung des beliebten Brettspiels Dog.</description>
+	<!--urlhttp://www.bodesuri.ch//url -->
 	<reporting>
 		<plugins>
 			<plugin>
@@ -14,7 +15,9 @@
 			</plugin>
 		</plugins>
 	</reporting>
-
+	<scm>
+		<connection>scm:git:git://www.bodesuri.ch/bodesuri/</connection>
+	</scm>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<testSourceDirectory>test</testSourceDirectory>
@@ -31,8 +34,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<source>1.6</source>
+					<target>1.6</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -98,18 +101,24 @@
 					<storepass>${storepass}</storepass>
 					<verify>true</verify>
 				</configuration>
-
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptors>
 						<descriptor>src/assemble/source-dist.xml</descriptor>
+						<descriptor>src/assemble/jar-dist.xml</descriptor>
 					</descriptors>
 				</configuration>
 			</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-scm-plugin</artifactId>
+					<configuration>
+						<goals>install</goals>
+					</configuration>
+				</plugin>
 		</plugins>
-
 		<extensions>
 		</extensions>
 	</build>
@@ -120,7 +129,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.3.1</version>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
