@@ -132,7 +132,7 @@
         <artifactId>webstart-maven-plugin</artifactId>
         <configuration>
         	<jnlp>
-        	
+
         		<inputTemplate>src/jnlp/template.vm</inputTemplate>
         		<mainClass>ch.bodesuri.initialisierung.BodesuriDemo</mainClass>
         	</jnlp>
@@ -142,6 +142,23 @@
 					<storepass>${storepass}</storepass>
 				</sign>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+
+       <executions>
+       	<execution>
+            <id>deploy</id>
+            <phase>package</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+           		<executable>build/deploy.sh</executable>
+            </configuration>
+          </execution>
+       </executions>
       </plugin>
 		</plugins>
 		<extensions>
