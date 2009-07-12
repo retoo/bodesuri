@@ -3,5 +3,5 @@
 set -e
 
 # I hate maven
-unzip -d /home/cruisecontrol/jnlp target/bodesuri-*-SNAPSHOT.zip
+unzip -d /home/trac/htdocs/ target/bodesuri-*-SNAPSHOT.zip
 

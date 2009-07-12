@@ -15,6 +15,7 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<url>www.bodesuri.ch</url>
 	<scm>
 		<connection>scm:git:git://www.bodesuri.ch/bodesuri/</connection>
 	</scm>
