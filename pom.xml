@@ -131,6 +131,13 @@
 				<plugin>
         <groupId>org.codehaus.mojo.webstart</groupId>
         <artifactId>webstart-maven-plugin</artifactId>
+        <executions>
+        <execution>
+            <id>run-webstart</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jnlp</goal>
+            </goals>
         <configuration>
         	<jnlp>
 
@@ -143,6 +150,8 @@
 					<storepass>${storepass}</storepass>
 				</sign>
         </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -151,7 +160,7 @@
        <executions>
        	<execution>
             <id>deploy</id>
-            <phase>package</phase>
+            <phase>install</phase>
             <goals>
               <goal>exec</goal>
             </goals>
