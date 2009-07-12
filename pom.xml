@@ -132,9 +132,15 @@
         <artifactId>webstart-maven-plugin</artifactId>
         <configuration>
         	<jnlp>
+        	
         		<inputTemplate>src/jnlp/template.vm</inputTemplate>
         		<mainClass>ch.bodesuri.initialisierung.BodesuriDemo</mainClass>
         	</jnlp>
+        		<sign>
+        			<keystore>../../build/cert/bodesuri.keystore</keystore>
+					<alias>bodesuri</alias>
+					<storepass>${storepass}</storepass>
+				</sign>
         </configuration>
       </plugin>
 		</plugins>
