@@ -4,7 +4,7 @@
 	<groupId>ch.bodesuri</groupId>
 	<artifactId>bodesuri</artifactId>
 	<name>Bodesuri</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<description>Umsetzung des beliebten Brettspiels Dog.</description>
 	<!--urlhttp://www.bodesuri.ch//url -->
 	<reporting>
