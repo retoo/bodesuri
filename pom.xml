@@ -1,4 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 	<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>ch.bodesuri</groupId>
@@ -127,6 +127,16 @@
 						<goals>install</goals>
 					</configuration>
 				</plugin>
+				<plugin>
+        <groupId>org.codehaus.mojo.webstart</groupId>
+        <artifactId>webstart-maven-plugin</artifactId>
+        <configuration>
+        	<jnlp>
+        		<inputTemplate>src/jnlp/template.vm</inputTemplate>
+        		<mainClass>ch.bodesuri.initialisierung.BodesuriDemo</mainClass>
+        	</jnlp>
+        </configuration>
+      </plugin>
 		</plugins>
 		<extensions>
 		</extensions>
