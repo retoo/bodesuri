@@ -29,6 +29,15 @@
 			<plugins>
 			</plugins>
 		</pluginManagement>
+		<resources>
+			<resource>
+				<directory>src/ch/bodesuri/ui/ressourcen/</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+				<targetPath>ch/bodesuri/ui/ressourcen/</targetPath>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
