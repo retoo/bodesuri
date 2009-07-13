@@ -6,6 +6,7 @@
 	<name>Bodesuri</name>
 	<version>0.0.2-SNAPSHOT</version>
 	<description>Umsetzung des beliebten Brettspiels Dog.</description>
+	<organization>Edgar Danilo Couto, Philippe Eberli, Pascal Hobus, Reto Schüttel, Robin Stocker</organization>
 	<reporting>
 		<plugins>
 			<plugin>
