@@ -51,9 +51,9 @@ public class ServerTest extends TestCase {
 
 		BodesuriServer server = new BodesuriServer();
 		server.start();
-		
+
 		server.warteAufBereitschaft();
-		
+
 
 		Vector<BodesuriBot> clients = new Vector<BodesuriBot>();
 
