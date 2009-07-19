@@ -21,12 +21,16 @@
 
 package ch.bodesuri.applikation.client.zustaende;
 
+import java.util.List;
+
 import ch.bodesuri.applikation.client.controller.Controller;
 import ch.bodesuri.applikation.nachrichten.BeitrittVerweigert;
 import ch.bodesuri.applikation.nachrichten.BeitrittsInformation;
 import ch.bodesuri.applikation.nachrichten.SpielStartNachricht;
+import ch.bodesuri.applikation.nachrichten.SpielerInfo;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.pd.spiel.spieler.Partnerschaft;
+import ch.bodesuri.pd.spiel.spieler.Spieler;
 
 /**
  * Zustand wenn der Spieler in der Lobby ist.
@@ -55,10 +59,13 @@ public class Lobby extends ClientZustand {
     }
 
 	Class<? extends Zustand> beitrittsBestaetitigung(BeitrittsInformation bestaetigung) {
-    	for (int i = 0; i < bestaetigung.spielInfo.spielers.size(); i++) {
-    		spiel.getSpiel().getSpieler().get(i).setName(bestaetigung.spielInfo.spielers.get(i).spielername);
+		List<Spieler> spieler = spiel.getSpiel().getSpieler();
+    	List<SpielerInfo> spielerServer = bestaetigung.spielInfo.spielers;
+		for (int i = 0; i < spielerServer.size(); i++) {
+			String name = spielerServer.get(i).spielername;
+			spieler.get(i).setName(name);
 
-    		if (bestaetigung.spielInfo.spielers.get(i).spielername.equals(spiel.spielerName)) {
+    		if (name.equals(spiel.spielerName)) {
             	spiel.spielerIch = spiel.getSpieler().get(i);
             }
     	}
