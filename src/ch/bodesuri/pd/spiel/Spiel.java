@@ -37,7 +37,6 @@ public class Spiel {
 
 	private Brett brett;
 	private Vector<Spieler> spieler;
-	private int beigetreteneSpieler = 0;
 
 	/**
 	 * Erstellt ein Spiel. Das Brett wird erstellt und die Spieler. Später
@@ -66,10 +65,24 @@ public class Spiel {
 	 * @return Der neu erstellte Spieler.
 	 */
 	public Spieler fuegeHinzu(String spielerName) {
-		Spieler neuerSpieler = spieler.get(beigetreteneSpieler);
+
+		Spieler neuerSpieler = findeFreierSpieler();
 		neuerSpieler.setName(spielerName);
-		++beigetreteneSpieler;
 		return neuerSpieler;
+	}
+
+	private Spieler findeFreierSpieler() {
+		for (Spieler spieler : this.spieler) {
+			if (spieler.getName() == null) {
+				return spieler;
+			}
+		}
+
+		throw new RuntimeException("Kein freier Speiler-Slot vorhanden, interner Fehler");
+	}
+
+	public void entferne(Spieler spieler) {
+		spieler.setName(null);
 	}
 
 	/**

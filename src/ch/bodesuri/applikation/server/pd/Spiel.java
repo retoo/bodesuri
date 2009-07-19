@@ -195,8 +195,8 @@ public class Spiel implements SerialisierungsKontext {
 	public SpielInfo getSpielInfo() {
 		Vector<SpielerInfo> spielers = new Vector<SpielerInfo>();
 
-		for (Spieler spieler : this.spielers) {
-			SpielerInfo si = spieler.getSpielerInfo();
+		for (ch.bodesuri.pd.spiel.spieler.Spieler spieler: this.spiel.getSpieler()) {
+			SpielerInfo si = new SpielerInfo(spieler.getName());
 			spielers.add(si);
 		}
 
@@ -233,9 +233,9 @@ public class Spiel implements SerialisierungsKontext {
 	 * @return true falls es einen solchen Spieler hatte
 	 */
 	public boolean entferne(EndPunktInterface absender) {
-		Spieler s = getSpieler(absender);
-
-		return spielers.remove(s);
+		Spieler spieler = endpunktZuSpieler.remove(absender);
+		spiel.entferne(spieler.spieler);
+		return spielers.remove(spieler);
     }
 
 	/**

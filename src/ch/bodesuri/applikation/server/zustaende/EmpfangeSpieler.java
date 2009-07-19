@@ -76,4 +76,19 @@ public class EmpfangeSpieler extends ServerZustand {
 
 		return EmpfangeSpieler.class;
 	}
+
+	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
+		/* Spieler aus dem Spiel entfernen, falls vorhanden */
+		boolean res = spiel.entferne(absender);
+
+		if (!res) {
+			/* Endpunkt war nicht bekannt. Das Spiel muss somit nicht abgebrochen werden */
+			return this.getClass();
+		}
+
+		spiel.broadcast(new BeitrittsInformation(spiel.getSpielInfo()));
+
+		return EmpfangeSpieler.class;
+	}
+
 }

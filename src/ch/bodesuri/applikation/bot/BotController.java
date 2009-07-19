@@ -26,6 +26,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 
 import ch.bodesuri.applikation.client.controller.Controller;
+import ch.bodesuri.applikation.client.events.BeendeEvent;
 import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
 import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
 import ch.bodesuri.applikation.client.pd.Chat;
@@ -78,6 +79,11 @@ public class BotController extends Controller {
 	}
 
 	public void zeigeLobby(List<Spieler> spieler, Chat chat) {
+
+		if (this.konfig.abortsDuringLobby) {
+			eventQueue.enqueue(new BeendeEvent());
+			return;
+		}
 		if (gui != null)
 			gui.zeigeLobby(spieler, chat);
 	}

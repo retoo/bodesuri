@@ -78,4 +78,63 @@ public class ServerTest extends TestCase {
 			System.out.println("Client fertig " + t.getAnzahlZuege());
 		}
 	}
+
+	public void testShutdownDuringLobby() throws InterruptedException {
+
+		Vector<String> nicks = new Vector<String>();
+
+		nicks.add("Anna Navarre ");
+		nicks.add("JC Denton");
+		nicks.add("Joseph Manderley");
+		nicks.add("Walton Simons");
+		nicks.add("Clinton");
+		nicks.add("Bush Jun.");
+		nicks.add("Obama");
+		nicks.add("Bush Sen.");
+
+		BodesuriServer server = new BodesuriServer();
+		server.start();
+
+		server.warteAufBereitschaft();
+
+
+		Vector<BodesuriBot> clients = new Vector<BodesuriBot>();
+
+		clients.add(createBot(false, nicks.get(0)));
+
+		for (int i = 0; i < 2; i++) {
+			BodesuriBot t = createBot(true, nicks.get(1 + i));
+			clients.add(t);
+		}
+
+		Thread.sleep(1000);
+		clients.add(createBot(true, nicks.get(3)));
+		Thread.sleep(1000);
+		clients.add(createBot(false, nicks.get(4)));
+		clients.add(createBot(false, nicks.get(5)));
+		clients.add(createBot(false, nicks.get(6)));
+
+		server.join();
+		System.out.println("Server fertig");
+
+
+		for (BodesuriBot t : clients) {
+			t.join();
+			System.out.println("Client fertig " + t.getAnzahlZuege());
+		}
+
+	}
+
+	private BodesuriBot createBot(boolean ifAbort, String nick) {
+		Konfiguration konfig = new Konfiguration();
+		konfig.defaultName = nick;
+		konfig.debugKeineLobbyVerzoegerung = true;
+		konfig.debugBotsZoegernNicht = true;
+		konfig.abortsDuringLobby = ifAbort;
+
+		BodesuriBot t = new BodesuriBot(konfig, IntelliBot.class, false);
+
+		t.start();
+		return t;
+	}
 }

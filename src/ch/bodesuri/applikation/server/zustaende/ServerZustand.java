@@ -29,6 +29,7 @@ import ch.bodesuri.applikation.nachrichten.SpielAbbruch;
 import ch.bodesuri.applikation.nachrichten.SpielBeitreten;
 import ch.bodesuri.applikation.nachrichten.ZugInformation;
 import ch.bodesuri.applikation.server.pd.Spiel;
+import ch.bodesuri.applikation.server.pd.Spieler;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.dienste.eventqueue.Event;
 import ch.bodesuri.dienste.netzwerk.Brief;
@@ -114,6 +115,8 @@ public abstract class ServerZustand extends Zustand {
 	}
 
 	Class<? extends Zustand> verbindungGeschlossen(EndPunktInterface absender) {
+		Spieler spieler = spiel.getSpieler(absender);
+
 		/* Spieler aus dem Spiel entfernen, falls vorhanden */
 		boolean res = spiel.entferne(absender);
 
@@ -123,7 +126,7 @@ public abstract class ServerZustand extends Zustand {
 		}
 
 		spiel.broadcast(new SpielAbbruch("Die Verbindung zu "
-		                                 + spiel.getSpieler(absender).spieler
+		                                 + spieler.spieler
 		                                 + " ist abgebrochen. Das Spiel"
 		                                 + " wird geschlossen."));
 

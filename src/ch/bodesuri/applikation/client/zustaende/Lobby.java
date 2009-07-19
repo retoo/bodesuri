@@ -65,7 +65,7 @@ public class Lobby extends ClientZustand {
 			String name = spielerServer.get(i).spielername;
 			spieler.get(i).setName(name);
 
-    		if (name.equals(spiel.spielerName)) {
+    		if (spiel.spielerName.equals(name)) {
             	spiel.spielerIch = spiel.getSpieler().get(i);
             }
     	}

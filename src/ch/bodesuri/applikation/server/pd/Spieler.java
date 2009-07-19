@@ -21,7 +21,6 @@
 
 package ch.bodesuri.applikation.server.pd;
 
-import ch.bodesuri.applikation.nachrichten.SpielerInfo;
 import ch.bodesuri.dienste.netzwerk.EndPunktInterface;
 import ch.bodesuri.dienste.netzwerk.Nachricht;
 
@@ -62,10 +61,6 @@ public class Spieler {
 
 	public EndPunktInterface getEndPunkt() {
 		return endpunkt;
-	}
-
-	public SpielerInfo getSpielerInfo() {
-		return new SpielerInfo(spieler.getName());
 	}
 
 	public String getName() {

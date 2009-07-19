@@ -54,13 +54,13 @@ public class Konfiguration {
 	/**
 	 * Debug-Option: kein GUI
 	 */
-	public boolean aiKeinGui = false; 
-	
+	public boolean aiKeinGui = false;
+
 	/**
 	 * AI option: ai debug messages aus
 	 */
 	public boolean aiDebugMsg = false;
-	
+
 	/**
 	 * Default-Hostname
 	 */
@@ -75,4 +75,9 @@ public class Konfiguration {
 	 * Default-Name
 	 */
 	public String defaultName = "Dog Spieler";
+
+	/**
+	 * Used for testing, tells the bot to abort during the lobby.
+	 */
+	public boolean abortsDuringLobby = false;
 }
