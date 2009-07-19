@@ -52,13 +52,14 @@ public class ServerStatus {
 	 *            Der Statusmeldung die geschrieben werden soll.
 	 */
 	public void schreibeStatus(String status) {
-		status = "<p>Der Server läuft auf Port " + port + ".</p>\n" + status;
+		String msg = "<p>Der Server läuft auf Port " + port + ".</p>\n" + status;
 		try {
 			FileWriter fstream = new FileWriter(datei);
 			BufferedWriter out = new BufferedWriter(fstream);
-			out.write(status);
+			out.write(msg);
 			out.close();
 		} catch (IOException e) {
+			throw new RuntimeException(e);
 		}
 	}
 
