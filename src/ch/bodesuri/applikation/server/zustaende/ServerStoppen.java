@@ -21,12 +21,9 @@
 
 package ch.bodesuri.applikation.server.zustaende;
 
-import ch.bodesuri.applikation.server.ServerAutomat;
-import ch.bodesuri.applikation.server.pd.Spieler;
 import ch.bodesuri.dienste.automat.zustaende.EndZustand;
 import ch.bodesuri.dienste.automat.zustaende.PassiverZustand;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
-import ch.bodesuri.dienste.netzwerk.server.Server;
 
 
 /**

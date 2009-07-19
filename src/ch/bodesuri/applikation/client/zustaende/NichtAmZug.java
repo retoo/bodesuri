@@ -22,6 +22,7 @@
 package ch.bodesuri.applikation.client.zustaende;
 
 
+import intelliDOG.ai.utils.DebugMsg;
 import ch.bodesuri.applikation.client.pd.Karte;
 import ch.bodesuri.applikation.client.pd.Spieler;
 import ch.bodesuri.applikation.nachrichten.AktuellerSpielerInformation;
@@ -32,7 +33,6 @@ import ch.bodesuri.applikation.nachrichten.ZugAufforderung;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.pd.regelsystem.ZugEingabe;
 import ch.bodesuri.pd.regelsystem.verstoesse.RegelVerstoss;
-import intelliDOG.ai.utils.DebugMsg;
 
 /**
  * Zustand wenn der Spieler nicht am Zug ist.

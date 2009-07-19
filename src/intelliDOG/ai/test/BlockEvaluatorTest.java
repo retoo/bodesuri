@@ -1,9 +1,9 @@
 package intelliDOG.ai.test;
 
+import static org.junit.Assert.assertEquals;
 import intelliDOG.ai.evaluators.BlockEvaluator;
 import intelliDOG.ai.evaluators.Evaluator;
 import intelliDOG.ai.framework.Players;
-import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;

@@ -1,12 +1,12 @@
 package intelliDOG.ai.framework;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
-
 import intelliDOG.ai.bots.IBot;
 import intelliDOG.ai.ui.GameWindow;
 import intelliDOG.ai.utils.Statistics;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 /**
  * The Game class is the game controller for games running over the intelliDOG

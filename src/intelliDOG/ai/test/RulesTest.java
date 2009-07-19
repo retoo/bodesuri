@@ -1,14 +1,19 @@
 package intelliDOG.ai.test;
 
-import static org.junit.Assert.*;
-import intelliDOG.ai.framework.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+import intelliDOG.ai.framework.Cards;
+import intelliDOG.ai.framework.Players;
+import intelliDOG.ai.framework.Rules;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class RulesTest {
 

@@ -25,8 +25,6 @@ import ch.bodesuri.applikation.nachrichten.BeitrittVerweigert;
 import ch.bodesuri.applikation.nachrichten.BeitrittsInformation;
 import ch.bodesuri.applikation.nachrichten.SpielBeitreten;
 import ch.bodesuri.applikation.nachrichten.SpielerInfo;
-import ch.bodesuri.applikation.server.pd.Spiel;
-import ch.bodesuri.applikation.server.pd.Spieler;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.dienste.netzwerk.EndPunktInterface;
 

@@ -1,6 +1,6 @@
 package intelliDOG.ai.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import intelliDOG.ai.evaluators.SimpleCardEvaluator;
 import intelliDOG.ai.framework.Cards;
 

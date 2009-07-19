@@ -9,7 +9,21 @@ import java.util.Vector;
 
 import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
 import ch.bodesuri.applikation.client.pd.Feld;
-import ch.bodesuri.pd.karten.*;
+import ch.bodesuri.pd.karten.Acht;
+import ch.bodesuri.pd.karten.Ass;
+import ch.bodesuri.pd.karten.Bube;
+import ch.bodesuri.pd.karten.Dame;
+import ch.bodesuri.pd.karten.Drei;
+import ch.bodesuri.pd.karten.Fuenf;
+import ch.bodesuri.pd.karten.Joker;
+import ch.bodesuri.pd.karten.KartenFarbe;
+import ch.bodesuri.pd.karten.Koenig;
+import ch.bodesuri.pd.karten.Neun;
+import ch.bodesuri.pd.karten.Sechs;
+import ch.bodesuri.pd.karten.Sieben;
+import ch.bodesuri.pd.karten.Vier;
+import ch.bodesuri.pd.karten.Zehn;
+import ch.bodesuri.pd.karten.Zwei;
 import ch.bodesuri.pd.regelsystem.Karte;
 import ch.bodesuri.pd.zugsystem.Bewegung;
 

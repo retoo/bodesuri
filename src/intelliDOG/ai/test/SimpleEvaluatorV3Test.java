@@ -1,12 +1,13 @@
 package intelliDOG.ai.test;
 
-import java.util.List;
-
 import intelliDOG.ai.evaluators.SimpleEvaluatorV3;
 import intelliDOG.ai.framework.BotBoard;
 import intelliDOG.ai.framework.InformationGatherer;
 import intelliDOG.ai.framework.Move;
 import intelliDOG.ai.utils.DebugMsg;
+
+import java.util.List;
+
 import junit.framework.TestCase;
 /**
  * test cases for the SimpleEvaluatorV3

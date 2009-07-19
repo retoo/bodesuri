@@ -23,12 +23,11 @@ package ch.bodesuri.test;
 
 import java.util.Vector;
 
+import junit.framework.TestCase;
 import ch.bodesuri.applikation.bot.IntelliBot;
 import ch.bodesuri.applikation.client.konfiguration.Konfiguration;
 import ch.bodesuri.initialisierung.BodesuriBot;
 import ch.bodesuri.initialisierung.BodesuriServer;
-
-import junit.framework.TestCase;
 
 /**
  * Bietet Tests zur Prüfung der Funktionalität des Servers.

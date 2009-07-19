@@ -1,22 +1,37 @@
 package intelliDOG.ai.test;
 
+import intelliDOG.ai.framework.Cards;
+import intelliDOG.ai.framework.Parser;
+
 import java.util.IdentityHashMap;
 import java.util.List;
 
+import junit.framework.TestCase;
 import ch.bodesuri.applikation.client.pd.Karten;
 import ch.bodesuri.dienste.observer.ObservableList;
 import ch.bodesuri.dienste.serialisierung.Codierer;
 import ch.bodesuri.pd.ProblemDomain;
-import ch.bodesuri.pd.karten.*;
+import ch.bodesuri.pd.karten.Acht;
+import ch.bodesuri.pd.karten.Ass;
+import ch.bodesuri.pd.karten.Bube;
+import ch.bodesuri.pd.karten.Dame;
+import ch.bodesuri.pd.karten.Drei;
+import ch.bodesuri.pd.karten.Fuenf;
+import ch.bodesuri.pd.karten.KartenFarbe;
+import ch.bodesuri.pd.karten.KartenGeber;
+import ch.bodesuri.pd.karten.Koenig;
+import ch.bodesuri.pd.karten.Neun;
+import ch.bodesuri.pd.karten.Sechs;
+import ch.bodesuri.pd.karten.Sieben;
+import ch.bodesuri.pd.karten.Vier;
+import ch.bodesuri.pd.karten.Zehn;
+import ch.bodesuri.pd.karten.Zwei;
 import ch.bodesuri.pd.regelsystem.Karte;
 import ch.bodesuri.pd.spiel.Spiel;
-import ch.bodesuri.pd.spiel.brett.*;
+import ch.bodesuri.pd.spiel.brett.BankFeld;
+import ch.bodesuri.pd.spiel.brett.Brett;
+import ch.bodesuri.pd.spiel.brett.HimmelFeld;
 import ch.bodesuri.pd.spiel.spieler.Spieler;
-
-
-import intelliDOG.ai.framework.Cards;
-import intelliDOG.ai.framework.Parser;
-import junit.framework.TestCase;
 
 /**
  * 

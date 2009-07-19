@@ -1,9 +1,9 @@
 package intelliDOG.ai.evaluators;
 
-import java.util.ArrayList;
-
 import intelliDOG.ai.framework.Rules;
 import intelliDOG.ai.utils.DebugMsg;
+
+import java.util.ArrayList;
 
 public class EnvironmentEvaluator implements Evaluator {
 

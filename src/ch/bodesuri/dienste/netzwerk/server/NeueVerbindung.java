@@ -22,7 +22,6 @@
 package ch.bodesuri.dienste.netzwerk.server;
 
 import ch.bodesuri.dienste.eventqueue.Event;
-import ch.bodesuri.dienste.netzwerk.Empfaenger;
 import ch.bodesuri.dienste.netzwerk.EndPunktInterface;
 
 /**

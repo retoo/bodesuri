@@ -21,7 +21,6 @@
 
 package ch.bodesuri.pd.karten;
 
-import ch.bodesuri.pd.regelsystem.Karte;
 
 /**
  * KartenFarbe, die zu einer {@link Karte} gehört.

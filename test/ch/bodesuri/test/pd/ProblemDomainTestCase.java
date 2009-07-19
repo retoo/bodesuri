@@ -23,6 +23,7 @@ package ch.bodesuri.test.pd;
 
 import java.util.List;
 
+import junit.framework.TestCase;
 import ch.bodesuri.dienste.serialisierung.Codierer;
 import ch.bodesuri.pd.ProblemDomain;
 import ch.bodesuri.pd.karten.KartenGeber;
@@ -32,9 +33,6 @@ import ch.bodesuri.pd.spiel.brett.Brett;
 import ch.bodesuri.pd.spiel.brett.HimmelFeld;
 import ch.bodesuri.pd.spiel.brett.LagerFeld;
 import ch.bodesuri.pd.spiel.spieler.Spieler;
-
-
-import junit.framework.TestCase;
 
 /**
  * Ist Basis aller TestCases, welche die Problem-Domain abdecken. Initialisiert

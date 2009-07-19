@@ -1,9 +1,21 @@
 package intelliDOG.ai.bots;
 
-import intelliDOG.ai.evaluators.*;
-import intelliDOG.ai.framework.*;
+import intelliDOG.ai.evaluators.Evaluator;
+import intelliDOG.ai.evaluators.SimpleEvaluatorV5;
+import intelliDOG.ai.framework.BotBoard;
+import intelliDOG.ai.framework.Cards;
+import intelliDOG.ai.framework.InformationGatherer;
+import intelliDOG.ai.framework.Move;
+import intelliDOG.ai.framework.Parser;
+import intelliDOG.ai.framework.Players;
+import intelliDOG.ai.framework.Rules;
 import intelliDOG.ai.utils.DebugMsg;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 
 import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
 import ch.bodesuri.applikation.client.pd.Spiel;

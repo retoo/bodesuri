@@ -22,12 +22,9 @@
 package ch.bodesuri.applikation.server.zustaende;
 
 import ch.bodesuri.applikation.nachrichten.SpielFertigNachricht;
-import ch.bodesuri.applikation.server.pd.Runde;
-import ch.bodesuri.applikation.server.pd.Spiel;
 import ch.bodesuri.dienste.automat.zustaende.PassiverZustand;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.pd.spiel.spieler.Partnerschaft;
-import ch.bodesuri.pd.zugsystem.Zug;
 
 
 /**

@@ -1,10 +1,10 @@
 package intelliDOG.ai.bots;
 
-import ch.bodesuri.applikation.bot.Bot;
 import intelliDOG.ai.evaluators.Evaluator;
 import intelliDOG.ai.framework.BotBoard;
 import intelliDOG.ai.framework.InformationGatherer;
 import intelliDOG.ai.framework.Move;
+import ch.bodesuri.applikation.bot.Bot;
 
 public interface IBot extends Bot{	
 	

@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-import ch.bodesuri.dienste.eventqueue.EventQueue;
 import ch.bodesuri.dienste.serialisierung.SerialisierungsKontext;
 import ch.bodesuri.dienste.threads.BodesuriThread;
 

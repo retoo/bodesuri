@@ -10,11 +10,13 @@ import intelliDOG.ai.framework.Parser;
 import intelliDOG.ai.framework.Players;
 import intelliDOG.ai.framework.Rules;
 import intelliDOG.ai.utils.DebugMsg;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+
 import ch.bodesuri.applikation.client.events.ZugErfasstEvent;
 import ch.bodesuri.applikation.client.pd.Spiel;
 import ch.bodesuri.pd.regelsystem.Karte;

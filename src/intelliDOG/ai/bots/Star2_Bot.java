@@ -8,6 +8,7 @@ import intelliDOG.ai.framework.Move;
 import intelliDOG.ai.framework.Parser;
 import intelliDOG.ai.framework.Rules;
 import intelliDOG.ai.utils.DebugMsg;
+
 import java.util.List;
 import java.util.Map;
 

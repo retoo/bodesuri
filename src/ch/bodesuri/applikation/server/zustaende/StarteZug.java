@@ -27,7 +27,6 @@ import ch.bodesuri.applikation.server.pd.Spiel;
 import ch.bodesuri.applikation.server.pd.Spieler;
 import ch.bodesuri.dienste.automat.zustaende.PassiverZustand;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
-import ch.bodesuri.pd.zugsystem.Zug;
 
 /**
  * Ein neuer {@link Zug} wird gestartet. Hierfür bestimmt der Server zuerst wer an der

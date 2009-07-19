@@ -20,6 +20,7 @@
 
 
 package ch.bodesuri.test.dienste.automat;
+import junit.framework.TestCase;
 import ch.bodesuri.dienste.automat.Automat;
 import ch.bodesuri.dienste.automat.zustaende.EndZustand;
 import ch.bodesuri.dienste.automat.zustaende.KeinUebergangException;
@@ -35,7 +36,6 @@ import ch.bodesuri.test.dienste.automat.testzustaende.PassiverTestZustandAlpha;
 import ch.bodesuri.test.dienste.automat.testzustaende.PassiverTestZustandBeta;
 import ch.bodesuri.test.dienste.automat.testzustaende.TestZustandAlpha;
 import ch.bodesuri.test.dienste.automat.testzustaende.TestZustandBeta;
-import junit.framework.TestCase;
 
 
 /**

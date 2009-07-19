@@ -1,7 +1,9 @@
 
 package intelliDOG.ai.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import intelliDOG.ai.evaluators.BlockEvaluator;
 import intelliDOG.ai.evaluators.ComplexEvaluator;
 import intelliDOG.ai.evaluators.EnvironmentEvaluator;

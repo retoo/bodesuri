@@ -21,7 +21,6 @@
 
 package ch.bodesuri.applikation.server.zustaende;
 
-import ch.bodesuri.applikation.server.ServerAutomat;
 import ch.bodesuri.dienste.automat.zustaende.EndZustand;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.dienste.netzwerk.EndPunktInterface;

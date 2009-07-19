@@ -22,12 +22,12 @@
 package ch.bodesuri.dienste.observer;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
-import java.util.Collections;
 
 import ch.bodesuri.dienste.observer.ListChangeEvent.ListChangeType;
 

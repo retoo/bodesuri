@@ -26,7 +26,6 @@ import ch.bodesuri.applikation.server.pd.Runde;
 import ch.bodesuri.applikation.server.pd.Spieler;
 import ch.bodesuri.dienste.automat.zustaende.Zustand;
 import ch.bodesuri.dienste.netzwerk.EndPunktInterface;
-import ch.bodesuri.pd.regelsystem.Karte;
 
 /**
  * Alle {@link Spieler} müssen mit ihrem Partner eine {@link Karte} tauschen. Der Server wartet
